@@ -1,0 +1,24 @@
+{
+  "name": "bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo no test",
+    "build:typescript": "tsc",
+    "run:node": "node build/index.js",
+    "dev": "npm run build:typescript && npm run run:node"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "GPLv3",
+  "dependencies": {
+    "discord.js": "^12.5.3"
+  },
+  "devDependencies": {
+    "@types/node": "^15.12.4",
+    "dotenv": "^10.0.0",
+    "typescript": "^4.3.4"
+  }
+}
