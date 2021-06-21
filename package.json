@@ -13,7 +13,7 @@
     "lint-fix": "eslint src/**/*.ts --fix"
   },
   "keywords": [],
-  "author": "",
+  "author": "FlyByWire Simulations",
   "license": "GPLv3",
   "dependencies": {
     "discord.js": "^12.5.3"
