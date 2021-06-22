@@ -1,10 +1,9 @@
 {
-  "include": ["src/**/*"],
   "compilerOptions": {
-    "outDir": "build",
     "allowSyntheticDefaultImports": true,
     "lib": ["ES2020"],
-    "module": "ES2020",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "experimentalDecorators": false
   }
 }
