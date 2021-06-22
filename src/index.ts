@@ -7,11 +7,11 @@ import { boratorium } from './commands/boratorium';
 
 dotenv.config();
 
-const DEBUG_MODE = true;
+const DEBUG_MODE = false;
 
 const client = new discord.Client();
 
-const commands = [ping, help, bruheg, boratorium];
+export const commands = [ping, help, bruheg, boratorium];
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
