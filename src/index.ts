@@ -4,6 +4,10 @@ import { ping } from './commands/ping';
 import { help } from './commands/help';
 import { bruheg } from './commands/bruheg';
 import { boratorium } from './commands/boratorium';
+import { efb } from './commands/efb';
+import { deadzones } from './commands/deadzones';
+import { screens } from './commands/screens';
+import { when } from './commands/when';
 
 dotenv.config();
 
@@ -11,7 +15,7 @@ const DEBUG_MODE = false;
 
 const client = new discord.Client();
 
-export const commands = [ping, help, bruheg, boratorium];
+export const commands = [ping, help, bruheg, boratorium, efb, deadzones, screens, when];
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
@@ -40,9 +44,11 @@ client.on('message', (msg) => {
             console.log(`Command ${usedCommand} identified in message. Running it.`);
         }
 
-        commands.forEach((command) => {
-            if (command.name === usedCommand) {
-                command.executor(msg);
+        commands.forEach(({ executor, name }) => {
+            const commandsArray = Array.isArray(name) ? name : [name];
+
+            if (commandsArray.includes(usedCommand)) {
+                executor(msg);
                 if (DEBUG_MODE) {
                     console.log('Command executor done.');
                 }

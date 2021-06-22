@@ -7,7 +7,7 @@ const BORATORIUM_URL = 'https://cdn.discordapp.com/attachments/74757194834247685
 export const boratorium: CommandDefinition = {
     name: 'boratorium',
     description: 'B O R A T',
-    category: CommandCategory.PUBLIC,
+    category: CommandCategory.FBW,
     executor: (msg) => {
         msg.channel.send(makeEmbed({ image: { url: BORATORIUM_URL } }));
     },

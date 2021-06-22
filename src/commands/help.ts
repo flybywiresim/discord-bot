@@ -19,9 +19,7 @@ export const help: CommandDefinition = {
             for (const categoryCommands of Object.entries(sortedCommands)) {
                 fields.push({
                     name: `**${categoryCommands[0]}**`,
-                    value: categoryCommands[1].map((command) => (
-                        `**${command.name}** - ${command.description ?? '*no description*'}`
-                    )).join('\n'),
+                    value: categoryCommands[1].map(renderCommandHelp).join('\n'),
                 });
             }
 
@@ -44,6 +42,16 @@ export const help: CommandDefinition = {
         });
     },
 };
+
+function renderCommandHelp({ name, description }: CommandDefinition): string {
+    const prefix = `**.${(Array.isArray(name) && name.length > 1) ? `${name[0]} (alias: ${name.slice(1).join(', ')})` : name}**`;
+
+    if (description) {
+        return `${prefix} - ${description}`;
+    }
+
+    return prefix;
+}
 
 function sortCommandsByCategory(commands: CommandDefinition[]): { [k: string]: CommandDefinition[] } {
     const categories = {};

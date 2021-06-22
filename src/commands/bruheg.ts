@@ -6,7 +6,8 @@ const BRUHEG_URL = 'https://media.discordapp.net/attachments/772990923486527534/
 
 export const bruheg: CommandDefinition = {
     name: 'bruheg',
-    category: CommandCategory.PUBLIC,
+    description: 'bruheg momen',
+    category: CommandCategory.FBW,
     executor: (msg) => {
         msg.channel.send(makeEmbed({ image: { url: BRUHEG_URL } }));
     },

@@ -7,3 +7,7 @@ export function makeEmbed(embed: discord.MessageEmbedOptions): discord.MessageEm
         color: Colors.FBW_CYAN,
     });
 }
+
+export function makeLines(lines: string[]): string {
+    return lines.join('\n');
+}
