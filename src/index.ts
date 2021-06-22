@@ -23,7 +23,9 @@ client.on('message', (msg) => {
     }
 
     if (msg.author.id === client.user.id) {
-        console.log('Bailing because bot is author of message.');
+        if (DEBUG_MODE) {
+            console.log('Bailing because bot is author of message.');
+        }
         return;
     }
 
