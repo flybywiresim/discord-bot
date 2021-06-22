@@ -31,7 +31,7 @@ export const help: CommandDefinition = {
             }
 
             const dmEmbed = makeEmbed({
-                title: 'FlyByWire Simulations',
+                title: 'FlyByWire Simulations | Commands List',
                 fields,
             });
 
