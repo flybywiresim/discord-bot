@@ -8,6 +8,8 @@ import { efb } from './commands/efb';
 import { deadzones } from './commands/deadzones';
 import { screens } from './commands/screens';
 import { when } from './commands/when';
+import { ban } from './commands/ban';
+import { unban } from './commands/unban';
 
 dotenv.config();
 
@@ -15,7 +17,7 @@ const DEBUG_MODE = false;
 
 const client = new discord.Client();
 
-export const commands = [ping, help, bruheg, boratorium, efb, deadzones, screens, when];
+export const commands = [ping, help, bruheg, boratorium, efb, deadzones, screens, when, ban, unban];
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
