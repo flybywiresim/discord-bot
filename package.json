@@ -2,10 +2,10 @@
   "name": "bot",
   "version": "1.0.0",
   "scripts": {
-    "test": "echo no test",
     "build:typescript": "tsc",
     "run:node": "node build/index.js",
     "dev": "nodemon --watch src/ -e ts --exec ts-node src/index.ts",
+    "run": "npm run build:typescript && npm run run:node",
     "lint": "eslint src/**/*.ts",
     "lint-fix": "eslint src/**/*.ts --fix"
   },
