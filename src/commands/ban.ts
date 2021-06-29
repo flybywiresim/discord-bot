@@ -14,13 +14,13 @@ export const ban: CommandDefinition = {
 
         if (splitUp.length < 2) {
             msg.reply('you did not provide enough arguments for this command. (<id> <reason>)');
-            return;
+            return Promise.resolve();
         }
 
         const idArg = splitUp[0];
         const reason = splitUp.slice(1).join(' ');
 
-        msg.guild.members.ban(idArg).then((user: User | Snowflake) => {
+        return msg.guild.members.ban(idArg).then((user: User | Snowflake) => {
             // A bt of a hack, but we need to propagate the reason and moderator to the event handler.
             // Since discord.js caches user objects, we can exploit that to attach more info to the ban.
             if (typeof user !== 'string') {

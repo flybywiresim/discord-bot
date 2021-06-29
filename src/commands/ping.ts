@@ -8,6 +8,6 @@ export const ping: CommandDefinition = {
     executor: (msg) => {
         const contentsWithoutPing = msg.content.replace(/\.ping\s+/, '');
 
-        msg.channel.send(contentsWithoutPing);
+        return msg.channel.send(contentsWithoutPing);
     },
 };

@@ -8,7 +8,5 @@ export const boratorium: CommandDefinition = {
     name: 'boratorium',
     description: 'B O R A T',
     category: CommandCategory.FBW,
-    executor: (msg) => {
-        msg.channel.send(makeEmbed({ image: { url: BORATORIUM_URL } }));
-    },
+    executor: (msg) => msg.channel.send(makeEmbed({ image: { url: BORATORIUM_URL } })),
 };

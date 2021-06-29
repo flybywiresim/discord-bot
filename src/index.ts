@@ -3,10 +3,11 @@ import express from 'express';
 import discord from 'discord.js';
 import commands from './commands';
 import eventHandlers from './handlers';
+import { makeEmbed } from './lib/embed';
 
 dotenv.config();
 
-export const DEBUG_MODE = true;
+export const DEBUG_MODE = false;
 
 const app = express();
 const client = new discord.Client();
@@ -51,7 +52,15 @@ client.on('message', (msg) => {
 
             if (!requiredPermissions || requiredPermissions.every((permission) => msg.guild.member(msg.author).hasPermission(permission))) {
                 if (commandsArray.includes(usedCommand)) {
-                    executor(msg, client);
+                    try {
+                        executor(msg, client);
+                    } catch ({ name, message, stack }) {
+                        msg.channel.send(makeEmbed({
+                            color: 'RED',
+                            title: 'Error while Executing Command',
+                            description: DEBUG_MODE ? `\`\`\`\n${stack}\`\`\`` : `\`\`\`\n${name}: ${message}\n\`\`\``,
+                        }));
+                    }
                     if (DEBUG_MODE) {
                         console.log('Command executor done.');
                     }

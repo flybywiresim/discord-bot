@@ -13,12 +13,12 @@ export const unban: CommandDefinition = {
 
         if (splitUp.length < 1) {
             msg.reply('you did not provide enough arguments for this command. (<id>)');
-            return;
+            return Promise.resolve();
         }
 
         const idArg = splitUp[0];
 
-        msg.guild.members.unban(idArg).then((user: User | Snowflake) => {
+        return msg.guild.members.unban(idArg).then((user: User | Snowflake) => {
             msg.channel.send(makeSuccessfulUnbanEmbed(user));
         }).catch((error) => {
             const guildMember = msg.guild.member(idArg);

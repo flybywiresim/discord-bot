@@ -8,7 +8,5 @@ export const bruheg: CommandDefinition = {
     name: 'bruheg',
     description: 'bruheg momen',
     category: CommandCategory.FBW,
-    executor: (msg) => {
-        msg.channel.send(makeEmbed({ image: { url: BRUHEG_URL } }));
-    },
+    executor: (msg) => msg.channel.send(makeEmbed({ image: { url: BRUHEG_URL } })),
 };
