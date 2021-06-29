@@ -55,6 +55,8 @@ client.on('message', (msg) => {
                         console.log('Command executor done.');
                     }
                 }
+            } else {
+                msg.reply(`you do not have sufficient permissions to use this command. (missing: ${requiredPermissions.join(', ')})`);
             }
         });
     }
