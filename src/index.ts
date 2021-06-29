@@ -1,11 +1,12 @@
-import discord from 'discord.js';
 import dotenv from 'dotenv';
 import express from 'express';
+import discord from 'discord.js';
 import commands from './commands';
+import eventHandlers from './handlers';
 
 dotenv.config();
 
-const DEBUG_MODE = false;
+export const DEBUG_MODE = true;
 
 const app = express();
 const client = new discord.Client();
@@ -61,6 +62,10 @@ client.on('message', (msg) => {
         });
     }
 });
+
+for (const handler of eventHandlers) {
+    client.on(handler.event, handler.executor);
+}
 
 client.login(process.env.BOT_SECRET)
     .then()

@@ -21,6 +21,13 @@ export const ban: CommandDefinition = {
         const reason = splitUp.slice(1).join(' ');
 
         msg.guild.members.ban(idArg).then((user: User | Snowflake) => {
+            // A bt of a hack, but we need to propagate the reason and moderator to the event handler.
+            // Since discord.js caches user objects, we can exploit that to attach more info to the ban.
+            if (typeof user !== 'string') {
+                (user as any).banReason = reason;
+                (user as any).banModerator = msg.author;
+            }
+
             msg.channel.send(makeSuccessfulBanEmbed(user, reason));
         }).catch((error) => {
             const guildMember = msg.guild.member(idArg);

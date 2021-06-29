@@ -7,3 +7,7 @@ export enum CommandCategory {
     FBW = 'FlyByWire Simulations',
     MODERATION = 'Moderation',
 }
+
+export enum Channels {
+    MOD_LOGS = '783996780181585921',
+}
