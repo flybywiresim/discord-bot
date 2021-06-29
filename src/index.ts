@@ -1,15 +1,25 @@
 import discord from 'discord.js';
 import dotenv from 'dotenv';
+import express from 'express';
 import commands from './commands';
 
 dotenv.config();
 
 const DEBUG_MODE = false;
 
+const app = express();
 const client = new discord.Client();
+
+let healthy = false;
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
+    healthy = true;
+});
+
+client.on('disconnect', () => {
+    console.warn('Client disconnected');
+    healthy = false;
 });
 
 client.on('message', (msg) => {
@@ -50,4 +60,12 @@ client.on('message', (msg) => {
 
 client.login(process.env.BOT_SECRET)
     .then()
-    .catch(console.error);
+    .catch((e) => {
+        console.error(e);
+        process.exit(1);
+    });
+
+app.get('/healthz', (req, res) => (healthy ? res.status(200).send('Ready') : res.status(500).send('Not Ready')));
+app.listen(3000, () => {
+    console.log('Server is running at http://localhost:3000');
+});
