@@ -1,7 +1,7 @@
 import { EmbedFieldData } from 'discord.js';
 import { CommandDefinition } from '../lib/command';
 import { makeEmbed } from '../lib/embed';
-import { commands } from '../index';
+import commands from './index';
 import { CommandCategory } from '../constants';
 
 export const help: CommandDefinition = {

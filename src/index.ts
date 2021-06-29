@@ -1,27 +1,25 @@
 import discord from 'discord.js';
 import dotenv from 'dotenv';
-import { ping } from './commands/ping';
-import { help } from './commands/help';
-import { bruheg } from './commands/bruheg';
-import { boratorium } from './commands/boratorium';
-import { efb } from './commands/efb';
-import { deadzones } from './commands/deadzones';
-import { screens } from './commands/screens';
-import { when } from './commands/when';
-import { ban } from './commands/ban';
-import { unban } from './commands/unban';
-import { trythis } from './commands/trythis';
+import express from 'express';
+import commands from './commands';
 
 dotenv.config();
 
 const DEBUG_MODE = false;
 
+const app = express();
 const client = new discord.Client();
 
-export const commands = [ping, help, bruheg, boratorium, efb, deadzones, screens, when, ban, unban, trythis];
+let healthy = false;
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
+    healthy = true;
+});
+
+client.on('disconnect', () => {
+    console.warn('Client disconnected');
+    healthy = false;
 });
 
 client.on('message', (msg) => {
@@ -60,4 +58,14 @@ client.on('message', (msg) => {
     }
 });
 
-client.login(process.env.BOT_SECRET).then();
+client.login(process.env.BOT_SECRET)
+    .then()
+    .catch((e) => {
+        console.error(e);
+        process.exit(1);
+    });
+
+app.get('/healthz', (req, res) => (healthy ? res.status(200).send('Ready') : res.status(500).send('Not Ready')));
+app.listen(3000, () => {
+    console.log('Server is running at http://localhost:3000');
+});
