@@ -9,6 +9,8 @@ import { when } from './when';
 import { ban } from './ban';
 import { unban } from './unban';
 import { trythis } from './trythis';
+import { experimental } from './experimental';
+import { versions } from './versions';
 
 export default [
     ping,
@@ -22,4 +24,6 @@ export default [
     ban,
     unban,
     trythis,
+    experimental,
+    versions,
 ];
