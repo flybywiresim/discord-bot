@@ -45,13 +45,15 @@ client.on('message', (msg) => {
             console.log(`Command ${usedCommand} identified in message. Running it.`);
         }
 
-        commands.forEach(({ executor, name }) => {
+        commands.forEach(({ executor, name, requiredPermissions }) => {
             const commandsArray = Array.isArray(name) ? name : [name];
 
-            if (commandsArray.includes(usedCommand)) {
-                executor(msg);
-                if (DEBUG_MODE) {
-                    console.log('Command executor done.');
+            if (!requiredPermissions || requiredPermissions.every((permission) => msg.guild.member(msg.author).hasPermission(permission))) {
+                if (commandsArray.includes(usedCommand)) {
+                    executor(msg, client);
+                    if (DEBUG_MODE) {
+                        console.log('Command executor done.');
+                    }
                 }
             }
         });

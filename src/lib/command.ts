@@ -5,5 +5,6 @@ export interface CommandDefinition {
     name: string | string[],
     description?: string,
     category?: CommandCategory,
-    executor: (msg: discord.Message) => void,
+    requiredPermissions?: discord.PermissionString[],
+    executor: (msg: discord.Message, client?: discord.Client) => void,
 }
