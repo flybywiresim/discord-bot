@@ -30,7 +30,6 @@
     ],
     // overrides airbnb, use sparingly
     "rules": {
-        "object-curly-newline": ["error", { "multiline": true }],
-        "no-console": "off"
+        "object-curly-newline": ["error", { "multiline": true }]
     }
 }

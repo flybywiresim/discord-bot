@@ -14,7 +14,8 @@
   "license": "GPLv3",
   "dependencies": {
     "discord.js": "^12.5.3",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "winston": "^3.3.3"
   },
   "devDependencies": {
     "@flybywiresim/eslint-config": "^0.1.0",

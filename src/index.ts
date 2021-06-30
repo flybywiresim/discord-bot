@@ -4,10 +4,11 @@ import discord from 'discord.js';
 import commands from './commands';
 import eventHandlers from './handlers';
 import { makeEmbed } from './lib/embed';
+import Logger from './lib/logger';
 
 dotenv.config();
 
-export const DEBUG_MODE = false;
+export const DEBUG_MODE = process.env.DEBUG_MODE === 'true';
 
 const app = express();
 const client = new discord.Client();
@@ -15,37 +16,28 @@ const client = new discord.Client();
 let healthy = false;
 
 client.on('ready', () => {
-    console.log(`Logged in as ${client.user.tag}!`);
+    Logger.info(`Logged in as ${client.user.tag}!`);
     healthy = true;
 });
 
 client.on('disconnect', () => {
-    console.warn('Client disconnected');
+    Logger.warn('Client disconnected');
     healthy = false;
 });
 
 client.on('message', (msg) => {
-    if (DEBUG_MODE) {
-        console.log(`Processing message ${msg.id} from user ${msg.author.id} in channel ${msg.channel.id} of server ${msg.guild.id}.`);
-    }
+    Logger.debug(`Processing message ${msg.id} from user ${msg.author.id} in channel ${msg.channel.id} of server ${msg.guild.id}.`);
 
-    if (msg.author.id === client.user.id) {
-        if (DEBUG_MODE) {
-            console.log('Bailing because bot is author of message.');
-        }
+    if (msg.author.bot === true) {
+        Logger.debug('Bailing because message author is a bot.');
         return;
     }
 
     if (msg.content.startsWith('.')) {
-        if (DEBUG_MODE) {
-            console.log('Message starts with dot.');
-        }
+        Logger.debug('Message starts with dot.');
 
         const usedCommand = msg.content.substring(1, msg.content.includes(' ') ? msg.content.indexOf(' ') : msg.content.length);
-
-        if (DEBUG_MODE) {
-            console.log(`Command ${usedCommand} identified in message. Running it.`);
-        }
+        Logger.info(`Running command '${usedCommand}'`);
 
         commands.forEach(({ executor, name, requiredPermissions }) => {
             const commandsArray = Array.isArray(name) ? name : [name];
@@ -61,9 +53,8 @@ client.on('message', (msg) => {
                             description: DEBUG_MODE ? `\`\`\`\n${stack}\`\`\`` : `\`\`\`\n${name}: ${message}\n\`\`\``,
                         }));
                     }
-                    if (DEBUG_MODE) {
-                        console.log('Command executor done.');
-                    }
+
+                    Logger.debug('Command executor done.');
                 }
             } else {
                 msg.reply(`you do not have sufficient permissions to use this command. (missing: ${requiredPermissions.join(', ')})`);
@@ -79,11 +70,11 @@ for (const handler of eventHandlers) {
 client.login(process.env.BOT_SECRET)
     .then()
     .catch((e) => {
-        console.error(e);
+        Logger.error(e);
         process.exit(1);
     });
 
 app.get('/healthz', (req, res) => (healthy ? res.status(200).send('Ready') : res.status(500).send('Not Ready')));
 app.listen(3000, () => {
-    console.log('Server is running at http://localhost:3000');
+    Logger.info('Server is running at http://localhost:3000');
 });
