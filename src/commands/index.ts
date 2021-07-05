@@ -11,6 +11,7 @@ import { unban } from './unban';
 import { trythis } from './trythis';
 import { experimental } from './experimental';
 import { versions } from './versions';
+import { membercount } from './membercount';
 
 export default [
     ping,
@@ -26,4 +27,5 @@ export default [
     trythis,
     experimental,
     versions,
+    membercount,
 ];
