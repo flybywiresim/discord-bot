@@ -13,6 +13,7 @@ import { experimental } from './experimental';
 import { versions } from './versions';
 import { membercount } from './membercount';
 import { installer } from './installer';
+import { roleinfo } from './roleinfo';
 
 export default [
     ping,
@@ -30,4 +31,5 @@ export default [
     versions,
     membercount,
     installer,
+    roleinfo,
 ];
