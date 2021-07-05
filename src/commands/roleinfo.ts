@@ -8,7 +8,7 @@ export const roleinfo: CommandDefinition = {
     category: CommandCategory.PUBLIC,
     executor: (msg) => {
         // Takes out the .roleinfo from the query;
-        const query = msg.content.replace(/\.roleinfo(\s|$)+/, '');
+        const query = msg.content.replace(/\.roleinfo(\s|$)+/, '').toLowerCase();
 
         if (query.length < 1) {
             msg.reply('you did not provide a role to search. (<role>)');
