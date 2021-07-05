@@ -51,11 +51,13 @@ function renderCommandHelp({ name, description }: CommandDefinition): string {
     return prefix;
 }
 
-function sortCommandsByCategory(commands: CommandDefinition[]): { [k: string]: CommandDefinition[] } {
+function sortCommandsByCategory(inputCommands: typeof commands): { [k: string]: CommandDefinition[] } {
+    const commandArray = Object.values(inputCommands);
+
     const categories = {};
 
     for (const category of Object.values(CommandCategory)) {
-        const categoryCommands = commands.filter((command) => command.category === category);
+        const categoryCommands = commandArray.filter((command) => command.category === category);
 
         if (categoryCommands.length > 0) {
             categories[category] = categoryCommands;

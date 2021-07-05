@@ -15,7 +15,7 @@ import { membercount } from './membercount';
 import { installer } from './installer';
 import { roleinfo } from './roleinfo';
 
-export default [
+export default {
     ping,
     help,
     bruheg,
@@ -32,4 +32,4 @@ export default [
     membercount,
     installer,
     roleinfo,
-];
+};

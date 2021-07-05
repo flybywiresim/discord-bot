@@ -26,7 +26,10 @@ client.on('disconnect', () => {
 });
 
 client.on('message', (msg) => {
-    Logger.debug(`Processing message ${msg.id} from user ${msg.author.id} in channel ${msg.channel.id} of server ${msg.guild.id}.`);
+    const isDm = msg.channel.type === 'dm';
+    const guildId = !isDm ? msg.guild.id : 'DM';
+
+    Logger.debug(`Processing message ${msg.id} from user ${msg.author.id} in channel ${msg.channel.id} of server ${guildId}.`);
 
     if (msg.author.bot === true) {
         Logger.debug('Bailing because message author is a bot.');
@@ -39,7 +42,11 @@ client.on('message', (msg) => {
         const usedCommand = msg.content.substring(1, msg.content.includes(' ') ? msg.content.indexOf(' ') : msg.content.length);
         Logger.info(`Running command '${usedCommand}'`);
 
-        commands.forEach(({ executor, name, requiredPermissions }) => {
+        const command = commands[usedCommand];
+
+        if (command) {
+            const { executor, name, requiredPermissions } = command;
+
             const commandsArray = Array.isArray(name) ? name : [name];
 
             if (!requiredPermissions || requiredPermissions.every((permission) => msg.guild.member(msg.author).hasPermission(permission))) {
@@ -59,7 +66,9 @@ client.on('message', (msg) => {
             } else {
                 msg.reply(`you do not have sufficient permissions to use this command. (missing: ${requiredPermissions.join(', ')})`);
             }
-        });
+        } else {
+            Logger.info('Command doesn\'t exist');
+        }
     }
 });
 
