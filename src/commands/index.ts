@@ -12,6 +12,7 @@ import { trythis } from './trythis';
 import { experimental } from './experimental';
 import { versions } from './versions';
 import { membercount } from './membercount';
+import { installer } from './installer';
 
 export default [
     ping,
@@ -28,4 +29,5 @@ export default [
     experimental,
     versions,
     membercount,
+    installer,
 ];
