@@ -1,3 +1,4 @@
+import { start } from 'elastic-apm-node';
 import dotenv from 'dotenv';
 import express from 'express';
 import discord from 'discord.js';
@@ -7,6 +8,10 @@ import { makeEmbed } from './lib/embed';
 import Logger from './lib/logger';
 
 dotenv.config();
+const apm = start({
+    serviceName: 'discord-bot',
+    disableSend: true,
+});
 
 export const DEBUG_MODE = process.env.DEBUG_MODE === 'true';
 
@@ -37,6 +42,7 @@ client.on('message', (msg) => {
     }
 
     if (msg.content.startsWith('.')) {
+        const transaction = apm.startTransaction('command');
         Logger.debug('Message starts with dot.');
 
         const usedCommand = msg.content.substring(1, msg.content.includes(' ') ? msg.content.indexOf(' ') : msg.content.length);
@@ -53,12 +59,14 @@ client.on('message', (msg) => {
                 if (commandsArray.includes(usedCommand)) {
                     try {
                         executor(msg, client);
+                        transaction.result = 'success';
                     } catch ({ name, message, stack }) {
                         msg.channel.send(makeEmbed({
                             color: 'RED',
                             title: 'Error while Executing Command',
                             description: DEBUG_MODE ? `\`\`\`\n${stack}\`\`\`` : `\`\`\`\n${name}: ${message}\n\`\`\``,
                         }));
+                        transaction.result = 'error';
                     }
 
                     Logger.debug('Command executor done.');
@@ -68,7 +76,9 @@ client.on('message', (msg) => {
             }
         } else {
             Logger.info('Command doesn\'t exist');
+            transaction.result = 'error';
         }
+        transaction.end();
     }
 });
 
