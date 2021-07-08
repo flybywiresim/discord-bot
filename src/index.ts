@@ -30,7 +30,7 @@ client.on('disconnect', () => {
     healthy = false;
 });
 
-client.on('message', (msg) => {
+client.on('message', async (msg) => {
     const isDm = msg.channel.type === 'dm';
     const guildId = !isDm ? msg.guild.id : 'DM';
 
@@ -58,10 +58,10 @@ client.on('message', (msg) => {
             if (!requiredPermissions || requiredPermissions.every((permission) => msg.guild.member(msg.author).hasPermission(permission))) {
                 if (commandsArray.includes(usedCommand)) {
                     try {
-                        executor(msg, client);
+                        await executor(msg, client);
                         transaction.result = 'success';
                     } catch ({ name, message, stack }) {
-                        msg.channel.send(makeEmbed({
+                        await msg.channel.send(makeEmbed({
                             color: 'RED',
                             title: 'Error while Executing Command',
                             description: DEBUG_MODE ? `\`\`\`\n${stack}\`\`\`` : `\`\`\`\n${name}: ${message}\n\`\`\``,
@@ -72,7 +72,7 @@ client.on('message', (msg) => {
                     Logger.debug('Command executor done.');
                 }
             } else {
-                msg.reply(`you do not have sufficient permissions to use this command. (missing: ${requiredPermissions.join(', ')})`);
+                await msg.reply(`you do not have sufficient permissions to use this command. (missing: ${requiredPermissions.join(', ')})`);
             }
         } else {
             Logger.info('Command doesn\'t exist');
