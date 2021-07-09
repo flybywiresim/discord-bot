@@ -14,6 +14,7 @@ import { versions } from './versions';
 import { membercount } from './membercount';
 import { installer } from './installer';
 import { roleinfo } from './roleinfo';
+import { adirs } from './adirs';
 import { CommandDefinition } from '../lib/command';
 import Logger from '../lib/logger';
 
@@ -34,6 +35,7 @@ const commands: CommandDefinition[] = [
     membercount,
     installer,
     roleinfo,
+    adirs,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
