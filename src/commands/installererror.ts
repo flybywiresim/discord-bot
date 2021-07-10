@@ -8,6 +8,6 @@ export const installererror: CommandDefinition = {
     category: CommandCategory.FBW,
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'FlyByWire A32NX | Installer Error',
-        description: 'Please visit [this link](https://docs.flybywiresim.com/start/reported-issues/#installer-issues) for help with installer errors,  '
+        description: 'Please visit [this link](https://docs.flybywiresim.com/start/reported-issues/#installer-issues) for help with installer errors.'
     })),
 };
