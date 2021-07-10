@@ -17,6 +17,7 @@ import { roleinfo } from './roleinfo';
 import { adirs } from './adirs';
 import { installererror } from './installererror';
 import { reportedissues } from './reportedissues';
+import { autopilot } from './autopilot';
 import { CommandDefinition } from '../lib/command';
 import Logger from '../lib/logger';
 
@@ -40,6 +41,7 @@ const commands: CommandDefinition[] = [
     adirs,
     installererror,
     reportedissues,
+    autopilot,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
