@@ -16,6 +16,7 @@ import { installer } from './installer';
 import { roleinfo } from './roleinfo';
 import { adirs } from './adirs';
 import { installererror } from './installererror';
+import { reportedissues } from './reportedissues';
 import { CommandDefinition } from '../lib/command';
 import Logger from '../lib/logger';
 
@@ -38,6 +39,7 @@ const commands: CommandDefinition[] = [
     roleinfo,
     adirs,
     installererror,
+    reportedissues,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
