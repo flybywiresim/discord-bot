@@ -1,4 +1,5 @@
 import winston from 'winston';
+import ecsFormat from '@elastic/ecs-winston-format';
 
 const level = () => {
     if (process.env.DEBUG_MODE === 'true') {
@@ -13,7 +14,7 @@ const level = () => {
 const format = () => {
     const env = process.env.NODE_ENV || 'development';
     const isDevelopment = env === 'development';
-    return isDevelopment ? winston.format.simple() : winston.format.json();
+    return isDevelopment ? winston.format.simple() : ecsFormat();
 };
 
 const Logger = winston.createLogger({

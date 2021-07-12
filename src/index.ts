@@ -1,3 +1,4 @@
+import { start } from 'elastic-apm-node';
 import dotenv from 'dotenv';
 import express from 'express';
 import discord from 'discord.js';
@@ -7,6 +8,10 @@ import { makeEmbed } from './lib/embed';
 import Logger from './lib/logger';
 
 dotenv.config();
+const apm = start({
+    serviceName: 'discord-bot',
+    disableSend: true,
+});
 
 export const DEBUG_MODE = process.env.DEBUG_MODE === 'true';
 
@@ -25,7 +30,7 @@ client.on('disconnect', () => {
     healthy = false;
 });
 
-client.on('message', (msg) => {
+client.on('message', async (msg) => {
     const isDm = msg.channel.type === 'dm';
     const guildId = !isDm ? msg.guild.id : 'DM';
 
@@ -37,6 +42,7 @@ client.on('message', (msg) => {
     }
 
     if (msg.content.startsWith('.')) {
+        const transaction = apm.startTransaction('command');
         Logger.debug('Message starts with dot.');
 
         const usedCommand = msg.content.substring(1, msg.content.includes(' ') ? msg.content.indexOf(' ') : msg.content.length);
@@ -52,23 +58,27 @@ client.on('message', (msg) => {
             if (!requiredPermissions || requiredPermissions.every((permission) => msg.guild.member(msg.author).hasPermission(permission))) {
                 if (commandsArray.includes(usedCommand)) {
                     try {
-                        executor(msg, client);
+                        await executor(msg, client);
+                        transaction.result = 'success';
                     } catch ({ name, message, stack }) {
-                        msg.channel.send(makeEmbed({
+                        await msg.channel.send(makeEmbed({
                             color: 'RED',
                             title: 'Error while Executing Command',
                             description: DEBUG_MODE ? `\`\`\`\n${stack}\`\`\`` : `\`\`\`\n${name}: ${message}\n\`\`\``,
                         }));
+                        transaction.result = 'error';
                     }
 
                     Logger.debug('Command executor done.');
                 }
             } else {
-                msg.reply(`you do not have sufficient permissions to use this command. (missing: ${requiredPermissions.join(', ')})`);
+                await msg.reply(`you do not have sufficient permissions to use this command. (missing: ${requiredPermissions.join(', ')})`);
             }
         } else {
             Logger.info('Command doesn\'t exist');
+            transaction.result = 'error';
         }
+        transaction.end();
     }
 });
 
