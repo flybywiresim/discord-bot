@@ -8,11 +8,9 @@ export const installererror: CommandDefinition = {
     category: CommandCategory.FBW,
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'FlyByWire A32NX | Installer Error',
-        description: 'Your old community folder is missing. ',
-                +
-                + '1.  Open file explorer and manually create the missing folder. ',
-                + '2. Open FBW installer, go to settings, and change it to your current community folder. ',
-                +
-                + 'Explore other solutions at https://docs.flybywiresim.com/start/reported-issues/#installer-issues '.
+        description: 'Your old community folder is missing.\n'
+                + '1. Open file explorer and manually create the missing folder.\n'
+                + '2. Open FBW installer, go to settings, and change it to your current community folder.\n'
+                + 'Explore other solutions at https://docs.flybywiresim.com/start/reported-issues/#installer-issues',
     })),
 };
