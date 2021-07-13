@@ -11,7 +11,7 @@ export const adirs: CommandDefinition = {
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'FlyByWire A32NX | ADIRS align',
         description: makeLines([
-            'On the overhead panel you will see the three switches under 'ADIRS'. Turn these three to the 'NAV' position. It takes several minutes for the ADIRUs to align.',
+            'On the overhead panel you will see the three switches under \'ADIRS\'. Turn these three to the \'NAV\' position. It takes several minutes for the ADIRUs to align.',
             'You can check how long you have to wait by looking at the align time on your Upper Ecam.',
         ]),
         image: { url: ADIRS_IMAGE_URL },
