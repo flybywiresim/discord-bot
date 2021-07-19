@@ -10,6 +10,7 @@ export const checklist: CommandDefinition = {
     category: CommandCategory.FBW,
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'FlyByWire A32NX | Checklist',
+        url: 'https://github.com/flybywiresim/a32nx/files/6526794/FBW_A32NX_CHECKLIST_V1.2.pdf',
         description: makeLines([
             'Click the title for a better quality picture',
         ]),
