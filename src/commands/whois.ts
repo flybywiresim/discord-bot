@@ -3,11 +3,11 @@ import { CommandDefinition } from '../lib/command';
 import { CommandCategory } from '../constants';
 import { makeEmbed } from '../lib/embed';
 
-const beautifiedStatus = {
-    online: "Online",
-    idle: "Idle",
-    dnd: "Do Not Disturb",
-    offline: "Offline"
+enum beautifiedStatus {
+    online = "Online",
+    idle = "Idle",
+    dnd = "Do Not Disturb",
+    offline ="Offline"
 }
 
 export const whois: CommandDefinition = {
