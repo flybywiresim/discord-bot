@@ -12,7 +12,7 @@ enum beautifiedStatus {
 
 export const whois: CommandDefinition = {
     name: 'whois',
-    description: 'Explain the absence of release dates or ETAs',
+    description: 'Provides an embedded message with information about the mentioned user',
     category: CommandCategory.PUBLIC,
     executor: (msg) => msg.channel.send(makeEmbed({
         author: {
