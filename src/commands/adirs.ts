@@ -5,7 +5,7 @@ import { CommandCategory } from '../constants';
 const ADIRS_IMAGE_URL = 'https://media.discordapp.net/attachments/785976111875751956/818095298538504272/image0.png';
 
 export const adirs: CommandDefinition = {
-    name: ['ADIRS', 'adirs'],
+    name: ['adirs'],
     description: 'Display help with ADIRS alignment',
     category: CommandCategory.FBW,
     executor: (msg) => msg.channel.send(makeEmbed({
