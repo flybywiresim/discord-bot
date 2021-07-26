@@ -48,8 +48,6 @@ client.on('message', async (msg) => {
         const usedCommand = msg.content.substring(1, msg.content.includes(' ') ? msg.content.indexOf(' ') : msg.content.length);
         Logger.info(`Running command '${usedCommand}'`);
 
-        Logger.info(commands)
-
         const command = commands[usedCommand];
 
         if (command) {
