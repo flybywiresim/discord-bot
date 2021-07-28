@@ -4,10 +4,10 @@ import { CommandCategory } from '../constants';
 import { makeEmbed } from '../lib/embed';
 
 enum beautifiedStatus {
-    online = "Online",
-    idle = "Idle",
-    dnd = "Do Not Disturb",
-    offline ="Offline"
+    ONLINE = "Online",
+    IDLE = "Idle",
+    DND = "Do Not Disturb",
+    OFFLINE ="Offline"
 }
 
 export const whois: CommandDefinition = {
@@ -31,7 +31,7 @@ export const whois: CommandDefinition = {
             },
             {
                 name: "Status",
-                value: beautifiedStatus[msg.author.presence.status],
+                value: beautifiedStatus[msg.author.presence.status.toUpperCase()],
                 inline: true
             },
             {
