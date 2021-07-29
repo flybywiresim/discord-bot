@@ -19,6 +19,7 @@ import { installererror } from './installererror';
 import { reportedissues } from './reportedissues';
 import { autopilot } from './autopilot';
 import { checklist } from './checklist';
+import { whois } from './whois'
 import { CommandDefinition } from '../lib/command';
 import Logger from '../lib/logger';
 
@@ -44,6 +45,7 @@ const commands: CommandDefinition[] = [
     reportedissues,
     autopilot,
     checklist,
+    whois
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};

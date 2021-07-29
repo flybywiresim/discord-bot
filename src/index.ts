@@ -45,7 +45,7 @@ client.on('message', async (msg) => {
         const transaction = apm.startTransaction('command');
         Logger.debug('Message starts with dot.');
 
-        const usedCommand = msg.content.substring(1, msg.content.includes(' ') ? msg.content.indexOf(' ') : msg.content.length);
+        const usedCommand = msg.content.substring(1, msg.content.includes(' ') ? msg.content.indexOf(' ') : msg.content.length).toLowerCase();
         Logger.info(`Running command '${usedCommand}'`);
 
         const command = commands[usedCommand];
