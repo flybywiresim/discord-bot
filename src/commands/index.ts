@@ -19,6 +19,7 @@ import { installererror } from './installererror';
 import { reportedissues } from './reportedissues';
 import { autopilot } from './autopilot';
 import { checklist } from './checklist';
+import { whois } from './whois'
 import { donate } from './donate';
 import { utf8 } from './utf-8';
 import { CommandDefinition } from '../lib/command';
@@ -46,6 +47,7 @@ const commands: CommandDefinition[] = [
     reportedissues,
     autopilot,
     checklist,
+    whois
     donate,
     utf8,
 ];
