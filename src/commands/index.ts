@@ -22,7 +22,7 @@ import { checklist } from './checklist';
 import { whois } from './whois'
 import { donate } from './donate';
 import { utf8 } from './utf-8';
-import { calibrate } from '.c/calibrate';
+import { calibrate } from './calibrate';
 import { CommandDefinition } from '../lib/command';
 import Logger from '../lib/logger';
 
