@@ -20,6 +20,9 @@ import { reportedissues } from './reportedissues';
 import { autopilot } from './autopilot';
 import { checklist } from './checklist';
 import { whois } from './whois'
+import { donate } from './donate';
+import { utf8 } from './utf-8';
+import { calibrate } from './calibrate';
 import { CommandDefinition } from '../lib/command';
 import Logger from '../lib/logger';
 
@@ -45,7 +48,10 @@ const commands: CommandDefinition[] = [
     reportedissues,
     autopilot,
     checklist,
-    whois
+    whois,
+    donate,
+    utf8,
+    calibrate,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
