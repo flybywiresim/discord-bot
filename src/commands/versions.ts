@@ -8,7 +8,7 @@ export const versions: CommandDefinition = {
     category: CommandCategory.FBW,
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'FlyByWire A32NX | Versions',
-        footer: { text: 'If you are having further problems, let us know in our #support channel and we will provide more assistance.' },
+        footer: { text: 'If you are having further problems, let us know in our #support channel. [More version info here](https://docs.flybywiresim.com/start/fbw-versions)' },
         fields: [
             {
                 name: 'Stable',
