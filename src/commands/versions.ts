@@ -8,7 +8,7 @@ export const versions: CommandDefinition = {
     category: CommandCategory.FBW,
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'FlyByWire A32NX | Versions',
-        footer: { text: 'If you are having further problems, let us know in our #support channel and we will provide more assistance.' },
+        footer: { text: 'If you are having further problems, let us know in our #support channel. [More version info here](https://docs.flybywiresim.com/start/fbw-versions)' },
         fields: [
             {
                 name: 'Stable',
@@ -25,11 +25,11 @@ export const versions: CommandDefinition = {
                 inline: false,
             },
             {
-                name: 'Experimental (On Hold)',
-                value: '> The experimental branch is currently on hold until further notice. '
-                        + 'We will notify you through our #server-announcements when we have integrated the custom FPM and LNAV and make the experimental version available again. '
-                        + 'Until then please use the development version. '
-                        + '\n> Use the installer to download the latest Development version. [Installer Download](https://api.flybywiresim.com/installer)',
+                name: 'Experimental',
+                value: '> This version is similar to the development version, but contains custom systems still being developed, including the new FBW Custom Flight Management System (cFMS). '
+                        + 'Experimental version will be updated with the latest changes from both the "autopilot-custom-fpm" branch and development version regularly. '
+                        + '\n> No support will be offered via Discord for this version. '
+                        + '\n> Use the installer or [download here](https://api.flybywiresim.com/api/v1/download?url=https://flybywiresim-packages.b-cdn.net/experimental/A32NX-experimental.zip)',
                 inline: false,
             },
         ],
