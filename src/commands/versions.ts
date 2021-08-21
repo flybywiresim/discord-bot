@@ -8,8 +8,13 @@ export const versions: CommandDefinition = {
     category: CommandCategory.FBW,
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'FlyByWire A32NX | Versions',
-        footer: { text: 'If you are having further problems, let us know in our #support channel. [More version info here](https://docs.flybywiresim.com/start/fbw-versions)' },
+        footer: { text: 'If you are having further problems, let us know in our #support channel.' },
         fields: [
+            {
+                name: 'Stable, Development or Experimental?',
+                value: '> The below has a brief explanation of the differences, for a more in depth explanation, [please click here.](https://docs.flybywiresim.com/start/fbw-versions) ',
+                inline: false,
+            },
             {
                 name: 'Stable',
                 value: '> Stable is our variant that has the least bugs and best performance. '
