@@ -12,13 +12,13 @@ export const versions: CommandDefinition = {
         fields: [
             {
                 name: 'Stable, Development or Experimental?',
-                value: '> The below has a brief explanation of the differences, for a more in depth explanation, [please click here.](https://docs.flybywiresim.com/start/fbw-versions) ',
+                value: '> You can find a brief explanation of the versions below, for a more in depth comparison, [please click here.](https://docs.flybywiresim.com/start/fbw-versions) ',
                 inline: false,
             },
             {
                 name: 'Stable',
-                value: '> Stable is our variant that has the least bugs and best performance. '
-                        + 'It will not always be up to date but we guarantee it\'s compatibility with each major patch from MSFS.'
+                value: '> Stable is our variant that has the fewest bugs and best performance. '
+                        + 'It will not always be up to date but we guarantee its compatibility with each major patch from MSFS.'
                         + '\n> Use the installer or [download here](https://api.flybywiresim.com/api/v1/download?url=https://flybywiresim-packages.b-cdn.net/stable/A32NX-stable.zip)',
                 inline: false,
             },
