@@ -12,7 +12,7 @@ export const versions: CommandDefinition = {
         fields: [
             {
                 name: 'Stable, Development or Experimental?',
-                value: '> You can find a brief explanation of the versions below, for a more in depth comparison, [please click here.](https://docs.flybywiresim.com/start/fbw-versions) ',
+                value: '> You can find a brief explanation of the versions below, for a more in depth comparison, [please click here.](https://docs.flybywiresim.com/fbw-a32nx/fbw-versions) ',
                 inline: false,
             },
             {
