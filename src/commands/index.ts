@@ -25,7 +25,7 @@ import { utf8 } from './utf-8';
 import { calibrate } from './calibrate';
 import { CommandDefinition } from '../lib/command';
 import Logger from '../lib/logger';
-import { legacy } from './legacy';
+import { controls } from './controls';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -53,7 +53,7 @@ const commands: CommandDefinition[] = [
     donate,
     utf8,
     calibrate,
-    legacy,
+    controls,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};

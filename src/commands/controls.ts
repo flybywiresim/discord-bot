@@ -2,9 +2,9 @@ import { CommandDefinition } from '../lib/command';
 import { CommandCategory } from '../constants';
 import { makeEmbed } from '../lib/embed';
 
-export const legacy: CommandDefinition = {
-    name: 'legacy',
-    description: 'Instructions on how to switch back to legacy controls',
+export const controls: CommandDefinition = {
+    name: 'controls',
+    description: 'Instructions on how to switch back to legacy controls and how to use new controls',
     category: CommandCategory.FBW,
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'MSFS | Cockpit Interaction System',
