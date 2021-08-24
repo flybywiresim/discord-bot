@@ -23,9 +23,9 @@ import { whois } from './whois'
 import { donate } from './donate';
 import { utf8 } from './utf-8';
 import { calibrate } from './calibrate';
+import { controls } from './controls';
 import { CommandDefinition } from '../lib/command';
 import Logger from '../lib/logger';
-import { controls } from './controls';
 
 const commands: CommandDefinition[] = [
     ping,
