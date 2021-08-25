@@ -23,6 +23,7 @@ import { whois } from './whois'
 import { donate } from './donate';
 import { utf8 } from './utf-8';
 import { calibrate } from './calibrate';
+import { nut } from './nut';
 import { CommandDefinition } from '../lib/command';
 import Logger from '../lib/logger';
 
@@ -52,6 +53,7 @@ const commands: CommandDefinition[] = [
     donate,
     utf8,
     calibrate,
+    nut,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
