@@ -17,15 +17,17 @@ export const versions: CommandDefinition = {
             },
             {
                 name: 'Stable',
-                value: '> Stable is our variant that has the fewest bugs and best performance. '
-                        + 'It will not always be up to date but we guarantee its compatibility with each major patch from MSFS.'
+                value: '> Stable is our version which has features that are the most mature and most tested. '
+                        + 'This should be a reliable version for the more conservative user preferring stability over newest features. '
+                        + 'Will be compatible with each major MSFS patch.'
                         + '\n> Use the installer or [download here](https://api.flybywiresim.com/api/v1/download?url=https://flybywiresim-packages.b-cdn.net/stable/A32NX-stable.zip)',
                 inline: false,
             },
             {
                 name: 'Development',
-                value: '> Development will have the latest features that will end up in the next stable. '
-                        + 'Bugs are to be expected. It updates whenever something is added to the \'master\' branch on Github.'
+                value: '> Development will have the latest features that will eventually end up in the next stable release. '
+                        + 'In general this version has the latest fixes and newest features but also a slightly higher risk of containing bugs. '
+                        + 'Development updates whenever a change is made to the "master" branch on Github. '
                         + '\n> Use the installer or [download here](https://api.flybywiresim.com/api/v1/download?url=https://flybywiresim-packages.b-cdn.net/vmaster/A32NX-master.zip)',
                 inline: false,
             },
