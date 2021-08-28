@@ -10,4 +10,4 @@ This is the repository for the FlyByWire Simulations Discord bot
 
 ## Contributing
 
-Please see [contributing.md](contributing.md) for tips on how to contribute to the repo.
+Please see [contributing.md](CONTRIBUTING.md) for tips on how to contribute to the repo.
