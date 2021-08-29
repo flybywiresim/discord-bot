@@ -18,7 +18,7 @@ export const versions: CommandDefinition = {
             {
                 name: 'Stable',
                 value: '> Stable is our version which has features that are the most mature and most tested. '
-                        + 'This should be a reliable version for the more conservative user preferring stability over newest features. '
+                        + 'This should be a reliable version for those preferring stability over newest features. '
                         + 'Will be compatible with each major MSFS patch.'
                         + '\n> Use the installer or [download here](https://api.flybywiresim.com/api/v1/download?url=https://flybywiresim-packages.b-cdn.net/stable/A32NX-stable.zip)',
                 inline: false,
