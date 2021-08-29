@@ -12,7 +12,7 @@ export const controls: CommandDefinition = {
             {
                 name: 'Legacy Cockpit Interaction System',
                 value: makeLines([
-                    '> Go to menu',
+                    'Go to menu',
                     'General Options',
                     'Accessibility',
                     'Find the Cockpit Interaction System setting',
