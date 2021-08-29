@@ -24,6 +24,8 @@ import { donate } from './donate';
 import { utf8 } from './utf-8';
 import { calibrate } from './calibrate';
 import { nut } from './nut';
+import { screenshot } from './screenshot';
+import { msfs } from './msfs';
 import { CommandDefinition } from '../lib/command';
 import Logger from '../lib/logger';
 
@@ -54,6 +56,8 @@ const commands: CommandDefinition[] = [
     utf8,
     calibrate,
     nut,
+    screenshot,
+    msfs,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
