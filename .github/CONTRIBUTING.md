@@ -78,7 +78,7 @@ All you need to do is open the command you wish to edit in `src/commands/`, edit
 ### Example Command
 ```
 export const adirs: CommandDefinition = {
-    name: 'adirs',
+    name: 'adirs', <!-- This is a comment -->
     description: 'Display help with ADIRS alignment',
     category: CommandCategory.FBW,
     executor: (msg) => msg.channel.send(makeEmbed({
