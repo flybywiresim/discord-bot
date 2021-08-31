@@ -14,8 +14,8 @@ Reminder: The main branch is 'staging'
 
 1. Fork the repo
 2. Clone to your local system using your IDE of choice
-3. Make a new branch and name appropriatly (eg. feat: added ADIRS command, fix: typos fixed in ADIRS)
-4. Create/edit the comand you are working on
+3. Make a new branch and name appropriately (e.g. feat: added ADIRS command, fix: typos fixed in ADIRS)
+4. Create/edit the command you are working on
 5. Test your build locally (Instructions below)
 6. Create PR and mark ready for review
 
@@ -76,9 +76,16 @@ If you need help creating a command, you may find it useful to copy an existing 
 All you need to do is open the command you wish to edit in `src/commands/`, edit what you need, commit and push!
 
 ### Example Command
+
 ```
+import { CommandDefinition } from '../lib/command';
+import { makeEmbed, makeLines } from '../lib/embed';
+import { CommandCategory } from '../constants';
+
+const ADIRS_IMAGE_URL = 'https://media.discordapp.net/attachments/785976111875751956/818095298538504272/image0.png';
+
 export const adirs: CommandDefinition = {
-    name: 'adirs', <!-- This is a comment -->
+    name: 'adirs',
     description: 'Display help with ADIRS alignment',
     category: CommandCategory.FBW,
     executor: (msg) => msg.channel.send(makeEmbed({
@@ -87,6 +94,7 @@ export const adirs: CommandDefinition = {
             'On the overhead panel you will see the three switches under \'ADIRS\'. Turn these three to the \'NAV\' position. It takes several minutes for the ADIRUs to align.',
             'You can check how long you have to wait by looking at the align time on your Upper Ecam.',
         ]),
+        image: { url: ADIRS_IMAGE_URL },
     })),
 };
 ```
