@@ -10,7 +10,7 @@ export const controls: CommandDefinition = {
         title: 'FlyByWire support | Cockpit Interaction System ',
         fields: [
             {
-                name: 'Lock or Legacy?  ',
+                name: 'Lock or Legacy? ',
                 value: makeLines([
                     'Sim Update 5 introduced a new cockpit interaction system, which changes the way you interact with different buttons and switches. '
                   + 'You can find out more on the new interaction system [here](https://docs.flybywiresim.com/fbw-a32nx/support/reported-issues/#cockpit-interaction-system), or if you\'d prefer to switch back to the old way:',
