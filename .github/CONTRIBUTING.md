@@ -23,7 +23,7 @@ Note: It may be beneficial to create a draft PR while working on your command so
 
 ## Pull Request Template
 
-
+You can find the pull request template [here](PULL_REQUEST_TEMPLATE.md).
 
 ## Testing Your Build
 
@@ -61,11 +61,32 @@ Note: It may be beneficial to create a draft PR while working on your command so
 
 ### Adding a New Command
 
-Say how to make a basic command
+>Please note, this will only show the basics of adding a command
 
-Disclaimer on complex commands
+1. Create a new file in `src/commands/` and name it appropriately. `yourcommand.ts`
+2. Create your command
+3. Add it to `src/commands/index.ts`. You need to add the line `import { name } from './fileame';`, replacing `name` with the `export const` from your command, and `filename` with the file name you created in step 1. (Add this below the last command, usually above `import { CommandDefinition } from '../lib/command';` and
+   `import Logger from '../lib/logger';`)
+4. Add your command name to the list under `const commands: CommandDefinition[] = [`
 
-Add to index.ts etc
+If you need help creating a command, you may find it useful to copy an existing command as a template, changing wht you need.
 
 ### Modifying a Command
 
+All you need to do is open the command you wish to edit in `src/commands/`, edit what you need, commit and push!
+
+### Example Command
+```
+export const adirs: CommandDefinition = {
+    name: 'adirs',
+    description: 'Display help with ADIRS alignment',
+    category: CommandCategory.FBW,
+    executor: (msg) => msg.channel.send(makeEmbed({
+        title: 'FlyByWire A32NX | ADIRS align',
+        description: makeLines([
+            'On the overhead panel you will see the three switches under \'ADIRS\'. Turn these three to the \'NAV\' position. It takes several minutes for the ADIRUs to align.',
+            'You can check how long you have to wait by looking at the align time on your Upper Ecam.',
+        ]),
+    })),
+};
+```
