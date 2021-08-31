@@ -77,7 +77,7 @@ All you need to do is open the command you wish to edit in `src/commands/`, edit
 
 ### Example Command
 
-```
+```ts
 import { CommandDefinition } from '../lib/command';
 import { makeEmbed, makeLines } from '../lib/embed';
 import { CommandCategory } from '../constants';
