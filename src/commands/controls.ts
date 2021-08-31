@@ -7,7 +7,7 @@ export const controls: CommandDefinition = {
     description: 'Instructions on how to switch back to legacy controls and how to use new controls',
     category: CommandCategory.FBW,
     executor: (msg) => msg.channel.send(makeEmbed({
-        title: 'FlyByWire support | Cockpit Interaction System ',
+        title: 'MSFS | Cockpit Interaction System ',
         fields: [
             {
                 name: 'Lock or Legacy? ',
