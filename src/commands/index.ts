@@ -27,6 +27,7 @@ import { controls } from './controls';
 import { nut } from './nut';
 import { screenshot } from './screenshot';
 import { msfs } from './msfs';
+import { content } from './content';
 import { CommandDefinition } from '../lib/command';
 import Logger from '../lib/logger';
 
@@ -60,6 +61,7 @@ const commands: CommandDefinition[] = [
     nut,
     screenshot,
     msfs,
+    content,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
