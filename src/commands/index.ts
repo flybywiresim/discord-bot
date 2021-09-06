@@ -19,7 +19,7 @@ import { installererror } from './installererror';
 import { reportedissues } from './reportedissues';
 import { autopilot } from './autopilot';
 import { checklist } from './checklist';
-import { whois } from './whois'
+import { whois } from './whois';
 import { donate } from './donate';
 import { utf8 } from './utf-8';
 import { calibrate } from './calibrate';
