@@ -14,10 +14,10 @@ Reminder: The main branch is 'staging'
 
 1. Fork the repo
 2. Clone to your local system using your IDE of choice
-3. Make a new branch and name appropriately (e.g. feat: added ADIRS command, fix: typos fixed in ADIRS)
+3. Make a new branch from staging and name appropriately (e.g. feat: added ADIRS command, fix: typos fixed in ADIRS)
 4. Create/edit the command you are working on
 5. Test your build locally (Instructions below)
-6. Create PR and mark ready for review
+6. Create a PR to merge your changes into staging
 
 Note: It may be beneficial to create a draft PR while working on your command so others can help and give suggestions. It also enables us to see who is working on what.
 
