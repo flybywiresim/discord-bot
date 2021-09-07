@@ -23,7 +23,11 @@ import { whois } from './whois'
 import { donate } from './donate';
 import { utf8 } from './utf-8';
 import { calibrate } from './calibrate';
+import { controls } from './controls';
 import { nut } from './nut';
+import { screenshot } from './screenshot';
+import { msfs } from './msfs';
+import { content } from './content';
 import { CommandDefinition } from '../lib/command';
 import Logger from '../lib/logger';
 
@@ -53,7 +57,11 @@ const commands: CommandDefinition[] = [
     donate,
     utf8,
     calibrate,
+    controls,
     nut,
+    screenshot,
+    msfs,
+    content,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
