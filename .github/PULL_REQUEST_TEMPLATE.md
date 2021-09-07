@@ -23,7 +23,7 @@ Please use the appropriate prefix in your PR title:
 
 ## Description
 
-For the PR message, give a desctiption about what you have added/changed, what it does, and what the command/alias is.
+For the PR message, give a description about what you have added/changed, what it does, and what the command/alias is.
 
 You will also need to attach a screenshot of your command from your test bot. This will help us speed up the process of reviewing the PR. 
 
