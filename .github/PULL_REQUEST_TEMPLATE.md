@@ -27,6 +27,8 @@ For the PR message, give a description about what you have added/changed, what i
 
 You will also need to attach a screenshot of your command from your test bot. This will help us speed up the process of reviewing the PR. 
 
+Add your discord username, including the number to the bottom of the PR message. This will help us get in contact if we need to.
+
 ### Example PR:
 
-<img src="https://media.discordapp.net/attachments/864493190471352344/884793273212862565/unknown.png">
+<img src="https://media.discordapp.net/attachments/864493190471352344/884800646384074803/unknown.png">
