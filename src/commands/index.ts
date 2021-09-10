@@ -30,6 +30,7 @@ import { msfs } from './msfs';
 import { content } from './content';
 import { beginner } from './beginner-guide';
 import { briefing } from './briefing';
+import { boris } from './boris';
 import { CommandDefinition } from '../lib/command';
 import Logger from '../lib/logger';
 
@@ -66,6 +67,7 @@ const commands: CommandDefinition[] = [
     content,
     beginner,
     briefing,
+    boris,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
