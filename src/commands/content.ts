@@ -2,7 +2,7 @@ import { CommandDefinition } from '../lib/command';
 import { makeEmbed, makeLines } from '../lib/embed';
 import { CommandCategory } from '../constants';
 
-const CONTENTMANAGER_HELP_URL = 'https://docs.flybywiresim.com/fbw-a32nx/assets/support-guide/Content-Manager.jpg';
+const CONTENTMANAGER_HELP_URL = 'https://media.discordapp.net/attachments/740722295009706034/885966763089625088/unknown.png';
 
 export const content: CommandDefinition = {
     name: ['content', 'contentmanager'],
