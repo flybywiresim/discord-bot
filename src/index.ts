@@ -61,6 +61,7 @@ client.on('message', async (msg) => {
                         await executor(msg, client);
                         transaction.result = 'success';
                     } catch ({ name, message, stack }) {
+                        Logger.error({ name, message, stack });
                         await msg.channel.send(makeEmbed({
                             color: 'RED',
                             title: 'Error while Executing Command',

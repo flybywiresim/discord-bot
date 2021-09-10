@@ -19,7 +19,7 @@ import { installererror } from './installererror';
 import { reportedissues } from './reportedissues';
 import { autopilot } from './autopilot';
 import { checklist } from './checklist';
-import { whois } from './whois'
+import { whois } from './whois';
 import { donate } from './donate';
 import { utf8 } from './utf-8';
 import { calibrate } from './calibrate';
@@ -29,6 +29,7 @@ import { screenshot } from './screenshot';
 import { msfs } from './msfs';
 import { content } from './content';
 import { beginner } from './beginner-guide';
+import { briefing } from './briefing';
 import { CommandDefinition } from '../lib/command';
 import Logger from '../lib/logger';
 
@@ -64,6 +65,7 @@ const commands: CommandDefinition[] = [
     msfs,
     content,
     beginner,
+    briefing,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
