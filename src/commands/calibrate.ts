@@ -16,7 +16,7 @@ export const calibrate: CommandDefinition = {
                 '3. Watch [this video](https://www.youtube.com/watch?v=8yZuv2L4jPA&ab_channel=FlyByWireSimulations) in full, then calibrate your throttles.',
                 '4. If you still have issues you may need to make your detent ranges larger. This can be done on the calibration page and making the range value higher. 0.05 is a good starting point.',
                 ,
-                'Please visit [this link](https://docs.flybywiresim.com/start/throttle-calibration/) for a detailed tutorial with examples!',
+                'Please visit [this link](https://docs.flybywiresim.com/fbw-a32nx/feature-guides/flyPad/throttle-calibration/) for a detailed tutorial with examples!',
         ]),
     })),
 };
