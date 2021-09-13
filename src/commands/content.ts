@@ -12,7 +12,7 @@ export const content: CommandDefinition = {
         title: 'FlyByWire Support | Checking your aircraft version',
         description: makeLines([
             'In order to check which version of the A32NX you have installed, please open the MSFS Content Manager from the second page on the main menu and search for \'flybywire\'. '
-          + 'Then take a screenshot showing the results and send it here in [#Support](https://discord.gg/U2Askt6r) as shown below. ',
+          + 'Then take a screenshot showing the results and send it here in [#Support](https://discord.gg/tJebFgXrUX) as shown below. ',
             '',
             'If you find old versions or multiple installations, please delete them via the Content Manager and/or your Community folder.',
         ]),
