@@ -31,6 +31,7 @@ import { content } from './content';
 import { beginner } from './beginner-guide';
 import { briefing } from './briefing';
 import { boris } from './boris';
+import { afloor } from './afloor';
 import { CommandDefinition } from '../lib/command';
 import Logger from '../lib/logger';
 
@@ -68,6 +69,7 @@ const commands: CommandDefinition[] = [
     beginner,
     briefing,
     boris,
+    afloor,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
