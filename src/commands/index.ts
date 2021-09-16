@@ -32,6 +32,7 @@ import { beginner } from './beginner-guide';
 import { briefing } from './briefing';
 import { boris } from './boris';
 import { afloor } from './afloor';
+import { xbox } from './xbox';
 import { CommandDefinition } from '../lib/command';
 import Logger from '../lib/logger';
 
@@ -70,6 +71,7 @@ const commands: CommandDefinition[] = [
     briefing,
     boris,
     afloor,
+    xbox,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
