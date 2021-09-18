@@ -33,6 +33,7 @@ import { briefing } from './briefing';
 import { boris } from './boris';
 import { afloor } from './afloor';
 import { airframe } from './airframe';
+import { xbox } from './xbox';
 import { CommandDefinition } from '../lib/command';
 import Logger from '../lib/logger';
 
@@ -72,6 +73,7 @@ const commands: CommandDefinition[] = [
     boris,
     afloor,
     airframe,
+    xbox,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
