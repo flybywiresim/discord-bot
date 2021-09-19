@@ -34,6 +34,7 @@ import { boris } from './boris';
 import { afloor } from './afloor';
 import { airframe } from './airframe';
 import { xbox } from './xbox';
+import { faq } from './faq';
 import { CommandDefinition } from '../lib/command';
 import Logger from '../lib/logger';
 
@@ -74,6 +75,7 @@ const commands: CommandDefinition[] = [
     afloor,
     airframe,
     xbox,
+    faq,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
