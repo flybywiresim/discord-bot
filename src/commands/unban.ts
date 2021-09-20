@@ -7,6 +7,7 @@ type UserLike = User | Snowflake
 
 export const unban: CommandDefinition = {
     name: 'unban',
+    requiredPermissions: ['BAN_MEMBERS'],
     category: CommandCategory.MODERATION,
     executor: (msg) => {
         const splitUp = msg.content.replace(/\.unban\s+/, '').split(' ');
