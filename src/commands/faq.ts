@@ -29,7 +29,7 @@ const embeds = [
             },
             {
                 name: `How do we install this aircraft?`,
-                value: '> You can use the A32NX installer linked above, which performs the download and installation automatically. If you chose to download the addon manually through the GitHub, use the routes below to install the addon successfully\n\nMicrosoft Store Edition\n> Copy the `flybywire-aircraft-a320-neo` folder into your community package folder. It is located in:\n\n`C:\Users[YOUR USERNAME]\AppData\Local\Packages\Microsoft.FlightSimulator_RANDOMLETTERS\LocalCache\Packages\Community`\n\nSteam Edition:\n> Copy the `flybywire-aircraft-a320-neo` folder into your community package folder. It is located in:\n\n`C:\Users[YOUR USERNAME]\AppData\Roaming\Microsoft Flight Simulator\Packages\Community`\n\n_**If the mentioned methods do not work:**_\n\n_You can find your community folder by going into `FS2020 general options` and enabling `developer mode`. You will see a menu appear on top. Go to `tools` and `virtual file system`. Click on watch bases and your community folder will be listed in one of the folders._\n ',
+                value: '> You can use the A32NX installer linked above, which performs the download and installation automatically. If you chose to download the addon manually through the GitHub, use the routes below to install the addon successfully\n\nMicrosoft Store Edition\n> Copy the `flybywire-aircraft-a320-neo` folder into your community package folder. It is located in:\n\n`C:\Users[YOUR USERNAME]\AppData\Local\Packages\Microsoft.FlightSimulator_RANDOMLETTERS\LocalCache\Packages\Community`\n\nSteam Edition:\n> Copy the `flybywire-aircraft-a320-neo` folder into your community package folder. It is located in:\n\n`C:\Users[YOUR USERNAME]\AppData\Roaming\Microsoft Flight Simulator\Packages\Community`\n\n_**If the mentioned methods do not work:**_\n\n_You can find your community folder by going into `FS2020 general options` and enabling `developer mode`. You will see a menu appear on top. Go to `tools` and `virtual file system`. Click on `Packages Folders` then `Open Community Folder`._\n ',
             },
             {
                 name: `Where do we report bugs?`,
@@ -55,9 +55,22 @@ const embeds = [
         ],
     }),
     makeEmbed({
-            title: 'Docs FAQ',
-            description: 'Docs FAQ here',
-        }),
+        title: 'Links',
+        fields: [
+            {
+                name: `Docs FAQ`,
+                value: "> LINK\n ",
+            },
+            {
+                name: `Beginner Guide`,
+                value: "> LINK\n ",
+            },
+            {
+                name: `Flight School`,
+                value: "> LINK\n ",
+            },
+        ],
+    }),
 ];
 
 export const faq: CommandDefinition = {
