@@ -8,6 +8,6 @@ export const msfs: CommandDefinition = {
     category: CommandCategory.FBW,
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'MSFS | Sim issues',
-        description: 'This is the FlyByWire Support channel, and we\'re only able to help with issues with our aircraft. For any core Microsoft Flight Simulator related issues please ask on [Microsoft Flight Simulator\'s Discord](https://discord.gg/msfs) or in the official [Microsoft Flight Simulator Forum](https://forums.flightsimulator.com/c/community/140).',
+        description: 'This is the FlyByWire Discord server, and we\'re only able to help with issues with our aircraft. For any core Microsoft Flight Simulator related issues please ask on [Microsoft Flight Simulator\'s Discord](https://discord.gg/msfs) or in the official [Microsoft Flight Simulator Forum](https://forums.flightsimulator.com/c/community/140).',
     })),
 };
