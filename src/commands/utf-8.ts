@@ -3,7 +3,7 @@ import { CommandCategory } from '../constants';
 import { makeEmbed, makeLines } from '../lib/embed';
 
 export const utf8: CommandDefinition = {
-    name: 'utf',
+    name: 'utf8',
     description: 'Provides a link to resolve UTF-8 issues',
     category: CommandCategory.FBW,
     executor: (msg) => msg.channel.send(makeEmbed({
