@@ -8,6 +8,6 @@ export const afloor: CommandDefinition = {
     category: CommandCategory.FBW,
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'FlyByWire A32NX | Alpha Floor',
-        description: 'Please see our [Alpha Floor Protection Tool-Tip](https://youtu.be/iXQb675J9mA) for information on Alpha Floor Protection and how to prevent/recover from it.',
+        description: 'Please see our [Alpha Floor Protection Guide](https://docs.flybywiresim.com/fbw-a32nx/feature-guides/afloor/) or [Video Tool-Tip](https://youtu.be/iXQb675J9mA) for information on Alpha Floor Protection and how to prevent/recover from it.',
     })),
 };
