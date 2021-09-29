@@ -6,9 +6,6 @@ const FLIGHT_DECK_IMAGE_URL = 'https://media.discordapp.net/attachments/83806272
 
 const embeds = [
     makeEmbed({
-        image: { url: FLIGHT_DECK_IMAGE_URL },
-    }),
-    makeEmbed({
         title: 'FAQ',
         fields: [
             {
@@ -29,11 +26,11 @@ const embeds = [
             },
             {
                 name: `How do we install this aircraft?`,
-                value: '> You can use the A32NX installer linked above, which performs the download and installation automatically. If you chose to download the addon manually through the GitHub, use the routes below to install the addon successfully\n\nMicrosoft Store Edition\n> Copy the `flybywire-aircraft-a320-neo` folder into your community package folder. It is located in:\n\n`C:\Users[YOUR USERNAME]\AppData\Local\Packages\Microsoft.FlightSimulator_RANDOMLETTERS\LocalCache\Packages\Community`\n\nSteam Edition:\n> Copy the `flybywire-aircraft-a320-neo` folder into your community package folder. It is located in:\n\n`C:\Users[YOUR USERNAME]\AppData\Roaming\Microsoft Flight Simulator\Packages\Community`\n\n_**If the mentioned methods do not work:**_\n\n_You can find your community folder by going into `FS2020 general options` and enabling `developer mode`. You will see a menu appear on top. Go to `tools` and `virtual file system`. Click on `Packages Folders` then `Open Community Folder`._\n ',
+                value: '> You can use the A32NX installer linked above, which performs the download and installation automatically. If you chose to download the addon manually through GitHub, please see our [detailed installation guide.](https://docs.flybywiresim.com/fbw-a32nx/installation/)\n ',
             },
             {
                 name: `Where do we report bugs?`,
-                value: "> Report it at <#785976111875751956> for one of our developers to see.\n ",
+                value: "> Report it in <#785976111875751956> for one of our developers to see.\n ",
             },
             {
                 name: `Where is the plane in-sim?`,
@@ -59,15 +56,15 @@ const embeds = [
         fields: [
             {
                 name: `Docs FAQ`,
-                value: "> LINK\n ",
+                value: "> https://docs.flybywiresim.com/fbw-a32nx/support/faq/\n ",
             },
             {
                 name: `Beginner Guide`,
-                value: "> LINK\n ",
+                value: "> https://docs.flybywiresim.com/pilots-corner/beginner-guide/overview/\n ",
             },
             {
                 name: `Flight School`,
-                value: "> LINK\n ",
+                value: "> <#887806920252076053>\n ",
             },
         ],
     }),
@@ -78,8 +75,10 @@ export const faq: CommandDefinition = {
     description: 'Sends the FAQ',
     category: CommandCategory.PUBLIC,
     executor: async (msg) => {
+        await msg.channel.send({ files: [ FLIGHT_DECK_IMAGE_URL  ]});
         await Promise.all(embeds.map(async (embed) => {
             await msg.channel.send(embed);
         }));
     },
 };
+
