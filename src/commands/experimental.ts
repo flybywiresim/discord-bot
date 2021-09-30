@@ -12,8 +12,10 @@ export const experimental: CommandDefinition = {
                 + 'This version is similar to the development version, but contains custom systems still being developed, including the new FBW Custom Flight Management System (cFMS). '
                 + 'Experimental will be updated with the latest changes from both the "autopilot-custom-fpm" branch and development version regularly. '
                 + 'No support will be offered via Discord for this version. ',
+
         fields: [
-            { name: 'Where can I download the Experimental version? ', value: '[Via the installer here](https://api.flybywiresim.com/installer)', inline: true },
+            { name: 'Where can I find more information, including features and known issues? ', value: '[Via our documents here](https://docs.flybywiresim.com/fbw-a32nx/support/exp/)', inline: false },
+            { name: 'Where can I download the Experimental version? ', value: '[Via the installer here](https://api.flybywiresim.com/installer)', inline: false },
         ],
     })),
 };
