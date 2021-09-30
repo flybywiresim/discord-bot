@@ -35,6 +35,7 @@ import { afloor } from './afloor';
 import { airframe } from './airframe';
 import { xbox } from './xbox';
 import { willithave } from './willithave';
+import { welcome } from './welcome';
 import { CommandDefinition } from '../lib/command';
 import Logger from '../lib/logger';
 
@@ -76,6 +77,7 @@ const commands: CommandDefinition[] = [
     airframe,
     xbox,
     willithave,
+    welcome,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
