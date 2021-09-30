@@ -73,7 +73,8 @@ const embeds = [
 export const faq: CommandDefinition = {
     name: 'faq',
     description: 'Sends the FAQ',
-    category: CommandCategory.PUBLIC,
+    requiredPermissions: ['BAN_MEMBERS'],
+    category: CommandCategory.MODERATION,
     executor: async (msg) => {
         await msg.channel.send({ files: [ FLIGHT_DECK_IMAGE_URL  ]});
         await Promise.all(embeds.map(async (embed) => {
