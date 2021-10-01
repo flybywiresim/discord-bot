@@ -13,9 +13,9 @@ export const community: CommandDefinition = {
         description: makeLines([
             'To find the Community folder that MSFS is using please follow these steps:',
             ,
-            '1. Go to General Settings in MSFS and activate \'Developer Mode\'.',
+            '1. Go to General Settings in MSFS and activate Developer Mode.',
             '2. Go to the menu and open the Virtual File System.',
-            '3. Click on Packages Folders and select "Open Community Folder".',
+            '3. Click on \'Packages Folders\' and select \'Open Community Folder\'.',
             ,
             'This opens the Community folder in a Windows Explorer.',
         ]),
