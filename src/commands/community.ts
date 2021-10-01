@@ -17,7 +17,7 @@ export const community: CommandDefinition = {
             '2. Go to the menu and open the Virtual File System.',
             '3. Click on \'Packages Folders\' and select \'Open Community Folder\'.',
             ,
-            'This opens the Community folder in a Windows Explorer.',
+            'This opens the Community folder in a Windows Explorer. Please ensure that your addons are installed in the folder that is opened. ',
         ]),
         image: { url: COMFOLDER_HELP_URL },
         footer: { text: 'Tip: Click the image to view in full size' }
