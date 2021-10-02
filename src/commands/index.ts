@@ -36,6 +36,8 @@ import { airframe } from './airframe';
 import { xbox } from './xbox';
 import { willithave } from './willithave';
 import { faq } from './faq';
+import { community } from './community';
+import { roadmap } from './roadmap';
 import { welcome } from './welcome';
 import { CommandDefinition } from '../lib/command';
 import Logger from '../lib/logger';
@@ -79,6 +81,8 @@ const commands: CommandDefinition[] = [
     xbox,
     willithave,
     faq,
+    community,
+    roadmap,
     welcome,
 ];
 
