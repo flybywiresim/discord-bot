@@ -37,6 +37,7 @@ import { xbox } from './xbox';
 import { willithave } from './willithave';
 import { faq } from './faq';
 import { community } from './community';
+import { roadmap } from './roadmap';
 import { CommandDefinition } from '../lib/command';
 import Logger from '../lib/logger';
 
@@ -80,6 +81,7 @@ const commands: CommandDefinition[] = [
     willithave,
     faq,
     community,
+    roadmap,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
