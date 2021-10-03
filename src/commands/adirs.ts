@@ -2,7 +2,7 @@ import { CommandDefinition } from '../lib/command';
 import { makeEmbed, makeLines } from '../lib/embed';
 import { CommandCategory } from '../constants';
 
-const ADIRS_IMAGE_URL = 'https://media.discordapp.net/attachments/785976111875751956/818095298538504272/image0.png';
+const ADIRS_IMAGE_URL = 'https://cdn.discordapp.com/attachments/838062729398976522/894173641682616381/unknown.png';
 
 export const adirs: CommandDefinition = {
     name: 'adirs',
