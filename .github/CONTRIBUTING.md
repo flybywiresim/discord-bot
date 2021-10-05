@@ -19,7 +19,7 @@ Reminder: The main branch is 'staging'
 5. Test your build locally (Instructions below)
 6. Create a PR to merge your changes into staging
 
-Note: It may be beneficial to create a draft PR while working on your command so others can help and give suggestions. It also enables us to see who is working on what.
+Note: It may be beneficial to create a draft PR while working on your command. This will allow us to see who is working on what, and will enable the community to give active feedback on your work.
 
 ## Pull Request Template
 
