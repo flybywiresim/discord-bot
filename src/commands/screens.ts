@@ -11,7 +11,7 @@ export const screens: CommandDefinition = {
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'FlyByWire A32NX | Screens Fix',
         description: makeLines([
-            'Turn the following buttons to illuminate the dark screens.',
+            'Turn the following knobs to illuminate the dark screens.',
             '(Make sure to have batteries and Ground Power ON)',
         ]),
         image: { url: SCREENS_HELP_URL },
