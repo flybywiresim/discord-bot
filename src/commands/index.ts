@@ -38,6 +38,7 @@ import { willithave } from './willithave';
 import { faq } from './faq';
 import { community } from './community';
 import { roadmap } from './roadmap';
+import { clean } from './clean-install';
 import { CommandDefinition } from '../lib/command';
 import Logger from '../lib/logger';
 
@@ -82,6 +83,7 @@ const commands: CommandDefinition[] = [
     faq,
     community,
     roadmap,
+    clean,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
