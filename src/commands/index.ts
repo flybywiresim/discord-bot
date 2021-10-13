@@ -41,6 +41,7 @@ import { roadmap } from './roadmap';
 import { clean } from './clean-install';
 import { CommandDefinition } from '../lib/command';
 import Logger from '../lib/logger';
+import { liveries } from './liveries';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -84,6 +85,7 @@ const commands: CommandDefinition[] = [
     community,
     roadmap,
     clean,
+    liveries,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
