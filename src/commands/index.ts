@@ -43,7 +43,6 @@ import { liveries } from './liveries';
 import { CommandDefinition } from '../lib/command';
 import Logger from '../lib/logger';
 
-
 const commands: CommandDefinition[] = [
     ping,
     help,
