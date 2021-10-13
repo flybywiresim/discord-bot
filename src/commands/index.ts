@@ -39,9 +39,10 @@ import { faq } from './faq';
 import { community } from './community';
 import { roadmap } from './roadmap';
 import { clean } from './clean-install';
+import { liveries } from './liveries';
 import { CommandDefinition } from '../lib/command';
 import Logger from '../lib/logger';
-import { liveries } from './liveries';
+
 
 const commands: CommandDefinition[] = [
     ping,

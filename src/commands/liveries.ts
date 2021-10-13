@@ -7,7 +7,7 @@ export const liveries: CommandDefinition = {
     description: 'Provides a link to the flightsim.to A32NX liveries page',
     category: CommandCategory.FBW,
     executor: (msg) => msg.channel.send(makeEmbed({
-        title: 'A32NX Liveries',
-        description: 'Download liveries for the A32NX from [this link](https://flightsim.to/c/liveries/flybywire-a32nx/). Just unzip the .zip and place the contents of the file in your community folder.',
+        title: 'FlyByWire A32NX | Liveries',
+        description: 'You can download liveries for the A32NX [here](https://flightsim.to/c/liveries/flybywire-a32nx/). To install, you will need to unzip the downloaded folder, then place it in your community folder.',
     })),
 };
