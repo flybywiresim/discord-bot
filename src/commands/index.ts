@@ -40,6 +40,7 @@ import { community } from './community';
 import { roadmap } from './roadmap';
 import { clean } from './clean-install';
 import { liveries } from './liveries';
+import { where } from './where';
 import { CommandDefinition } from '../lib/command';
 import Logger from '../lib/logger';
 
@@ -86,6 +87,7 @@ const commands: CommandDefinition[] = [
     roadmap,
     clean,
     liveries,
+    where,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
