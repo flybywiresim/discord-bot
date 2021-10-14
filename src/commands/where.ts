@@ -2,7 +2,7 @@ import { CommandDefinition } from '../lib/command';
 import { CommandCategory } from '../constants';
 import { makeEmbed } from '../lib/embed';
 
-const WHERE_IMAGE_URL = 'https://cdn.discordapp.com/attachments/875347102945927192/898118669094236191/fbw.png'
+const WHERE_IMAGE_URL = 'https://cdn.discordapp.com/attachments/875347102945927192/898337753660526662/wherescreenshot.png'
 
 export const where: CommandDefinition = {
     name: 'where',
