@@ -3,7 +3,7 @@ import { CommandCategory } from '../constants';
 import { makeEmbed } from '../lib/embed';
 
 export const briefing: CommandDefinition = {
-    name: 'briefing',
+    name: ['briefing', 'flightdeck', 'pfd' ],
     description: 'Provides a link to the A320neo Pilot Briefing',
     category: CommandCategory.FBW,
     executor: (msg) => msg.channel.send(makeEmbed({
