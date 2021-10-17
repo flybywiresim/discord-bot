@@ -42,6 +42,7 @@ import { clean } from './clean-install';
 import { liveries } from './liveries';
 import { simversion} from './simversion';
 import { printer } from './printer';
+import { where } from './where';
 import { CommandDefinition } from '../lib/command';
 import Logger from '../lib/logger';
 
@@ -90,6 +91,7 @@ const commands: CommandDefinition[] = [
     liveries,
     simversion,
     printer,
+    where,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
