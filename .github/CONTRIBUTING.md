@@ -69,7 +69,7 @@ You can find the pull request template [here](PULL_REQUEST_TEMPLATE.md).
    `import Logger from '../lib/logger';`)
 4. Add your command name to the list under `const commands: CommandDefinition[] = [`
 
-If you need help creating a command, you may find it useful to copy an existing command as a template, changing wht you need.
+If you need help creating a command, you may find it useful to copy an existing command as a template, changing what you need.
 
 ### Modifying a Command
 
