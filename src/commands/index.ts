@@ -41,6 +41,7 @@ import { roadmap } from './roadmap';
 import { clean } from './clean-install';
 import { liveries } from './liveries';
 import { simversion} from './simversion';
+import { printer } from './printer';
 import { CommandDefinition } from '../lib/command';
 import Logger from '../lib/logger';
 
@@ -88,6 +89,7 @@ const commands: CommandDefinition[] = [
     clean,
     liveries,
     simversion,
+    printer,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
