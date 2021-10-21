@@ -11,8 +11,9 @@ export const ctrl_e: CommandDefinition = {
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'FlyByWire A32NX | Engine Start',
         description: makeLines([
-            'The A32NX is not compatible with the CTRL+E method of starting your engines..',
-            'BG here',
+            'The FlyByWire A32NX is not compatible with the CTRL+E method of starting your engines.',
+            ,
+            'Please see our [beginners guide](https://docs.flybywiresim.com/pilots-corner/beginner-guide/engine-start-taxi/) for detailed information on how to configure and start the aircraft.',
         ]),
     })),
 };
