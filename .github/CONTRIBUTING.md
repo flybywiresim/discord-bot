@@ -66,7 +66,7 @@ You can find the pull request template [here](PULL_REQUEST_TEMPLATE.md).
 1. Create a new file in the relevant folder within `src/commands/` and name it appropriately. `yourcommand.ts`
 2. Create your command
 3. Add it to `src/commands/index.ts`. You need to add the line `import { name } from './commandfolder/fileame';`, replacing `name` with the `export const` from your command, `commandfolder` with the relevant folder your command has been placed within, and `filename` with the file name you created in step 1.
-(Add this below the last command, usually above `import { CommandDefinition } from '../lib/command';` and `import Logger from '../lib/logger';`)
+(Add this below the last command.)
 4. Add your command name to the list under `const commands: CommandDefinition[] = [`
 
 If you need help creating a command, you may find it useful to copy an existing command as a template, changing what you need.

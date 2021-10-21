@@ -1,3 +1,5 @@
+import { CommandDefinition } from '../lib/command';
+import Logger from '../lib/logger';
 import { ping } from './utils/ping';
 import { help } from './utils/help';
 import { bruheg } from './funnies/bruheg';
@@ -43,8 +45,6 @@ import { liveries } from './a32nx/liveries';
 import { simversion} from './support/simversion';
 import { printer } from './a32nx/printer';
 import { where } from './support/where';
-import { CommandDefinition } from '../lib/command';
-import Logger from '../lib/logger';
 
 const commands: CommandDefinition[] = [
     ping,
