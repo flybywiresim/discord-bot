@@ -46,7 +46,6 @@ import { simversion} from './support/simversion';
 import { printer } from './a32nx/printer';
 import { where } from './support/where';
 
-
 const commands: CommandDefinition[] = [
     ping,
     help,
