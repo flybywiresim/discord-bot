@@ -2,8 +2,6 @@ import { CommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 
-const ADIRS_IMAGE_URL = 'https://cdn.discordapp.com/attachments/838062729398976522/894173641682616381/unknown.png';
-
 export const ctrl_e: CommandDefinition = {
     name: ['ctrle', 'ctrl+e', 'enginestart'],
     description: 'Displays help regarding CTRL+E engine start',
