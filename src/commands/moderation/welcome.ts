@@ -1,6 +1,6 @@
-import { CommandDefinition } from '../lib/command';
-import { makeEmbed, makeLines } from '../lib/embed';
-import { CommandCategory } from '../constants';
+import { CommandDefinition } from '../../lib/command';
+import { makeEmbed, makeLines } from '../../lib/embed';
+import { CommandCategory } from '../../constants';
 
 const LANDING_IMAGE_URL = 'https://media.discordapp.net/attachments/864493190471352344/893458239411322910/Landing_Center_FB.png?width=1399&height=683';
 const SUPPORT_IMAGE_URL = 'https://cdn.discordapp.com/attachments/770835189419999262/801031098598424576/support-help.png';
