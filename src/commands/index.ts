@@ -45,6 +45,7 @@ import { liveries } from './a32nx/liveries';
 import { simversion} from './support/simversion';
 import { printer } from './a32nx/printer';
 import { where } from './support/where';
+import { ctrl_e } from './a32nx/ctrl_e';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -92,6 +93,7 @@ const commands: CommandDefinition[] = [
     simversion,
     printer,
     where,
+    ctrl_e,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
