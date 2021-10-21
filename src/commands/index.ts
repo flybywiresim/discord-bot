@@ -1,44 +1,49 @@
-import { ping } from './ping';
-import { help } from './help';
-import { bruheg } from './bruheg';
-import { boratorium } from './boratorium';
-import { efb } from './efb';
-import { deadzones } from './deadzones';
-import { screens } from './screens';
-import { when } from './when';
-import { ban } from './ban';
-import { unban } from './unban';
-import { trythis } from './trythis';
-import { experimental } from './experimental';
-import { versions } from './versions';
-import { membercount } from './membercount';
-import { installer } from './installer';
-import { roleinfo } from './roleinfo';
-import { adirs } from './adirs';
-import { installererror } from './installererror';
-import { reportedissues } from './reportedissues';
-import { autopilot } from './autopilot';
-import { checklist } from './checklist';
-import { whois } from './whois';
-import { donate } from './donate';
-import { utf8 } from './utf-8';
-import { calibrate } from './calibrate';
-import { controls } from './controls';
-import { nut } from './nut';
-import { screenshot } from './screenshot';
-import { msfs } from './msfs';
-import { content } from './content';
-import { beginner } from './beginner-guide';
-import { briefing } from './briefing';
-import { boris } from './boris';
-import { afloor } from './afloor';
-import { airframe } from './airframe';
-import { xbox } from './xbox';
-import { willithave } from './willithave';
-import { faq } from './faq';
-import { community } from './community';
-import { roadmap } from './roadmap';
-import { welcome } from './welcome';
+import { ping } from './utils/ping';
+import { help } from './utils/help';
+import { bruheg } from './funnies/bruheg';
+import { boratorium } from './funnies/boratorium';
+import { efb } from './a32nx/efb';
+import { deadzones } from './support/deadzones';
+import { screens } from './a32nx/screens';
+import { when } from './general/when';
+import { ban } from './moderation/ban';
+import { unban } from './moderation/unban';
+import { trythis } from './support/trythis';
+import { experimental } from './a32nx/experimental';
+import { versions } from './a32nx/versions';
+import { membercount } from './utils/membercount';
+import { installer } from './general/installer';
+import { roleinfo } from './utils/roleinfo';
+import { adirs } from './a32nx/adirs';
+import { installererror } from './support/installererror';
+import { reportedissues } from './support/reportedissues';
+import { autopilot } from './a32nx/autopilot';
+import { checklist } from './a32nx/checklist';
+import { whois } from './moderation/whois';
+import { donate } from './general/donate';
+import { utf8 } from './support/utf-8';
+import { calibrate } from './support/calibrate';
+import { controls } from './support/controls';
+import { nut } from './funnies/nut';
+import { screenshot } from './support/screenshot';
+import { msfs } from './support/msfs';
+import { content } from './support/content';
+import { beginner } from './a32nx/beginner-guide';
+import { briefing } from './a32nx/briefing';
+import { boris } from './funnies/boris';
+import { afloor } from './a32nx/afloor';
+import { airframe } from './a32nx/airframe';
+import { xbox } from './a32nx/xbox';
+import { willithave } from './general/willithave';
+import { faq } from './moderation/faq';
+import { community } from './support/community';
+import { roadmap } from './general/roadmap';
+import { clean } from './support/clean-install';
+import { liveries } from './a32nx/liveries';
+import { simversion} from './support/simversion';
+import { printer } from './a32nx/printer';
+import { where } from './support/where';
+import { welcome } from './moderation/welcome';
 import { CommandDefinition } from '../lib/command';
 import Logger from '../lib/logger';
 
@@ -83,6 +88,11 @@ const commands: CommandDefinition[] = [
     faq,
     community,
     roadmap,
+    clean,
+    liveries,
+    simversion,
+    printer,
+    where,
     welcome,
 ];
 
