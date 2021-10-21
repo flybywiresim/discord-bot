@@ -1,3 +1,5 @@
+import { CommandDefinition } from '../lib/command';
+import Logger from '../lib/logger';
 import { ping } from './utils/ping';
 import { help } from './utils/help';
 import { bruheg } from './funnies/bruheg';
@@ -44,8 +46,6 @@ import { simversion} from './support/simversion';
 import { printer } from './a32nx/printer';
 import { where } from './support/where';
 import { ctrl_e } from './moderation/ctrl_e';
-import { CommandDefinition } from '../lib/command';
-import Logger from '../lib/logger';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -93,7 +93,6 @@ const commands: CommandDefinition[] = [
     simversion,
     printer,
     where,
-    ctrl_e,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
