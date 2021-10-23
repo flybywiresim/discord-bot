@@ -42,10 +42,11 @@ import { community } from './support/community';
 import { roadmap } from './general/roadmap';
 import { clean } from './support/clean-install';
 import { liveries } from './a32nx/liveries';
-import { simversion} from './support/simversion';
+import { simversion } from './support/simversion';
 import { printer } from './a32nx/printer';
 import { where } from './support/where';
 import { ctrl_e } from './a32nx/ctrl_e';
+import { weather } from './a32nx/weather';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -94,6 +95,7 @@ const commands: CommandDefinition[] = [
     printer,
     where,
     ctrl_e,
+    weather,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
