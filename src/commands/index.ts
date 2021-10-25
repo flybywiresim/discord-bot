@@ -47,6 +47,7 @@ import { printer } from './a32nx/printer';
 import { where } from './support/where';
 import { ctrl_e } from './a32nx/ctrl_e';
 import { weather } from './a32nx/weather';
+import { qa } from './general/qa';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -96,6 +97,7 @@ const commands: CommandDefinition[] = [
     where,
     ctrl_e,
     weather,
+    qa,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
