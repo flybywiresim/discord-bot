@@ -8,6 +8,6 @@ export const qa: CommandDefinition = {
     category: CommandCategory.FBW,
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'FlyByWire | Quality Assurance',
-        description: 'Any additions/changes to the code in our aircraft are tested thoroughly by our Quality Assurance team. The team are built of members of our community, if you\'re interested in finding out more information on our QA process, or joining the team, please read our guide [here!](https://docs.flybywiresim.com/dev-corner/qa-process/)',
+        description: 'Any additions/changes to the code in our aircraft are tested thoroughly by our Quality Assurance team. The team is composed of members of our community, if you\'re interested in finding out more information on our QA process, or joining the team, please read our guide [here!](https://docs.flybywiresim.com/dev-corner/qa-process/)',
     })),
 };
