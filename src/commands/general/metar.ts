@@ -1,4 +1,4 @@
-import request from 'request'
+import request from 'request';
 import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
@@ -19,7 +19,7 @@ export const metar: CommandDefinition = {
             method: 'GET',
             url: `https://avwx.rest/api/metar/${icaoArg}`,
             headers: {
-                Authorization: 'N7GPU-i5a-RTWDHQhK5uAeI1sBlQSB5iyYGDfJMt3G0' },
+                Authorization: process.env.METAR_TOKEN },
         }, (error, response, body) => {
             const metarReport = JSON.parse(body);
             msg.channel.send(makeEmbed({
