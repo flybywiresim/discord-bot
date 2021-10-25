@@ -40,6 +40,7 @@ export const metar: CommandDefinition = {
                 fields: [
                     { name: 'Unsure of how to read the raw report?', value: 'Please refer to our guide [here.](https://docs.flybywiresim.com/pilots-corner/airliner-flying-guide/weather/)', inline: false },
                 ],
+                footer: { text: 'This METAR report may not accurately reflect the weather in the simulator. However, it will always be similar to the current conditions present in the sim.' },
             }));
         });
     },
