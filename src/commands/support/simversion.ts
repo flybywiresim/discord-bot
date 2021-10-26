@@ -7,7 +7,7 @@ const SIMVERSION_HELP_URL = 'https://docs.flybywiresim.com/fbw-a32nx/assets/supp
 export const simversion: CommandDefinition = {
     name: ['simversion', 'msfsversion'],
     description: 'Help to identify MSFS version for support',
-    category: CommandCategory.FBW,
+    category: CommandCategory.SUPPORT,
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'FlyByWire Support | Checking your MSFS version',
         description: makeLines([

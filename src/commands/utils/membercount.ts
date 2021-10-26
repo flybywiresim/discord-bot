@@ -5,7 +5,7 @@ import { CommandCategory } from '../../constants';
 export const membercount: CommandDefinition = {
     name: 'membercount',
     description: 'Lists the guild\'s current amount of members',
-    category: CommandCategory.PUBLIC,
+    category: CommandCategory.UTILS,
     executor: (msg) => {
         const { memberCount } = msg.guild;
 

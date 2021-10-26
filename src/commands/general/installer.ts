@@ -5,7 +5,7 @@ import { makeEmbed } from '../../lib/embed';
 export const installer: CommandDefinition = {
     name: 'installer',
     description: 'Provides link to the new installer',
-    category: CommandCategory.FBW,
+    category: CommandCategory.GENERAL,
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'Installer',
         description: 'Download the new A32NX Installer where you can select either the Stable, Developer or an Experimental Version, '

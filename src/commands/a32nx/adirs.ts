@@ -7,7 +7,7 @@ const ADIRS_IMAGE_URL = 'https://cdn.discordapp.com/attachments/8380627293989765
 export const adirs: CommandDefinition = {
     name: 'adirs',
     description: 'Display help with ADIRS alignment',
-    category: CommandCategory.FBW,
+    category: CommandCategory.A32NX,
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'FlyByWire A32NX | ADIRS align',
         description: makeLines([

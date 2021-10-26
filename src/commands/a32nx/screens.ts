@@ -7,7 +7,7 @@ const SCREENS_HELP_URL = 'https://media.discordapp.net/attachments/8858856090072
 export const screens: CommandDefinition = {
     name: ['screens', 'screen'],
     description: 'Display help with avionics',
-    category: CommandCategory.FBW,
+    category: CommandCategory.A32NX,
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'FlyByWire A32NX | Screens Fix',
         description: makeLines([

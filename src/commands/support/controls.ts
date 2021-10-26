@@ -5,7 +5,7 @@ import { makeEmbed, makeLines } from '../../lib/embed';
 export const controls: CommandDefinition = {
     name: 'controls',
     description: 'Instructions on how to switch back to legacy controls and how to use new controls',
-    category: CommandCategory.FBW,
+    category: CommandCategory.SUPPORT,
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'MSFS | Cockpit Interaction System ',
         fields: [

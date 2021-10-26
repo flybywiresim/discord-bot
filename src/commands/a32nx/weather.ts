@@ -5,7 +5,7 @@ import { makeEmbed, makeLines } from '../../lib/embed';
 export const weather: CommandDefinition = {
     name: ['weather', 'wx'],
     description: 'Explains the current state of the weather and terrain radars in experimental',
-    category: CommandCategory.FBW,
+    category: CommandCategory.A32NX,
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'FlyByWire A32NX | Weather + Terrain Radars',
         description: makeLines(['The experimental version of the A32NX does not have operating weather and terrain radars. This is due to the performance issues related to the default weather and terrain radars and the ND being rewritten.',

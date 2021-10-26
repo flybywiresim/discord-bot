@@ -5,7 +5,7 @@ import { CommandCategory } from '../../constants';
 export const roleinfo: CommandDefinition = {
     name: 'roleinfo',
     description: 'Lists the guild\'s current amount of members',
-    category: CommandCategory.PUBLIC,
+    category: CommandCategory.UTILS,
     executor: (msg) => {
         // Takes out the .roleinfo from the query;
         const query = msg.content.replace(/\.roleinfo(\s|$)+/, '').toLowerCase();
