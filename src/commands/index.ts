@@ -48,6 +48,7 @@ import { where } from './support/where';
 import { ctrl_e } from './a32nx/ctrl_e';
 import { weather } from './a32nx/weather';
 import { metar } from './utils/metar';
+import { qa } from './general/qa';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -98,6 +99,7 @@ const commands: CommandDefinition[] = [
     ctrl_e,
     weather,
     metar,
+    qa,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
