@@ -6,7 +6,7 @@ import { makeEmbed, makeLines } from '../../lib/embed';
 export const metar: CommandDefinition = {
     name: 'metar',
     description: 'Provides the METAR report of the requested airport',
-    category: CommandCategory.FBW,
+    category: CommandCategory.UTILS,
     executor: (msg) => {
         const splitUp = msg.content.replace(/\.metar\s+/, ' ').split(' ');
 
