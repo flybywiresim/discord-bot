@@ -3,9 +3,12 @@ export enum Colors {
 }
 
 export enum CommandCategory {
-    PUBLIC = 'Public',
-    FBW = 'FlyByWire Simulations',
+    A32NX = 'A32NX',
+    FUNNIES = 'Funnies',
+    GENERAL = 'General',
     MODERATION = 'Moderation',
+    SUPPORT = 'Support',
+    UTILS = 'Utilities',
 }
 
 export enum Channels {
