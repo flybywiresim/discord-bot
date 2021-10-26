@@ -49,6 +49,7 @@ jobs:
       RELEASE_NAME: discord-bot
       VALUES_FILE: ./charts/discord-bot/environments/staging.yaml
       BOT_SECRET: ${{ secrets.STAGING_BOT_SECRET }}
+      METAR_TOKEN: ${{ secrets.METAR_TOKEN }}
     steps:
       - uses: actions/checkout@v1
       - name: Install doctl
@@ -60,5 +61,8 @@ jobs:
       - name: Deploy
         run: |
           TAG=$(echo $GITHUB_SHA | head -c7) &&
-          helm upgrade --install --namespace ${NAMESPACE} --set bot.secret=${BOT_SECRET},image.tag=sha-${TAG} \
-          -f ./charts/discord-bot/values.yaml -f ${VALUES_FILE} ${RELEASE_NAME} ./charts/discord-bot
+          helm upgrade --install --namespace ${NAMESPACE} \
+            --set image.tag=sha-${TAG} \
+            --set bot.secret=${BOT_SECRET} \
+            --set bot.metarToken=${METAR_TOKEN} \
+            -f ./charts/discord-bot/values.yaml -f ${VALUES_FILE} ${RELEASE_NAME} ./charts/discord-bot
