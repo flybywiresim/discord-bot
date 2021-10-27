@@ -7,7 +7,7 @@ export const logs: CommandDefinition = {
     description: 'Provides an explanation on how to receive installer error logs for support',
     category: CommandCategory.FBW,
     executor: (msg) => msg.channel.send(makeEmbed({
-        title: 'FlyByWire A32NX | Installer Logs',
+        title: 'FlyByWire Support | Installer Logs',
         description: makeLines([
             'If you encounter an error with the installer, please send a copy of the installer log here in <#785976111875751956>. To do this:',
             '1. Open the debug tool with ^Ctrl + F12',
