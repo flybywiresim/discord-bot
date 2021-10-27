@@ -7,7 +7,7 @@ const CONTENTMANAGER_HELP_URL = 'https://media.discordapp.net/attachments/740722
 export const content: CommandDefinition = {
     name: ['content', 'contentmanager'],
     description: 'Help to identify aircraft version for support',
-    category: CommandCategory.FBW,
+    category: CommandCategory.SUPPORT,
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'FlyByWire Support | Checking your aircraft version',
         description: makeLines([

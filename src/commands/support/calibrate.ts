@@ -5,7 +5,7 @@ import { makeEmbed, makeLines } from '../../lib/embed';
 export const calibrate: CommandDefinition = {
     name: 'calibrate',
     description: 'Provides a help for throttle calibration',
-    category: CommandCategory.FBW,
+    category: CommandCategory.SUPPORT,
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'FlyByWire A32NX | Throttle Calibration',
         description: makeLines ([

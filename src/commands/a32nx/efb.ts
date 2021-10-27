@@ -7,6 +7,6 @@ const EFB_URL = 'https://cdn.discordapp.com/attachments/885885609007276062/89542
 export const efb: CommandDefinition = {
     name: 'efb',
     description: 'Inquire about the state of the EFB',
-    category: CommandCategory.FBW,
+    category: CommandCategory.A32NX,
     executor: (msg) => msg.channel.send(makeEmbed({ image: { url: EFB_URL } })),
 };

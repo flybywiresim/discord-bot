@@ -5,7 +5,7 @@ import { makeEmbed } from '../../lib/embed';
 export const versions: CommandDefinition = {
     name: 'versions',
     description: 'Explains the different A32NX versions',
-    category: CommandCategory.FBW,
+    category: CommandCategory.A32NX,
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'FlyByWire A32NX | Versions',
         footer: { text: 'If you are having further problems, let us know in our #support channel.' },

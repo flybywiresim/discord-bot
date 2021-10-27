@@ -6,7 +6,7 @@ const NUT_URL = 'https://cdn.discordapp.com/attachments/874018873433808946/90013
 
 export const nut: CommandDefinition = {
     name: 'nut',
-    category: CommandCategory.FBW,
+    category: CommandCategory.FUNNIES,
     description: 'nut',
     executor: (msg) => msg.channel.send(makeEmbed({ image: { url: NUT_URL } })),
 };
