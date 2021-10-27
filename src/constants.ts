@@ -4,11 +4,11 @@ export enum Colors {
 
 export enum CommandCategory {
     A32NX = 'A32NX',
-    FUNNIES = 'Funnies',
-    GENERAL = 'General',
-    MODERATION = 'Moderation',
     SUPPORT = 'Support',
+    GENERAL = 'General',
     UTILS = 'Utilities',
+    FUNNIES = 'Funnies',
+    MODERATION = 'Moderation',
 }
 
 export enum Channels {
