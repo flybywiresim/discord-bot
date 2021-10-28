@@ -35,7 +35,7 @@ export const metar: CommandDefinition = {
                     `**Visibility:** ${metarReport.visibility.repr}${metarReport.units.visibility}`,
                     `**Temperature:** ${metarReport.temperature.repr}C`,
                     `**Dew Point:** ${metarReport.dewpoint.repr}C`,
-                    `**Altimeter:** ${metarReport.altimeter.repr} (${metarReport.units.altimeter})`,
+                    `**Altimeter:** ${metarReport.altimeter.value.toString()} ${metarReport.units.altimeter}`,
                 ]),
                 fields: [
                     { name: 'Unsure of how to read the raw report?', value: 'Please refer to our guide [here.](https://docs.flybywiresim.com/pilots-corner/airliner-flying-guide/weather/)', inline: false },
