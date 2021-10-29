@@ -49,6 +49,7 @@ import { ctrl_e } from './a32nx/ctrl_e';
 import { weather } from './a32nx/weather';
 import { metar } from './utils/metar';
 import { qa } from './general/qa';
+import { cursor } from './support/cursor';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -100,6 +101,7 @@ const commands: CommandDefinition[] = [
     weather,
     metar,
     qa,
+    cursor,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
