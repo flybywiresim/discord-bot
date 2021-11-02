@@ -17,7 +17,7 @@ import { membercount } from './utils/membercount';
 import { installer } from './general/installer';
 import { roleinfo } from './utils/roleinfo';
 import { adirs } from './a32nx/adirs';
-import { installererror } from './support/installererror';
+import { logs } from './support/logs';
 import { reportedissues } from './support/reportedissues';
 import { autopilot } from './a32nx/autopilot';
 import { checklist } from './a32nx/checklist';
@@ -70,7 +70,7 @@ const commands: CommandDefinition[] = [
     installer,
     roleinfo,
     adirs,
-    installererror,
+    logs,
     reportedissues,
     autopilot,
     checklist,
