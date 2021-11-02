@@ -5,7 +5,7 @@ import { makeEmbed, makeLines } from '../../lib/embed';
 export const logs: CommandDefinition = {
     name: ['installerlogs', 'logs'],
     description: 'Provides an explanation on how to receive installer error logs for support',
-    category: CommandCategory.FBW,
+    category: CommandCategory.SUPPORT,
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'FlyByWire Support | Installer Logs',
         description: makeLines([
