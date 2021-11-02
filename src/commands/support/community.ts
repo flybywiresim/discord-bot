@@ -7,7 +7,7 @@ const COMFOLDER_HELP_URL = 'https://docs.flybywiresim.com/fbw-a32nx/assets/find-
 export const community: CommandDefinition = {
     name: ['community', 'com'],
     description: 'Help to identify community folder for support',
-    category: CommandCategory.FBW,
+    category: CommandCategory.SUPPORT,
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'FlyByWire Support | Identifying your Community folder',
         description: makeLines([

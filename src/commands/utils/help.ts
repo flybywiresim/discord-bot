@@ -8,7 +8,7 @@ import Logger from '../../lib/logger';
 export const help: CommandDefinition = {
     name: 'help',
     description: 'Sends a list of available commands to the user',
-    category: CommandCategory.PUBLIC,
+    category: CommandCategory.UTILS,
     executor: (msg) => msg.author.createDM()
         .then(async (dmChannel) => {
             await msg.delete();

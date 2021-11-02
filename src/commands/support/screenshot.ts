@@ -7,7 +7,7 @@ const SCREENSHOT_HELP_URL = 'https://docs.flybywiresim.com/fbw-a32nx/assets/supp
 export const screenshot: CommandDefinition = {
     name: ['screenshot', 'cockpit'],
     description: 'Help to screenshot for support',
-    category: CommandCategory.FBW,
+    category: CommandCategory.SUPPORT,
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'FlyByWire Support | How to take a good screenshot',
         description: makeLines([

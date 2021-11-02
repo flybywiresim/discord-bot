@@ -5,7 +5,7 @@ import { makeEmbed } from '../../lib/embed';
 export const experimental: CommandDefinition = {
     name: ['experimental', 'exp'],
     description: 'Explains the current state of the experimental build',
-    category: CommandCategory.FBW,
+    category: CommandCategory.A32NX,
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'FlyByWire A32NX | Experimental Version',
         description: 'The experimental branch is now back in use! '

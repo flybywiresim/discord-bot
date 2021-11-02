@@ -3,9 +3,9 @@ import { makeEmbed, makeLines } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 
 export const ctrl_e: CommandDefinition = {
-    name: ['ctrle', 'ctrl+e', 'enginestart'],
+    name: ['ctrle', 'ctrl+e', 'ctrl-e', 'enginestart'],
     description: 'Displays help regarding CTRL+E engine start',
-    category: CommandCategory.FBW,
+    category: CommandCategory.A32NX,
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'FlyByWire A32NX | Engine Start',
         description: makeLines([

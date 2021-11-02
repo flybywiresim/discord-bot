@@ -5,7 +5,7 @@ import { makeEmbed } from '../../lib/embed';
 export const installererror: CommandDefinition = {
     name: ['installererror', 'error'],
     description: 'Provides a link to the installer error page within docs',
-    category: CommandCategory.FBW,
+    category: CommandCategory.SUPPORT,
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'FlyByWire A32NX | Installer Error',
         description: 'Your old community folder is missing.\n'

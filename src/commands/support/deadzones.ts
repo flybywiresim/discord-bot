@@ -7,7 +7,7 @@ const DEADZONE_IMAGE_URL = 'https://cdn.discordapp.com/attachments/7708351894199
 export const deadzones: CommandDefinition = {
     name: ['deadzone', 'dz'],
     description: 'Display help with controller deadzones',
-    category: CommandCategory.FBW,
+    category: CommandCategory.SUPPORT,
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'FlyByWire A32NX | AP Problem',
         description: makeLines([

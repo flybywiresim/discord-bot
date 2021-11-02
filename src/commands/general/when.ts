@@ -5,7 +5,7 @@ import { makeEmbed } from '../../lib/embed';
 export const when: CommandDefinition = {
     name: 'when',
     description: 'Explain the absence of release dates or ETAs',
-    category: CommandCategory.FBW,
+    category: CommandCategory.GENERAL,
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'When is it coming?',
         description: 'Due to the community-driven nature of our projects, we do not enforce delivery timelines on our volunteer developers. '
