@@ -7,6 +7,6 @@ const PTU_URL = 'https://cdn.discordapp.com/attachments/898602626436964402/90234
 export const ptu: CommandDefinition = {
     name: 'ptu',
     description: 'Bark',
-    category: CommandCategory.FBW,
+    category: CommandCategory.FUNNIES,
     executor: (msg) => msg.channel.send(makeEmbed({ image: { url: PTU_URL } })),
 };
