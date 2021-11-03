@@ -52,6 +52,17 @@ import { qa } from './general/qa';
 import { ptu } from './funnies/ptu';
 import { cursor } from './support/cursor';
 import { avatar } from './utils/avatar';
+import { coffee } from './funnies/coffee';
+import { defaultmeme } from './funnies/default';
+import { guard } from './funnies/guard';
+import { juan } from './funnies/juan';
+import { merge } from './funnies/merge';
+import { otter } from './funnies/otter';
+import { p3d } from './funnies/p3d';
+import { poggers } from './funnies/poggers';
+import { pov } from './funnies/pov';
+import { shame } from './funnies/shame';
+import { xp } from './funnies/xp';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -106,6 +117,17 @@ const commands: CommandDefinition[] = [
     ptu,
     cursor,
     avatar,
+    coffee,
+    defaultmeme,
+    guard,
+    juan,
+    merge,
+    otter,
+    p3d,
+    poggers,
+    pov,
+    shame,
+    xp,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
