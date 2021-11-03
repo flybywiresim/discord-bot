@@ -51,6 +51,7 @@ import { metar } from './utils/metar';
 import { qa } from './general/qa';
 import { ptu } from './funnies/ptu';
 import { cursor } from './support/cursor';
+import { station } from './utils/station';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -104,6 +105,7 @@ const commands: CommandDefinition[] = [
     qa,
     ptu,
     cursor,
+    station,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
