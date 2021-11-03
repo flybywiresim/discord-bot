@@ -11,7 +11,7 @@ export const avatar: CommandDefinition = {
         user.displayAvatarURL({ dynamic: true })
         return msg.channel.send(makeEmbed({
             title: `${user.tag}'s Avatar`,
-            image: { url: user.displayAvatarURL({ dynamic: true }) },
+            image: { url: user.displayAvatarURL({ dynamic: true, size: 4096 }) },
         }));
     },
 };
