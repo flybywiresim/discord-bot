@@ -10,7 +10,7 @@ export const avatar: CommandDefinition = {
         const user = msg.mentions.users.first() || msg.author;
         user.displayAvatarURL({ dynamic: true })
         return msg.channel.send(makeEmbed({
-            title: `${user.username}'s Avatar`,
+            title: `${user.tag}'s Avatar`,
             image: { url: user.displayAvatarURL({ dynamic: true }) },
         }));
     },
