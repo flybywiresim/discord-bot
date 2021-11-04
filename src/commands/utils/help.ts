@@ -16,7 +16,7 @@ export const help: CommandDefinition = {
             title: 'FlyByWire Simulations | Help',
             description: makeLines([
                 'Would you like to:',
-                '1. Receive a help DM',
+                '1. Receive a list of the available commands as a DM',
                 '2. Receive a link to our docs site with changelogs',
             ]),
         });
