@@ -17,7 +17,7 @@ export const help: CommandDefinition = {
             description: makeLines([
                 'Would you like to:',
                 '1. Receive a list of the available commands as a DM',
-                '2. Receive a link to our docs site with changelogs',
+                '2. Receive a link with a list of the available commands/changelog on our docs site ',
             ]),
         });
 
