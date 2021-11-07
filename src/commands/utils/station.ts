@@ -21,24 +21,24 @@ export const station: CommandDefinition = {
             headers: {
                 Authorization: process.env.STATION_TOKEN },
         }, (error, response, body) => {
+
+
+
             const stationReport = JSON.parse(body);
+
+            const runwayIdents = stationReport.runways.map((runways) => {
+                return runways.ident1;
+            });
+
             msg.channel.send(makeEmbed({
                 title: `Station info | ${stationReport.icao}`,
                 description: makeLines([
-                    '**Station Information:**',
-                    `**Name:** ${stationReport.name}`,
-                    `**Country:** ${stationReport.country}`,
-                    `**City:** ${stationReport.city}`,
-                    `**Latitude:** ${stationReport.latitude}`,
-                    `**longitude:** ${stationReport.longitude}`,
-                    ,
-                    `**Runways:** ${stationReport.runways[0].ident1}`,
-                    ,
-                    `**Type:** ${stationReport.type}`,
-                    `**Website:** ${stationReport.website}`,
-                    `**Wiki:** ${stationReport.wiki}`,
+                 `**Runways:** ${runwayIdents.toString()}`,
                 ]),
             }));
         });
     },
 };
+
+
+
