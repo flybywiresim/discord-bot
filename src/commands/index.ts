@@ -63,7 +63,7 @@ import { poggers } from './funnies/poggers';
 import { pov } from './funnies/pov';
 import { shame } from './funnies/shame';
 import { xp } from './funnies/xp';
-import { whened } from './funnies/whened'
+import { whened } from './funnies/whened';
 
 const commands: CommandDefinition[] = [
     ping,
