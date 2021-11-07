@@ -22,18 +22,33 @@ export const station: CommandDefinition = {
                 Authorization: process.env.STATION_TOKEN },
         }, (error, response, body) => {
 
-
-
             const stationReport = JSON.parse(body);
 
-            const runwayIdents = stationReport.runways.map((runways) => {
+            const runwayIdent1 = stationReport.runways.map((runways) => {
                 return runways.ident1;
+            });
+
+            const runwayIdent2 = stationReport.runways.map((runways) => {
+                return runways.ident2;
             });
 
             msg.channel.send(makeEmbed({
                 title: `Station info | ${stationReport.icao}`,
                 description: makeLines([
-                 `**Runways:** ${runwayIdents.toString()}`,
+                    '**Station Information:**',
+                    `**Name:** ${stationReport.name}`,
+                    `**Country:** ${stationReport.country}`,
+                    `**City:** ${stationReport.city}`,
+                    `**Latitude:** ${stationReport.latitude}`,
+                    `**longitude:** ${stationReport.longitude}`,
+                    ,
+                    `**Runways (1):** ${runwayIdent1.toString( )}`,
+                    ,
+                    `**Runways (2):** ${runwayIdent2.toString( )}`,
+                    ,
+                    `**Type:** ${stationReport.type}`,
+                    `**Website:** ${stationReport.website}`,
+                    `**Wiki:** ${stationReport.wiki}`,
                 ]),
             }));
         });
