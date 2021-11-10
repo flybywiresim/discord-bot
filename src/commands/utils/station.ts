@@ -26,7 +26,7 @@ export const station: CommandDefinition = {
 
             const runwayIdents = stationReport.runways.map((runways) => {
                 return `**${runways.ident1}/${runways.ident2}:** ${runways.length_ft}ft x ${runways.width_ft}ft
-                `;
+`;
             });
 
 
