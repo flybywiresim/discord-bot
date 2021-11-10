@@ -62,8 +62,8 @@ export const help: CommandDefinition = {
                     break;
                 case '2️⃣':
                     const embed = makeEmbed({
-                        title: 'FlyByWire Simulations | Documentation',
-                        description: 'https://docs.flybywiresim.com/dev-corner/development-projects/discord-bot/',
+                        title: 'FlyByWire Simulations | Discord Bot Documentation',
+                        description: 'https://docs.flybywiresim.com/discord-bot/',
                     });
 
                     await selectorMsg.reply(embed);
