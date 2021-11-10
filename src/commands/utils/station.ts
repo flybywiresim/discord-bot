@@ -47,6 +47,7 @@ export const station: CommandDefinition = {
                     `**Website:** ${stationReport.website}`,
                     `**Wiki:** ${stationReport.wiki}`,
                 ]),
+                footer: { text: 'Due to limitations of the API, not all links may be up to date at all times.' }
             }));
         });
     },
