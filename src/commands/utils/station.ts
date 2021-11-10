@@ -24,13 +24,10 @@ export const station: CommandDefinition = {
 
             const stationReport = JSON.parse(body);
 
-            const runwayIdent1 = stationReport.runways.map((runways) => {
-                return runways.ident1;
+            const runwayIdents = stationReport.runways.map((runways) => {
+                return ` ${runways.ident1}/${runways.ident2}, ${runways.length_ft}/${runways.width_ft}`;
             });
 
-            const runwayIdent2 = stationReport.runways.map((runways) => {
-                return runways.ident2;
-            });
 
             msg.channel.send(makeEmbed({
                 title: `Station info | ${stationReport.icao}`,
@@ -40,11 +37,11 @@ export const station: CommandDefinition = {
                     `**Country:** ${stationReport.country}`,
                     `**City:** ${stationReport.city}`,
                     `**Latitude:** ${stationReport.latitude}`,
-                    `**longitude:** ${stationReport.longitude}`,
+                    `**Longitude:** ${stationReport.longitude}`,
+                    `**Elevation_m:** ${stationReport.elevation_m}`,
+                    `**Elevation_ft:** ${stationReport.elevation_ft}`,
                     ,
-                    `**Runways (1):** ${runwayIdent1.toString( )}`,
-                    ,
-                    `**Runways (2):** ${runwayIdent2.toString( )}`,
+                    `**Runways (Ident1/Ident2, Length/Width (ft)):** ${runwayIdents.toString( )}`,
                     ,
                     `**Type:** ${stationReport.type}`,
                     `**Website:** ${stationReport.website}`,
