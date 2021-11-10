@@ -43,7 +43,7 @@ export const station: CommandDefinition = {
                     `**Elevation_ft:** ${stationReport.elevation_ft}`,
                     ,
                     `**Runways (Ident1/Ident2, Length/Width (ft)):**`,
-                    `${runwayIdents.toString( )}`,
+                    `${runwayIdents.toString( ).replace(/,/g,"")}`,
                     ,
                     `**Type:** ${stationReport.type}`,
                     `**Website:** ${stationReport.website}`,
