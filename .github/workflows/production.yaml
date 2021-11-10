@@ -50,6 +50,7 @@ jobs:
       VALUES_FILE: ./charts/discord-bot/environments/production.yaml
       BOT_SECRET: ${{ secrets.PROD_BOT_SECRET }}
       METAR_TOKEN: ${{ secrets.METAR_TOKEN }}
+      STATION_TOKEN: ${{ secrets.STATION_TOKEN }}
     steps:
       - uses: actions/checkout@v1
       - name: Install doctl
