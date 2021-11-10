@@ -25,7 +25,8 @@ export const station: CommandDefinition = {
             const stationReport = JSON.parse(body);
 
             const runwayIdents = stationReport.runways.map((runways) => {
-                return ` ${runways.ident1}/${runways.ident2}, ${runways.length_ft}/${runways.width_ft}`;
+                return `**${runways.ident1}/${runways.ident2}:** ${runways.length_ft} x ${runways.width_ft}
+                `;
             });
 
 
@@ -41,7 +42,8 @@ export const station: CommandDefinition = {
                     `**Elevation_m:** ${stationReport.elevation_m}`,
                     `**Elevation_ft:** ${stationReport.elevation_ft}`,
                     ,
-                    `**Runways (Ident1/Ident2, Length/Width (ft)):** ${runwayIdents.toString( )}`,
+                    `**Runways (Ident1/Ident2, Length/Width (ft)):**`,
+                    `${runwayIdents.toString( )}`,
                     ,
                     `**Type:** ${stationReport.type}`,
                     `**Website:** ${stationReport.website}`,
