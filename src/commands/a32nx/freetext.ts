@@ -8,6 +8,6 @@ export const freetext: CommandDefinition = {
     category: CommandCategory.A32NX,
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'FlyByWire A32NX | Free Text',
-        description: 'Please see our [guide](https://docs.flybywiresim.com/fbw-a32nx/feature-guides/freetext) on how to use the FlyByWire A32NX Free Text feature.',
+        description: 'Please see our [guide](https://docs.flybywiresim.com/fbw-a32nx/feature-guides/freetext/) on how to use the FlyByWire A32NX Free Text feature.',
     })),
 };
