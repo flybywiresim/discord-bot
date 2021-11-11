@@ -134,7 +134,6 @@ const commands: CommandDefinition[] = [
     whened,
     station,
     addon,
-
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
