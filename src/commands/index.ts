@@ -65,6 +65,7 @@ import { shame } from './funnies/shame';
 import { xp } from './funnies/xp';
 import { whened } from './funnies/whened';
 import { station } from './utils/station';
+import { addon } from '.funnies/addon';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -132,6 +133,7 @@ const commands: CommandDefinition[] = [
     xp,
     whened,
     station,
+    addon,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
