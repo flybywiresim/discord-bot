@@ -65,6 +65,7 @@ import { shame } from './funnies/shame';
 import { xp } from './funnies/xp';
 import { whened } from './funnies/whened';
 import { station } from './utils/station';
+import { addon } from './funnies/addon';
 import { freetext } from './a32nx/freetext';
 
 const commands: CommandDefinition[] = [
@@ -133,6 +134,7 @@ const commands: CommandDefinition[] = [
     xp,
     whened,
     station,
+    addon,
     freetext,
 ];
 
