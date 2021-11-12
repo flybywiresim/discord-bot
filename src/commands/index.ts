@@ -93,6 +93,7 @@ const commands: CommandDefinition[] = [
     simversion,
     printer,
     where,
+    welcome,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
