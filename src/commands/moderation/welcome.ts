@@ -3,12 +3,28 @@ import { makeEmbed, makeLines } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 
 const LANDING_IMAGE_URL = 'https://media.discordapp.net/attachments/864493190471352344/893458239411322910/Landing_Center_FB.png?width=1399&height=683';
-const SUPPORT_IMAGE_URL = 'https://cdn.discordapp.com/attachments/770835189419999262/801031098598424576/support-help.png';
-const IMPORTANT_INFO_IMAGE_URL = 'https://cdn.discordapp.com/attachments/770835189419999262/801022890069065768/importantinfo.png';
+const SOCIAL_IMAGE_URL = 'https://cdn.discordapp.com/attachments/825674445342638120/909527268714496000/social_media.png';
+///const SUPPORT_IMAGE_URL = 'https://cdn.discordapp.com/attachments/825674445342638120/909527264218210334/support.png';
+const HELP_IMAGE_URL = 'https://cdn.discordapp.com/attachments/825674445342638120/909527270564167690/help_and_support.png';
+const IMPORTANT_INFO_IMAGE_URL = 'https://cdn.discordapp.com/attachments/825674445342638120/909527271398834226/impt_info.png';
+
+const SOCIAL_EMBED = [
+    makeEmbed({
+        title: '<:Partnered:799926764407226410> FlyByWireSimulations | Socials',
+        description: makeLines([
+            '<:FBW:908733246089596989> <https://www.flybywiresim.com>',
+            '<:Twitter:801000824771182632> <https://twitter.com/FlyByWireSim>',
+            '<:Facebook:801000824703549450> <https://www.facebook.com/FlyByWireSimulations>',
+            '<:YouTube:801000824754405436> <https://www.youtube.com/c/FlyByWireSimulations>',
+            '<:Twitch:801002229213560842> <https://www.twitch.tv/flybywiresimulations>',
+        ])
+    })
+]
+
 
 const IMPORTANT_INFO_EMBED = [
     makeEmbed({
-        title: '<:PARTNERED:801497665917026364> FlyByWireSimulations | Important Info',
+        title: '<:Partnered:799926764407226410> FlyByWireSimulations | Important Info',
         description: 'By being a member of our Discord Server, you agree to the following, and failure to do so can result in removal from the server.',
         fields: [
             {
@@ -25,7 +41,7 @@ const IMPORTANT_INFO_EMBED = [
 
 const HELP_EMBED = [
     makeEmbed({
-        title: '<:PARTNERED:801497665917026364> FlyByWireSimulations | Help and Support',
+        title: '<:Partnered:799926764407226410> FlyByWireSimulations | Help and Support',
         fields: [
             {
                 name: `Documentation`,
@@ -52,9 +68,13 @@ export const welcome: CommandDefinition = {
     executor: async (msg) => {
         await msg.channel.send({ files: [ LANDING_IMAGE_URL  ]});
 
-        await msg.channel.send(`Welcome to the **Official Discord Server** of **FlyByWire Simulations!**\n\nThe A32NX Project is a community-driven open source project to create a free Airbus A320neo in Microsoft Flight Simulator that is as close to reality as possible. It started out as an enhancement project to the default A320neo and is now proceeding as an independent add-on project aiming to bring the FlyByWire A32NX up to payware-level systems depth and functionality, all for free.\n\nWe are also developing an A380 from scratch which will be aiming to produce a high fidelity freeware aircraft.\n\nFeel free to download, test, and share your feedback, or if you are interested in developing, assign your <#751780817772216401>, and get cracking!\n\n**━━[SOCIAL MEDIA]━━**\n<:FBW:766622819382460417> <https://www.flybywiresim.com>\n<:Twitter:801000824771182632> <https://twitter.com/FlyByWireSim>\n<:Facebook:801000824703549450> <https://www.facebook.com/FlyByWireSimulations>\n<:YouTube:801000824754405436> <https://www.youtube.com/c/FlyByWireSimulations>\n<:Twitch:801002229213560842> <https://www.twitch.tv/flybywiresimulations>\n\n**━━[SUPPORT US]━━**\nYou are able to voluntarily support us financially to ensure we are able to cover the costs of servers and developmental resources.\n<https://opencollective.com/flybywire>`);
+        await msg.channel.send('Welcome to the **Official Discord Server** of **FlyByWire Simulations!**\n\nThe A32NX Project is a community-driven open source project to create a free Airbus A320neo in Microsoft Flight Simulator that is as close to reality as possible. It started out as an enhancement project to the default A320neo and is now proceeding as an independent add-on project aiming to bring the FlyByWire A32NX up to payware-level systems depth and functionality, all for free.\n\nWe are also developing an A380 from scratch which will be aiming to produce a high fidelity freeware aircraft.\n\nFeel free to download, test, and share your feedback, or if you are interested in developing, assign your <#751780817772216401>, and get cracking!');
 
-        await msg.channel.send({ files: [ SUPPORT_IMAGE_URL ]});
+        await msg.channel.send({ files: [ SOCIAL_IMAGE_URL ]});
+
+        await msg.channel.send(SOCIAL_EMBED);
+
+        await msg.channel.send({ files: [ HELP_IMAGE_URL ]});
 
         await msg.channel.send(HELP_EMBED);
 
