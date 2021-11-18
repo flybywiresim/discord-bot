@@ -64,6 +64,10 @@ import { pov } from './funnies/pov';
 import { shame } from './funnies/shame';
 import { xp } from './funnies/xp';
 import { whened } from './funnies/whened';
+import { station } from './utils/station';
+import { addon } from './funnies/addon';
+import { freetext } from './a32nx/freetext';
+import { cowsay } from './utils/cowsay';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -130,6 +134,10 @@ const commands: CommandDefinition[] = [
     shame,
     xp,
     whened,
+    station,
+    addon,
+    freetext,
+    cowsay,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
