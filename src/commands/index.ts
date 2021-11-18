@@ -67,6 +67,7 @@ import { whened } from './funnies/whened';
 import { station } from './utils/station';
 import { addon } from './funnies/addon';
 import { freetext } from './a32nx/freetext';
+import { warn } from './moderation/warn';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -136,6 +137,7 @@ const commands: CommandDefinition[] = [
     station,
     addon,
     freetext,
+    warn,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
