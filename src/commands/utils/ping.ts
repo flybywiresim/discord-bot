@@ -6,8 +6,12 @@ export const ping: CommandDefinition = {
     description: 'Send back a message',
     category: CommandCategory.UTILS,
     executor: (msg) => {
-        const contentsWithoutPing = msg.content.replace(/\.ping\s+/, '');
+        const text = msg.content.replace(/\.ping\s*/, '');
 
-        return msg.channel.send(contentsWithoutPing);
+        if (text) {
+            return msg.channel.send(text);
+        }
+
+        return msg.reply('please provide some text.');
     },
 };
