@@ -69,7 +69,7 @@ import { addon } from './funnies/addon';
 import { freetext } from './a32nx/freetext';
 import { cowsay } from './utils/cowsay';
 import { synaptic } from './general/synaptic';
-import { directx12 } from './general/directx12';
+import { directx12 } from './support/directx12';
 
 const commands: CommandDefinition[] = [
     ping,
