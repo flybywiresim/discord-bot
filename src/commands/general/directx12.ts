@@ -12,7 +12,3 @@ export const directx12: CommandDefinition = {
                 + 'This is not a FBW issue and we cannot address it for now - please keep in mind DX12 is officially a "beta feature" and thus should not be used unless you know what you are doing. '
     })),
 };
-
-/*
-Use of DX11 is still recommended for best performance due to an issue with some glass cockpit technologies in the DX12 version of the simulator. This is not an FBW issue and we cannot address it for now - please keep in mind DX12 is officially a "beta feature" and thus should not be used unless you know what you are doing.
-*/
