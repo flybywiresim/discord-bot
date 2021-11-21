@@ -33,10 +33,8 @@ export const versions: CommandDefinition = {
             },
             {
                 name: 'Experimental',
-                value: '> This version is similar to the development version, but contains custom systems still being developed for testing purposes; bugs and Issues are to be expected. '
-                        + '\n> Please read our [Experimental Version Support Page](https://docs.flybywiresim.com/fbw-a32nx/support/exp/) before using this version. '
-                        + '\n> No support will be offered via Discord for Experimental. '
-                        + '\n> Use the installer or [download here](https://api.flybywiresim.com/api/v1/download?url=https://flybywiresim-packages.b-cdn.net/experimental/A32NX-experimental.zip)',
+                value: '> Our custom FMS has now been moved into the development branch and Experimental is now temporarily on hold. Please switch to our development branch to continue using this feature with the latest updates. '
+                        + 'Our [Experimental Version Support Page](https://docs.flybywiresim.com/fbw-a32nx/support/exp/) will be updated when start work on new features in the experimental branch. No support will be offered via Discord. ',
                 inline: false,
             },
         ],
