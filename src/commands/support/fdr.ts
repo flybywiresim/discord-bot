@@ -13,7 +13,7 @@ export const fdr: CommandDefinition = {
             '',
             'In your work folder, you will find the FDR files for the flight you did. You should recognize the correct one by the filename, which is the date of the flight. For a long flight, it might been split into several files.',
             '',
-            'Compress/Zip the files and upload them to a sharing site (e.g. https://www.swisstransfer.com/) as these files are likely to be too large for Discord.',
+            'Compress/Zip the files and upload them to a sharing site (e.g. [Swisstransfer.com](https://www.swisstransfer.com/)) as these files are likely to be too large for Discord.',
             '',
             'Detailed instructions on how to locate your FDR files can be found [here.](https://docs.flybywiresim.com/fbw-a32nx/feature-guides/autopilot-fbw/#work-folder-location)',
             '',
