@@ -11,7 +11,7 @@ export const fdr: CommandDefinition = {
         description: makeLines ([
             'Please send us your FDR (flight data recorder) files for further investigation.',
             '',
-            'In your work folder, you will find the FDR files for the flight you did. You should recognize the correct one by the filename, which is the date of the flight. For a long flight, it might been split into several files.',
+            'In your work folder, you will find the FDR files for the flight you did. You should recognize the correct one by the filename, which is the date of the flight. For a long flight, it might have been split into several files.',
             '',
             'Compress/Zip the files and upload them to a sharing site (e.g. [Swisstransfer.com](https://www.swisstransfer.com/)) as these files are likely to be too large for Discord.',
             '',
