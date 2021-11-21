@@ -69,6 +69,7 @@ import { addon } from './funnies/addon';
 import { freetext } from './a32nx/freetext';
 import { cowsay } from './utils/cowsay';
 import { synaptic } from './general/synaptic';
+import { fdr } from './support/fdr';
 import { discontinuity } from './support/discontinuity';
 
 const commands: CommandDefinition[] = [
@@ -141,6 +142,7 @@ const commands: CommandDefinition[] = [
     freetext,
     cowsay,
     synaptic,
+    fdr,
     discontinuity,
 ];
 
