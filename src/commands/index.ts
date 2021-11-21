@@ -68,6 +68,7 @@ import { station } from './utils/station';
 import { addon } from './funnies/addon';
 import { freetext } from './a32nx/freetext';
 import { cowsay } from './utils/cowsay';
+import { synaptic } from './general/synaptic';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -138,6 +139,7 @@ const commands: CommandDefinition[] = [
     addon,
     freetext,
     cowsay,
+    synaptic,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
