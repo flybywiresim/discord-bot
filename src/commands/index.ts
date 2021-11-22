@@ -72,6 +72,7 @@ import { synaptic } from './general/synaptic';
 import { cfms } from './a32nx/cfms';
 import { fdr } from './support/fdr';
 import { discontinuity } from './support/discontinuity';
+import { tug } from './support/tug';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -146,6 +147,7 @@ const commands: CommandDefinition[] = [
     cfms,
     fdr,
     discontinuity,
+    tug,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
