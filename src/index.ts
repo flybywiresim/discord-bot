@@ -17,6 +17,7 @@ export const DEBUG_MODE = process.env.DEBUG_MODE === 'true';
 
 const app = express();
 const client = new discord.Client();
+export const distube = new DisTube(client, { searchSongs: 5, emitNewSongOnly: false });
 
 let healthy = false;
 

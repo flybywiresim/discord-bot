@@ -13,14 +13,17 @@
   "author": "FlyByWire Simulations",
   "license": "GPLv3",
   "dependencies": {
+    "@discordjs/opus": "github:discordjs/opus",
     "@elastic/ecs-winston-format": "^1.1.0",
+    "cowsay": "^1.5.0",
     "discord.js": "^12.5.3",
     "elastic-apm-node": "^3.17.0",
     "express": "^4.17.1",
+    "ffmpeg": "^0.0.4",
+    "ffmpeg-static": "^4.4.0",
     "moment": "^2.29.1",
     "request": "^2.88.2",
-    "winston": "^3.3.3",
-    "cowsay": "^1.5.0"
+    "winston": "^3.3.3"
   },
   "devDependencies": {
     "@flybywiresim/eslint-config": "^0.1.0",
