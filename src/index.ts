@@ -2,6 +2,7 @@ import { start } from 'elastic-apm-node';
 import dotenv from 'dotenv';
 import express from 'express';
 import discord from 'discord.js';
+import { DisTube } from 'distube'
 import commands from './commands';
 import eventHandlers from './handlers';
 import { makeEmbed } from './lib/embed';
