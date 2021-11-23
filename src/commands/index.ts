@@ -72,7 +72,9 @@ import { synaptic } from './general/synaptic';
 import { cfms } from './a32nx/cfms';
 import { fdr } from './support/fdr';
 import { discontinuity } from './support/discontinuity';
-import { play } from './utils/play';
+import { play } from './music/play';
+import { skip } from './music/skip';
+import { queue } from './music/queue';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -148,6 +150,8 @@ const commands: CommandDefinition[] = [
     fdr,
     discontinuity,
     play,
+    skip,
+    queue,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};

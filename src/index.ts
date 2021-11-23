@@ -2,10 +2,10 @@ import { start } from 'elastic-apm-node';
 import dotenv from 'dotenv';
 import express from 'express';
 import discord from 'discord.js';
-import { DisTube } from 'distube'
+import { DisTube } from 'distube';
 import commands from './commands';
 import eventHandlers from './handlers';
-import { makeEmbed } from './lib/embed';
+import { makeEmbed, makeLines } from './lib/embed';
 import Logger from './lib/logger';
 
 dotenv.config();
@@ -18,7 +18,6 @@ export const DEBUG_MODE = process.env.DEBUG_MODE === 'true';
 
 const app = express();
 const client = new discord.Client();
-export const distube = new DisTube(client, { searchSongs: 5, emitNewSongOnly: false });
 
 let healthy = false;
 
@@ -107,4 +106,25 @@ process.on('SIGTERM', () => {
     app.close(() => {
         Logger.info('Server stopped.');
     });
+});
+
+// Music stuff. Needs to be done here. Most of these are event listeners
+
+export const distube = new DisTube(client, { searchSongs: 5, emitNewSongOnly: true });
+
+distube.on('error', (channel, error) => {
+    Logger.error(error);
+    channel.send('Sorry, an error has been encountered');
+});
+
+distube.on('playSong', (queue, song) => {
+    const songPlaying = makeEmbed({
+        title: `Playing '${song.name} | ${song.formattedDuration}'`,
+        description: `Requested by: ${song.user.tag}`,
+    });
+    queue.textChannel.send(songPlaying);
+});
+distube.on('addSong', (queue, song) => {
+    const songAdded = makeEmbed({ title: `Added '${song.name}' | ${song.formattedDuration} to the queue by ${song.user.tag}` });
+    queue.textChannel.send(songAdded);
 });
