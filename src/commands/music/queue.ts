@@ -6,8 +6,11 @@ import { makeEmbed } from '../../lib/embed';
 export const queue: CommandDefinition = {
     name: ['queue', 'q'],
     description: 'Skips the current song playing and plays the next song in the queue.',
-    category: CommandCategory.UTILS,
+    category: CommandCategory.MUSIC,
     executor: (msg) => {
+        if (!msg.member.voice.channel) {
+            return msg.reply('you must be in a voice channel to use this command!')
+        }
         const queue = distube.getQueue((msg));
         return msg.channel.send(makeEmbed({
             title: 'Current Queue:',

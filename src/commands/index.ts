@@ -75,6 +75,8 @@ import { discontinuity } from './support/discontinuity';
 import { play } from './music/play';
 import { skip } from './music/skip';
 import { queue } from './music/queue';
+import { jump } from './music/jump';
+import { stop } from './music/stop';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -152,6 +154,8 @@ const commands: CommandDefinition[] = [
     play,
     skip,
     queue,
+    jump,
+    stop,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
