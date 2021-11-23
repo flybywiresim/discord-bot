@@ -70,6 +70,11 @@ import { freetext } from './a32nx/freetext';
 import { cowsay } from './utils/cowsay';
 import { synaptic } from './general/synaptic';
 import { directx12 } from './support/directx12';
+import { cfms } from './a32nx/cfms';
+import { fdr } from './support/fdr';
+import { discontinuity } from './support/discontinuity';
+import { navdata } from './support/navdata';
+import { build } from './support/build';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -142,6 +147,11 @@ const commands: CommandDefinition[] = [
     cowsay,
     synaptic,
     directx12,
+    cfms,
+    fdr,
+    discontinuity,
+    navdata,
+    build,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};

@@ -1,5 +1,5 @@
 export enum Colors {
-    FBW_CYAN = '#00C2CB',
+    FBW_CYAN = '#00E0FE',
 }
 
 export enum CommandCategory {
@@ -17,5 +17,5 @@ export enum Channels {
 }
 
 export const UserLogExclude = [
-    '628400349979344919' // StickyBot
-]
+    '628400349979344919', // StickyBot
+];
