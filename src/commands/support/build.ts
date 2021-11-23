@@ -17,7 +17,7 @@ export const build: CommandDefinition = {
             '',
             'Please send the contents of this file.',
             '',
-            'More information can be found [here](https://docs.flybywiresim.com/fbw-a32nx/support/#build-info)',
+            'More information can be found [here.](https://docs.flybywiresim.com/fbw-a32nx/support/#build-info)',
         ]),
     })),
 };
