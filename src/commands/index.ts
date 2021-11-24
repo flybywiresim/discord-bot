@@ -151,7 +151,7 @@ const commands: CommandDefinition[] = [
     directx12,
     cfms,
     fdr,
-    discontinuity,  
+    discontinuity,
     navdata,
     build,
     wheneded,
