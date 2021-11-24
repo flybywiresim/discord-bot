@@ -5,7 +5,7 @@ import { CommandCategory } from '../../constants';
 
 export const tug: CommandDefinition = {
     name: ['tug', 'stuck'],
-    description: 'Help to screenshot for support',
+    description: 'Provides a solution to an issue where the tug fails to disconnect.',
     category: CommandCategory.SUPPORT,
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'FlyByWire Support | How to fix aircraft being stuck',
