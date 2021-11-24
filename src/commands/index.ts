@@ -67,7 +67,7 @@ import { whened } from './funnies/whened';
 import { station } from './utils/station';
 import { addon } from './funnies/addon';
 import { freetext } from './a32nx/freetext';
-import { cowsay } from './utils/cowsay';
+import { cowsay } from './funnies/cowsay';
 import { synaptic } from './general/synaptic';
 import { directx12 } from './support/directx12';
 import { cfms } from './a32nx/cfms';
