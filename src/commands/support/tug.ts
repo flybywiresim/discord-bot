@@ -2,7 +2,6 @@ import { CommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 
-
 export const tug: CommandDefinition = {
     name: ['tug', 'stuck'],
     description: 'Provides a solution to an issue where the tug fails to disconnect.',
