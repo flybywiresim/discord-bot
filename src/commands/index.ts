@@ -75,7 +75,7 @@ import { fdr } from './support/fdr';
 import { discontinuity } from './support/discontinuity';
 import { navdata } from './support/navdata';
 import { build } from './support/build';
-import { wheneded } from './funnies/whended';
+import { wheneded } from './funnies/wheneded';
 
 const commands: CommandDefinition[] = [
     ping,
