@@ -33,8 +33,8 @@ export const versions: CommandDefinition = {
             },
             {
                 name: 'Experimental',
-                value: '> Our custom FMS has now been moved into the development branch and Experimental is now temporarily on hold. Please switch to our development branch to continue using this feature with the latest updates. '
-                        + 'Our [Experimental Version Support Page](https://docs.flybywiresim.com/fbw-a32nx/support/exp/) will be updated when start work on new features in the experimental branch. No support will be offered via Discord. ',
+                value: '> Our custom FMS has been moved into the development branch and Experimental is now temporarily on hold. Please switch to our development branch to continue using this feature with the latest updates. '
+                        + 'Our [Experimental Version Support Page](https://docs.flybywiresim.com/fbw-a32nx/support/exp/) will be updated when we start working on new features in the experimental branch. No support will be offered via Discord. ',
                 inline: false,
             },
         ],
