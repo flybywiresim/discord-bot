@@ -8,7 +8,7 @@ export const tug: CommandDefinition = {
     description: 'Provides a solution to an issue where the tug fails to disconnect.',
     category: CommandCategory.SUPPORT,
     executor: (msg) => msg.channel.send(makeEmbed({
-        title: 'FlyByWire Support | How to fix aircraft being stuck',
+        title: 'FlyByWire Support | My Aircraft is Stuck!',
         description: makeLines([
             'Make sure you do not have the "NW STRG DISC" message on the upper ECAM display. '
            + 'If you do, please press "Shift" + "P" on your keyboard to disconnect the invisible pushback tug.',
