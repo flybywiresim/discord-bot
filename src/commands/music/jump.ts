@@ -11,6 +11,11 @@ export const jump: CommandDefinition = {
             return msg.reply('you must be in a voice channel to use this command!')
         }
         const args = msg.content.replace(/.jump\s+/, ' ').split(' ');
+
+        if (args.length <= 1) {
+            await msg.reply('Please provide a song number to skip to!');
+            return Promise.resolve();
+        }
         const jumpNum = parseInt(args[1]) - 1;
         await distube.jump(msg, jumpNum);
     },
