@@ -18,16 +18,14 @@ export const metar: CommandDefinition = {
         request({
             method: 'GET',
             url: `https://avwx.rest/api/metar/${icaoArg}`,
-            headers: {
-                Authorization: process.env.METAR_TOKEN },
+            headers: { Authorization: process.env.METAR_TOKEN },
         }, (error, response, body) => {
             const metarReport = JSON.parse(body);
             msg.channel.send(makeEmbed({
                 title: `METAR Report | ${metarReport.station}`,
                 description: makeLines([
                     '**Raw Report**',
-                    metarReport.raw,
-                    ,
+                    metarReport.raw,,
                     '**Basic Report:**',
                     `**Time Observed:** ${metarReport.time.dt}`,
                     `**Station:** ${metarReport.station}`,

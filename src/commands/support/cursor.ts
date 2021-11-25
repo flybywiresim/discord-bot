@@ -9,10 +9,8 @@ export const cursor: CommandDefinition = {
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'FlyByWire A32NX | EFB Focus',
         description: makeLines([
-            'In certain situations, if you have selected an input field on the EFB and changed your view away from the EFB, you may no longer have use of your mouse cursor.',
-            ,
-            'Please follow the steps below to bypass this issue:',
-            ,
+            'In certain situations, if you have selected an input field on the EFB and changed your view away from the EFB, you may no longer have use of your mouse cursor.',,
+            'Please follow the steps below to bypass this issue:',,
             '1. Open your browser (i.e. Chrome / Firefox)',
             '2. In the URL field type in - `localhost:19999`',
             '3. Click on any link',
@@ -20,6 +18,6 @@ export const cursor: CommandDefinition = {
             '5. At the bottom type in - `Coherent.call(\'UNFOCUS_INPUT_FIELD\')`',
             '6. Press `enter`',
         ]),
-            footer: { text: 'Affected versions: Stable, Development' },
+        footer: { text: 'Affected versions: Stable, Development' },
     })),
 };

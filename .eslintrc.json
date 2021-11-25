@@ -30,6 +30,8 @@
     ],
     // overrides airbnb, use sparingly
     "rules": {
+        "max-len": "off",
+        "no-sparse-arrays": "off",
         "object-curly-newline": ["error", { "multiline": true }]
     }
 }

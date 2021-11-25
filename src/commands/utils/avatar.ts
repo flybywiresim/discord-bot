@@ -8,11 +8,10 @@ export const avatar: CommandDefinition = {
     category: CommandCategory.UTILS,
     executor: (msg) => {
         const user = msg.mentions.users.first() || msg.author;
-        user.displayAvatarURL({ dynamic: true })
+        user.displayAvatarURL({ dynamic: true });
         return msg.channel.send(makeEmbed({
             title: `${user.tag}'s Avatar`,
             image: { url: user.displayAvatarURL({ dynamic: true, size: 4096 }) },
         }));
     },
 };
-

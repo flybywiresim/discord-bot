@@ -7,5 +7,5 @@ export const xp: CommandDefinition = {
     name: ['xp', 'XPlane', 'X-Plane'],
     description: 'Just... no!',
     category: CommandCategory.FUNNIES,
-    executor: (msg) => msg.channel.send( XP_URL ),
+    executor: (msg) => msg.channel.send(XP_URL),
 };

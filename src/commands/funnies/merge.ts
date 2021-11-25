@@ -7,5 +7,5 @@ export const merge: CommandDefinition = {
     name: ['merge', 'git merge'],
     description: 'GIT MERGE!',
     category: CommandCategory.FUNNIES,
-    executor: (msg) => msg.channel.send( MERGE_URL ),
+    executor: (msg) => msg.channel.send(MERGE_URL),
 };

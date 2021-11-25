@@ -8,9 +8,8 @@ export const willithave: CommandDefinition = {
     category: CommandCategory.GENERAL,
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'Will the aircraft have [FEATURE]?',
-        description: makeLines(['The FBW rule of thumb is:',
-                ,
-                'If it\'s in the real aircraft, it\'ll be there.',
+        description: makeLines(['The FBW rule of thumb is:',,
+            'If it\'s in the real aircraft, it\'ll be there.',
         ]),
     })),
 };

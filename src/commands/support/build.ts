@@ -8,7 +8,7 @@ export const build: CommandDefinition = {
     category: CommandCategory.SUPPORT,
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'FlyByWire Support | Build Info',
-        description: makeLines ([
+        description: makeLines([
             'Please send us your build info!',
             '',
             'Navigate to your Community folder and open the following A32NX file with Notepad:',

@@ -18,17 +18,11 @@ export const station: CommandDefinition = {
         request({
             method: 'GET',
             url: `https://avwx.rest/api/station/${icaoArg}`,
-            headers: {
-                Authorization: process.env.STATION_TOKEN },
+            headers: { Authorization: process.env.STATION_TOKEN },
         }, (error, response, body) => {
-
             const stationReport = JSON.parse(body);
 
-            const runwayIdents = stationReport.runways.map((runways) => {
-                return `**${runways.ident1}/${runways.ident2}:** ${runways.length_ft}ft x ${runways.width_ft}ft
-`;
-            });
-
+            const runwayIdents = stationReport.runways.map((runways) => `**${runways.ident1}/${runways.ident2}:** ${runways.length_ft}ft x ${runways.width_ft}ft\n`);
 
             msg.channel.send(makeEmbed({
                 title: `Station info | ${stationReport.icao}`,
@@ -39,19 +33,15 @@ export const station: CommandDefinition = {
                     `**City:** ${stationReport.city}`,
                     `**Latitude:** ${stationReport.latitude}`,
                     `**Longitude:** ${stationReport.longitude}`,
-                    `**Elevation:** ${stationReport.elevation_m}m/${stationReport.elevation_ft}ft`,
-                    ,
-                    `**Runways (Ident1/Ident2: Length x Width):**`,
-                    `${runwayIdents.toString( ).replace(/,/g,"")}`,
-                    `**Type:** ${stationReport.type.replace(/_/g," ")}`,
+                    `**Elevation:** ${stationReport.elevation_m}m/${stationReport.elevation_ft}ft`,,
+                    '**Runways (Ident1/Ident2: Length x Width):**',
+                    `${runwayIdents.toString().replace(/,/g, '')}`,
+                    `**Type:** ${stationReport.type.replace(/_/g, ' ')}`,
                     `**Website:** ${stationReport.website}`,
                     `**Wiki:** ${stationReport.wiki}`,
                 ]),
-                footer: { text: 'Due to limitations of the API, not all links may be up to date at all times.' }
+                footer: { text: 'Due to limitations of the API, not all links may be up to date at all times.' },
             }));
         });
     },
 };
-
-
-

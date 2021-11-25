@@ -14,6 +14,6 @@ export const tug: CommandDefinition = {
             'If you do, please press "Shift" + "P" on your keyboard to disconnect the invisible pushback tug.',
             '',
             'Please read our guide [here](https://docs.flybywiresim.com/fbw-a32nx/support/reported-issues/#nose-wheel-steering-locked-nw-strg-disc) for more information. ',
-        ]), 
+        ]),
     })),
 };

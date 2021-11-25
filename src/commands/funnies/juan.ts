@@ -7,5 +7,5 @@ export const juan: CommandDefinition = {
     name: 'juan',
     description: 'just... Jaun',
     category: CommandCategory.FUNNIES,
-    executor: (msg) => msg.channel.send( JAUN_URL ),
+    executor: (msg) => msg.channel.send(JAUN_URL),
 };

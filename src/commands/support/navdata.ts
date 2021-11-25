@@ -10,7 +10,7 @@ export const navdata: CommandDefinition = {
     category: CommandCategory.SUPPORT,
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'FlyByWire Support | Navigraph Navdata',
-        description: makeLines ([
+        description: makeLines([
             'Please remove, and reinstall your navdata with the Navigraph tool.',
         ]),
         image: { url: NAVDATA_URL },

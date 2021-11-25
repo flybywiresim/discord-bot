@@ -1,5 +1,5 @@
-import {CommandDefinition} from '../../lib/command';
-import {CommandCategory} from '../../constants';
+import { CommandDefinition } from '../../lib/command';
+import { CommandCategory } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 
 export const liveries: CommandDefinition = {

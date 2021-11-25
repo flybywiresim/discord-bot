@@ -7,5 +7,5 @@ export const defaultmeme: CommandDefinition = {
     name: 'default',
     description: 'O_o',
     category: CommandCategory.FUNNIES,
-    executor: (msg) => msg.channel.send( DEFAULT_URL ),
+    executor: (msg) => msg.channel.send(DEFAULT_URL),
 };

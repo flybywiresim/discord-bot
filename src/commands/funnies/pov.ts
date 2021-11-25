@@ -7,5 +7,5 @@ export const pov: CommandDefinition = {
     name: 'pov',
     description: 'Oof',
     category: CommandCategory.FUNNIES,
-    executor: (msg) => msg.channel.send( POV_URL ),
+    executor: (msg) => msg.channel.send(POV_URL),
 };

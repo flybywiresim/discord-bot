@@ -7,5 +7,5 @@ export const poggers: CommandDefinition = {
     name: 'poggers',
     description: 'POG',
     category: CommandCategory.FUNNIES,
-    executor: (msg) => msg.channel.send( POGGERS_URL ),
+    executor: (msg) => msg.channel.send(POGGERS_URL),
 };

@@ -13,7 +13,7 @@ export const screenshot: CommandDefinition = {
         description: makeLines([
             'Position yourself in the cockpit using the arrow keys to look straight at the front instrument panel. '
            + 'Then use the Windows Snipping Tool to take a clear screenshot of all screens and the FCU as shown.',
-             'Please read the guide [here](https://docs.flybywiresim.com/fbw-a32nx/support/#screenshot-of-cockpit) for more information. ',
+            'Please read the guide [here](https://docs.flybywiresim.com/fbw-a32nx/support/#screenshot-of-cockpit) for more information. ',
         ]),
         image: { url: SCREENSHOT_HELP_URL },
     })),

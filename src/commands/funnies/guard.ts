@@ -7,5 +7,5 @@ export const guard: CommandDefinition = {
     name: 'guard',
     description: 'MEOW!',
     category: CommandCategory.FUNNIES,
-    executor: (msg) => msg.channel.send( GUARD_URL ),
+    executor: (msg) => msg.channel.send(GUARD_URL),
 };

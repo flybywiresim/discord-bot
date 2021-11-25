@@ -7,5 +7,5 @@ export const p3d: CommandDefinition = {
     name: ['p3d', 'P3D'],
     description: 'No!',
     category: CommandCategory.FUNNIES,
-    executor: (msg) => msg.channel.send( P3D_URL ),
+    executor: (msg) => msg.channel.send(P3D_URL),
 };

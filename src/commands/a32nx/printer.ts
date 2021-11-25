@@ -11,4 +11,3 @@ export const printer: CommandDefinition = {
         description: 'Please watch our video tutorial on how to use the FlyByWire A32NX printer [here.](https://www.youtube.com/watch?v=i3ughyFtnCM)',
     })),
 };
-

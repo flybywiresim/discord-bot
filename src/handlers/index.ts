@@ -5,5 +5,5 @@ import { messageUpdated } from './messageupdate';
 export default [
     userBanned,
     messageDeleted,
-    messageUpdated
+    messageUpdated,
 ];

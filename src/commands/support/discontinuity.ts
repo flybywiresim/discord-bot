@@ -8,7 +8,7 @@ export const discontinuity: CommandDefinition = {
     category: CommandCategory.A32NX,
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'FlyByWire A32NX | Discontinuity',
-        description: makeLines ([
+        description: makeLines([
             'Please see our [documentation](https://docs.flybywiresim.com/pilots-corner/beginner-guide/preparing-mcdu/#discontinuity) for information on what to do with a discontinuity in your flight plan.',
         ]),
     })),
