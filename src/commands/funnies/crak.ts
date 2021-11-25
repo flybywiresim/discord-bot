@@ -2,11 +2,11 @@ import { CommandDefinition } from '../../lib/command';
 import { makeEmbed } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 
-const BORATORIUM_URL = 'https://media.discordapp.net/attachments/649309879575511063/913550403814166558/crak.png?width=840&height=203';
+const CRAK_URL = 'https://media.discordapp.net/attachments/649309879575511063/913550403814166558/crak.png?width=840&height=203';
 
 export const crak: CommandDefinition = {
     name: 'crak',
     description: "What's your sim version?",
     category: CommandCategory.FUNNIES,
-    executor: (msg) => msg.channel.send(makeEmbed({ image: { url: BORATORIUM_URL } })),
+    executor: (msg) => msg.channel.send(makeEmbed({ image: { url: CRAK_URL } })),
 };
