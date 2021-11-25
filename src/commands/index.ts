@@ -77,6 +77,7 @@ import { navdata } from './support/navdata';
 import { build } from './support/build';
 import { wheneded } from './funnies/wheneded';
 import { tug } from './support/tug';
+import { crak } from './funnies/crak';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -156,6 +157,7 @@ const commands: CommandDefinition[] = [
     build,
     wheneded,
     tug,
+    crak,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
