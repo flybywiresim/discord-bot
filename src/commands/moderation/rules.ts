@@ -12,7 +12,7 @@ const RULES_EMBED = [
 const FAQ_EMBED = [
     makeEmbed({
         title: '<:question:759405702044975114> Frequently Asked Questions',
-        description: 'Check the <#759405702044975114> for the answers to your questions prior to asking in the channels below, post your question in the appropriate channel.',
+        description: 'Check the <#751774575464939580> for the answers to your questions prior to asking in the channels below, post your question in the appropriate channel.',
     }),
 ];
 
@@ -49,7 +49,7 @@ const DISCUSSION_EMBED = [
 const ROLE_EMBED = [
     makeEmbed({
         title: '<:person_raising_hand:759405708994281493> Role Assignment',
-        description: 'We want as many people to use their vast experience and knowledge to help us create a highly detailed addon. If you have skills in Documentation, Modelling and/or Programming, please assign your <#759405708994281493> and get started with the conversation to help us develop the addon, verification of these roles will be required to access the organiser.',
+        description: 'We encourage people to use their vast experience and knowledge to help us create a highly detailed addon. If you have skills in Documentation, Modelling and/or Programming, please assign your <#751780817772216401> and get started with the conversation to help us develop the addon, verification of these roles will be required to access the organiser.',
     }),
 ];
 
