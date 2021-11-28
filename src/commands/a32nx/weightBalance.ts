@@ -3,7 +3,7 @@ import { makeEmbed, makeLines } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 
 export const weightBalance: CommandDefinition = {
-    name: ['weights', 'fuel', 'wb', 'w/b', 'w+b'],
+    name: ['weights', 'fuel', 'wb', 'w/b', 'w+b', 'wnb', 'w&b'],
     category: CommandCategory.A32NX,
     description: 'Provides a link to the fuel and weights docs guide.',
     executor: (msg) => msg.channel.send(makeEmbed({
