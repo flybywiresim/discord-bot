@@ -78,6 +78,7 @@ import { build } from './support/build';
 import { wheneded } from './funnies/wheneded';
 import { tug } from './support/tug';
 import { crak } from './funnies/crak';
+import { weightBalance } from './a32nx/weightBalance';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -158,6 +159,7 @@ const commands: CommandDefinition[] = [
     wheneded,
     tug,
     crak,
+    weightBalance,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
