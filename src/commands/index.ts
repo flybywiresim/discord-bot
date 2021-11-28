@@ -78,6 +78,7 @@ import { build } from './support/build';
 import { wheneded } from './funnies/wheneded';
 import { tug } from './support/tug';
 import { crak } from './funnies/crak';
+import { rules } from './moderation/rules';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -158,6 +159,7 @@ const commands: CommandDefinition[] = [
     wheneded,
     tug,
     crak,
+    rules,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
