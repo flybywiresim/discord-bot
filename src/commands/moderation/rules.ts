@@ -5,7 +5,11 @@ import { CommandCategory } from '../../constants';
 const RULES_EMBED = [
     makeEmbed({
         title: 'FlyByWire Simulations Server Rules',
-        description: 'Below are the rules you must follow to participate in this discord server. Failure to abide by these rules could result in a removal from the server.',
+        description: makeLines([
+            'Below are the rules you must follow to participate in this discord server. Failure to abide by these rules could result in a removal from the server. Mute/ban evasions will result in a permanent ban.',
+            '',
+            'The <@&739187150909866137> reserve the right to action at discretion.',
+        ]),
     }),
 ];
 
@@ -42,6 +46,10 @@ const DISCUSSION_EMBED = [
             '- If you have a message, please post it in the appropriate channel',
             '- Send your message once; do not repeat messages',
             '- Do not send malicious or illegal content',
+            '- No troll messaging',
+            '- No general spam',
+            '- Do not send multiple unsolicited DM\'s',
+            '- Inappropriate/offensive profile information/picture will not be tolerated',
         ]),
     }),
 ];
