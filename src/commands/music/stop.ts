@@ -8,7 +8,7 @@ export const stop: CommandDefinition = {
     category: CommandCategory.MUSIC,
     executor: (msg) => {
         if (!msg.member.voice.channel) {
-            return msg.reply('you must be in a voice channel to use this command!')
+            return msg.reply('you must be in a voice channel to use this command!');
         }
         distube.stop(msg);
     },

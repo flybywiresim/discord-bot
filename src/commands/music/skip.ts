@@ -8,7 +8,7 @@ export const skip: CommandDefinition = {
     category: CommandCategory.MUSIC,
     executor: (msg) => {
         if (!msg.member.voice.channel) {
-            return msg.reply('you must be in a voice channel to use this command!')
+            return msg.reply('you must be in a voice channel to use this command!');
         }
         distube.skip(msg.channel.send('Skipped to the next song!'));
     },
