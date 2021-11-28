@@ -17,7 +17,7 @@ import { membercount } from './utils/membercount';
 import { installer } from './general/installer';
 import { roleinfo } from './utils/roleinfo';
 import { adirs } from './a32nx/adirs';
-import { installererror } from './support/installererror';
+import { logs } from './support/logs';
 import { reportedissues } from './support/reportedissues';
 import { autopilot } from './a32nx/autopilot';
 import { checklist } from './a32nx/checklist';
@@ -42,9 +42,42 @@ import { community } from './support/community';
 import { roadmap } from './general/roadmap';
 import { clean } from './support/clean-install';
 import { liveries } from './a32nx/liveries';
-import { simversion} from './support/simversion';
+import { simversion } from './support/simversion';
 import { printer } from './a32nx/printer';
 import { where } from './support/where';
+import { ctrl_e } from './a32nx/ctrl_e';
+import { weather } from './a32nx/weather';
+import { metar } from './utils/metar';
+import { qa } from './general/qa';
+import { ptu } from './funnies/ptu';
+import { cursor } from './support/cursor';
+import { avatar } from './utils/avatar';
+import { coffee } from './funnies/coffee';
+import { defaultmeme } from './funnies/default';
+import { guard } from './funnies/guard';
+import { juan } from './funnies/juan';
+import { merge } from './funnies/merge';
+import { otter } from './funnies/otter';
+import { p3d } from './funnies/p3d';
+import { poggers } from './funnies/poggers';
+import { pov } from './funnies/pov';
+import { shame } from './funnies/shame';
+import { xp } from './funnies/xp';
+import { whened } from './funnies/whened';
+import { station } from './utils/station';
+import { addon } from './funnies/addon';
+import { freetext } from './a32nx/freetext';
+import { cowsay } from './funnies/cowsay';
+import { synaptic } from './general/synaptic';
+import { directx12 } from './support/directx12';
+import { cfms } from './a32nx/cfms';
+import { fdr } from './support/fdr';
+import { discontinuity } from './support/discontinuity';
+import { navdata } from './support/navdata';
+import { build } from './support/build';
+import { wheneded } from './funnies/wheneded';
+import { tug } from './support/tug';
+import { crak } from './funnies/crak';
 import { welcome } from './moderation/welcome';
 
 const commands: CommandDefinition[] = [
@@ -65,7 +98,7 @@ const commands: CommandDefinition[] = [
     installer,
     roleinfo,
     adirs,
-    installererror,
+    logs,
     reportedissues,
     autopilot,
     checklist,
@@ -93,6 +126,39 @@ const commands: CommandDefinition[] = [
     simversion,
     printer,
     where,
+    ctrl_e,
+    weather,
+    metar,
+    qa,
+    ptu,
+    cursor,
+    avatar,
+    coffee,
+    defaultmeme,
+    guard,
+    juan,
+    merge,
+    otter,
+    p3d,
+    poggers,
+    pov,
+    shame,
+    xp,
+    whened,
+    station,
+    addon,
+    freetext,
+    cowsay,
+    synaptic,
+    directx12,
+    cfms,
+    fdr,
+    discontinuity,
+    navdata,
+    build,
+    wheneded,
+    tug,
+    crak,
     welcome,
 ];
 

@@ -6,7 +6,7 @@ const ROADMAP_URL = 'https://cdn.discordapp.com/attachments/740722295009706034/8
 
 export const roadmap: CommandDefinition = {
     name: ['roadmap', 'goals'],
-    category: CommandCategory.FBW,
+    category: CommandCategory.GENERAL,
     description: 'FBW Roadmap',
     executor: (msg) => msg.channel.send(makeEmbed({ image: { url: ROADMAP_URL } })),
 };

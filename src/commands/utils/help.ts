@@ -1,6 +1,6 @@
 import { DMChannel, EmbedFieldData, User } from 'discord.js';
 import { CommandDefinition } from '../../lib/command';
-import { makeEmbed } from '../../lib/embed';
+import { makeEmbed, makeLines } from '../../lib/embed';
 import commands from '../index';
 import { CommandCategory } from '../../constants';
 import Logger from '../../lib/logger';
@@ -8,23 +8,82 @@ import Logger from '../../lib/logger';
 export const help: CommandDefinition = {
     name: 'help',
     description: 'Sends a list of available commands to the user',
-    category: CommandCategory.PUBLIC,
-    executor: (msg) => msg.author.createDM()
-        .then(async (dmChannel) => {
+    category: CommandCategory.UTILS,
+    executor: async (msg) => {
+        const { author } = msg;
+
+        const embed = makeEmbed({
+            title: 'FlyByWire Simulations | Help',
+            description: makeLines([
+                'Would you like to:',
+                '1. Receive a list of the available commands as a DM',
+                '2. Receive a link with a list of the available commands/changelog on our docs site ',
+            ]),
+        });
+
+        // Decide between DM or docs link
+        const selectorMsg = await msg.reply(embed);
+
+        try {
             await msg.delete();
+        } catch (e) {
+            Logger.debug('Message was already deleted');
+        }
 
-            const response = await msg.reply('I\'ve DM\'d you with the list of the commands you can use!');
-            setTimeout(() => {
-                response.delete();
-            }, 4_000);
+        const reactionFilter = (reaction, user) => ['1️⃣', '2️⃣'].includes(reaction.emoji.name) && user.id === author.id;
+        selectorMsg.awaitReactions(reactionFilter, {
+            max: 1,
+            time: 60000,
+            errors: ['time'],
+        })
+            .then(async (collected) => {
+                const reaction = collected.first();
 
-            // Catch all errors to prevent leaking DM activity to public error embeds
-            try {
-                await handleDmCommunication(dmChannel, msg.author);
-            } catch (e) {
-                Logger.error(e);
-            }
-        }),
+                switch (reaction.emoji.name) {
+                case '1️⃣':
+                    // Slide into the DMs
+                    author.createDM()
+                        .then(async (dmChannel) => {
+                            const response = await selectorMsg.channel.send('<@' + msg.author.id + '>, I\'ve DM\'d you with the list of the commands you can use!');
+                            await selectorMsg.delete();
+
+                            setTimeout(() => {
+                                response.delete();
+                            }, 4_000);
+
+                            // Catch all errors to prevent leaking DM activity to public error embeds
+                            try {
+                                await handleDmCommunication(dmChannel, author);
+                            } catch (e) {
+                                Logger.error(e);
+                            }
+                        });
+
+                    break;
+                case '2️⃣':
+                    const embed = makeEmbed({
+                        title: 'FlyByWire Simulations | Discord Bot Documentation',
+                        description: 'https://docs.flybywiresim.com/discord-bot/',
+                    });
+
+                    await selectorMsg.reply(embed);
+
+                    // Delete the selector
+                    await selectorMsg.delete();
+                    break;
+                default:
+                    // Unknown reaction -> ignore
+                    break;
+                }
+            })
+            .catch(async () => {
+                await selectorMsg.delete();
+            });
+
+        // Send reactions after listener has been set up
+        await selectorMsg.react('1️⃣');
+        await selectorMsg.react('2️⃣');
+    },
 };
 
 async function handleDmCommunication(dmChannel: DMChannel, author: User, index: number = 0) {

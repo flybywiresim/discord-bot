@@ -5,7 +5,7 @@ import { makeEmbed, makeLines } from '../../lib/embed';
 export const willithave: CommandDefinition = {
     name: ['thumb', 'willithave'],
     description: 'Answers the big question, will it have FEATURE?',
-    category: CommandCategory.FBW,
+    category: CommandCategory.GENERAL,
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'Will the aircraft have [FEATURE]?',
         description: makeLines(['The FBW rule of thumb is:',

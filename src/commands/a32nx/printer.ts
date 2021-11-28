@@ -5,11 +5,10 @@ import { makeEmbed } from '../../lib/embed';
 export const printer: CommandDefinition = {
     name: 'printer',
     description: 'Provides a link to the FlyByWire printer tutorial video',
-    category: CommandCategory.FBW,
+    category: CommandCategory.A32NX,
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'FlyByWire A32NX | How do I use the printer?',
         description: 'Please watch our video tutorial on how to use the FlyByWire A32NX printer [here.](https://www.youtube.com/watch?v=i3ughyFtnCM)',
-        footer: { text: 'Warning: Using the printer may cause a crash to desktop. This issue occurs randomly and we are currently looking for ways to reproduce and resolve it.'}
     })),
 };
 

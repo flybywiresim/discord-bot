@@ -11,6 +11,8 @@ fullnameOverride: ""
 
 bot:
   secret: change_me
+  metarToken: change_me
+  stationToken: change_me
 
 serviceAccount:
   # Specifies whether a service account should be created

@@ -5,7 +5,7 @@ import { makeEmbed } from '../../lib/embed';
 export const trythis: CommandDefinition = {
     name: 'trythis',
     description: 'Provide basic troubleshooting steps',
-    category: CommandCategory.FBW,
+    category: CommandCategory.SUPPORT,
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'Try This',
         description: 'Please try and remove all other mods/liveries from the community folder and test our addon again. This will help rule out mod conflicts.',
