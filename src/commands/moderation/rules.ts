@@ -49,7 +49,7 @@ const DISCUSSION_EMBED = [
 const ROLE_EMBED = [
     makeEmbed({
         title: '<:person_raising_hand:759405708994281493> Role Assignment',
-        description: 'We encourage people to use their vast experience and knowledge to help us create a highly detailed addon. If you have skills in Documentation, Modelling and/or Programming, please assign your <#751780817772216401> and get started with the conversation to help us develop the addon, verification of these roles will be required to access the organiser.',
+        description: 'We encourage people to use their vast experience and knowledge to help us create a highly detailed addon. If you have skills in Documentation, Modelling and/or Programming, please assign your <#751780817772216401> and get started with the conversation to help us develop the addon.',
     }),
 ];
 
