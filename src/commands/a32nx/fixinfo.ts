@@ -11,7 +11,7 @@ export const fixinfo: CommandDefinition = {
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'FlyByWire A32NX | Fix Info',
         description: makeLines([
-            'The A320 comes with a feature called fix info, which allows you to create radiuses and radials around a waypoint.',
+            'The A320 comes with a feature called fix info, which allows you to create radii and radials around a waypoint.',
             '',
             '**To access the fix info page:**',
             ' - Go to the MCDU FPLN page,',
