@@ -18,7 +18,7 @@ export const fixinfo: CommandDefinition = {
             ' - Select the left LSK of the top most waypoint,',
             ' - Select the fix info page at the top right.',
             '',
-            'Check out our [docs](https://docs.flybywiresim.com/fbw-a32nx/feature-guides/fixinfo/?h=fix+info) for more information on this feature.',
+            'Check out our [docs](https://docs.flybywiresim.com/fbw-a32nx/feature-guides/fixinfo/) for more information on this feature.',
         ]),
         image: { url: FIX_INFO_URL },
         footer: { text: 'Please Note: The computed intercept waypoints and ABEAM functionality are not yet implemented.' },
