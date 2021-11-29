@@ -2,7 +2,7 @@ import { CommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 
-const FIX_INFO_URL = 'https://docs.flybywiresim.com/fbw-a32nx/assets/fixinfo/nd-orl-fixinfo2.png';
+const FIX_INFO_URL = 'https://cdn.discordapp.com/attachments/630529130189946882/914959833709563905/nd-orl-fixinfo2.png';
 
 export const fixinfo: CommandDefinition = {
     name: 'fixinfo',
