@@ -2,7 +2,7 @@ import { CommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 
-const LANDING_IMAGE_URL = 'https://cdn.discordapp.com/attachments/825674445342638120/915621529876844544/discord_banner.png';
+const HEADER_IMAGE_URL = 'https://cdn.discordapp.com/attachments/825674445342638120/916820978900824084/discord_banner.png';
 const SOCIAL_IMAGE_URL = 'https://cdn.discordapp.com/attachments/825674445342638120/909527268714496000/social_media.png';
 const SUPPORT_IMAGE_URL = 'https://cdn.discordapp.com/attachments/825674445342638120/909527264218210334/support.png';
 const HELP_IMAGE_URL = 'https://cdn.discordapp.com/attachments/825674445342638120/909527270564167690/help_and_support.png';
@@ -76,7 +76,7 @@ export const welcome: CommandDefinition = {
     requiredPermissions: ['BAN_MEMBERS'],
     category: CommandCategory.MODERATION,
     executor: async (msg) => {
-        await msg.channel.send({ files: [ LANDING_IMAGE_URL  ]});
+        await msg.channel.send({ files: [ HEADER_IMAGE_URL  ]});
 
         await msg.channel.send('Welcome to the **Official Discord Server** of **FlyByWire Simulations!**\n\nThe A32NX Project is a community-driven open source project to create a free Airbus A320neo in Microsoft Flight Simulator that is as close to reality as possible. It started out as an enhancement project to the default A320neo and is now proceeding as an independent add-on project aiming to bring the FlyByWire A32NX up to payware-level systems depth and functionality, all for free.\n\nWe are also developing an A380 from scratch which will be aiming to produce a high fidelity freeware aircraft.\n\nFeel free to download, test, and share your feedback, or if you are interested in developing, assign your <#751780817772216401>, and get cracking!');
 
