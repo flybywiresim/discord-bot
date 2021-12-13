@@ -63,7 +63,6 @@ import { poggers } from './funnies/poggers';
 import { pov } from './funnies/pov';
 import { shame } from './funnies/shame';
 import { xp } from './funnies/xp';
-import { whened } from './funnies/whened';
 import { station } from './utils/station';
 import { addon } from './funnies/addon';
 import { freetext } from './a32nx/freetext';
@@ -75,9 +74,11 @@ import { fdr } from './support/fdr';
 import { discontinuity } from './support/discontinuity';
 import { navdata } from './support/navdata';
 import { build } from './support/build';
-import { wheneded } from './funnies/wheneded';
 import { tug } from './support/tug';
 import { crak } from './funnies/crak';
+import { weightBalance } from './a32nx/weightBalance';
+import { rules } from './moderation/rules';
+import { fixinfo } from './a32nx/fixinfo';
 import { welcome } from './moderation/welcome';
 
 const commands: CommandDefinition[] = [
@@ -144,7 +145,6 @@ const commands: CommandDefinition[] = [
     pov,
     shame,
     xp,
-    whened,
     station,
     addon,
     freetext,
@@ -156,9 +156,11 @@ const commands: CommandDefinition[] = [
     discontinuity,
     navdata,
     build,
-    wheneded,
     tug,
     crak,
+    weightBalance,
+    rules,
+    fixinfo,
     welcome,
 ];
 
