@@ -2,7 +2,7 @@ import { CommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 
-const CHECKLIST_URL = '/assets/images/a32nx/A32NX_checklist.png';
+const CHECKLIST_URL = 'https://cdn.discordapp.com/attachments/909840276770680832/920038887840157746/Checklist.png';
 
 export const checklist: CommandDefinition = {
     name: 'checklist',
