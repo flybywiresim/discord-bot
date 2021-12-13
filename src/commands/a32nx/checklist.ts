@@ -2,7 +2,7 @@ import { CommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 
-const CHECKLIST_URL = 'https://cdn.discordapp.com/attachments/770835189419999262/813173873264033812/Screenshot_306.png';
+const CHECKLIST_URL = 'https://cdn.discordapp.com/attachments/909840276770680832/920038887840157746/Checklist.png';
 
 export const checklist: CommandDefinition = {
     name: 'checklist',
@@ -10,9 +10,9 @@ export const checklist: CommandDefinition = {
     category: CommandCategory.A32NX,
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'FlyByWire A32NX | Checklist',
-        url: 'https://github.com/flybywiresim/a32nx/files/6526794/FBW_A32NX_CHECKLIST_V1.2.pdf',
+        url: 'https://github.com/flybywiresim/manuals/raw/master/pdf/A32NX%20Documentation/FBW%20A32NX%20Checklist.pdf',
         description: makeLines([
-            'Click the title for a better quality picture',
+            'Click the title to download as a PDF',
         ]),
         image: { url: CHECKLIST_URL },
     })),
