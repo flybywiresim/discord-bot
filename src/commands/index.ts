@@ -79,6 +79,7 @@ import { crak } from './funnies/crak';
 import { weightBalance } from './a32nx/weightBalance';
 import { rules } from './moderation/rules';
 import { fixinfo } from './a32nx/fixinfo';
+import { welcome } from './moderation/welcome';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -160,6 +161,7 @@ const commands: CommandDefinition[] = [
     weightBalance,
     rules,
     fixinfo,
+    welcome,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
