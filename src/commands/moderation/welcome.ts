@@ -12,11 +12,11 @@ const SOCIAL_EMBED = [
     makeEmbed({
         title: '<:Partnered:799926764407226410> FlyByWireSimulations | Socials',
         description: makeLines([
-            '<:FBW:908733246089596989> <https://www.flybywiresim.com>',
-            '<:Twitter:801000824771182632> <https://twitter.com/FlyByWireSim>',
-            '<:Facebook:801000824703549450> <https://www.facebook.com/FlyByWireSimulations>',
-            '<:YouTube:801000824754405436> <https://www.youtube.com/c/FlyByWireSimulations>',
-            '<:Twitch:801002229213560842> <https://www.twitch.tv/flybywiresimulations>',
+            '<:FBW:909557440482250782> <https://www.flybywiresim.com>',
+            '<:Twitter:909556629341634580> <https://twitter.com/FlyByWireSim>',
+            '<:Facebook:909556629291303022> <https://www.facebook.com/FlyByWireSimulations>',
+            '<:Youtube:909556629396156416> <https://www.youtube.com/c/FlyByWireSimulations>',
+            '<:Twitch:909556629270315088> <https://www.twitch.tv/flybywiresimulations>',
         ])
     })
 ]
@@ -59,7 +59,7 @@ const HELP_EMBED = [
             },
             {
                 name: `FAQ`,
-                value: "Always check <#751774575464939580>, <#771435594445226005>, and our documentation site to see if your question has already been answered. If not head over to #support for assistance. \n",
+                value: "Always check <#751774575464939580>, <#771435594445226005>, and our documentation site to see if your question has already been answered. If not head over to <#785976111875751956> for assistance. \n",
             },
             {
                 name: `Flight School`,
