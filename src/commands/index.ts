@@ -80,6 +80,7 @@ import { weightBalance } from './a32nx/weightBalance';
 import { rules } from './moderation/rules';
 import { fixinfo } from './a32nx/fixinfo';
 import { welcome } from './moderation/welcome';
+import { sop } from './a32nx/sop';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -162,6 +163,7 @@ const commands: CommandDefinition[] = [
     rules,
     fixinfo,
     welcome,
+    sop,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
