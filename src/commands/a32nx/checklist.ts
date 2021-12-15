@@ -2,7 +2,7 @@ import { CommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 
-const CHECKLIST_URL = 'https://cdn.discordapp.com/attachments/909840276770680832/920038887840157746/Checklist.png';
+const CHECKLIST_IMAGE_URL = 'https://cdn.discordapp.com/attachments/909840276770680832/920038887840157746/Checklist.png';
 
 export const checklist: CommandDefinition = {
     name: 'checklist',
@@ -14,6 +14,6 @@ export const checklist: CommandDefinition = {
         description: makeLines([
             'Click the title to download as a PDF',
         ]),
-        image: { url: CHECKLIST_URL },
+        image: { url: CHECKLIST_IMAGE_URL },
     })),
 };
