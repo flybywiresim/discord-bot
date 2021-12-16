@@ -81,6 +81,7 @@ import { rules } from './moderation/rules';
 import { fixinfo } from './a32nx/fixinfo';
 import { welcome } from './moderation/welcome';
 import { sop } from './a32nx/sop';
+import { goldenrules } from './general/goldenrules';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -164,6 +165,7 @@ const commands: CommandDefinition[] = [
     fixinfo,
     welcome,
     sop,
+    goldenrules,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
