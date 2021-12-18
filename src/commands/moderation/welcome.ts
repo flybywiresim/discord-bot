@@ -34,7 +34,7 @@ const SUPPORT_EMBED = [
 
 const IMPORTANT_INFO_EMBED = [
     makeEmbed({
-        title: '<:Partnered:921524619406635050> FlyByWireSimulations | Important Info',
+        title: '<:Partnered:921520970123059231> FlyByWireSimulations | Important Info',
         description: 'By being a member of our Discord Server, you agree to the following, and failure to do so can result in removal from the server.',
         fields: [
             {
