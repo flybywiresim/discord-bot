@@ -14,7 +14,7 @@ const SOCIAL_EMBED = [
         description: makeLines([
             '<:FBW:921521552699310141> <https://www.flybywiresim.com>',
             '<:Twitter:921521552942571601> <https://twitter.com/FlyByWireSim>',
-            '<:Facebook:921524619406635050> <https://www.facebook.com/FlyByWireSimulations>',
+            '<:Facebook:921521552984539146> <https://www.facebook.com/FlyByWireSimulations>',
             '<:Youtube:921524619406635050> <https://www.youtube.com/c/FlyByWireSimulations>',
             '<:Twitch:921524619406635050> <https://www.twitch.tv/flybywiresimulations>',
         ])
