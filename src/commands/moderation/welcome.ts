@@ -23,7 +23,7 @@ const SOCIAL_EMBED = [
 
 const SUPPORT_EMBED = [
     makeEmbed({
-        title: '<:Partnered:921524619406635050> FlyByWireSimulations | Support Us',
+        title: '<:Partnered:921520970123059231> FlyByWireSimulations | Support Us',
         description: makeLines([
             'You are able to voluntarily support us financially to ensure we are able to cover the costs of servers and developmental resources.',
             '',
