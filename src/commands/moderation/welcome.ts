@@ -16,7 +16,7 @@ const SOCIAL_EMBED = [
             '<:Twitter:921521552942571601> <https://twitter.com/FlyByWireSim>',
             '<:Facebook:921521552984539146> <https://www.facebook.com/FlyByWireSimulations>',
             '<:Youtube:921521552829329488> <https://www.youtube.com/c/FlyByWireSimulations>',
-            '<:Twitch:921524619406635050> <https://www.twitch.tv/flybywiresimulations>',
+            '<:Twitch:921521552623804506> <https://www.twitch.tv/flybywiresimulations>',
         ])
     })
 ]
