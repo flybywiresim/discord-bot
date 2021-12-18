@@ -10,7 +10,7 @@ const IMPORTANT_INFO_IMAGE_URL = 'https://cdn.discordapp.com/attachments/8256744
 
 const SOCIAL_EMBED = [
     makeEmbed({
-        title: '<:Partnered:921524619406635050> FlyByWireSimulations | Socials',
+        title: '<:Partnered:921520970123059231> FlyByWireSimulations | Socials',
         description: makeLines([
             '<:FBW:921524619406635050> <https://www.flybywiresim.com>',
             '<:Twitter:921524619406635050> <https://twitter.com/FlyByWireSim>',
