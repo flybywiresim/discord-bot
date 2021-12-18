@@ -51,7 +51,7 @@ const IMPORTANT_INFO_EMBED = [
 
 const HELP_EMBED = [
     makeEmbed({
-        title: '<:Partnered:921524619406635050> FlyByWireSimulations | Help and Support',
+        title: '<:Partnered:921520970123059231> FlyByWireSimulations | Help and Support',
         fields: [
             {
                 name: `Documentation`,
