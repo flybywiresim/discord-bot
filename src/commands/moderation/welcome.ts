@@ -12,7 +12,7 @@ const SOCIAL_EMBED = [
     makeEmbed({
         title: '<:Partnered:921520970123059231> FlyByWireSimulations | Socials',
         description: makeLines([
-            '<:FBW:921524619406635050> <https://www.flybywiresim.com>',
+            '<:FBW:921521552699310141> <https://www.flybywiresim.com>',
             '<:Twitter:921524619406635050> <https://twitter.com/FlyByWireSim>',
             '<:Facebook:921524619406635050> <https://www.facebook.com/FlyByWireSimulations>',
             '<:Youtube:921524619406635050> <https://www.youtube.com/c/FlyByWireSimulations>',
