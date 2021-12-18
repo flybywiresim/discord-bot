@@ -10,20 +10,20 @@ const IMPORTANT_INFO_IMAGE_URL = 'https://cdn.discordapp.com/attachments/8256744
 
 const SOCIAL_EMBED = [
     makeEmbed({
-        title: '<:Partnered:799926764407226410> FlyByWireSimulations | Socials',
+        title: '<:Partnered:921524619406635050> FlyByWireSimulations | Socials',
         description: makeLines([
-            '<:FBW:909557440482250782> <https://www.flybywiresim.com>',
-            '<:Twitter:909556629341634580> <https://twitter.com/FlyByWireSim>',
-            '<:Facebook:909556629291303022> <https://www.facebook.com/FlyByWireSimulations>',
-            '<:Youtube:909556629396156416> <https://www.youtube.com/c/FlyByWireSimulations>',
-            '<:Twitch:909556629270315088> <https://www.twitch.tv/flybywiresimulations>',
+            '<:FBW:921524619406635050> <https://www.flybywiresim.com>',
+            '<:Twitter:921524619406635050> <https://twitter.com/FlyByWireSim>',
+            '<:Facebook:921524619406635050> <https://www.facebook.com/FlyByWireSimulations>',
+            '<:Youtube:921524619406635050> <https://www.youtube.com/c/FlyByWireSimulations>',
+            '<:Twitch:921524619406635050> <https://www.twitch.tv/flybywiresimulations>',
         ])
     })
 ]
 
 const SUPPORT_EMBED = [
     makeEmbed({
-        title: '<:Partnered:799926764407226410> FlyByWireSimulations | Support Us',
+        title: '<:Partnered:921524619406635050> FlyByWireSimulations | Support Us',
         description: makeLines([
             'You are able to voluntarily support us financially to ensure we are able to cover the costs of servers and developmental resources.',
             '',
@@ -34,7 +34,7 @@ const SUPPORT_EMBED = [
 
 const IMPORTANT_INFO_EMBED = [
     makeEmbed({
-        title: '<:Partnered:799926764407226410> FlyByWireSimulations | Important Info',
+        title: '<:Partnered:921524619406635050> FlyByWireSimulations | Important Info',
         description: 'By being a member of our Discord Server, you agree to the following, and failure to do so can result in removal from the server.',
         fields: [
             {
@@ -51,7 +51,7 @@ const IMPORTANT_INFO_EMBED = [
 
 const HELP_EMBED = [
     makeEmbed({
-        title: '<:Partnered:799926764407226410> FlyByWireSimulations | Help and Support',
+        title: '<:Partnered:921524619406635050> FlyByWireSimulations | Help and Support',
         fields: [
             {
                 name: `Documentation`,

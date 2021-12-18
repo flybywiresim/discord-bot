@@ -56,7 +56,7 @@ const embeds = [
         fields: [
             {
                 name: `Docs FAQ`,
-                value: "> https://docs.flybywiresim.com/fbw-a32nx/support/faq/\n ",
+                value: "> https://docs.flybywiresim.com/fbw-a32nx/faq/\n ",
             },
             {
                 name: `Beginner Guide`,
