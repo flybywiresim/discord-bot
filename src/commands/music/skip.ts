@@ -10,6 +10,6 @@ export const skip: CommandDefinition = {
         if (!msg.member.voice.channel) {
             return msg.reply('you must be in a voice channel to use this command!');
         }
-        distube.skip(msg.channel.send('Skipped to the next song!'));
+        return distube.skip(msg);
     },
 };

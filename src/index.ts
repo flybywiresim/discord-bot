@@ -110,7 +110,7 @@ process.on('SIGTERM', () => {
 
 // Music stuff. Needs to be done here. Most of these are event listeners
 
-export const distube = new DisTube(client, { searchSongs: 5, emitNewSongOnly: true });
+export const distube = new DisTube(client, { searchSongs: 5, emitNewSongOnly: true, leaveOnStop: false, leaveOnEmpty: true, emptyCooldown: 25 });
 
 distube.on('error', (channel, error) => {
     Logger.error(error);
@@ -128,3 +128,7 @@ distube.on('addSong', (queue, song) => {
     const songAdded = makeEmbed({ title: `Added '${song.name}' | ${song.formattedDuration} to the queue by ${song.user.tag}` });
     queue.textChannel.send(songAdded);
 });
+
+distube.on('empty', (queue) => {
+    queue.textChannel.send('Channel is empty. Leaving the channel');
+})
