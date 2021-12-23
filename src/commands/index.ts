@@ -63,15 +63,28 @@ import { poggers } from './funnies/poggers';
 import { pov } from './funnies/pov';
 import { shame } from './funnies/shame';
 import { xp } from './funnies/xp';
-import { whened } from './funnies/whened';
 import { station } from './utils/station';
 import { addon } from './funnies/addon';
 import { freetext } from './a32nx/freetext';
-import { cowsay } from './utils/cowsay';
+import { cowsay } from './funnies/cowsay';
 import { synaptic } from './general/synaptic';
+import { directx12 } from './support/directx12';
 import { cfms } from './a32nx/cfms';
 import { fdr } from './support/fdr';
 import { discontinuity } from './support/discontinuity';
+import { navdata } from './support/navdata';
+import { build } from './support/build';
+import { tug } from './support/tug';
+import { crak } from './funnies/crak';
+import { weightBalance } from './a32nx/weightBalance';
+import { rules } from './moderation/rules';
+import { fixinfo } from './a32nx/fixinfo';
+import { welcome } from './moderation/welcome';
+import { sop } from './a32nx/sop';
+import { goldenrules } from './general/goldenrules';
+import { fridge } from './funnies/fridge';
+import { tiller } from './a32nx/tiller';
+import { assistance } from './a32nx/assistance';
 import { play } from './music/play';
 import { skip } from './music/skip';
 import { queue } from './music/queue';
@@ -142,15 +155,28 @@ const commands: CommandDefinition[] = [
     pov,
     shame,
     xp,
-    whened,
     station,
     addon,
     freetext,
     cowsay,
     synaptic,
+    directx12,
     cfms,
     fdr,
     discontinuity,
+    navdata,
+    build,
+    tug,
+    crak,
+    weightBalance,
+    rules,
+    fixinfo,
+    welcome,
+    sop,
+    goldenrules,
+    fridge,
+    tiller,
+    assistance,
     play,
     skip,
     queue,

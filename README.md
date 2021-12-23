@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/flybywiresim/fbw-branding/master/svg/FBW-Logo.svg" width="400"/>
+<img src="https://cdn.discordapp.com/attachments/825674445342638120/917103096813981706/FbwTextLogo-16X-DarkBg.png" width="400"/>
 
 [![GitHub latest release version](https://img.shields.io/github/v/release/flybywiresim/a32nx.svg?style=flat)](https://github.com/flybywiresim/a32nx/releases/latest)
 [![Github All Releases download count](https://img.shields.io/github/downloads/flybywiresim/a32nx/total.svg?style=flat)](https://github.com/flybywiresim/a32nx/releases/latest)
@@ -18,7 +18,7 @@ This is the repository for the FlyByWire Simulations Discord bot.
 
 * Please use clear names for your PR's and commands
 * Check [here](https://github.com/flybywiresim/discord-bot/issues/8) to see a list of wanted commands that you may want to work on, or check the #discord-bot channel in the Discord Server
-* Once you have created your PR, send a message in the #discord-bot channel. You can also comment [here](https://github.com/flybywiresim/discord-bot/issues/8), or message BenW#8484 on discord and it will be added to the tracking issue. This helps contributors see who is working on what
+* Once you have created your PR, send a message in the #discord-bot channel. You can also comment [here](https://github.com/flybywiresim/discord-bot/issues/8), or message BenW#8484 or NUT#2123 on discord and it will be added to the tracking issue. This helps contributors see who is working on what
 
 ## Contributing
 

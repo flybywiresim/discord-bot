@@ -46,7 +46,7 @@ const embeds = [
             },
             {
                 name: `I am a real life Aero Engineer, GA, A320 or A380 Pilot, or Cabin Crew. Where do I get my role?`,
-                value: "> You simply DM <@540637101302087703> or <@206276286782504960> with proof of your job!\n ",
+                value: "> You simply DM one of the <@&739187150909866137> with proof of your job!\n ",
             },
 
         ],
@@ -56,7 +56,7 @@ const embeds = [
         fields: [
             {
                 name: `Docs FAQ`,
-                value: "> https://docs.flybywiresim.com/fbw-a32nx/support/faq/\n ",
+                value: "> https://docs.flybywiresim.com/fbw-a32nx/faq/\n ",
             },
             {
                 name: `Beginner Guide`,
