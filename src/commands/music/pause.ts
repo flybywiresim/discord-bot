@@ -2,15 +2,19 @@ import { distube } from '../../index';
 import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 
-export const stop: CommandDefinition = {
-    name: 'stop',
-    description: 'Stops the music and leaves the voice channel.',
+export const pause: CommandDefinition = {
+    name: 'pause',
+    description: 'Pauses the current song',
     category: CommandCategory.MUSIC,
     executor: (msg) => {
         if (!msg.member.voice.channel) {
             return msg.reply('you must be in a voice channel to use this command!');
         }
-        distube.stop(msg);
+        const queue = distube.getQueue((msg));
+        if (queue.playing === false) {
+            return msg.channel.send('The song is already paused!')
+        }
+        distube.pause(msg);
     },
 };
 

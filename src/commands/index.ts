@@ -89,7 +89,8 @@ import { play } from './music/play';
 import { skip } from './music/skip';
 import { queue } from './music/queue';
 import { jump } from './music/jump';
-import { stop } from './music/stop';
+import { pause } from './music/pause';
+import { resume } from './music/resume';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -181,7 +182,8 @@ const commands: CommandDefinition[] = [
     skip,
     queue,
     jump,
-    stop,
+    pause,
+    resume,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};

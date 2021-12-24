@@ -11,6 +11,11 @@ export const play: CommandDefinition = {
             return msg.reply('you must be in a voice channel to use this command!')
         }
         const args = msg.content.replace(/.play\s+/, ' ').split(' ');
+
+        if (args.length <= 1) {
+            await msg.reply('Please provide a song to be played!');
+            return Promise.resolve();
+        }
         await distube.play(msg, args.join(' '));
     },
 };

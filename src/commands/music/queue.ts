@@ -9,9 +9,14 @@ export const queue: CommandDefinition = {
     category: CommandCategory.MUSIC,
     executor: (msg) => {
         if (!msg.member.voice.channel) {
-            return msg.reply('you must be in a voice channel to use this command!')
+            return msg.reply('you must be in a voice channel to use this command!');
         }
         const queue = distube.getQueue((msg));
+
+        if (!queue) {
+            return msg.channel.send('There is no queue!');
+        }
+
         return msg.channel.send(makeEmbed({
             title: 'Current Queue:',
             description: queue.songs.map((song, id) => `**${id + 1}**. [${song.name}](${song.url}) - ${song.formattedDuration} | Requested by ${song.user.tag}`).join('\n').toString(),
