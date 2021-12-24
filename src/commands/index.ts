@@ -85,6 +85,7 @@ import { goldenrules } from './general/goldenrules';
 import { fridge } from './funnies/fridge';
 import { tiller } from './a32nx/tiller';
 import { assistance } from './a32nx/assistance';
+import { ctd } from './support/ctd';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -172,6 +173,7 @@ const commands: CommandDefinition[] = [
     fridge,
     tiller,
     assistance,
+    ctd
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
