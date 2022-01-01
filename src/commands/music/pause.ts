@@ -24,5 +24,5 @@ const songRequestChannel: TextChannel = msg.guild.channels.cache.get(Channels.SO
         if (!msg.member.voice.channel) {
             return msg.reply('you must be in a voice channel to use this command!')
         } if (msg.channel !== songRequestChannel) {
-            return;
+            return msg.reply('You must be in <#SONG_REQUESTS> to use this command');
         } */
