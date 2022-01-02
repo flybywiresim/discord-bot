@@ -87,6 +87,7 @@ import { tiller } from './a32nx/tiller';
 import { assistance } from './a32nx/assistance';
 import { ctd } from './support/ctd';
 import { hud } from './support/hud';
+import { fms } from './funnies/fms';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -175,7 +176,8 @@ const commands: CommandDefinition[] = [
     tiller,
     assistance,
     ctd,
-    hud
+    hud,
+    fms,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
