@@ -88,6 +88,7 @@ import { assistance } from './a32nx/assistance';
 import { ctd } from './support/ctd';
 import { hud } from './support/hud';
 import { fms } from './funnies/fms';
+import { mcdu } from './a32nx/mcdu';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -178,6 +179,7 @@ const commands: CommandDefinition[] = [
     ctd,
     hud,
     fms,
+    mcdu,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
