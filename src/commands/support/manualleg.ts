@@ -7,7 +7,7 @@ const MANUAL_URL = 'https://cdn.discordapp.com/attachments/785976111875751956/92
 export const manualleg: CommandDefinition = {
     name: ['manualleg','vm'],
     description: 'Displays image about manual waypoints',
-    category: CommandCategory.A32NX,
+    category: CommandCategory.SUPPORT,
     executor: (msg) => msg.channel.send(makeEmbed({ 
         title: 'FlyByWire Support | Manual Leg Diagram',
         image: { url: MANUAL_URL },
