@@ -8,5 +8,7 @@ export const manual: CommandDefinition = {
     name: 'manual',
     description: 'Displays image about manual waypoints',
     category: CommandCategory.A32NX,
-    executor: (msg) => msg.channel.send(makeEmbed({ image: { url: MANUAL_URL } })),
+    executor: (msg) => msg.channel.send(makeEmbed({ 
+        title: 'FlyByWire Support | Manual Leg Diagram',
+        image: { url: MANUAL_URL } })),
 };
