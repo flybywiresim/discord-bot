@@ -12,6 +12,6 @@ export const takeoffPerf: CommandDefinition = {
         '', 
         'While there are many online calculators available, these often use A320ceo data, and are not accurate.' ,
         '', 
-       'This unfortunately means that we cannot provide a reliable and accurate takeoff performance calculator at this time.']),
+        'This unfortunately means that we cannot provide a reliable and accurate takeoff performance calculator at this time.']),
     })),
 };
