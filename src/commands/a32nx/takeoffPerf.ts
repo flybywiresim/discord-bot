@@ -8,11 +8,11 @@ export const takeoffPerf: CommandDefinition = {
     category: CommandCategory.A32NX,
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'Where is the takeoff calculator?',
-        description: makeLines(['Currently, Airbus does not publicly release takeoff performance data for the A320neo, which means it is impossible to create an accurate takeoff calculator.', 
+        description: makeLines(['Currently, Airbus does not publicly release takeoff performance data for the A320neo, which means it is difficult to create an accurate takeoff calculator.', 
         ' ', 
         'While there are many online calculators available, these often use A320ceo data, and are not accurate.'
         , 
        ' ', 
-       'This unfortunately means that we cannot provide a reliable and accurate takeoff performance calculator for the A32NX until Airbus releases the data, or we find another way.']),
+       'This unfortunately means that we cannot provide a reliable and accurate takeoff performance calculator at this time.']),
     })),
 };
