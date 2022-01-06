@@ -4,7 +4,7 @@ import { makeEmbed, makeLines } from '../../lib/embed';
 
 export const takeoffPerf: CommandDefinition = {
     name: ['takeoff', 'calculator', 'perf'],
-    description: 'Provides an explaination as to why there is no takeoff calculator for V-speeds or FLEX.',
+    description: 'Provides an explanation as to why there is no takeoff calculator for V-speeds or FLEX.',
     category: CommandCategory.A32NX,
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'FlyByWire A32NX | Where is the takeoff calculator?',
