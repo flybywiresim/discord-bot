@@ -12,6 +12,7 @@ export const takeoffPerf: CommandDefinition = {
         , 
         'While there are many online calculators available, these often use A320ceo data, and are not accurate.'
         , 
-        , 'This unfortunately means that we cannot provide a reliable and accurate takeoff performance calculator for the A32NX until Airbus releases the data, or we find another way.']),
+       ' ', 
+       'This unfortunately means that we cannot provide a reliable and accurate takeoff performance calculator for the A32NX until Airbus releases the data, or we find another way.']),
     })),
 };
