@@ -87,6 +87,8 @@ client.on('message', async (msg) => {
     }
 });
 
+const fs = require('fs');
+
 const eventHandlers = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
 
 for (const handler of eventHandlers) {
