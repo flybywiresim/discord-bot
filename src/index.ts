@@ -1,9 +1,9 @@
 import { start } from 'elastic-apm-node';
 import dotenv from 'dotenv';
 import express from 'express';
-import Discord from 'discord.js';
+import Discord, {Intents} from 'discord.js';
 import commands from './commands';
-import eventHandlers from './handlers';
+
 import { makeEmbed } from './lib/embed';
 import Logger from './lib/logger';
 
@@ -18,7 +18,7 @@ export const DEBUG_MODE = process.env.DEBUG_MODE === 'true';
 const app = express();
 const client = new Discord.Client({
     intents: [
-        
+        Intents.FLAGS.GUILDS,
     ]
 });
 
@@ -35,7 +35,7 @@ client.on('disconnect', () => {
 });
 
 client.on('message', async (msg) => {
-    const isDm = msg.channel.type === 'dm';
+    const isDm = msg.channel.type === 'DM';
     const guildId = !isDm ? msg.guild.id : 'DM';
 
     Logger.debug(`Processing message ${msg.id} from user ${msg.author.id} in channel ${msg.channel.id} of server ${guildId}.`);
@@ -86,6 +86,8 @@ client.on('message', async (msg) => {
         transaction.end();
     }
 });
+
+const eventHandlers = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
 
 for (const handler of eventHandlers) {
     client.on(handler.event, handler.executor);
