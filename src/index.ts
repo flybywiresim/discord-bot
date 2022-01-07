@@ -59,7 +59,8 @@ client.on('message', async (msg) => {
 
             const commandsArray = Array.isArray(name) ? name : [name];
 
-            if (!requiredPermissions || requiredPermissions.every((permission) => msg.guild.member(msg.author).hasPermission(permission))) {
+            // @ts-ignore
+            if (!requiredPermissions || requiredPermissions.every((permission) => msg.guild.members(msg.author).hasPermission(permission))) {
                 if (commandsArray.includes(usedCommand)) {
                     try {
                         await executor(msg, client);
@@ -69,7 +70,7 @@ client.on('message', async (msg) => {
                         const error_embed = makeEmbed({
                             color: 'RED',
                             title: 'Error while Executing Command',
-                            description: DEBUG_MODE ? `\`\`\`\n${stack}\`\`\`` : `\`\`\`\n${name}: ${message}\n\`\`\``,
+                            description: DEBUG_MODE ? `\`\`\`D\n${stack}\`\`\`` : `\`\`\`\n${name}: ${message}\n\`\`\``,
                         });
 
                         await msg.channel.send({embeds: [error_embed]});
