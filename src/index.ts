@@ -66,11 +66,14 @@ client.on('message', async (msg) => {
                         transaction.result = 'success';
                     } catch ({ name, message, stack }) {
                         Logger.error({ name, message, stack });
-                        await msg.channel.send(makeEmbed({
+                        const error_embed = makeEmbed({
                             color: 'RED',
                             title: 'Error while Executing Command',
                             description: DEBUG_MODE ? `\`\`\`\n${stack}\`\`\`` : `\`\`\`\n${name}: ${message}\n\`\`\``,
-                        }));
+                        });
+
+                        await msg.channel.send({embeds: [error_embed]});
+
                         transaction.result = 'error';
                     }
 
