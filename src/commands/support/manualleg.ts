@@ -1,15 +1,18 @@
 import { CommandDefinition } from '../../lib/command';
-import { makeEmbed } from '../../lib/embed';
+import { makeEmbed, makeLines } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 
 const MANUAL_URL = 'https://cdn.discordapp.com/attachments/752801628347957248/929071827752480839/mcdu-discontinuity-manual-conceptual.png';
 
 export const manualleg: CommandDefinition = {
     name: ['manualleg','vm'],
-    description: 'Displays image about manual waypoints',
+    description: 'Displays image and links to docs about manual waypoints',
     category: CommandCategory.SUPPORT,
     executor: (msg) => msg.channel.send(makeEmbed({ 
-        title: 'FlyByWire Support | Manual Leg Diagram',
+        title: 'FlyByWire Support | Manual Leg',
         image: { url: MANUAL_URL },
+        description : makeLines ([
+            'Please see our [documentation](https://docs.flybywiresim.com/pilots-corner/advanced-guides/flight-planning/disco/?h=manual#discontinuities-after-manual-leg) for information on how to deal with a manual leg in your flight plan.'
+        ]),
      })),
 };
