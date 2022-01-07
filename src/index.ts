@@ -1,7 +1,7 @@
 import { start } from 'elastic-apm-node';
 import dotenv from 'dotenv';
 import express from 'express';
-import discord from 'discord.js';
+import Discord from 'discord.js';
 import commands from './commands';
 import eventHandlers from './handlers';
 import { makeEmbed } from './lib/embed';
@@ -16,7 +16,11 @@ const apm = start({
 export const DEBUG_MODE = process.env.DEBUG_MODE === 'true';
 
 const app = express();
-const client = new discord.Client();
+const client = new Discord.Client({
+    intents: [
+        
+    ]
+});
 
 let healthy = false;
 
