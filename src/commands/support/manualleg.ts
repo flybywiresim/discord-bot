@@ -6,7 +6,7 @@ const MANUAL_URL = 'https://cdn.discordapp.com/attachments/752801628347957248/92
 const DISCON_DOCS_URL = 'https://docs.flybywiresim.com/pilots-corner/advanced-guides/flight-planning/disco/?h=manual#discontinuities-after-manual-leg'
 
 export const manualleg: CommandDefinition = {
-    name: ['manualleg','vm'],
+    name: ['manualleg', 'vm'],
     description: 'Displays image and links to docs about manual waypoints',
     category: CommandCategory.SUPPORT,
     executor: (msg) => msg.channel.send(makeEmbed({
