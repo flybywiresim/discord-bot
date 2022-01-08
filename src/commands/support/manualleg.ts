@@ -11,7 +11,7 @@ export const manualleg: CommandDefinition = {
     category: CommandCategory.SUPPORT,
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'FlyByWire Support | Manual Leg',
-        image: { url: MANUAL_URL },
+        image: { url: MANUAL_LEG_IMAGE_URL },
         description : makeLines ([
             `Please see our [documentation](${DISCON_DOCS_URL}) for information on how to deal with a manual leg in your flight plan.`
         ]),
