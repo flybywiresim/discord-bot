@@ -3,7 +3,6 @@ import dotenv from 'dotenv';
 import express from 'express';
 import Discord, {Intents} from 'discord.js';
 import commands from './commands';
-
 import { makeEmbed } from './lib/embed';
 import Logger from './lib/logger';
 
@@ -59,8 +58,7 @@ client.on('message', async (msg) => {
 
             const commandsArray = Array.isArray(name) ? name : [name];
 
-            // @ts-ignore
-            if (!requiredPermissions || requiredPermissions.every((permission) => msg.guild.members(msg.author).hasPermission(permission))) {
+            if (!requiredPermissions || requiredPermissions.every((permission) => msg.guild.member(msg.author).hasPermission(permission))) {
                 if (commandsArray.includes(usedCommand)) {
                     try {
                         await executor(msg, client);
