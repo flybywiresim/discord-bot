@@ -17,7 +17,7 @@ export const messageDeleted: EventHandlerDefinition<[Message]> = {
 
         if (!UserLogExclude.some((e) => e === message.author.id) && userLogsChannel !== null) {
 
-             const messageDeleteEmbed = (makeEmbed({
+             const messageDeleteEmbed = makeEmbed({
                 color: 'RED',
                 thumbnail: { url: 'https://cdn.discordapp.com/attachments/770835189419999262/779946282373873694/150-1509174_deleted-message-icon-sign-hd-png-download.png' },
                 author: {
@@ -30,7 +30,7 @@ export const messageDeleted: EventHandlerDefinition<[Message]> = {
                     { name: 'Deleted Message', value: message.content ? `\`\`\`${message.content}\`\`\`` : FEATURE_NOT_AVAIL, inline: false },
                 ],
                 footer: { text: `User ID: ${message.author.id}` },
-            }));
+            });
             await userLogsChannel.send({embeds: [messageDeleteEmbed]});
         }
     },
