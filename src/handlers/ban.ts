@@ -15,7 +15,7 @@ export const userBanned: EventHandlerDefinition<[Guild, BotBanUser]> = {
         setTimeout(async () => {
             const modLogsChannel = guild.channels.resolve(Channels.MOD_LOGS) as TextChannel;
 
-            modLogsChannel.send(makeEmbed({
+            const banLogEmbed = makeEmbed({
                 color: 'RED',
                 author: {
                     name: `[BANNED] ${user.tag}`,
@@ -23,11 +23,14 @@ export const userBanned: EventHandlerDefinition<[Guild, BotBanUser]> = {
                 },
                 fields: [
                     { name: 'Member', value: user.tag, inline: true },
-                    { name: 'Moderator', value: user.banModerator ?? FEATURE_NOT_AVAIL, inline: true },
+                    { name: 'Moderator', value: '\'${user.banModerator ?? FEATURE_NOT_AVAIL}\'', inline: true },
                     { name: 'Reason', value: `\`${user.banReason ?? FEATURE_NOT_AVAIL}\``, inline: false },
                 ],
                 footer: { text: `User ID: ${user.id}` },
-            }));
+            });
+
+            await modLogsChannel.send({embeds: [banLogEmbed]});
+
         }, 1_000);
     },
 };
