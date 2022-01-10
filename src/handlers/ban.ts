@@ -23,7 +23,7 @@ export const userBanned: EventHandlerDefinition<[Guild, BotBanUser]> = {
                 },
                 fields: [
                     { name: 'Member', value: user.tag, inline: true },
-                    { name: 'Moderator', value: '\'${user.banModerator ?? FEATURE_NOT_AVAIL}\'', inline: true },
+                    { name: 'Moderator', value: `\`${user.banModerator ?? FEATURE_NOT_AVAIL}\``, inline: true },
                     { name: 'Reason', value: `\`${user.banReason ?? FEATURE_NOT_AVAIL}\``, inline: false },
                 ],
                 footer: { text: `User ID: ${user.id}` },
