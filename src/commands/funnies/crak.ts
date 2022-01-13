@@ -6,7 +6,10 @@ const CRAK_URL = 'https://media.discordapp.net/attachments/649309879575511063/91
 
 export const crak: CommandDefinition = {
     name: 'crak',
-    description: "What's your sim version?",
+    description: 'What\'s your sim version?',
     category: CommandCategory.FUNNIES,
-    executor: (msg) => msg.channel.send(makeEmbed({ image: { url: CRAK_URL } })),
+    executor: async (msg) => {
+        const crakEmbed = makeEmbed({ image: { url: CRAK_URL } });
+        msg.channel.send({ embeds: [crakEmbed] });
+    },
 };
