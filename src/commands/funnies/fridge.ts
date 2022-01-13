@@ -8,5 +8,8 @@ export const fridge: CommandDefinition = {
     name: 'fridge',
     description: 'fridge',
     category: CommandCategory.FUNNIES,
-    executor: (msg) => msg.channel.send(makeEmbed({ image: { url: FRIDGE_URL } })),
+    executor: async (msg) => {
+        const fridgeEmbed = makeEmbed({ image: { url: FRIDGE_URL } });
+        msg.channel.send({ embeds: [fridgeEmbed] });
+    },
 };
