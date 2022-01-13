@@ -9,7 +9,6 @@ export const adirs: CommandDefinition = {
     description: 'Display help with ADIRS alignment',
     category: CommandCategory.A32NX,
     executor: async (msg) => {
-
         const adirsEmbed = makeEmbed({
             title: 'FlyByWire A32NX | ADIRS align',
             description: makeLines([
