@@ -8,8 +8,8 @@ export const defaultmeme: CommandDefinition = {
     name: 'default',
     description: 'O_o',
     category: CommandCategory.FUNNIES,
-    executor: async (msg) => {
+    executor: (msg) => {
         const defaultEmbed = makeEmbed({ image: { url: DEFAULT_URL } });
-        msg.channel.send({ embeds: [defaultEmbed] });
+        return msg.channel.send({ embeds: [defaultEmbed] });
     },
 };

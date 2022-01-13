@@ -8,8 +8,8 @@ export const fms: CommandDefinition = {
     name: 'fms',
     description: 'That\'s how the real FMS draws it',
     category: CommandCategory.FUNNIES,
-    executor: async (msg) => {
+    executor: (msg) => {
         const fmsEmbed = makeEmbed({ image: { url: FMS_URL } });
-        msg.channel.send({ embeds: [fmsEmbed] });
+        return msg.channel.send({ embeds: [fmsEmbed] });
     },
 };

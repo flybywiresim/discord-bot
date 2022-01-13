@@ -8,8 +8,8 @@ export const addon: CommandDefinition = {
     name: 'addon',
     description: 'addon not mod meme',
     category: CommandCategory.FUNNIES,
-    executor: async (msg) => {
+    executor: (msg) => {
         const addonEmbed = makeEmbed({ image: { url: ADDON_URL } });
-        msg.channel.send({ embeds: [addonEmbed] });
+        return msg.channel.send({ embeds: [addonEmbed] });
     },
 };
