@@ -2,7 +2,7 @@ import { CommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 
-const RULES_EMBED = [
+const RULES_EMBED =
     makeEmbed({
         title: 'FlyByWire Simulations Server Rules',
         description: makeLines([
@@ -10,17 +10,15 @@ const RULES_EMBED = [
             '',
             'The <@&739187150909866137> reserve the right to action at discretion.',
         ]),
-    }),
-];
+    });
 
-const FAQ_EMBED = [
+const FAQ_EMBED =
     makeEmbed({
         title: '<:question:759405702044975114> Frequently Asked Questions',
         description: 'Check the <#751774575464939580> for the answers to your questions prior to asking in the channels below, post your question in the appropriate channel.',
-    }),
-];
+    });
 
-const POLICIES_EMBED = [
+const POLICIES_EMBED =
     makeEmbed({
         title: '<:bookmark_tabs:759405704644788256> Discord Policies',
         description: 'Whilst using Discord, you are subject to both the Terms of Service, and its Community Guidelines:',
@@ -34,10 +32,9 @@ const POLICIES_EMBED = [
                 value: "https://discordapp.com/guidelines \n",
             },
         ],
-    }),
-];
+    });
 
-const DISCUSSION_EMBED = [
+const DISCUSSION_EMBED =
     makeEmbed({
         title: '<:speech_balloon:759405706804723742> Appropriate Discussion',
         description: makeLines([
@@ -51,15 +48,13 @@ const DISCUSSION_EMBED = [
             '- Do not send multiple unsolicited DM\'s',
             '- Inappropriate/offensive profile information/picture will not be tolerated',
         ]),
-    }),
-];
+    });
 
-const ROLE_EMBED = [
+const ROLE_EMBED =
     makeEmbed({
         title: '<:person_raising_hand:759405708994281493> Role Assignment',
         description: 'We encourage people to use their vast experience and knowledge to help us create a highly detailed addon. If you have skills in Documentation, Modelling and/or Programming, please assign your <#751780817772216401> and get started with the conversation to help us develop the addon.',
-    }),
-];
+    });
 
 export const rules: CommandDefinition = {
     name: 'rules',
@@ -67,10 +62,10 @@ export const rules: CommandDefinition = {
     requiredPermissions: ['BAN_MEMBERS'],
     category: CommandCategory.MODERATION,
     executor: async (msg) => {
-        await msg.channel.send(RULES_EMBED);
-        await msg.channel.send(FAQ_EMBED);
-        await msg.channel.send(POLICIES_EMBED);
-        await msg.channel.send(DISCUSSION_EMBED);
-        await msg.channel.send(ROLE_EMBED);
+        await msg.channel.send({ embeds: [RULES_EMBED] });
+        await msg.channel.send({ embeds: [FAQ_EMBED] });
+        await msg.channel.send({ embeds: [POLICIES_EMBED] });
+        await msg.channel.send({ embeds: [DISCUSSION_EMBED] });
+        await msg.channel.send({ embeds: [ROLE_EMBED] });
     },
 };
