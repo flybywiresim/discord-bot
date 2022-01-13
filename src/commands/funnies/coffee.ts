@@ -1,5 +1,6 @@
 import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
+import { makeEmbed } from '../../lib/embed';
 
 const COFFEE_URL = 'https://www.youtube.com/watch?v=QPfIeVnkZ4Q';
 
@@ -7,5 +8,8 @@ export const coffee: CommandDefinition = {
     name: 'coffee',
     description: 'Would you like some coffee?',
     category: CommandCategory.FUNNIES,
-    executor: (msg) => msg.channel.send( COFFEE_URL ),
+    executor: async (msg) => {
+        const coffeeEmbed = makeEmbed({ image: { url: COFFEE_URL } });
+        msg.channel.send({ embeds: [coffeeEmbed] });
+    },
 };
