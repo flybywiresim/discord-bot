@@ -18,7 +18,7 @@ export const whois: CommandDefinition = {
         let query = msg.content.replace(/\.whois(\s|$)+/, '').replace(/[@#!<>]+/g, '');;
         let targetMember = query ? await msg.guild.members.fetch(query) : msg.member;
 
-        return msg.channel.send(makeEmbed({
+        const whoisEmbed = makeEmbed({
             author: {
                 name: targetMember.user.username,
                 icon_url: targetMember.user.avatarURL(),
@@ -57,6 +57,8 @@ export const whois: CommandDefinition = {
                     value: targetMember.permissions.toArray().join(", ").toLowerCase().replace(/_/g, " ").replace(/(^\w{1})|(\s+\w{1})/g, char => char.toUpperCase())
                 }
             ]
-        }))
+        });
+
+        return msg.channel.send({ embeds: [whoisEmbed] });
     }
 };
