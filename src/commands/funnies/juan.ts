@@ -8,8 +8,8 @@ export const juan: CommandDefinition = {
     name: 'juan',
     description: 'just... Jaun',
     category: CommandCategory.FUNNIES,
-    executor: (msg) => {
+    executor: async (msg) => {
         const juanEmbed = makeEmbed({ image: { url: JAUN_URL } });
-        return msg.channel.send({ embeds: [juanEmbed] });
+        await msg.channel.send({ embeds: [juanEmbed] });
     },
 };

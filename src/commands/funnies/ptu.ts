@@ -8,8 +8,8 @@ export const ptu: CommandDefinition = {
     name: 'ptu',
     description: 'Bark',
     category: CommandCategory.FUNNIES,
-    executor: (msg) => {
+    executor: async (msg) => {
         const ptuEmbed = makeEmbed({ image: { url: PTU_URL } });
-        return msg.channel.send({ embeds: [ptuEmbed] });
+        await msg.channel.send({ embeds: [ptuEmbed] });
     },
 };

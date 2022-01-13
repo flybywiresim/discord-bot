@@ -8,8 +8,8 @@ export const bruheg: CommandDefinition = {
     name: 'bruheg',
     description: 'bruheg momen',
     category: CommandCategory.FUNNIES,
-    executor: (msg) => {
+    executor: async (msg) => {
         const bruhegEmbed = makeEmbed({ image: { url: BRUHEG_URL } });
-        return msg.channel.send({ embeds: [bruhegEmbed] });
+        await msg.channel.send({ embeds: [bruhegEmbed] });
     },
 };

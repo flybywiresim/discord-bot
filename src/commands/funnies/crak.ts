@@ -8,8 +8,8 @@ export const crak: CommandDefinition = {
     name: 'crak',
     description: 'What\'s your sim version?',
     category: CommandCategory.FUNNIES,
-    executor: (msg) => {
+    executor: async (msg) => {
         const crakEmbed = makeEmbed({ image: { url: CRAK_URL } });
-        return msg.channel.send({ embeds: [crakEmbed] });
+        await msg.channel.send({ embeds: [crakEmbed] });
     },
 };

@@ -8,8 +8,8 @@ export const guard: CommandDefinition = {
     name: 'guard',
     description: 'MEOW',
     category: CommandCategory.FUNNIES,
-    executor: (msg) => {
+    executor: async (msg) => {
         const guardEmbed = makeEmbed({ image: { url: GUARD_URL } });
-        return msg.channel.send({ embeds: [guardEmbed] });
+        await msg.channel.send({ embeds: [guardEmbed] });
     },
 };

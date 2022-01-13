@@ -8,8 +8,8 @@ export const p3d: CommandDefinition = {
     name: ['p3d', 'P3D'],
     description: 'No!',
     category: CommandCategory.FUNNIES,
-    executor: (msg) => {
+    executor: async (msg) => {
         const p3dEmbed = makeEmbed({ image: { url: P3D_URL } });
-        return msg.channel.send({ embeds: [p3dEmbed] });
+        await msg.channel.send({ embeds: [p3dEmbed] });
     },
 };

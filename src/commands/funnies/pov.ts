@@ -8,8 +8,8 @@ export const pov: CommandDefinition = {
     name: 'pov',
     description: 'Oof',
     category: CommandCategory.FUNNIES,
-    executor: (msg) => {
+    executor: async (msg) => {
         const povEmbed = makeEmbed({ image: { url: POV_URL } });
-        return msg.channel.send({ embeds: [povEmbed] });
+        await msg.channel.send({ embeds: [povEmbed] });
     },
 };

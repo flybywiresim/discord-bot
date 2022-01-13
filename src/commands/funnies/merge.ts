@@ -8,8 +8,8 @@ export const merge: CommandDefinition = {
     name: ['merge', 'git merge'],
     description: 'GIT MERGE!',
     category: CommandCategory.FUNNIES,
-    executor: (msg) => {
+    executor: async (msg) => {
         const mergeEmbed = makeEmbed({ image: { url: MERGE_URL } });
-        return msg.channel.send({ embeds: [mergeEmbed] });
+        await msg.channel.send({ embeds: [mergeEmbed] });
     },
 };

@@ -8,8 +8,8 @@ export const poggers: CommandDefinition = {
     name: ['poggers', 'pog'],
     description: 'POG',
     category: CommandCategory.FUNNIES,
-    executor: (msg) => {
+    executor: async (msg) => {
         const poggersEmbed = makeEmbed({ image: { url: POGGERS_URL } });
-        return msg.channel.send({ embeds: [poggersEmbed] });
+        await msg.channel.send({ embeds: [poggersEmbed] });
     },
 };

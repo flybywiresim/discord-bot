@@ -8,8 +8,8 @@ export const xp: CommandDefinition = {
     name: ['xp', 'XPlane', 'X-Plane'],
     description: 'XPlane',
     category: CommandCategory.FUNNIES,
-    executor: (msg) => {
+    executor: async (msg) => {
         const xpEmbed = makeEmbed({ image: { url: XP_URL } });
-        return msg.channel.send({ embeds: [xpEmbed] });
+        await msg.channel.send({ embeds: [xpEmbed] });
     },
 };

@@ -8,8 +8,8 @@ export const shame: CommandDefinition = {
     name: 'shame',
     description: 'Shame, shame, shame',
     category: CommandCategory.FUNNIES,
-    executor: (msg) => {
+    executor: async (msg) => {
         const shameEmbed = makeEmbed({ image: { url: SHAME_URL } });
-        return msg.channel.send({ embeds: [shameEmbed] });
+        await msg.channel.send({ embeds: [shameEmbed] });
     },
 };

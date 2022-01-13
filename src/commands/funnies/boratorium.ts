@@ -8,8 +8,8 @@ export const boratorium: CommandDefinition = {
     name: 'boratorium',
     description: 'B O R A T',
     category: CommandCategory.FUNNIES,
-    executor: (msg) => {
+    executor: async (msg) => {
         const boratoriumEmbed = makeEmbed({ image: { url: BORATORIUM_URL } });
-        return msg.channel.send({ embeds: [boratoriumEmbed] });
+        await msg.channel.send({ embeds: [boratoriumEmbed] });
     },
 };
