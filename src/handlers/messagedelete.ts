@@ -41,7 +41,7 @@ export const messageDeleted: EventHandlerDefinition<[Message]> = {
                     fields: [
                         { name: 'Author', value: message.author, inline: true },
                         { name: 'Channel', value: `<#${message.channel.id}>`, inline: true },
-                        { name: 'Deleted Message', value: message.attachments.first().url, inline: false },
+                        { name: 'Deleted Image', value: message.attachments.first().url, inline: false },
                     ],
                     footer: { text: `User ID: ${message.author.id}` },
                 }));
