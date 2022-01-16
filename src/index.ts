@@ -1,7 +1,7 @@
 import { start } from 'elastic-apm-node';
 import dotenv from 'dotenv';
 import express from 'express';
-import discord from 'discord.js';
+import discord, { TextChannel } from 'discord.js';
 import commands from './commands';
 import eventHandlers from './handlers';
 import { makeEmbed } from './lib/embed';
@@ -28,6 +28,13 @@ client.on('ready', () => {
 client.on('disconnect', () => {
     Logger.warn('Client disconnected');
     healthy = false;
+});
+
+client.on('message',  (msg) => {
+    const scamLogs = client.channels.cache.find (channel => channel.id === "931928312303976488");
+
+    if (msg.content.toLowerCase().includes('@everyone')) msg.delete() && msg.author.send("Keep the use of Profanity out of our server!") && (scamLogs as TextChannel).send("Someone sent an `@ everyone`");
+
 });
 
 client.on('message', async (msg) => {
