@@ -16,6 +16,8 @@ export const utf8: CommandDefinition = {
                 '2. Go to the Administrative tab and click Change system locale',
                 '3. Make sure the check mark next to Beta: Use UTF-8 for worldwide language support is selected',
                 '4. Click OK and restart your computer',
+                ,
+                'More information can be found [here.](https://docs.flybywiresim.com/fbw-a32nx/support/reported-issues/?h=utf8#autopilot-fadec-electrical-systems-not-working-as-intended-utf8-issue)',
         ]),
     })),
 };
