@@ -32,8 +32,25 @@ client.on('disconnect', () => {
 
 client.on('message',  (msg) => {
     const scamLogs = client.channels.cache.find (channel => channel.id === "931928312303976488");
+    const mutedRole = msg.guild.roles.cache.find(role => role.name === "muted");
 
-    if (msg.content.toLowerCase().includes('@everyone')) msg.delete() && msg.author.send("Keep the use of Profanity out of our server!") && (scamLogs as TextChannel).send("Someone sent an `@ everyone`");
+    if (msg.content.toLowerCase().includes('@everyone')) msg.delete() &&
+    msg.author.send("This function is in place to prevent discord scams. This has resulted in an auto mute and notification of our moderation team. If this was done in error, our moderation team will reverse the mute, however please refrain from using @everyone in future.") &&
+    (scamLogs as TextChannel).send(makeEmbed({
+        title: 'Potential Scam Alert',
+        thumbnail : { url: 'https://cdn.discordapp.com/attachments/932350968522240101/932369874544640020/PngItem_736995.png' },
+        fields: [
+            {
+                name: 'User:',
+                value : '<@' + msg.author.id + '>',
+            },
+            {
+                name: `Message Content:`,
+                value: msg.content.toString(),
+            }
+        ],
+        })) &&
+    msg.member.roles.add(mutedRole)
 
 });
 
