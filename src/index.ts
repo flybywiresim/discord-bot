@@ -1,7 +1,7 @@
 import { start } from 'elastic-apm-node';
 import dotenv from 'dotenv';
 import express from 'express';
-import discord, { TextChannel } from 'discord.js';
+import discord, { DMChannel, TextChannel } from 'discord.js';
 import commands from './commands';
 import eventHandlers from './handlers';
 import { makeEmbed } from './lib/embed';
@@ -30,31 +30,71 @@ client.on('disconnect', () => {
     healthy = false;
 });
 
-client.on('message',(msg) => {
-    const scamLogs = client.channels.cache.find (channel => channel.id === "931928312303976488");
-    const mutedRole = msg.guild.roles.cache.find(role => role.name === "muted");
+client.on('message',async (msg) => {
+    const scamLogs = client.channels.cache.find(channel => channel.id === '931928312303976488');
 
-    if (msg.content.toLowerCase().includes('@everyone'))
-        msg.delete() &&
-        msg.author.send("This function is in place to prevent discord scams. This has resulted in an auto mute and notification of our moderation team. If this was done in error, our moderation team will reverse the mute, however please refrain from using @everyone in future.") &&
-        (scamLogs as TextChannel).send(makeEmbed({
-            title: 'Potential Scam Alert',
-            thumbnail: { url: 'https://cdn.discordapp.com/attachments/932350968522240101/932369874544640020/PngItem_736995.png' },
-            fields: [
-                {
-                    name: 'User:',
-                    value: '<@' + msg.author.id + '>',
+    if (msg.content.toLowerCase().includes('@everyone') && msg.author.bot === false && !(msg.channel instanceof DMChannel)) {
+        const excludedRoles = [
+            'Admin Team',
+            'Moderation Team',
+            'Development Team',
+            'Media Team',
+            'Community Support',
+            'FBW Emeritus',
+        ];
+        let hasRole = false;
+        excludedRoles.forEach((findrole) => {
+            if (msg.member.roles.cache.some((role) => role.name === findrole)) {
+                hasRole = true
+            }
+        });
+        // @ts-ignore
+        if (hasRole === true) {
+            await (scamLogs as TextChannel).send(makeEmbed({
+                title: 'Potential Scam Alert',
+                thumbnail: { url: 'https://cdn.discordapp.com/attachments/932350968522240101/932625886275043338/Approved.png' },
+                description: 'An allowed role has used @everyone',
+                author: {
+                    name: msg.author.tag,
+                    icon_url: msg.author.displayAvatarURL({ dynamic: true }),
                 },
-                {
-                    name: `Message Content:`,
-                    value: msg.content.toString(),
-                }
-            ],
-        })) &&
-        msg.member.roles.add(mutedRole)
+                fields: [
+                    {
+                        name: 'User:',
+                        value: `<@${msg.author.id}>`,
+                    },
+                    {
+                        name: 'Message Content:',
+                        value: msg.content.toString(),
+                    }
+                ],
+            }));
+        } else {
+            const mutedRole = msg.guild.roles.cache.find((role) => role.name === 'muted');
 
-
-
+            await msg.delete();
+            await msg.author.send('This function is in place to prevent discord scams. This has resulted in an auto mute and notification of our moderation team. If this was done in error, our moderation team will reverse the mute, however please refrain from using the @everyone ping in future.');
+            await (client.channels.cache.find((channel) => channel.id === '931928312303976488') as TextChannel).send(makeEmbed({
+                title: 'Potential Scam Alert',
+                thumbnail: { url: 'https://cdn.discordapp.com/attachments/932350968522240101/932625893657026630/Scam.png' },
+                author: {
+                    name: msg.author.tag,
+                    icon_url: msg.author.displayAvatarURL({ dynamic: true }),
+                },
+                fields: [
+                    {
+                        name: 'User:',
+                        value: `<@${  msg.author.id  }>`,
+                    },
+                    {
+                        name: 'Message Content:',
+                        value: msg.content.toString(),
+                    }
+                ],
+            }));
+            await msg.member.roles.add(mutedRole);
+        }
+    }
 });
 
 client.on('message', async (msg) => {
