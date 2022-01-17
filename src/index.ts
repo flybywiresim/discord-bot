@@ -63,6 +63,9 @@ client.on('message',async (msg) => {
                         name: 'User:',
                         value: `<@${msg.author.id}>`,
                     },
+                    {   name: 'Channel:',
+                        value: `<#${msg.channel.id}>`, inline: true
+                    },
                     {
                         name: 'Message Content:',
                         value: msg.content.toString(),
@@ -85,6 +88,9 @@ client.on('message',async (msg) => {
                     {
                         name: 'User:',
                         value: `<@${  msg.author.id  }>`,
+                    },
+                    {   name: 'Channel:',
+                        value: `<#${msg.channel.id}>`, inline: true
                     },
                     {
                         name: 'Message Content:',
