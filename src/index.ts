@@ -2,13 +2,11 @@ import { start } from 'elastic-apm-node';
 import dotenv from 'dotenv';
 import express from 'express';
 import discord from 'discord.js';
-import commands from './commands';
 import eventHandlers from './handlers';
-import { makeEmbed } from './lib/embed';
 import Logger from './lib/logger';
 
 dotenv.config();
-const apm = start({
+export const apm = start({
     serviceName: 'discord-bot',
     disableSend: true,
 });
@@ -16,7 +14,7 @@ const apm = start({
 export const DEBUG_MODE = process.env.DEBUG_MODE === 'true';
 
 const app = express();
-const client = new discord.Client();
+export const client = new discord.Client();
 
 let healthy = false;
 
@@ -28,59 +26,6 @@ client.on('ready', () => {
 client.on('disconnect', () => {
     Logger.warn('Client disconnected');
     healthy = false;
-});
-
-client.on('message', async (msg) => {
-    const isDm = msg.channel.type === 'dm';
-    const guildId = !isDm ? msg.guild.id : 'DM';
-
-    Logger.debug(`Processing message ${msg.id} from user ${msg.author.id} in channel ${msg.channel.id} of server ${guildId}.`);
-
-    if (msg.author.bot === true) {
-        Logger.debug('Bailing because message author is a bot.');
-        return;
-    }
-
-    if (msg.content.startsWith('.')) {
-        const transaction = apm.startTransaction('command');
-        Logger.debug('Message starts with dot.');
-
-        const usedCommand = msg.content.substring(1, msg.content.includes(' ') ? msg.content.indexOf(' ') : msg.content.length).toLowerCase();
-        Logger.info(`Running command '${usedCommand}'`);
-
-        const command = commands[usedCommand];
-
-        if (command) {
-            const { executor, name, requiredPermissions } = command;
-
-            const commandsArray = Array.isArray(name) ? name : [name];
-
-            if (!requiredPermissions || requiredPermissions.every((permission) => msg.guild.member(msg.author).hasPermission(permission))) {
-                if (commandsArray.includes(usedCommand)) {
-                    try {
-                        await executor(msg, client);
-                        transaction.result = 'success';
-                    } catch ({ name, message, stack }) {
-                        Logger.error({ name, message, stack });
-                        await msg.channel.send(makeEmbed({
-                            color: 'RED',
-                            title: 'Error while Executing Command',
-                            description: DEBUG_MODE ? `\`\`\`\n${stack}\`\`\`` : `\`\`\`\n${name}: ${message}\n\`\`\``,
-                        }));
-                        transaction.result = 'error';
-                    }
-
-                    Logger.debug('Command executor done.');
-                }
-            } else {
-                await msg.reply(`you do not have sufficient permissions to use this command. (missing: ${requiredPermissions.join(', ')})`);
-            }
-        } else {
-            Logger.info('Command doesn\'t exist');
-            transaction.result = 'error';
-        }
-        transaction.end();
-    }
 });
 
 for (const handler of eventHandlers) {
