@@ -64,7 +64,7 @@ client.on('message',async (msg) => {
                         value: `<@${msg.author.id}>`,
                     },
                     {   name: 'Channel:',
-                        value: `<#${msg.channel.id}>`, inline: true
+                        value: `<#${msg.channel.id}>`,
                     },
                     {
                         name: 'Message Content:',
@@ -90,7 +90,7 @@ client.on('message',async (msg) => {
                         value: `<@${  msg.author.id  }>`,
                     },
                     {   name: 'Channel:',
-                        value: `<#${msg.channel.id}>`, inline: true
+                        value: `<#${msg.channel.id}>`,
                     },
                     {
                         name: 'Message Content:',
