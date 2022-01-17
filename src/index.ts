@@ -77,7 +77,7 @@ client.on('message',async (msg) => {
 
             await msg.delete();
             try {
-                await msg.author.send('This function is in place to prevent discord scams. This has resulted in an auto mute and notification of our moderation team. If this was done in error, our moderation team will reverse the mute, however please refrain from using the @everyone ping in future.');
+                await msg.author.send('We have detected use of @everyone in one of our text channels. This function is in place to prevent discord scams and has resulted in an automatic mute and notification of our moderation team. If this was done in error, our moderation team will reverse the mute, however please refrain from using the @everyone ping in future.');
             } catch (e) {
                 Logger.error(e);
                 await (client.channels.cache.find((channel) => channel.id === '932687046315737149') as TextChannel).send(makeEmbed({
