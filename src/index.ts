@@ -31,7 +31,7 @@ client.on('disconnect', () => {
 });
 
 client.on('message',async (msg) => {
-    const scamLogs = client.channels.cache.find(channel => channel.id === '931928312303976488');
+    const scamLogs = client.channels.cache.find(channel => channel.id === '932687046315737149');
 
     if (msg.content.toLowerCase().includes('@everyone') && msg.author.bot === false && !(msg.channel instanceof DMChannel)) {
         const excludedRoles = [
@@ -73,14 +73,14 @@ client.on('message',async (msg) => {
                 ],
             }));
         } else {
-            const mutedRole = msg.guild.roles.cache.find((role) => role.name === 'muted');
+            const mutedRole = msg.guild.roles.cache.find((role) => role.name === 'Muted');
 
             await msg.delete();
             try {
                 await msg.author.send('This function is in place to prevent discord scams. This has resulted in an auto mute and notification of our moderation team. If this was done in error, our moderation team will reverse the mute, however please refrain from using the @everyone ping in future.');
             } catch (e) {
                 Logger.error(e);
-                await (client.channels.cache.find((channel) => channel.id === '931928312303976488') as TextChannel).send(makeEmbed({
+                await (client.channels.cache.find((channel) => channel.id === '932687046315737149') as TextChannel).send(makeEmbed({
                     author: {
                         name: msg.author.tag,
                         icon_url: msg.author.displayAvatarURL({ dynamic: true }),
@@ -88,7 +88,7 @@ client.on('message',async (msg) => {
                     description: ' DM was not sent to ' + `<@${  msg.author.id  }>` + '.',
                 }));
             }
-            await (client.channels.cache.find((channel) => channel.id === '931928312303976488') as TextChannel).send(makeEmbed({
+            await (client.channels.cache.find((channel) => channel.id === '932687046315737149') as TextChannel).send(makeEmbed({
                 title: 'Potential Scam Alert',
                 thumbnail: { url: 'https://cdn.discordapp.com/attachments/932350968522240101/932625893657026630/Scam.png' },
                 author: {
