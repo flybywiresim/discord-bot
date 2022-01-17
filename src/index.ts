@@ -76,7 +76,11 @@ client.on('message',async (msg) => {
             const mutedRole = msg.guild.roles.cache.find((role) => role.name === 'muted');
 
             await msg.delete();
-            await msg.author.send('This function is in place to prevent discord scams. This has resulted in an auto mute and notification of our moderation team. If this was done in error, our moderation team will reverse the mute, however please refrain from using the @everyone ping in future.');
+            try {
+                await msg.author.send('This function is in place to prevent discord scams. This has resulted in an auto mute and notification of our moderation team. If this was done in error, our moderation team will reverse the mute, however please refrain from using the @everyone ping in future.');
+            } catch (e) {
+                Logger.error(e);
+            }
             await (client.channels.cache.find((channel) => channel.id === '931928312303976488') as TextChannel).send(makeEmbed({
                 title: 'Potential Scam Alert',
                 thumbnail: { url: 'https://cdn.discordapp.com/attachments/932350968522240101/932625893657026630/Scam.png' },
