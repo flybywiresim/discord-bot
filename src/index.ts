@@ -58,7 +58,9 @@ client.on('message', async (msg) => {
 
             const commandsArray = Array.isArray(name) ? name : [name];
 
-            if (!requiredPermissions || requiredPermissions.every((permission) => msg.guild.member(msg.author).hasPermission(permission))) {
+            const member = await msg.guild.members.fetch(msg.author);
+
+            if (!requiredPermissions || requiredPermissions.every((permission) => member.permissions.has(permission))) {
                 if (commandsArray.includes(usedCommand)) {
                     try {
                         await executor(msg, client);
