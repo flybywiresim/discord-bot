@@ -20,11 +20,11 @@ export const unban: CommandDefinition = {
         const idArg = splitUp[0];
 
         return msg.guild.members.unban(idArg).then((user: User | Snowflake) => {
-            msg.channel.send(makeSuccessfulUnbanEmbed(user));
+            msg.channel.send({ embeds: [makeSuccessfulUnbanEmbed(user)] });
         }).catch((error) => {
             const guildMember = msg.guild.member(idArg);
 
-            msg.channel.send(makeFailedUnbanEmbed(guildMember?.user ?? idArg, error));
+            msg.channel.send({ embeds: [makeFailedUnbanEmbed(guildMember?.user ?? idArg, error)] });
         });
     },
 };
