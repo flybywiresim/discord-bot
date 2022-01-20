@@ -15,7 +15,7 @@ export const whois: CommandDefinition = {
     description: 'Provides an embedded message with information about the mentioned user',
     category: CommandCategory.MODERATION,
     executor: async (msg) => {
-        let query = msg.content.replace(/\.whois(\s|$)+/, '').replace(/[@#!<>]+/g, '');;
+        let query = msg.content.replace(/\.whois(\s|$)+/, '').replace(/[@#!<>]+/g, '');
         let targetMember = query ? await msg.guild.members.fetch(query) : msg.member;
 
         const whoisEmbed = makeEmbed({
