@@ -9,11 +9,11 @@ export const ban: CommandDefinition = {
     name: 'ban',
     requiredPermissions: ['BAN_MEMBERS'],
     category: CommandCategory.MODERATION,
-    executor: (msg) => {
+    executor: async (msg) => {
         const splitUp = msg.content.replace(/\.ban\s+/, '').split(' ');
 
         if (splitUp.length < 2) {
-            msg.reply('you did not provide enough arguments for this command. (<id> <reason>)');
+            await msg.reply('you did not provide enough arguments for this command. (<id> <reason>)');
             return Promise.resolve();
         }
 
@@ -27,12 +27,11 @@ export const ban: CommandDefinition = {
                 (user as any).banReason = reason;
                 (user as any).banModerator = msg.author;
             }
+            msg.channel.send({ embeds: [makeSuccessfulBanEmbed(user, reason)] });
+        }).catch(async (error) => {
+            const guildMember = await msg.guild.members.fetch(idArg);
 
-            msg.channel.send(makeSuccessfulBanEmbed(user, reason));
-        }).catch((error) => {
-            const guildMember = msg.guild.member(idArg);
-
-            msg.channel.send(makeFailedBanEmbed(guildMember?.user ?? idArg, error));
+            msg.channel.send({ embeds: [makeFailedBanEmbed(guildMember?.user ?? idArg, error)] });
         });
     },
 };
