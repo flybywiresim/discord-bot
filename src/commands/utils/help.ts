@@ -12,7 +12,7 @@ export const help: CommandDefinition = {
     executor: async (msg) => {
         const { author } = msg;
 
-        const embed = makeEmbed({
+        const helpEmbed = makeEmbed({
             title: 'FlyByWire Simulations | Help',
             description: makeLines([
                 'Would you like to:',
@@ -22,7 +22,7 @@ export const help: CommandDefinition = {
         });
 
         // Decide between DM or docs link
-        const selectorMsg = await msg.reply(embed);
+        const selectorMsg = await msg.reply({ embeds: [helpEmbed] });
 
         try {
             await msg.delete();
@@ -61,12 +61,12 @@ export const help: CommandDefinition = {
 
                     break;
                 case '2️⃣':
-                    const embed = makeEmbed({
+                    const docsEmbed = makeEmbed({
                         title: 'FlyByWire Simulations | Discord Bot Documentation',
                         description: 'https://docs.flybywiresim.com/discord-bot/',
                     });
 
-                    await selectorMsg.reply(embed);
+                    await selectorMsg.reply({ embeds: [docsEmbed] });
 
                     // Delete the selector
                     await selectorMsg.delete();
@@ -97,7 +97,7 @@ async function handleDmCommunication(dmChannel: DMChannel, author: User, index: 
     });
 
     // Send reaction embeds for interaction
-    const sentEmbedMessage = await dmChannel.send(dmEmbed);
+    const sentEmbedMessage = await dmChannel.send({ embeds: [dmEmbed] });
 
     // Only act on certain reactions. I am using`includes` here so new reactions can be easily added.
     const reactionFilter = (reaction, user) => ['⏪', '⏩', '❌'].includes(reaction.emoji.name) && user.id === author.id;

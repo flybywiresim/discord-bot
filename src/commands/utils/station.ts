@@ -7,11 +7,11 @@ export const station: CommandDefinition = {
     name: 'station',
     description: 'Provides station information',
     category: CommandCategory.UTILS,
-    executor: (msg) => {
+    executor: async (msg) => {
         const splitUp = msg.content.replace(/\.station\s+/, ' ').split(' ');
 
         if (splitUp.length <= 1) {
-            msg.reply('please provide an ICAO airport code.');
+            await msg.reply('please provide an ICAO airport code.');
             return Promise.resolve();
         }
         const icaoArg = splitUp[1];
@@ -20,17 +20,15 @@ export const station: CommandDefinition = {
             url: `https://avwx.rest/api/station/${icaoArg}`,
             headers: {
                 Authorization: process.env.STATION_TOKEN },
-        }, (error, response, body) => {
+        }, async (error, response, body) => {
 
             const stationReport = JSON.parse(body);
 
             const runwayIdents = stationReport.runways.map((runways) => {
-                return `**${runways.ident1}/${runways.ident2}:** ${runways.length_ft}ft x ${runways.width_ft}ft
-`;
+                return `**${runways.ident1}/${runways.ident2}:** ${runways.length_ft}ft x ${runways.width_ft}ft`;
             });
 
-
-            msg.channel.send(makeEmbed({
+            const stationEmbed = makeEmbed({
                 title: `Station info | ${stationReport.icao}`,
                 description: makeLines([
                     '**Station Information:**',
@@ -48,7 +46,10 @@ export const station: CommandDefinition = {
                     `**Wiki:** ${stationReport.wiki}`,
                 ]),
                 footer: { text: 'Due to limitations of the API, not all links may be up to date at all times.' }
-            }));
+            });
+
+            await msg.channel.send({ embeds: [stationEmbed] });
+
         });
     },
 };
