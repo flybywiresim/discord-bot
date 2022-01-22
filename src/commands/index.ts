@@ -81,7 +81,7 @@ import { rules } from './moderation/rules';
 import { fixinfo } from './a32nx/fixinfo';
 import { welcome } from './moderation/welcome';
 import { sop } from './a32nx/sop';
-import { goldenrules } from './general/goldenrules';
+import { goldenRules } from './general/goldenRules';
 import { fridge } from './funnies/fridge';
 import { tiller } from './a32nx/tiller';
 import { assistance } from './a32nx/assistance';
@@ -173,7 +173,7 @@ const commands: CommandDefinition[] = [
     fixinfo,
     welcome,
     sop,
-    goldenrules,
+    goldenRules,
     fridge,
     tiller,
     assistance,
