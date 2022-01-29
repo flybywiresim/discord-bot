@@ -92,6 +92,7 @@ import { mcdu } from './a32nx/mcdu';
 import { takeoffPerf } from './a32nx/takeoffPerf';
 import { manualleg } from './support/manualleg';
 import { oim } from './funnies/oim';
+import { wasm } from './support/wasm';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -186,6 +187,7 @@ const commands: CommandDefinition[] = [
     takeoffPerf,
     manualleg,
     oim,
+    wasm,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
