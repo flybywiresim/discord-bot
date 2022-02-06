@@ -4,7 +4,7 @@ import { CommandCategory } from '../../constants';
 
 export const CPDLC: CommandDefinition = {
     name: ['cpdlc', 'pdc', 'hoppie', 'acars'],
-    description: 'Provide information about the fix info feature.',
+    description: 'Provide info and docs link for Hoppie ACARS',
     category: CommandCategory.A32NX,
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'FlyByWire A32NX | CPDLC/PDC',
