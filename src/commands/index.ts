@@ -93,6 +93,7 @@ import { takeoffPerf } from './a32nx/takeoffPerf';
 import { manualleg } from './support/manualleg';
 import { oim } from './funnies/oim';
 import { wasm } from './support/wasm';
+import { CPDLC } from './a32nx/CPDLC';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -188,6 +189,7 @@ const commands: CommandDefinition[] = [
     manualleg,
     oim,
     wasm,
+    CPDLC,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
