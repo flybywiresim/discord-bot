@@ -10,7 +10,7 @@ export const CPDLC: CommandDefinition = {
         title: 'FlyByWire A32NX | CPDLC/PDC',
         description: makeLines([
             'The A32NX now supports CPDLC/PDC via Hoppie ACARS for Vatsim/IVAO. '
-            + 'This provides support for Controller to Pilot instructions, as well as requesting PDC (Pre-Departure Clearance), with more to come.',
+           +'This provides support for Controller to Pilot instructions, as well as requesting PDC (Pre-Departure Clearance), with more to come.',
             '',
             '**Check out our [docs](https://docs.flybywiresim.com/fbw-a32nx/feature-guides/hoppie/) to learn how to get started!**',
         ]),
