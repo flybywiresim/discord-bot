@@ -1,6 +1,6 @@
+/* eslint-disable camelcase */
 import { start } from 'elastic-apm-node';
 import dotenv from 'dotenv';
-import express from 'express';
 import Discord from 'discord.js';
 import commands from './commands';
 import { makeEmbed } from './lib/embed';
@@ -14,7 +14,6 @@ const apm = start({
 
 export const DEBUG_MODE = process.env.DEBUG_MODE === 'true';
 
-const app = express();
 const intents = new Discord.Intents(32767);
 const client = new Discord.Client({
     partials: ['USER', 'CHANNEL', 'GUILD_MEMBER', 'MESSAGE', 'REACTION'],
@@ -30,6 +29,7 @@ client.on('ready', () => {
 
 client.on('disconnect', () => {
     Logger.warn('Client disconnected');
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     healthy = false;
 });
 
@@ -67,13 +67,14 @@ client.on('message', async (msg) => {
                         transaction.result = 'success';
                     } catch ({ name, message, stack }) {
                         Logger.error({ name, message, stack });
+                        // eslint-disable-next-line camelcase
                         const error_embed = makeEmbed({
                             color: 'RED',
                             title: 'Error while Executing Command',
                             description: DEBUG_MODE ? `\`\`\`D\n${stack}\`\`\`` : `\`\`\`\n${name}: ${message}\n\`\`\``,
                         });
 
-                        await msg.channel.send({embeds: [error_embed]});
+                        await msg.channel.send({ embeds: [error_embed] });
 
                         transaction.result = 'error';
                     }
@@ -91,30 +92,9 @@ client.on('message', async (msg) => {
     }
 });
 
-const fs = require('fs');
-
-const eventHandlers = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
-
-for (const handler of eventHandlers) {
-    client.on(handler.event, handler.executor);
-}
-
 client.login(process.env.BOT_SECRET)
     .then()
     .catch((e) => {
         Logger.error(e);
         process.exit(1);
     });
-
-app.get('/healthz', (req, res) => (healthy ? res.status(200).send('Ready') : res.status(500).send('Not Ready')));
-app.listen(3000, () => {
-    Logger.info('Server is running at http://localhost:3000');
-});
-
-process.on('SIGTERM', () => {
-    Logger.info('SIGTERM signal received.');
-    client.destroy();
-    app.close(() => {
-        Logger.info('Server stopped.');
-    });
-});
