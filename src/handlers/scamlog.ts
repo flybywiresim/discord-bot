@@ -5,7 +5,7 @@ import { makeEmbed } from '../lib/embed';
 import Logger from '../lib/logger';
 
 module.exports = {
-    event: 'message',
+    event: 'messageCreate',
     executor: async (msg) => {
         if (msg.guild === null) {
             // DMs

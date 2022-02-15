@@ -18,4 +18,5 @@ export enum Channels {
 
 export const UserLogExclude = [
     '628400349979344919', // StickyBot
+    '864492608163807302', //test bot
 ];

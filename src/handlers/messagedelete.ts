@@ -25,9 +25,9 @@ module.exports = {
                     icon_url: message.author.displayAvatarURL({ dynamic: true }),
                 },
                 fields: [
-                    { name: 'Author', value: `\`${message.author}\``, inline: true },
+                    { name: 'Author', value: `<@${message.author.id}>`, inline: true },
                     { name: 'Channel', value: `<#${message.channel.id}>`, inline: true },
-                    { name: 'Deleted Message', value: message.content ? `\`\`\`${message.content}\`\`\`` : FEATURE_NOT_AVAIL, inline: false },
+                    { name: 'Deleted Message', value: message.content, inline: false },
                 ],
                 footer: { text: `User ID: ${message.author.id}` },
             });
