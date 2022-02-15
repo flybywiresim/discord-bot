@@ -5,7 +5,7 @@ import { makeEmbed } from '../lib/embed';
 
 const FEATURE_NOT_AVAIL = '(can\'t show embeds or images)';
 
-export const messageDeleted: EventHandlerDefinition<[Message]> = {
+module.exports = {
     event: 'messageDelete',
     executor: async (message) => {
         if (message.guild === null) {
@@ -31,7 +31,7 @@ export const messageDeleted: EventHandlerDefinition<[Message]> = {
                 ],
                 footer: { text: `User ID: ${message.author.id}` },
             });
-            await userLogsChannel.send({embeds: [messageDeleteEmbed]});
+            await (message.guild.channels.cache.find((channel) => channel.id === '942501662420004954') as TextChannel).send({ embeds: [messageDeleteEmbed] });
         }
     },
 };

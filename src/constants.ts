@@ -13,7 +13,7 @@ export enum CommandCategory {
 
 export enum Channels {
     MOD_LOGS = '783996780181585921',
-    USER_LOGS = '779944761699729418',
+    USER_LOGS = '942501662420004954',
 }
 
 export const UserLogExclude = [

@@ -1,10 +1,12 @@
 /* eslint-disable camelcase */
 import { start } from 'elastic-apm-node';
 import dotenv from 'dotenv';
-import Discord from 'discord.js';
+import Discord, { DMChannel, TextChannel } from 'discord.js';
 import commands from './commands';
 import { makeEmbed } from './lib/embed';
 import Logger from './lib/logger';
+
+
 
 dotenv.config();
 const apm = start({
@@ -33,7 +35,7 @@ client.on('disconnect', () => {
     healthy = false;
 });
 
-client.on('message', async (msg) => {
+client.on('messageCreate', async (msg) => {
     const isDm = msg.channel.type === 'DM';
     const guildId = !isDm ? msg.guild.id : 'DM';
 
@@ -92,9 +94,27 @@ client.on('message', async (msg) => {
     }
 });
 
+const fs = require("fs");
+
+const eventHandlers = fs
+    .readdirSync("src/handlers")
+    .filter(file => file.endsWith(".ts"));
+
+for (const file of eventHandlers) {
+    const handler = require(`./handlers/${file}`);
+
+    if (handler.once) {
+        client.once(handler.event, (...args) => handler.executor(...args));
+    } else {
+        client.on(handler.event, (...args) => handler.executor(...args));
+    }
+}
+
 client.login(process.env.BOT_SECRET)
     .then()
     .catch((e) => {
         Logger.error(e);
         process.exit(1);
     });
+
+
