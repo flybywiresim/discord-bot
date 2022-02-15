@@ -5,9 +5,10 @@ import { makeEmbed } from '../lib/embed';
 
 const FEATURE_NOT_AVAIL = '(can\'t show embeds or images)';
 
-export const messageUpdated: EventHandlerDefinition<[Message, Message]> = {
+module.exports = {
     event: 'messageUpdate',
     executor: async (oldMessage, newMessage) => {
+
         const userLogsChannel = oldMessage.guild.channels.resolve(Channels.USER_LOGS) as TextChannel;
 
         if (!UserLogExclude.some((e) => e == oldMessage.author.id)) {
@@ -21,7 +22,7 @@ export const messageUpdated: EventHandlerDefinition<[Message, Message]> = {
                     icon_url: oldMessage.author.displayAvatarURL({ dynamic: true })
                 },
                 fields: [
-                    { name: 'Author', value: `\`${oldMessage.author}\``, inline: true },
+                    { name: 'Author', value: `<@${oldMessage.author}>`, inline: true },
                     { name: 'Channel', value: `<#${oldMessage.channel.id}>`, inline: true },
                     { name: 'Original Message', value: oldMessage.content ? `\`\`\`${oldMessage.content}\`\`\`` : FEATURE_NOT_AVAIL, inline: false },
                     { name: 'Edited Message', value: newMessage.content ? `\`\`\`${newMessage.content}\`\`\`` : FEATURE_NOT_AVAIL, inline: false },
