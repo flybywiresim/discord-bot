@@ -1,7 +1,7 @@
 import { CommandDefinition } from '../lib/command';
 import Logger from '../lib/logger';
 import { ping } from './utils/ping';
-
+import { whois } from './moderation/whois';
 import { bruheg } from './funnies/bruheg';
 
 import { efb } from './a32nx/efb';
@@ -21,7 +21,7 @@ import { logs } from './support/logs';
 import { reportedissues } from './support/reportedissues';
 import { autopilot } from './a32nx/autopilot';
 import { checklist } from './a32nx/checklist';
-
+import { help } from './utils/help';
 import { donate } from './general/donate';
 import { utf8 } from './support/utf-8';
 import { calibrate } from './support/calibrate';
@@ -93,7 +93,7 @@ import { takeoffPerf } from './a32nx/takeoffPerf';
 
 const commands: CommandDefinition[] = [
     ping,
-
+    whois,
     bruheg,
 
     efb,
@@ -113,7 +113,7 @@ const commands: CommandDefinition[] = [
     reportedissues,
     autopilot,
     checklist,
-
+    help,
     donate,
     utf8,
     calibrate,
