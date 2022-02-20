@@ -20,6 +20,7 @@ export const ban: CommandDefinition = {
         const idArg = splitUp[0];
         const reason = splitUp.slice(1).join(' ');
 
+
         return msg.guild.members.ban(idArg).then((user: User | Snowflake) => {
             // A bt of a hack, but we need to propagate the reason and moderator to the event handler.
             // Since discord.js caches user objects, we can exploit that to attach more info to the ban.
@@ -86,7 +87,7 @@ function makeFailedBanEmbed(user: UserLike, error: any): discord.MessageEmbed {
     fields.push({
         inline: false,
         name: 'Error',
-        value: error,
+        value: '\u200B' + error,
     });
 
     return makeEmbed({
