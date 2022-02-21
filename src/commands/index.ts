@@ -96,7 +96,6 @@ import { wasm } from './support/wasm';
 import { CPDLC } from './a32nx/CPDLC';
 import {simbriefimport} from './a32nx/simbriefimport';
 const commands: CommandDefinition[] = [
-    simbriefimport,
     ping,
     help,
     bruheg,
