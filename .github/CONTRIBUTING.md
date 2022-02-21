@@ -52,7 +52,7 @@ Privileged Gateway Intents must now be enabled within the Discord Developer Port
 ### Inviting the Bot to Your Server
 
 1. Create a Discord server where you can test your bot
-2. On the [applications page](https://discord.com/developers/applications), select your application, navigate to the `OAuth2` tab. Then select `bot` under the `scopes` section
+2. On the [applications page](https://discord.com/developers/applications), select your application and navigate to the `OAuth2` tab. Then select `bot` under the `scopes` section
 3. Tick `Administrator` under the `Bot Permissions` section
 4. Click the `Copy` button and paste it into your browser of choice, invite it to your test server.
 
