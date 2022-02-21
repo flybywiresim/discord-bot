@@ -94,6 +94,7 @@ import { manualleg } from './support/manualleg';
 import { oim } from './funnies/oim';
 import { wasm } from './support/wasm';
 import { CPDLC } from './a32nx/CPDLC';
+import { simbriefimport } from './a32nx/simbriefimport';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -190,6 +191,7 @@ const commands: CommandDefinition[] = [
     oim,
     wasm,
     CPDLC,
+    simbriefimport,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
