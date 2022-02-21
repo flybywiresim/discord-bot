@@ -12,7 +12,7 @@ export const wasm: CommandDefinition = {
                 description: 'The first load after installing or updating the addon will take a while due to WASM being compiled. This is normal and may take up to 10 minutes or longer.',
             });
 
-        await msg.channel.send({ embeds: [wasmEmbed });
+        await msg.channel.send({ embeds: [wasmEmbed] });
 
     },
 };
