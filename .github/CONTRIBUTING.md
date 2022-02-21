@@ -43,10 +43,16 @@ You can find the pull request template [here](PULL_REQUEST_TEMPLATE.md).
 7. Inside the .env file, type `BOT_SECRET=TOKEN` replacing TOKEN with what you copied in step 6
 8. You may need to add the .env file to your gitignore if your IDE hasn't done it automatically.
 
+### Privileged Gateway Intents
+
+Privileged Gateway Intents must now be enabled within the Discord Developer Portal in order for your bot to function. The steps below will explain how to enable them.
+1. Log into the Discord website and navigate to the [applications page](https://discord.com/developers/applications) and select your application. Then select `Bot` under `Settings` 
+2. Scroll down to the Privileged Gateway Intents section and enable all the intents.
+
 ### Inviting the Bot to Your Server
 
 1. Create a Discord server where you can test your bot
-2. On the [applications page](https://discord.com/developers/applications), navigate to the `OAuth2` tab. Then select `bot` under the `scopes` section
+2. On the [applications page](https://discord.com/developers/applications), select your application, navigate to the `OAuth2` tab. Then select `bot` under the `scopes` section
 3. Tick `Administrator` under the `Bot Permissions` section
 4. Click the `Copy` button and paste it into your browser of choice, invite it to your test server.
 
@@ -65,7 +71,7 @@ You can find the pull request template [here](PULL_REQUEST_TEMPLATE.md).
 
 1. Create a new file in the relevant folder within `src/commands/` and name it appropriately. `yourcommand.ts`
 2. Create your command
-3. Add it to `src/commands/index.ts`. You need to add the line `import { name } from './commandfolder/fileame';`, replacing `name` with the `export const` from your command, `commandfolder` with the relevant folder your command has been placed within, and `filename` with the file name you created in step 1.
+3. Add it to `src/commands/index.ts`. You need to add the line `import { name } from './commandfolder/filename';`, replacing `name` with the `export const` from your command, `commandfolder` with the relevant folder your command has been placed within, and `filename` with the file name you created in step 1.
 (Add this below the last command.)
 4. Add your command name to the list under `const commands: CommandDefinition[] = [`
 
@@ -82,19 +88,24 @@ import { CommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 
-const ADIRS_IMAGE_URL = 'https://media.discordapp.net/attachments/785976111875751956/818095298538504272/image0.png';
+const ADIRS_IMAGE_URL = 'https://cdn.discordapp.com/attachments/838062729398976522/894173641682616381/unknown.png';
 
 export const adirs: CommandDefinition = {
     name: 'adirs',
     description: 'Display help with ADIRS alignment',
-    category: CommandCategory.FBW,
-    executor: (msg) => msg.channel.send(makeEmbed({
-        title: 'FlyByWire A32NX | ADIRS align',
-        description: makeLines([
-            'On the overhead panel you will see the three switches under \'ADIRS\'. Turn these three to the \'NAV\' position. It takes several minutes for the ADIRUs to align.',
-            'You can check how long you have to wait by looking at the align time on your Upper Ecam.',
-        ]),
-        image: { url: ADIRS_IMAGE_URL },
-    })),
+    category: CommandCategory.A32NX,
+    executor: async (msg) => {
+        const adirsEmbed = makeEmbed({
+            title: 'FlyByWire A32NX | ADIRS align',
+            description: makeLines([
+                'On the overhead panel you will see the three switches under \'ADIRS\'. Turn these three to the \'NAV\' position. It takes several minutes for the ADIRUs to align.',
+                'You can check how long you have to wait by looking at the align time on your Upper Ecam.',
+            ]),
+            image: { url: ADIRS_IMAGE_URL },
+        });
+
+        await msg.channel.send({ embeds: [adirsEmbed] });
+
+    },
 };
 ```
