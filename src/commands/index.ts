@@ -90,6 +90,7 @@ import { hud } from './support/hud';
 import { fms } from './funnies/fms';
 import { mcdu } from './a32nx/mcdu';
 import { takeoffPerf } from './a32nx/takeoffPerf';
+import { manualleg } from './support/manualleg';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -182,6 +183,7 @@ const commands: CommandDefinition[] = [
     fms,
     mcdu,
     takeoffPerf,
+    manualleg,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
