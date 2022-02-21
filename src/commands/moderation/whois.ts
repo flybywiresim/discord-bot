@@ -53,7 +53,7 @@ export const whois: CommandDefinition = {
                 },
                 {
                     name: "Roles",
-                    value: '\u200B' + listedRoles.join(","),
+                    value: '\u200B' + listedRoles.join(", "),
                 },
                 {
                     name: "Permissions",
