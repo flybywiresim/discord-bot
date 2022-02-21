@@ -2,7 +2,7 @@ import { CommandDefinition } from '../../lib/command';
 import { makeEmbed } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 
-const FRIDGE_URL = 'https://media.discordapp.net/attachments/898602626436964402/921205269927706675/samsung-family-hub-refrigerator-1_1024x1024clean.png';
+const FRIDGE_URL = 'https://cdn.discordapp.com/attachments/945268463465803796/945269679658766366/samsung-family-hub-refrigerator-1_1024x1024clean.png';
 
 export const fridge: CommandDefinition = {
     name: 'fridge',

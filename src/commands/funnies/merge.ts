@@ -1,6 +1,5 @@
 import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
-import { makeEmbed } from '../../lib/embed';
 
 const MERGE_URL = 'https://tenor.com/view/git-merge-gitmerge-gif-18010083';
 
@@ -9,7 +8,6 @@ export const merge: CommandDefinition = {
     description: 'GIT MERGE!',
     category: CommandCategory.FUNNIES,
     executor: async (msg) => {
-        const mergeEmbed = makeEmbed({ image: { url: MERGE_URL } });
-        await msg.channel.send({ embeds: [mergeEmbed] });
+        await msg.channel.send(MERGE_URL);
     },
 };
