@@ -1,6 +1,7 @@
 import { DMChannel, TextChannel } from 'discord.js';
 import { makeEmbed } from '../lib/embed';
 import Logger from '../lib/logger';
+import { Channels } from '../constants';
 
 module.exports = {
     event: 'messageCreate',
@@ -10,9 +11,9 @@ module.exports = {
             return;
         }
 
-        const scamLogs = msg.guild.channels.cache.find(channel => channel.id === '931928312303976488');
+        const scamLogs = msg.guild.channels.resolve(Channels.SCAM_LOGS) as TextChannel | null;
 
-        if (msg.content.toLowerCase().includes('@everyone') && msg.author.bot === false && !(msg.channel instanceof DMChannel)) {
+        if (scamLogs && msg.content.toLowerCase().includes('@everyone') && msg.author.bot === false && !(msg.channel instanceof DMChannel)) {
             const excludedRoles = [
                 'Admin Team',
                 'Moderation Team',
@@ -53,7 +54,7 @@ module.exports = {
                     ],
                 });
 
-                await (scamLogs as TextChannel).send({ embeds: [allowedEmbed] });
+                await scamLogs.send({ embeds: [allowedEmbed] });
 
             } else {
                 const mutedRole = msg.guild.roles.cache.find((role) => role.name === 'Muted');
@@ -72,7 +73,7 @@ module.exports = {
                         description: ' DM was not sent to ' + `<@${  msg.author.id  }>` + '.',
                     });
 
-                    await (msg.guild.channels.cache.find((channel) => channel.id === '931928312303976488') as TextChannel).send({ embeds: [noDMEmbed] });
+                    await scamLogs.send({ embeds: [noDMEmbed] });
                 }
 
                 const notAllowedEmbed = makeEmbed({
@@ -97,7 +98,7 @@ module.exports = {
                     ],
                 });
 
-                await (msg.guild.channels.cache.find((channel) => channel.id === '931928312303976488') as TextChannel).send({ embeds: [notAllowedEmbed] });
+                await scamLogs.send({ embeds: [notAllowedEmbed] });
                 await msg.member.roles.add(mutedRole);
             }
         }

@@ -1,6 +1,6 @@
 import discord, { EmbedField, Snowflake, TextChannel, User } from 'discord.js';
 import { CommandDefinition } from '../../lib/command';
-import { CommandCategory } from '../../constants';
+import { Channels, CommandCategory } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 
 type UserLike = User | Snowflake
@@ -20,10 +20,11 @@ export const ban: CommandDefinition = {
         const idArg = splitUp[0];
         const reason = splitUp.slice(1).join(' ');
 
+        const modLogsChannel = msg.guild.channels.resolve(Channels.MOD_LOGS) as TextChannel | null;
 
         return msg.guild.members.ban(idArg).then((user: User | Snowflake) => {
 
-            if (typeof user !== 'string') {
+            if (modLogsChannel && typeof user !== 'string') {
                 const modLogEmbed = makeEmbed({
                     color: 'RED',
                     author: {
@@ -47,7 +48,7 @@ export const ban: CommandDefinition = {
                     footer: { text: ` User ID: ${(user instanceof User) ? user.id : user}` },
                 });
 
-                (msg.guild.channels.cache.find((channel) => channel.id === '945016209647239218') as TextChannel).send({ embeds: [modLogEmbed] });
+                modLogsChannel.send({ embeds: [modLogEmbed] });
 
             }
 

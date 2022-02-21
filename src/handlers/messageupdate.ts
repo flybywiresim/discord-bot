@@ -8,9 +8,9 @@ module.exports = {
     event: 'messageUpdate',
     executor: async (oldMessage, newMessage) => {
 
-        const userLogsChannel = oldMessage.guild.channels.resolve(Channels.USER_LOGS) as TextChannel;
+        const userLogsChannel = oldMessage.guild.channels.resolve(Channels.USER_LOGS) as TextChannel | null;
 
-        if (!UserLogExclude.some((e) => e == oldMessage.author.id)) {
+        if (userLogsChannel && !UserLogExclude.some((e) => e == oldMessage.author.id)) {
            const messageUpdateEmbed = makeEmbed({
                 color: 'ORANGE',
                 thumbnail: {
@@ -30,7 +30,7 @@ module.exports = {
                     text: `User ID: ${oldMessage.author.id}`,
                 },
             });
-           await userLogsChannel.send({embeds: [messageUpdateEmbed]});
+           await userLogsChannel.send({embeds: [messageUpdateEmbed] });
         }
     },
 };

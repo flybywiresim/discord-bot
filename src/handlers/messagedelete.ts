@@ -14,7 +14,7 @@ module.exports = {
 
         const userLogsChannel = message.guild.channels.resolve(Channels.USER_LOGS) as TextChannel | null;
 
-        if (!UserLogExclude.some((e) => e === message.author.id) && userLogsChannel !== null) {
+        if (userLogsChannel && !UserLogExclude.some((e) => e === message.author.id)) {
 
              const messageDeleteEmbed = makeEmbed({
                 color: 'RED',
@@ -30,7 +30,7 @@ module.exports = {
                 ],
                 footer: { text: `User ID: ${message.author.id}` },
             });
-            await (message.guild.channels.cache.find((channel) => channel.id === '942501662420004954') as TextChannel).send({ embeds: [messageDeleteEmbed] });
+                await userLogsChannel.send({ embeds: [messageDeleteEmbed] });
         }
     },
 };
