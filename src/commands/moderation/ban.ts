@@ -1,4 +1,4 @@
-import discord, { EmbedField, Snowflake, User } from 'discord.js';
+import discord, { EmbedField, Snowflake, TextChannel, User } from 'discord.js';
 import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
@@ -22,12 +22,37 @@ export const ban: CommandDefinition = {
 
 
         return msg.guild.members.ban(idArg).then((user: User | Snowflake) => {
-            // A bt of a hack, but we need to propagate the reason and moderator to the event handler.
-            // Since discord.js caches user objects, we can exploit that to attach more info to the ban.
+
             if (typeof user !== 'string') {
-                (user as any).banReason = reason;
-                (user as any).banModerator = msg.author;
+                const modLogEmbed = makeEmbed({
+                    color: 'RED',
+                    author: {
+                        name: `[BANNED] ${user.tag}`,
+                        icon_url: user.displayAvatarURL({ dynamic: true }),
+                    },
+                    fields: [
+                        {
+                            name: 'Member',
+                            value: user.toString(),
+                        },
+                        {
+                            name: 'Moderator',
+                            value: `<@${msg.author.id}>`,
+                        },
+                        {
+                            name: 'Reason',
+                            value: '\u200B' + reason,
+                        },
+                    ],
+                    footer: { text: ` User ID: ${(user instanceof User) ? user.id : user}` },
+                });
+
+                (msg.guild.channels.cache.find((channel) => channel.id === '945016209647239218') as TextChannel).send({ embeds: [modLogEmbed] });
+
             }
+
+
+
             msg.channel.send({ embeds: [makeSuccessfulBanEmbed(user, reason)] });
         }).catch(async (error) => {
             const guildMember = await msg.guild.members.fetch(idArg);
