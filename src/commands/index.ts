@@ -93,7 +93,7 @@ import { takeoffPerf } from './a32nx/takeoffPerf';
 import { manualleg } from './support/manualleg';
 import { oim } from './funnies/oim';
 import { wasm } from './support/wasm';
-import { CPDLC } from './a32nx/cpdls';
+import { CPDLC } from './a32nx/cpdlc';
 
 const commands: CommandDefinition[] = [
     ping,
