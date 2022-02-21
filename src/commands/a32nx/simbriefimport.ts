@@ -6,7 +6,7 @@ const SIMBRIEF_INTEGRATION_IMAGE_URL = 'https://cdn.discordapp.com/attachments/9
 
 export const simbriefimport: CommandDefinition = {
     name: ['import', 'integration', 'integ'],
-    description: 'Shows how to use SimBrief integration ',
+    description: 'Shows how to use SimBrief integration',
     category: CommandCategory.A32NX,
     executor: (msg) => msg.channel.send(makeEmbed({
         title: 'FlyByWire A32NX | SimBrief import',
