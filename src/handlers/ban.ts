@@ -1,36 +1,91 @@
-import { Guild, TextChannel, User } from 'discord.js';
-import { EventHandlerDefinition } from '../lib/handler';
-import { Channels } from '../constants';
+import { TextChannel } from 'discord.js';
+import { Channels, ModLogsExclude } from '../constants';
 import { makeEmbed } from '../lib/embed';
 
-const FEATURE_NOT_AVAIL = '(not available for non-bot bans)';
-
-type BotBanUser = User & { banReason?: string, banModerator?: User }
-
-export const userBanned: EventHandlerDefinition<[Guild, BotBanUser]> = {
+module.exports = {
     event: 'guildBanAdd',
-    executor: async (guild, user) => {
-        // Since we do some big chungus cache trickery in commands/ban.ts, we wait a bit before processing this.
-        // This makes sure that the post-ban promise success handler has time to edit the cached user.
-        setTimeout(async () => {
-            const modLogsChannel = guild.channels.resolve(Channels.MOD_LOGS) as TextChannel;
-
-            const banLogEmbed = makeEmbed({
-                color: 'RED',
-                author: {
-                    name: `[BANNED] ${user.tag}`,
-                    icon_url: user.displayAvatarURL({ dynamic: true }),
-                },
-                fields: [
-                    { name: 'Member', value: user.tag, inline: true },
-                    { name: 'Moderator', value: `\`${user.banModerator ?? FEATURE_NOT_AVAIL}\``, inline: true },
-                    { name: 'Reason', value: `\`${user.banReason ?? FEATURE_NOT_AVAIL}\``, inline: false },
-                ],
-                footer: { text: `User ID: ${user.id}` },
+    executor: async (msg) => {
+        if (msg.guild === null) {
+            // DMs
+            return;
+        }
+            const fetchedLogs = await msg.guild.fetchAuditLogs({
+                limit: 1,
+                type: 'MEMBER_BAN_ADD',
             });
 
-            await modLogsChannel.send({embeds: [banLogEmbed]});
+            const banLog = fetchedLogs.entries.first();
 
-        }, 1_000);
+        const noLogEmbed = makeEmbed({
+            color: 'RED',
+            author: {
+                name: `[BANNED] ${msg.user.tag}`,
+                icon_url: msg.user.displayAvatarURL({ dynamic: true }),
+            },
+            description: `${msg.user.tag} was banned from ${msg.guild.name} but no audit log could be found.`,
+            footer: { text: `User ID: ${msg.user.id}` },
+        });
+
+            if (!banLog) return (msg.guild.channels.cache.find((channel) => channel.id === '945016209647239218') as TextChannel).send({ embeds: [noLogEmbed] });
+
+            const {
+                reason,
+                executor,
+                target
+            } = banLog;
+
+        const modLogsChannel = msg.guild.channels.resolve(Channels.MOD_LOGS) as TextChannel | null;
+
+        if (!ModLogsExclude.some((e) => e === executor.id) && modLogsChannel !== null) {
+            if (target.id === msg.user.id) {
+                const userBannedEmbed = makeEmbed({
+                    color: 'RED',
+                    author: {
+                        name: `[BANNED] ${msg.user.tag}`,
+                        icon_url: msg.user.displayAvatarURL({ dynamic: true }),
+                    },
+                    fields: [
+                        {
+                            name: 'Member',
+                            value: msg.user.tag,
+                        },
+                        {
+                            name: 'Moderator',
+                            value: executor.tag,
+                        },
+                        {
+                            name: 'Reason',
+                            value: '\u200B' + reason,
+                        },
+                    ],
+                    footer: { text: `User ID: ${msg.user.id}` },
+                });
+                await (msg.guild.channels.cache.find((channel) => channel.id === '945016209647239218') as TextChannel).send({ embeds: [userBannedEmbed] });
+            } else {
+                const userBannedIncompleteEmbed = makeEmbed({
+                    color: 'RED',
+                    author: {
+                        name: `[BANNED] ${msg.user.tag}`,
+                        icon_url: msg.user.displayAvatarURL({ dynamic: true }),
+                    },
+                    fields: [
+                        {
+                            name: 'Member',
+                            value: msg.user.tag,
+                        },
+                        {
+                            name: 'Moderator',
+                            value: 'Unavailable - Audit log incomplete',
+                        },
+                        {
+                            name: 'Reason',
+                            value: 'Unavailable - Audit log incomplete',
+                        },
+                    ],
+                    footer: { text: `User ID: ${msg.user.id}` },
+                });
+                await (msg.guild.channels.cache.find((channel) => channel.id === '945016209647239218') as TextChannel).send({ embeds: [userBannedIncompleteEmbed] });
+            }
+        }
     },
 };

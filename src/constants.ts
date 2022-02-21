@@ -20,3 +20,7 @@ export const UserLogExclude = [
     '628400349979344919', // StickyBot
     '864492608163807302', //test bot
 ];
+
+export const ModLogsExclude = [
+    '864492608163807302',
+];
