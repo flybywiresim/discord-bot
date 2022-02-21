@@ -1,5 +1,4 @@
-import { Message, TextChannel } from 'discord.js';
-import { EventHandlerDefinition } from '../lib/handler';
+import { TextChannel } from 'discord.js';
 import { Channels, UserLogExclude } from '../constants';
 import { makeEmbed } from '../lib/embed';
 
