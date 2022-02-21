@@ -3,7 +3,7 @@ import Logger from '../lib/logger';
 import { ping } from './utils/ping';
 import { whois } from './moderation/whois';
 import { bruheg } from './funnies/bruheg';
-
+import { boratorium } from './funnies/boratorium';
 import { efb } from './a32nx/efb';
 import { deadzones } from './support/deadzones';
 import { screens } from './a32nx/screens';
@@ -95,7 +95,7 @@ const commands: CommandDefinition[] = [
     ping,
     whois,
     bruheg,
-
+    boratorium,
     efb,
     deadzones,
     screens,
