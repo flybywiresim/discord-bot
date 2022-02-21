@@ -27,7 +27,7 @@ module.exports = {
                 fields: [
                     { name: 'Author', value: `<@${message.author.id}>`, inline: true },
                     { name: 'Channel', value: `<#${message.channel.id}>`, inline: true },
-                    { name: 'Deleted Message', value: message.content, inline: false },
+                    { name: 'Deleted Message', value: message.content ? `${message.content}` : FEATURE_NOT_AVAIL, inline: false },
                 ],
                 footer: { text: `User ID: ${message.author.id}` },
             });
