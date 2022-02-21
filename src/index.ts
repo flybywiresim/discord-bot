@@ -1,12 +1,11 @@
 /* eslint-disable camelcase */
 import { start } from 'elastic-apm-node';
 import dotenv from 'dotenv';
-import Discord, { DMChannel, TextChannel } from 'discord.js';
+import Discord from 'discord.js';
 import commands from './commands';
 import { makeEmbed } from './lib/embed';
 import Logger from './lib/logger';
-
-
+import express from 'express';
 
 dotenv.config();
 const apm = start({
@@ -117,4 +116,20 @@ client.login(process.env.BOT_SECRET)
         process.exit(1);
     });
 
+const app = express();
+
+    app.get('/healthz', (req, res) => (healthy ? res.status(200)
+        .send('Ready') : res.status(500)
+        .send('Not Ready')));
+    app.listen(3000, () => {
+        Logger.info('Server is running at http://localhost:3000');
+    });
+
+    process.on('SIGTERM', () => {
+        Logger.info('SIGTERM signal received.');
+        client.destroy();
+        app.close(() => {
+            Logger.info('Server stopped.');
+        });
+    });
 
