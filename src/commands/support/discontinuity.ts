@@ -10,7 +10,7 @@ export const discontinuity: CommandDefinition = {
         const discontinuityEmbed = makeEmbed({
             title: 'FlyByWire A32NX | Discontinuity',
             description: makeLines ([
-                'Please see our [documentation](https://docs.flybywiresim.com/pilots-corner/beginner-guide/preparing-mcdu/#discontinuity) for information on what to do with a discontinuity in your flight plan.',
+                'Please see our [documentation](https://docs.flybywiresim.com/pilots-corner/advanced-guides/flight-planning/disco/) for information on what to do with a discontinuity in your flight plan.',
             ]),
         });
 
