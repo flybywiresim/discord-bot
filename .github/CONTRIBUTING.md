@@ -43,6 +43,11 @@ You can find the pull request template [here](PULL_REQUEST_TEMPLATE.md).
 7. Inside the .env file, type `BOT_SECRET=TOKEN` replacing TOKEN with what you copied in step 6
 8. You may need to add the .env file to your gitignore if your IDE hasn't done it automatically.
 
+Some commands may require additional tokens. If you would like to test them out on your bot, you must include the tokens inside your .env file. These commands include the metar and station commands. Both of these use the same API meaning you only need one token. The steps below will explain how to set this up.
+1. Make a free account [here](https://avwx.rest/). Then, follow the steps [here](https://account.avwx.rest/getting-started) to get your token
+2. Inside the .env file, on a new line type `METAR_TOKEN=TOKEN` replacing TOKEN with what you copied in step 1
+3. Then, on another new line within the .env file, type `STATION_TOKEN=TOKEN` replacing TOKEN with what you copied in step 1
+
 ### Privileged Gateway Intents
 
 Privileged Gateway Intents must now be enabled within the Discord Developer Portal in order for your bot to function. The steps below will explain how to enable them.
@@ -76,6 +81,8 @@ Privileged Gateway Intents must now be enabled within the Discord Developer Port
 4. Add your command name to the list under `const commands: CommandDefinition[] = [`
 
 If you need help creating a command, you may find it useful to copy an existing command as a template, changing what you need.
+
+Please ensure that the command category is appropriate for the command. You can find what each category means in `src/lib/constants.ts`. For example, a command used for support would use the 'SUPPORT' category. 
 
 ### Modifying a Command
 
