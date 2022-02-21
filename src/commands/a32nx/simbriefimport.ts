@@ -2,7 +2,7 @@ import { CommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 
-const Simbrief_request_URL = 'https://cdn.discordapp.com/attachments/945012754589298721/945056041656279130/unknown.png';
+const SIMBRIEF_INTEGRATION_IMAGE_URL = 'https://cdn.discordapp.com/attachments/945012754589298721/945056041656279130/unknown.png';
 
 export const simbriefimport: CommandDefinition = {
     name: ['import', 'integration', 'integ'],
