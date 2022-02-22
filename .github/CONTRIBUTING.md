@@ -9,6 +9,15 @@ Please reference the information below when contributing to this repository.
 * Choose user-friendly command names.
 * Test your build locally before submitting as ready for review.
 
+## Writing Guidelines
+
+To ensure that commands are written professionally and clearly, please follow the guide below.
+
+* Use the proper name for third party services. For example, simBrief and not SimBrief.
+* Refrain from using exclamation points unless it is a warning.
+* Ensure that the contents of the command are correct. If you are unsure if something is correct please speak to any bot developer, and they will be able to verify anything.
+* Ensure that grammar and spelling is correct.
+
 ## Pull Request Process
 Reminder: The main branch is 'staging'
 
