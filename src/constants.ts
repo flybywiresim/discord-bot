@@ -12,9 +12,9 @@ export enum CommandCategory {
 }
 
 export enum Channels {
-    MOD_LOGS = '945016209647239218',
-    USER_LOGS = '942501662420004954',
-    SCAM_LOGS = '931928312303976488',
+    MOD_LOGS = '943531144769593354',
+    USER_LOGS = '943531129368109147',
+    SCAM_LOGS = '943531160561148004',
 }
 
 export const UserLogExclude = [
