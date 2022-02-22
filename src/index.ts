@@ -116,6 +116,8 @@ client.login(process.env.BOT_SECRET)
         process.exit(1);
     });
 
+//express/k8s code. Auto restarts?
+
 const app = express();
 
 app.get('/healthz', (req, res) => (healthy ? res.status(200)
