@@ -118,18 +118,18 @@ client.login(process.env.BOT_SECRET)
 
 const app = express();
 
-    app.get('/healthz', (req, res) => (healthy ? res.status(200)
-        .send('Ready') : res.status(500)
-        .send('Not Ready')));
-    app.listen(3000, () => {
-        Logger.info('Server is running at http://localhost:3000');
-    });
+app.get('/healthz', (req, res) => (healthy ? res.status(200)
+    .send('Ready') : res.status(500)
+    .send('Not Ready')));
+app.listen(3000, () => {
+    Logger.info('Server is running at http://localhost:3000');
+});
 
-    process.on('SIGTERM', () => {
-        Logger.info('SIGTERM signal received.');
-        client.destroy();
-        app.close(() => {
-            Logger.info('Server stopped.');
-        });
+process.on('SIGTERM', () => {
+    Logger.info('SIGTERM signal received.');
+    client.destroy();
+    app.close(() => {
+        Logger.info('Server stopped.');
     });
+});
 
