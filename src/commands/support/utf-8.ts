@@ -19,5 +19,3 @@ export const utf8: CommandDefinition = {
 
     },
 };
-
-
