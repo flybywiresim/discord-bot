@@ -6,7 +6,10 @@ const FMS_URL = 'https://media.discordapp.net/attachments/897491699167793182/927
 
 export const fms: CommandDefinition = {
     name: 'fms',
-    description: "That's how the real FMS draws it",
+    description: 'That\'s how the real FMS draws it',
     category: CommandCategory.FUNNIES,
-    executor: (msg) => msg.channel.send(makeEmbed({ image: { url: FMS_URL } })),
+    executor: async (msg) => {
+        const fmsEmbed = makeEmbed({ image: { url: FMS_URL } });
+        await msg.channel.send({ embeds: [fmsEmbed] });
+    },
 };

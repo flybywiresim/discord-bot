@@ -1,7 +1,7 @@
 import { CommandDefinition } from '../lib/command';
 import Logger from '../lib/logger';
 import { ping } from './utils/ping';
-import { help } from './utils/help';
+import { whois } from './moderation/whois';
 import { bruheg } from './funnies/bruheg';
 import { boratorium } from './funnies/boratorium';
 import { efb } from './a32nx/efb';
@@ -21,7 +21,7 @@ import { logs } from './support/logs';
 import { reportedissues } from './support/reportedissues';
 import { autopilot } from './a32nx/autopilot';
 import { checklist } from './a32nx/checklist';
-import { whois } from './moderation/whois';
+import { help } from './utils/help';
 import { donate } from './general/donate';
 import { utf8 } from './support/utf-8';
 import { calibrate } from './support/calibrate';
@@ -81,7 +81,7 @@ import { rules } from './moderation/rules';
 import { fixinfo } from './a32nx/fixinfo';
 import { welcome } from './moderation/welcome';
 import { sop } from './a32nx/sop';
-import { goldenrules } from './general/goldenrules';
+import { goldenRules } from './general/goldenRules';
 import { fridge } from './funnies/fridge';
 import { tiller } from './a32nx/tiller';
 import { assistance } from './a32nx/assistance';
@@ -93,12 +93,12 @@ import { takeoffPerf } from './a32nx/takeoffPerf';
 import { manualleg } from './support/manualleg';
 import { oim } from './funnies/oim';
 import { wasm } from './support/wasm';
-import { CPDLC } from './a32nx/CPDLC';
+import { CPDLC } from './a32nx/cpdlc';
 import { simbriefimport } from './a32nx/simbriefimport';
 
 const commands: CommandDefinition[] = [
     ping,
-    help,
+    whois,
     bruheg,
     boratorium,
     efb,
@@ -118,7 +118,7 @@ const commands: CommandDefinition[] = [
     reportedissues,
     autopilot,
     checklist,
-    whois,
+    help,
     donate,
     utf8,
     calibrate,
@@ -178,7 +178,7 @@ const commands: CommandDefinition[] = [
     fixinfo,
     welcome,
     sop,
-    goldenrules,
+    goldenRules,
     fridge,
     tiller,
     assistance,
