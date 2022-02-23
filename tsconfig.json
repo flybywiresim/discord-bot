@@ -5,6 +5,7 @@
     "outDir": "build",
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "experimentalDecorators": false
+    "experimentalDecorators": false,
+    "skipLibCheck": true
   }
 }
