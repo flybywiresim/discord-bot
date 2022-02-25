@@ -9,22 +9,22 @@ export const unban: CommandDefinition = {
     name: 'unban',
     requiredPermissions: ['BAN_MEMBERS'],
     category: CommandCategory.MODERATION,
-    executor: (msg) => {
+    executor: async (msg) => {
         const splitUp = msg.content.replace(/\.unban\s+/, '').split(' ');
 
         if (splitUp.length < 1) {
-            msg.reply('you did not provide enough arguments for this command. (<id>)');
+            await msg.reply('you did not provide enough arguments for this command. (<id>)');
             return Promise.resolve();
         }
 
         const idArg = splitUp[0];
 
         return msg.guild.members.unban(idArg).then((user: User | Snowflake) => {
-            msg.channel.send(makeSuccessfulUnbanEmbed(user));
-        }).catch((error) => {
-            const guildMember = msg.guild.member(idArg);
+            msg.channel.send({ embeds: [makeSuccessfulUnbanEmbed(user)] });
+        }).catch(async (error) => {
+            const guildMember = await msg.guild.members.fetch(idArg);
 
-            msg.channel.send(makeFailedUnbanEmbed(guildMember?.user ?? idArg, error));
+            msg.channel.send({ embeds: [makeFailedUnbanEmbed(guildMember?.user ?? idArg, error)] });
         });
     },
 };

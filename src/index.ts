@@ -1,12 +1,12 @@
+/* eslint-disable camelcase */
 import { start } from 'elastic-apm-node';
 import dotenv from 'dotenv';
-import express from 'express';
-import discord from 'discord.js';
-import { DisTube } from 'distube';
+import Discord from 'discord.js';
 import commands from './commands';
-import eventHandlers from './handlers';
-import { makeEmbed, makeLines } from './lib/embed';
+import { makeEmbed } from './lib/embed';
 import Logger from './lib/logger';
+import express from 'express';
+import { Distube } from 'distube'
 
 dotenv.config();
 const apm = start({
@@ -16,8 +16,11 @@ const apm = start({
 
 export const DEBUG_MODE = process.env.DEBUG_MODE === 'true';
 
-const app = express();
-const client = new discord.Client();
+const intents = new Discord.Intents(32767);
+const client = new Discord.Client({
+    partials: ['USER', 'CHANNEL', 'GUILD_MEMBER', 'MESSAGE', 'REACTION'],
+    intents,
+});
 
 let healthy = false;
 
@@ -28,11 +31,12 @@ client.on('ready', () => {
 
 client.on('disconnect', () => {
     Logger.warn('Client disconnected');
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     healthy = false;
 });
 
-client.on('message', async (msg) => {
-    const isDm = msg.channel.type === 'dm';
+client.on('messageCreate', async (msg) => {
+    const isDm = msg.channel.type === 'DM';
     const guildId = !isDm ? msg.guild.id : 'DM';
 
     Logger.debug(`Processing message ${msg.id} from user ${msg.author.id} in channel ${msg.channel.id} of server ${guildId}.`);
@@ -56,18 +60,24 @@ client.on('message', async (msg) => {
 
             const commandsArray = Array.isArray(name) ? name : [name];
 
-            if (!requiredPermissions || requiredPermissions.every((permission) => msg.guild.member(msg.author).hasPermission(permission))) {
+            const member = await msg.guild.members.fetch(msg.author);
+
+            if (!requiredPermissions || requiredPermissions.every((permission) => member.permissions.has(permission))) {
                 if (commandsArray.includes(usedCommand)) {
                     try {
                         await executor(msg, client);
                         transaction.result = 'success';
                     } catch ({ name, message, stack }) {
                         Logger.error({ name, message, stack });
-                        await msg.channel.send(makeEmbed({
+                        // eslint-disable-next-line camelcase
+                        const error_embed = makeEmbed({
                             color: 'RED',
                             title: 'Error while Executing Command',
-                            description: DEBUG_MODE ? `\`\`\`\n${stack}\`\`\`` : `\`\`\`\n${name}: ${message}\n\`\`\``,
-                        }));
+                            description: DEBUG_MODE ? `\`\`\`D\n${stack}\`\`\`` : `\`\`\`\n${name}: ${message}\n\`\`\``,
+                        });
+
+                        await msg.channel.send({ embeds: [error_embed] });
+
                         transaction.result = 'error';
                     }
 
@@ -84,8 +94,20 @@ client.on('message', async (msg) => {
     }
 });
 
-for (const handler of eventHandlers) {
-    client.on(handler.event, handler.executor);
+const fs = require("fs");
+
+const eventHandlers = fs
+    .readdirSync("src/handlers")
+    .filter(file => file.endsWith(".ts"));
+
+for (const file of eventHandlers) {
+    const handler = require(`./handlers/${file}`);
+
+    if (handler.once) {
+        client.once(handler.event, (...args) => handler.executor(...args));
+    } else {
+        client.on(handler.event, (...args) => handler.executor(...args));
+    }
 }
 
 client.login(process.env.BOT_SECRET)
@@ -95,7 +117,13 @@ client.login(process.env.BOT_SECRET)
         process.exit(1);
     });
 
-app.get('/healthz', (req, res) => (healthy ? res.status(200).send('Ready') : res.status(500).send('Not Ready')));
+//express/k8s code. Auto restarts?
+
+const app = express();
+
+app.get('/healthz', (req, res) => (healthy ? res.status(200)
+    .send('Ready') : res.status(500)
+    .send('Not Ready')));
 app.listen(3000, () => {
     Logger.info('Server is running at http://localhost:3000');
 });
@@ -107,6 +135,7 @@ process.on('SIGTERM', () => {
         Logger.info('Server stopped.');
     });
 });
+
 
 // Music stuff. Needs to be done here. Most of these are event listeners
 

@@ -6,12 +6,12 @@ export const roleinfo: CommandDefinition = {
     name: 'roleinfo',
     description: 'Lists the guild\'s current amount of members',
     category: CommandCategory.UTILS,
-    executor: (msg) => {
+    executor: async (msg) => {
         // Takes out the .roleinfo from the query;
         const query = msg.content.replace(/\.roleinfo(\s|$)+/, '').toLowerCase();
 
         if (query.length < 1) {
-            msg.reply('you did not provide a role to search. (<role>)');
+            await msg.reply('you did not provide a role to search. (<role>)');
             return Promise.resolve();
         }
 
@@ -22,13 +22,15 @@ export const roleinfo: CommandDefinition = {
         ));
 
         if (!role) {
-            msg.reply('Invalid Role');
+            await msg.reply('Invalid Role');
             return Promise.resolve();
         }
 
-        return msg.channel.send(makeEmbed({
+        const roleinfoEmbed = makeEmbed({
             title: `${role.name}`,
             description: `**${role.members.size}** members have that role.`,
-        }));
+        });
+
+        return msg.channel.send({ embeds: [roleinfoEmbed] });
     },
 };

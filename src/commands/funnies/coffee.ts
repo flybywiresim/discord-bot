@@ -7,5 +7,7 @@ export const coffee: CommandDefinition = {
     name: 'coffee',
     description: 'Would you like some coffee?',
     category: CommandCategory.FUNNIES,
-    executor: (msg) => msg.channel.send( COFFEE_URL ),
+    executor: async (msg) => {
+        await msg.channel.send(COFFEE_URL);
+    },
 };

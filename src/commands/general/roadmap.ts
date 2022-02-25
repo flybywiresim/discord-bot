@@ -8,5 +8,12 @@ export const roadmap: CommandDefinition = {
     name: ['roadmap', 'goals'],
     category: CommandCategory.GENERAL,
     description: 'FBW Roadmap',
-    executor: (msg) => msg.channel.send(makeEmbed({ image: { url: ROADMAP_URL } })),
+    executor: async (msg) => {
+        const roadmapEmbed = makeEmbed({
+            image: { url: ROADMAP_URL }
+        });
+
+        await msg.channel.send({ embeds: [roadmapEmbed] });
+
+    },
 };

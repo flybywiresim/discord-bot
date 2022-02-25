@@ -22,7 +22,7 @@ export const help: CommandDefinition = {
         });
 
         // Decide between DM or docs link
-        const selectorMsg = await msg.reply(embed);
+        const selectorMsg = await msg.reply({ embeds: [embed] });
 
         try {
             await msg.delete();
@@ -30,8 +30,8 @@ export const help: CommandDefinition = {
             Logger.debug('Message was already deleted');
         }
 
-        const reactionFilter = (reaction, user) => ['1️⃣', '2️⃣'].includes(reaction.emoji.name) && user.id === author.id;
-        selectorMsg.awaitReactions(reactionFilter, {
+        const filter = (reaction, user) => ['1️⃣', '2️⃣'].includes(reaction.emoji.name) && user.id === author.id;
+        selectorMsg.awaitReactions({ filter,
             max: 1,
             time: 60000,
             errors: ['time'],
@@ -66,7 +66,7 @@ export const help: CommandDefinition = {
                         description: 'https://docs.flybywiresim.com/discord-bot/',
                     });
 
-                    await selectorMsg.reply(embed);
+                    await selectorMsg.reply({ embeds: [embed] });
 
                     // Delete the selector
                     await selectorMsg.delete();
@@ -97,11 +97,11 @@ async function handleDmCommunication(dmChannel: DMChannel, author: User, index: 
     });
 
     // Send reaction embeds for interaction
-    const sentEmbedMessage = await dmChannel.send(dmEmbed);
+    const sentEmbedMessage = await dmChannel.send({ embeds: [dmEmbed] });
 
     // Only act on certain reactions. I am using`includes` here so new reactions can be easily added.
-    const reactionFilter = (reaction, user) => ['⏪', '⏩', '❌'].includes(reaction.emoji.name) && user.id === author.id;
-    sentEmbedMessage.awaitReactions(reactionFilter, {
+    const filter = (reaction, user) => ['⏪', '⏩', '❌'].includes(reaction.emoji.name) && user.id === author.id;
+    sentEmbedMessage.awaitReactions({ filter,
         max: 1,
         time: 60000,
         errors: ['time'],
