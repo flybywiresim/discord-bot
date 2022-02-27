@@ -6,6 +6,8 @@ import commands from './commands';
 import { makeEmbed } from './lib/embed';
 import Logger from './lib/logger';
 import express from 'express';
+import { readdirSync } from 'fs';
+import { join } from 'path';
 
 dotenv.config();
 const apm = start({
@@ -93,11 +95,7 @@ client.on('messageCreate', async (msg) => {
     }
 });
 
-const fs = require("fs");
-
-const eventHandlers = fs
-    .readdirSync("src/handlers")
-    .filter(file => file.endsWith(".ts"));
+const eventHandlers = readdirSync(join(__dirname, 'handlers'));
 
 for (const file of eventHandlers) {
     const handler = require(`./handlers/${file}`);
