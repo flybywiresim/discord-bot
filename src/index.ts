@@ -47,6 +47,11 @@ client.on('messageCreate', async (msg) => {
         return;
     }
 
+    if(isDm) {
+        Logger.debug('Bailing because message is a DM.');
+        return;
+    }
+
     if (msg.content.startsWith('.')) {
         const transaction = apm.startTransaction('command');
         Logger.debug('Message starts with dot.');
