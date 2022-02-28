@@ -21,6 +21,14 @@ export const whois: CommandDefinition = {
         const filteredRoles = targetMember.roles.cache.filter(role => role.id != msg.guild.id);
         const listedRoles = filteredRoles.sort((a, b) => b.position - a.position).map(role => role.toString());
 
+        const onlineStatus =  beautifiedStatus[targetMember.presence?.status.toUpperCase()]
+
+        let status
+        if (targetMember.presence == null)
+        { status = 'Offline'} else {
+            status = onlineStatus;
+        }
+
             const whoisEmbed = makeEmbed({
             author: {
                 name: targetMember.user.username,
@@ -38,7 +46,7 @@ export const whois: CommandDefinition = {
                 },
                 {
                     name: "Status",
-                    value: beautifiedStatus[targetMember.presence.status.toUpperCase()],
+                    value: status,
                     inline: true
                 },
                 {
