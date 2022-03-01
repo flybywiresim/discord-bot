@@ -9,6 +9,18 @@ enum TimeConversions {
     WEEKS_TO_MILLISECONDS = 60 * 60 * 24 * 7 * 1000,
 }
 
+const DMEmbed = () => makeEmbed({
+    // stuff
+});
+
+const modLogEmbed = () => makeEmbed({
+    // sutff
+});
+
+const timeoutEmbed = () => makeEmbed({
+    // stuff
+});
+
 export const timeout: CommandDefinition = {
     name: 'timeout',
     requiredPermissions: ['BAN_MEMBERS'],
@@ -47,6 +59,7 @@ export const timeout: CommandDefinition = {
         }
 
         await user.timeout(timeoutLength, reason);
+        // todo: check if successful
         await msg.channel.send(
             {
                 embeds: [makeEmbed({
