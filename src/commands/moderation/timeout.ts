@@ -2,6 +2,7 @@ import { Guild, TextChannel, User } from 'discord.js';
 import { CommandDefinition } from '../../lib/command';
 import { CommandCategory, Channels } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
+import { unTimeoutDMEmbed, unTimeoutModLogEmbed, unTimeoutEmbed } from './untimeout';
 
 enum TimeConversions {
     MINUTES_TO_MILLISECONDS = 60 * 1000,
@@ -118,7 +119,7 @@ export const timeout: CommandDefinition = {
     category: CommandCategory.MODERATION,
     executor: async (msg) => {
         const args = msg.content.replace(/\.timeout\s+/, '').split(' ');
-        if (args.length < 3) {
+        if (args.length < 3 && parseInt(args[1]) !== 0) {
             await msg.reply('You need to provide the following arguments for this command: <id> <timeoutDuration> <reason>');
             return;
         }
@@ -131,26 +132,33 @@ export const timeout: CommandDefinition = {
 
         let timeoutDuration: number;
         switch (timeoutArg[timeoutArg.length - 1].toLowerCase()) {
-        default: {
-            // defaults to minutes; 'm' will also run this block
-            timeoutDuration = parseInt(timeoutArg.replace('m', '')) * TimeConversions.MINUTES_TO_MILLISECONDS;
-            break;
-        }
-        case 'h': {
-            timeoutDuration = parseInt(timeoutArg.replace('h', '')) * TimeConversions.HOURS_TO_MILLISECONDS;
-            break;
-        }
-        case 'd': {
-            timeoutDuration = parseInt(timeoutArg.replace('d', '')) * TimeConversions.DAYS_TO_MILLISECONDS;
-            break;
-        }
-        case 'w': {
-            timeoutDuration = parseInt(timeoutArg.replace('w', '')) * TimeConversions.WEEKS_TO_MILLISECONDS;
-            break;
-        }
+            default: {
+                // defaults to minutes; 'm' will also run this block
+                timeoutDuration = parseInt(timeoutArg.replace('m', '')) * TimeConversions.MINUTES_TO_MILLISECONDS;
+                break;
+            }
+            case 'h': {
+                timeoutDuration = parseInt(timeoutArg.replace('h', '')) * TimeConversions.HOURS_TO_MILLISECONDS;
+                break;
+            }
+            case 'd': {
+                timeoutDuration = parseInt(timeoutArg.replace('d', '')) * TimeConversions.DAYS_TO_MILLISECONDS;
+                break;
+            }
+            case 'w': {
+                timeoutDuration = parseInt(timeoutArg.replace('w', '')) * TimeConversions.WEEKS_TO_MILLISECONDS;
+                break;
+            }
         }
 
         await targetUser.timeout(timeoutDuration, reason);
+        if (timeoutDuration === 0) {
+            await msg.channel.send({ embeds: [unTimeoutEmbed(targetUser.user)] });
+            await modLogsChannel.send({ embeds: [unTimeoutModLogEmbed(msg.author, targetUser.user)] });
+            await targetUser.send({ embeds: [unTimeoutDMEmbed(msg.author, msg.guild)] });
+            return;
+        }
+
         await msg.channel.send({ embeds: [timeoutEmbed(targetUser.user, reason, timeoutArg)] });
         await modLogsChannel.send({ embeds: [modLogEmbed(msg.author, targetUser.user, reason, timeoutArg)] });
         await targetUser.send({ embeds: [DMEmbed(msg.author, timeoutArg, reason, msg.guild, targetUser.communicationDisabledUntil)] });

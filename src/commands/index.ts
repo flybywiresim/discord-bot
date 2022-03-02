@@ -97,6 +97,7 @@ import { CPDLC } from './a32nx/cpdlc';
 import { simbriefimport } from './a32nx/simbriefimport';
 import { roleassignment } from './moderation/roleassignment';
 import { timeout } from './moderation/timeout';
+import { untimeout } from './moderation/untimeout';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -196,6 +197,7 @@ const commands: CommandDefinition[] = [
     simbriefimport,
     roleassignment,
     timeout,
+    untimeout,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
