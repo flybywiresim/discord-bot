@@ -6,14 +6,13 @@ export const avatar: CommandDefinition = {
     name: ['avatar', 'av'],
     description: 'Shows the selected user\'s avatar',
     category: CommandCategory.UTILS,
-    executor: async (msg) => {
+    executor: (msg) => {
         const user = msg.mentions.users.first() || msg.author;
-        user.displayAvatarURL({ dynamic: true });
-        const avatarEmbed = makeEmbed({
+        user.displayAvatarURL({ dynamic: true })
+        return msg.channel.send(makeEmbed({
             title: `${user.tag}'s Avatar`,
             image: { url: user.displayAvatarURL({ dynamic: true, size: 4096 }) },
-        });
-        return msg.channel.send({ embeds: [avatarEmbed] });
+        }));
     },
 };
 

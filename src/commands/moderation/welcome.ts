@@ -8,7 +8,7 @@ const SUPPORT_IMAGE_URL = 'https://cdn.discordapp.com/attachments/82567444534263
 const HELP_IMAGE_URL = 'https://cdn.discordapp.com/attachments/825674445342638120/909527270564167690/help_and_support.png';
 const IMPORTANT_INFO_IMAGE_URL = 'https://cdn.discordapp.com/attachments/825674445342638120/909527271398834226/impt_info.png';
 
-const SOCIAL_EMBED =
+const SOCIAL_EMBED = [
     makeEmbed({
         title: '<:Partnered:921520970123059231> FlyByWireSimulations | Socials',
         description: makeLines([
@@ -18,9 +18,10 @@ const SOCIAL_EMBED =
             '<:Youtube:921521552829329488> <https://www.youtube.com/c/FlyByWireSimulations>',
             '<:Twitch:921521552623804506> <https://www.twitch.tv/flybywiresimulations>',
         ])
-    });
+    })
+]
 
-const SUPPORT_EMBED =
+const SUPPORT_EMBED = [
     makeEmbed({
         title: '<:Partnered:921520970123059231> FlyByWireSimulations | Support Us',
         description: makeLines([
@@ -28,9 +29,10 @@ const SUPPORT_EMBED =
             '',
             'https://opencollective.com/flybywire'
         ])
-    });
+    })
+]
 
-const IMPORTANT_INFO_EMBED =
+const IMPORTANT_INFO_EMBED = [
     makeEmbed({
         title: '<:Partnered:921520970123059231> FlyByWireSimulations | Important Info',
         description: 'By being a member of our Discord Server, you agree to the following, and failure to do so can result in removal from the server.',
@@ -44,9 +46,10 @@ const IMPORTANT_INFO_EMBED =
                 value: "Please read the Discord TOS and Guidelines listed below!\n\nDiscord Terms of Service & Guidelines\n\n• https://discordapp.com/terms\n\n• https://discordapp.com/guidelines \n",
             },
         ],
-    });
+    }),
+];
 
-const HELP_EMBED =
+const HELP_EMBED = [
     makeEmbed({
         title: '<:Partnered:921520970123059231> FlyByWireSimulations | Help and Support',
         fields: [
@@ -64,7 +67,8 @@ const HELP_EMBED =
             },
 
         ],
-    });
+    }),
+];
 
 export const welcome: CommandDefinition = {
     name: 'welcome',
@@ -78,19 +82,19 @@ export const welcome: CommandDefinition = {
 
         await msg.channel.send({ files: [ SOCIAL_IMAGE_URL ]});
 
-        await msg.channel.send({ embeds: [SOCIAL_EMBED] });
+        await msg.channel.send(SOCIAL_EMBED);
 
         await msg.channel.send({ files: [ SUPPORT_IMAGE_URL ]});
 
-        await msg.channel.send({ embeds: [SUPPORT_EMBED] });
+        await msg.channel.send(SUPPORT_EMBED);
 
         await msg.channel.send({ files: [ HELP_IMAGE_URL ]});
 
-        await msg.channel.send({ embeds: [HELP_EMBED] });
+        await msg.channel.send(HELP_EMBED);
 
         await msg.channel.send({ files : [ IMPORTANT_INFO_IMAGE_URL ]});
 
-        await msg.channel.send({ embeds: [IMPORTANT_INFO_EMBED] });
+        await msg.channel.send(IMPORTANT_INFO_EMBED);
 
     },
 };

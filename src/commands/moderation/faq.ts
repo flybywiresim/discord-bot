@@ -1,10 +1,10 @@
 import { CommandDefinition } from '../../lib/command';
-import { makeEmbed } from '../../lib/embed';
+import { makeEmbed, makeLines } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 
 const FLIGHT_DECK_IMAGE_URL = 'https://media.discordapp.net/attachments/838062729398976522/889484404697743381/unknown.png?width=1214&height=683';
 
-const faqEmbeds = [
+const embeds = [
     makeEmbed({
         title: 'FAQ',
         fields: [
@@ -77,8 +77,8 @@ export const faq: CommandDefinition = {
     category: CommandCategory.MODERATION,
     executor: async (msg) => {
         await msg.channel.send({ files: [ FLIGHT_DECK_IMAGE_URL  ]});
-        await Promise.all(faqEmbeds.map(async (faqEmbed) => {
-            await msg.channel.send({ embeds: [faqEmbed] });
+        await Promise.all(embeds.map(async (embed) => {
+            await msg.channel.send(embed);
         }));
     },
 };

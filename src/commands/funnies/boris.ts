@@ -8,8 +8,5 @@ export const boris: CommandDefinition = {
     name: 'boris',
     description: 'boris soudn',
     category: CommandCategory.FUNNIES,
-    executor: async (msg) => {
-        const borisEmbed = makeEmbed({ image: { url: BORIS_URL } });
-        await msg.channel.send({ embeds: [borisEmbed] });
-    },
+    executor: (msg) => msg.channel.send(makeEmbed({ image: { url: BORIS_URL } })),
 };

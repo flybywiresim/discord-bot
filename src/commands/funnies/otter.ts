@@ -5,5 +5,5 @@ export const otter: CommandDefinition = {
     name: 'otter',
     description: 'Well, it\'s an otter',
     category: CommandCategory.FUNNIES,
-    executor: (msg) => msg.channel.send('<:otter:905529385292029972>'),
+    executor: (msg) => msg.channel.send("<:otter:905529385292029972>"),
 };

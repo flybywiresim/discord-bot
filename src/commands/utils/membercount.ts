@@ -8,11 +8,10 @@ export const membercount: CommandDefinition = {
     category: CommandCategory.UTILS,
     executor: (msg) => {
         const { memberCount } = msg.guild;
-        const membercountEmbed = makeEmbed({
+
+        return msg.channel.send(makeEmbed({
             title: 'Members',
             description: `${memberCount}`,
-        });
-
-        return msg.channel.send({ embeds: [membercountEmbed] });
+        }));
     },
 };

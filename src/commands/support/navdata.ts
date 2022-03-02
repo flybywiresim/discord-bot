@@ -8,16 +8,11 @@ export const navdata: CommandDefinition = {
     name: 'navdata',
     description: 'Provides help with Navigraph navdata reinstall',
     category: CommandCategory.SUPPORT,
-    executor: async (msg) => {
-        const navdataEmbed = makeEmbed({
-            title: 'FlyByWire Support | Navigraph Navdata',
-            description: makeLines ([
-                'Please remove, and reinstall your navdata with the Navigraph tool.',
-            ]),
-            image: { url: NAVDATA_URL },
-        });
-
-        await msg.channel.send({ embeds: [navdataEmbed] });
-
-    },
+    executor: (msg) => msg.channel.send(makeEmbed({
+        title: 'FlyByWire Support | Navigraph Navdata',
+        description: makeLines ([
+            'Please remove, and reinstall your navdata with the Navigraph tool.',
+        ]),
+        image: { url: NAVDATA_URL },
+    })),
 };

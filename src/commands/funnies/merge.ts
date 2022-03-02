@@ -4,10 +4,8 @@ import { CommandCategory } from '../../constants';
 const MERGE_URL = 'https://tenor.com/view/git-merge-gitmerge-gif-18010083';
 
 export const merge: CommandDefinition = {
-    name: 'merge',
+    name: ['merge', 'git merge'],
     description: 'GIT MERGE!',
     category: CommandCategory.FUNNIES,
-    executor: async (msg) => {
-        await msg.channel.send(MERGE_URL);
-    },
+    executor: (msg) => msg.channel.send( MERGE_URL ),
 };
