@@ -111,7 +111,7 @@ export const timeout: CommandDefinition = {
         const reason = args.slice(2).join(' ');
 
         let timeoutDuration: number;
-        switch (timeoutArg[timeoutArg.length - 1]) {
+        switch (timeoutArg[timeoutArg.length - 1].toLowerCase()) {
             default: {
                 // defaults to minutes; 'm' will also run this block
                 timeoutDuration = parseInt(timeoutArg.replace('m', '')) * TimeConversions.MINUTES_TO_MILLISECONDS;
