@@ -16,9 +16,7 @@ const DMEmbed = (moderator: User, timeoutDuration: string, reason: string, guild
         name: guild.name,
         icon_url: guild.iconURL(),
     },
-    thumbnail: {
-        url: moderator.avatarURL(),
-    },
+    thumbnail: { url: moderator.avatarURL() },
     fields: [
         {
             inline: true,
@@ -57,7 +55,7 @@ const timeoutEmbed = (user: User, reason: string, timeoutDuration: string) => ma
             value: reason,
         },
         {
-            inline: true, // TODO: move this field to the second row somehow?
+            inline: true,
             name: 'Duration',
             value: timeoutDuration,
         },
@@ -118,15 +116,15 @@ export const timeout: CommandDefinition = {
                 break;
             }
             case 'h': {
-                timeoutDuration = parseInt(timeoutArg.slice(0, timeoutArg.length - 1)) * TimeConversions.HOURS_TO_MILLISECONDS;
+                timeoutDuration = parseInt(timeoutArg.replace('h', '')) * TimeConversions.HOURS_TO_MILLISECONDS;
                 break;
             }
             case 'd': {
-                timeoutDuration = parseInt(timeoutArg.slice(0, timeoutArg.length - 1)) * TimeConversions.DAYS_TO_MILLISECONDS;
+                timeoutDuration = parseInt(timeoutArg.replace('d', '')) * TimeConversions.DAYS_TO_MILLISECONDS;
                 break;
             }
             case 'w': {
-                timeoutDuration = parseInt(timeoutArg.slice(0, timeoutArg.length - 1)) * TimeConversions.WEEKS_TO_MILLISECONDS;
+                timeoutDuration = parseInt(timeoutArg.replace('w', '')) * TimeConversions.WEEKS_TO_MILLISECONDS;
                 break;
             }
         }
