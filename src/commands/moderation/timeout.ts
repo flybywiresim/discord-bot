@@ -31,7 +31,7 @@ const timeoutDurationInEnglish = (timeoutDurationString: string) => {
 };
 
 const DMEmbed = (moderator: User, timeoutDuration: string, reason: string, guild: Guild, timedOutUntil: Date) => makeEmbed({
-    title: `You were muted in ${guild.name}`,
+    title: `You were timed out in ${guild.name}`,
     author: {
         name: guild.name,
         icon_url: guild.iconURL(),
