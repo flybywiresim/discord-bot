@@ -10,6 +10,26 @@ enum TimeConversions {
     WEEKS_TO_MILLISECONDS = 60 * 60 * 24 * 7 * 1000,
 }
 
+const timeoutDurationInEnglish = (timeoutDurationString: string) => {
+    timeoutDurationString = timeoutDurationString.toLowerCase();
+    const unitOfTimeWords = ['minute', 'hour', 'day', 'week'];
+    const unitOfTimeAbbreviations = ['m', 'h', 'd', 'w'];
+    const timeoutDurationNumber = parseInt(timeoutDurationString);
+
+    let word!: string;
+    for (const i of unitOfTimeAbbreviations) {
+        if (timeoutDurationString.indexOf(i) !== -1) {
+            word = unitOfTimeWords[unitOfTimeAbbreviations.indexOf(i)];
+            break;
+        }
+    }
+    if (!word) {
+        word = unitOfTimeWords[0]; // 'minute'
+    }
+    word += (timeoutDurationNumber > 1 || timeoutDurationNumber === 0 ? 's' : ''); // Determines plurality
+    return `${timeoutDurationNumber} ${word}`;
+};
+
 const DMEmbed = (moderator: User, timeoutDuration: string, reason: string, guild: Guild) => makeEmbed({
     title: `You were muted in ${guild.name}`,
     author: {
@@ -21,7 +41,7 @@ const DMEmbed = (moderator: User, timeoutDuration: string, reason: string, guild
         {
             inline: true,
             name: 'Duration',
-            value: timeoutDuration,
+            value: timeoutDurationInEnglish(timeoutDuration),
         },
         {
             inline: true,
@@ -57,7 +77,7 @@ const timeoutEmbed = (user: User, reason: string, timeoutDuration: string) => ma
         {
             inline: true,
             name: 'Duration',
-            value: timeoutDuration,
+            value: timeoutDurationInEnglish(timeoutDuration),
         },
     ],
     color: 'GREEN',
@@ -84,7 +104,7 @@ const modLogEmbed = (moderator: User, user: User, reason: string, timeoutDuratio
         },
         {
             name: 'Duration',
-            value: timeoutDuration,
+            value: timeoutDurationInEnglish(timeoutDuration),
         },
     ],
     timestamp: Date.now(),
@@ -110,23 +130,23 @@ export const timeout: CommandDefinition = {
 
         let timeoutDuration: number;
         switch (timeoutArg[timeoutArg.length - 1].toLowerCase()) {
-            default: {
-                // defaults to minutes; 'm' will also run this block
-                timeoutDuration = parseInt(timeoutArg.replace('m', '')) * TimeConversions.MINUTES_TO_MILLISECONDS;
-                break;
-            }
-            case 'h': {
-                timeoutDuration = parseInt(timeoutArg.replace('h', '')) * TimeConversions.HOURS_TO_MILLISECONDS;
-                break;
-            }
-            case 'd': {
-                timeoutDuration = parseInt(timeoutArg.replace('d', '')) * TimeConversions.DAYS_TO_MILLISECONDS;
-                break;
-            }
-            case 'w': {
-                timeoutDuration = parseInt(timeoutArg.replace('w', '')) * TimeConversions.WEEKS_TO_MILLISECONDS;
-                break;
-            }
+        default: {
+            // defaults to minutes; 'm' will also run this block
+            timeoutDuration = parseInt(timeoutArg.replace('m', '')) * TimeConversions.MINUTES_TO_MILLISECONDS;
+            break;
+        }
+        case 'h': {
+            timeoutDuration = parseInt(timeoutArg.replace('h', '')) * TimeConversions.HOURS_TO_MILLISECONDS;
+            break;
+        }
+        case 'd': {
+            timeoutDuration = parseInt(timeoutArg.replace('d', '')) * TimeConversions.DAYS_TO_MILLISECONDS;
+            break;
+        }
+        case 'w': {
+            timeoutDuration = parseInt(timeoutArg.replace('w', '')) * TimeConversions.WEEKS_TO_MILLISECONDS;
+            break;
+        }
         }
 
         await targetUser.timeout(timeoutDuration, reason);
