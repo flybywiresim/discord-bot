@@ -1,7 +1,7 @@
+import { Guild, TextChannel, User } from 'discord.js';
 import { CommandDefinition } from '../../lib/command';
-import { CommandCategory } from '../../constants';
+import { CommandCategory, Channels } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
-import { GuildMember } from 'discord.js';
 
 enum TimeConversions {
     MINUTES_TO_MILLISECONDS = 60 * 1000,
@@ -10,11 +10,35 @@ enum TimeConversions {
     WEEKS_TO_MILLISECONDS = 60 * 60 * 24 * 7 * 1000,
 }
 
-const DMEmbed = () => makeEmbed({
-    // stuff
+const DMEmbed = (moderator: User, timeoutDuration: string, reason: string, guild: Guild) => makeEmbed({
+    title: `You were muted in ${guild.name}`,
+    author: {
+        name: guild.name,
+        icon_url: guild.iconURL(),
+    },
+    thumbnail: {
+        url: moderator.avatarURL(),
+    },
+    fields: [
+        {
+            inline: true,
+            name: 'Duration',
+            value: timeoutDuration,
+        },
+        {
+            inline: true,
+            name: 'Moderator',
+            value: moderator.tag,
+        },
+        {
+            inline: false,
+            name: 'Reason',
+            value: reason,
+        },
+    ],
 });
 
-const timeoutEmbed = (user: GuildMember, reason: string, timeoutLength: string) => makeEmbed({
+const timeoutEmbed = (user: User, reason: string, timeoutDuration: string) => makeEmbed({
     title: 'User Successfully Timed Out',
     fields: [
         {
@@ -34,15 +58,39 @@ const timeoutEmbed = (user: GuildMember, reason: string, timeoutLength: string) 
         },
         {
             inline: true, // TODO: move this field to the second row somehow?
-            name: 'Timeout Length',
-            value: timeoutLength,
+            name: 'Duration',
+            value: timeoutDuration,
         },
     ],
     color: 'GREEN',
 });
 
-const modLogEmbed = () => makeEmbed({
-    // stuff
+const modLogEmbed = (moderator: User, user: User, reason: string, timeoutDuration: string) => makeEmbed({
+    color: 'RED',
+    author: {
+        name: `[TIMED OUT] ${user.tag}`,
+        icon_url: user.displayAvatarURL({ dynamic: true }),
+    },
+    fields: [
+        {
+            name: 'Member',
+            value: user.toString(),
+        },
+        {
+            name: 'Moderator',
+            value: `<@${moderator}>`,
+        },
+        {
+            name: 'Reason',
+            value: `\u200B${reason}`,
+        },
+        {
+            name: 'Duration',
+            value: timeoutDuration,
+        },
+    ],
+    timestamp: Date.now(),
+    footer: { text: `User ID: ${user.id}` },
 });
 
 export const timeout: CommandDefinition = {
@@ -52,38 +100,41 @@ export const timeout: CommandDefinition = {
     executor: async (msg) => {
         const args = msg.content.replace(/\.timeout\s+/, '').split(' ');
         if (args.length < 3) {
-            await msg.reply('You need to provide the following arguments for this command: <id> <timeoutLength> <reason>');
+            await msg.reply('You need to provide the following arguments for this command: <id> <timeoutDuration> <reason>');
             return;
         }
 
+        const modLogsChannel = msg.guild.channels.resolve(Channels.MOD_LOGS) as TextChannel | null;
         const id = args[0];
-        const user = await msg.guild.members.fetch(id);
+        const targetUser = await msg.guild.members.fetch(id);
         const timeoutArg = args[1];
         const reason = args.slice(2).join(' ');
 
-        let timeoutLength: number;
+        let timeoutDuration: number;
         switch (timeoutArg[timeoutArg.length - 1]) {
             default: {
                 // defaults to minutes; 'm' will also run this block
-                timeoutLength = parseInt(timeoutArg.replace('m', '')) * TimeConversions.MINUTES_TO_MILLISECONDS;
+                timeoutDuration = parseInt(timeoutArg.replace('m', '')) * TimeConversions.MINUTES_TO_MILLISECONDS;
                 break;
             }
             case 'h': {
-                timeoutLength = parseInt(timeoutArg.slice(0, timeoutArg.length - 1)) * TimeConversions.HOURS_TO_MILLISECONDS;
+                timeoutDuration = parseInt(timeoutArg.slice(0, timeoutArg.length - 1)) * TimeConversions.HOURS_TO_MILLISECONDS;
                 break;
             }
             case 'd': {
-                timeoutLength = parseInt(timeoutArg.slice(0, timeoutArg.length - 1)) * TimeConversions.DAYS_TO_MILLISECONDS;
+                timeoutDuration = parseInt(timeoutArg.slice(0, timeoutArg.length - 1)) * TimeConversions.DAYS_TO_MILLISECONDS;
                 break;
             }
             case 'w': {
-                timeoutLength = parseInt(timeoutArg.slice(0, timeoutArg.length - 1)) * TimeConversions.WEEKS_TO_MILLISECONDS;
+                timeoutDuration = parseInt(timeoutArg.slice(0, timeoutArg.length - 1)) * TimeConversions.WEEKS_TO_MILLISECONDS;
                 break;
             }
         }
 
-        await user.timeout(timeoutLength, reason);
+        await targetUser.timeout(timeoutDuration, reason);
         // todo: check if successful
-        await msg.channel.send({ embeds: [timeoutEmbed(user, reason, timeoutArg)] });
+        await msg.channel.send({ embeds: [timeoutEmbed(targetUser.user, reason, timeoutArg)] });
+        await modLogsChannel.send({ embeds: [modLogEmbed(msg.author, targetUser.user, reason, timeoutArg)] });
+        await targetUser.send({ embeds: [DMEmbed(msg.author, timeoutArg, reason, msg.guild)] });
     },
 };
