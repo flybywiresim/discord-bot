@@ -7,6 +7,15 @@ const FEATURE_NOT_AVAIL = '(can\'t show embeds or images)';
 module.exports = {
     event: 'messageUpdate',
     executor: async (oldMessage, newMessage) => {
+        if (oldMessage.guild === null) {
+            // DMs
+            return;
+        }
+
+        if (oldMessage.content === null) {
+            // Old Message
+            return;
+        }
 
         const userLogsChannel = oldMessage.guild.channels.resolve(Channels.USER_LOGS) as TextChannel | null;
 

@@ -12,6 +12,11 @@ module.exports = {
             return;
         }
 
+        if (message.content === null) {
+            // Old Message
+            return;
+        }
+
         const userLogsChannel = message.guild.channels.resolve(Channels.USER_LOGS) as TextChannel | null;
 
         if (userLogsChannel && !UserLogExclude.some((e) => e === message.author.id)) {
