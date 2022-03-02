@@ -30,7 +30,7 @@ const timeoutDurationInEnglish = (timeoutDurationString: string) => {
     return `${timeoutDurationNumber} ${word}`;
 };
 
-const DMEmbed = (moderator: User, timeoutDuration: string, reason: string, guild: Guild) => makeEmbed({
+const DMEmbed = (moderator: User, timeoutDuration: string, reason: string, guild: Guild, timedOutUntil: Date) => makeEmbed({
     title: `You were muted in ${guild.name}`,
     author: {
         name: guild.name,
@@ -54,6 +54,7 @@ const DMEmbed = (moderator: User, timeoutDuration: string, reason: string, guild
             value: reason,
         },
     ],
+    footer: { text: `Your timeout will be lifted on ${timedOutUntil.toUTCString()}` },
 });
 
 const timeoutEmbed = (user: User, reason: string, timeoutDuration: string) => makeEmbed({
@@ -150,9 +151,9 @@ export const timeout: CommandDefinition = {
         }
 
         await targetUser.timeout(timeoutDuration, reason);
-        // todo: check if successful
         await msg.channel.send({ embeds: [timeoutEmbed(targetUser.user, reason, timeoutArg)] });
         await modLogsChannel.send({ embeds: [modLogEmbed(msg.author, targetUser.user, reason, timeoutArg)] });
-        await targetUser.send({ embeds: [DMEmbed(msg.author, timeoutArg, reason, msg.guild)] });
+        await targetUser.send({ embeds: [DMEmbed(msg.author, timeoutArg, reason, msg.guild, targetUser.communicationDisabledUntil)] });
+        // todo: error checking
     },
 };
