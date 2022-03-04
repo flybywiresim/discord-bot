@@ -25,7 +25,7 @@ const timeoutDurationInEnglish = (timeoutDurationString: string) => {
         }
     }
     if (!word) {
-        word = unitOfTimeWords[0]; // 'minute'
+        [word] = unitOfTimeWords; // 'minute'
     }
     word += (timeoutDurationNumber > 1 || timeoutDurationNumber === 0 ? 's' : ''); // Determines plurality
     return `${timeoutDurationNumber} ${word}`;
@@ -120,8 +120,7 @@ export const timeout: CommandDefinition = {
     executor: async (msg) => {
         const args = msg.content.replace(/\.timeout\s+/, '').split(' ');
         if (args.length < 3 && parseInt(args[1]) !== 0) {
-            await msg.reply('You need to provide the following arguments for this command: <id> <timeoutDuration> <reason>');
-            return;
+            return msg.reply('You need to provide the following arguments for this command: <id> <timeoutDuration> <reason>');
         }
 
         const modLogsChannel = msg.guild.channels.resolve(Channels.MOD_LOGS) as TextChannel | null;
@@ -132,36 +131,39 @@ export const timeout: CommandDefinition = {
 
         let timeoutDuration: number;
         switch (timeoutArg[timeoutArg.length - 1].toLowerCase()) {
-            default: {
-                // defaults to minutes; 'm' will also run this block
-                timeoutDuration = parseInt(timeoutArg.replace('m', '')) * TimeConversions.MINUTES_TO_MILLISECONDS;
-                break;
-            }
-            case 'h': {
-                timeoutDuration = parseInt(timeoutArg.replace('h', '')) * TimeConversions.HOURS_TO_MILLISECONDS;
-                break;
-            }
-            case 'd': {
-                timeoutDuration = parseInt(timeoutArg.replace('d', '')) * TimeConversions.DAYS_TO_MILLISECONDS;
-                break;
-            }
-            case 'w': {
-                timeoutDuration = parseInt(timeoutArg.replace('w', '')) * TimeConversions.WEEKS_TO_MILLISECONDS;
-                break;
-            }
+        default: {
+            // defaults to minutes; 'm' will also run this block
+            timeoutDuration = parseInt(timeoutArg.replace('m', '')) * TimeConversions.MINUTES_TO_MILLISECONDS;
+            break;
+        }
+        case 'h': {
+            timeoutDuration = parseInt(timeoutArg.replace('h', '')) * TimeConversions.HOURS_TO_MILLISECONDS;
+            break;
+        }
+        case 'd': {
+            timeoutDuration = parseInt(timeoutArg.replace('d', '')) * TimeConversions.DAYS_TO_MILLISECONDS;
+            break;
+        }
+        case 'w': {
+            timeoutDuration = parseInt(timeoutArg.replace('w', '')) * TimeConversions.WEEKS_TO_MILLISECONDS;
+            break;
+        }
+        }
+
+        if (timeoutDuration > 3 * TimeConversions.WEEKS_TO_MILLISECONDS) {
+            return msg.reply('Cannot timeout a user for more than 3 weeks.');
         }
 
         await targetUser.timeout(timeoutDuration, reason);
         if (timeoutDuration === 0) {
             await msg.channel.send({ embeds: [unTimeoutEmbed(targetUser.user)] });
             await modLogsChannel.send({ embeds: [unTimeoutModLogEmbed(msg.author, targetUser.user)] });
-            await targetUser.send({ embeds: [unTimeoutDMEmbed(msg.author, msg.guild)] });
-            return;
+            return targetUser.send({ embeds: [unTimeoutDMEmbed(msg.author, msg.guild)] });
         }
 
         await msg.channel.send({ embeds: [timeoutEmbed(targetUser.user, reason, timeoutArg)] });
         await modLogsChannel.send({ embeds: [modLogEmbed(msg.author, targetUser.user, reason, timeoutArg)] });
-        await targetUser.send({ embeds: [DMEmbed(msg.author, timeoutArg, reason, msg.guild, targetUser.communicationDisabledUntil)] });
+        return targetUser.send({ embeds: [DMEmbed(msg.author, timeoutArg, reason, msg.guild, targetUser.communicationDisabledUntil)] });
         // todo: error checking
     },
 };
