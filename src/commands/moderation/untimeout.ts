@@ -1,4 +1,4 @@
-import { Guild, TextChannel, User } from 'discord.js';
+import { Guild, GuildMember, TextChannel, User } from 'discord.js';
 import { CommandDefinition } from '../../lib/command';
 import { CommandCategory, Channels } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
@@ -50,6 +50,24 @@ export const unTimeoutModLogEmbed = (moderator: User, user: User) => makeEmbed({
     footer: { text: `User ID: ${user.id}` },
 });
 
+const failedUnTimeoutEmbed = (user: User) => (makeEmbed({
+    title: 'Failed to remove timeout from user',
+    fields: [
+        {
+            inline: true,
+            name: 'User',
+            value: user.toString(),
+        },
+        {
+            inline: true,
+            name: 'ID',
+            value: user.id,
+        },
+    ],
+    color: 'RED',
+})
+);
+
 export const untimeout: CommandDefinition = {
     name: ['untimeout', 'removetimeout'],
     requiredPermissions: ['BAN_MEMBERS'],
@@ -63,12 +81,15 @@ export const untimeout: CommandDefinition = {
 
         const modLogsChannel = msg.guild.channels.resolve(Channels.MOD_LOGS) as TextChannel | null;
         const id = args[0];
-        const targetUser = await msg.guild.members.fetch(id);
+        const targetUser: GuildMember = await msg.guild.members.fetch(id);
 
-        await targetUser.timeout(0);
-        await msg.channel.send({ embeds: [unTimeoutEmbed(targetUser.user)] });
-        await modLogsChannel.send({ embeds: [unTimeoutModLogEmbed(msg.author, targetUser.user)] });
-        await targetUser.send({ embeds: [unTimeoutDMEmbed(msg.author, msg.guild)] });
-        // todo: error checking
+        targetUser.timeout(0).then(() => {
+            if (targetUser.isCommunicationDisabled() === false) {
+                msg.channel.send({ embeds: [unTimeoutEmbed(targetUser.user)] });
+                modLogsChannel.send({ embeds: [unTimeoutModLogEmbed(msg.author, targetUser.user)] });
+                return targetUser.send({ embeds: [unTimeoutDMEmbed(msg.author, msg.guild)] });
+            }
+            return msg.channel.send({ embeds: [failedUnTimeoutEmbed(targetUser.user)] });
+        });
     },
 };
