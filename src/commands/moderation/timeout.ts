@@ -113,6 +113,24 @@ const modLogEmbed = (moderator: User, user: User, reason: string, timeoutDuratio
     footer: { text: `User ID: ${user.id}` },
 });
 
+const failedTimeoutEmbed = (user: User) => (makeEmbed({
+    title: 'Failed to timeout user',
+    fields: [
+        {
+            inline: true,
+            name: 'User',
+            value: user.toString(),
+        },
+        {
+            inline: true,
+            name: 'ID',
+            value: user.id,
+        },
+    ],
+    color: 'RED',
+})
+);
+
 export const timeout: CommandDefinition = {
     name: 'timeout',
     requiredPermissions: ['BAN_MEMBERS'],
@@ -154,16 +172,20 @@ export const timeout: CommandDefinition = {
             return msg.reply('Cannot timeout a user for more than 3 weeks.');
         }
 
-        await targetUser.timeout(timeoutDuration, reason);
-        if (timeoutDuration === 0) {
-            await msg.channel.send({ embeds: [unTimeoutEmbed(targetUser.user)] });
-            await modLogsChannel.send({ embeds: [unTimeoutModLogEmbed(msg.author, targetUser.user)] });
-            return targetUser.send({ embeds: [unTimeoutDMEmbed(msg.author, msg.guild)] });
-        }
+        return targetUser.timeout(timeoutDuration, reason).then(() => {
+            if (timeoutDuration === 0) { // Timeout removed
+                msg.channel.send({ embeds: [unTimeoutEmbed(targetUser.user)] });
+                modLogsChannel.send({ embeds: [unTimeoutModLogEmbed(msg.author, targetUser.user)] });
+                return targetUser.send({ embeds: [unTimeoutDMEmbed(msg.author, msg.guild)] });
+            }
 
-        await msg.channel.send({ embeds: [timeoutEmbed(targetUser.user, reason, timeoutArg)] });
-        await modLogsChannel.send({ embeds: [modLogEmbed(msg.author, targetUser.user, reason, timeoutArg)] });
-        return targetUser.send({ embeds: [DMEmbed(msg.author, timeoutArg, reason, msg.guild, targetUser.communicationDisabledUntil)] });
-        // todo: error checking
+            if (targetUser.isCommunicationDisabled()) { // Timeout successful
+                msg.channel.send({ embeds: [timeoutEmbed(targetUser.user, reason, timeoutArg)] });
+                modLogsChannel.send({ embeds: [modLogEmbed(msg.author, targetUser.user, reason, timeoutArg)] });
+                return targetUser.send({ embeds: [DMEmbed(msg.author, timeoutArg, reason, msg.guild, targetUser.communicationDisabledUntil)] });
+            }
+
+            return msg.channel.send({ embeds: [failedTimeoutEmbed(targetUser)] }); // Timeout unsuccessful
+        });
     },
 };
