@@ -26,7 +26,6 @@ const MEDIA_ANNOUNCEMENT_EMBED =
         ]),
     });
 
-
 export const roleassignment: CommandDefinition = {
     name: 'roleassignment',
     description: 'Sends the role assignment messages',
