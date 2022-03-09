@@ -20,7 +20,7 @@ const MEDIA_ANNOUNCEMENT_EMBED =
             'Please react to the corresponding reactions to be pinged for the various announcements.',
             '',
             ':mega: Server Announcements',
-            ':airplane: A320 Releases',
+            ':airplane: A32NX Releases',
             ':hourglass_flowing_sand: Progress Updates',
             ':newspaper: Media Announcements (FBW YouTube)',
         ]),
