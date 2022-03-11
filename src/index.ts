@@ -1,13 +1,14 @@
 /* eslint-disable camelcase */
 import { start } from 'elastic-apm-node';
 import dotenv from 'dotenv';
-import Discord from 'discord.js';
+import Discord, { VoiceChannel } from 'discord.js';
 import commands from './commands';
 import { makeEmbed } from './lib/embed';
 import Logger from './lib/logger';
 import express from 'express';
 import { readdirSync } from 'fs';
 import { join } from 'path';
+import { DisTube } from 'distube'
 
 dotenv.config();
 const apm = start({
@@ -138,3 +139,19 @@ process.on('SIGTERM', () => {
     });
 });
 
+// Music stuff. Has to be done here
+
+export const distube = new DisTube(client, { searchSongs: 5, emitNewSongOnly: true, leaveOnStop: false, leaveOnEmpty: true, emptyCooldown: 25, updateYouTubeDL: false });
+
+distube.on('error', (channel, error) => {
+    Logger.error(error);
+    channel.send('Sorry, an error has been encountered');
+});
+
+distube.on('playSong', (queue, song) => {
+    const songPlaying = makeEmbed({
+        title: `Playing '${song.name} | ${song.formattedDuration}'`,
+        description: `Requested by: ${song.user.tag}`,
+    });
+    queue.textChannel.send({ embeds: [songPlaying] });
+});
