@@ -83,11 +83,15 @@ export const untimeout: CommandDefinition = {
         const id = args[0];
         const targetUser: GuildMember = await msg.guild.members.fetch(id);
 
-        targetUser.timeout(0).then(() => {
+        targetUser.timeout(0).then(async () => {
             if (targetUser.isCommunicationDisabled() === false) {
-                msg.channel.send({ embeds: [unTimeoutEmbed(targetUser.user)] });
-                modLogsChannel.send({ embeds: [unTimeoutModLogEmbed(msg.author, targetUser.user)] });
-                return targetUser.send({ embeds: [unTimeoutDMEmbed(msg.author, msg.guild)] });
+                const timeoutResponse = await msg.channel.send({ embeds: [unTimeoutEmbed(targetUser.user)] });
+                await targetUser.send({ embeds: [unTimeoutDMEmbed(msg.author, msg.guild)] });
+                await modLogsChannel.send({ embeds: [unTimeoutModLogEmbed(msg.author, targetUser.user)] });
+                return setTimeout(() => {
+                    timeoutResponse.delete();
+                    msg.delete();
+                }, 4000);
             }
             return msg.channel.send({ embeds: [failedUnTimeoutEmbed(targetUser.user)] });
         });

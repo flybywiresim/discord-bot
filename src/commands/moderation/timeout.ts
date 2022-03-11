@@ -33,11 +33,7 @@ const timeoutDurationInEnglish = (timeoutDurationString: string) => {
 
 const DMEmbed = (moderator: User, timeoutDuration: string, reason: string, guild: Guild, timedOutUntil: Date) => makeEmbed({
     title: `You were timed out in ${guild.name}`,
-    author: {
-        name: guild.name,
-        icon_url: guild.iconURL(),
-    },
-    thumbnail: { url: moderator.avatarURL() },
+    thumbnail: { url: guild.iconURL() },
     fields: [
         {
             inline: true,
@@ -47,7 +43,7 @@ const DMEmbed = (moderator: User, timeoutDuration: string, reason: string, guild
         {
             inline: true,
             name: 'Moderator',
-            value: moderator.tag,
+            value: moderator.toString(),
         },
         {
             inline: false,
@@ -172,17 +168,25 @@ export const timeout: CommandDefinition = {
             return msg.reply('Cannot timeout a user for more than 3 weeks.');
         }
 
-        return targetUser.timeout(timeoutDuration, reason).then(() => {
+        return targetUser.timeout(timeoutDuration, reason).then(async () => {
             if (timeoutDuration === 0) { // Timeout removed
-                msg.channel.send({ embeds: [unTimeoutEmbed(targetUser.user)] });
-                modLogsChannel.send({ embeds: [unTimeoutModLogEmbed(msg.author, targetUser.user)] });
-                return targetUser.send({ embeds: [unTimeoutDMEmbed(msg.author, msg.guild)] });
+                const timeoutResponse = await msg.channel.send({ embeds: [unTimeoutEmbed(targetUser.user)] });
+                await targetUser.send({ embeds: [unTimeoutDMEmbed(msg.author, msg.guild)] });
+                await modLogsChannel.send({ embeds: [unTimeoutModLogEmbed(msg.author, targetUser.user)] });
+                return setTimeout(() => {
+                    timeoutResponse.delete();
+                    msg.delete();
+                }, 4000);
             }
 
             if (targetUser.isCommunicationDisabled()) { // Timeout successful
-                msg.channel.send({ embeds: [timeoutEmbed(targetUser.user, reason, timeoutArg)] });
-                modLogsChannel.send({ embeds: [modLogEmbed(msg.author, targetUser.user, reason, timeoutArg)] });
-                return targetUser.send({ embeds: [DMEmbed(msg.author, timeoutArg, reason, msg.guild, targetUser.communicationDisabledUntil)] });
+                const timeoutResponse = await msg.channel.send({ embeds: [timeoutEmbed(targetUser.user, reason, timeoutArg)] });
+                await targetUser.send({ embeds: [DMEmbed(msg.author, timeoutArg, reason, msg.guild, targetUser.communicationDisabledUntil)] });
+                await modLogsChannel.send({ embeds: [modLogEmbed(msg.author, targetUser.user, reason, timeoutArg)] });
+                return setTimeout(() => { // Delete the command and response after 4 seconds
+                    timeoutResponse.delete();
+                    msg.delete();
+                }, 4000);
             }
 
             return msg.channel.send({ embeds: [failedTimeoutEmbed(targetUser)] }); // Timeout unsuccessful
