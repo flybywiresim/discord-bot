@@ -95,6 +95,7 @@ import { oim } from './funnies/oim';
 import { wasm } from './support/wasm';
 import { CPDLC } from './a32nx/cpdlc';
 import { simbriefimport } from './a32nx/simbriefimport';
+import { roleassignment } from './moderation/roleassignment';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -192,6 +193,7 @@ const commands: CommandDefinition[] = [
     wasm,
     CPDLC,
     simbriefimport,
+    roleassignment
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
