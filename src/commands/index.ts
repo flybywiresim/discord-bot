@@ -96,6 +96,7 @@ import { wasm } from './support/wasm';
 import { CPDLC } from './a32nx/cpdlc';
 import { simbriefimport } from './a32nx/simbriefimport';
 import { roleassignment } from './moderation/roleassignment';
+import { play } from './music/play';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -193,7 +194,8 @@ const commands: CommandDefinition[] = [
     wasm,
     CPDLC,
     simbriefimport,
-    roleassignment
+    roleassignment,
+    play,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};

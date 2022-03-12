@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import { start } from 'elastic-apm-node';
 import dotenv from 'dotenv';
-import Discord, { VoiceChannel } from 'discord.js';
+import Discord, { BaseGuildVoiceChannel } from 'discord.js';
 import commands from './commands';
 import { makeEmbed } from './lib/embed';
 import Logger from './lib/logger';
@@ -153,5 +153,5 @@ distube.on('playSong', (queue, song) => {
         title: `Playing '${song.name} | ${song.formattedDuration}'`,
         description: `Requested by: ${song.user.tag}`,
     });
-    queue.textChannel.send({ embeds: [songPlaying] });
+    queue.textChannel?.send({ embeds: [songPlaying] });
 });
