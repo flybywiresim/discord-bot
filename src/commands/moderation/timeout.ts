@@ -3,6 +3,7 @@ import { CommandDefinition } from '../../lib/command';
 import { CommandCategory, Channels } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 import { unTimeoutDMEmbed, unTimeoutModLogEmbed, unTimeoutEmbed } from './untimeout';
+import Logger from '../../lib/logger';
 
 enum TimeConversions {
     MINUTES_TO_MILLISECONDS = 60 * 1000,
@@ -171,8 +172,29 @@ export const timeout: CommandDefinition = {
         return targetUser.timeout(timeoutDuration, reason).then(async () => {
             if (timeoutDuration === 0) { // Timeout removed
                 const timeoutResponse = await msg.channel.send({ embeds: [unTimeoutEmbed(targetUser.user)] });
-                await targetUser.send({ embeds: [unTimeoutDMEmbed(msg.author, msg.guild)] });
-                await modLogsChannel.send({ embeds: [unTimeoutModLogEmbed(msg.author, targetUser.user)] });
+                if (modLogsChannel) {
+                    await modLogsChannel.send({ embeds: [unTimeoutModLogEmbed(msg.author, targetUser.user)] });
+                }
+                try {
+                    await targetUser.send({ embeds: [unTimeoutDMEmbed(msg.author, msg.guild)] });
+                } catch (e) {
+                    Logger.error(e);
+                    if (modLogsChannel) {
+                        await modLogsChannel.send({
+                            embeds: [
+                                makeEmbed({
+                                    author: {
+                                        name: msg.author.tag,
+                                        icon_url: msg.author.displayAvatarURL({ dynamic: true }),
+                                    },
+                                    title: 'Error while sending DM',
+                                    color: 'RED',
+                                    description: `DM was not sent to ${targetUser.toString()} for their timeout removal.`,
+                                }),
+                            ],
+                        });
+                    }
+                }
                 return setTimeout(() => {
                     timeoutResponse.delete();
                     msg.delete();
@@ -181,7 +203,26 @@ export const timeout: CommandDefinition = {
 
             if (targetUser.isCommunicationDisabled()) { // Timeout successful
                 const timeoutResponse = await msg.channel.send({ embeds: [timeoutEmbed(targetUser.user, reason, timeoutArg)] });
-                await targetUser.send({ embeds: [DMEmbed(msg.author, timeoutArg, reason, msg.guild, targetUser.communicationDisabledUntil)] });
+                try {
+                    await targetUser.send({ embeds: [DMEmbed(msg.author, timeoutArg, reason, msg.guild, targetUser.communicationDisabledUntil)] });
+                } catch (e) {
+                    Logger.error(e);
+                    if (modLogsChannel) {
+                        await modLogsChannel.send({
+                            embeds: [
+                                makeEmbed({
+                                    author: {
+                                        name: msg.author.tag,
+                                        icon_url: msg.author.displayAvatarURL({ dynamic: true }),
+                                    },
+                                    title: 'Error while sending DM',
+                                    color: 'RED',
+                                    description: `DM was not sent to ${targetUser.toString()} for their timeout.`,
+                                }),
+                            ],
+                        });
+                    }
+                }
                 if (modLogsChannel) {
                     await modLogsChannel.send({ embeds: [modLogEmbed(msg.author, targetUser.user, reason, timeoutArg)] });
                 }

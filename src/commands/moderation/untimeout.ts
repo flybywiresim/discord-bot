@@ -2,6 +2,7 @@ import { Guild, GuildMember, TextChannel, User } from 'discord.js';
 import { CommandDefinition } from '../../lib/command';
 import { CommandCategory, Channels } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
+import Logger from '../../lib/logger';
 
 export const unTimeoutDMEmbed = (moderator: User, guild: Guild) => makeEmbed({
     title: `Your timeout was removed in ${guild.name}`,
@@ -82,7 +83,26 @@ export const untimeout: CommandDefinition = {
         targetUser.timeout(0).then(async () => {
             if (targetUser.isCommunicationDisabled() === false) {
                 const timeoutResponse = await msg.channel.send({ embeds: [unTimeoutEmbed(targetUser.user)] });
-                await targetUser.send({ embeds: [unTimeoutDMEmbed(msg.author, msg.guild)] });
+                try {
+                    await targetUser.send({ embeds: [unTimeoutDMEmbed(msg.author, msg.guild)] });
+                } catch (e) {
+                    Logger.error(e);
+                    if (modLogsChannel) {
+                        await modLogsChannel.send({
+                            embeds: [
+                                makeEmbed({
+                                    author: {
+                                        name: msg.author.tag,
+                                        icon_url: msg.author.displayAvatarURL({ dynamic: true }),
+                                    },
+                                    title: 'Error while sending DM',
+                                    color: 'RED',
+                                    description: `DM was not sent to ${targetUser.toString()} for their timeout removal.`,
+                                }),
+                            ],
+                        });
+                    }
+                }
                 if (modLogsChannel) {
                     await modLogsChannel.send({ embeds: [unTimeoutModLogEmbed(msg.author, targetUser.user)] });
                 }
