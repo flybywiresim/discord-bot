@@ -182,7 +182,9 @@ export const timeout: CommandDefinition = {
             if (targetUser.isCommunicationDisabled()) { // Timeout successful
                 const timeoutResponse = await msg.channel.send({ embeds: [timeoutEmbed(targetUser.user, reason, timeoutArg)] });
                 await targetUser.send({ embeds: [DMEmbed(msg.author, timeoutArg, reason, msg.guild, targetUser.communicationDisabledUntil)] });
-                await modLogsChannel.send({ embeds: [modLogEmbed(msg.author, targetUser.user, reason, timeoutArg)] });
+                if (modLogsChannel) {
+                    await modLogsChannel.send({ embeds: [modLogEmbed(msg.author, targetUser.user, reason, timeoutArg)] });
+                }
                 return setTimeout(() => { // Delete the command and response after 4 seconds
                     timeoutResponse.delete();
                     msg.delete();

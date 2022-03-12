@@ -83,7 +83,9 @@ export const untimeout: CommandDefinition = {
             if (targetUser.isCommunicationDisabled() === false) {
                 const timeoutResponse = await msg.channel.send({ embeds: [unTimeoutEmbed(targetUser.user)] });
                 await targetUser.send({ embeds: [unTimeoutDMEmbed(msg.author, msg.guild)] });
-                await modLogsChannel.send({ embeds: [unTimeoutModLogEmbed(msg.author, targetUser.user)] });
+                if (modLogsChannel) {
+                    await modLogsChannel.send({ embeds: [unTimeoutModLogEmbed(msg.author, targetUser.user)] });
+                }
                 return setTimeout(() => {
                     timeoutResponse.delete();
                     msg.delete();
