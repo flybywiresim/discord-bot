@@ -4,10 +4,6 @@ import { CommandCategory, Channels } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 
 export const unTimeoutDMEmbed = (moderator: User, guild: Guild) => makeEmbed({
-    author: {
-        name: guild.name,
-        icon_url: guild.iconURL(),
-    },
     title: `Your timeout was removed in ${guild.name}`,
     description: `Your timeout was removed in ${guild.name}. You may chat, react and join voice chats once again.`,
     footer: { iconURL: moderator.avatarURL(), text: `Timeout removed by ${moderator.tag}` },
