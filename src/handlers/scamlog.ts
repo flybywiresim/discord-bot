@@ -49,7 +49,7 @@ module.exports = {
                         },
                         {
                             name: 'Message Content:',
-                            value: msg.content.toString(),
+                            value: `\`\`\`${msg.content.toString()}\`\`\``,
                         }
                     ],
                 });
@@ -88,12 +88,13 @@ module.exports = {
                             name: 'User:',
                             value: `<@${  msg.author.id  }>`,
                         },
-                        {   name: 'Channel:',
+                        {
+                            name: 'Channel:',
                             value: `<#${msg.channel.id}>`,
                         },
                         {
                             name: 'Message Content:',
-                            value: msg.content.toString(),
+                            value: `\`\`\`${msg.content.toString()}\`\`\``,
                         }
                     ],
                 });
