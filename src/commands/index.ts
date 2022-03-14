@@ -98,7 +98,7 @@ import { simbriefimport } from './a32nx/simbriefimport';
 import { roleassignment } from './moderation/roleassignment';
 import { timeout } from './moderation/timeout';
 import { untimeout } from './moderation/untimeout';
-import { audio } from './support/audio';
+import { audio } from './a32nx/audio';
 
 const commands: CommandDefinition[] = [
     ping,
