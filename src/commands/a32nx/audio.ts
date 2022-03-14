@@ -5,7 +5,7 @@ import { makeEmbed, makeLines } from '../../lib/embed';
 export const audio: CommandDefinition = {
     name: 'audio',
     description: 'Provides support information about A32NX audio configuration',
-    category: CommandCategory.SUPPORT,
+    category: CommandCategory.A32NX,
     executor: async (msg) => {
         const audioEmbed = makeEmbed({
             title: 'FlyByWire A32NX | Audio Configuration',
