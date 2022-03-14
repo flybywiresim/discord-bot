@@ -12,8 +12,6 @@ export const cfms: CommandDefinition = {
             description: makeLines ([
                 'Our custom flight management system is now available in the development version!',
                 '',
-                'This marks the end of testing cFMS in our experimental branch which will be on hold until the next feature testing cycle begins.',
-                '',
                 'Please look through our [documentation](https://docs.flybywiresim.com/fbw-a32nx/feature-guides/cFMS) for information on what\'s included, guides, and known issues!',
             ]),
         });
