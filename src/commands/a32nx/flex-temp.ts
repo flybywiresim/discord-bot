@@ -9,7 +9,7 @@ export const flexTemp: CommandDefinition = {
     executor: async (msg) => {
         const flexEmbed = makeEmbed({
             title: 'FlyByWire A32NX | Flex Temp',
-            description: 'A320neo takeoff performance data is not readily available. To set your Flex Temp in the simulator please see the [Flex Temp Section](https://docs.flybywiresim.com/pilots-corner/beginner-guide/preparing-mcdu/#flex-temp) in our MCDU guide.
+            description: 'A320neo takeoff performance data is not readily available. To set your Flex Temp in the simulator please see the [Flex Temp Section](https://docs.flybywiresim.com/pilots-corner/beginner-guide/preparing-mcdu/#flex-temp) in our MCDU guide.',
         });
 
         await msg.channel.send({ embeds: [flexEmbed] });
