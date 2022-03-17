@@ -101,7 +101,7 @@ import { untimeout } from './moderation/untimeout';
 import { audio } from './a32nx/audio';
 import { flexTemp } from './a32nx/flex-temp';
 import { preflight } from './a32nx/preflight';
-import { customWaypoint } from './a32nx/custom-waypoint';
+import { storedWaypoint } from './a32nx/stored-waypoint';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -205,7 +205,7 @@ const commands: CommandDefinition[] = [
     audio,
     flexTemp,
     preflight,
-    customWaypoint
+    storedWaypoint
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
