@@ -99,6 +99,7 @@ import { roleassignment } from './moderation/roleassignment';
 import { timeout } from './moderation/timeout';
 import { untimeout } from './moderation/untimeout';
 import { audio } from './a32nx/audio';
+import { flexTemp } from './a32nx/flex-temp';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -200,6 +201,7 @@ const commands: CommandDefinition[] = [
     timeout,
     untimeout,
     audio,
+    flexTemp
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
