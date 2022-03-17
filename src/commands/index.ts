@@ -100,6 +100,7 @@ import { timeout } from './moderation/timeout';
 import { untimeout } from './moderation/untimeout';
 import { audio } from './a32nx/audio';
 import { flexTemp } from './a32nx/flex-temp';
+import { preflight } from './a32nx/preflight';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -201,7 +202,8 @@ const commands: CommandDefinition[] = [
     timeout,
     untimeout,
     audio,
-    flexTemp
+    flexTemp,
+    preflight
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
