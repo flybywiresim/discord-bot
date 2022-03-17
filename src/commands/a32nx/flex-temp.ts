@@ -9,7 +9,7 @@ export const flexTemp: CommandDefinition = {
     executor: async (msg) => {
         const flexEmbed = makeEmbed({
             title: 'FlyByWire A32NX | Flex Temp',
-            description: 'Please see our [guide](https://docs.flybywiresim.com/pilots-corner/beginner-guide/preparing-mcdu/#flex-temp) Flex Temp and how to use it.',
+            description: 'Please see our [guide](https://docs.flybywiresim.com/pilots-corner/beginner-guide/preparing-mcdu/#flex-temp) on flex temp for information on how to set it correctly.',
         });
 
         await msg.channel.send({ embeds: [flexEmbed] });
