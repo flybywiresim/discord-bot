@@ -9,7 +9,7 @@ export const preflight: CommandDefinition = {
     executor: async (msg) => {
         const preflightEmbed = makeEmbed({
             title: 'FlyByWire A32NX | Preflight',
-            description: 'Please see our [guide](https://docs.flybywiresim.com/pilots-corner/beginner-guide/preflight/) for tips on preflight',
+            description: 'Please see our [guide](https://docs.flybywiresim.com/pilots-corner/beginner-guide/preflight/) for a quick reference guide on things you should do before departing in the A32NX.',
         });
 
         await msg.channel.send({ embeds: [preflightEmbed] });
