@@ -47,6 +47,7 @@ const DISCUSSION_EMBED =
             '- No general spam',
             '- Do not send multiple unsolicited DM\'s',
             '- Inappropriate/offensive profile information/picture will not be tolerated',
+            '- To help with moderation and set a standard the server language is English',
         ]),
     });
 
