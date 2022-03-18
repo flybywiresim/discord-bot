@@ -99,6 +99,9 @@ import { roleassignment } from './moderation/roleassignment';
 import { timeout } from './moderation/timeout';
 import { untimeout } from './moderation/untimeout';
 import { audio } from './a32nx/audio';
+import { flexTemp } from './a32nx/flex-temp';
+import { preflight } from './a32nx/preflight';
+import { storedWaypoint } from './a32nx/stored-waypoint';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -200,6 +203,9 @@ const commands: CommandDefinition[] = [
     timeout,
     untimeout,
     audio,
+    flexTemp,
+    preflight,
+    storedWaypoint
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
