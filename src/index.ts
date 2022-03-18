@@ -2,12 +2,12 @@
 import { start } from 'elastic-apm-node';
 import dotenv from 'dotenv';
 import Discord from 'discord.js';
-import commands from './commands';
-import { makeEmbed } from './lib/embed';
-import Logger from './lib/logger';
 import express from 'express';
 import { readdirSync } from 'fs';
 import { join } from 'path';
+import commands from './commands';
+import { makeEmbed } from './lib/embed';
+import Logger from './lib/logger';
 
 dotenv.config();
 const apm = start({
@@ -47,7 +47,7 @@ client.on('messageCreate', async (msg) => {
         return;
     }
 
-    if(isDm) {
+    if (isDm) {
         Logger.debug('Bailing because message is a DM.');
         return;
     }
@@ -119,7 +119,7 @@ client.login(process.env.BOT_SECRET)
         process.exit(1);
     });
 
-//express/k8s code. Auto restarts?
+// express/k8s code. Auto restarts?
 
 const app = express();
 
@@ -137,4 +137,3 @@ process.on('SIGTERM', () => {
         Logger.info('Server stopped.');
     });
 });
-
