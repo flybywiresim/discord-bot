@@ -1,6 +1,5 @@
 node_modules
-node_modules/.env
+.env
 .idea/
 *.iml
 build/
-.env
