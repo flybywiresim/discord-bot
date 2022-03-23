@@ -102,6 +102,7 @@ import { audio } from './a32nx/audio';
 import { flexTemp } from './a32nx/flex-temp';
 import { preflight } from './a32nx/preflight';
 import { storedWaypoint } from './a32nx/stored-waypoint';
+import { tcas } from './a32nx/tcas';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -205,7 +206,8 @@ const commands: CommandDefinition[] = [
     audio,
     flexTemp,
     preflight,
-    storedWaypoint
+    storedWaypoint,
+    tcas
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
