@@ -9,7 +9,7 @@ export enum CommandCategory {
     UTILS = 'Utilities',
     FUNNIES = 'Funnies',
     MODERATION = 'Moderation',
-    BIRTHDAYSTUFF = 'Birthdaystuff',
+    BIRTHDAYS = 'Birthdays',
 }
 
 export enum Channels {

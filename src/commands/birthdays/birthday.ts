@@ -1,27 +1,34 @@
+import { Client } from 'discord.js';
 import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
-const Util = require('../utils/utils.js');
-const Member = require('../models/Member.js');
-const ServerRepository = require('../repositories/server-repository');
-const Server = require('../models/Server.js');
+import { makeEmbed } from '../../lib/embed';
+
+// TODO: FIND FBW equivalents:
+// const Util = require('../utils/utils.js'); <-- makeEmbed
+// const Member = require('../models/Member.js');
+// const ServerRepository = require('../repositories/server-repository');
+// const Server = require('../models/Server.js');
 
 export const birthday: CommandDefinition = {
-    name: ['Birthday', 'birthday'],
+    name: ['birthday'],
     description: 'Adds/Edits the user`s birthday',
-    category: CommandCategory.BIRTHDAYSTUFF,
-    executor: async (message, args) => {
-        let item = '';
-        for (let i = 0; i < args.length; i++) {
-            item += `${args[i]} `;
-        }
-        const { channel } = message;
+    category: CommandCategory.BIRTHDAYS,
+    requiredPermissions: ['BAN_MEMBERS'],
+    executor: async (msg, args) => {
+        const splitUp = msg.content.replace(/\.birthday\s+/, ' ').split(' ');
 
-        if (args === undefined || args.length !== 3) {
-            const embeded = Util.embedMessage('Error',
-                message.author.tag, '0x232529', "Birthday's format is dd mm yyyy");
-            channel.send(embeded);
-            return;
+        if (splitUp.length !== 3) {
+            await msg.reply('Please provide a birthday');
+            return Promise.resolve();
         }
+            const errorEmbed = makeEmbed( {
+                title: 'Error',
+                description: "The birthday format is dd mm yyyy",
+                });
+            await msg.channel.send({ embeds: [errorEmbed] });
+
+        },
+
         const dateString = `${args[1]} ${args[0]} ${args[2]}`;
         const date = new Date(dateString);
         const dbServer = await ServerRepository.findOrCreate(message.guild);
@@ -49,12 +56,11 @@ export const birthday: CommandDefinition = {
             dbServer.members.push(newBirthday);
             dbServer.markModified('members');
             await dbServer.save();
-            const embededMessage = Util.embedMessage(
-                'Birthday Set',
-                message.author.tag,
-                '0xffff00',
-                `Your birthday is set to ${date}`,
-            );
+            const birthdayEditembed = makeEmbed( {
+                title: ''
+
+            },
+
             channel.send(embededMessage);
         }
     },
