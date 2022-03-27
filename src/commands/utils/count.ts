@@ -8,8 +8,10 @@ export const count: CommandDefinition = {
     name: 'count',
     description: 'counts in the count thread',
     category: CommandCategory.UTILS,
-    requiredPermissions: ['MANAGE_WEBHOOKS'],
     executor: async (msg) => {
+        if (!msg.member.roles.cache.some((role) => role.name === 'Bot Developer')) {
+            return msg.reply('Missing required role: Bot Developer');
+        }
         const countNumber = msg.content.replace(/\.count\s*/, '');
         if (Number.isNaN(parseInt(countNumber))) {
             await msg.reply('Please provide a number');
@@ -18,3 +20,4 @@ export const count: CommandDefinition = {
         }
     },
 };
+// 768888763929591818
