@@ -2,7 +2,7 @@ import { TextChannel } from 'discord.js';
 import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 
-const COUNT_CHANNEL_ID = '957603196828807258'; // 877049017102659654
+const COUNT_CHANNEL_ID = '877049017102659654';
 
 export const count: CommandDefinition = {
     name: 'count',
