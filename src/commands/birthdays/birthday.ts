@@ -2,12 +2,14 @@ import { Client } from 'discord.js';
 import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
+import Member from './models/member';
+import Server from './models/server';
 
 // const Util = require('../utils/utils.js'); <-- makeEmbed
 
 // TODO: Use mySQL db for the following imports
 // const Member = require('../models/Member.js');
-// const ServerRepository = require('../repositories/server-repository');
+const ServerRepo = require('../repositories/server-repo');
 // const Server = require('../models/Server.js');
 
 export const birthday: CommandDefinition = {
@@ -32,7 +34,7 @@ export const birthday: CommandDefinition = {
 
         const date = new Date(dateString);
 
-        const dbServer = await ServerRepository.findOrCreate(message.guild);
+        const dbServer = await ServerRepo.findOrCreate(message.guild);
 
         const member = dbServer.members.find((m) => m.user === message.author.tag);
 
