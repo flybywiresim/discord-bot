@@ -103,6 +103,7 @@ import { flexTemp } from './a32nx/flex-temp';
 import { preflight } from './a32nx/preflight';
 import { storedWaypoint } from './a32nx/stored-waypoint';
 import { tcas } from './a32nx/tcas';
+import { count } from './utils/count';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -207,7 +208,8 @@ const commands: CommandDefinition[] = [
     flexTemp,
     preflight,
     storedWaypoint,
-    tcas
+    tcas,
+    count,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
