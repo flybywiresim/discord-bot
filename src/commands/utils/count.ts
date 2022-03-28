@@ -19,5 +19,6 @@ export const count: CommandDefinition = {
         } else if (countNumber) {
             await (msg.client.channels.cache.get(Channels.COUNT_THREAD) as TextChannel).send(`<@${msg.author}> says ${countNumber}`);
         }
+        await msg.delete();
     },
 };
