@@ -3,7 +3,7 @@ import { CommandCategory } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 
 export const donate: CommandDefinition = {
-    name: ['Donate', 'donate'],
+    name: 'donate',
     description: 'Provides a link to the open collective',
     category: CommandCategory.GENERAL,
     executor: async (msg) => {
