@@ -104,6 +104,7 @@ import { preflight } from './a32nx/preflight';
 import { storedWaypoint } from './a32nx/stored-waypoint';
 import { tcas } from './a32nx/tcas';
 import { count } from './utils/count';
+import { shomas } from './funnies/shomas';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -210,6 +211,7 @@ const commands: CommandDefinition[] = [
     storedWaypoint,
     tcas,
     count,
+    shomas,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
