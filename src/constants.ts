@@ -18,6 +18,10 @@ export enum Channels {
     COUNT_THREAD = '877049017102659654',
 }
 
+export enum Roles {
+    BOT_DEVELOPER = '768888763929591818',
+}
+
 export const UserLogExclude = [
     '628400349979344919', // StickyBot
     '910632773117702185', //FBW Bot
