@@ -25,7 +25,9 @@ export const station: CommandDefinition = {
             const stationReport = JSON.parse(body);
 
             const runwayIdents = stationReport.runways.map((runways) => {
-                return `**${runways.ident1}/${runways.ident2}:** ${runways.length_ft}ft x ${runways.width_ft}ft`;
+                return `**${runways.ident1}/${runways.ident2}:** `
+                    +`${runways.length_ft} ft x ${runways.width_ft} ft / `
+                    +`${Math.round(runways.length_ft * 0.3048)} m x ${Math.round(runways.width_ft * 0.3048)} m`;
             });
 
             const stationEmbed = makeEmbed({
@@ -35,9 +37,9 @@ export const station: CommandDefinition = {
                     `**Name:** ${stationReport.name}`,
                     `**Country:** ${stationReport.country}`,
                     `**City:** ${stationReport.city}`,
-                    `**Latitude:** ${stationReport.latitude}`,
-                    `**Longitude:** ${stationReport.longitude}`,
-                    `**Elevation:** ${stationReport.elevation_m}m/${stationReport.elevation_ft}ft`,
+                    `**Latitude:** ${stationReport.latitude}°`,
+                    `**Longitude:** ${stationReport.longitude}°`,
+                    `**Elevation:** ${stationReport.elevation_m} m/${stationReport.elevation_ft} ft`,
                     ,
                     `**Runways (Ident1/Ident2: Length x Width):**`,
                     `${runwayIdents.toString( ).replace(/,/g,"\n")}`,
