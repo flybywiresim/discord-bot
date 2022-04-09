@@ -1,4 +1,4 @@
-<img src="https://cdn.discordapp.com/attachments/825674445342638120/917103096813981706/FbwTextLogo-16X-DarkBg.png" width="400"/>
+![FlyByWire Simulations](https://raw.githubusercontent.com/flybywiresim/branding/1391fc003d8b5d439d01ad86e2778ae0bfc8b682/tails-with-text/FBW-Color-Light.svg)
 
 [![GitHub latest release version](https://img.shields.io/github/v/release/flybywiresim/a32nx.svg?style=flat)](https://github.com/flybywiresim/a32nx/releases/latest)
 [![Github All Releases download count](https://img.shields.io/github/downloads/flybywiresim/a32nx/total.svg?style=flat)](https://github.com/flybywiresim/a32nx/releases/latest)
