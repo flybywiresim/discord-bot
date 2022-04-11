@@ -12,7 +12,7 @@ export const calibrate: CommandDefinition = {
             description: makeLines ([
                 'You need to calibrate your throttles!',
                 '',
-                'Please read our [Throttle Calibration Guide](https://docs.flybywiresim.com/fbw-a32nx/feature-guides/flyPad/throttle-calibration/)',
+                'Please read our [Throttle Calibration Guide](https://docs.flybywiresim.com/throttle)',
             ]),
         });
 
