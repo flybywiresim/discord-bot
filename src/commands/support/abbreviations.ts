@@ -8,7 +8,7 @@ export const abbreviations: CommandDefinition = {
     category: CommandCategory.SUPPORT,
     executor: async (msg) => {
         const abbreviationsEmbed = makeEmbed({
-            title: 'FlyByWire A32NX | Abbreviations',
+            title: 'FlyByWire Support | Abbreviations',
             description: makeLines ([
                 'Aviation is full of terms & abbreviations!',
                 'Here\'s a list you can reference:',
