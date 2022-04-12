@@ -11,7 +11,9 @@ export const airac: CommandDefinition = {
             title: 'FlyByWire Support | SimBrief AIRACs',
             description: makeLines ([
                 'Free SimBrief accounts are limited to generating routes valid for AIRAC 2003, while MSFS currently uses AIRAC 2203. '
-                + 'This can lead to route incompatibilies and the "Not Allowed" error upon importing your route into the MCDU!',
+                + 'This can lead to route incompatibilies and various error messages on the MCDU, including "NOT ALLOWED", "NOT IN DATABASE", and "AWY/WPT MISMATCH". ',
+                '',
+                'Any of these errors mean your route is not valid for the current AIRAC, and is unusable for SimBrief import!',
                 '',
                 'Some alternative route generators are available:',
                 '',
