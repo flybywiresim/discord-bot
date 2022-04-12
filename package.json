@@ -15,10 +15,12 @@
   "dependencies": {
     "@elastic/ecs-winston-format": "^1.1.0",
     "cowsay": "^1.5.0",
+    "discord-birthdays": "^1.1.0",
     "discord.js": "^13.5.0",
     "elastic-apm-node": "^3.17.0",
     "express": "^4.17.1",
     "moment": "^2.29.1",
+    "mysql": "^2.18.1",
     "request": "^2.88.2",
     "winston": "^3.3.3"
   },
