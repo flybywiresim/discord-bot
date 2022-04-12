@@ -106,6 +106,7 @@ import { tcas } from './a32nx/tcas';
 import { count } from './utils/count';
 import { shomas } from './funnies/shomas';
 import { pw } from './funnies/pw';
+import { birthdayadd } from './utils/birthdayadd';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -214,6 +215,7 @@ const commands: CommandDefinition[] = [
     count,
     shomas,
     pw,
+    birthdayadd
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};

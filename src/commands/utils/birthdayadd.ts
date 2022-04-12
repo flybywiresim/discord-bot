@@ -2,40 +2,45 @@ import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 import { database } from '../../handlers/mysqldb'
-import moment from 'moment';
+// import moment from 'moment';
 
-export const birthday: CommandDefinition = {
-    name: 'birthday add',
+export const birthdayadd: CommandDefinition = {
+    name: 'bdayadd',
     description: 'Initiates the birthday command to add a birthday',
-    category: CommandCategory.GENERAL,
+    category: CommandCategory.UTILS,
     executor: async (msg) => {
 
 
             setTimeout(async () => {
                 await database.utils.dbcheck(database.connect);
-                await database.utils.init(database.connect, 'MM-DD', '832721829822857296', ['879012702222168064'], 'HAPPY BIRTHDAY', 'Happy BDay Lol', '#ffffff');
+                await database.utils.init(database.connect, 'MM-DD', '832721829822857296', ['198174874479362048'], 'Happy Birthday!', '#00E0FE');
             }, 3000)
             
             const addEmbed = makeEmbed({
                 title: 'Birthday Added!',
-                description: 'Birthday Successfully Added!',
-            });
+                description: 'Birthday successfully added!',
+            }),
 
             const errorEmbed = makeEmbed({
-                title: 'Uh oh',
+                title: 'Error',
                 description: 'Failed to add Birthday',
-            });
+            }),
         
             
                 if(msg) {
-                    await msg.channel.send({ embeds: [addEmbed] }),
 
-                } else {
+                    database.utils.addbday(msg.author.id);
+                    await msg.channel.send({ embeds: [addEmbed] })
 
-                    await msg.channel.send({ embeds: [errorEmbed] });
-                }
-            }
-         }
+                    } else {
+                        await msg.channel.send({ embeds: [errorEmbed] }),
+                } 
+                
+            }, 
+            
+       };
+
+
      
 
-    
+         
