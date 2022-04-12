@@ -13,9 +13,9 @@ export const airac: CommandDefinition = {
                 'Free SimBrief accounts are limited to generating routes valid for AIRAC 2003, while MSFS currently uses AIRAC 2203. '
                 + 'This can lead to route incompatibilies and various error messages on the MCDU, including "NOT ALLOWED", "NOT IN DATABASE", and "AWY/WPT MISMATCH". ',
                 '',
-                'Any of these errors mean your route is not valid for the current AIRAC, and is unusable for SimBrief import!',
+                'Any of these errors mean your route is not valid for the current AIRAC, and cannot be properly used with SimBrief import!',
                 '',
-                'Some alternative route generators are available:',
+                'Some alternative route generators are available, that can be used with manual route input:',
                 '',
                 '[RouteFinder](http://rfinder.asalink.net/free/)',
                 '[Flight Plan Database](https://flightplandatabase.com/)',
