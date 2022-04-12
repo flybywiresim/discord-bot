@@ -1,0 +1,27 @@
+import { CommandDefinition } from '../../lib/command';
+import { CommandCategory } from '../../constants';
+import { makeEmbed, makeLines } from '../../lib/embed';
+
+export const airac: CommandDefinition = {
+    name: 'airac',
+    description: 'Provides information about free SimBrief account AIRAC limitations',
+    category: CommandCategory.SUPPORT,
+    executor: async (msg) => {
+        const airacEmbed = makeEmbed({
+            title: 'FlyByWire Support | SimBrief AIRACs',
+            description: makeLines ([
+                'Free SimBrief accounts are limited to generating routes valid for AIRAC 2003, while MSFS currently uses AIRAC 2203. '
+                + 'This can lead to route incompatibilies and the "Not Allowed" error upon importing your route into the MCDU!',
+                '',
+                'Some alternative route generators are available:',
+                '',
+                '[RouteFinder](http://rfinder.asalink.net/free/)',
+                '[Flight Plan Database](https://flightplandatabase.com/)',
+                '[Online Flight Planner](http://onlineflightplanner.org/)',
+            ]),
+        });
+
+        await msg.channel.send({ embeds: [airacEmbed] });
+
+    },
+};
