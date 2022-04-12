@@ -35,7 +35,7 @@ export const metar: CommandDefinition = {
                         '**Basic Report:**',
                         `**Time Observed:** ${metarReport.time.dt}`,
                         `**Station:** ${metarReport.station}`,
-                        `**Wind:** ${metarReport.wind_direction.repr} at ${metarReport.wind_speed.repr}kts`,
+                        `**Wind:** ${metarReport.wind_direction.repr}° at ${metarReport.wind_speed.repr}kts`,
                         `**Visibility:** ${metarReport.visibility.repr}${isNaN(metarReport.visibility.repr) ? "" : metarReport.units.visibility}`,
                         `**Temperature:** ${metarReport.temperature.repr}C`,
                         `**Dew Point:** ${metarReport.dewpoint.repr}C`,
