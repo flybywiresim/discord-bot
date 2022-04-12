@@ -107,6 +107,7 @@ import { count } from './utils/count';
 import { shomas } from './funnies/shomas';
 import { pw } from './funnies/pw';
 import { birthdayadd } from './utils/birthdayadd';
+import { birthdayremove } from './utils/birthdayremove';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -215,7 +216,8 @@ const commands: CommandDefinition[] = [
     count,
     shomas,
     pw,
-    birthdayadd
+    birthdayadd,
+    birthdayremove
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
