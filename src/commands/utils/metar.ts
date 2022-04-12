@@ -24,6 +24,7 @@ export const metar: CommandDefinition = {
             let metarEmbed;
 
             if(response.statusCode == 200) {
+                // Response OK, parse the JSON
                 const metarReport = JSON.parse(body);
                 metarEmbed = makeEmbed({
                     title: `METAR Report | ${metarReport.station}`,
@@ -50,6 +51,7 @@ export const metar: CommandDefinition = {
                     footer: { text: 'This METAR report may not accurately reflect the weather in the simulator. However, it will always be similar to the current conditions present in the sim.' },
                 });
             } else if(response.statusCode == 400) {
+                // Invalid ICAO/IATA code
                 metarEmbed = makeEmbed({
                     title: `METAR Error | ${icaoArg.toUpperCase()}`,
                     description: makeLines([
@@ -57,6 +59,7 @@ export const metar: CommandDefinition = {
                     ]),
                 });
             } else {
+                // Unknown error
                 metarEmbed = makeEmbed({
                     title: `METAR Error`,
                     description: makeLines([
