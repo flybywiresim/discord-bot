@@ -40,6 +40,7 @@ export const metar: CommandDefinition = {
                         `**Temperature:** ${metarReport.temperature.repr}C`,
                         `**Dew Point:** ${metarReport.dewpoint.repr}C`,
                         `**Altimeter:** ${metarReport.altimeter.value.toString()} ${metarReport.units.altimeter}`,
+                        `**Flight Rules:** ${metarReport.flight_rules}`,
                     ]),
                     fields: [
                         {
