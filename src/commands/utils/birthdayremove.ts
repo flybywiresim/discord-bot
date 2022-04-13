@@ -1,8 +1,7 @@
-import moment from 'moment';
 import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
-import { database } from '../../handlers/mysqldb';
+import { databaseConnect } from '../../handlers/mysqldb';
 
 export const birthdayremove: CommandDefinition = {
     name: 'bdayremove',
@@ -19,7 +18,7 @@ export const birthdayremove: CommandDefinition = {
         //     description: 'Failed to remove birthday.',
         // });
 
-        database.utils.addbday(msg.author.id);
+        databaseConnect.database.utils.addbday(msg.author.id);
         await msg.channel.send({ embeds: [removeEmbed] });
     },
 };

@@ -1,7 +1,7 @@
 import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
-import { database } from '../../handlers/mysqldb';
+import { databaseConnect } from '../../handlers/mysqldb';
 // import moment from 'moment';
 
 export const birthdayadd: CommandDefinition = {
@@ -20,7 +20,7 @@ export const birthdayadd: CommandDefinition = {
         //     description: 'Failed to add Birthday',
         // });
 
-        database.utils.addbday(msg.author.id);
+        databaseConnect.database.utils.addbday(msg.author.id);
         await msg.channel.send({ embeds: [addEmbed] });
     },
 };

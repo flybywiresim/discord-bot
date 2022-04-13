@@ -1,21 +1,26 @@
 import mysql from 'mysql';
+import birthdays from 'discord-birthdays';
 
-export const database = mysql.createConnection({
+export const databaseConnect = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: '123',
     database: 'birthday_database',
 });
 
-database.connect((err) => {
+databaseConnect.connect((err) => {
     if (err) {
+        // eslint-disable-next-line no-console
+
         console.log(err);
     } else {
+        // eslint-disable-next-line no-console
         console.log('Connected to the birthday database!');
     }
 });
 
-// setTimeout(async () => {
-//     await database.utils.dbcheck(database);
-//     await database.utils.init(database, 'MM-DD', '832721829822857296', ['879012702222168064'], 'HAPPY BIRTHDAY', 'Happy Birthday', '#ffffff');
-// }, 3000);
+setTimeout(async () => {
+    let database;
+    await database.utils.dbcheck(databaseConnect);
+    await database.utils.init(databaseConnect, 'MM-DD', '832721829822857296', ['879012702222168064'], 'HAPPY BIRTHDAY');
+}, 3000);
