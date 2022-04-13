@@ -107,7 +107,8 @@ import { count } from './utils/count';
 import { shomas } from './funnies/shomas';
 import { pw } from './funnies/pw';
 import { abbreviations } from './support/abbreviations';
-import { mico } from './funnies/mico'
+import { airac } from './support/airac';
+import { mico } from './funnies/mico';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -217,6 +218,7 @@ const commands: CommandDefinition[] = [
     shomas,
     pw,
     abbreviations,
+    airac,
     mico,
 ];
 
