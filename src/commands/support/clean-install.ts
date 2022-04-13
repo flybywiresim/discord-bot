@@ -10,7 +10,7 @@ export const clean: CommandDefinition = {
         const cleanEmbed = makeEmbed({
             title: 'FlyByWire A32NX | Clean Install',
             description: makeLines([
-                'We suggest trying a clean install. Please see [this guide](https://docs.flybywiresim.com/fbw-a32nx/installation/?h=clean+install#clean-install-steps) for detailed instructions.',
+                'We suggest trying a clean install. Please see [this guide](https://docs.flybywiresim.com/fbw-a32nx/installation/#clean-install-steps) for detailed instructions.',
             ]),
         });
 
