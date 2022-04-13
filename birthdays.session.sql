@@ -4,13 +4,13 @@ CREATE TABLE birthdays (
         username varchar (100),
         userid varchar(100),
         birthdate date,
-        lastnotified date,
+        deDate date,
         status varchar(30)
 );
 
 
 -- @block 
-INSERT INTO birthdays (username, userid, birthdate, lastnotified)
+INSERT INTO birthdays (userid, deDate)
 VALUES  
 
 -- @block
