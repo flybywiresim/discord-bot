@@ -3,7 +3,7 @@ import { CommandCategory } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
 
 export const abbreviations: CommandDefinition = {
-    name: 'abbreviations',
+    name: ['abbreviations', 'abb', 'abrv'],
     description: 'Links to most commonly used abbreviations',
     category: CommandCategory.SUPPORT,
     executor: async (msg) => {
