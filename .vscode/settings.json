@@ -11,7 +11,7 @@
             "name": "birthdays",
             "database": "birthday_database",
             "username": "root",
-            "password": "4456"
+            "password": "123"
         }
     ]
 }

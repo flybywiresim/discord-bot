@@ -9,10 +9,6 @@ export const birthdayadd: CommandDefinition = {
     description: 'Initiates the birthday command to add a birthday',
     category: CommandCategory.UTILS,
     executor: async (msg) => {
-        setTimeout(async () => {
-            await database.utils.dbcheck(database.connect);
-            await database.utils.init(database.connect, 'MM-DD', '832721829822857296', ['198174874479362048'], 'Happy Birthday!', '#00E0FE');
-        }, 3000);
 
         const addEmbed = makeEmbed({
             title: 'Birthday Added!',
