@@ -7,12 +7,19 @@ export const ping: CommandDefinition = {
     category: CommandCategory.UTILS,
     requiredPermissions: ['MANAGE_WEBHOOKS'],
     executor: (msg) => {
+        const Filter = require('bad-words');
+        const msgFilter = new Filter();
+
         const text = msg.content.replace(/\.ping\s*/, '');
 
-        if (text) {
+        if (!text || text.length === 0) {
+            return msg.reply('Please provide some text.');
+        }
+        if (!msgFilter.isProfane(text)) {
             return msg.channel.send(text);
         }
-
-        return msg.reply('please provide some text.');
+        if (msgFilter.isProfane(text)) {
+            return msg.reply('Please do not use profane language with this command.');
+        }
     },
 };
