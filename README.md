@@ -1,4 +1,5 @@
-![FlyByWire Simulations](https://raw.githubusercontent.com/flybywiresim/branding/1391fc003d8b5d439d01ad86e2778ae0bfc8b682/tails-with-text/FBW-Color-Light.svg)
+![FlyByWire Simulations](https://raw.githubusercontent.com/flybywiresim/branding/master/tails-with-text/FBW-Color-Light.svg#gh-dark-mode-only)
+![FlyByWire Simulations](https://raw.githubusercontent.com/flybywiresim/branding/master/tails-with-text/FBW-Color-Dark.svg#gh-light-mode-only)
 
 [![GitHub latest release version](https://img.shields.io/github/v/release/flybywiresim/a32nx.svg?style=flat)](https://github.com/flybywiresim/a32nx/releases/latest)
 [![Github All Releases download count](https://img.shields.io/github/downloads/flybywiresim/a32nx/total.svg?style=flat)](https://github.com/flybywiresim/a32nx/releases/latest)
