@@ -10,7 +10,7 @@ export const translate: CommandDefinition = {
         const translateEmbed = makeEmbed({
             title: 'FlyByWire A32NX | Project Translations',
             description: makeLines([
-                'If you have any questions or are looking to contribute to the flyPadOS3 or Installer translation '
+                'If you have any questions or are looking to contribute to the flyPadOS 3 or Installer translation '
                 + 'efforts please see the following information. ',
                 '',
                 'Discussion Channel: <#964912922272870470> ',
