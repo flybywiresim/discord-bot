@@ -11,9 +11,10 @@ export const translate: CommandDefinition = {
             title: 'FlyByWire A32NX | Project Translations',
             description: makeLines([
                 'If you have any questions or are looking to contribute to the flyPadOS3 or Installer translations '
-                + ' effort please check in the following locations. ',
+                + ' effort please see the following information. ',
                 '',
-                '- Discussion Thread: <#964843371875147857> ',
+                'Discussion Channel: <#964912922272870470> ',
+                '',
                 'You can find the appropriate website for contributions below: ',
                 '- [flyPadOS 3 Translations](https://localazy.com/p/flypados) ',
                 '- [Installer Translations](https://localazy.com/p/flybywire-installer) ',
