@@ -109,6 +109,7 @@ import { pw } from './funnies/pw';
 import { abbreviations } from './support/abbreviations';
 import { airac } from './support/airac';
 import { mico } from './funnies/mico';
+import { wolframalpha } from './utils/wolframalpha';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -220,6 +221,7 @@ const commands: CommandDefinition[] = [
     abbreviations,
     airac,
     mico,
+    wolframalpha,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
