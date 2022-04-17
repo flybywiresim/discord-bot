@@ -108,6 +108,7 @@ import { shomas } from './funnies/shomas';
 import { pw } from './funnies/pw';
 import { abbreviations } from './support/abbreviations';
 import { mico } from './funnies/mico'
+import { salty } from './general/salty'
 
 const commands: CommandDefinition[] = [
     ping,
@@ -218,6 +219,7 @@ const commands: CommandDefinition[] = [
     pw,
     abbreviations,
     mico,
+    salty,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
