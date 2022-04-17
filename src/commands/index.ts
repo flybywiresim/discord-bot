@@ -110,6 +110,7 @@ import { abbreviations } from './support/abbreviations';
 import { airac } from './support/airac';
 import { mico } from './funnies/mico';
 import { translate } from './general/translate';
+import { github } from './support/github';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -221,7 +222,8 @@ const commands: CommandDefinition[] = [
     abbreviations,
     airac,
     mico,
-    translate
+    translate,
+    github
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
