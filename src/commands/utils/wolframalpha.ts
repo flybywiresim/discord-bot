@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 import { URLSearchParams } from 'url';
 
 const WOFLRAMALPHA_API_URL = 'http://api.wolframalpha.com/v2/query?'
+const WOLFRAMALPHA_QUERY_URL = 'http://www.wolframalpha.com/input/?'
 
 export const wolframalpha: CommandDefinition = {
     name: ['wa', 'calc', 'ask'],
@@ -45,7 +46,14 @@ export const wolframalpha: CommandDefinition = {
                     });
                     if (podTexts.length > 0) {
                         const result = podTexts.join(' - ');
-                        await msg.channel.send(result);
+                        const queryParams = new URLSearchParams({i: query});
+                        //await msg.channel.send(result + ' - [Web Result](' + WOLFRAMALPHA_QUERY_URL + queryParams.toString() + ')');
+
+                        const waEmbed = makeEmbed({
+                            description: result + ' - [Web Result](' + WOLFRAMALPHA_QUERY_URL + queryParams.toString() + ')'
+                        })
+
+                        msg.channel.send({embeds: [waEmbed]});
                     }
                     else {
                         msg.channel.send('Wolfram Alpha did not give an answer.')
