@@ -5,15 +5,16 @@ import request from 'request';
 import dotenv from 'dotenv';
 import { URLSearchParams } from 'url';
 
-const WOFLRAMALPHA_API_URL = 'http://api.wolframalpha.com/v2/query'
-const WOLFRAMALPHA_QUERY_URL = 'http://www.wolframalpha.com/input/?i={}'
+const WOFLRAMALPHA_API_URL = 'http://api.wolframalpha.com/v2/query?'
 
 export const wolframalpha: CommandDefinition = {
-    name: 'wa',
+    name: ['wa', 'calc', 'ask'],
     description: 'Queries the Wolfram Alpha API',
     category: CommandCategory.UTILS,
     executor: async (msg) => {
-        const query: string = msg.content.slice(4);
+        const re = /\.\S+\s(.+)/;
+        const query: string = msg.content.match(re)[1];
+        //const query: string = msg.content.slice(4);
         const params = {
             appid: process.env.WOLFRAMALPHA_TOKEN,
             input: query,
@@ -24,11 +25,11 @@ export const wolframalpha: CommandDefinition = {
         console.log('WA Query', query);
         request({
             method: 'GET',
-            url: WOFLRAMALPHA_API_URL + '?' + searchParams.toString(),
+            url: WOFLRAMALPHA_API_URL + searchParams.toString(),
         }, async (error, response, body) => {
             if (response.statusCode === 200) {
                 const answer = JSON.parse(body);
-                console.log(answer.queryresult);
+                //console.log(answer.queryresult);
                 if (answer.queryresult.success === true) {
                     let podTexts: string[] = [];
                     answer.queryresult.pods.forEach(pod => {
