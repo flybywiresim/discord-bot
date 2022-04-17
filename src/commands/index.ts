@@ -223,7 +223,7 @@ const commands: CommandDefinition[] = [
     airac,
     mico,
     translate,
-    github
+    github,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
