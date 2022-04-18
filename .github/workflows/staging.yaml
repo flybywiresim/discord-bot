@@ -51,6 +51,7 @@ jobs:
       BOT_SECRET: ${{ secrets.STAGING_BOT_SECRET }}
       METAR_TOKEN: ${{ secrets.METAR_TOKEN }}
       STATION_TOKEN: ${{ secrets.STATION_TOKEN }}
+      WOLFRAMALPHA_TOKEN: ${{ secrets.WOLFRAMALPHA_TOKEN }}
     steps:
       - uses: actions/checkout@v1
       - name: Install doctl
