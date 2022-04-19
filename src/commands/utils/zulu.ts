@@ -11,6 +11,7 @@ export const zulu: CommandDefinition = {
     executor: async (msg) => {
         const args = msg.content.split(' ').slice(1);
         const utcOffset = args.length ? parseFloat(args.join('')) : 0;
+        if (Number.isNaN(utcOffset)) return msg.reply('Please provide a valid timezone');
 
         return msg.channel.send(`It is ${moment().utc().add(utcOffset, 'hours').format(dateFormat)} in that timezone (UTC${utcOffset >= 0 ? '+' : ''}${utcOffset})`);
     },
