@@ -107,6 +107,7 @@ import { count } from './utils/count';
 import { shomas } from './funnies/shomas';
 import { pw } from './funnies/pw';
 import { abbreviations } from './support/abbreviations';
+import { salty } from './general/salty'
 import { airac } from './support/airac';
 import { mico } from './funnies/mico';
 import { translate } from './general/translate';
@@ -222,6 +223,7 @@ const commands: CommandDefinition[] = [
     abbreviations,
     airac,
     mico,
+    salty,
     translate,
     github,
 ];
