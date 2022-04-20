@@ -45,7 +45,7 @@ import { liveries } from './a32nx/liveries';
 import { simversion } from './support/simversion';
 import { printer } from './a32nx/printer';
 import { where } from './support/where';
-import { ctrl_e } from './a32nx/ctrl_e';
+import { ctrlE } from './a32nx/ctrlE';
 import { weather } from './a32nx/weather';
 import { metar } from './utils/metar';
 import { qa } from './general/qa';
@@ -107,7 +107,7 @@ import { count } from './utils/count';
 import { shomas } from './funnies/shomas';
 import { pw } from './funnies/pw';
 import { abbreviations } from './support/abbreviations';
-import { salty } from './general/salty'
+import { salty } from './general/salty';
 import { airac } from './support/airac';
 import { mico } from './funnies/mico';
 import { translate } from './general/translate';
@@ -159,7 +159,7 @@ const commands: CommandDefinition[] = [
     simversion,
     printer,
     where,
-    ctrl_e,
+    ctrlE,
     weather,
     metar,
     qa,
