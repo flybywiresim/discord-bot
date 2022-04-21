@@ -57,6 +57,12 @@ Some commands may require additional tokens. If you would like to test them out 
 2. Inside the .env file, on a new line type `METAR_TOKEN=TOKEN` replacing TOKEN with what you copied in step 1
 3. Then, on another new line within the .env file, type `STATION_TOKEN=TOKEN` replacing TOKEN with what you copied in step 1
 
+### Wolfram Alpha Token
+In order to make use of the wolfram alpha command you will need a wolfram alpha AppID, in order to obtain one you will need to:
+1. Select get API access [here](https://products.wolframalpha.com/api/) to create an account.
+2. Once you have an account you will need to get an AppID from [here](https://developer.wolframalpha.com/portal/myapps/)
+3. Inside the .env file, on a new line type `WOLFRAMALPHA_TOKEN=TOKEN` replacing TOKEN with your wolfram alpha AppID
+
 ### Privileged Gateway Intents
 
 Privileged Gateway Intents must now be enabled within the Discord Developer Portal in order for your bot to function. The steps below will explain how to enable them.
