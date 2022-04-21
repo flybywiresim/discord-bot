@@ -68,4 +68,5 @@ jobs:
             --set bot.secret=${BOT_SECRET} \
             --set bot.metarToken=${METAR_TOKEN} \
             --set bot.stationToken=${STATION_TOKEN} \
+            --set bot.wolframAlphaToken=${WOLFRAMALPHA_TOKEN} \
             -f ./charts/discord-bot/values.yaml -f ${VALUES_FILE} ${RELEASE_NAME} ./charts/discord-bot
