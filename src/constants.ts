@@ -34,3 +34,6 @@ export const ModLogsExclude = [
     '856826179491594271', //FBW Staging bot
     '864492608163807302', //BenW test bot
 ];
+
+// Change this to test the wolfram alpha command in another discord server
+export const BotCommandsChannelID = '902990139670814750'; // #bot-commands
