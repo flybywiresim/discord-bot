@@ -2,7 +2,7 @@ import moment from 'moment';
 import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 
-const dateFormat = 'dddd, DD MMMM LT'; // ? DD MMMM or MMMM DD
+const dateFormat = 'HH:mm (LT)';
 
 export const zulu: CommandDefinition = {
     name: 'zulu',
