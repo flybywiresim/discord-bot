@@ -1,7 +1,7 @@
 import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 
-const MSFS_DISCORD_LINK = 'https://discord.gg/BjEckUJUhe'
+const MSFS_DISCORD_LINK = 'https://discord.gg/msfs'
 
 export const msfsdisc: CommandDefinition = {
     name: ['msfsdisc', 'fsdisc', 'msfsdiscord'],
