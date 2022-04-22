@@ -52,13 +52,18 @@ You can find the pull request template [here](PULL_REQUEST_TEMPLATE.md).
 7. Inside the .env file, type `BOT_SECRET=TOKEN` replacing TOKEN with what you copied in step 6
 8. You may need to add the .env file to your gitignore if your IDE hasn't done it automatically.
 
-Some commands may require additional tokens. If you would like to test them out on your bot, you must include the tokens inside your .env file. These commands include the metar and station commands. Both of these use the same API meaning you only need one token. The steps below will explain how to set this up.
+### Tokens
+
+Some commands may require additional tokens. If you would like to test them out on your bot, you must include the tokens inside your .env file. These commands include the metar, station and Wolfram Alpha commands. The steps below will explain how to set this up.
+
+#### AVWX (Metar and Station)
+
 1. Make a free account [here](https://avwx.rest/). Then, follow the steps [here](https://account.avwx.rest/getting-started) to get your token
 2. Inside the .env file, on a new line type `METAR_TOKEN=TOKEN` replacing TOKEN with what you copied in step 1
 3. Then, on another new line within the .env file, type `STATION_TOKEN=TOKEN` replacing TOKEN with what you copied in step 1
 
-### Wolfram Alpha Token
-In order to make use of the wolfram alpha command you will need a wolfram alpha AppID, in order to obtain one you will need to:
+#### Wolfram Alpha
+
 1. Select get API access [here](https://products.wolframalpha.com/api/) to create an account.
 2. Once you have an account you will need to get an AppID from [here](https://developer.wolframalpha.com/portal/myapps/)
 3. Inside the .env file, on a new line type `WOLFRAMALPHA_TOKEN=TOKEN` replacing TOKEN with your wolfram alpha AppID
