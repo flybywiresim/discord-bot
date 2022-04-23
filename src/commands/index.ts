@@ -225,7 +225,7 @@ const commands: CommandDefinition[] = [
     mico,
     salty,
     translate,
-    github,
+    github
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
