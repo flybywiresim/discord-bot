@@ -224,7 +224,6 @@ const commands: CommandDefinition[] = [
     abbreviations,
     airac,
     mico,
-    translate,
     salty,
     translate,
     github,
