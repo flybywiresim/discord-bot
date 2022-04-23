@@ -111,7 +111,7 @@ import { salty } from './general/salty';
 import { airac } from './support/airac';
 import { mico } from './funnies/mico';
 import { translate } from './general/translate';
-import { github } from './support/github';
+import { github } from './a32nx/github';
 import { zulu } from './utils/zulu';
 
 const commands: CommandDefinition[] = [
