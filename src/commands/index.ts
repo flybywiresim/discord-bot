@@ -104,6 +104,16 @@ import { preflight } from './a32nx/preflight';
 import { storedWaypoint } from './a32nx/stored-waypoint';
 import { tcas } from './a32nx/tcas';
 import { msfsdisc } from './general/msfsdiscord';
+import { count } from './utils/count';
+import { shomas } from './funnies/shomas';
+import { pw } from './funnies/pw';
+import { abbreviations } from './support/abbreviations';
+import { salty } from './general/salty';
+import { airac } from './support/airac';
+import { mico } from './funnies/mico';
+import { translate } from './general/translate';
+import { github } from './a32nx/github';
+import { zulu } from './utils/zulu';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -210,6 +220,16 @@ const commands: CommandDefinition[] = [
     storedWaypoint,
     tcas,
     msfsdisc,
+    count,
+    shomas,
+    pw,
+    abbreviations,
+    airac,
+    mico,
+    salty,
+    translate,
+    github,
+    zulu,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};

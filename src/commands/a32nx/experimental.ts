@@ -15,6 +15,7 @@ export const experimental: CommandDefinition = {
                 'Please use the appropriate discord thread to discuss any issues: ',
                 '- <#926586416820011098> ',
                 '- <#957208413887139860> ',
+                '- <#965072479796215888> ',
                 '',
                 'The Experimental version is a test version to find problems, issues and to improve functionality based on your feedback. It is not meant to be used for daily use or serious flights with an Online ATC service. ',
             ]),
