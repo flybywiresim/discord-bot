@@ -2,9 +2,8 @@ import { CommandDefinition } from '../../lib/command';
 import { makeEmbed } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 import request from 'request';
-import dotenv from 'dotenv';
 import { URLSearchParams } from 'url';
-import { BotCommandsChannelID } from '../../constants';
+import { Channels } from '../../constants';
 
 const WOFLRAMALPHA_API_URL = 'http://api.wolframalpha.com/v2/query?'
 const WOLFRAMALPHA_QUERY_URL = 'http://www.wolframalpha.com/input/?'
@@ -14,7 +13,7 @@ export const wolframalpha: CommandDefinition = {
     description: 'Queries the Wolfram Alpha API',
     category: CommandCategory.UTILS,
     executor: async (msg) => {
-        const allowedChannel = BotCommandsChannelID;
+        const allowedChannel = Channels.BOT_COMMANDS;
         if (msg.channelId === allowedChannel) {
             const re = /\.\S+\s(.+)/;
             const query: string = msg.content.match(re)[1];
@@ -51,11 +50,11 @@ export const wolframalpha: CommandDefinition = {
                             const result = podTexts.join(' - ');
                             const queryParams = new URLSearchParams({i: query});
                             //await msg.channel.send(result + ' - [Web Result](' + WOLFRAMALPHA_QUERY_URL + queryParams.toString() + ')');
-    
+
                             const waEmbed = makeEmbed({
                                 description: result + ' - [Web Result](' + WOLFRAMALPHA_QUERY_URL + queryParams.toString() + ')'
                             })
-    
+
                             msg.channel.send({embeds: [waEmbed]});
                         }
                         else {
