@@ -103,6 +103,7 @@ import { flexTemp } from './a32nx/flex-temp';
 import { preflight } from './a32nx/preflight';
 import { storedWaypoint } from './a32nx/stored-waypoint';
 import { tcas } from './a32nx/tcas';
+import { msfsdisc } from './general/msfsdiscord';
 import { count } from './utils/count';
 import { shomas } from './funnies/shomas';
 import { pw } from './funnies/pw';
@@ -218,6 +219,7 @@ const commands: CommandDefinition[] = [
     preflight,
     storedWaypoint,
     tcas,
+    msfsdisc,
     count,
     shomas,
     pw,
