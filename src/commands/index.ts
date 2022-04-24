@@ -109,6 +109,7 @@ import { shomas } from './funnies/shomas';
 import { pw } from './funnies/pw';
 import { abbreviations } from './support/abbreviations';
 import { salty } from './general/salty';
+import { headwind } from './general/headwind'
 import { airac } from './support/airac';
 import { mico } from './funnies/mico';
 import { translate } from './general/translate';
@@ -227,6 +228,7 @@ const commands: CommandDefinition[] = [
     airac,
     mico,
     salty,
+    headwind,
     translate,
     github,
     zulu,
