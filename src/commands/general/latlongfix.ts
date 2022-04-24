@@ -3,6 +3,7 @@ import { CommandCategory } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 
 const LATLONG_IMAGE_URL = 'https://cdn.discordapp.com/attachments/817517626045104149/967659373054816286/unknown.png';
+
 export const latlongfix: CommandDefinition = {
     name: ['latlong', 'llfix'],
     description: 'Provides a cheat sheet for conversion between Latitude and longitude coordinates between short and long format',
