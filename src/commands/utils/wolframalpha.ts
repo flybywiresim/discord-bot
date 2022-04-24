@@ -1,5 +1,5 @@
 import { CommandDefinition } from '../../lib/command';
-import { makeEmbed } from '../../lib/embed';
+import { makeEmbed, makeLines } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 import request from 'request';
 import { URLSearchParams } from 'url';
@@ -42,7 +42,7 @@ export const wolframalpha: CommandDefinition = {
                                     results.push(subpod.plaintext.replace(/\n/g, '; '));
                                 });
                                 if (results.length > 0) {
-                                    podTexts.push('**' + pod.title + ':** ' + results.join(', '));
+                                    podTexts.push('**' + pod.title + ':** ' + results.join('\n'));
                                 }
                             }
                         });
@@ -52,7 +52,11 @@ export const wolframalpha: CommandDefinition = {
                             //await msg.channel.send(result + ' - [Web Result](' + WOLFRAMALPHA_QUERY_URL + queryParams.toString() + ')');
 
                             const waEmbed = makeEmbed({
-                                description: result + ' - [Web Result](' + WOLFRAMALPHA_QUERY_URL + queryParams.toString() + ')'
+                                description: makeLines([
+                                    result,
+                                    ,
+                                    '[Web Result](' + WOLFRAMALPHA_QUERY_URL + queryParams.toString() + ')',
+                                ]),
                             })
 
                             msg.channel.send({embeds: [waEmbed]});
@@ -67,6 +71,8 @@ export const wolframalpha: CommandDefinition = {
                     console.log('Wolfram Alpha Error!', error);
                 }
             });
+        } else {
+            await msg.reply(`Please ask in <#${Channels.BOT_COMMANDS}>`)
         }
     }
 }
