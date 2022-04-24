@@ -114,6 +114,7 @@ import { mico } from './funnies/mico';
 import { translate } from './general/translate';
 import { github } from './a32nx/github';
 import { zulu } from './utils/zulu';
+import { latlongfix } from './general/latlongfix';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -224,12 +225,13 @@ const commands: CommandDefinition[] = [
     shomas,
     pw,
     abbreviations,
+    salty,
     airac,
     mico,
-    salty,
     translate,
     github,
     zulu,
+    latlongfix,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
