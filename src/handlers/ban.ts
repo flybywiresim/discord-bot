@@ -19,7 +19,7 @@ module.exports = {
 
         const banLog = fetchedLogs.entries.first();
 
-        if (modLogsChannel && !ModLogsExclude.some((e) => e )) {
+        if (modLogsChannel && !ModLogsExclude.some((e) => e)) {
             const noLogEmbed = makeEmbed({
                 color: 'RED',
                 author: {
@@ -30,15 +30,14 @@ module.exports = {
                 footer: { text: `User ID: ${msg.user.id}` },
             });
 
-            if (!banLog) return modLogsChannel.send({ embeds: [noLogEmbed] });
+            if (!banLog) await modLogsChannel.send({ embeds: [noLogEmbed] });
         }
 
         const {
             reason,
             executor,
-            target
+            target,
         } = banLog;
-
 
         if (modLogsChannel && !ModLogsExclude.some((e) => e === executor.id)) {
             if (target.id === msg.user.id) {
@@ -59,7 +58,7 @@ module.exports = {
                         },
                         {
                             name: 'Reason',
-                            value: '\u200B' + reason,
+                            value: `\u200B${reason}`,
                         },
                     ],
                     footer: { text: `User ID: ${msg.user.id}` },

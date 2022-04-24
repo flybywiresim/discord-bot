@@ -20,8 +20,7 @@ module.exports = {
         const userLogsChannel = message.guild.channels.resolve(Channels.USER_LOGS) as TextChannel | null;
 
         if (userLogsChannel && !UserLogExclude.some((e) => e === message.author.id)) {
-
-             const messageDeleteEmbed = makeEmbed({
+            const messageDeleteEmbed = makeEmbed({
                 color: 'RED',
                 thumbnail: { url: 'https://cdn.discordapp.com/attachments/770835189419999262/779946282373873694/150-1509174_deleted-message-icon-sign-hd-png-download.png' },
                 author: {
@@ -35,7 +34,7 @@ module.exports = {
                 ],
                 footer: { text: `User ID: ${message.author.id}` },
             });
-                await userLogsChannel.send({ embeds: [messageDeleteEmbed] });
+            await userLogsChannel.send({ embeds: [messageDeleteEmbed] });
         }
     },
 };
