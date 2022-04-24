@@ -25,12 +25,11 @@ module.exports = {
             let hasRole = false;
             excludedRoles.forEach((findrole) => {
                 if (msg.member.roles.cache.some((role) => role.name === findrole)) {
-                    hasRole = true
+                    hasRole = true;
                 }
             });
             // @ts-ignore
             if (hasRole === true) {
-
                 const allowedEmbed = makeEmbed({
                     title: 'Potential Scam Alert',
                     thumbnail: { url: 'https://cdn.discordapp.com/attachments/932350968522240101/932625886275043338/Approved.png' },
@@ -44,18 +43,18 @@ module.exports = {
                             name: 'User:',
                             value: `<@${msg.author.id}>`,
                         },
-                        {   name: 'Channel:',
+                        {
+                            name: 'Channel:',
                             value: `<#${msg.channel.id}>`,
                         },
                         {
                             name: 'Message Content:',
                             value: `\`\`\`${msg.content.toString()}\`\`\``,
-                        }
+                        },
                     ],
                 });
 
                 await scamLogs.send({ embeds: [allowedEmbed] });
-
             } else {
                 const mutedRole = msg.guild.roles.cache.find((role) => role.name === 'Muted');
 
@@ -70,7 +69,7 @@ module.exports = {
                             name: msg.author.tag,
                             icon_url: msg.author.displayAvatarURL({ dynamic: true }),
                         },
-                        description: ' DM was not sent to ' + `<@${  msg.author.id  }>` + '.',
+                        description: `DM was not sent to <@${msg.author.id}>.`,
                     });
 
                     await scamLogs.send({ embeds: [noDMEmbed] });
@@ -86,7 +85,7 @@ module.exports = {
                     fields: [
                         {
                             name: 'User:',
-                            value: `<@${  msg.author.id  }>`,
+                            value: `<@${msg.author.id}>`,
                         },
                         {
                             name: 'Channel:',
@@ -95,7 +94,7 @@ module.exports = {
                         {
                             name: 'Message Content:',
                             value: `\`\`\`${msg.content.toString()}\`\`\``,
-                        }
+                        },
                     ],
                 });
 
@@ -103,6 +102,6 @@ module.exports = {
                 await msg.member.roles.add(mutedRole);
             }
         }
-    }
+    },
 
-}
+};
