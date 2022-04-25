@@ -7,6 +7,6 @@ export const synaptic: CommandDefinition = {
     category: CommandCategory.GENERAL,
     executor: async (msg) => {
         await msg.channel.send('https://discord.gg/synaptic');
-        await msg.delete();
+        
     },
 };
