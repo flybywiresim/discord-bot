@@ -1,8 +1,9 @@
 import mongoose from 'mongoose';
+import Logger from './logger';
 
 var _connection: mongoose.Connection;
 
-export async function connect(url, callback) {
+export async function connect(url: string, callback = Logger.error) {
     try {
         await mongoose.connect(url);
         _connection = mongoose.connection;
@@ -15,7 +16,7 @@ export async function connect(url, callback) {
     });
 }
 
-export async function getConn(callback) {
+export async function getConn(callback = Logger.error) {
     if (!_connection || _connection.readyState !== mongoose.ConnectionStates.connected) {
         callback(new Error('Not connected to database'));
     } else {
