@@ -6,7 +6,7 @@ export const synaptic: CommandDefinition = {
     description: 'Provides link to synaptic discord server',
     category: CommandCategory.GENERAL,
     executor: async (msg) => {
-        await msg.channel.send('https://discord.gg/acQkSvrePG');
+        await msg.channel.send('https://discord.gg/synaptic');
         await msg.delete();
     },
 };
