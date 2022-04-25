@@ -45,7 +45,7 @@ import { liveries } from './a32nx/liveries';
 import { simversion } from './support/simversion';
 import { printer } from './a32nx/printer';
 import { where } from './support/where';
-import { ctrl_e } from './a32nx/ctrl_e';
+import { ctrlE } from './a32nx/ctrlE';
 import { weather } from './a32nx/weather';
 import { metar } from './utils/metar';
 import { qa } from './general/qa';
@@ -115,6 +115,7 @@ import { mico } from './funnies/mico';
 import { translate } from './general/translate';
 import { github } from './a32nx/github';
 import { zulu } from './utils/zulu';
+import { latlongfix } from './general/latlongfix';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -162,7 +163,7 @@ const commands: CommandDefinition[] = [
     simversion,
     printer,
     where,
-    ctrl_e,
+    ctrlE,
     weather,
     metar,
     qa,
@@ -225,6 +226,7 @@ const commands: CommandDefinition[] = [
     shomas,
     pw,
     abbreviations,
+    salty,
     airac,
     mico,
     salty,
@@ -232,6 +234,7 @@ const commands: CommandDefinition[] = [
     translate,
     github,
     zulu,
+    latlongfix,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
