@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import { start } from 'elastic-apm-node';
 import dotenv from 'dotenv';
 import Discord from 'discord.js';
@@ -75,14 +74,13 @@ client.on('messageCreate', async (msg) => {
                         transaction.result = 'success';
                     } catch ({ name, message, stack }) {
                         Logger.error({ name, message, stack });
-                        // eslint-disable-next-line camelcase
-                        const error_embed = makeEmbed({
+                        const errorEmbed = makeEmbed({
                             color: 'RED',
                             title: 'Error while Executing Command',
                             description: DEBUG_MODE ? `\`\`\`D\n${stack}\`\`\`` : `\`\`\`\n${name}: ${message}\n\`\`\``,
                         });
 
-                        await msg.channel.send({ embeds: [error_embed] });
+                        await msg.channel.send({ embeds: [errorEmbed] });
 
                         transaction.result = 'error';
                     }
