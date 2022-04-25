@@ -2,12 +2,12 @@
 import { start } from 'elastic-apm-node';
 import dotenv from 'dotenv';
 import Discord from 'discord.js';
-import commands from './commands';
-import { makeEmbed } from './lib/embed';
-import Logger from './lib/logger';
 import express from 'express';
 import { readdirSync } from 'fs';
 import { join } from 'path';
+import commands from './commands';
+import { makeEmbed } from './lib/embed';
+import Logger from './lib/logger';
 
 dotenv.config();
 const apm = start({
@@ -47,7 +47,7 @@ client.on('messageCreate', async (msg) => {
         return;
     }
 
-    if(isDm) {
+    if (isDm) {
         Logger.debug('Bailing because message is a DM.');
         return;
     }
@@ -103,6 +103,7 @@ client.on('messageCreate', async (msg) => {
 const eventHandlers = readdirSync(join(__dirname, 'handlers'));
 
 for (const file of eventHandlers) {
+    // eslint-disable-next-line global-require,import/no-dynamic-require
     const handler = require(`./handlers/${file}`);
 
     if (handler.once) {
@@ -137,4 +138,3 @@ process.on('SIGTERM', () => {
         Logger.info('Server stopped.');
     });
 });
-
