@@ -31,7 +31,6 @@ client.on('ready', () => {
 
 client.on('disconnect', () => {
     Logger.warn('Client disconnected');
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     healthy = false;
 });
 
