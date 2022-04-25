@@ -40,7 +40,7 @@ client.on('messageCreate', async (msg) => {
 
     Logger.debug(`Processing message ${msg.id} from user ${msg.author.id} in channel ${msg.channel.id} of server ${guildId}.`);
 
-    if(msg.author.bot === true) {
+    if (msg.author.bot === true) {
         Logger.debug('Bailing because message author is a bot.');
         return;
     }
