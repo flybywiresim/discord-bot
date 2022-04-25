@@ -106,7 +106,7 @@ for (const file of eventHandlers) {
     // eslint-disable-next-line global-require,import/no-dynamic-require
     const handler = require(`./handlers/${file}`);
 
-    if (handler.once) {
+    if(handler.once) {
         client.once(handler.event, (...args) => handler.executor(...args));
     } else {
         client.on(handler.event, (...args) => handler.executor(...args));
