@@ -16,9 +16,9 @@ export const tod: CommandDefinition = {
 
         if (altitude <= 500) {
             const todFL = Math.floor(altitude * (1 / 3) * (11 / 10));
-            return msg.channel.send(`Begin your descent at ${todFL} nm.`);
+            return msg.channel.send(`Begin your descent at ${todFL} nm from touchdown.`);
         }
         const topOfDescent = Math.floor(altitude * (1 / 100) * (1 / 3) * (11 / 10));
-        return msg.channel.send(`Begin your descent at ${topOfDescent} nm.`);
+        return msg.channel.send(`Begin your descent at ${topOfDescent} nm from touchdown.`);
     },
 };
