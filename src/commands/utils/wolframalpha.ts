@@ -48,22 +48,22 @@ export const wolframalpha: CommandDefinition = {
                             if (pod.id !== 'Input' && pod.primary === true) {
                                 const results: string[] = [];
                                 pod.subpods.forEach((subpod) => {
-                                    results.push(subpod.plaintext.replace(/\n/g, '; '));
+                                    results.push(subpod.plaintext);
                                 });
                                 if (results.length > 0) {
-                                    podTexts.push('**' + pod.title + ':** ' + results.join('\n'));
+                                    podTexts.push('**' + pod.title + ':** ' + '\n' + results.join('\n'));
                                 }
                             }
                         });
                         if (podTexts.length > 0) {
-                            const result = podTexts.join(' - ');
+                            const result = podTexts.join('\n\n');
                             const queryParams = new URLSearchParams({ i: query });
                             // await msg.channel.send(result + ' - [Web Result](' + WOLFRAMALPHA_QUERY_URL + queryParams.toString() + ')');
 
                             const waEmbed = makeEmbed({
                                 description: makeLines([
                                     result,
-                                    undefined,
+                                    '',
                                     '[Web Result](' + WOLFRAMALPHA_QUERY_URL + queryParams.toString() + ')',
                                 ]),
                             });
