@@ -117,6 +117,7 @@ import { zulu } from './utils/zulu';
 import { latlongfix } from './general/latlongfix';
 import { headwind } from './general/headwind';
 import { wolframalpha } from './utils/wolframalpha';
+import { tod } from './utils/tod';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -236,6 +237,7 @@ const commands: CommandDefinition[] = [
     latlongfix,
     headwind,
     wolframalpha,
+    tod
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
