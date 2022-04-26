@@ -111,11 +111,11 @@ import { abbreviations } from './support/abbreviations';
 import { salty } from './general/salty';
 import { airac } from './support/airac';
 import { mico } from './funnies/mico';
-import { wolframalpha } from './utils/wolframalpha';
 import { translate } from './general/translate';
 import { github } from './a32nx/github';
 import { zulu } from './utils/zulu';
 import { latlongfix } from './general/latlongfix';
+import { wolframalpha } from './utils/wolframalpha';
 
 const commands: CommandDefinition[] = [
     ping,
