@@ -115,6 +115,7 @@ import { translate } from './general/translate';
 import { github } from './a32nx/github';
 import { zulu } from './utils/zulu';
 import { latlongfix } from './general/latlongfix';
+import { headwind } from './general/headwind';
 import { wolframalpha } from './utils/wolframalpha';
 
 const commands: CommandDefinition[] = [
@@ -233,6 +234,7 @@ const commands: CommandDefinition[] = [
     github,
     zulu,
     latlongfix,
+    headwind,
     wolframalpha,
 ];
 
