@@ -6,9 +6,9 @@ export const tod: CommandDefinition = {
     description: 'Roughly calculates TOD using the rule of 3',
     category: CommandCategory.UTILS,
     executor: async (msg) => {
-        const text = msg.content.split(' ');
-        const args = text[1];
-        const altitude = parseInt(args);
+        const text = msg.content.split(' ').slice(1).join('');
+        const altitude = parseInt(text.replace(/[^0-9.]/g, ''), 10);
+        console.log(altitude);
 
         if (Number.isNaN(altitude)) {
             return msg.channel.send('Please specify a valid altitude or flight level.');
