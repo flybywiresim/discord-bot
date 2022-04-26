@@ -1,13 +1,12 @@
-/* eslint-disable camelcase */
 import { start } from 'elastic-apm-node';
 import dotenv from 'dotenv';
 import Discord from 'discord.js';
-import commands from './commands';
-import { makeEmbed } from './lib/embed';
-import Logger from './lib/logger';
 import express from 'express';
 import { readdirSync } from 'fs';
 import { join } from 'path';
+import commands from './commands';
+import { makeEmbed } from './lib/embed';
+import Logger from './lib/logger';
 
 dotenv.config();
 const apm = start({
@@ -32,7 +31,6 @@ client.on('ready', () => {
 
 client.on('disconnect', () => {
     Logger.warn('Client disconnected');
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     healthy = false;
 });
 
@@ -47,7 +45,7 @@ client.on('messageCreate', async (msg) => {
         return;
     }
 
-    if(isDm) {
+    if (isDm) {
         Logger.debug('Bailing because message is a DM.');
         return;
     }
@@ -75,14 +73,13 @@ client.on('messageCreate', async (msg) => {
                         transaction.result = 'success';
                     } catch ({ name, message, stack }) {
                         Logger.error({ name, message, stack });
-                        // eslint-disable-next-line camelcase
-                        const error_embed = makeEmbed({
+                        const errorEmbed = makeEmbed({
                             color: 'RED',
                             title: 'Error while Executing Command',
                             description: DEBUG_MODE ? `\`\`\`D\n${stack}\`\`\`` : `\`\`\`\n${name}: ${message}\n\`\`\``,
                         });
 
-                        await msg.channel.send({ embeds: [error_embed] });
+                        await msg.channel.send({ embeds: [errorEmbed] });
 
                         transaction.result = 'error';
                     }
@@ -103,6 +100,7 @@ client.on('messageCreate', async (msg) => {
 const eventHandlers = readdirSync(join(__dirname, 'handlers'));
 
 for (const file of eventHandlers) {
+    // eslint-disable-next-line global-require,import/no-dynamic-require
     const handler = require(`./handlers/${file}`);
 
     if (handler.once) {
@@ -137,4 +135,3 @@ process.on('SIGTERM', () => {
         Logger.info('Server stopped.');
     });
 });
-
