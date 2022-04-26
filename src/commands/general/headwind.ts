@@ -7,6 +7,5 @@ export const headwind: CommandDefinition = {
     category: CommandCategory.GENERAL,
     executor: async (msg) => {
         await msg.channel.send('https://discord.gg/SYanvKEX7B');
-        await msg.delete();
     },
 };
