@@ -1,5 +1,6 @@
 import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
+import {error} from "winston";
 
 export const tod: CommandDefinition = {
     name: ['tod', '3deg', 'descent'],
@@ -7,11 +8,17 @@ export const tod: CommandDefinition = {
     category: CommandCategory.UTILS,
     executor: async (msg) => {
         const text = msg.content.split(' ').slice(1).join('');
+        const scope = msg.content.split(' ').slice(0).join('');
         const altitude = parseInt(text.replace(/[^0-9.]/g, ''), 10);
-        console.log(altitude);
+        const error = 'Please specify a valid altitude or flight level.';
+        console.log(scope);
 
         if (Number.isNaN(altitude)) {
-            return msg.channel.send('Please specify a valid altitude or flight level.');
+            return msg.channel.send(error);
+        }
+
+        if (!msg.content.includes('FL') && altitude <= 1000) {
+            return msg.channel.send(error);
         }
 
         if (altitude <= 500) {
