@@ -115,6 +115,7 @@ import { translate } from './general/translate';
 import { github } from './a32nx/github';
 import { zulu } from './utils/zulu';
 import { latlongfix } from './general/latlongfix';
+import { wolframalpha } from './utils/wolframalpha';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -232,6 +233,7 @@ const commands: CommandDefinition[] = [
     github,
     zulu,
     latlongfix,
+    wolframalpha,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
