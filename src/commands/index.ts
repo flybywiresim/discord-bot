@@ -109,13 +109,13 @@ import { shomas } from './funnies/shomas';
 import { pw } from './funnies/pw';
 import { abbreviations } from './support/abbreviations';
 import { salty } from './general/salty';
-import { headwind } from './general/headwind'
 import { airac } from './support/airac';
 import { mico } from './funnies/mico';
 import { translate } from './general/translate';
 import { github } from './a32nx/github';
 import { zulu } from './utils/zulu';
 import { latlongfix } from './general/latlongfix';
+import { headwind } from './general/headwind';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -229,12 +229,11 @@ const commands: CommandDefinition[] = [
     salty,
     airac,
     mico,
-    salty,
-    headwind,
     translate,
     github,
     zulu,
     latlongfix,
+    headwind,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
