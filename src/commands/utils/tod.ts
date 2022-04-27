@@ -1,6 +1,6 @@
 import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
-import {error} from "winston";
+import { makeEmbed } from '../../lib/embed';
 
 export const tod: CommandDefinition = {
     name: ['tod', '3deg', 'descent'],
@@ -8,24 +8,30 @@ export const tod: CommandDefinition = {
     category: CommandCategory.UTILS,
     executor: async (msg) => {
         const text = msg.content.split(' ').slice(1).join('');
-        const scope = msg.content.split(' ').slice(0).join('');
         const altitude = parseInt(text.replace(/[^0-9.]/g, ''), 10);
         const error = 'Please specify a valid altitude or flight level.';
-        console.log(scope);
-
+        const errorEmbed = makeEmbed({
+            title: 'Error',
+            description: error,
+        });
         if (Number.isNaN(altitude)) {
-            return msg.channel.send(error);
-        }
-
-        if (!msg.content.includes('FL') && altitude <= 1000) {
-            return msg.channel.send(error);
-        }
-
-        if (altitude <= 500) {
+            await msg.channel.send({ embeds: [errorEmbed] });
+        } if (!msg.content.includes('FL') && altitude <= 1000) {
+            await msg.channel.send({ embeds: [errorEmbed] });
+        } if (altitude <= 1000 && text.startsWith('FL')) {
             const todFL = Math.floor(altitude * (1 / 3) * (11 / 10));
-            return msg.channel.send(`Begin your descent at ${todFL} nm from touchdown.`);
+            const todFlightLevelEmbed = makeEmbed({
+                title: 'FlyByWire | Descent Approximation',
+                description: `Begin your descent at about ${todFL} nm from touchdown.`,
+            });
+            await msg.channel.send({ embeds: [todFlightLevelEmbed] });
+        } if (altitude >= 1000) {
+            const topOfDescent = Math.floor(altitude * (1 / 100) * (1 / 3) * (11 / 10));
+            const todEmbed = makeEmbed({
+                title: 'FlyByWire | Descent Approximation',
+                description: `Begin your descent at about ${topOfDescent} nm from touchdown.`,
+            });
+            await msg.channel.send({ embeds: [todEmbed] });
         }
-        const topOfDescent = Math.floor(altitude * (1 / 100) * (1 / 3) * (11 / 10));
-        return msg.channel.send(`Begin your descent at ${topOfDescent} nm from touchdown.`);
     },
 };
