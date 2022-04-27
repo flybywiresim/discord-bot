@@ -18,10 +18,9 @@ export const tcas: CommandDefinition = {
                 '',
                 'For details on how the system functions, known issues, and pilot actions see our '
                 + '[Advanced Guide: TCAS](https://docs.flybywiresim.com/pilots-corner/advanced-guides/flight-guidance/tcas/). ',
-             ]),
+            ]),
         });
 
         await msg.channel.send({ embeds: [tcasEmbed] });
-
     },
 };

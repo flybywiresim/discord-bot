@@ -15,6 +15,5 @@ export const simbriefimport: CommandDefinition = {
         });
 
         await msg.channel.send({ embeds: [simbriefImportEmbed] });
-
     },
 };

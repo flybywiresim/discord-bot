@@ -13,6 +13,5 @@ export const preflight: CommandDefinition = {
         });
 
         await msg.channel.send({ embeds: [preflightEmbed] });
-
     },
 };

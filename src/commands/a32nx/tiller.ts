@@ -9,10 +9,9 @@ export const tiller: CommandDefinition = {
     executor: async (msg) => {
         const tillerEmbed = makeEmbed({
             title: 'FlyByWire A32NX | Tiller',
-            description: 'You are now able to control the nose steering of the A32NX using a separate tiller axis. You can read more about this in our guide [here.](https://docs.flybywiresim.com/fbw-a32nx/feature-guides/nw-tiller/)'
+            description: 'You are now able to control the nose steering of the A32NX using a separate tiller axis. You can read more about this in our guide [here.](https://docs.flybywiresim.com/fbw-a32nx/feature-guides/nw-tiller/)',
         });
 
         await msg.channel.send({ embeds: [tillerEmbed] });
-
     },
 };

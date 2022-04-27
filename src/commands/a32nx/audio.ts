@@ -14,10 +14,9 @@ export const audio: CommandDefinition = {
                 + 'and in-flight audio triggers please see the guide below. ',
                 '',
                 '[A32NX Audio Configuration](https://docs.flybywiresim.com/fbw-a32nx/feature-guides/audio/) ',
-             ]),
+            ]),
         });
 
         await msg.channel.send({ embeds: [audioEmbed] });
-
     },
 };

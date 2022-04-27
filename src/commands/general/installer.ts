@@ -15,6 +15,5 @@ export const installer: CommandDefinition = {
         });
 
         await msg.channel.send({ embeds: [installerEmbed] });
-
     },
 };

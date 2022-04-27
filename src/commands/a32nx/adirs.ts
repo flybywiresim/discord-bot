@@ -19,6 +19,5 @@ export const adirs: CommandDefinition = {
         });
 
         await msg.channel.send({ embeds: [adirsEmbed] });
-
     },
 };

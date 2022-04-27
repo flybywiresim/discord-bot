@@ -13,6 +13,5 @@ export const freetext: CommandDefinition = {
         });
 
         await msg.channel.send({ embeds: [freetextEmbed] });
-
     },
 };

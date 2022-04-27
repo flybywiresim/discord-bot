@@ -21,6 +21,5 @@ export const weightBalance: CommandDefinition = {
         });
 
         await msg.channel.send({ embeds: [weightBalanceEmbed] });
-
     },
 };

@@ -13,6 +13,5 @@ export const storedWaypoint: CommandDefinition = {
         });
 
         await msg.channel.send({ embeds: [waypointEmbed] });
-
     },
 };

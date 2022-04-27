@@ -13,6 +13,5 @@ export const reportedissues: CommandDefinition = {
         });
 
         await msg.channel.send({ embeds: [reportedissuesEmbed] });
-
     },
 };

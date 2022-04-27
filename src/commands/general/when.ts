@@ -16,6 +16,5 @@ export const when: CommandDefinition = {
         });
 
         await msg.channel.send({ embeds: [whenEmbed] });
-
     },
 };

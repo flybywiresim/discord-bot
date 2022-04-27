@@ -13,6 +13,5 @@ export const autopilot: CommandDefinition = {
         });
 
         await msg.channel.send({ embeds: [autopilotEmbed] });
-
     },
 };

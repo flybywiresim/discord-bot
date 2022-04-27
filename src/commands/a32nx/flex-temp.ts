@@ -13,6 +13,5 @@ export const flexTemp: CommandDefinition = {
         });
 
         await msg.channel.send({ embeds: [flexEmbed] });
-
     },
 };

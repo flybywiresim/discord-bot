@@ -22,6 +22,5 @@ export const translate: CommandDefinition = {
         });
 
         await msg.channel.send({ embeds: [translateEmbed] });
-
     },
 };

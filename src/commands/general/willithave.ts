@@ -9,13 +9,13 @@ export const willithave: CommandDefinition = {
     executor: async (msg) => {
         const willithaveEmbed = makeEmbed({
             title: 'Will the aircraft have [FEATURE]?',
-            description: makeLines(['The FBW rule of thumb is:',
-                ,
+            description: makeLines([
+                'The FBW rule of thumb is:',
+                '',
                 'If it\'s in the real aircraft, it\'ll be there.',
             ]),
         });
 
         await msg.channel.send({ embeds: [willithaveEmbed] });
-
     },
 };

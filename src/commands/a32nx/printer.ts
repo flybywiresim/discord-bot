@@ -13,7 +13,5 @@ export const printer: CommandDefinition = {
         });
 
         await msg.channel.send({ embeds: [printerEmbed] });
-
     },
 };
-

@@ -22,6 +22,5 @@ export const simversion: CommandDefinition = {
         });
 
         await msg.channel.send({ embeds: [simversionEmbed] });
-
     },
 };
