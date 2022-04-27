@@ -1,9 +1,9 @@
 import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
-import { makeEmbed } from '../../lib/embed';
+import { makeEmbed, makeLines } from '../../lib/embed';
 
-export const tod: CommandDefinition = {
-    name: ['tod', '3deg', 'descent'],
+export const rot: CommandDefinition = {
+    name: ['ruleofthree', 'rot', 'ro3'],
     description: 'Roughly calculates TOD using the rule of 3',
     category: CommandCategory.UTILS,
     executor: async (msg) => {
@@ -27,29 +27,45 @@ export const tod: CommandDefinition = {
 
         if (Number.isNaN(altitude)) {
             await msg.channel.send({ embeds: [errorEmbed] });
-
         } if (!msg.content.includes('FL') && altitude <= 1000) {
             await msg.channel.send({ embeds: [flightLevelerrorEmbed] });
-
         } if (altitude <= 1000 && text.startsWith('FL')) {
-
             const todFL = Math.floor(altitude * (1 / 3) * (11 / 10));
 
             const todFlightLevelEmbed = makeEmbed({
 
                 title: 'FlyByWire | Descent Approximation',
-                description: `Begin your descent at about ${todFL} nm from touchdown.`,
+                description: makeLines([
+                    `Begin a -3.0° descent ${todFL} nm from touchdown.`,
+                ]),
+
+                fields: [
+                    {
+                        name: 'This is an **approximation** of your TOD',
+                        value: 'See the official [guide](https://docs.flybywiresim.com/pilots-corner/beginner-guide/descent/#how-to-calculate-the-required-distance-for-descent) for planning an optimal descent.',
+                        inline: false,
+                    },
+                ],
             });
 
             await msg.channel.send({ embeds: [todFlightLevelEmbed] });
-
         } if (altitude >= 1000) {
-
             const topOfDescent = Math.floor(altitude * (1 / 100) * (1 / 3) * (11 / 10));
 
             const todEmbed = makeEmbed({
+
                 title: 'FlyByWire | Descent Approximation',
-                description: `Begin your descent at about ${topOfDescent} nm from touchdown.`,
+                description: makeLines([
+                    `Begin a -3.0° descent ${topOfDescent} nm from touchdown.`,
+                ]),
+
+                fields: [
+                    {
+                        name: 'This is an **approximation** of your TOD',
+                        value: 'See the official [guide](https://docs.flybywiresim.com/pilots-corner/beginner-guide/descent/#how-to-calculate-the-required-distance-for-descent) for planning an optimal descent.',
+                        inline: false,
+                    },
+                ],
             });
 
             await msg.channel.send({ embeds: [todEmbed] });
