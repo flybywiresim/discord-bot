@@ -18,4 +18,4 @@ jobs:
       - name: install
         run: npm install --no-optional
       - name: Check Lint
-        run: eslint **/*.ts
+        run: npm run lint
