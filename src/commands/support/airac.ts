@@ -9,7 +9,7 @@ export const airac: CommandDefinition = {
     executor: async (msg) => {
         const airacEmbed = makeEmbed({
             title: 'FlyByWire Support | SimBrief AIRACs',
-            description: makeLines ([
+            description: makeLines([
                 'Free SimBrief accounts are limited to generating routes using obsolete AIRAC cycles, while MSFS regularly updates to the latest AIRAC available. '
                 + 'This can lead to route incompatibilies and various error messages when you import to the MCDU, including "NOT ALLOWED", "NOT IN DATABASE", and "AWY/WPT MISMATCH".',
                 '',
@@ -24,6 +24,5 @@ export const airac: CommandDefinition = {
         });
 
         await msg.channel.send({ embeds: [airacEmbed] });
-
     },
 };

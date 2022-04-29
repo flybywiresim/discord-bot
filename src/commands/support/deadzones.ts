@@ -22,6 +22,5 @@ export const deadzones: CommandDefinition = {
         });
 
         await msg.channel.send({ embeds: [deadzonesEmbed] });
-
     },
 };

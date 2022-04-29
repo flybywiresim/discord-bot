@@ -13,6 +13,5 @@ export const goldenRules: CommandDefinition = {
         });
 
         await msg.channel.send({ embeds: [goldenRulesEmbed] });
-
     },
 };

@@ -19,6 +19,5 @@ export const checklist: CommandDefinition = {
         });
 
         await msg.channel.send({ embeds: [checklistEmbed] });
-
     },
 };

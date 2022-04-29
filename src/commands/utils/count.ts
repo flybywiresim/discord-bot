@@ -7,14 +7,13 @@ export const count: CommandDefinition = {
     description: 'counts in the count thread',
     category: CommandCategory.UTILS,
     executor: async (msg) => {
-
         const countThread = msg.guild.channels.resolve(Channels.COUNT_THREAD) as TextChannel | null;
 
         if (!countThread) {
             return msg.reply('That channel no longer exists');
         }
 
-        const botDeveloperRole = msg.member.roles.cache.some((role) => role.id === Roles.BOT_DEVELOPER)
+        const botDeveloperRole = msg.member.roles.cache.some((role) => role.id === Roles.BOT_DEVELOPER);
 
         if (!botDeveloperRole) {
             return msg.reply('Go count yourself');
@@ -27,6 +26,6 @@ export const count: CommandDefinition = {
         } else if (countNumber) {
             await (msg.client.channels.cache.get(Channels.COUNT_THREAD) as TextChannel).send(`<@${msg.author}> says ${countNumber}`);
         }
-        await msg.delete();
-    }
+        return msg.delete();
+    },
 };

@@ -9,7 +9,7 @@ export const abbreviations: CommandDefinition = {
     executor: async (msg) => {
         const abbreviationsEmbed = makeEmbed({
             title: 'FlyByWire Support | Abbreviations',
-            description: makeLines ([
+            description: makeLines([
                 'Aviation is full of terms & abbreviations!',
                 'Here\'s a list you can reference:',
                 '',
@@ -18,6 +18,5 @@ export const abbreviations: CommandDefinition = {
         });
 
         await msg.channel.send({ embeds: [abbreviationsEmbed] });
-
     },
 };

@@ -13,6 +13,5 @@ export const msfs: CommandDefinition = {
         });
 
         await msg.channel.send({ embeds: [msfsEmbed] });
-
     },
 };

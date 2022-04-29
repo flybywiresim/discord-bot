@@ -15,6 +15,5 @@ export const github: CommandDefinition = {
         });
 
         await msg.channel.send({ embeds: [githubEmbed] });
-
     },
 };

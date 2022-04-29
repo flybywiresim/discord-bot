@@ -3,6 +3,7 @@ import request from 'request';
 import { CommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
 import { CommandCategory, Channels } from '../../constants';
+import Logger from '../../lib/logger';
 
 const WOFLRAMALPHA_API_URL = 'http://api.wolframalpha.com/v2/query?';
 const WOLFRAMALPHA_QUERY_URL = 'http://www.wolframalpha.com/input/?';
@@ -20,13 +21,12 @@ export const wolframalpha: CommandDefinition = {
                 // eslint-disable-next-line prefer-destructuring
                 query = msg.content.match(re)[1];
             } catch (e) {
-                // console.log(e);
+                Logger.error(e);
             }
             if (query.length <= 0) {
                 await msg.reply('Please enter a query.');
                 return;
             }
-            // const query: string = msg.content.slice(4);
             const params = {
                 appid: process.env.WOLFRAMALPHA_TOKEN,
                 input: query,
@@ -34,14 +34,12 @@ export const wolframalpha: CommandDefinition = {
                 output: 'JSON',
             };
             const searchParams = new URLSearchParams(params);
-            // console.log('WA Query', query);
             request({
                 method: 'GET',
                 url: WOFLRAMALPHA_API_URL + searchParams.toString(),
             }, async (error, response, body) => {
                 if (response.statusCode === 200) {
                     const answer = JSON.parse(body);
-                    // console.log(answer.queryresult);
                     if (answer.queryresult.success === true) {
                         const podTexts: string[] = [];
                         answer.queryresult.pods.forEach((pod) => {
@@ -51,7 +49,7 @@ export const wolframalpha: CommandDefinition = {
                                     results.push(subpod.plaintext);
                                 });
                                 if (results.length > 0) {
-                                    podTexts.push('**' + pod.title + ':** ' + '\n' + results.join('\n'));
+                                    podTexts.push(`**${pod.title}:** \n${results.join('\n')}`);
                                 }
                             }
                         });
@@ -64,7 +62,7 @@ export const wolframalpha: CommandDefinition = {
                                 description: makeLines([
                                     result,
                                     '',
-                                    '[Web Result](' + WOLFRAMALPHA_QUERY_URL + queryParams.toString() + ')',
+                                    `[Web Result](${WOLFRAMALPHA_QUERY_URL}${queryParams.toString()})`,
                                 ]),
                             });
 
@@ -75,8 +73,6 @@ export const wolframalpha: CommandDefinition = {
                     } else {
                         await msg.reply('Wolfram Alpha could not understand your query.');
                     }
-                } else {
-                    console.log('Wolfram Alpha Error!', error);
                 }
             });
         } else {

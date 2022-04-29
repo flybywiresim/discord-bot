@@ -11,13 +11,12 @@ export const navdata: CommandDefinition = {
     executor: async (msg) => {
         const navdataEmbed = makeEmbed({
             title: 'FlyByWire Support | Navigraph Navdata',
-            description: makeLines ([
+            description: makeLines([
                 'Please remove, and reinstall your navdata with the Navigraph tool.',
             ]),
             image: { url: NAVDATA_URL },
         });
 
         await msg.channel.send({ embeds: [navdataEmbed] });
-
     },
 };

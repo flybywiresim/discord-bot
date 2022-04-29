@@ -31,7 +31,8 @@ export const help: CommandDefinition = {
         }
 
         const filter = (reaction, user) => ['1️⃣', '2️⃣'].includes(reaction.emoji.name) && user.id === author.id;
-        selectorMsg.awaitReactions({ filter,
+        selectorMsg.awaitReactions({
+            filter,
             max: 1,
             time: 60000,
             errors: ['time'],
@@ -44,7 +45,7 @@ export const help: CommandDefinition = {
                     // Slide into the DMs
                     author.createDM()
                         .then(async (dmChannel) => {
-                            const response = await selectorMsg.channel.send('<@' + msg.author.id + '>, I\'ve DM\'d you with the list of the commands you can use!');
+                            const response = await selectorMsg.channel.send(`<@${msg.author.id}>, I've DM'd you with the list of the commands you can use!`);
                             await selectorMsg.delete();
 
                             setTimeout(() => {
@@ -101,7 +102,8 @@ async function handleDmCommunication(dmChannel: DMChannel, author: User, index: 
 
     // Only act on certain reactions. I am using`includes` here so new reactions can be easily added.
     const filter = (reaction, user) => ['⏪', '⏩', '❌'].includes(reaction.emoji.name) && user.id === author.id;
-    sentEmbedMessage.awaitReactions({ filter,
+    sentEmbedMessage.awaitReactions({
+        filter,
         max: 1,
         time: 60000,
         errors: ['time'],

@@ -22,6 +22,5 @@ export const experimental: CommandDefinition = {
         });
 
         await msg.channel.send({ embeds: [experimentalEmbed] });
-
     },
 };

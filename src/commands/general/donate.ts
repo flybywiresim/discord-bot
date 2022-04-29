@@ -13,6 +13,5 @@ export const donate: CommandDefinition = {
         });
 
         await msg.channel.send({ embeds: [donateEmbed] });
-
     },
 };

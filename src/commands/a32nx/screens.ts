@@ -19,6 +19,5 @@ export const screens: CommandDefinition = {
         });
 
         await msg.channel.send({ embeds: [screensEmbed] });
-
     },
 };

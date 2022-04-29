@@ -20,6 +20,5 @@ export const screenshot: CommandDefinition = {
         });
 
         await msg.channel.send({ embeds: [screenshotEmbed] });
-
     },
 };

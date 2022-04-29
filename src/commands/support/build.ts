@@ -9,7 +9,7 @@ export const build: CommandDefinition = {
     executor: async (msg) => {
         const buildEmbed = makeEmbed({
             title: 'FlyByWire Support | Build Info',
-            description: makeLines ([
+            description: makeLines([
                 'Please send us your build info!',
                 '',
                 'Navigate to your Community folder and open the following A32NX file with Notepad:',
@@ -23,6 +23,5 @@ export const build: CommandDefinition = {
         });
 
         await msg.channel.send({ embeds: [buildEmbed] });
-
     },
 };

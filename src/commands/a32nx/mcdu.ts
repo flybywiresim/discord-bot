@@ -13,6 +13,5 @@ export const mcdu: CommandDefinition = {
         });
 
         await msg.channel.send({ embeds: [mcduEmbed] });
-
     },
 };

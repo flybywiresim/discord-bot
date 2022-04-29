@@ -26,6 +26,5 @@ export const fixinfo: CommandDefinition = {
         });
 
         await msg.channel.send({ embeds: [fixinfoEmbed] });
-
     },
 };

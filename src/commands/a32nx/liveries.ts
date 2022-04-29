@@ -1,5 +1,5 @@
-import {CommandDefinition} from '../../lib/command';
-import {CommandCategory} from '../../constants';
+import { CommandDefinition } from '../../lib/command';
+import { CommandCategory } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 
 export const liveries: CommandDefinition = {
@@ -13,6 +13,5 @@ export const liveries: CommandDefinition = {
         });
 
         await msg.channel.send({ embeds: [liveriesEmbed] });
-
     },
 };

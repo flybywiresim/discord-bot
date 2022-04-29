@@ -25,8 +25,6 @@ export const controls: CommandDefinition = {
             ],
         });
 
-        await msg.channel.send({ embeds: [ controlsEmbed] });
-
+        await msg.channel.send({ embeds: [controlsEmbed] });
     },
 };
-
