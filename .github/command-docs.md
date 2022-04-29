@@ -98,7 +98,7 @@
 | .unban          | ---                                                                                    | ---                                      |
 | .untimeout      | ---                                                                                    | .removetimeout                           |
 | .welcome        | Sends the welcome                                                                      | ---                                      |
-| .whois          | Provides an embedded message with information about the mentioned user                                                                                       |                                          |
+| .whois          | Provides an embedded message with information about the mentioned user                 | ---                                      |
 
 ### Support
 
@@ -110,4 +110,13 @@
 
 | Command         | Description                                                                            | Alias                                    |
 |:----------------|:---------------------------------------------------------------------------------------|:-----------------------------------------|
-| .command        |                                                                                        | ---                                      |
+| .avatar         | Shows the selected user's avatar                                                       | .av                                      |
+| .count          | counts in the count thread                                                             | ---                                      |
+| .help           | Sends a list of available commands to the user                                         | ---                                      |
+| .membercount    | Lists the guild's current amount of members                                            | ---                                      |
+| .metar          | Provides the METAR report of the requested airport                                     | ---                                      |
+| .ping           | Send back a message                                                                    | ---                                      |
+| .roleinfo       | Lists the guild's current amount of members                                            | ---                                      |
+| .station        | Provides station information                                                           | ---                                      |
+| .wa             | Queries the Wolfram Alpha API                                                          | .calc <br> .ask                          |
+| .zulu           | Get the current time at a given UTC-offset timezone                                    | ---                                      |
