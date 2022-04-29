@@ -42,13 +42,49 @@
 
 | Command         | Description                                                                            | Alias                                    |
 |:----------------|:---------------------------------------------------------------------------------------|:-----------------------------------------|
-| .command        |                                                                                        | ---                                      |
+| .addon          | addon not mod meme                                                                     | ---                                      |
+| .boratorium     | B O R A T                                                                              | ---                                      |
+| .boris          | boris soudn                                                                            | ---                                      |
+| .bruheg         | bruheg momen                                                                           | ---                                      |
+| .coffee         | Would you like some coffee?                                                            | ---                                      |
+| .cowsay         | Emulates the famous UNIX program `cowsay`                                              | ---                                      |
+| .crak           | What's your sim version?                                                               | ---                                      |
+| .default        | O_o                                                                                    | ---                                      |
+| .fms            | That's how the real FMS draws it                                                       | ---                                      |
+| .fridge         | fridge                                                                                 | ---                                      |
+| .guard          | MEOW                                                                                   | ---                                      |
+| .jaun           | just... Jaun                                                                           | ---                                      |
+| .merge          | GIT MERGE!                                                                             | ---                                      |
+| .mico           | mico!                                                                                  | ---                                      |
+| .nut            | nut                                                                                    | ---                                      |
+| .oim            | oim                                                                                    | ---                                      |
+| .otter          | Well, it's an otter                                                                    | ---                                      |
+| .p3d            | No!                                                                                    | ---                                      |
+| .poggers        | POG                                                                                    | .pog                                     |
+| .pov            | Oof                                                                                    | ---                                      |
+| .ptu            | Bark                                                                                   | ---                                      |
+| .pw             | Whale noises                                                                           | ---                                      |
+| .shame          | Shame, shame, shame                                                                    | ---                                      |
+| .shomas         | oldest pilot                                                                           | ---                                      |
+| .xp             | XPlane                                                                                 | .xplane <br> .x-plane                    |
 
 ### General
 
 | Command         | Description                                                                            | Alias                                    |
 |:----------------|:---------------------------------------------------------------------------------------|:-----------------------------------------|
-| .command        |                                                                                        | ---                                      |
+| .donate         | Provides a link to the open collective                                                 | ---                                      |
+| .goldenrules    | Provides an image describing the golden rules an Airbus pilot should follow            | .golden <br> .gr                         |
+| .headwind       | Provides link to the Headwind Discord server                                           | .hw                                      |
+| .installer      | Provides link to the new installer                                                     | ---                                      |
+| .latlong        | Provides a cheat sheet for conversion between Latitude and longitude coordinates between short and long format | .llfix           |
+| .msfsdisc       | Provides link to Microsoft Flight Simulator discord server                             | .fsdisc <br> msfsdiscord                 |
+| .qa             | Links to the Quality Assurance docs page                                               | ---                                      |
+| .roadmap        | FBW Roadmap                                                                            | .goals                                   |
+| .salty          | Provides link to salty discord server                                                  | .sal                                     |
+| .synaptic       | Provides link to synaptic discord server                                               | .syn                                     |
+| .translate      | Provides information on how to contribute to various FlyByWire translation efforts     | ---                                      |
+| .when           | Explain the absence of release dates or ETAs                                           | ---                                      |
+| .thumb          | Answers the big question, will it have FEATURE?                                        | .willithave                              |
 
 ### Moderation
 
