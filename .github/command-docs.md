@@ -90,7 +90,15 @@
 
 | Command         | Description                                                                            | Alias                                    |
 |:----------------|:---------------------------------------------------------------------------------------|:-----------------------------------------|
-| .command        |                                                                                        | ---                                      |
+| .ban            | ---                                                                                    | ---                                      |
+| .faq            | Sends the FAQ                                                                          | ---                                      |
+| .roleassignment | Sends the role assignment messages                                                     | ---                                      |
+| .rules          | Sends the rules                                                                        | ---                                      |
+| .timeout        | ---                                                                                    | ---                                      |
+| .unban          | ---                                                                                    | ---                                      |
+| .untimeout      | ---                                                                                    | .removetimeout                           |
+| .welcome        | Sends the welcome                                                                      | ---                                      |
+| .whois          | Provides an embedded message with information about the mentioned user                                                                                       |                                          |
 
 ### Support
 
