@@ -104,7 +104,33 @@
 
 | Command         | Description                                                                            | Alias                                    |
 |:----------------|:---------------------------------------------------------------------------------------|:-----------------------------------------|
-| .command        |                                                                                        | ---                                      |
+| .abbreviations  | Links to most commonly used abbreviations                                              | .abb <br> .abrv                          |
+| .airac          | Provides information about free SimBrief account AIRAC limitations                     | ---                                      |
+| .build          | Link to docs for build info                                                            | .build info <br> .buildinfo              |
+| .calibrate      | Provides a help for throttle calibration                                               | ---                                      |
+| .clean          | Clean Install                                                                          | .clean install <br> .cleaninstall <br> .order66 |
+| .community      | Help to identify community folder for support                                          | .com                                     |
+| .content        | Help to identify aircraft version for support                                          | .contentmanager                          |
+| .controls       | Instructions on how to switch back to legacy controls and how to use new controls      | ---                                      |
+| .ctd            | Crash to Desktop                                                                       | .crash                                   |
+| .cursor         | Displays steps to help with EFB cursor focus issue                                     | .efbfocus <br> .unfocus                  |
+| .deadzones      | Display help with controller deadzones                                                 | .dz                                      |
+| .dx12           | Explaination for the current state of MSFS DirectX12 support                           | ---                                      |
+| .discontinuity  | Link to docs about discontinuities                                                     | .disco                                   |
+| .fdr            | Information on how to provide fdr files                                                | ---                                      |
+| .hud            | How to disable in-game HUD                                                             | .logs                                    |
+| .installerlogs  | Provides an explanation on how to receive installer error logs for support             | ---                                      |
+| .manualleg      | Displays image and links to docs about manual waypoints                                | .vm                                      |
+| .msfs           | Provides links to MSFS support for sim issues                                          | .msfsforum                               |
+| .navdata        | Provides help with Navigraph navdata reinstall                                         | ---                                      |
+| .reportedissues | Provides a link to the reported issues page within docs                                | .issues                                  |
+| .screenshot     | Help to screenshot for support                                                         | .cockpit                                 |
+| .simversion     | Help to identify MSFS version for support                                              | .msfsversion                             |
+| .trythis        | Provide basic troubleshooting steps                                                    | ---                                      |
+| .tug            | Provides a solution to an issue where the tug fails to disconnect                      | .stuck                                   |
+| .utf8           | Provides a link to resolve UTF-8 issues                                                | ---                                      |
+| .wasm           | Explains the long loading times after an install or update                             | .load                                    |
+| .where          | Provides an image of which aircraft to select in the aircraft selector                 | ---                                      |
 
 ### Utilities
 
