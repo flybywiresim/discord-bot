@@ -1,150 +1,61 @@
 ## Changelog
 
-Update <small>_ December 20, 2021</small>
+Update <small>_ April 2022</small>
 
-- Added `.discontinuity (.disco)`
-- Added `.fdr`
-- Added `.cfms`
-- Added `.buildinfo (.build)`
-- Added `.navdata`
-- Added `.dx12`
-- Added `.whended`
-- Added `.tug`
-- Added `.crak`
-- Added `.rules`
-- Added `.weights (.fuel, .wb, .w/b, .w+b, .wnb, .w&b)`
-- Added `.fixinfo`
-- Added `.welcome`
-- Added `.sop`
-- Added `.goldenrules (.gr, .golden)`
-- Added `.fridge`
-- Added `.tiller (.steer, .steering, .til)`
-- Added `.assistance (.assi, .as)`
-- Added source assets for the welcome Discord banner
-- Updated `readme.md` to include other maintainers
-- Updated `.afloor` and `.fixinfo` (Docs links)
-- Updated gif in `.efb`
-- Updated link in `.fixinfo`
-- Updated `.roadmap` image
-- Updated `.faq` to include moderation team role
-- Updated `.checklist` image
-- Deleted `.whened` and `.whended`
-- Fix `.fridge` (image)
-- Fix `.welcome` emotes and `.faq` docs link
-- Fix `index.ts` to include whended
-- Fix `.experimental`, `.versions` and `.tug` (wording and format)
-- Fix `.help` to ping the correct user
-- Refactor (moved `.cowsay`)
+- docs: copy changelog and command listing from docs repo (29/04/2022)
+- ci: fix ci linting check (29/04/2022)
+- feat: add headwind server invite link (26/04/2022)
+- feat: Wolfram Alpha command (26/04/2022)
+- refactor: simbrief import link (25/04/2022)
+- ci: eslint (25/04/2022)
+- lint: fix existing linting issues (24/04/2022)
+- feat: lat/long fixes cheatsheet (24/04/2022)
+- feat: add .msfsdisc (24/04/2022)
+- fix: github command category change (23/04/2022)
+- feat: .zulu command (23/04/2022)
+- feat: salty server invite command (19/04/2022)
+- feat: a32nx github link command (19/04/2022)
+- refactor(experimental): add new reporting thread to command (17/04/2022)
+- feat: translate command (16/04/2022)
+- feat(ping): add bad word filer (15/04/2022)
+- fix(README): add light theme option (15/04/2022)
+- feat: add AIRAC command (14/04/2022)
+- refactor(clean): remove search query string from hyperlink (13/04/2022)
+- feat: abb and abrv aliases to abbreviation command (13/04/2022)
+- fix: various .metar improvements (12/04/2022)
+- fix: metar/station command error handling (12/04/2022)
+- feat: added .mico (12/04/2022)
+- feat: add .abbreviations command (11/04/2022)
+- fix: fixed hyperlink for calibrate command (11/04/2022)
+- refactor: replace p3d (10/04/2022)
+- docs(README): update logo location (09/04/2022)
+- feat: .pw command (08/04/2022)
+- chore: adds the AGPLv3 license (08/04/2022)
+- fix: station units (01/04/2022)
 
-Update <small>_ November 21, 2021</small>
+Update <small>_ March 2022</small>
 
-- Added `.cursor (.efbfocus, .unfocus)`
-- Added `.ptu`
-- Added `.logs`
-- Added `.avatar (.av)`
-- Added `.whened`
-- Added `.station`
-- Added `.addon`
-- Added `.freetext (.ft)`
-- Added `.guard`
-- Added `.poggers`
-- Added `.merge`
-- Added `.default`
-- Added `.juan`
-- Added `.p3d`
-- Added `.xp`
-- Added `.pov`
-- Added `.coffee`
-- Added `.otter`
-- Added `.synaptic (.syn)`
-- Added `.cowsay (.cs)`
-- Updated `.nut` (Non Halloween)
-- Updated `.bruheg` (Non Halloween)
-- Updated `.help`
-- Updated `readme.ts`
-- Updated `.ctrle` (New alias `.ctrl-e`)
-- Updated `.printer`
-- Updated `.exp` and `.versions`
-- Updated embed accent colour
-- Deleted `.installererror`
-- Fix `.metar` (Units)
+- feat: more detailed beginner guide command (30/03/2022)
+- feat: add .count (29/03/2022)
+- refactor: changed donate.ts name constructor from array to string (29/03/2022)
+- feat: add .shomas (28/09/2022)
+- rafactor: experimental command info + copy layout (26/03/2022)
+- feat: tcas command (23/03/2022)
+- docs: update .experimental to reflect the new changes to the version (22/03/2022)
+- fix: updated scamlogs to make links unclickable (18/03/2022)
+- feat: add suggested commands (18/03/2022)
+- refactor: audio.ts command category (14/03/2022)
+- feat: make audio command (14/03/2022)
+- refactor: cfms command (14/03/2022)
+- fix: prevent various crashes in timeout and untimeout (12/03/2022)
+- feat: .timeout (12/03/2022)
+- feat: role assignment (10/03/2022)
+- refactor: update commands that reference status of experimental branch (06/03/2022)
+- fix: crash when old message deleted or updated (02/03/2022)
 
-Update <small>_ October 27, 2021</small>
+Update <small>_ February 2022</small>
 
-- Added `.metar`
-- Added `.qa`
-- Added `.weather (.wx)`
-- Updated `.nut` (Halloween)
-- Updated `.bruheg` (Halloween)
-- Fix `.weather` (Grammar)
-- Refactor (Commands split into categories)
-
-Update <small>_ October 22, 2021</small>
-
-- Added `.liveries (.liv)`
-- Added `.simversion (.msfsversion)`
-- Added `.printer`
-- Added `.where`
-- Added `.ctrl+e (.ctrle, .enginestart)`
-- Updated `.briefing` (New alias, `.flightdeck` and `.pfd`)
-- Fix `contributing.md` (typo)
-- Bot repo refactor
-- `index.ts` and `contributing.md` updated for simpler contributing
-
-Update <small>_ October 10, 2021</small>
-
-- Added `.community (.com)`
-- Added `.roadmap (.goals)`
-- New FAQ command
-- Added `.clean`
-- Updated `.experimental` with docs link
-- Updated `.adirs` image
-- Updated repo PR Template
-- Updated `.screens` image
-- Updated `.efb` GIF
-
-Update <small>_ September 29, 2021</small>
-
-- Added `.willithave (.thumb)`
-- Updated `.afloor` to link to docs
-- Updated `.msfs`
-- Updated `.airframe/.simbrief` to link to docs
-- Updated `.utf to .uft8`
-
-Update <small>_ September 20, 2021</small>
-
-- Added `.airframe (.simbrief)`
-- Added `.xbox`
-- Fixed `.unban`
-- Update `.calibrate` links to docs guide
-- Vanity URL used in the readme
-
-Update <small>_ September 17, 2021</small>
-
-- Added `.screenshot`
-- Added `.msfs`
-- Added `.controls`
-- Added `.content`
-- Added `.briefing`
-- Added `.beginnerguide (.bg)`
-- Added `.boris`
-- Updated `.afloor` Links to tooltip
-- Updated `.trythis` (reworded)
-- Updated `.calibrate` with current links
-- Fix `.whois`
-- Fix `.help`
-- Readme, Contributing and PR template have been added!
-
-Update <small>_ August 24, 2021</small>
-
-- Added `.adirs`
-- Added `.installererror (.error)`
-- Added `.reportedissues (.issues)`
-- Added `.autopilot (.ap)`
-- Added `.checklis`
-- Added `.whois`
-- Added `.calibrate`
-- Added `.donate`
-- Added `.utf`
-- Added `.nut`
-- Updated `.exp` and `.versions` experimental is in use
+- fix: DM crash (28/02/2022)
+- fix: whois offline status (28/02/2022)
+- fix: node_modules error (23/02/2022)
+- feat: update to discord.js v13 and API v9 (23/02/2022)
