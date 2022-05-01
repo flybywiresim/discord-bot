@@ -1,7 +1,7 @@
 ## Changelog
 
 Update <small>_ April 2022</small>
-
+- feat: add tod estimate calculator (30/4/2022)
 - refactor: updated Synaptic discord invite link (30/04/2022)
 - docs: copy changelog and command listing from docs repo (29/04/2022)
 - ci: fix ci linting check (29/04/2022)
