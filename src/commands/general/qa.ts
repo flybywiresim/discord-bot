@@ -13,6 +13,5 @@ export const qa: CommandDefinition = {
         });
 
         await msg.channel.send({ embeds: [qaEmbed] });
-
     },
 };

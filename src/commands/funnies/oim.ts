@@ -7,5 +7,5 @@ export const oim: CommandDefinition = {
     name: 'oim',
     category: CommandCategory.FUNNIES,
     description: 'oim',
-    executor: (msg) => msg.channel.send( OIM_URL ),
+    executor: (msg) => msg.channel.send(OIM_URL),
 };

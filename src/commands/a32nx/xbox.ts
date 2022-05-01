@@ -13,6 +13,5 @@ export const xbox: CommandDefinition = {
         });
 
         await msg.channel.send({ embeds: [xboxEmbed] });
-
     },
 };

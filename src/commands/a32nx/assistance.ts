@@ -12,12 +12,11 @@ export const assistance: CommandDefinition = {
             description: makeLines([
                 'The A32NX is not compatible with the Microsoft Flight Simulator assistance feature "Auto-Rudder".** It is required to deactivate this feature in MSFS.**',
                 '',
-                'We recommend turning off all assistance features in MSFS as they interfere with the A32NX systems.'
+                'We recommend turning off all assistance features in MSFS as they interfere with the A32NX systems.',
             ]),
             image: { url: 'https://docs.flybywiresim.com/fbw-a32nx/assets/nw-tiller/assistance-options.png' },
         });
 
         await msg.channel.send({ embeds: [assistanceEmbed] });
-
     },
 };

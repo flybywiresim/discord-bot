@@ -11,9 +11,9 @@ export const cursor: CommandDefinition = {
             title: 'FlyByWire A32NX | EFB Focus',
             description: makeLines([
                 'In certain situations, if you have selected an input field on the EFB and changed your view away from the EFB, you may no longer have use of your mouse cursor.',
-                ,
+                '',
                 'Please follow the steps below to bypass this issue:',
-                ,
+                '',
                 '1. Open your browser (i.e. Chrome / Firefox)',
                 '2. In the URL field type in - `localhost:19999`',
                 '3. Click on any link',
@@ -25,6 +25,5 @@ export const cursor: CommandDefinition = {
         });
 
         await msg.channel.send({ embeds: [cursorEmbed] });
-
     },
 };

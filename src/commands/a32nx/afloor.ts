@@ -13,6 +13,5 @@ export const afloor: CommandDefinition = {
         });
 
         await msg.channel.send({ embeds: [afloorEmbed] });
-
-    }
+    },
 };

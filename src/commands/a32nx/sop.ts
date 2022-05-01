@@ -19,6 +19,5 @@ export const sop: CommandDefinition = {
         });
 
         await msg.channel.send({ embeds: [sopEmbed] });
-
     },
 };

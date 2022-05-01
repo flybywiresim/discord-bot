@@ -15,6 +15,5 @@ export const clean: CommandDefinition = {
         });
 
         await msg.channel.send({ embeds: [cleanEmbed] });
-
     },
 };

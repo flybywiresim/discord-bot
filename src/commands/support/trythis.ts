@@ -14,6 +14,5 @@ export const trythis: CommandDefinition = {
         });
 
         await msg.channel.send({ embeds: [trythisEmbed] });
-
     },
 };

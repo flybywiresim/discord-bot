@@ -19,6 +19,5 @@ export const tug: CommandDefinition = {
         });
 
         await msg.channel.send({ embeds: [tugEmbed] });
-
     },
 };

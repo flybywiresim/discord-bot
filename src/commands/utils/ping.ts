@@ -7,6 +7,7 @@ export const ping: CommandDefinition = {
     category: CommandCategory.UTILS,
     requiredPermissions: ['MANAGE_WEBHOOKS'],
     executor: (msg) => {
+        // eslint-disable-next-line global-require
         const Filter = require('bad-words');
         const msgFilter = new Filter();
 
@@ -21,5 +22,6 @@ export const ping: CommandDefinition = {
         if (msgFilter.isProfane(text)) {
             return msg.reply('Please do not use profane language with this command.');
         }
+        return Promise.resolve();
     },
 };

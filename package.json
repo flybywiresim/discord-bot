@@ -6,8 +6,8 @@
     "run:node": "node build/index.js",
     "dev": "nodemon --watch src/ -e ts --exec ts-node src/index.ts",
     "run": "npm run build:typescript && npm run run:node",
-    "lint": "eslint **/*.ts",
-    "lint-fix": "eslint **/*.ts --fix"
+    "lint": "eslint src/**/**/*.ts",
+    "lint-fix": "eslint src/**/**/*.ts --fix"
   },
   "keywords": [],
   "author": "FlyByWire Simulations",

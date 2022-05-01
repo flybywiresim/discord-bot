@@ -23,7 +23,6 @@ export const ban: CommandDefinition = {
         const modLogsChannel = msg.guild.channels.resolve(Channels.MOD_LOGS) as TextChannel | null;
 
         return msg.guild.members.ban(idArg).then((user: User | Snowflake) => {
-
             if (modLogsChannel && typeof user !== 'string') {
                 const modLogEmbed = makeEmbed({
                     color: 'RED',
@@ -42,17 +41,14 @@ export const ban: CommandDefinition = {
                         },
                         {
                             name: 'Reason',
-                            value: '\u200B' + reason,
+                            value: `\u200B${reason}`,
                         },
                     ],
                     footer: { text: ` User ID: ${(user instanceof User) ? user.id : user}` },
                 });
 
                 modLogsChannel.send({ embeds: [modLogEmbed] });
-
             }
-
-
 
             msg.channel.send({ embeds: [makeSuccessfulBanEmbed(user, reason)] });
         }).catch(async (error) => {
@@ -113,7 +109,7 @@ function makeFailedBanEmbed(user: UserLike, error: any): discord.MessageEmbed {
     fields.push({
         inline: false,
         name: 'Error',
-        value: '\u200B' + error,
+        value: `\u200B${error}`,
     });
 
     return makeEmbed({

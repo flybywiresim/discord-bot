@@ -16,4 +16,3 @@ export const avatar: CommandDefinition = {
         return msg.channel.send({ embeds: [avatarEmbed] });
     },
 };
-

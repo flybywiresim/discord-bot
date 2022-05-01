@@ -9,12 +9,11 @@ export const discontinuity: CommandDefinition = {
     executor: async (msg) => {
         const discontinuityEmbed = makeEmbed({
             title: 'FlyByWire A32NX | Discontinuity',
-            description: makeLines ([
+            description: makeLines([
                 'Please see our [documentation](https://docs.flybywiresim.com/pilots-corner/advanced-guides/flight-planning/disco/) for information on what to do with a discontinuity in your flight plan.',
             ]),
         });
 
         await msg.channel.send({ embeds: [discontinuityEmbed] });
-
     },
 };
