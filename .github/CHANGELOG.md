@@ -2,6 +2,7 @@
 
 Update <small>_ April 2022</small>
 
+- refactor: updated Synaptic discord invite link (30/04/2022)
 - docs: copy changelog and command listing from docs repo (29/04/2022)
 - ci: fix ci linting check (29/04/2022)
 - feat: add headwind server invite link (26/04/2022)
