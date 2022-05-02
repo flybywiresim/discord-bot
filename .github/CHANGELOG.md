@@ -1,5 +1,9 @@
 ## Changelog
 
+Update <small>_ May 2022</small>
+
+- chore:  add dependabot config (02/05/2022)
+
 Update <small>_ April 2022</small>
 
 - refactor: updated Synaptic discord invite link (30/04/2022)
