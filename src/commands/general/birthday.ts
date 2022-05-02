@@ -13,78 +13,71 @@ export const birthday: CommandDefinition = {
 
         let birthdayEmbed;
 
-        if (args[0] === 'add') {
+        if (args[0] === 'add' || args[0] === 'set') {
             const user = msg.mentions.users.first();
-            let birthdayDate;
 
-            try {
-                birthdayDate = new Date(args.slice(2).join(' '));
-            } catch (e) {
+            if (!user) {
                 birthdayEmbed = makeEmbed({
                     title: 'Birthday reminder',
-                    description: 'Error while parsing date',
-                    color: 'RED'
-                });
-
-                // Bail out
-                return msg.channel.send({ embeds: [birthdayEmbed] });
-            }
-
-            // Catch invalid dates
-            if (birthdayDate.toString() === 'Invalid Date') {
-                birthdayEmbed = makeEmbed({
-                    title: 'Birthday reminder',
-                    description: 'Invalid date',
-                    color: 'RED'
-                });
-
-                // Bail out
-                return msg.channel.send({ embeds: [birthdayEmbed] });
-            }
-
-            console.log(birthdayDate.toString());
-
-            if (user && birthdayDate) {
-                const guildID = msg.guild.id;
-                const channelID = msg.channel.id;
-                const userID = user.id;
-
-                let birthdayDoc = await conn.models.Birthday.findOne({ userID: userID, guildID: guildID });
-                
-                if (birthdayDoc) {
-                    birthdayDoc.birthday = birthdayDate;
-                    birthdayDoc.channelID = channelID;
-                    birthdayDoc.lastUpdated = new Date();
-                } else {
-                    birthdayDoc = new conn.models.Birthday({
-                        userID: userID,
-                        guildID: guildID,
-                        birthday: birthdayDate,
-                        channelID: channelID,
-                        lastUpdated: new Date(),
-                    });
-                }
-
-                await birthdayDoc.save();
-            
-                birthdayEmbed = makeEmbed({
-                    title: 'Birthday added',
-                    description: `${user.username}'s birthday has been set to ${birthdayDate.toLocaleDateString()}`,
+                    description: 'You need to mention a user to add a birthday reminder',
+                    color: 'RED',
                 });
             } else {
-                birthdayEmbed = makeEmbed({
-                    title: 'Birthday add failed',
-                    description: 'You must specify a user and a birthday',
-                });
+                let birthdayDay;
+                let birthdayMonth;
+
+                let birthdayStrings = args.slice(2).join('/').split(/[\/-]/);
+
+                // Catch invalid dates
+                if (birthdayStrings.length < 2) {
+                    birthdayEmbed = makeEmbed({
+                        title: 'Birthday reminder',
+                        description: 'Invalid date format. Please use `.birthday add <user> <month>/<day> [timezone](optional)`',
+                        color: 'RED',
+                    });
+                } else {
+                    birthdayDay = parseInt(birthdayStrings[1]);
+                    birthdayMonth = parseInt(birthdayStrings[0]);
+
+                    if (isNaN(birthdayDay) || isNaN(birthdayMonth)) {
+                        birthdayEmbed = makeEmbed({
+                            title: 'Birthday reminder',
+                            description: 'Invalid date format. Please use `.birthday add <user> <month>/<day> [timezone](optional)`',
+                            color: 'RED',
+                        });
+                    } else {
+                        const userID = user.id;
+
+                        let birthdayDoc = await conn.models.Birthday.findOne({ userID: userID });
+                        
+                        if (birthdayDoc) {
+                            birthdayDoc.day = birthdayDay;
+                            birthdayDoc.month = birthdayMonth;
+                        } else {
+                            birthdayDoc = new conn.models.Birthday({
+                                userID: userID,
+                                day: birthdayDay,
+                                month: birthdayMonth,
+                                lastYear: 0,
+                            });
+                        }
+                        
+                        birthdayEmbed = makeEmbed({
+                            title: 'Birthday added',
+                            description: `${user.username}'s birthday has been set to ${birthdayMonth}/${birthdayDay}`,
+                        });
+
+                        await birthdayDoc.save();
+                    }
+                }
             }
         } else if (args[0] === 'remove') {
             const user = msg.mentions.users.first();
 
             if (user) {
-                const guildId = msg.guild.id;
-                const userId = user.id;
+                const userID = user.id;
 
-                await conn.models.Birthday.deleteOne({ userId, guildId });
+                await conn.models.Birthday.deleteOne({ userID });
 
                 birthdayEmbed = makeEmbed({
                     title: 'Birthday removed',
@@ -99,13 +92,19 @@ export const birthday: CommandDefinition = {
         } else if (args[0] === 'list') {
             const guildID = msg.guild.id;
 
-            const birthdays = await conn.models.Birthday.find({ guildID });
-
-            console.log(birthdays);
+            const birthdays = await conn.models.Birthday.find({});
 
             const members = await msg.guild.members.fetch();
             
-            const birthdayList = birthdays.map(({ userID, birthday }) => `${members.get(userID).displayName}: ${birthday.toLocaleDateString()}`);
+            let birthdayList: Array<String> = [];
+            
+            for (const birthday of birthdays) {
+                const member = members.get(birthday.userID);
+
+                if (member) {
+                    birthdayList.push(`${member.displayName} - ${birthday.month}/${birthday.day}`);
+                }
+            }
 
             birthdayEmbed = makeEmbed({
                 title: 'Birthday list',
@@ -129,8 +128,5 @@ export const birthday: CommandDefinition = {
         }
 
         return msg.channel.send({ embeds: [birthdayEmbed] });
-
-        const birthdays = await conn.models.Birthday.find();
-        console.log(birthdays);
     },
 };

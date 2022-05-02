@@ -2,10 +2,9 @@ import { Schema } from 'mongoose';
 
 const birthdaySchema = new Schema({
     userID: String,
-    guildID: String,
-    birthday: Date,
-    channelID: String,
-    lastUpdated: Date,
+    month: Number,
+    day: Number,
+    lastYear: Number,
 });
 
 export default birthdaySchema;
