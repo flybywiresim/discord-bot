@@ -1,22 +1,23 @@
-import { Client, DMChannel, TextChannel } from 'discord.js';
+import { Client, DMChannel, TextChannel, ThreadChannel } from 'discord.js';
 import { makeEmbed } from '../lib/embed';
 import Logger from '../lib/logger';
 import { GuildID, Channels } from '../constants';
 import { getConn } from '../lib/db';
 
-async function processBirthdays(client: Client)
-{
+async function processBirthdays(client: Client) {
     const conn = await getConn();
 
-    if(!conn)
-    {
+    // Bail if no database connection
+    if(!conn) {
         return;
     }
 
+    // Get current date
     const currentDate = new Date();
 
+    // Get all birthdays for today that haven't been sent yet
     const birthdays = await conn.models.Birthday.find({
-        day: currentDate.getDate() + 1,
+        day: currentDate.getDate(),
         month: currentDate.getMonth() + 1,
         lastYear:
         {
@@ -24,15 +25,38 @@ async function processBirthdays(client: Client)
         },
     });
 
+    // Bail if no birthdays
+    if(!birthdays.length) {
+        return;
+    }
+
+    // Get parent channel
+    const guild = await client.guilds.fetch(GuildID);
+    const channel = guild.channels.resolve(Channels.BIRTHDAY_CHANNEL) as TextChannel;
+    
+    // Bail if no channel
+    if(!channel) {
+        Logger.error('Birthday channel not found');
+        return;
+    }
+
+    // Get all threads (archived included)
+    await channel.threads.fetch({archived: {}});
+
+    const thread = channel.threads.cache.find(t => t.id === Channels.BIRTHDAY_THREAD);
+    
+    if(!thread) {
+        Logger.error('Birthday thread not found');
+        return;
+    }
+
+    // Unarchive thread if needed
+    if(thread.archived) {
+        await thread.setArchived(false);
+    }
+
+    // Send birthday messages
     for (const birthday of birthdays) {
-        const guild = await client.guilds.fetch(GuildID);
-        const channel = guild.channels.resolve(Channels.BIRTHDAY_THREAD) as TextChannel;
-
-        // If the channel is not found, we can't send a message
-        if (!channel) {
-            continue;
-        }
-
         const user = await guild.members.fetch(birthday.userID);
         
         // If the user is not found, we can't mention them
@@ -41,7 +65,7 @@ async function processBirthdays(client: Client)
         }
 
         const birthdayEmbed = makeEmbed({
-            title: 'Birthday reminder',
+            title: 'Happy Birthday!',
             description: `${user.displayName}'s birthday is today!`,
             color: 'GREEN',
         });
@@ -51,7 +75,7 @@ async function processBirthdays(client: Client)
         await birthday.save();
 
         // Send the birthday message
-        await channel.send({ embeds: [birthdayEmbed] });
+        await thread.send({ content: user.toString(), embeds: [birthdayEmbed] });
     }
 }
 
