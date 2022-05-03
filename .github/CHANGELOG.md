@@ -2,7 +2,8 @@
 
 Update <small>_ May 2022</small>
 
-- chore:  add dependabot config (02/05/2022)
+- docs(exp): Update support wording (TBC)
+- chore: add dependabot config (02/05/2022)
 
 Update <small>_ April 2022</small>
 
