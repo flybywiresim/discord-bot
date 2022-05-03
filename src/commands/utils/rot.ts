@@ -36,16 +36,11 @@ export const rot: CommandDefinition = {
 
                 title: 'FlyByWire | Descent Approximation',
                 description: makeLines([
-                    `Begin a -3.0° descent ${todFL} nm from touchdown.`,
+                    `To descend a total of **${altitude}00ft**, start a -3.0° descent **${todFL}nm** from the point you wish to reach the target altitude.`,
+                    '',
+                    'This is an approximation of your TOD using the rule of three. '
+                    + 'See the official [guide](https://docs.flybywiresim.com/pilots-corner/beginner-guide/descent/#how-to-calculate-the-required-distance-for-descent) for planning an optimal descent.',
                 ]),
-
-                fields: [
-                    {
-                        name: 'This is an **approximation** of your TOD',
-                        value: 'See the official [guide](https://docs.flybywiresim.com/pilots-corner/beginner-guide/descent/#how-to-calculate-the-required-distance-for-descent) for planning an optimal descent.',
-                        inline: false,
-                    },
-                ],
             });
 
             await msg.channel.send({ embeds: [todFlightLevelEmbed] });
@@ -56,16 +51,11 @@ export const rot: CommandDefinition = {
 
                 title: 'FlyByWire | Descent Approximation',
                 description: makeLines([
-                    `Begin a -3.0° descent ${topOfDescent} nm from touchdown.`,
+                    `To descend a total of **${altitude}ft**, start a -3.0° descent **${topOfDescent}nm** from the point you wish to reach the target altitude.`,
+                    '',
+                    'This is an approximation of your TOD using the rule of three. '
+                    + 'See the official [guide](https://docs.flybywiresim.com/pilots-corner/beginner-guide/descent/#how-to-calculate-the-required-distance-for-descent) for planning an optimal descent.',
                 ]),
-
-                fields: [
-                    {
-                        name: 'This is an **approximation** of your TOD',
-                        value: 'See the official [guide](https://docs.flybywiresim.com/pilots-corner/beginner-guide/descent/#how-to-calculate-the-required-distance-for-descent) for planning an optimal descent.',
-                        inline: false,
-                    },
-                ],
             });
 
             await msg.channel.send({ embeds: [todEmbed] });
