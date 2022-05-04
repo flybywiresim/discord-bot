@@ -1,4 +1,4 @@
-import { Client, TextChannel, MessageAttachment } from 'discord.js';
+import { Client, TextChannel } from 'discord.js';
 import { makeEmbed } from '../lib/embed';
 import Logger from '../lib/logger';
 import { GuildID, Channels } from '../constants';
@@ -47,7 +47,7 @@ async function processBirthdays(client: Client) {
 
     // Get parent channel
     const guild = await client.guilds.fetch(GuildID);
-    const channel = guild.channels.resolve(Channels.BIRTHDAY_CHANNEL) as TextChannel;
+    const channel = guild.channels.resolve(Channels.BIRTHDAY_CHANNEL) as TextChannel | null;
     
     // Bail if no channel
     if(!channel) {
@@ -98,6 +98,6 @@ async function processBirthdays(client: Client) {
 module.exports = {
     event: 'ready',
     executor: async (client) => {
-        setInterval(processBirthdays, 1000 * 15, client);
+        setInterval(processBirthdays, 1000 * 60 * 60, client);
     }
 };
