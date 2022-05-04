@@ -21,7 +21,9 @@ export const birthday: CommandDefinition = {
 
         let birthdayEmbed;
 
-        if (!msg.member.roles.cache.find(r => permittedRoles.map(r => r.toString()).includes(r.id))) {
+        const hasPermittedRole = msg.member.roles.cache.some((role) => permittedRoles.map(r => r.toString()).includes(role.id));
+
+        if (!hasPermittedRole) {
             birthdayEmbed = makeEmbed({
                 title: 'Birthday reminder',
                 description: 'You do not have permission to use this command.',
