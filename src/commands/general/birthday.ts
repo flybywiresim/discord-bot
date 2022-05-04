@@ -32,7 +32,7 @@ export const birthday: CommandDefinition = {
                 if (birthdayStrings.length < 2) {
                     birthdayEmbed = makeEmbed({
                         title: 'Birthday reminder',
-                        description: 'Invalid date format. Please use `.birthday add <user> <month>/<day> [timezone](optional)`',
+                        description: 'Invalid date format. Please use `.birthday add <user> <month>/<day>`',
                         color: 'RED',
                     });
                 } else {
@@ -42,7 +42,7 @@ export const birthday: CommandDefinition = {
                     if (isNaN(birthdayDay) || isNaN(birthdayMonth)) {
                         birthdayEmbed = makeEmbed({
                             title: 'Birthday reminder',
-                            description: 'Invalid date format. Please use `.birthday add <user> <month>/<day> [timezone](optional)`',
+                            description: 'Invalid date format. Please use `.birthday add <user> <month>/<day>`',
                             color: 'RED',
                         });
                     } else {

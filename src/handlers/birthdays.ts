@@ -1,8 +1,23 @@
-import { Client, DMChannel, TextChannel, ThreadChannel } from 'discord.js';
+import { Client, TextChannel, MessageAttachment } from 'discord.js';
 import { makeEmbed } from '../lib/embed';
 import Logger from '../lib/logger';
 import { GuildID, Channels } from '../constants';
 import { getConn } from '../lib/db';
+
+const gifs: string[] = [
+    'https://c.tenor.com/rngI-iARtUsAAAAC/happy-birthday.gif',
+    'https://c.tenor.com/VMC8fNKdQrcAAAAd/happy-birthday-bon-anniversaire.gif',
+    'https://c.tenor.com/ZVG_H1ebQ88AAAAC/hbd-happy.gif',
+    'https://c.tenor.com/xRSLl2b1NtkAAAAd/happy-birthday-wish.gif',
+    'https://c.tenor.com/2v8fJf67VTkAAAAC/holiday-classics-elf.gif',
+    'https://c.tenor.com/WcaloX5M08oAAAAC/kingsqueedgybot-meme.gif',
+    'https://c.tenor.com/UwRRdD3mCQ0AAAAC/love-sis.gif',
+    'https://c.tenor.com/5_VwBuyzBaAAAAAd/scream-happy-birthday.gif',
+    'https://c.tenor.com/PZckaksfSQIAAAAC/lets-party.gif',
+    'https://c.tenor.com/7fg9ogkiEmgAAAAC/happy-birthday-celebrating.gif',
+    'https://c.tenor.com/dfL34nBDOrcAAAAC/happy-birthday.gif',
+    'https://c.tenor.com/BiEt0CS2YLUAAAAd/happy-birthday-birthday.gif',
+];
 
 async function processBirthdays(client: Client) {
     const conn = await getConn();
@@ -68,6 +83,7 @@ async function processBirthdays(client: Client) {
             title: 'Happy Birthday!',
             description: `${user.displayName}'s birthday is today!`,
             color: 'GREEN',
+            image: { url: gifs[Math.floor(Math.random() * gifs.length)] },
         });
 
         // Update the last year announced
