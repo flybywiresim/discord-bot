@@ -1,5 +1,9 @@
 ## Changelog
 
+Update <small>_ May 2022</small>
+
+- fix: reword .xbox command and change category (05/05/2022)
+
 Update <small>_ April 2022</small>
 
 - refactor: updated Synaptic discord invite link (30/04/2022)
