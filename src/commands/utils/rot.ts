@@ -31,7 +31,6 @@ export const rot: CommandDefinition = {
             await msg.channel.send({ embeds: [flightLevelerrorEmbed] });
         } if (altitude <= 1000 && text.startsWith('FL')) {
             const todFL = Math.floor(altitude * (1 / 3) * (11 / 10));
-
             const todFlightLevelEmbed = makeEmbed({
 
                 title: 'FlyByWire | Descent Approximation',
@@ -46,7 +45,6 @@ export const rot: CommandDefinition = {
             await msg.channel.send({ embeds: [todFlightLevelEmbed] });
         } if (altitude >= 1000) {
             const topOfDescent = Math.floor(altitude * (1 / 100) * (1 / 3) * (11 / 10));
-
             const todEmbed = makeEmbed({
 
                 title: 'FlyByWire | Descent Approximation',
