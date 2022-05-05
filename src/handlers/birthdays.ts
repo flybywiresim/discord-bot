@@ -1,4 +1,4 @@
-import { Client, TextChannel } from 'discord.js';
+import { Client, Guild, TextChannel } from 'discord.js';
 import { makeEmbed } from '../lib/embed';
 import Logger from '../lib/logger';
 import { GuildID, Channels } from '../constants';
@@ -46,7 +46,13 @@ async function processBirthdays(client: Client) {
     }
 
     // Get parent channel
-    const guild = await client.guilds.fetch(GuildID);
+    const guild = client.guilds.resolve(GuildID) as Guild | null;
+
+    if(!guild) {
+        Logger.error('Guild not found');
+        return;
+    }
+
     const channel = guild.channels.resolve(Channels.BIRTHDAY_CHANNEL) as TextChannel | null;
     
     // Bail if no channel
