@@ -2,6 +2,7 @@
 
 Update <small>_ May 2022</small>
 
+- refactor: weight and balance command (05/05/2022)
 - chore:  add dependabot config (02/05/2022)
 
 Update <small>_ April 2022</small>
