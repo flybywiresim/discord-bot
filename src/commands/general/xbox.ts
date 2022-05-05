@@ -9,7 +9,7 @@ export const xbox: CommandDefinition = {
     executor: async (msg) => {
         const xboxEmbed = makeEmbed({
             title: 'FlyByWire Addons | Xbox + MSFS Marketplace',
-            description: 'Due to a number of contributing factors, FlyByWire addons will not be released on the Xbox or the Marketplace. [You can read more here](https://flybywiresim.com/notams/marketplace-announcement/).',
+            description: 'Due to a number of contributing factors, FlyByWire Simulations' addons will not be released on the Xbox or the Marketplace. [You can read more here](https://flybywiresim.com/notams/marketplace-announcement/).',
         });
 
         await msg.channel.send({ embeds: [xboxEmbed] });
