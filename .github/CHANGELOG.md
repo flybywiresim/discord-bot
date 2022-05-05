@@ -2,6 +2,7 @@
 
 Update <small>_ May 2022</small>
 
+- feat: recommended settings command (11/05/2022)
 - docs(exp): Update support wording (09/05/2022)
 - fix(dependabot): ignore patch versions (05/05/2022)
 - fix: reword .xbox command and change category (05/05/2022)
