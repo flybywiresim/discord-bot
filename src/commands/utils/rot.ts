@@ -32,7 +32,6 @@ export const rot: CommandDefinition = {
         } if (altitude <= 1000 && text.startsWith('FL')) {
             const todFL = Math.floor(altitude * (1 / 3) * (11 / 10));
             const todFlightLevelEmbed = makeEmbed({
-
                 title: 'FlyByWire | Descent Approximation',
                 description: makeLines([
                     `To descend a total of **${altitude}00ft**, start a -3.0° descent **${todFL}nm** from the point you wish to reach the target altitude.`,
@@ -41,7 +40,6 @@ export const rot: CommandDefinition = {
                     + 'See the official [guide](https://docs.flybywiresim.com/pilots-corner/beginner-guide/descent/#how-to-calculate-the-required-distance-for-descent) for planning an optimal descent.',
                 ]),
             });
-
             await msg.channel.send({ embeds: [todFlightLevelEmbed] });
         } if (altitude >= 1000) {
             const topOfDescent = Math.floor(altitude * (1 / 100) * (1 / 3) * (11 / 10));
