@@ -36,7 +36,6 @@
 | .versions      | Explains the different A32NX versions                                                 | ---                                                    |
 | .weather       | Explains the current state of the weather and terrain radars in experimental          | .wx                                                    |
 | .weights       | Provides a link to the fuel and weights docs guide                                    | .fuel <br> .wb <br> .w/b <br> .w+b <br> .wnb <br> .w&b |
-| .xbox          | Short response + link to NOTAM for xbox marketplace                                   | .xboxmarketplace                                       |
 
 ### Funnies
 
@@ -85,6 +84,8 @@
 | .translate   | Provides information on how to contribute to various FlyByWire translation efforts                             | ---                      |
 | .when        | Explain the absence of release dates or ETAs                                                                   | ---                      |
 | .thumb       | Answers the big question, will it have FEATURE?                                                                | .willithave              |
+| .xbox          | Short response + link to NOTAM for xbox marketplace                                   | .xboxmarketplace                                       |
+
 
 ### Moderation
 
