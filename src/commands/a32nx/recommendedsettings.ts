@@ -2,12 +2,12 @@ import { CommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 
-export const recommendedsettings: CommandDefinition = {
+export const recommendedSettings: CommandDefinition = {
     name: 'rs',
     category: CommandCategory.A32NX,
     description: 'Provides a link to the recommended settings docs guide.',
     executor: async (msg) => {
-        const recommendedsettingsEmbed = makeEmbed({
+        const recommendedSettingsEmbed = makeEmbed({
             title: 'FlyByWire A32NX | Recommended Settings',
             description: makeLines([
                 'Before embarking on your flight please ensure you have looked at our recommended settings guide.',
@@ -19,6 +19,6 @@ export const recommendedsettings: CommandDefinition = {
             ]),
         });
 
-        await msg.channel.send({ embeds: [recommendedsettingsEmbed] });
+        await msg.channel.send({ embeds: [recommendedSettingsEmbed] });
     },
 };
