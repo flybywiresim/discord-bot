@@ -237,6 +237,10 @@ export const birthday: CommandDefinition = {
                         value: 'Removes a birthday reminder for the specified user',
                     },
                     {
+                        name: 'timezone <user> <offset>',
+                        value: 'Sets the timezone of a birthday',
+                    },
+                    {
                         name: 'list',
                         value: 'Lists all birthday reminders',
                     },

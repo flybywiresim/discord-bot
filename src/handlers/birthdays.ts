@@ -91,7 +91,7 @@ async function processBirthdays(client: Client) {
         // Potential future consideration: handle birthdays that we missed? (bot outages, etc)
 
         // Update birthday to next year
-        let nextBirthdayDatetime = new Date(Date.UTC(currentDate.getUTCFullYear() + 1, birthday.month - 1, birthday.day));
+        const nextBirthdayDatetime = new Date(Date.UTC(currentDate.getUTCFullYear() + 1, birthday.month - 1, birthday.day));
         nextBirthdayDatetime.setUTCHours(10 - birthday.timezone);
 
         birthday.utcDatetime = nextBirthdayDatetime;
