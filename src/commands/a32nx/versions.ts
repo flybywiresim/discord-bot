@@ -37,7 +37,7 @@ export const versions: CommandDefinition = {
                     value: makeLines([
                         '> The Experimental version is a test version to find problems, issues and to improve functionality based on your feedback. It is not meant to be used for daily use or serious flights with an Online ATC service.\n'
                         + '',
-                        '> Please see our [Experimental Version Support Page](https://docs.flybywiresim.com/exp) for more information. **Support for experimental is not guaranteed.**',
+                        '> Please see our [Experimental Version Support Page](https://docs.flybywiresim.com/exp) for more information. **Do not expect support for the experimental version - use at own risk!**',
                     ]),
                     inline: false,
                 },
