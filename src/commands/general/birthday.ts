@@ -56,7 +56,7 @@ export const birthday: CommandDefinition = {
                     if (birthdayStrings.length < 2) {
                         birthdayEmbed = makeEmbed({
                             title: 'Birthday reminder',
-                            description: 'Invalid date format. Please use `.birthday add <user> <month>/<day>`',
+                            description: 'Insufficient args provided. Please use `.birthday add <user> <month>/<day>`',
                             color: 'RED',
                         });
                     } else {

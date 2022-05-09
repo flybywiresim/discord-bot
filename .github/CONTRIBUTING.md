@@ -68,6 +68,19 @@ Some commands may require additional tokens. If you would like to test them out 
 2. Once you have an account you will need to get an AppID from [here](https://developer.wolframalpha.com/portal/myapps/)
 3. Inside the .env file, on a new line type `WOLFRAMALPHA_TOKEN=TOKEN` replacing TOKEN with your wolfram alpha AppID
 
+### MongoDB
+
+Some commands require access to a MongoDB server to store persistence data. The steps below outline MongoDB's setup procedure, and the necessary steps to
+connect your application to your MongoDB instance.
+
+1. Install MongoDB from [their website](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-windows/) or set up an [Atlas cluster](https://www.mongodb.com/cloud/atlas/lp/try2)
+2. If running MongoDB locally, run it [as a service](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-windows/#run-mongodb-community-edition-as-a-windows-service) or [from the terminal](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-windows/#run-mongodb-community-edition-from-the-command-interpreter)
+3. Create a new database named fbw in your MongoDB instance
+4. Inside the .env file, on a new line type `MONGODB_URL=URL` replacing URL with your MongoDB access URL
+
+If you have installed MongoDB locally, your access url will be `mongodb://localhost:27017/fbw`. If you are using Atlas, the connection URL can be found under
+`Connect->Connect your application` in Database, located under Deployments.
+
 ### Privileged Gateway Intents
 
 Privileged Gateway Intents must now be enabled within the Discord Developer Portal in order for your bot to function. The steps below will explain how to enable them.

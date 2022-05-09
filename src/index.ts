@@ -30,11 +30,10 @@ client.on('ready', () => {
     healthy = true;
 
     // Connect to database
-    connect(process.env.MONGODB_URL)
-        .then(() => {
-            Logger.info('Connected to database');
-        })
-        .catch(Logger.error);
+    if(process.env.MONGODB_URL) {
+        connect(process.env.MONGODB_URL)
+            .catch(Logger.error);
+    }
 });
 
 client.on('disconnect', () => {

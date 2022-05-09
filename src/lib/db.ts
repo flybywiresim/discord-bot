@@ -12,6 +12,8 @@ export async function connect(url: string, callback = Logger.error) {
 
         // Register schemas
         _connection.model("Birthday", birthdaySchema);
+
+        Logger.info("Connected to database");
     } catch ({ name, message, stack }) {
         callback({ name, message, stack });
     }
