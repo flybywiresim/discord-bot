@@ -24,8 +24,11 @@
 | .github        | provides the link to the A32NX GitHub Repository                                      | .repo <br> .repository                                 |
 | .liveries      | Provides a link to the flightsim.to A32NX liveries page                               | .liv                                                   |
 | .remotemcdu    | Provides a link to the FlyByWire remote MCDU feature guide                            | .mcdu <br> .remote                                     |
+| .rs            | Provides a link to the recommended settings docs guide.                               | ---                                                    |
 | .preflight     | Provides a link to the a32nx preflight guide                                          | ---                                                    |
 | .printer       | Provides a link to the FlyByWire printer tutorial video                               | ---                                                    |
+| .remotemcdu    | Provides a link to the FlyByWire remote MCDU feature guide                            | .mcdu <br> .remote                                     |
+| .rs            | Provides a link to the recommended settings docs guide.                               | ---                                                    |
 | .screens       | Display help with avionics                                                            | .screen                                                |
 | .import        | Shows how to use SimBrief integration                                                 | .integration <br> .integ                               |
 | .sop           | Displays first page of SOP and provides PDF download                                  | ---                                                    |
