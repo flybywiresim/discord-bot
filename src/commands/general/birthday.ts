@@ -17,6 +17,12 @@ export const birthday: CommandDefinition = {
     description: 'Manages birthday reminders',
     category: CommandCategory.GENERAL,
     executor: async (msg) => {
+        // Allow commands only in birthday thread
+        if(msg.channel.id != Channels.BIRTHDAY_THREAD)
+        {
+            return;
+        }
+
         const conn = await getConn();
         const args: string[] = msg.content.split(' ').slice(1);
 
@@ -108,12 +114,6 @@ export const birthday: CommandDefinition = {
                     });
                 }
             } else if (args[0] === 'list') {
-                // List only in birthday thread
-                if(msg.channel.id != Channels.BIRTHDAY_THREAD)
-                {
-                    return;
-                }
-
                 const birthdays = await conn.models.Birthday.find({});
                 const members = await msg.guild.members.fetch();
                 
