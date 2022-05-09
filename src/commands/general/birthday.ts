@@ -17,11 +17,6 @@ export const birthday: CommandDefinition = {
     description: 'Manages birthday reminders',
     category: CommandCategory.GENERAL,
     executor: async (msg) => {
-        // Allow commands only in birthday thread
-        if (msg.channel.id !== Channels.BIRTHDAY_THREAD) {
-            return;
-        }
-
         const conn = await getConn();
         const args: string[] = msg.content.split(' ').slice(1);
 
@@ -29,7 +24,13 @@ export const birthday: CommandDefinition = {
 
         const hasPermittedRole = msg.member.roles.cache.some((role) => permittedRoles.map((r) => r.toString()).includes(role.id));
 
-        if (!hasPermittedRole) {
+        if (msg.channel.id !== Channels.BIRTHDAY_THREAD) {
+            birthdayEmbed = makeEmbed({
+                title: 'Birthday reminder',
+                description: `That command can only be used in <#${Channels.BIRTHDAY_THREAD}>`,
+                color: 'RED',
+            });
+        } else if (!hasPermittedRole) {
             birthdayEmbed = makeEmbed({
                 title: 'Birthday reminder',
                 description: 'You do not have permission to use this command.',
