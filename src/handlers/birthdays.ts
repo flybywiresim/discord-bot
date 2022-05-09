@@ -105,7 +105,7 @@ async function processBirthdays(client: Client) {
 module.exports = {
     event: 'ready',
     executor: async (client) => {
-        birthdayInterval = setInterval(processBirthdays, 1000 * 15, client);
+        birthdayInterval = setInterval(processBirthdays, 1000 * 60 * 60, client);
 
         // Remove the interval if the bot disconnects
         client.on('disconnect', () => {
