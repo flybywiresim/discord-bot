@@ -84,7 +84,7 @@
 | .translate   | Provides information on how to contribute to various FlyByWire translation efforts                             | ---                      |
 | .when        | Explain the absence of release dates or ETAs                                                                   | ---                      |
 | .thumb       | Answers the big question, will it have FEATURE?                                                                | .willithave              |
-| .xbox          | Short response + link to NOTAM for xbox marketplace                                   | .xboxmarketplace                                       |
+| .xbox        | Short response + link to NOTAM for xbox marketplace                                                            | .xboxmarketplace         |
 
 
 ### Moderation
@@ -138,7 +138,7 @@
 | Command         | Description                                                                            | Alias                                    |
 |:----------------|:---------------------------------------------------------------------------------------|:-----------------------------------------|
 | .avatar         | Shows the selected user's avatar                                                       | .av                                      |
-| .birthday    | Handles adding & removing user birthdays                                                                       | ---                      |
+| .birthday       | Handles adding & removing user birthdays                                               | ---                                      |
 | .count          | counts in the count thread                                                             | ---                                      |
 | .help           | Sends a list of available commands to the user                                         | ---                                      |
 | .membercount    | Lists the guild's current amount of members                                            | ---                                      |
