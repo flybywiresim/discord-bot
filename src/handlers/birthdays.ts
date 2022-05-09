@@ -91,7 +91,10 @@ async function processBirthdays(client: Client) {
         // Potential future consideration: handle birthdays that we missed? (bot outages, etc)
 
         // Update birthday to next year
-        birthday.utcDatetime = new Date(Date.UTC(currentDate.getUTCFullYear() + 1, birthday.month, birthday.day));
+        let nextBirthdayDatetime = new Date(Date.UTC(currentDate.getUTCFullYear() + 1, birthday.month - 1, birthday.day));
+        nextBirthdayDatetime.setUTCHours(10 - birthday.timezone);
+
+        birthday.utcDatetime = nextBirthdayDatetime;
         birthday.save();
 
         // Send the birthday message
@@ -102,7 +105,7 @@ async function processBirthdays(client: Client) {
 module.exports = {
     event: 'ready',
     executor: async (client) => {
-        birthdayInterval = setInterval(processBirthdays, 1000 * 60 * 60, client);
+        birthdayInterval = setInterval(processBirthdays, 1000 * 15, client);
 
         // Remove the interval if the bot disconnects
         client.on('disconnect', () => {
