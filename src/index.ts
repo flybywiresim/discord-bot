@@ -30,7 +30,7 @@ client.on('ready', () => {
     healthy = true;
 
     // Connect to database
-    if(process.env.MONGODB_URL) {
+    if (process.env.MONGODB_URL) {
         connect(process.env.MONGODB_URL)
             .catch(Logger.error);
     }

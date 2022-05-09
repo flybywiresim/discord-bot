@@ -3,30 +3,32 @@ import Logger from './logger';
 
 import birthdaySchema from './schemas/birthdaySchema';
 
-var _connection: mongoose.Connection;
+let connection: mongoose.Connection;
 
 export async function connect(url: string, callback = Logger.error) {
     try {
         await mongoose.connect(url);
-        _connection = mongoose.connection;
+        connection = mongoose.connection;
 
         // Register schemas
-        _connection.model("Birthday", birthdaySchema);
+        connection.model('Birthday', birthdaySchema);
 
-        Logger.info("Connected to database");
+        Logger.info('Connected to database');
     } catch ({ name, message, stack }) {
         callback({ name, message, stack });
     }
 
-    mongoose.connection.on('error', err => {
+    mongoose.connection.on('error', (err) => {
         callback(err);
     });
 }
 
 export function getConn(callback = Logger.error) {
-    if (!_connection || _connection.readyState !== mongoose.ConnectionStates.connected) {
+    if (!connection || connection.readyState !== mongoose.ConnectionStates.connected) {
         callback(new Error('Not connected to database'));
     } else {
-        return _connection;
+        return connection;
     }
+
+    return null;
 }

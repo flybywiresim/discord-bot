@@ -25,7 +25,7 @@ async function processBirthdays(client: Client) {
     const conn = await getConn();
 
     // Bail if no database connection
-    if(!conn) {
+    if (!conn) {
         return;
     }
 
@@ -36,52 +36,49 @@ async function processBirthdays(client: Client) {
     const birthdays = await conn.models.Birthday.find({
         day: currentDate.getDate(),
         month: currentDate.getMonth() + 1,
-        lastYear:
-        {
-            $lt: currentDate.getFullYear(),
-        },
+        lastYear: { $lt: currentDate.getFullYear() },
     });
 
     // Bail if no birthdays
-    if(!birthdays.length) {
+    if (!birthdays.length) {
         return;
     }
 
     // Get parent channel
     const guild = client.guilds.resolve(GuildID) as Guild | null;
 
-    if(!guild) {
+    if (!guild) {
         Logger.error('Guild not found');
         return;
     }
 
     const channel = guild.channels.resolve(Channels.BIRTHDAY_CHANNEL) as TextChannel | null;
-    
+
     // Bail if no channel
-    if(!channel) {
+    if (!channel) {
         Logger.error('Birthday channel not found');
         return;
     }
 
     // Get all threads (archived included)
-    await channel.threads.fetch({archived: {}});
+    await channel.threads.fetch({ archived: {} });
 
-    const thread = channel.threads.cache.find(t => t.id === Channels.BIRTHDAY_THREAD);
-    
-    if(!thread) {
+    const thread = channel.threads.cache.find((t) => t.id === Channels.BIRTHDAY_THREAD);
+
+    if (!thread) {
         Logger.error('Birthday thread not found');
         return;
     }
 
     // Unarchive thread if needed
-    if(thread.archived) {
+    if (thread.archived) {
         await thread.setArchived(false);
     }
 
     // Send birthday messages
     for (const birthday of birthdays) {
-        const user = await guild.members.fetch(birthday.userID);
-        
+        const user = guild.members.resolve(birthday.userID);
+
         // If the user is not found, we can't mention them
         if (!user) {
             continue;
@@ -96,10 +93,10 @@ async function processBirthdays(client: Client) {
 
         // Update the last year announced
         birthday.lastYear = currentDate.getFullYear();
-        await birthday.save();
+        birthday.save();
 
         // Send the birthday message
-        await thread.send({ content: user.toString(), embeds: [birthdayEmbed] });
+        thread.send({ content: user.toString(), embeds: [birthdayEmbed] });
     }
 }
 
@@ -109,8 +106,8 @@ module.exports = {
         birthdayInterval = setInterval(processBirthdays, 1000 * 60 * 60, client);
 
         // Remove the interval if the bot disconnects
-        client.on("disconnect", () => {
+        client.on('disconnect', () => {
             clearInterval(birthdayInterval);
         });
-    }
+    },
 };
