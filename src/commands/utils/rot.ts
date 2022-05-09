@@ -16,7 +16,7 @@ export const rot: CommandDefinition = {
             title: 'Error',
             description: error,
         });
-        const flightLevelerrorEmbed = makeEmbed({
+        const flightLevelErrorEmbed = makeEmbed({
             title: 'Error',
             description: flightLevelError,
         });
@@ -25,7 +25,7 @@ export const rot: CommandDefinition = {
             await msg.channel.send({ embeds: [errorEmbed] });
         }
         if (!msg.content.includes('FL') && altitude <= 1000) {
-            await msg.channel.send({ embeds: [flightLevelerrorEmbed] });
+            await msg.channel.send({ embeds: [flightLevelErrorEmbed] });
         }
 
         if (altitude <= 1000 && text.startsWith('FL')) {
