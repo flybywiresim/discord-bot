@@ -4,6 +4,8 @@ import Logger from '../lib/logger';
 import { GuildID, Channels } from '../constants';
 import { getConn } from '../lib/db';
 
+let birthdayInterval;
+
 const gifs: string[] = [
     'https://c.tenor.com/rngI-iARtUsAAAAC/happy-birthday.gif',
     'https://c.tenor.com/VMC8fNKdQrcAAAAd/happy-birthday-bon-anniversaire.gif',
@@ -104,6 +106,10 @@ async function processBirthdays(client: Client) {
 module.exports = {
     event: 'ready',
     executor: async (client) => {
-        setInterval(processBirthdays, 1000 * 60 * 60, client);
+        birthdayInterval = setInterval(processBirthdays, 1000 * 60 * 60, client);
+
+        client.on("disconnect", () => {
+            clearInterval(birthdayInterval);
+        });
     }
 };
