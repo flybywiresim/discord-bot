@@ -32,12 +32,8 @@ async function processBirthdays(client: Client) {
     // Get current date
     const currentDate = new Date();
 
-    // Get all birthdays for today that haven't been sent yet
-    const birthdays = await conn.models.Birthday.find({
-        day: currentDate.getDate(),
-        month: currentDate.getMonth() + 1,
-        lastYear: { $lt: currentDate.getFullYear() },
-    });
+    // Get new birthdays
+    const birthdays = await conn.models.Birthday.find({ utcDatetime: { $lt: currentDate } });
 
     // Bail if no birthdays
     if (!birthdays.length) {
@@ -84,6 +80,7 @@ async function processBirthdays(client: Client) {
             continue;
         }
 
+        // Happy birthday!
         const birthdayEmbed = makeEmbed({
             title: 'Happy Birthday!',
             description: `${user.displayName}'s birthday is today!`,
@@ -91,8 +88,10 @@ async function processBirthdays(client: Client) {
             image: { url: gifs[Math.floor(Math.random() * gifs.length)] },
         });
 
-        // Update the last year announced
-        birthday.lastYear = currentDate.getFullYear();
+        // Potential future consideration: handle birthdays that we missed? (bot outages, etc)
+
+        // Update birthday to next year
+        birthday.utcDatetime = new Date(Date.UTC(currentDate.getUTCFullYear() + 1, birthday.month, birthday.day));
         birthday.save();
 
         // Send the birthday message

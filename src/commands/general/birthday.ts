@@ -2,6 +2,7 @@ import { CommandDefinition } from '../../lib/command';
 import { Roles, Channels, CommandCategory } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 import { getConn } from '../../lib/db';
+import Logger from '../../lib/logger';
 
 const permittedRoles = [
     Roles.ADMIN_TEAM,
@@ -35,77 +36,173 @@ export const birthday: CommandDefinition = {
                 color: 'RED',
             });
         } else if (args[0] === 'add' || args[0] === 'set') {
-            const user = msg.mentions.users.first();
+            const member = msg.mentions.members.first();
 
-            if (!user) {
+            if (!member) {
                 birthdayEmbed = makeEmbed({
-                    title: 'Birthday reminder',
+                    title: 'Birthday add failed',
                     description: 'You need to mention a user to add a birthday reminder',
                     color: 'RED',
                 });
             } else {
-                let birthdayDay;
-                let birthdayMonth;
-
                 const birthdayStrings = args.slice(2).join('/').split(/[/-]/);
 
                 // Catch invalid dates
                 if (birthdayStrings.length < 2) {
                     birthdayEmbed = makeEmbed({
-                        title: 'Birthday reminder',
+                        title: 'Birthday add failed',
                         description: 'Insufficient args provided. Please use `.birthday add <user> <month>/<day>`',
                         color: 'RED',
                     });
                 } else {
-                    birthdayDay = parseInt(birthdayStrings[1]);
-                    birthdayMonth = parseInt(birthdayStrings[0]);
+                    const birthdayDay = parseInt(birthdayStrings[1]);
+                    const birthdayMonth = parseInt(birthdayStrings[0]);
 
                     if (Number.isNaN(birthdayDay) || Number.isNaN(birthdayMonth)) {
                         birthdayEmbed = makeEmbed({
-                            title: 'Birthday reminder',
+                            title: 'Birthday add failed',
                             description: 'Invalid date format. Please use `.birthday add <user> <month>/<day>`',
                             color: 'RED',
                         });
                     } else {
-                        const userID = user.id;
+                        const userID = member.user.id;
+
+                        // Determine UTC datetime to send birthday message
+                        const currentDate = new Date();
+                        const utcDatetime = new Date(Date.UTC(currentDate.getUTCFullYear(), birthdayMonth - 1, birthdayDay));
+                        utcDatetime.setUTCHours(10);
 
                         let birthdayDoc = await conn.models.Birthday.findOne({ userID });
+
                         if (birthdayDoc) {
+                            utcDatetime.setUTCHours(utcDatetime.getUTCHours() - birthdayDoc.timezone);
+
                             birthdayDoc.day = birthdayDay;
                             birthdayDoc.month = birthdayMonth;
+                            birthdayDoc.utcDatetime = utcDatetime;
                         } else {
                             birthdayDoc = new conn.models.Birthday({
                                 userID,
                                 day: birthdayDay,
                                 month: birthdayMonth,
-                                lastYear: 0,
+                                utcDatetime,
+                                timezone: 0,
                             });
                         }
-                        birthdayEmbed = makeEmbed({
-                            title: 'Birthday added',
-                            description: `${user.username}'s birthday has been set to ${birthdayMonth}/${birthdayDay}`,
-                        });
+
+                        // If birthday already passed this year, skip to next
+                        if (currentDate > utcDatetime) {
+                            utcDatetime.setUTCFullYear(utcDatetime.getUTCFullYear() + 1);
+                            birthdayDoc.utcDatetime = utcDatetime;
+                        }
 
                         await birthdayDoc.save();
+
+                        birthdayEmbed = makeEmbed({
+                            title: 'Birthday added',
+                            description: `${member.displayName}'s birthday has been set to ${birthdayMonth}/${birthdayDay}`,
+                        });
                     }
                 }
             }
         } else if (args[0] === 'remove') {
-            const user = msg.mentions.users.first();
+            const member = msg.mentions.members.first();
 
-            if (user) {
-                const userID = user.id;
+            if (member) {
+                const userID = member.user.id;
 
-                await conn.models.Birthday.deleteOne({ userID });
+                const birthday = await conn.models.Birthday.findOne({ userID });
 
-                birthdayEmbed = makeEmbed({
-                    title: 'Birthday removed',
-                    description: `${user.username}'s birthday has been removed`,
-                });
+                if (!birthday) {
+                    birthdayEmbed = makeEmbed({
+                        title: 'Birthday remove failed',
+                        description: `${member.displayName} doesn't have a birthday set`,
+                        color: 'RED',
+                    });
+                } else {
+                    await conn.models.Birthday.deleteOne({ userID });
+
+                    birthdayEmbed = makeEmbed({
+                        title: 'Birthday removed',
+                        description: `${member.displayName}'s birthday has been removed`,
+                    });
+                }
             } else {
                 birthdayEmbed = makeEmbed({
                     title: 'Birthday remove failed',
                     description: 'You must specify a user',
+                    color: 'RED',
+                });
+            }
+        } else if (args[0] === 'timezone') {
+            const member = msg.mentions.members.first();
+
+            if (member) {
+                const userID = member.user.id;
+
+                const birthday = await conn.models.Birthday.findOne({ userID });
+
+                if (!birthday) {
+                    birthdayEmbed = makeEmbed({
+                        title: 'Birthday timezone failed',
+                        description: `${member.displayName} doesn't have a birthday set`,
+                        color: 'RED',
+                    });
+                } else {
+                    const timezoneArgs = args.slice(2);
+
+                    if (timezoneArgs.length < 1) {
+                        birthdayEmbed = makeEmbed({
+                            title: 'Birthday timezone failed',
+                            description: 'Insufficient args provided. Please use `.birthday timezone <user> <offset>`',
+                            color: 'RED',
+                        });
+                    } else {
+                        const timezoneOffset = parseInt(timezoneArgs[0]);
+
+                        Logger.debug(timezoneOffset);
+
+                        if (Number.isNaN(timezoneOffset)) {
+                            birthdayEmbed = makeEmbed({
+                                title: 'Birthday timezone failed',
+                                description: 'Invalid timezone format. Please use `.birthday add <user> <offset>`',
+                                color: 'RED',
+                            });
+                        } else if (timezoneOffset < -12 && timezoneOffset > 14) {
+                            birthdayEmbed = makeEmbed({
+                                title: 'Birthday timezone failed',
+                                description: 'Invalid timezone offset',
+                                color: 'RED',
+                            });
+                        } else {
+                            birthday.timezone = timezoneOffset;
+
+                            // Determine UTC datetime to send birthday message
+                            const currentDate = new Date();
+                            const utcDatetime = new Date(Date.UTC(currentDate.getUTCFullYear(), birthday.month - 1, birthday.day));
+                            utcDatetime.setUTCHours(10 - timezoneOffset);
+
+                            // If birthday already passed this year, skip to next
+                            if (currentDate > utcDatetime) {
+                                utcDatetime.setUTCFullYear(utcDatetime.getUTCFullYear() + 1);
+                            }
+
+                            birthday.utcDatetime = utcDatetime;
+
+                            await birthday.save();
+
+                            birthdayEmbed = makeEmbed({
+                                title: 'Birthday timezone set',
+                                description: `${member.displayName}'s timezone has been set to Z${timezoneOffset < 0 ? '' : '+'}${timezoneOffset}`,
+                            });
+                        }
+                    }
+                }
+            } else {
+                birthdayEmbed = makeEmbed({
+                    title: 'Birthday timezone failed',
+                    description: 'You must specify a user',
+                    color: 'RED',
                 });
             }
         } else if (args[0] === 'list') {
@@ -117,7 +214,7 @@ export const birthday: CommandDefinition = {
                 const member = members.get(birthday.userID);
 
                 if (member) {
-                    birthdayList.push(`${member.displayName} - ${birthday.month}/${birthday.day}`);
+                    birthdayList.push(`${member.displayName} - ${birthday.month}/${birthday.day} (Z${birthday.timezone < 0 ? '' : '+'}${birthday.timezone})`);
                 }
             }
 

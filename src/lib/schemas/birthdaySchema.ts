@@ -4,7 +4,8 @@ const birthdaySchema = new Schema({
     userID: String,
     month: Number,
     day: Number,
-    lastYear: Number,
+    utcDatetime: Date,
+    timezone: Number,
 });
 
 export default birthdaySchema;
