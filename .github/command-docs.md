@@ -71,6 +71,7 @@
 
 | Command      | Description                                                                                                    | Alias                    |
 |:-------------|:---------------------------------------------------------------------------------------------------------------|:-------------------------|
+| .birthday    | Handles adding & removing user birthdays                                                                       | ---
 | .donate      | Provides a link to the open collective                                                                         | ---                      |
 | .goldenrules | Provides an image describing the golden rules an Airbus pilot should follow                                    | .golden <br> .gr         |
 | .headwind    | Provides link to the Headwind Discord server                                                                   | .hw                      |
