@@ -71,7 +71,6 @@
 
 | Command      | Description                                                                                                    | Alias                    |
 |:-------------|:---------------------------------------------------------------------------------------------------------------|:-------------------------|
-| .birthday    | Handles adding & removing user birthdays                                                                       | ---
 | .donate      | Provides a link to the open collective                                                                         | ---                      |
 | .goldenrules | Provides an image describing the golden rules an Airbus pilot should follow                                    | .golden <br> .gr         |
 | .headwind    | Provides link to the Headwind Discord server                                                                   | .hw                      |
@@ -139,6 +138,7 @@
 | Command         | Description                                                                            | Alias                                    |
 |:----------------|:---------------------------------------------------------------------------------------|:-----------------------------------------|
 | .avatar         | Shows the selected user's avatar                                                       | .av                                      |
+| .birthday    | Handles adding & removing user birthdays                                                                       | ---                      |
 | .count          | counts in the count thread                                                             | ---                                      |
 | .help           | Sends a list of available commands to the user                                         | ---                                      |
 | .membercount    | Lists the guild's current amount of members                                            | ---                                      |

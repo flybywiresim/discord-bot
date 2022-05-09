@@ -15,7 +15,7 @@ const permittedRoles = [
 export const birthday: CommandDefinition = {
     name: 'birthday',
     description: 'Manages birthday reminders',
-    category: CommandCategory.GENERAL,
+    category: CommandCategory.UTILS,
     executor: async (msg) => {
         const conn = await getConn();
         const args: string[] = msg.content.split(' ').slice(1);
