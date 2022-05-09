@@ -2,6 +2,7 @@ import { CommandDefinition } from '../../lib/command';
 import { Roles, CommandCategory } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 import { getConn } from '../../lib/db';
+import { Channels } from '../../constants';
 
 const permittedRoles = [
     Roles.ADMIN_TEAM,
@@ -107,10 +108,13 @@ export const birthday: CommandDefinition = {
                     });
                 }
             } else if (args[0] === 'list') {
-                const guildID = msg.guild.id;
+                // List only in birthday thread
+                if(msg.channel.id != Channels.BIRTHDAY_THREAD)
+                {
+                    return;
+                }
 
                 const birthdays = await conn.models.Birthday.find({});
-
                 const members = await msg.guild.members.fetch();
                 
                 let birthdayList: Array<String> = [];
