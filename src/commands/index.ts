@@ -118,6 +118,7 @@ import { latlongfix } from './general/latlongfix';
 import { headwind } from './general/headwind';
 import { wolframalpha } from './utils/wolframalpha';
 import { rot } from './utils/rot';
+import { recommendedSettings } from './a32nx/recommendedsettings';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -237,7 +238,8 @@ const commands: CommandDefinition[] = [
     latlongfix,
     headwind,
     wolframalpha,
-    rot
+    rot,
+    recommendedSettings,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
