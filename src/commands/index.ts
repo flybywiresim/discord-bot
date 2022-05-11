@@ -117,6 +117,7 @@ import { zulu } from './utils/zulu';
 import { latlongfix } from './general/latlongfix';
 import { headwind } from './general/headwind';
 import { wolframalpha } from './utils/wolframalpha';
+import { recommendedSettings } from './a32nx/recommendedsettings';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -236,6 +237,7 @@ const commands: CommandDefinition[] = [
     latlongfix,
     headwind,
     wolframalpha,
+    recommendedSettings,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
