@@ -23,9 +23,10 @@
 | .freetext      | Provides a link to the FlyByWire free text feature guide                              | .ft                                                    |
 | .github        | provides the link to the A32NX GitHub Repository                                      | .repo <br> .repository                                 |
 | .liveries      | Provides a link to the flightsim.to A32NX liveries page                               | .liv                                                   |
-| .remotemcdu    | Provides a link to the FlyByWire remote MCDU feature guide                            | .mcdu <br> .remote                                     |
 | .preflight     | Provides a link to the a32nx preflight guide                                          | ---                                                    |
 | .printer       | Provides a link to the FlyByWire printer tutorial video                               | ---                                                    |
+| .remotemcdu    | Provides a link to the FlyByWire remote MCDU feature guide                            | .mcdu <br> .remote                                     |
+| .rs            | Provides a link to the recommended settings docs guide                                | ---                                                    |
 | .screens       | Display help with avionics                                                            | .screen                                                |
 | .import        | Shows how to use SimBrief integration                                                 | .integration <br> .integ                               |
 | .sop           | Displays first page of SOP and provides PDF download                                  | ---                                                    |
@@ -36,7 +37,6 @@
 | .versions      | Explains the different A32NX versions                                                 | ---                                                    |
 | .weather       | Explains the current state of the weather and terrain radars in experimental          | .wx                                                    |
 | .weights       | Provides a link to the fuel and weights docs guide                                    | .fuel <br> .wb <br> .w/b <br> .w+b <br> .wnb <br> .w&b |
-| .xbox          | Short response + link to NOTAM for xbox marketplace                                   | .xboxmarketplace                                       |
 
 ### Funnies
 
@@ -85,6 +85,8 @@
 | .translate   | Provides information on how to contribute to various FlyByWire translation efforts                             | ---                      |
 | .when        | Explain the absence of release dates or ETAs                                                                   | ---                      |
 | .thumb       | Answers the big question, will it have FEATURE?                                                                | .willithave              |
+| .xbox          | Short response + link to NOTAM for xbox marketplace                                   | .xboxmarketplace                                       |
+
 
 ### Moderation
 

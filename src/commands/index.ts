@@ -35,7 +35,7 @@ import { briefing } from './a32nx/briefing';
 import { boris } from './funnies/boris';
 import { afloor } from './a32nx/afloor';
 import { airframe } from './a32nx/airframe';
-import { xbox } from './a32nx/xbox';
+import { xbox } from './general/xbox';
 import { willithave } from './general/willithave';
 import { faq } from './moderation/faq';
 import { community } from './support/community';
@@ -117,6 +117,7 @@ import { zulu } from './utils/zulu';
 import { latlongfix } from './general/latlongfix';
 import { headwind } from './general/headwind';
 import { wolframalpha } from './utils/wolframalpha';
+import { recommendedSettings } from './a32nx/recommendedsettings';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -236,6 +237,7 @@ const commands: CommandDefinition[] = [
     latlongfix,
     headwind,
     wolframalpha,
+    recommendedSettings,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
