@@ -2,11 +2,14 @@
 
 Update <small>_ May 2022</small>
 
-- feat: add birthday command (08/05/2022)
+- feat: add birthday command (12/05/2022)
+- refactor: weight and balance command (11/05/2022)
+- feat: recommended settings command (11/05/2022)
+- docs(exp): Update support wording (09/05/2022)
 - fix(dependabot): ignore patch versions (05/05/2022)
 - fix: reword .xbox command and change category (05/05/2022)
 - fix: Include stable in wx command (04/05/2022)
-- chore:  add dependabot config (02/05/2022)
+- chore: add dependabot config (02/05/2022)
 
 Update <small>_ April 2022</small>
 
