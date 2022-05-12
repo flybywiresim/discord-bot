@@ -1,6 +1,6 @@
 import { CommandDefinition } from '../../lib/command';
 import { Roles, Channels, CommandCategory } from '../../constants';
-import { makeEmbed } from '../../lib/embed';
+import { makeEmbed, makeLines } from '../../lib/embed';
 import { getConn } from '../../lib/db';
 import Logger from '../../lib/logger';
 
@@ -226,7 +226,13 @@ export const birthday: CommandDefinition = {
         } else {
             birthdayEmbed = makeEmbed({
                 title: 'Birthday help',
-                description: 'Birthday commands:',
+                description: makeLines([
+                    'Use the below commands in conjunction with `.birthday` (example: `.birthday set @FBWDev 5/10`)',
+                    '',
+                    '**Please note:** All birthdays are in month/day format and must also be entered that way',
+                    '',
+                    '**Birthday commands:**',
+                ]),
                 fields: [
                     {
                         name: 'add <user> <birthday>',
