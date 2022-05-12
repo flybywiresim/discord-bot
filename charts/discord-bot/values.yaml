@@ -14,6 +14,7 @@ bot:
   metarToken: change_me
   stationToken: change_me
   wolframAlphaToken: change_me
+  mongodbUrl: change_me
 
 serviceAccount:
   # Specifies whether a service account should be created
