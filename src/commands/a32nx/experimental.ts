@@ -1,21 +1,26 @@
 import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
-import { makeEmbed } from '../../lib/embed';
+import { makeEmbed, makeLines } from '../../lib/embed';
 
 export const experimental: CommandDefinition = {
     name: ['experimental', 'exp'],
     description: 'Explains the current state of the experimental build',
     category: CommandCategory.A32NX,
-    executor: (msg) => msg.channel.send(makeEmbed({
-        title: 'FlyByWire A32NX | Experimental Version',
-        description: 'The experimental branch is now back in use! '
-                + 'This version is similar to the development version, but contains custom systems still being developed, including the new FBW Custom Flight Management System (cFMS). '
-                + 'Experimental will be updated with the latest changes from both the "autopilot-custom-fpm" branch and development version regularly. '
-                + 'No support will be offered via Discord for this version. ',
+    executor: async (msg) => {
+        const experimentalEmbed = makeEmbed({
+            title: 'FlyByWire A32NX | Experimental Version',
+            description: makeLines([
+                'Currently experimental is geared toward testing the initial version of VNAV and flyPadOS3. Please see our [Experimental Version Support Page](https://docs.flybywiresim.com/fbw-a32nx/support/exp/) for more information. **Do not expect support for the experimental version - use at own risk!** ',
+                '',
+                'Please use the appropriate discord thread to discuss any issues: ',
+                '- <#926586416820011098> ',
+                '- <#957208413887139860> ',
+                '- <#965072479796215888> ',
+                '',
+                'The Experimental version is a test version to find problems, issues and to improve functionality based on your feedback. It is not meant to be used for daily use or serious flights with an Online ATC service. ',
+            ]),
+        });
 
-        fields: [
-            { name: 'Where can I find more information, including features and known issues? ', value: '[Via our documents here](https://docs.flybywiresim.com/fbw-a32nx/support/exp/)', inline: false },
-            { name: 'Where can I download the Experimental version? ', value: '[Via the installer here](https://api.flybywiresim.com/installer)', inline: false },
-        ],
-    })),
+        await msg.channel.send({ embeds: [experimentalEmbed] });
+    },
 };

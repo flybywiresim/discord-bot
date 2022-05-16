@@ -1,7 +1,7 @@
 import { CommandDefinition } from '../lib/command';
 import Logger from '../lib/logger';
 import { ping } from './utils/ping';
-import { help } from './utils/help';
+import { whois } from './moderation/whois';
 import { bruheg } from './funnies/bruheg';
 import { boratorium } from './funnies/boratorium';
 import { efb } from './a32nx/efb';
@@ -21,7 +21,7 @@ import { logs } from './support/logs';
 import { reportedissues } from './support/reportedissues';
 import { autopilot } from './a32nx/autopilot';
 import { checklist } from './a32nx/checklist';
-import { whois } from './moderation/whois';
+import { help } from './utils/help';
 import { donate } from './general/donate';
 import { utf8 } from './support/utf-8';
 import { calibrate } from './support/calibrate';
@@ -35,7 +35,7 @@ import { briefing } from './a32nx/briefing';
 import { boris } from './funnies/boris';
 import { afloor } from './a32nx/afloor';
 import { airframe } from './a32nx/airframe';
-import { xbox } from './a32nx/xbox';
+import { xbox } from './general/xbox';
 import { willithave } from './general/willithave';
 import { faq } from './moderation/faq';
 import { community } from './support/community';
@@ -45,7 +45,7 @@ import { liveries } from './a32nx/liveries';
 import { simversion } from './support/simversion';
 import { printer } from './a32nx/printer';
 import { where } from './support/where';
-import { ctrl_e } from './a32nx/ctrl_e';
+import { ctrlE } from './a32nx/ctrlE';
 import { weather } from './a32nx/weather';
 import { metar } from './utils/metar';
 import { qa } from './general/qa';
@@ -63,15 +63,67 @@ import { poggers } from './funnies/poggers';
 import { pov } from './funnies/pov';
 import { shame } from './funnies/shame';
 import { xp } from './funnies/xp';
-import { whened } from './funnies/whened';
 import { station } from './utils/station';
 import { addon } from './funnies/addon';
 import { freetext } from './a32nx/freetext';
+import { cowsay } from './funnies/cowsay';
+import { synaptic } from './general/synaptic';
+import { directx12 } from './support/directx12';
+import { cfms } from './a32nx/cfms';
+import { fdr } from './support/fdr';
+import { discontinuity } from './support/discontinuity';
+import { navdata } from './support/navdata';
+import { build } from './support/build';
+import { tug } from './support/tug';
+import { crak } from './funnies/crak';
+import { weightBalance } from './a32nx/weightBalance';
+import { rules } from './moderation/rules';
+import { fixinfo } from './a32nx/fixinfo';
+import { welcome } from './moderation/welcome';
+import { sop } from './a32nx/sop';
+import { goldenRules } from './general/goldenRules';
+import { fridge } from './funnies/fridge';
+import { tiller } from './a32nx/tiller';
+import { assistance } from './a32nx/assistance';
+import { ctd } from './support/ctd';
+import { hud } from './support/hud';
+import { fms } from './funnies/fms';
+import { mcdu } from './a32nx/mcdu';
+import { takeoffPerf } from './a32nx/takeoffPerf';
+import { manualleg } from './support/manualleg';
+import { oim } from './funnies/oim';
+import { wasm } from './support/wasm';
+import { CPDLC } from './a32nx/cpdlc';
+import { simbriefimport } from './a32nx/simbriefimport';
+import { roleassignment } from './moderation/roleassignment';
+import { timeout } from './moderation/timeout';
+import { untimeout } from './moderation/untimeout';
+import { audio } from './a32nx/audio';
+import { flexTemp } from './a32nx/flex-temp';
+import { preflight } from './a32nx/preflight';
+import { storedWaypoint } from './a32nx/stored-waypoint';
+import { tcas } from './a32nx/tcas';
+import { msfsdisc } from './general/msfsdiscord';
+import { count } from './utils/count';
+import { shomas } from './funnies/shomas';
+import { pw } from './funnies/pw';
+import { abbreviations } from './support/abbreviations';
+import { salty } from './general/salty';
+import { airac } from './support/airac';
+import { mico } from './funnies/mico';
+import { translate } from './general/translate';
+import { github } from './a32nx/github';
+import { zulu } from './utils/zulu';
+import { latlongfix } from './general/latlongfix';
+import { headwind } from './general/headwind';
+import { wolframalpha } from './utils/wolframalpha';
+import { birthday } from './utils/birthday';
+import { recommendedSettings } from './a32nx/recommendedsettings';
 import { warn } from './moderation/warn';
 
 const commands: CommandDefinition[] = [
     ping,
-    help,
+    whois,
     bruheg,
     boratorium,
     efb,
@@ -91,7 +143,7 @@ const commands: CommandDefinition[] = [
     reportedissues,
     autopilot,
     checklist,
-    whois,
+    help,
     donate,
     utf8,
     calibrate,
@@ -115,7 +167,7 @@ const commands: CommandDefinition[] = [
     simversion,
     printer,
     where,
-    ctrl_e,
+    ctrlE,
     weather,
     metar,
     qa,
@@ -133,10 +185,62 @@ const commands: CommandDefinition[] = [
     pov,
     shame,
     xp,
-    whened,
     station,
     addon,
     freetext,
+    cowsay,
+    synaptic,
+    directx12,
+    cfms,
+    fdr,
+    discontinuity,
+    navdata,
+    build,
+    tug,
+    crak,
+    weightBalance,
+    rules,
+    fixinfo,
+    welcome,
+    sop,
+    goldenRules,
+    fridge,
+    tiller,
+    assistance,
+    ctd,
+    hud,
+    fms,
+    mcdu,
+    takeoffPerf,
+    manualleg,
+    oim,
+    wasm,
+    CPDLC,
+    simbriefimport,
+    roleassignment,
+    timeout,
+    untimeout,
+    audio,
+    flexTemp,
+    preflight,
+    storedWaypoint,
+    tcas,
+    msfsdisc,
+    count,
+    shomas,
+    pw,
+    abbreviations,
+    salty,
+    airac,
+    mico,
+    translate,
+    github,
+    zulu,
+    latlongfix,
+    headwind,
+    wolframalpha,
+    birthday,
+    recommendedSettings,
     warn,
 ];
 

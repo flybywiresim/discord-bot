@@ -5,9 +5,23 @@ export const ping: CommandDefinition = {
     name: 'ping',
     description: 'Send back a message',
     category: CommandCategory.UTILS,
+    requiredPermissions: ['MANAGE_WEBHOOKS'],
     executor: (msg) => {
-        const contentsWithoutPing = msg.content.replace(/\.ping\s+/, '');
+        // eslint-disable-next-line global-require
+        const Filter = require('bad-words');
+        const msgFilter = new Filter();
 
-        return msg.channel.send(contentsWithoutPing);
+        const text = msg.content.replace(/\.ping\s*/, '');
+
+        if (!text || text.length === 0) {
+            return msg.reply('Please provide some text.');
+        }
+        if (!msgFilter.isProfane(text)) {
+            return msg.channel.send(text);
+        }
+        if (msgFilter.isProfane(text)) {
+            return msg.reply('Please do not use profane language with this command.');
+        }
+        return Promise.resolve();
     },
 };

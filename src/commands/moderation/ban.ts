@@ -1,6 +1,6 @@
-import discord, { EmbedField, Snowflake, User } from 'discord.js';
+import discord, { EmbedField, Snowflake, TextChannel, User } from 'discord.js';
 import { CommandDefinition } from '../../lib/command';
-import { CommandCategory } from '../../constants';
+import { Channels, CommandCategory } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 
 type UserLike = User | Snowflake
@@ -9,30 +9,52 @@ export const ban: CommandDefinition = {
     name: 'ban',
     requiredPermissions: ['BAN_MEMBERS'],
     category: CommandCategory.MODERATION,
-    executor: (msg) => {
+    executor: async (msg) => {
         const splitUp = msg.content.replace(/\.ban\s+/, '').split(' ');
 
         if (splitUp.length < 2) {
-            msg.reply('you did not provide enough arguments for this command. (<id> <reason>)');
+            await msg.reply('you did not provide enough arguments for this command. (<id> <reason>)');
             return Promise.resolve();
         }
 
         const idArg = splitUp[0];
         const reason = splitUp.slice(1).join(' ');
 
+        const modLogsChannel = msg.guild.channels.resolve(Channels.MOD_LOGS) as TextChannel | null;
+
         return msg.guild.members.ban(idArg).then((user: User | Snowflake) => {
-            // A bt of a hack, but we need to propagate the reason and moderator to the event handler.
-            // Since discord.js caches user objects, we can exploit that to attach more info to the ban.
-            if (typeof user !== 'string') {
-                (user as any).banReason = reason;
-                (user as any).banModerator = msg.author;
+            if (modLogsChannel && typeof user !== 'string') {
+                const modLogEmbed = makeEmbed({
+                    color: 'RED',
+                    author: {
+                        name: `[BANNED] ${user.tag}`,
+                        icon_url: user.displayAvatarURL({ dynamic: true }),
+                    },
+                    fields: [
+                        {
+                            name: 'Member',
+                            value: user.toString(),
+                        },
+                        {
+                            name: 'Moderator',
+                            value: `<@${msg.author.id}>`,
+                        },
+                        {
+                            name: 'Reason',
+                            value: `\u200B${reason}`,
+                        },
+                    ],
+                    footer: { text: ` User ID: ${(user instanceof User) ? user.id : user}` },
+                });
+
+                modLogsChannel.send({ embeds: [modLogEmbed] });
             }
 
-            msg.channel.send(makeSuccessfulBanEmbed(user, reason));
-        }).catch((error) => {
-            const guildMember = msg.guild.member(idArg);
+            msg.channel.send({ embeds: [makeSuccessfulBanEmbed(user, reason)] });
+        }).catch(async (error) => {
+            const guildMember = await msg.guild.members.fetch(idArg);
 
-            msg.channel.send(makeFailedBanEmbed(guildMember?.user ?? idArg, error));
+            msg.channel.send({ embeds: [makeFailedBanEmbed(guildMember?.user ?? idArg, error)] });
         });
     },
 };
@@ -87,7 +109,7 @@ function makeFailedBanEmbed(user: UserLike, error: any): discord.MessageEmbed {
     fields.push({
         inline: false,
         name: 'Error',
-        value: error,
+        value: `\u200B${error}`,
     });
 
     return makeEmbed({

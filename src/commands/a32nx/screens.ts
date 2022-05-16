@@ -8,12 +8,16 @@ export const screens: CommandDefinition = {
     name: ['screens', 'screen'],
     description: 'Display help with avionics',
     category: CommandCategory.A32NX,
-    executor: (msg) => msg.channel.send(makeEmbed({
-        title: 'FlyByWire A32NX | Screens Fix',
-        description: makeLines([
-            'Turn the following knobs to illuminate the dark screens.',
-            '(Make sure to have batteries and Ground Power ON)',
-        ]),
-        image: { url: SCREENS_HELP_URL },
-    })),
+    executor: async (msg) => {
+        const screensEmbed = makeEmbed({
+            title: 'FlyByWire A32NX | Screens Fix',
+            description: makeLines([
+                'Turn the following knobs to illuminate the dark screens.',
+                '(Make sure to have batteries and Ground Power ON)',
+            ]),
+            image: { url: SCREENS_HELP_URL },
+        });
+
+        await msg.channel.send({ embeds: [screensEmbed] });
+    },
 };
