@@ -17,7 +17,7 @@ export const warn: CommandDefinition = {
             return Promise.resolve();
         }
         const moderator = msg.author.tag;
-        const user = msg.guild.member(msg.mentions.users.first()) || msg.guild.members.cache.get(splitUp[0]);
+        const user = await msg.guild.members.fetch(msg.mentions.users.first()) || msg.guild.members.cache.get(splitUp[0]);
         // const username = msg.mentions.users.first().tag;
         const warning = splitUp.slice(1).join(' ');
         // create embeds (one for mod-logs, one for user dms and one for the text channel the user was warned in.
@@ -34,11 +34,11 @@ export const warn: CommandDefinition = {
             description: `Reason: ${warning}`,
         });
         // dm the user
-        await user.send(dmEmbed);
+        await user.send({ embeds: [dmEmbed] });
         // send embed in channel the user was warned in
-        await msg.channel.send(channelEmbed);
+        await msg.channel.send({ embeds: [channelEmbed] });
         // get the mod-logs channel and send embed
         const logChannel: TextChannel = msg.guild.channels.cache.get('910670246476644412') as TextChannel;
-        await logChannel.send(modEmbed);
+        await logChannel.send({ embeds: [modEmbed] });
     },
 };
