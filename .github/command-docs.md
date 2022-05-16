@@ -77,10 +77,10 @@
 | .headwind    | Provides link to the Headwind Discord server                                                                   | .hw                      |
 | .installer   | Provides link to the new installer                                                                             | ---                      |
 | .latlong     | Provides a cheat sheet for conversion between Latitude and longitude coordinates between short and long format | .llfix                   |
-| .msfsdisc    | Provides link to Microsoft Flight Simulator discord server                                                     | .fsdisc <br> msfsdiscord |
+| .msfsdisc    | Provides link to Microsoft Flight Simulator discord server                                                     | .fsdisc <br> .msfsdiscord|
 | .qa          | Links to the Quality Assurance docs page                                                                       | ---                      |
 | .roadmap     | FBW Roadmap                                                                                                    | .goals                   |
-| .salty       | Provides link to salty discord server                                                                          | .sal                     |
+| .salty       | Provides link to salty discord server                                                                          | .sal <br> .ninjo         |
 | .synaptic    | Provides link to synaptic discord server                                                                       | .syn                     |
 | .translate   | Provides information on how to contribute to various FlyByWire translation efforts                             | ---                      |
 | .when        | Explain the absence of release dates or ETAs                                                                   | ---                      |
