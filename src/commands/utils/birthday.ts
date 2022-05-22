@@ -52,17 +52,17 @@ export const birthday: CommandDefinition = {
                 if (birthdayStrings.length < 2) {
                     birthdayEmbed = makeEmbed({
                         title: 'Birthday add failed',
-                        description: 'Insufficient args provided. Please use `.birthday add <user> <month>/<day>`',
+                        description: 'Insufficient args provided. Please use `.birthday add <user> <day>/<month>`',
                         color: 'RED',
                     });
                 } else {
-                    const birthdayDay = parseInt(birthdayStrings[1]);
-                    const birthdayMonth = parseInt(birthdayStrings[0]);
+                    const birthdayDay = parseInt(birthdayStrings[0]);
+                    const birthdayMonth = parseInt(birthdayStrings[1]);
 
                     if (Number.isNaN(birthdayDay) || Number.isNaN(birthdayMonth)) {
                         birthdayEmbed = makeEmbed({
                             title: 'Birthday add failed',
-                            description: 'Invalid date format. Please use `.birthday add <user> <month>/<day>`',
+                            description: 'Invalid date format. Please use `.birthday add <user> <day>/<month>`',
                             color: 'RED',
                         });
                     } else {
@@ -101,7 +101,7 @@ export const birthday: CommandDefinition = {
 
                         birthdayEmbed = makeEmbed({
                             title: 'Birthday added',
-                            description: `${member.displayName}'s birthday has been set to ${birthdayMonth}/${birthdayDay}`,
+                            description: `${member.displayName}'s birthday has been set to ${birthdayDay}/${birthdayMonth}`,
                         });
                     }
                 }
@@ -166,7 +166,7 @@ export const birthday: CommandDefinition = {
                         if (Number.isNaN(timezoneOffset)) {
                             birthdayEmbed = makeEmbed({
                                 title: 'Birthday timezone failed',
-                                description: 'Invalid timezone format. Please use `.birthday add <user> <offset>`',
+                                description: 'Invalid timezone format. Please use `.birthday timezone <user> <offset>`',
                                 color: 'RED',
                             });
                         } else if (timezoneOffset < -12 && timezoneOffset > 14) {
@@ -210,12 +210,13 @@ export const birthday: CommandDefinition = {
             const birthdays = await conn.models.Birthday.find({});
             const members = await msg.guild.members.fetch();
             const birthdayList: Array<String> = [];
+            const sortedBirthdays = birthdays.slice().sort((a, b) => a.utcDatetime - b.utcDatetime);
 
-            for (const birthday of birthdays) {
+            for (const birthday of sortedBirthdays) {
                 const member = members.get(birthday.userID);
 
                 if (member) {
-                    birthdayList.push(`${member.displayName} - ${birthday.month}/${birthday.day} (Z${birthday.timezone < 0 ? '' : '+'}${birthday.timezone})`);
+                    birthdayList.push(`${member.displayName} - ${birthday.day}/${birthday.month} (Z${birthday.timezone < 0 ? '' : '+'}${birthday.timezone})`);
                 }
             }
 
@@ -229,7 +230,7 @@ export const birthday: CommandDefinition = {
                 description: makeLines([
                     'Use the below commands in conjunction with `.birthday` (example: `.birthday set @FBWDev 5/10`)',
                     '',
-                    '**Please note:** All birthdays are in month/day format and must also be entered that way',
+                    '**Please note:** All birthdays are in day/month format and must also be entered that way',
                     '',
                     '**Birthday commands:**',
                 ]),
