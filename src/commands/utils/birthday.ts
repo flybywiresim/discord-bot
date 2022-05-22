@@ -209,20 +209,44 @@ export const birthday: CommandDefinition = {
         } else if (args[0] === 'list') {
             const birthdays = await conn.models.Birthday.find({});
             const members = await msg.guild.members.fetch();
-            const birthdayList: Array<String> = [];
-            const sortedBirthdays = birthdays.slice().sort((a, b) => a.utcDatetime - b.utcDatetime);
+            const sortedBirthdays = birthdays.slice().sort((a, b) => a.month - b.month || a.size - b.size);
+
+            const monthBuckets = [{ month: 'January', birthdays: [] },
+                { month: 'February', birthdays: [] },
+                { month: 'March', birthdays: [] },
+                { month: 'April', birthdays: [] },
+                { month: 'May', birthdays: [] },
+                { month: 'June', birthdays: [] },
+                { month: 'July', birthdays: [] },
+                { month: 'August', birthdays: [] },
+                { month: 'September', birthdays: [] },
+                { month: 'October', birthdays: [] },
+                { month: 'November', birthdays: [] },
+                { month: 'December', birthdays: [] }];
 
             for (const birthday of sortedBirthdays) {
                 const member = members.get(birthday.userID);
 
                 if (member) {
-                    birthdayList.push(`${member.displayName} - ${birthday.day}/${birthday.month} (Z${birthday.timezone < 0 ? '' : '+'}${birthday.timezone})`);
+                    monthBuckets[birthday.utcDatetime.getUTCMonth()].birthdays.push(`${member.displayName} - ${birthday.day}/${birthday.month} (Z${birthday.timezone < 0 ? '' : '+'}${birthday.timezone})`);
+                }
+            }
+
+            const fields = [];
+
+            for (const monthBucket of monthBuckets) {
+                if (monthBucket.birthdays.length > 0) {
+                    fields.push({
+                        name: monthBucket.month,
+                        value: monthBucket.birthdays.join('\n'),
+                    });
                 }
             }
 
             birthdayEmbed = makeEmbed({
                 title: 'Birthday list',
-                description: birthdayList.length > 0 ? birthdayList.join('\n') : 'No birthdays set',
+                description: fields.length > 0 ? null : 'No birthdays set',
+                fields,
             });
         } else {
             birthdayEmbed = makeEmbed({
