@@ -18,7 +18,7 @@ export const birthday: CommandDefinition = {
     category: CommandCategory.UTILS,
     executor: async (msg) => {
         const conn = await getConn();
-        const args: string[] = msg.content.split(' ').slice(1);
+        const args: string[] = msg.content.replace(/  +/g, ' ').split(' ').slice(1);
 
         let birthdayEmbed;
 
