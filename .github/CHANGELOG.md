@@ -2,7 +2,7 @@
 
 Update <small>_ May 2022</small>
 
-- refactor: .birthday command changes
+- refactor: .birthday command changes (25/05/2022)
 - refactor: add .ninjo alias to .salty (16/05/2022)
 - feat: add birthday command (12/05/2022)
 - refactor: weight and balance command (11/05/2022)
