@@ -18,7 +18,7 @@ export const birthday: CommandDefinition = {
     category: CommandCategory.UTILS,
     executor: async (msg) => {
         const conn = await getConn();
-        const args: string[] = msg.content.split(' ').slice(1);
+        const args: string[] = msg.content.replace(/  +/g, ' ').split(' ').slice(1);
 
         let birthdayEmbed;
 
@@ -52,17 +52,17 @@ export const birthday: CommandDefinition = {
                 if (birthdayStrings.length < 2) {
                     birthdayEmbed = makeEmbed({
                         title: 'Birthday add failed',
-                        description: 'Insufficient args provided. Please use `.birthday add <user> <month>/<day>`',
+                        description: 'Insufficient args provided. Please use `.birthday add <user> <day>/<month>`',
                         color: 'RED',
                     });
                 } else {
-                    const birthdayDay = parseInt(birthdayStrings[1]);
-                    const birthdayMonth = parseInt(birthdayStrings[0]);
+                    const birthdayDay = parseInt(birthdayStrings[0]);
+                    const birthdayMonth = parseInt(birthdayStrings[1]);
 
                     if (Number.isNaN(birthdayDay) || Number.isNaN(birthdayMonth)) {
                         birthdayEmbed = makeEmbed({
                             title: 'Birthday add failed',
-                            description: 'Invalid date format. Please use `.birthday add <user> <month>/<day>`',
+                            description: 'Invalid date format. Please use `.birthday add <user> <day>/<month>`',
                             color: 'RED',
                         });
                     } else {
@@ -101,7 +101,7 @@ export const birthday: CommandDefinition = {
 
                         birthdayEmbed = makeEmbed({
                             title: 'Birthday added',
-                            description: `${member.displayName}'s birthday has been set to ${birthdayMonth}/${birthdayDay}`,
+                            description: `${member.displayName}'s birthday has been set to ${birthdayDay}/${birthdayMonth}`,
                         });
                     }
                 }
@@ -166,7 +166,7 @@ export const birthday: CommandDefinition = {
                         if (Number.isNaN(timezoneOffset)) {
                             birthdayEmbed = makeEmbed({
                                 title: 'Birthday timezone failed',
-                                description: 'Invalid timezone format. Please use `.birthday add <user> <offset>`',
+                                description: 'Invalid timezone format. Please use `.birthday timezone <user> <offset>`',
                                 color: 'RED',
                             });
                         } else if (timezoneOffset < -12 && timezoneOffset > 14) {
@@ -209,19 +209,44 @@ export const birthday: CommandDefinition = {
         } else if (args[0] === 'list') {
             const birthdays = await conn.models.Birthday.find({});
             const members = await msg.guild.members.fetch();
-            const birthdayList: Array<String> = [];
+            const sortedBirthdays = birthdays.slice().sort((a, b) => a.month - b.month || a.size - b.size);
 
-            for (const birthday of birthdays) {
+            const monthBuckets = [{ month: 'January', birthdays: [] },
+                { month: 'February', birthdays: [] },
+                { month: 'March', birthdays: [] },
+                { month: 'April', birthdays: [] },
+                { month: 'May', birthdays: [] },
+                { month: 'June', birthdays: [] },
+                { month: 'July', birthdays: [] },
+                { month: 'August', birthdays: [] },
+                { month: 'September', birthdays: [] },
+                { month: 'October', birthdays: [] },
+                { month: 'November', birthdays: [] },
+                { month: 'December', birthdays: [] }];
+
+            for (const birthday of sortedBirthdays) {
                 const member = members.get(birthday.userID);
 
                 if (member) {
-                    birthdayList.push(`${member.displayName} - ${birthday.month}/${birthday.day} (Z${birthday.timezone < 0 ? '' : '+'}${birthday.timezone})`);
+                    monthBuckets[birthday.utcDatetime.getUTCMonth()].birthdays.push(`${member.displayName} - ${birthday.day}/${birthday.month} (Z${birthday.timezone < 0 ? '' : '+'}${birthday.timezone})`);
+                }
+            }
+
+            const fields = [];
+
+            for (const monthBucket of monthBuckets) {
+                if (monthBucket.birthdays.length > 0) {
+                    fields.push({
+                        name: monthBucket.month,
+                        value: monthBucket.birthdays.join('\n'),
+                    });
                 }
             }
 
             birthdayEmbed = makeEmbed({
                 title: 'Birthday list',
-                description: birthdayList.length > 0 ? birthdayList.join('\n') : 'No birthdays set',
+                description: fields.length > 0 ? null : 'No birthdays set',
+                fields,
             });
         } else {
             birthdayEmbed = makeEmbed({
@@ -229,7 +254,7 @@ export const birthday: CommandDefinition = {
                 description: makeLines([
                     'Use the below commands in conjunction with `.birthday` (example: `.birthday set @FBWDev 5/10`)',
                     '',
-                    '**Please note:** All birthdays are in month/day format and must also be entered that way',
+                    '**Please note:** All birthdays are in day/month format and must also be entered that way',
                     '',
                     '**Birthday commands:**',
                 ]),
