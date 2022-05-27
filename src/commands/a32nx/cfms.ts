@@ -10,7 +10,7 @@ export const cfms: CommandDefinition = {
         const cfmsEmbed = makeEmbed({
             title: 'FlyByWire A32NX | Custom Flight Management System',
             description: makeLines([
-                'Our custom flight management system is now available in the development version!',
+                'Our custom flight management system is available in both the stable and development version of the A32NX.',
                 '',
                 'Please look through our [documentation](https://docs.flybywiresim.com/fbw-a32nx/feature-guides/cFMS) for information on what\'s included, guides, and known issues!',
             ]),

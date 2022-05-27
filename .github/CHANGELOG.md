@@ -2,6 +2,7 @@
 
 Update <small>_ May 2022</small>
 
+- refactor: update wording in .cfms (27/05/2002)
 - refactor: .birthday command changes (25/05/2022)
 - refactor: add .ninjo alias to .salty (16/05/2022)
 - feat: add birthday command (12/05/2022)
