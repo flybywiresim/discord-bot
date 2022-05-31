@@ -207,38 +207,37 @@ export const birthday: CommandDefinition = {
                 });
             }
         } else if (args[0] === 'list') {
-            const birthdays = await conn.models.Birthday.find({});
+            const birthdays = await conn.models.Birthday.find({}).sort({ day: 1 }); // Only day sort required, months are bucketized
             const members = await msg.guild.members.fetch();
-            const sortedBirthdays = birthdays.slice().sort((a, b) => a.month - b.month || a.size - b.size);
 
-            const monthBuckets = [{ month: 'January', birthdays: [] },
-                { month: 'February', birthdays: [] },
-                { month: 'March', birthdays: [] },
-                { month: 'April', birthdays: [] },
-                { month: 'May', birthdays: [] },
-                { month: 'June', birthdays: [] },
-                { month: 'July', birthdays: [] },
-                { month: 'August', birthdays: [] },
-                { month: 'September', birthdays: [] },
-                { month: 'October', birthdays: [] },
-                { month: 'November', birthdays: [] },
-                { month: 'December', birthdays: [] }];
+            const monthBuckets: Array<string | Array<any>> = [['January', []],
+                ['February', []],
+                ['March', []],
+                ['April', []],
+                ['May', []],
+                ['June', []],
+                ['July', []],
+                ['August', []],
+                ['September', []],
+                ['October', []],
+                ['November', []],
+                ['December', []]];
 
-            for (const birthday of sortedBirthdays) {
+            for (const birthday of birthdays) {
                 const member = members.get(birthday.userID);
 
                 if (member) {
-                    monthBuckets[birthday.utcDatetime.getUTCMonth()].birthdays.push(`${member.displayName} - ${birthday.day}/${birthday.month} (Z${birthday.timezone < 0 ? '' : '+'}${birthday.timezone})`);
+                    monthBuckets[birthday.utcDatetime.getUTCMonth()][1].push(`${member.displayName} - ${birthday.day}/${birthday.month} (Z${birthday.timezone < 0 ? '' : '+'}${birthday.timezone})`);
                 }
             }
 
             const fields = [];
 
             for (const monthBucket of monthBuckets) {
-                if (monthBucket.birthdays.length > 0) {
+                if (monthBucket[1].length > 0) {
                     fields.push({
-                        name: monthBucket.month,
-                        value: monthBucket.birthdays.join('\n'),
+                        name: monthBucket[0],
+                        value: monthBucket[1].join('\n'),
                     });
                 }
             }
