@@ -24,16 +24,16 @@ export const birthday: CommandDefinition = {
 
         const hasPermittedRole = msg.member.roles.cache.some((role) => permittedRoles.map((r) => r.toString()).includes(role.id));
 
-        if (msg.channel.id !== Channels.BIRTHDAY_THREAD) {
-            birthdayEmbed = makeEmbed({
-                title: 'Birthday reminder',
-                description: `That command can only be used in <#${Channels.BIRTHDAY_THREAD}>`,
-                color: 'RED',
-            });
-        } else if (!hasPermittedRole) {
+        if (!hasPermittedRole) {
             birthdayEmbed = makeEmbed({
                 title: 'Birthday reminder',
                 description: 'You do not have permission to use this command.',
+                color: 'RED',
+            });
+        } else if (msg.channel.id !== Channels.BIRTHDAY_THREAD) {
+            birthdayEmbed = makeEmbed({
+                title: 'Birthday reminder',
+                description: `That command can only be used in <#${Channels.BIRTHDAY_THREAD}>`,
                 color: 'RED',
             });
         } else if (args[0] === 'add' || args[0] === 'set') {
