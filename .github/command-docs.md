@@ -126,7 +126,7 @@
 | .msfs           | Provides links to MSFS support for sim issues                                     | .msfsforum                                      |
 | .navdata        | Provides help with Navigraph navdata reinstall                                    | ---                                             |
 | .reportedissues | Provides a link to the reported issues page within docs                           | .issues                                         |
-| .screenshot     | Help to screenshot for support                                                    | .cockpit                                        |
+| .screenshot     | Help to screenshot for support                                                    | .cockpit <br> .ss                               |
 | .simversion     | Help to identify MSFS version for support                                         | .msfsversion                                    |
 | .trythis        | Provide basic troubleshooting steps                                               | ---                                             |
 | .tug            | Provides a solution to an issue where the tug fails to disconnect                 | .stuck                                          |

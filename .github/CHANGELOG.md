@@ -2,6 +2,7 @@
 
 Update <small>_ June 2022</small>
 
+- refactor: add .ss as an alias to .screenshot (05/06/2022)
 - refactor: birthday permission order (01/06/2022)
 
 Update <small>_ May 2022</small>
