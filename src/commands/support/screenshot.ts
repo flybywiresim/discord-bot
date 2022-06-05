@@ -5,7 +5,7 @@ import { CommandCategory } from '../../constants';
 const SCREENSHOT_HELP_URL = 'https://docs.flybywiresim.com/fbw-a32nx/assets/support-guide/cockpit-screenshot.jpg';
 
 export const screenshot: CommandDefinition = {
-    name: ['screenshot', 'cockpit'],
+    name: ['screenshot', 'cockpit', 'ss'],
     description: 'Help to screenshot for support',
     category: CommandCategory.SUPPORT,
     executor: async (msg) => {
