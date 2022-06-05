@@ -44,3 +44,9 @@ export const ModLogsExclude = [
     '856826179491594271', //FBW Staging bot
     '864492608163807302', //BenW test bot
 ];
+
+export enum Units {
+    DEGREES = '\u00B0',
+    CELSIUS = '\u2103',
+    KNOTS = 'kts',
+}
