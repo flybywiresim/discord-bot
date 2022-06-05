@@ -2,6 +2,7 @@
 
 Update <small>_ June 2022</small>
 
+- fix: metar units (05/06/2022)
 - refactor: add .ss as an alias to .screenshot (05/06/2022)
 - refactor: birthday permission order (01/06/2022)
 
