@@ -8,7 +8,7 @@ export const avatar: CommandDefinition = {
     category: CommandCategory.UTILS,
     executor: async (msg) => {
         const split = msg.content.replace(/(?:\.av|\.avatar)\s+/, '').split(' ');
-        const userID = msg.guild.members.cache.get(split[0])
+        const userID = msg.guild.members.cache.get(split[0]);
         const user = msg.mentions.users.first() || userID || msg.author;
         user.displayAvatarURL({ dynamic: true });
         const avatarEmbed = makeEmbed({
