@@ -12,7 +12,6 @@ export const avatar: CommandDefinition = {
         const user = msg.mentions.users.first() || userID || msg.author;
         user.displayAvatarURL({ dynamic: true });
         const avatarEmbed = makeEmbed({
-            title: '',
             image: { url: user.displayAvatarURL({ dynamic: true, size: 4096 }) },
         });
         if (user === msg.mentions.users.first()) {
