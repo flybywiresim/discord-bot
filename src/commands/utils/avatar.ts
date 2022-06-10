@@ -7,12 +7,18 @@ export const avatar: CommandDefinition = {
     description: 'Shows the selected user\'s avatar',
     category: CommandCategory.UTILS,
     executor: async (msg) => {
-        const user = msg.mentions.users.first() || msg.author;
+        const split = msg.content.replace(/(?:\.av|\.avatar)\s+/, '').split(' ');
+        const userID = msg.guild.members.cache.get(split[0]);
+        const user = msg.mentions.users.first() || userID || msg.author;
         user.displayAvatarURL({ dynamic: true });
-        const avatarEmbed = makeEmbed({
-            title: `${user.tag}'s Avatar`,
-            image: { url: user.displayAvatarURL({ dynamic: true, size: 4096 }) },
-        });
+        const avatarEmbed = makeEmbed({ image: { url: user.displayAvatarURL({ dynamic: true, size: 4096 }) } });
+        if (user === msg.mentions.users.first()) {
+            avatarEmbed.title = `${user.tag}'s avatar`;
+        } else if (user === msg.author) {
+            avatarEmbed.title = `${msg.author.tag}'s avatar`;
+        } else if (user === userID) {
+            avatarEmbed.title = `${userID.user.tag}'s avatar`;
+        }
         return msg.channel.send({ embeds: [avatarEmbed] });
     },
 };
