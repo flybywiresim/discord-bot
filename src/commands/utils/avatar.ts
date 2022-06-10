@@ -11,9 +11,7 @@ export const avatar: CommandDefinition = {
         const userID = msg.guild.members.cache.get(split[0]);
         const user = msg.mentions.users.first() || userID || msg.author;
         user.displayAvatarURL({ dynamic: true });
-        const avatarEmbed = makeEmbed({
-            image: { url: user.displayAvatarURL({ dynamic: true, size: 4096 }) },
-        });
+        const avatarEmbed = makeEmbed({ image: { url: user.displayAvatarURL({ dynamic: true, size: 4096 }) } });
         if (user === msg.mentions.users.first()) {
             avatarEmbed.title = `${user.tag}'s avatar`;
         } else if (user === msg.author) {
