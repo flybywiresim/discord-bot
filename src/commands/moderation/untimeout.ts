@@ -70,7 +70,7 @@ export const untimeout: CommandDefinition = {
     requiredPermissions: ['BAN_MEMBERS'],
     category: CommandCategory.MODERATION,
     executor: async (msg) => {
-        const args = msg.content.replace(/\.untimeout\s+/, '').split(' ');
+        const args = msg.content.replace(/(?:\.untimeout|\.removetimeout)\s+/, '').split(' ');
         if (args.length < 1) {
             await msg.reply('You need to provide the following arguments for this command: <id>');
             return;
