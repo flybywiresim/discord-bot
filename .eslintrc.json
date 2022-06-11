@@ -33,6 +33,6 @@
         "object-curly-newline": ["error", { "multiline": true }],
         "max-len": "off",
         "spaced-comment": "off",
-        "linebreak-style": "off"
+        "linebreak-style": ["error", "windows"]
     }
 }
