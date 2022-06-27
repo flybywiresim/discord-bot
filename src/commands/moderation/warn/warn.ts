@@ -4,12 +4,12 @@
 // .deletewarn
 //
 
+import { TextChannel, User } from 'discord.js';
+import moment from 'moment';
 import { CommandDefinition } from '../../../lib/command';
 import { Roles, Channels, CommandCategory } from '../../../constants';
 import { makeEmbed } from '../../../lib/embed';
 import { getConn } from '../../../lib/db';
-import { TextChannel, User } from 'discord.js';
-import moment from 'moment';
 
 const permittedRoles = [
     Roles.ADMIN_TEAM,
@@ -54,7 +54,7 @@ const modLogEmbed = (formattedDate, moderator: User, user: User, reason: string)
 
 const dmEmbed = (formattedDate, moderator: User, user: User, reason: string) => makeEmbed({
 
-    title: `You were warned in FlyByWire Simulations`,
+    title: 'You were warned in FlyByWire Simulations',
     fields: [
         {
             inline: false,
@@ -80,23 +80,23 @@ const noPermEmbed = makeEmbed({
     color: 'RED',
 });
 
-const warnFailed = makeEmbed( {
+const warnFailed = makeEmbed({
     title: 'Warn - Failed',
     description: 'Failed to warn user, doc not saved to mongoDB',
     color: 'RED',
-})
+});
 
-const noDM = makeEmbed( {
+const noDM = makeEmbed({
     title: 'Warn - DM not sent',
     description: 'User has DMs closed or has no mutual servers with the bot',
     color: 'RED',
-})
+});
 
-const noModLogs = makeEmbed( {
+const noModLogs = makeEmbed({
     title: 'Warn - No Mod Log',
     description: 'The user was warned, but no mod log was sent. Please check the channel still exists',
     color: 'RED',
-})
+});
 
 export const warn: CommandDefinition = {
     name: 'warn',
@@ -113,7 +113,7 @@ export const warn: CommandDefinition = {
         const modLogsChannel = msg.guild.channels.resolve(Channels.MOD_LOGS) as TextChannel | null;
 
         if (!hasPermittedRole) {
-            await msg.channel.send({ embeds: [noPermEmbed] })
+            await msg.channel.send({ embeds: [noPermEmbed] });
         } else if (args.length < 2 && parseInt(args[1]) !== 0) {
             return msg.reply('You need to provide the following arguments for this command: <id> <reason>');
         } else {
@@ -123,34 +123,33 @@ export const warn: CommandDefinition = {
             const reason = args.slice(1).join(' ');
             const userID = targetUser.user.id;
             const currentDate = new Date();
-            const formattedDate: string = moment(currentDate).utcOffset(0).format("DD, MM, YYYY, HH:mm:ss");
+            const formattedDate: string = moment(currentDate).utcOffset(0).format('DD, MM, YYYY, HH:mm:ss');
 
-            let warnDoc = new conn.models.Warn({
+            const warnDoc = new conn.models.Warn({
                 userID,
-                moderator: moderator,
-                reason: reason,
+                moderator,
+                reason,
                 date: currentDate,
             });
 
             try {
                 await warnDoc.save();
             } catch {
-                return msg.channel.send({ embeds: [warnFailed] })
+                return msg.channel.send({ embeds: [warnFailed] });
             }
 
             await targetUser.send({ embeds: [dmEmbed(formattedDate, moderator, targetUser.user, reason)] })
                 .catch(() => {
-                    msg.channel.send({ embeds: [noDM] })
+                    msg.channel.send({ embeds: [noDM] });
                 });
 
             try {
-                await modLogsChannel.send({ embeds: [modLogEmbed(formattedDate, moderator, targetUser.user, reason)] })
+                await modLogsChannel.send({ embeds: [modLogEmbed(formattedDate, moderator, targetUser.user, reason)] });
             } catch {
-                return msg.channel.send({ embeds: [noModLogs] })
+                return msg.channel.send({ embeds: [noModLogs] });
             }
 
-            await msg.channel.send({ embeds: [warnEmbed(targetUser.user)] })
-
+            await msg.channel.send({ embeds: [warnEmbed(targetUser.user)] });
         }
     },
-}
+};

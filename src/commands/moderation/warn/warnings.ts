@@ -1,9 +1,9 @@
+import { User } from 'discord.js';
+import moment from 'moment';
 import { CommandDefinition } from '../../../lib/command';
 import { Roles, CommandCategory } from '../../../constants';
 import { makeEmbed } from '../../../lib/embed';
 import { getConn } from '../../../lib/db';
-import { User } from 'discord.js';
-import moment from 'moment';
 
 const permittedRoles = [
     Roles.ADMIN_TEAM,
@@ -30,7 +30,7 @@ export const warnings: CommandDefinition = {
             .slice(1);
 
         if (!hasPermittedRole) {
-            await msg.channel.send({ embeds: [noPermEmbed] })
+            await msg.channel.send({ embeds: [noPermEmbed] });
         } else if (args.length < 1 && parseInt(args[1]) !== 0) {
             return msg.reply('You need to provide the following arguments for this command: <id>');
         } else {
@@ -39,13 +39,12 @@ export const warnings: CommandDefinition = {
             const userID = targetUser.user.id;
 
             const results = await conn.models.Warn.find({ userID });
-            console.log(results)
+            console.log(results);
 
             const fields = [];
 
             for (const warns of results) {
-
-                const formattedDate: string = moment(warns.date).utcOffset(0).format("DD, MM, YYYY, HH:mm:ss");
+                const formattedDate: string = moment(warns.date).utcOffset(0).format('DD, MM, YYYY, HH:mm:ss');
 
                 fields.push({
                     name: `${formattedDate}`,
@@ -64,12 +63,5 @@ export const warnings: CommandDefinition = {
 
             await msg.channel.send({ embeds: [warnEmbed(targetUser.user)] });
         }
-    }
-}
-
-
-
-
-
-
-
+    },
+};
