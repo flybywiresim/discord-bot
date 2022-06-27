@@ -8,5 +8,3 @@ const warnSchema = new Schema({
 });
 
 export default warnSchema;
-
-

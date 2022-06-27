@@ -1,11 +1,8 @@
 // To Do
 //
 // Add number of warns in mod logs
-// .warnings
 // .deletewarn
 //
-
-
 
 import { CommandDefinition } from '../../../lib/command';
 import { Roles, Channels, CommandCategory } from '../../../constants';
