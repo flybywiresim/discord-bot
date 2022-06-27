@@ -32,7 +32,7 @@ const noWarningEmbed = makeEmbed({
     color: 'RED',
 });
 
-export const deletewarn: CommandDefinition = {
+export const deleteWarn: CommandDefinition = {
     name: 'deletewarn',
     requiredPermissions: ['BAN_MEMBERS'],
     description: 'Delete a warning',

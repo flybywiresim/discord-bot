@@ -121,7 +121,7 @@ import { birthday } from './utils/birthday';
 import { recommendedSettings } from './a32nx/recommendedsettings';
 import { warn } from './moderation/warn/warn';
 import { warnings } from './moderation/warn/warnings';
-import { deletewarn } from './moderation/warn/deletewarn';
+import { deleteWarn } from './moderation/warn/deleteWarn';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -245,7 +245,7 @@ const commands: CommandDefinition[] = [
     recommendedSettings,
     warn,
     warnings,
-    deletewarn,
+    deleteWarn,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
