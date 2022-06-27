@@ -20,13 +20,13 @@ const deleteEmbed = makeEmbed({
     color: 'GREEN',
 });
 
-const removeFailed = makeEmbed({
+const deleteFailedEmbed = makeEmbed({
     title: 'Warn - Failed',
     description: 'Warning could not be removed',
     color: 'RED',
 });
 
-const noWarning = makeEmbed({
+const noWarningEmbed = makeEmbed({
     title: 'Warn - No Warning',
     description: 'Could not find warning. Please check the `Warn ID`',
     color: 'RED',
@@ -53,10 +53,10 @@ export const deletewarn: CommandDefinition = {
                 try {
                     await conn.models.Warn.deleteOne({ _id: args });
                 } catch {
-                    return msg.channel.send({ embeds: [removeFailed] });
+                    return msg.channel.send({ embeds: [deleteFailedEmbed] });
                 }
             } catch {
-                return msg.channel.send({ embeds: [noWarning] });
+                return msg.channel.send({ embeds: [noWarningEmbed] });
             }
             msg.channel.send({ embeds: [deleteEmbed] });
         }
