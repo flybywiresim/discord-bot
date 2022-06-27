@@ -16,7 +16,7 @@ const noPermEmbed = makeEmbed({
     color: 'RED',
 });
 
-export const warnings: CommandDefinition = {
+export const listWarnings: CommandDefinition = {
     name: 'warnings',
     requiredPermissions: ['BAN_MEMBERS'],
     description: 'Returns warnings for a user',

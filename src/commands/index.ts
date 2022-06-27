@@ -120,7 +120,7 @@ import { wolframalpha } from './utils/wolframalpha';
 import { birthday } from './utils/birthday';
 import { recommendedSettings } from './a32nx/recommendedsettings';
 import { warn } from './moderation/warn/warn';
-import { warnings } from './moderation/warn/warnings';
+import { listWarnings } from './moderation/warn/listWarnings';
 import { deleteWarn } from './moderation/warn/deleteWarn';
 
 const commands: CommandDefinition[] = [
@@ -244,7 +244,7 @@ const commands: CommandDefinition[] = [
     birthday,
     recommendedSettings,
     warn,
-    warnings,
+    listWarnings,
     deleteWarn,
 ];
 
