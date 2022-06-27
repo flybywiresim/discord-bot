@@ -15,18 +15,21 @@ const noPermEmbed = makeEmbed({
 });
 
 const deleteEmbed = makeEmbed({
-    title: 'Warn',
+    title: 'Warn - Removed',
     description: 'Warning has been removed',
+    color: 'GREEN',
 });
 
 const removeFailed = makeEmbed({
-    title: 'Warn',
-    description: 'Waring could not be removed',
+    title: 'Warn - Failed',
+    description: 'Warning could not be removed',
+    color: 'RED',
 });
 
 const noWarning = makeEmbed({
-    title: 'Warn',
-    description: 'Could not find warning, check `Warn ID`',
+    title: 'Warn - No Warning',
+    description: 'Could not find warning. Please check the `Warn ID`',
+    color: 'RED',
 });
 
 export const deletewarn: CommandDefinition = {
