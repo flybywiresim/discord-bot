@@ -1,9 +1,3 @@
-// To Do
-//
-// Add number of warns in mod logs
-// .deletewarn
-//
-
 import { TextChannel, User } from 'discord.js';
 import moment from 'moment';
 import { CommandDefinition } from '../../../lib/command';

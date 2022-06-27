@@ -26,8 +26,7 @@ export const warnings: CommandDefinition = {
 
         const hasPermittedRole = msg.member.roles.cache.some((role) => permittedRoles.map((r) => r.toString()).includes(role.id));
 
-        const args = msg.content.split(/\s+/)
-            .slice(1);
+        const args = msg.content.split(/\s+/).slice(1);
 
         if (!hasPermittedRole) {
             await msg.channel.send({ embeds: [noPermEmbed] });
