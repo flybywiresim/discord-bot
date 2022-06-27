@@ -13,7 +13,7 @@ export async function connect(url: string, callback = Logger.error) {
 
         // Register schemas
         connection.model('Birthday', birthdaySchema);
-        connection.model('Warn', warnSchema)
+        connection.model('Warn', warnSchema);
 
         Logger.info('Connected to database');
     } catch ({ name, message, stack }) {
