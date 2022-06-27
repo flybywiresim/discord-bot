@@ -48,7 +48,7 @@ export const warnings: CommandDefinition = {
 
                 fields.push({
                     name: `${formattedDate}`,
-                    value: `Moderator: ${warns.moderator}\nReason: ${warns.reason}`,
+                    value: `**Moderator:** ${warns.moderator}\n**Reason:** ${warns.reason}\n**Warn ID:** ${warns.id}`,
                 });
             }
             const warnEmbed = (user: User) => makeEmbed({
