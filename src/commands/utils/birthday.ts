@@ -3,6 +3,7 @@ import { Roles, Channels, CommandCategory } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
 import Logger from '../../lib/logger';
 import Birthday from '../../lib/schemas/birthdaySchema';
+import { getConn } from '../../lib/db';
 
 const permittedRoles = [
     Roles.ADMIN_TEAM,
@@ -17,6 +18,18 @@ export const birthday: CommandDefinition = {
     description: 'Manages birthday reminders',
     category: CommandCategory.UTILS,
     executor: async (msg) => {
+        const conn = await getConn();
+
+        if (!conn) {
+            const noConnEmbed = makeEmbed({
+                title: 'Error',
+                description: 'Could not connect to database',
+                color: 'RED',
+            });
+            await msg.channel.send({ embeds: [noConnEmbed] });
+            return;
+        }
+
         const args: string[] = msg.content.replace(/  +/g, ' ').split(' ').slice(1);
 
         let birthdayEmbed;

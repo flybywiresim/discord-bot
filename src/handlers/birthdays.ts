@@ -23,13 +23,6 @@ const gifs: string[] = [
 ];
 
 async function processBirthdays(client: Client) {
-    const conn = await getConn();
-
-    // Bail if no database connection
-    if (!conn) {
-        return;
-    }
-
     // Get current date
     const currentDate = new Date();
 
@@ -70,6 +63,18 @@ async function processBirthdays(client: Client) {
     // Unarchive thread if needed
     if (thread.archived) {
         await thread.setArchived(false);
+    }
+
+    const conn = await getConn();
+
+    if (!conn) {
+        const noConnEmbed = makeEmbed({
+            title: 'Error',
+            description: 'Could not connect to database',
+            color: 'RED',
+        });
+        await thread.send({ embeds: [noConnEmbed] });
+        return;
     }
 
     // Send birthday messages
