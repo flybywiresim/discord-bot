@@ -33,7 +33,7 @@ const noWarningEmbed = makeEmbed({
 });
 
 export const deleteWarn: CommandDefinition = {
-    name: 'deletewarn',
+    name: ['deletewarn', 'delwarn'],
     requiredPermissions: ['BAN_MEMBERS'],
     description: 'Delete a warning',
     category: CommandCategory.MODERATION,

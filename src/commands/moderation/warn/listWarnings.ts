@@ -17,7 +17,7 @@ const noPermEmbed = makeEmbed({
 });
 
 export const listWarnings: CommandDefinition = {
-    name: 'warnings',
+    name: ['warnings', 'listwarn', 'listwarnings'],
     requiredPermissions: ['BAN_MEMBERS'],
     description: 'Returns warnings for a user',
     category: CommandCategory.MODERATION,
