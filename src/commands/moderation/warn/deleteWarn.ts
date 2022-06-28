@@ -4,6 +4,7 @@ import { CommandDefinition } from '../../../lib/command';
 import { Roles, CommandCategory, Channels } from '../../../constants';
 import { makeEmbed } from '../../../lib/embed';
 import { getConn } from '../../../lib/db';
+import Warn from '../../../lib/schemas/warnSchema';
 
 const permittedRoles = [
     Roles.ADMIN_TEAM,
@@ -76,7 +77,7 @@ export const deleteWarn: CommandDefinition = {
         }
 
         try {
-            const warn = await conn.models.Warn.findById(warnId);
+            const warn = await Warn.findById(warnId);
 
             if (!warn) {
                 await msg.channel.send({ embeds: [noWarningEmbed] });
@@ -87,7 +88,7 @@ export const deleteWarn: CommandDefinition = {
             return;
         }
 
-        const results = await conn.models.Warn.find({ _id: args });
+        const results = await Warn.find({ _id: args });
 
         const fields = [];
         for (const warns of results) {
@@ -106,7 +107,7 @@ export const deleteWarn: CommandDefinition = {
         });
 
         try {
-            await conn.models.Warn.deleteOne({ _id: args });
+            await Warn.deleteOne({ _id: args });
         } catch {
             await msg.channel.send({ embeds: [deleteFailedEmbed] });
             return;

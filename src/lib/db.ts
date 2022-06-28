@@ -2,7 +2,6 @@ import mongoose from 'mongoose';
 import Logger from './logger';
 
 import birthdaySchema from './schemas/birthdaySchema';
-import warnSchema from './schemas/warnSchema';
 
 let connection: mongoose.Connection;
 
@@ -13,7 +12,6 @@ export async function connect(url: string, callback = Logger.error) {
 
         // Register schemas
         connection.model('Birthday', birthdaySchema);
-        connection.model('Warn', warnSchema);
 
         Logger.info('Connected to database');
     } catch ({ name, message, stack }) {

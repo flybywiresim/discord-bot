@@ -4,6 +4,7 @@ import { CommandDefinition } from '../../../lib/command';
 import { Roles, Channels, CommandCategory } from '../../../constants';
 import { makeEmbed } from '../../../lib/embed';
 import { getConn } from '../../../lib/db';
+import Warn from '../../../lib/schemas/warnSchema';
 
 const permittedRoles = [
     Roles.ADMIN_TEAM,
@@ -132,7 +133,7 @@ export const warn: CommandDefinition = {
         const currentDate = new Date();
         const formattedDate: string = moment(currentDate).utcOffset(0).format('DD, MM, YYYY, HH:mm:ss');
 
-        const warnDoc = new conn.models.Warn({
+        const warnDoc = new Warn({
             userID,
             moderator,
             reason,

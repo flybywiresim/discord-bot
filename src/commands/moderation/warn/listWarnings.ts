@@ -4,6 +4,7 @@ import { CommandDefinition } from '../../../lib/command';
 import { Roles, CommandCategory } from '../../../constants';
 import { makeEmbed } from '../../../lib/embed';
 import { getConn } from '../../../lib/db';
+import Warn from '../../../lib/schemas/warnSchema';
 
 const permittedRoles = [
     Roles.ADMIN_TEAM,
@@ -51,7 +52,7 @@ export const listWarnings: CommandDefinition = {
         const targetUser = await msg.guild.members.fetch(id);
         const userID = targetUser.user.id;
 
-        const results = await conn.models.Warn.find({ userID });
+        const results = await Warn.find({ userID });
 
         const fields = [];
         for (const warns of results) {

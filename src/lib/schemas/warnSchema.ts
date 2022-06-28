@@ -1,4 +1,4 @@
-import { Schema } from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 
 const warnSchema = new Schema({
     userID: String,
@@ -7,4 +7,6 @@ const warnSchema = new Schema({
     date: Date,
 });
 
-export default warnSchema;
+const Warn = mongoose.model('Warn', warnSchema);
+
+export default Warn;
