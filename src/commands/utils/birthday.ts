@@ -1,8 +1,8 @@
 import { CommandDefinition } from '../../lib/command';
 import { Roles, Channels, CommandCategory } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
-import { getConn } from '../../lib/db';
 import Logger from '../../lib/logger';
+import Birthday from '../../lib/schemas/birthdaySchema';
 
 const permittedRoles = [
     Roles.ADMIN_TEAM,
@@ -17,7 +17,6 @@ export const birthday: CommandDefinition = {
     description: 'Manages birthday reminders',
     category: CommandCategory.UTILS,
     executor: async (msg) => {
-        const conn = await getConn();
         const args: string[] = msg.content.replace(/  +/g, ' ').split(' ').slice(1);
 
         let birthdayEmbed;
@@ -73,7 +72,7 @@ export const birthday: CommandDefinition = {
                         const utcDatetime = new Date(Date.UTC(currentDate.getUTCFullYear(), birthdayMonth - 1, birthdayDay));
                         utcDatetime.setUTCHours(10);
 
-                        let birthdayDoc = await conn.models.Birthday.findOne({ userID });
+                        let birthdayDoc = await Birthday.findOne({ userID });
 
                         if (birthdayDoc) {
                             utcDatetime.setUTCHours(utcDatetime.getUTCHours() - birthdayDoc.timezone);
@@ -82,7 +81,7 @@ export const birthday: CommandDefinition = {
                             birthdayDoc.month = birthdayMonth;
                             birthdayDoc.utcDatetime = utcDatetime;
                         } else {
-                            birthdayDoc = new conn.models.Birthday({
+                            birthdayDoc = new Birthday({
                                 userID,
                                 day: birthdayDay,
                                 month: birthdayMonth,
@@ -112,7 +111,7 @@ export const birthday: CommandDefinition = {
             if (member) {
                 const userID = member.user.id;
 
-                const birthday = await conn.models.Birthday.findOne({ userID });
+                const birthday = await Birthday.findOne({ userID });
 
                 if (!birthday) {
                     birthdayEmbed = makeEmbed({
@@ -121,7 +120,7 @@ export const birthday: CommandDefinition = {
                         color: 'RED',
                     });
                 } else {
-                    await conn.models.Birthday.deleteOne({ userID });
+                    await Birthday.deleteOne({ userID });
 
                     birthdayEmbed = makeEmbed({
                         title: 'Birthday removed',
@@ -141,7 +140,7 @@ export const birthday: CommandDefinition = {
             if (member) {
                 const userID = member.user.id;
 
-                const birthday = await conn.models.Birthday.findOne({ userID });
+                const birthday = await Birthday.findOne({ userID });
 
                 if (!birthday) {
                     birthdayEmbed = makeEmbed({
@@ -207,7 +206,7 @@ export const birthday: CommandDefinition = {
                 });
             }
         } else if (args[0] === 'list') {
-            const birthdays = await conn.models.Birthday.find({}).sort({ day: 1 }); // Only day sort required, months are bucketized
+            const birthdays = await Birthday.find({}).sort({ day: 1 }); // Only day sort required, months are bucketized
             const members = await msg.guild.members.fetch();
 
             const monthBuckets: Array<string | Array<any>> = [['January', []],

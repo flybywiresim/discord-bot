@@ -3,6 +3,7 @@ import { makeEmbed } from '../lib/embed';
 import Logger from '../lib/logger';
 import { GuildID, Channels } from '../constants';
 import { getConn } from '../lib/db';
+import Birthday from '../lib/schemas/birthdaySchema';
 
 let birthdayInterval;
 
@@ -33,7 +34,7 @@ async function processBirthdays(client: Client) {
     const currentDate = new Date();
 
     // Get new birthdays
-    const birthdays = await conn.models.Birthday.find({ utcDatetime: { $lt: currentDate } });
+    const birthdays = await Birthday.find({ utcDatetime: { $lt: currentDate } });
 
     // Bail if no birthdays
     if (!birthdays.length) {

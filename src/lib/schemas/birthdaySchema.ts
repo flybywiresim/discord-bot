@@ -1,4 +1,4 @@
-import { Schema } from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 
 const birthdaySchema = new Schema({
     userID: String,
@@ -8,4 +8,6 @@ const birthdaySchema = new Schema({
     timezone: Number,
 });
 
-export default birthdaySchema;
+const Birthday = mongoose.model('Birthday', birthdaySchema);
+
+export default Birthday;
