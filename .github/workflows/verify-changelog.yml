@@ -1,0 +1,49 @@
+name: Verify Changelog
+
+on:
+  pull_request_target:
+    types: [opened, ready_for_review, synchronize, labeled]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    if: github.event-pull_request.draft == false
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Verify changelog
+        uses: Zomzog/changelog-checker@v1.2.0
+        with:
+          fileName: CHANGELOG.md
+          checkNotification: Simple
+          noChangelogLabel: skip changelog
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # This will find and look for the specific comment in the PR. If it doesn't exist it will create it.
+      - name: Find Comment
+        uses: peter-evans/find-comment@v2
+        id: fc
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: Please add changelog entry. ❌
+      - name: Create comment
+        if: ${{ steps.fc.outputs.comment-id == '' && failure() }}
+        uses: peter-evans/create-or-update-comment@v2
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            Please add changelog entry. ❌
+            
+      # This will edit the existing comment and add the body + reaction.
+      - name: Update comment
+        if: ${{ steps.fc.outputs.comment-id != '' && success() }}
+        uses: peter-evans/create-or-update-comment@v2
+        with:
+          comment-id: ${{ steps.fc.outputs.comment-id }}
+          body: |
+            Thank you. Changelog Verified!
+          reactions: rocket
