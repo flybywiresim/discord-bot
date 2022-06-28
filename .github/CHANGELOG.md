@@ -3,6 +3,7 @@
 Update <small>_ June 2022</small>
 
 - refactor: birthday command (28/06/2022)
+- feat: adds a warn system (28/06/2022)
 - chore: update discord.js version to 13.8.0 (11/06/2022)
 - fix: allow the use of removetimeout as alias for untimeout (11/06/2022)
 - fix: avatar command now accepts user id (10/06/2022)
