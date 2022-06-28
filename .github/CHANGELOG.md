@@ -23,6 +23,7 @@ Update <small>_ May 2022</small>
 - fix: reword .xbox command and change category (05/05/2022)
 - fix: Include stable in wx command (04/05/2022)
 - chore: add dependabot config (02/05/2022)
+- test: create changelog verification action (6/28/2022)
 
 Update <small>_ April 2022</small>
 
