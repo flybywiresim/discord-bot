@@ -24,6 +24,7 @@ jobs:
 
       # This will find and look for the specific comment in the PR. If it doesn't exist it will create it.
       - name: Find Comment
+        if: success () || failure ()
         uses: peter-evans/find-comment@v2
         id: fc
         with:
@@ -47,3 +48,4 @@ jobs:
           body: |
             Thank you. Changelog Verified!
           reactions: rocket
+          edit-mode: replace
