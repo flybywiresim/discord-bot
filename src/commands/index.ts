@@ -119,6 +119,9 @@ import { headwind } from './general/headwind';
 import { wolframalpha } from './utils/wolframalpha';
 import { birthday } from './utils/birthday';
 import { recommendedSettings } from './a32nx/recommendedsettings';
+import { warn } from './moderation/warn/warn';
+import { listWarnings } from './moderation/warn/listWarnings';
+import { deleteWarn } from './moderation/warn/deleteWarn';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -240,6 +243,9 @@ const commands: CommandDefinition[] = [
     wolframalpha,
     birthday,
     recommendedSettings,
+    warn,
+    listWarnings,
+    deleteWarn,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
