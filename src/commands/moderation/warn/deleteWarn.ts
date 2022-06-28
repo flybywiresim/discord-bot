@@ -10,6 +10,12 @@ const permittedRoles = [
     Roles.MODERATION_TEAM,
 ];
 
+const noConnEmbed = makeEmbed({
+    title: 'Warn - No Connection',
+    description: 'Could not connect to the database',
+    color: 'RED',
+});
+
 const noPermEmbed = makeEmbed({
     title: 'Warn',
     description: 'You do not have permission to use this command.',
@@ -47,56 +53,71 @@ export const deleteWarn: CommandDefinition = {
     category: CommandCategory.MODERATION,
     executor: async (msg) => {
         const conn = await getConn();
+
+        if (!conn) {
+            await msg.channel.send({ embeds: [noConnEmbed] });
+            return;
+        }
+
         const hasPermittedRole = msg.member.roles.cache.some((role) => permittedRoles.map((r) => r.toString()).includes(role.id));
         const modLogsChannel = msg.guild.channels.resolve(Channels.MOD_LOGS) as TextChannel | null;
 
         const args = msg.content.split(/\s+/).slice(1);
-        //Does user have permitted role?
+        const warnId = args[0];
+
         if (!hasPermittedRole) {
             await msg.channel.send({ embeds: [noPermEmbed] });
-        } else if (args.length < 1 && parseInt(args[1]) !== 0) {
-            return msg.reply('You need to provide the following arguments for this command: <Warn ID>');
-        } else {
-            try {
-                const check = await conn.models.Warn.find({ _id: args })
-                    .count() > 0;
-                console.log(check);
-                if (check === false) {
-                    return msg.channel.send({ embeds: [noWarningEmbed] });
-                }
-            } catch {
-                return msg.channel.send({ embeds: [noWarningEmbed] });
-            }
-
-            const results = await conn.models.Warn.find({ _id: args });
-            console.log(results);
-
-            const fields = [];
-            for (const warns of results) {
-                const formattedDate: string = moment(warns.date).utcOffset(0).format('DD, MM, YYYY, HH:mm:ss');
-                fields.push({
-                    name: 'Removed warning:',
-                    value: `**User:** <@${warns.userID}>\n**Date:** ${formattedDate}\n**Moderator:** ${warns.moderator}\n**Reason:** ${warns.reason}\n\n**User ID:** ${warns.userID}\n**Warn ID:** ${warns.id}`,
-                });
-            }
-            const modLogsEmbed = makeEmbed({
-                title: 'Warn - Removed',
-                description: `A warning has been remove by <@${msg.author}>`,
-                fields,
-                color: 'GREEN',
-            });
-            try {
-                await conn.models.Warn.deleteOne({ _id: args });
-            } catch {
-                return msg.channel.send({ embeds: [deleteFailedEmbed] });
-            }
-
-            try {
-                await modLogsChannel.send({ embeds: [modLogsEmbed] });
-            } catch {
-                return msg.channel.send({ embeds: [noModLogs] });
-            }
-            await msg.channel.send({ embeds: [deleteEmbed] });
+            return;
         }
+
+        if (args.length < 1 && parseInt(args[1]) !== 0) {
+            await msg.reply('You need to provide the following arguments for this command: <Warn ID>');
+            return;
+        }
+
+        try {
+            const warn = await conn.models.Warn.findById(warnId);
+
+            if (!warn) {
+                await msg.channel.send({ embeds: [noWarningEmbed] });
+                return;
+            }
+        } catch {
+            await msg.channel.send({ embeds: [noWarningEmbed] });
+            return;
+        }
+
+        const results = await conn.models.Warn.find({ _id: args });
+
+        const fields = [];
+        for (const warns of results) {
+            const formattedDate: string = moment(warns.date).utcOffset(0).format('DD, MM, YYYY, HH:mm:ss');
+            fields.push({
+                name: 'Removed warning:',
+                value: `**User:** <@${warns.userID}>\n**Date:** ${formattedDate}\n**Moderator:** ${warns.moderator}\n**Reason:** ${warns.reason}\n\n**User ID:** ${warns.userID}\n**Warn ID:** ${warns.id}`,
+            });
+        }
+
+        const modLogsEmbed = makeEmbed({
+            title: 'Warn - Removed',
+            description: `A warning has been remove by <@${msg.author}>`,
+            fields,
+            color: 'GREEN',
+        });
+
+        try {
+            await conn.models.Warn.deleteOne({ _id: args });
+        } catch {
+            await msg.channel.send({ embeds: [deleteFailedEmbed] });
+            return;
+        }
+        try {
+            await modLogsChannel.send({ embeds: [modLogsEmbed] });
+        } catch {
+            await msg.channel.send({ embeds: [noModLogs] });
+            return;
+        }
+
+        await msg.channel.send({ embeds: [deleteEmbed] });
     },
 };

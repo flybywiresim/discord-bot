@@ -10,6 +10,12 @@ const permittedRoles = [
     Roles.MODERATION_TEAM,
 ];
 
+const noConnEmbed = makeEmbed({
+    title: 'Warn - No Connection',
+    description: 'Could not connect to the database',
+    color: 'RED',
+});
+
 const warnEmbed = (user: User) => makeEmbed({
     title: `${user.tag} was warned successfully`,
     color: 'GREEN',
@@ -47,7 +53,6 @@ const modLogEmbed = (formattedDate, moderator: User, user: User, reason: string)
 });
 
 const dmEmbed = (formattedDate, moderator: User, user: User, reason: string) => makeEmbed({
-
     title: 'You have been warned in FlyByWire Simulations',
     fields: [
         {
@@ -92,6 +97,7 @@ const noModLogs = makeEmbed({
     color: 'RED',
 });
 
+// noinspection DuplicatedCode
 export const warn: CommandDefinition = {
     name: 'warn',
     requiredPermissions: ['BAN_MEMBERS'],
@@ -100,50 +106,58 @@ export const warn: CommandDefinition = {
     executor: async (msg) => {
         const conn = await getConn();
 
-        const hasPermittedRole = msg.member.roles.cache.some((role) => permittedRoles.map((r) => r.toString()).includes(role.id));
-
-        const args = msg.content.split(/\s+/).slice(1);
+        if (!conn) {
+            await msg.channel.send({ embeds: [noConnEmbed] });
+            return;
+        }
 
         const modLogsChannel = msg.guild.channels.resolve(Channels.MOD_LOGS) as TextChannel | null;
+        const hasPermittedRole = msg.member.roles.cache.some((role) => permittedRoles.map((r) => r.toString()).includes(role.id));
+        const args = msg.content.split(/\s+/).slice(1);
 
         if (!hasPermittedRole) {
             await msg.channel.send({ embeds: [noPermEmbed] });
-        } else if (args.length < 2 && parseInt(args[1]) !== 0) {
-            return msg.reply('You need to provide the following arguments for this command: <id> <reason>');
-        } else {
-            const id = args[0];
-            const targetUser = await msg.guild.members.fetch(id);
-            const moderator = msg.author;
-            const reason = args.slice(1).join(' ');
-            const userID = targetUser.user.id;
-            const currentDate = new Date();
-            const formattedDate: string = moment(currentDate).utcOffset(0).format('DD, MM, YYYY, HH:mm:ss');
-
-            const warnDoc = new conn.models.Warn({
-                userID,
-                moderator,
-                reason,
-                date: currentDate,
-            });
-
-            try {
-                await warnDoc.save();
-            } catch {
-                return msg.channel.send({ embeds: [warnFailed] });
-            }
-
-            await targetUser.send({ embeds: [dmEmbed(formattedDate, moderator, targetUser.user, reason)] })
-                .catch(() => {
-                    msg.channel.send({ embeds: [noDM] });
-                });
-
-            try {
-                await modLogsChannel.send({ embeds: [modLogEmbed(formattedDate, moderator, targetUser.user, reason)] });
-            } catch {
-                return msg.channel.send({ embeds: [noModLogs] });
-            }
-
-            await msg.channel.send({ embeds: [warnEmbed(targetUser.user)] });
+            return;
         }
+        if (args.length < 2 && parseInt(args[1]) !== 0) {
+            await msg.reply('You need to provide the following arguments for this command: <id> <reason>');
+            return;
+        }
+
+        const id = args[0];
+        const targetUser = await msg.guild.members.fetch(id);
+        const moderator = msg.author;
+        const reason = args.slice(1).join(' ');
+        const userID = targetUser.user.id;
+        const currentDate = new Date();
+        const formattedDate: string = moment(currentDate).utcOffset(0).format('DD, MM, YYYY, HH:mm:ss');
+
+        const warnDoc = new conn.models.Warn({
+            userID,
+            moderator,
+            reason,
+            date: currentDate,
+        });
+
+        try {
+            await warnDoc.save();
+        } catch {
+            await msg.channel.send({ embeds: [warnFailed] });
+            return;
+        }
+
+        try {
+            await targetUser.send({ embeds: [dmEmbed(formattedDate, moderator, targetUser.user, reason)] });
+        } catch {
+            await msg.channel.send({ embeds: [noDM] });
+        }
+
+        try {
+            await modLogsChannel.send({ embeds: [modLogEmbed(formattedDate, moderator, targetUser.user, reason)] });
+        } catch {
+            await msg.channel.send({ embeds: [noModLogs] });
+            return;
+        }
+        await msg.channel.send({ embeds: [warnEmbed(targetUser.user)] });
     },
 };
