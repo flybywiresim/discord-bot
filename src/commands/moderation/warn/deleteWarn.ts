@@ -49,14 +49,19 @@ export const deleteWarn: CommandDefinition = {
             return msg.reply('You need to provide the following arguments for this command: <Warn ID>');
         } else {
             try {
-                await conn.models.Warn.findOne({ _id: args });
-                try {
-                    await conn.models.Warn.deleteOne({ _id: args });
-                } catch {
-                    return msg.channel.send({ embeds: [deleteFailedEmbed] });
+                const check = await conn.models.Warn.find({ _id: args })
+                    .count() > 0;
+                console.log(check);
+                if (check === false) {
+                    return msg.channel.send({ embeds: [noWarningEmbed] });
                 }
             } catch {
                 return msg.channel.send({ embeds: [noWarningEmbed] });
+            }
+            try {
+                await conn.models.Warn.deleteOne({ _id: args });
+            } catch {
+                return msg.channel.send({ embeds: [deleteFailedEmbed] });
             }
             msg.channel.send({ embeds: [deleteEmbed] });
         }
