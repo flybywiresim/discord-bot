@@ -76,7 +76,7 @@ export const deleteWarn: CommandDefinition = {
                 const formattedDate: string = moment(warns.date).utcOffset(0).format('DD, MM, YYYY, HH:mm:ss');
                 fields.push({
                     name: 'Removed warning:',
-                    value: `**User:** <@${warns.userID}>\n**Date:** ${formattedDate}\n**Moderator:** ${warns.moderator}\n**Reason:** ${warns.reason}\n**User ID:** ${warns.userID}\n**Warn ID:** ${warns.id}`,
+                    value: `**User:** <@${warns.userID}>\n**Date:** ${formattedDate}\n**Moderator:** ${warns.moderator}\n**Reason:** ${warns.reason}\n\n**User ID:** ${warns.userID}\n**Warn ID:** ${warns.id}`,
                 });
             }
             const modLogsEmbed = makeEmbed({
