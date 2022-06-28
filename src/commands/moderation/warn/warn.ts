@@ -98,7 +98,6 @@ const noModLogs = makeEmbed({
     color: 'RED',
 });
 
-// noinspection DuplicatedCode
 export const warn: CommandDefinition = {
     name: 'warn',
     requiredPermissions: ['BAN_MEMBERS'],
