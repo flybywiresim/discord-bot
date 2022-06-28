@@ -17,7 +17,7 @@ const warnEmbed = (user: User) => makeEmbed({
 
 const modLogEmbed = (formattedDate, moderator: User, user: User, reason: string) => makeEmbed({
     author: {
-        name: `[warned]  ${user.tag}`,
+        name: `[WARNED]  ${user.tag}`,
         icon_url: user.displayAvatarURL({ dynamic: true }),
     },
     fields: [
@@ -48,7 +48,7 @@ const modLogEmbed = (formattedDate, moderator: User, user: User, reason: string)
 
 const dmEmbed = (formattedDate, moderator: User, user: User, reason: string) => makeEmbed({
 
-    title: 'You were warned in FlyByWire Simulations',
+    title: 'You have been warned in FlyByWire Simulations',
     fields: [
         {
             inline: false,
