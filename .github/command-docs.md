@@ -101,7 +101,7 @@
 | .unban          | ---                                                                                    | ---                                      |
 | .untimeout      | ---                                                                                    | .removetimeout                           |
 | .warn           | Warns a user                                                                           | ---                                      |
-| .warnings       | Lists a users warnings                                                                 | .listwarn <br> .listwarnings             |
+| .warnings       | Lists a users warnings                                                                 | .listwarn <br> .listwarnings <br> .warns |
 | .welcome        | Sends the welcome                                                                      | ---                                      |
 | .whois          | Provides an embedded message with information about the mentioned user                 | ---                                      |
 
