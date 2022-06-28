@@ -46,7 +46,7 @@ export const listWarnings: CommandDefinition = {
                 const formattedDate: string = moment(warns.date).utcOffset(0).format('DD, MM, YYYY, HH:mm:ss');
 
                 fields.push({
-                    name: `${formattedDate}`,
+                    name: `__${formattedDate}__`,
                     value: `**Moderator:** ${warns.moderator}\n**Reason:** ${warns.reason}\n**Warn ID:** ${warns.id}`,
                 });
             }
