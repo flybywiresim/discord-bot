@@ -2,6 +2,7 @@
 
 Update <small>_ June 2022</small>
 
+- ci: create changelog verification action (28/06/2022)
 - chore: update discord.js version to 13.8.0 (11/06/2022)
 - fix: allow the use of removetimeout as alias for untimeout (11/06/2022)
 - fix: avatar command now accepts user id (10/06/2022)
@@ -9,7 +10,7 @@ Update <small>_ June 2022</small>
 - refactor: add .ss as an alias to .screenshot (05/06/2022)
 - refactor: birthday permission order (01/06/2022)
 
-Update <small>_ May 2022</small>
+  Update <small>_ May 2022</small>
 
 - fix : birthday list ordering (31/05/2022)
 - refactor: update wording in .cfms (27/05/2022)
