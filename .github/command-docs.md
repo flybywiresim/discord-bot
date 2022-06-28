@@ -93,12 +93,15 @@
 | Command         | Description                                                                            | Alias                                    |
 |:----------------|:---------------------------------------------------------------------------------------|:-----------------------------------------|
 | .ban            | ---                                                                                    | ---                                      |
+| .deletewarn     | Deletes a users warning                                                                | .delwarn <br> .deletewarning             |
 | .faq            | Sends the FAQ                                                                          | ---                                      |
 | .roleassignment | Sends the role assignment messages                                                     | ---                                      |
 | .rules          | Sends the rules                                                                        | ---                                      |
 | .timeout        | ---                                                                                    | ---                                      |
 | .unban          | ---                                                                                    | ---                                      |
 | .untimeout      | ---                                                                                    | .removetimeout                           |
+| .warn           | Warns a user                                                                           | ---                                      |
+| .warnings       | Lists a users warnings                                                                 | .listwarn <br> .listwarnings <br> .warns |
 | .welcome        | Sends the welcome                                                                      | ---                                      |
 | .whois          | Provides an embedded message with information about the mentioned user                 | ---                                      |
 
