@@ -81,6 +81,23 @@ connect your application to your MongoDB instance.
 If you have installed MongoDB locally, your access url will be `mongodb://localhost:27017/fbw`. If you are using Atlas, the connection URL can be found under
 `Connect->Connect your application` in Database, located under Deployments.
 
+### MongoDB with Docker
+
+This is a guide on how to set up a MongoDB instance with Docker.
+
+1. Install Docker from [their website](https://www.docker.com/get-started/) and read the guide on how to get started if unsure how to use.
+2. In the .env file, on a new line type `MONGODB_URL=URL` replacing URL with your MongoDB access URL.
+3. In the .env file, on a new line type `MONGODB_DATABASE=DATABASE_NAME` replacing DATABASE with your MongoDB database name.
+4. In the .env file, on a new line type `MONGODB_USERNAME=USER_NAME` replacing USER with your MongoDB user name.
+5. In the .env file, on a new line type `MONGODB_PASSWORD=PASSWORD` replacing PASSWORD with your MongoDB password.
+6. To run the docker-compose file, run `docker-compose up -d` this will start the MongoDB instance along with mongo-express to view the DB.
+7. To stop the container run `docker-compose down`.
+8. The volumes will be created in the `/data` directory.
+
+The`MONGODB_URL` will be `mongodb://USERNAME:PASSWORD@localhost:27017/DATABASE_NAME?authSource=admin`.
+
+You can access mongo-express by visiting [localhost:8081](http://localhost:8081/).
+
 ### Privileged Gateway Intents
 
 Privileged Gateway Intents must now be enabled within the Discord Developer Portal in order for your bot to function. The steps below will explain how to enable them.
