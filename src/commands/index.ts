@@ -122,6 +122,7 @@ import { recommendedSettings } from './a32nx/recommendedsettings';
 import { warn } from './moderation/warn/warn';
 import { listWarnings } from './moderation/warn/listWarnings';
 import { deleteWarn } from './moderation/warn/deleteWarn';
+import { flights } from './utils/flights';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -246,6 +247,7 @@ const commands: CommandDefinition[] = [
     warn,
     listWarnings,
     deleteWarn,
+    flights,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};

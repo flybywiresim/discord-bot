@@ -2,6 +2,7 @@
 
 Update <small>_ June 2022</small>
 
+- feat: add flights command (29/06/2022)
 - feat: add docker-compose (28/06/2022)
 - feat: adds a warn system (28/06/2022)
 - chore: update discord.js version to 13.8.0 (11/06/2022)
