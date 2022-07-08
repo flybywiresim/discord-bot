@@ -18,7 +18,7 @@ export const station: CommandDefinition = {
         const icaoArg = splitUp[1];
 
         try {
-            const stationReport = await fetch(`httpss://avwx.rest/api/station/${icaoArg}`, {
+            const stationReport = await fetch(`https://avwx.rest/api/station/${icaoArg}`, {
                 method: 'GET',
                 headers: { Authorization: process.env.STATION_TOKEN },
             }).then((res) => res.json());
