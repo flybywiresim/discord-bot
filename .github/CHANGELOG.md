@@ -2,6 +2,7 @@
 
 Update <small>_ July 2022</small>
 
+- docs: add .env.example file. (08/07/2022)
 - fix: remove flypados thread from .exp (07/07/2022)
 
 Update <small>_ June 2022</small>
