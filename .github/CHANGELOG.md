@@ -1,5 +1,9 @@
 ## Changelog
 
+Update <small>_ July 2022</small>
+
+- fix: remove flypados thread from .exp (07/07/2022)
+
 Update <small>_ June 2022</small>
 
 - feat: add docker-compose (28/06/2022)
