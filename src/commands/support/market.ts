@@ -5,7 +5,7 @@ import { CommandCategory } from '../../constants';
 const MARKETPLACE_HELP_URL = 'https://cdn.discordapp.com/attachments/897491699167793182/995841973900541962/marketplace.png';
 
 export const market: CommandDefinition = {
-    name: 'market',
+    name: ['market', 'marketremove', 'removemarket', 'rm', 'mr'],
     description: 'Help with removing the marketplace version',
     category: CommandCategory.SUPPORT,
     executor: async (msg) => {
