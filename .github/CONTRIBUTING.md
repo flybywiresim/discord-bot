@@ -41,6 +41,14 @@ You can find the pull request template [here](PULL_REQUEST_TEMPLATE.md).
 1. [Install node](https://nodejs.org/en/download/), npm is bundled with the download
 2. Open a command prompt in your repo directory and run 'npm install'.
 
+### Environment Variables
+
+If your command requires environment variables please add them to the ```.env.example``` file for documentation.
+
+1. Copy the ```.env.example``` file to ```.env```
+2. You can do this manually or using the command line by typing ```cp .env.example .env```.
+3. Fill out the ```.env``` file with your environment variables.
+
 ### Bot Application
 
 1. Log into the Discord website and navigate to the [applications page](https://discord.com/developers/applications)
