@@ -127,6 +127,7 @@
 | .hud            | How to disable in-game HUD                                                        | .logs                                           |
 | .installerlogs  | Provides an explanation on how to receive installer error logs for support        | ---                                             |
 | .manualleg      | Displays image and links to docs about manual waypoints                           | .vm                                             |
+| .market         | Help with removing the marketplace version                                        | ---                                             |
 | .msfs           | Provides links to MSFS support for sim issues                                     | .msfsforum                                      |
 | .navdata        | Provides help with Navigraph navdata reinstall                                    | ---                                             |
 | .reportedissues | Provides a link to the reported issues page within docs                           | .issues                                         |
