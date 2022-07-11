@@ -8,6 +8,7 @@
 | .afloor        | Provides a link to the Alpha Floor Tool-Tip                                           | ---                                                    |
 | .airframe      | Provides a link to the updated Simbrief airframe                                      | .simbrief                                              |
 | .assistance    | Explains to the user why assistance options should be disabled                        | .assi <br> .as                                         |
+| .atc           | Provides a link to the cFMS special notes section.                                    | ---                                                    |
 | .audio         | Provides support information about A32NX audio configuration                          | ---                                                    |
 | .autopilot     | Provides a link to the autopilot/fly-by-wire page within docs                         | .ap                                                    |
 | .beginnerguide | Provides a link to the Beginner Guide                                                 | .bg                                                    |
