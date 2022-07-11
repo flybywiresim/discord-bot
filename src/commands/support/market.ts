@@ -12,8 +12,7 @@ export const market: CommandDefinition = {
         const contentEmbed = makeEmbed({
             title: 'FlyByWire Support | Removing marketplace version',
             description: makeLines([
-                'To remove the marketplace version of the A32NX, please open the MSFS Content Manager from the second page on the main menu and search for \'flybywire\'. '
-                + 'Then uninstall the 0.6.1 version. ',
+                'To remove the marketplace version of the A32NX, please open the MSFS Content Manager from the second page on the main menu and search for \'flybywire\'. Then uninstall the 0.6.1 version.',
                 '',
                 'Never use the Content Manager to update A32NX, use the [installer](https://api.flybywiresim.com/installer) to keep it up to date.',
             ]),
