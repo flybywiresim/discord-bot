@@ -1,17 +1,12 @@
 import mongoose from 'mongoose';
 import Logger from './logger';
 
-import birthdaySchema from './schemas/birthdaySchema';
-
 let connection: mongoose.Connection;
 
 export async function connect(url: string, callback = Logger.error) {
     try {
         await mongoose.connect(url);
         connection = mongoose.connection;
-
-        // Register schemas
-        connection.model('Birthday', birthdaySchema);
 
         Logger.info('Connected to database');
     } catch ({ name, message, stack }) {
