@@ -2,7 +2,7 @@
 
 Update <small>_ July 2022</small>
 
-- feat: marketplace removal command (11/07/2022)
+- feat: marketplace removal command (14/07/2022)
 - docs: add .env.example file. (11/07/2022)
 - refactor: birthday command (11/07/2022)
 - feat: default ATC command (10/07/2022)
