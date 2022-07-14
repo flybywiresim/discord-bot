@@ -3,11 +3,11 @@
 Update <small>_ July 2022</small>
 
 - feat: marketplace removal command (14/07/2022)
+- refactor: weather.ts embed title and copy (12/07/2022)
 - docs: add .env.example file. (11/07/2022)
 - refactor: birthday command (11/07/2022)
 - feat: default ATC command (10/07/2022)
 - fix: remove flypados thread from .exp (07/07/2022)
-- refactor: weather.ts embed title and copy (07/12/2022)
 
 Update <small>_ June 2022</small>
 
