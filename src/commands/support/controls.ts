@@ -3,7 +3,7 @@ import { CommandCategory } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
 
 export const controls: CommandDefinition = {
-    name: 'controls',
+    name: ['controls', 'legacy'],
     description: 'Instructions on how to switch back to legacy controls and how to use new controls',
     category: CommandCategory.SUPPORT,
     executor: async (msg) => {

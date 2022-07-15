@@ -117,7 +117,7 @@
 | .clean          | Clean Install                                                                     | .clean install <br> .cleaninstall <br> .order66    |
 | .community      | Help to identify community folder for support                                     | .com                                               |
 | .content        | Help to identify aircraft version for support                                     | .contentmanager                                    |
-| .controls       | Instructions on how to switch back to legacy controls and how to use new controls | ---                                                |
+| .controls       | Instructions on how to switch back to legacy controls and how to use new controls | .legacy                                            |
 | .ctd            | Crash to Desktop                                                                  | .crash                                             |
 | .cursor         | Displays steps to help with EFB cursor focus issue                                | .efbfocus <br> .unfocus                            |
 | .deadzones      | Display help with controller deadzones                                            | .dz                                                |
