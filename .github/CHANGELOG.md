@@ -2,6 +2,7 @@
 
 Update <small>_ July 2022</small>
 
+- chore: add images to repo (15/07/2022)
 - feat: marketplace removal command (14/07/2022)
 - refactor: weather.ts embed title and copy (12/07/2022)
 - docs: add .env.example file. (11/07/2022)
