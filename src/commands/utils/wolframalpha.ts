@@ -5,8 +5,8 @@ import { makeEmbed, makeLines } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 import Logger from '../../lib/logger';
 
-const WOLFRAMALPHA_API_URL = 'http://api.wolframalpha.com/v2/query?';
-const WOLFRAMALPHA_QUERY_URL = 'http://www.wolframalpha.com/input/?';
+const WOLFRAMALPHA_API_URL = 'https://api.wolframalpha.com/v2/query?';
+const WOLFRAMALPHA_QUERY_URL = 'https://www.wolframalpha.com/input/?';
 
 export const wolframalpha: CommandDefinition = {
     name: ['wa', 'calc', 'ask'],
@@ -16,7 +16,12 @@ export const wolframalpha: CommandDefinition = {
         const splitUp = msg.content.replace(/\.wa\s+/, ' ').split(' ');
 
         if (splitUp.length <= 1) {
-            await msg.reply('Please provide a query. For example: .wa "2 + 2"');
+            const noQueryEmbed = makeEmbed({
+                title: 'Wolfram Alpha Error | Missing Query',
+                description: 'Please provide a query. For example: `.wa How much is 1 + 1?`',
+                color: 'RED',
+            });
+            await msg.channel.send({ embeds: [noQueryEmbed] });
             return;
         }
         const query = splitUp.slice(1).join(' ');
@@ -35,7 +40,12 @@ export const wolframalpha: CommandDefinition = {
                 .then((res) => res.json());
 
             if (response.error) {
-                await msg.reply(response.error);
+                const errorEmbed = makeEmbed({
+                    title: 'Wolfram Alpha Error',
+                    description: response.error,
+                    color: 'RED',
+                });
+                await msg.channel.send({ embeds: [errorEmbed] });
                 return;
             }
 
@@ -67,14 +77,26 @@ export const wolframalpha: CommandDefinition = {
                     await msg.reply({ embeds: [waEmbed] });
                     return;
                 }
-                await msg.reply('Wolfram Alpha did not find an answer for your query.');
+                const noResultsEmbed = makeEmbed({
+                    title: 'Wolfram Alpha Error | No Results',
+                    description: makeLines([
+                        'No results were found for your query.',
+                    ]),
+                    color: 'RED',
+                });
+                await msg.channel.send({ embeds: [noResultsEmbed] });
                 return;
             }
             await msg.reply('Wolfram Alpha could not understand your query.');
             return;
         } catch (e) {
             Logger.error('wolframalpha:', e);
-            await msg.reply('An error occurred while fetching the Wolfram Alpha report.');
+            const fetchErrorEmbed = makeEmbed({
+                title: 'Wolfram Alpha | Fetch Error',
+                description: 'There was an error fetching your request. Please try again later.',
+                color: 'RED',
+            });
+            await msg.channel.send({ embeds: [fetchErrorEmbed] });
         }
     },
 };
