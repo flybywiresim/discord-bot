@@ -2,7 +2,7 @@
 
 Update <small>_ July 2022</small>
 
-- chore: add node-fetch dependency (08/07/2022)
+- chore: add node-fetch dependency (15/07/2022)
 - chore: remove request dependency (08/07/2022)
 - refactor: requests to node-fetch (08/07/2022)
 - fix: remove flypados thread from .exp (07/07/2022)
