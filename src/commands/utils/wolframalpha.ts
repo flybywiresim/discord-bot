@@ -2,7 +2,7 @@ import { URLSearchParams } from 'url';
 import fetch from 'node-fetch';
 import { CommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
-import { CommandCategory } from '../../constants';
+import { Channels, CommandCategory } from '../../constants';
 import Logger from '../../lib/logger';
 
 const WOLFRAMALPHA_API_URL = 'https://api.wolframalpha.com/v2/query?';
@@ -13,6 +13,16 @@ export const wolframalpha: CommandDefinition = {
     description: 'Queries the Wolfram Alpha API',
     category: CommandCategory.UTILS,
     executor: async (msg) => {
+        if (msg.channelId !== Channels.BOT_COMMANDS) {
+            const wrongChannelEmbed = makeEmbed({
+                title: 'Wolfram Alpha Error | Wrong Channel',
+                description: `This command can only be used in the <#${Channels.BOT_COMMANDS}> channel.`,
+                color: 'RED',
+            });
+            await msg.channel.send({ embeds: [wrongChannelEmbed] });
+            return;
+        }
+
         const splitUp = msg.content.replace(/\.wa\s+/, ' ').split(' ');
 
         if (splitUp.length <= 1) {
