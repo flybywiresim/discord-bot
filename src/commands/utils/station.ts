@@ -12,7 +12,12 @@ export const station: CommandDefinition = {
         const splitUp = msg.content.replace(/\.station\s+/, ' ').split(' ');
 
         if (splitUp.length <= 1) {
-            await msg.reply('please provide an ICAO airport code.');
+            const noQueryEmbed = makeEmbed({
+                title: 'Station Error | Missing Query',
+                description: 'You must provide an airport ICAO code.',
+                color: 'RED',
+            });
+            await msg.channel.send({ embeds: [noQueryEmbed] });
             return;
         }
         const icaoArg = splitUp[1];
@@ -24,7 +29,12 @@ export const station: CommandDefinition = {
             }).then((res) => res.json());
 
             if (stationReport.error) {
-                await msg.reply(stationReport.error);
+                const invalidEmbed = makeEmbed({
+                    title: `Station Error | ${icaoArg.toUpperCase()}`,
+                    description: stationReport.error,
+                    color: 'RED',
+                });
+                await msg.channel.send({ embeds: [invalidEmbed] });
                 return;
             }
 
@@ -57,7 +67,12 @@ export const station: CommandDefinition = {
             return;
         } catch (e) {
             Logger.error('station:', e);
-            await msg.reply('There was an error fetching the station information.');
+            const fetchErrorEmbed = makeEmbed({
+                title: 'Station Error | Fetch Error',
+                description: 'There was an error fetching the station report. Please try again later.',
+                color: 'RED',
+            });
+            await msg.channel.send({ embeds: [fetchErrorEmbed] });
         }
     },
 };
