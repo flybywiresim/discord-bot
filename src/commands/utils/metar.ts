@@ -12,7 +12,12 @@ export const metar: CommandDefinition = {
         const splitUp = msg.content.replace(/\.metar\s+/, ' ').split(' ');
 
         if (splitUp.length <= 1) {
-            await msg.reply('please provide an ICAO airport code.');
+            const noQueryEmbed = makeEmbed({
+                title: 'Metar Error | Missing Query',
+                description: 'You must provide an airport ICAO code.',
+                color: 'RED',
+            });
+            await msg.channel.send({ embeds: [noQueryEmbed] });
             return Promise.resolve();
         }
         const icaoArg = splitUp[1];
@@ -24,7 +29,12 @@ export const metar: CommandDefinition = {
             }).then((res) => res.json());
 
             if (metarReport.error) {
-                await msg.reply(metarReport.error);
+                const invalidEmbed = makeEmbed({
+                    title: `Metar Error | ${icaoArg.toUpperCase()}`,
+                    description: metarReport.error,
+                    color: 'RED',
+                });
+                await msg.channel.send({ embeds: [invalidEmbed] });
                 return Promise.resolve();
             }
 
@@ -57,7 +67,12 @@ export const metar: CommandDefinition = {
             await msg.channel.send({ embeds: [metarEmbed] });
         } catch (e) {
             Logger.error('metar:', e);
-            await msg.reply('An error occurred while fetching the METAR report.');
+            const fetchErrorEmbed = makeEmbed({
+                title: 'Metar Error | Fetch Error',
+                description: 'There was an error fetching the METAR report. Please try again later.',
+                color: 'RED',
+            });
+            await msg.channel.send({ embeds: [fetchErrorEmbed] });
         }
         return Promise.resolve();
     },
