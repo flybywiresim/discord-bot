@@ -2,6 +2,7 @@
 
 Update <small>_ July 2022</small>
 
+- fix: update .where image link (16/07/2022)
 - chore: add images to repo (16/07/2022)
 - refactor: add .legacy alias to .cotrols (15/07/2022)
 - feat: marketplace removal command (14/07/2022)
