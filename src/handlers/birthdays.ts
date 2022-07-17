@@ -3,6 +3,7 @@ import { makeEmbed } from '../lib/embed';
 import Logger from '../lib/logger';
 import { GuildID, Channels } from '../constants';
 import { getConn } from '../lib/db';
+import Birthday from '../lib/schemas/birthdaySchema';
 
 let birthdayInterval;
 
@@ -22,18 +23,11 @@ const gifs: string[] = [
 ];
 
 async function processBirthdays(client: Client) {
-    const conn = await getConn();
-
-    // Bail if no database connection
-    if (!conn) {
-        return;
-    }
-
     // Get current date
     const currentDate = new Date();
 
     // Get new birthdays
-    const birthdays = await conn.models.Birthday.find({ utcDatetime: { $lt: currentDate } });
+    const birthdays = await Birthday.find({ utcDatetime: { $lt: currentDate } });
 
     // Bail if no birthdays
     if (!birthdays.length) {
@@ -69,6 +63,18 @@ async function processBirthdays(client: Client) {
     // Unarchive thread if needed
     if (thread.archived) {
         await thread.setArchived(false);
+    }
+
+    const conn = await getConn();
+
+    if (!conn) {
+        const noConnEmbed = makeEmbed({
+            title: 'Error',
+            description: 'Could not connect to database',
+            color: 'RED',
+        });
+        await thread.send({ embeds: [noConnEmbed] });
+        return;
     }
 
     // Send birthday messages

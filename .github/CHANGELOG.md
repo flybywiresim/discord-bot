@@ -2,9 +2,17 @@
 
 Update <small>_ July 2022</small>
 
-- chore: add node-fetch dependency (15/07/2022)
-- chore: remove request dependency (08/07/2022)
-- refactor: requests to node-fetch (08/07/2022)
+- chore: add node-fetch dependency (17/07/2022)
+- chore: remove request dependency (17/07/2022)
+- refactor: requests to node-fetch (17/07/2022)
+- fix: update .where image link (16/07/2022)
+- chore: add images to repo (16/07/2022)
+- refactor: add .legacy alias to .cotrols (15/07/2022)
+- feat: marketplace removal command (14/07/2022)
+- refactor: weather.ts embed title and copy (12/07/2022)
+- docs: add .env.example file. (11/07/2022)
+- refactor: birthday command (11/07/2022)
+- feat: default ATC command (10/07/2022)
 - fix: remove flypados thread from .exp (07/07/2022)
 
 Update <small>_ June 2022</small>
