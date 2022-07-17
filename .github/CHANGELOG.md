@@ -2,6 +2,9 @@
 
 Update <small>_ July 2022</small>
 
+- chore: add node-fetch dependency (17/07/2022)
+- chore: remove request dependency (17/07/2022)
+- refactor: requests to node-fetch (17/07/2022)
 - fix: update .where image link (16/07/2022)
 - chore: add images to repo (16/07/2022)
 - refactor: add .legacy alias to .cotrols (15/07/2022)

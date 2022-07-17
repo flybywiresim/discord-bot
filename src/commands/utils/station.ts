@@ -1,7 +1,8 @@
-import request from 'request';
+import fetch from 'node-fetch';
 import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
+import Logger from '../../lib/logger';
 
 export const station: CommandDefinition = {
     name: 'station',
@@ -11,65 +12,67 @@ export const station: CommandDefinition = {
         const splitUp = msg.content.replace(/\.station\s+/, ' ').split(' ');
 
         if (splitUp.length <= 1) {
-            await msg.reply('please provide an ICAO airport code.');
-            return Promise.resolve();
+            const noQueryEmbed = makeEmbed({
+                title: 'Station Error | Missing Query',
+                description: 'You must provide an airport ICAO code.',
+                color: 'RED',
+            });
+            await msg.channel.send({ embeds: [noQueryEmbed] });
+            return;
         }
         const icaoArg = splitUp[1];
-        request({
-            method: 'GET',
-            url: `https://avwx.rest/api/station/${icaoArg}`,
-            headers: { Authorization: process.env.STATION_TOKEN },
-        }, async (error, response, body) => {
-            let stationEmbed;
 
-            if (response.statusCode === 200) {
-                // Response OK, parse the JSON
-                const stationReport = JSON.parse(body);
+        try {
+            const stationReport = await fetch(`https://avwx.rest/api/station/${icaoArg}`, {
+                method: 'GET',
+                headers: { Authorization: process.env.STATION_TOKEN },
+            }).then((res) => res.json());
 
-                const runwayIdents = stationReport.runways.map((runways) => `**${runways.ident1}/${runways.ident2}:** `
-                        + `${runways.length_ft} ft x ${runways.width_ft} ft / `
-                        + `${Math.round(runways.length_ft * 0.3048)} m x ${Math.round(runways.width_ft * 0.3048)} m`);
-
-                stationEmbed = makeEmbed({
-                    title: `Station Info | ${stationReport.icao}`,
-                    description: makeLines([
-                        '**Station Information:**',
-                        `**Name:** ${stationReport.name}`,
-                        `**Country:** ${stationReport.country}`,
-                        `**City:** ${stationReport.city}`,
-                        `**Latitude:** ${stationReport.latitude}°`,
-                        `**Longitude:** ${stationReport.longitude}°`,
-                        `**Elevation:** ${stationReport.elevation_m} m/${stationReport.elevation_ft} ft`,
-                        '',
-                        '**Runways (Ident1/Ident2: Length x Width):**',
-                        `${runwayIdents.toString().replace(/,/g, '\n')}`,
-                        '',
-                        `**Type:** ${stationReport.type.replace(/_/g, ' ')}`,
-                        `**Website:** ${stationReport.website}`,
-                        `**Wiki:** ${stationReport.wiki}`,
-                    ]),
-                    footer: { text: 'Due to limitations of the API, not all links may be up to date at all times.' },
-                });
-            } else if (response.statusCode === 400) {
-                // Invalid ICAO/IATA code
-                stationEmbed = makeEmbed({
+            if (stationReport.error) {
+                const invalidEmbed = makeEmbed({
                     title: `Station Error | ${icaoArg.toUpperCase()}`,
-                    description: makeLines([
-                        `${icaoArg.toUpperCase()} is not a valid station code!`,
-                    ]),
+                    description: stationReport.error,
+                    color: 'RED',
                 });
-            } else {
-                // Unknown error
-                stationEmbed = makeEmbed({
-                    title: 'Station Error',
-                    description: makeLines([
-                        'There was an unknown error with the station request!',
-                    ]),
-                });
+                await msg.channel.send({ embeds: [invalidEmbed] });
+                return;
             }
 
+            const runwayIdents = stationReport.runways.map((runways) => `**${runways.ident1}/${runways.ident2}:** `
+                + `${runways.length_ft} ft x ${runways.width_ft} ft / `
+                + `${Math.round(runways.length_ft * 0.3048)} m x ${Math.round(runways.width_ft * 0.3048)} m`);
+
+            const stationEmbed = makeEmbed({
+                title: `Station Info | ${stationReport.icao}`,
+                description: makeLines([
+                    '**Station Information:**',
+                    `**Name:** ${stationReport.name}`,
+                    `**Country:** ${stationReport.country}`,
+                    `**City:** ${stationReport.city}`,
+                    `**Latitude:** ${stationReport.latitude}°`,
+                    `**Longitude:** ${stationReport.longitude}°`,
+                    `**Elevation:** ${stationReport.elevation_m} m/${stationReport.elevation_ft} ft`,
+                    '',
+                    '**Runways (Ident1/Ident2: Length x Width):**',
+                    `${runwayIdents.toString().replace(/,/g, '\n')}`,
+                    '',
+                    `**Type:** ${stationReport.type.replace(/_/g, ' ')}`,
+                    `**Website:** ${stationReport.website}`,
+                    `**Wiki:** ${stationReport.wiki}`,
+                ]),
+                footer: { text: 'Due to limitations of the API, not all links may be up to date at all times.' },
+            });
+
             await msg.channel.send({ embeds: [stationEmbed] });
-        });
-        return Promise.resolve();
+            return;
+        } catch (e) {
+            Logger.error('station:', e);
+            const fetchErrorEmbed = makeEmbed({
+                title: 'Station Error | Fetch Error',
+                description: 'There was an error fetching the station report. Please try again later.',
+                color: 'RED',
+            });
+            await msg.channel.send({ embeds: [fetchErrorEmbed] });
+        }
     },
 };

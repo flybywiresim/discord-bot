@@ -1,82 +1,112 @@
 import { URLSearchParams } from 'url';
-import request from 'request';
+import fetch from 'node-fetch';
 import { CommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
-import { CommandCategory, Channels } from '../../constants';
+import { Channels, CommandCategory } from '../../constants';
 import Logger from '../../lib/logger';
 
-const WOFLRAMALPHA_API_URL = 'http://api.wolframalpha.com/v2/query?';
-const WOLFRAMALPHA_QUERY_URL = 'http://www.wolframalpha.com/input/?';
+const WOLFRAMALPHA_API_URL = 'https://api.wolframalpha.com/v2/query?';
+const WOLFRAMALPHA_QUERY_URL = 'https://www.wolframalpha.com/input/?';
 
 export const wolframalpha: CommandDefinition = {
     name: ['wa', 'calc', 'ask'],
     description: 'Queries the Wolfram Alpha API',
     category: CommandCategory.UTILS,
     executor: async (msg) => {
-        const allowedChannel = Channels.BOT_COMMANDS;
-        if (msg.channelId === allowedChannel) {
-            const re = /\.\S+\s(.+)/;
-            let query: string = '';
-            try {
-                // eslint-disable-next-line prefer-destructuring
-                query = msg.content.match(re)[1];
-            } catch (e) {
-                Logger.error(e);
-            }
-            if (query.length <= 0) {
-                await msg.reply('Please enter a query.');
+        if (msg.channelId !== Channels.BOT_COMMANDS) {
+            const wrongChannelEmbed = makeEmbed({
+                title: 'Wolfram Alpha Error | Wrong Channel',
+                description: `This command can only be used in the <#${Channels.BOT_COMMANDS}> channel.`,
+                color: 'RED',
+            });
+            await msg.channel.send({ embeds: [wrongChannelEmbed] });
+            return;
+        }
+
+        const splitUp = msg.content.replace(/\.wa\s+/, ' ').split(' ');
+
+        if (splitUp.length <= 1) {
+            const noQueryEmbed = makeEmbed({
+                title: 'Wolfram Alpha Error | Missing Query',
+                description: 'Please provide a query. For example: `.wa How much is 1 + 1?`',
+                color: 'RED',
+            });
+            await msg.channel.send({ embeds: [noQueryEmbed] });
+            return;
+        }
+        const query = splitUp.slice(1).join(' ');
+
+        const params = {
+            appid: process.env.WOLFRAMALPHA_TOKEN,
+            input: query,
+            format: 'plaintext',
+            output: 'JSON',
+        };
+
+        const searchParams = new URLSearchParams(params);
+
+        try {
+            const response = await fetch(`${WOLFRAMALPHA_API_URL}${searchParams.toString()}`)
+                .then((res) => res.json());
+
+            if (response.error) {
+                const errorEmbed = makeEmbed({
+                    title: 'Wolfram Alpha Error',
+                    description: response.error,
+                    color: 'RED',
+                });
+                await msg.channel.send({ embeds: [errorEmbed] });
                 return;
             }
-            const params = {
-                appid: process.env.WOLFRAMALPHA_TOKEN,
-                input: query,
-                format: 'plaintext',
-                output: 'JSON',
-            };
-            const searchParams = new URLSearchParams(params);
-            request({
-                method: 'GET',
-                url: WOFLRAMALPHA_API_URL + searchParams.toString(),
-            }, async (error, response, body) => {
-                if (response.statusCode === 200) {
-                    const answer = JSON.parse(body);
-                    if (answer.queryresult.success === true) {
-                        const podTexts: string[] = [];
-                        answer.queryresult.pods.forEach((pod) => {
-                            if (pod.id !== 'Input' && pod.primary === true) {
-                                const results: string[] = [];
-                                pod.subpods.forEach((subpod) => {
-                                    results.push(subpod.plaintext);
-                                });
-                                if (results.length > 0) {
-                                    podTexts.push(`**${pod.title}:** \n${results.join('\n')}`);
-                                }
-                            }
+
+            if (response.queryresult.success === true) {
+                const podTexts: string[] = [];
+                response.queryresult.pods.forEach((pod) => {
+                    if (pod.id !== 'Input' && pod.primary === true) {
+                        const results: string[] = [];
+                        pod.subpods.forEach((subpod) => {
+                            results.push(subpod.plaintext);
                         });
-                        if (podTexts.length > 0) {
-                            const result = podTexts.join('\n\n');
-                            const queryParams = new URLSearchParams({ i: query });
-                            // await msg.channel.send(result + ' - [Web Result](' + WOLFRAMALPHA_QUERY_URL + queryParams.toString() + ')');
-
-                            const waEmbed = makeEmbed({
-                                description: makeLines([
-                                    result,
-                                    '',
-                                    `[Web Result](${WOLFRAMALPHA_QUERY_URL}${queryParams.toString()})`,
-                                ]),
-                            });
-
-                            await msg.reply({ embeds: [waEmbed] });
-                        } else {
-                            await msg.reply('Wolfram Alpha did not give an answer.');
+                        if (results.length > 0) {
+                            podTexts.push(`**${pod.title}:** \n${results.join('\n')}`);
                         }
-                    } else {
-                        await msg.reply('Wolfram Alpha could not understand your query.');
                     }
+                });
+                if (podTexts.length > 0) {
+                    const result = podTexts.join('\n\n');
+                    const queryParams = new URLSearchParams({ i: query });
+
+                    const waEmbed = makeEmbed({
+                        description: makeLines([
+                            result,
+                            '',
+                            `[Web Result](${WOLFRAMALPHA_QUERY_URL}${queryParams.toString()})`,
+                        ]),
+                    });
+
+                    await msg.reply({ embeds: [waEmbed] });
+                    return;
                 }
+                const noResultsEmbed = makeEmbed({
+                    title: 'Wolfram Alpha Error | No Results',
+                    description: makeLines([
+                        'No results were found for your query.',
+                    ]),
+                    color: 'RED',
+                });
+                await msg.channel.send({ embeds: [noResultsEmbed] });
+                return;
+            }
+            await msg.reply('Wolfram Alpha could not understand your query.');
+            return;
+        } catch (e) {
+            Logger.error('wolframalpha:', e);
+            const fetchErrorEmbed = makeEmbed({
+                title: 'Wolfram Alpha | Fetch Error',
+                description: 'There was an error fetching your request. Please try again later.',
+                color: 'RED',
             });
-        } else {
-            await msg.reply(`Please ask in <#${Channels.BOT_COMMANDS}>`);
+            await msg.channel.send({ embeds: [fetchErrorEmbed] });
         }
     },
 };
