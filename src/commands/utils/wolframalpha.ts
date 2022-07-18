@@ -97,7 +97,14 @@ export const wolframalpha: CommandDefinition = {
                 await msg.channel.send({ embeds: [noResultsEmbed] });
                 return;
             }
-            await msg.reply('Wolfram Alpha could not understand your query.');
+            const obscureQueryEmbed = makeEmbed({
+                title: 'Wolfram Alpha Error | Could not understand query',
+                description: makeLines([
+                    'Wolfram Alpha could not understand your query.',
+                ]),
+                color: 'RED',
+            });
+            await msg.channel.send({ embeds: [obscureQueryEmbed] });
             return;
         } catch (e) {
             Logger.error('wolframalpha:', e);
