@@ -6,7 +6,7 @@ const SHAME_URL = 'https://tenor.com/view/the-simpsons-homer-simpson-homer-good-
 export const shame: CommandDefinition = {
     name: 'shame',
     description: 'Shame, shame, shame',
-    category: CommandCategory.FUNNIES,
+    category: CommandCategory.MEMES,
     executor: async (msg) => {
         await msg.channel.send(SHAME_URL);
     },

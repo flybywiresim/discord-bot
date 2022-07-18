@@ -7,7 +7,7 @@ const SHOMAS_URL = 'https://cdn.discordapp.com/attachments/898602626436964402/95
 export const shomas: CommandDefinition = {
     name: 'shomas',
     description: 'oldest pilot',
-    category: CommandCategory.FUNNIES,
+    category: CommandCategory.MEMES,
     executor: async (msg) => {
         const shomasEmbed = makeEmbed({ image: { url: SHOMAS_URL } });
         await msg.channel.send({ embeds: [shomasEmbed] });

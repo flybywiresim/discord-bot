@@ -7,7 +7,7 @@ const JAUN_URL = 'https://cdn.discordapp.com/attachments/740722295009706034/7752
 export const juan: CommandDefinition = {
     name: 'juan',
     description: 'just... Jaun',
-    category: CommandCategory.FUNNIES,
+    category: CommandCategory.MEMES,
     executor: async (msg) => {
         const juanEmbed = makeEmbed({ image: { url: JAUN_URL } });
         await msg.channel.send({ embeds: [juanEmbed] });

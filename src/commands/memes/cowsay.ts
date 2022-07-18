@@ -5,7 +5,7 @@ import { CommandCategory } from '../../constants';
 export const cowsay: CommandDefinition = {
     name: ['cowsay', 'cs'],
     description: 'Emulates the famous UNIX program `cowsay`.',
-    category: CommandCategory.FUNNIES,
+    category: CommandCategory.MEMES,
     executor: (msg) => {
         const text = msg.content.replace(/\.(cowsay|cs)\s*/, '');
 
