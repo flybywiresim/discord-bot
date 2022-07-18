@@ -2,6 +2,7 @@
 
 Update <small>_ July 2022</small>
 
+- feat: takeoff issues command (18/07/2022)
 - fix: missing error embed for wolfram alpha (18/07/2022)
 - fix: fixed .bg abbreviations hyperlink (18/072022)
 - chore: add node-fetch dependency (17/07/2022)
