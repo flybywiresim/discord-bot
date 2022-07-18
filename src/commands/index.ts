@@ -124,6 +124,7 @@ import { listWarnings } from './moderation/warn/listWarnings';
 import { deleteWarn } from './moderation/warn/deleteWarn';
 import { atc } from './a32nx/atc';
 import { market } from './support/market';
+import { takeoffIssues } from './a32nx/takeoffissues';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -250,6 +251,7 @@ const commands: CommandDefinition[] = [
     deleteWarn,
     atc,
     market,
+    takeoffIssues,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
