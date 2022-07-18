@@ -12,7 +12,7 @@ export const takeoffIssues: CommandDefinition = {
         const contentEmbed = makeEmbed({
             title: 'FlyByWire A32NX | Engine Issues on Takeoff',
             description: makeLines([
-                'Engines shutting down on takeoff is caused by \'ENGINE AUTOSTOP\' and \'AUTO START ENGINE\' bindings, make sure you unbind those in the controls options.',
+                'Engines shutting down on takeoff is caused by the \'ENGINE AUTOSTOP\' and \'AUTO START ENGINE\' bindings. Please make sure that you unbind these in the controls options
                 '',
                 'Engines going to idle on takeoff is caused by piloting assistance being enabled, turn those off by setting the piloting category to \'HARD\'.',
             ]),
