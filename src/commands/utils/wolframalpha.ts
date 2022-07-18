@@ -97,7 +97,14 @@ export const wolframalpha: CommandDefinition = {
                 await msg.channel.send({ embeds: [noResultsEmbed] });
                 return;
             }
-            await msg.reply('Wolfram Alpha could not understand your query.');
+            const noResultsEmbed = makeEmbed({
+                title: 'Wolfram Alpha Error | No Results',
+                description: makeLines([
+                    'No results were found for your query.',
+                ]),
+                color: 'RED',
+            });
+            await msg.channel.send({ embeds: [noResultsEmbed] });
             return;
         } catch (e) {
             Logger.error('wolframalpha:', e);
