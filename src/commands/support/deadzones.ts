@@ -10,8 +10,10 @@ export const deadzones: CommandDefinition = {
     category: CommandCategory.SUPPORT,
     executor: async (msg) => {
         const deadzonesEmbed = makeEmbed({
-            title: 'FlyByWire A32NX | AP Problem',
+            title: 'FlyByWire A32NX | Deadzone Configuration',
             description: makeLines([
+                'In certain situations your hardware maybe causing unwanted inputs when attempting to fly the aircraft. Increasing the deadzone setting for your controller can help prevent these inputs. ',
+                '',
                 '1. Go to your settings',
                 '2. Controls and select your yoke/joystick/controller.',
                 '',
