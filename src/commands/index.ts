@@ -5,6 +5,7 @@ import { whois } from './moderation/whois';
 import { bruheg } from './funnies/bruheg';
 import { boratorium } from './funnies/boratorium';
 import { efb } from './a32nx/efb';
+import { deadzones } from './support/deadzones';
 import { screens } from './a32nx/screens';
 import { when } from './general/when';
 import { ban } from './moderation/ban';
@@ -131,6 +132,7 @@ const commands: CommandDefinition[] = [
     bruheg,
     boratorium,
     efb,
+    deadzones,
     screens,
     when,
     ban,
