@@ -2,7 +2,7 @@ import { CommandDefinition } from '../../lib/command';
 import { makeEmbed } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 
-const EFB_URL = 'https://cdn.discordapp.com/attachments/897491699167793182/998837392226131968/efb75-35.gif';
+const EFB_URL = 'https://cdn.discordapp.com/attachments/897491699167793182/998861972093276180/efbnew.gif';
 
 export const efb: CommandDefinition = {
     name: 'efb',
