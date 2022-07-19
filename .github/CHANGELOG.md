@@ -2,7 +2,7 @@
 
 Update <small>_ July 2022</small>
 
-- refactor: remove deadzone command (19/07/2022)
+- refactor: update deadzones command (19/07/2022)
 - fix: use non-vanity Synaptic Discord link (19/07/2022)
 - feat: takeoff issues command (18/07/2022)
 - fix: missing error embed for wolfram alpha (18/07/2022)
