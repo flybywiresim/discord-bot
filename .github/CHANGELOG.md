@@ -2,6 +2,7 @@
 
 Update <small>_ July 2022</small>
 
+- chore: bump discord package version with fixes @v14.0.2 (21/07/2022)
 - feat: takeoff issues command (18/07/2022)
 - fix: missing error embed for wolfram alpha (18/07/2022)
 - fix: fixed .bg abbreviations hyperlink (18/072022)
