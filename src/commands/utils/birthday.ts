@@ -1,3 +1,4 @@
+import { Colors } from 'discord.js';
 import { CommandDefinition } from '../../lib/command';
 import { Roles, Channels, CommandCategory } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
@@ -24,7 +25,7 @@ export const birthday: CommandDefinition = {
             const noConnEmbed = makeEmbed({
                 title: 'Error',
                 description: 'Could not connect to database',
-                color: 'RED',
+                color: Colors.Red,
             });
             await msg.channel.send({ embeds: [noConnEmbed] });
             return;
@@ -40,13 +41,13 @@ export const birthday: CommandDefinition = {
             birthdayEmbed = makeEmbed({
                 title: 'Birthday reminder',
                 description: 'You do not have permission to use this command.',
-                color: 'RED',
+                color: Colors.Red,
             });
         } else if (msg.channel.id !== Channels.BIRTHDAY_THREAD) {
             birthdayEmbed = makeEmbed({
                 title: 'Birthday reminder',
                 description: `That command can only be used in <#${Channels.BIRTHDAY_THREAD}>`,
-                color: 'RED',
+                color: Colors.Red,
             });
         } else if (args[0] === 'add' || args[0] === 'set') {
             const member = msg.mentions.members.first();
@@ -55,7 +56,7 @@ export const birthday: CommandDefinition = {
                 birthdayEmbed = makeEmbed({
                     title: 'Birthday add failed',
                     description: 'You need to mention a user to add a birthday reminder',
-                    color: 'RED',
+                    color: Colors.Red,
                 });
             } else {
                 const birthdayStrings = args.slice(2).join('/').split(/[/-]/);
@@ -65,7 +66,7 @@ export const birthday: CommandDefinition = {
                     birthdayEmbed = makeEmbed({
                         title: 'Birthday add failed',
                         description: 'Insufficient args provided. Please use `.birthday add <user> <day>/<month>`',
-                        color: 'RED',
+                        color: Colors.Red,
                     });
                 } else {
                     const birthdayDay = parseInt(birthdayStrings[0]);
@@ -75,7 +76,7 @@ export const birthday: CommandDefinition = {
                         birthdayEmbed = makeEmbed({
                             title: 'Birthday add failed',
                             description: 'Invalid date format. Please use `.birthday add <user> <day>/<month>`',
-                            color: 'RED',
+                            color: Colors.Red,
                         });
                     } else {
                         const userID = member.user.id;
@@ -130,7 +131,7 @@ export const birthday: CommandDefinition = {
                     birthdayEmbed = makeEmbed({
                         title: 'Birthday remove failed',
                         description: `${member.displayName} doesn't have a birthday set`,
-                        color: 'RED',
+                        color: Colors.Red,
                     });
                 } else {
                     await Birthday.deleteOne({ userID });
@@ -144,7 +145,7 @@ export const birthday: CommandDefinition = {
                 birthdayEmbed = makeEmbed({
                     title: 'Birthday remove failed',
                     description: 'You must specify a user',
-                    color: 'RED',
+                    color: Colors.Red,
                 });
             }
         } else if (args[0] === 'timezone') {
@@ -159,7 +160,7 @@ export const birthday: CommandDefinition = {
                     birthdayEmbed = makeEmbed({
                         title: 'Birthday timezone failed',
                         description: `${member.displayName} doesn't have a birthday set`,
-                        color: 'RED',
+                        color: Colors.Red,
                     });
                 } else {
                     const timezoneArgs = args.slice(2);
@@ -168,7 +169,7 @@ export const birthday: CommandDefinition = {
                         birthdayEmbed = makeEmbed({
                             title: 'Birthday timezone failed',
                             description: 'Insufficient args provided. Please use `.birthday timezone <user> <offset>`',
-                            color: 'RED',
+                            color: Colors.Red,
                         });
                     } else {
                         const timezoneOffset = parseInt(timezoneArgs[0]);
@@ -179,13 +180,13 @@ export const birthday: CommandDefinition = {
                             birthdayEmbed = makeEmbed({
                                 title: 'Birthday timezone failed',
                                 description: 'Invalid timezone format. Please use `.birthday timezone <user> <offset>`',
-                                color: 'RED',
+                                color: Colors.Red,
                             });
                         } else if (timezoneOffset < -12 && timezoneOffset > 14) {
                             birthdayEmbed = makeEmbed({
                                 title: 'Birthday timezone failed',
                                 description: 'Invalid timezone offset',
-                                color: 'RED',
+                                color: Colors.Red,
                             });
                         } else {
                             birthday.timezone = timezoneOffset;
@@ -215,7 +216,7 @@ export const birthday: CommandDefinition = {
                 birthdayEmbed = makeEmbed({
                     title: 'Birthday timezone failed',
                     description: 'You must specify a user',
-                    color: 'RED',
+                    color: Colors.Red,
                 });
             }
         } else if (args[0] === 'list') {
