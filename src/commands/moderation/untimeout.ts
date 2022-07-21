@@ -71,7 +71,8 @@ export const untimeout: CommandDefinition = {
     category: CommandCategory.MODERATION,
     executor: async (msg) => {
         const args = msg.content.replace(/(?:\.untimeout|\.removetimeout)\s+/, '').split(' ');
-        if (args.length < 1) {
+
+        if (args.length < 1 && parseInt(args[1]) !== 0) {
             await msg.reply('You need to provide the following arguments for this command: <id>');
             return;
         }
@@ -80,7 +81,7 @@ export const untimeout: CommandDefinition = {
         const id = args[0];
         const targetUser: GuildMember = await msg.guild.members.fetch(id);
 
-        targetUser.timeout(0).then(async () => {
+        targetUser.timeout(1).then(async () => {
             if (targetUser.isCommunicationDisabled() === false) {
                 const timeoutResponse = await msg.channel.send({ embeds: [unTimeoutEmbed(targetUser.user)] });
                 try {
