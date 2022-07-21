@@ -1,4 +1,4 @@
-import { Client, Guild, TextChannel } from 'discord.js';
+import { Client, Colors, Guild, TextChannel } from 'discord.js';
 import { makeEmbed } from '../lib/embed';
 import Logger from '../lib/logger';
 import { GuildID, Channels } from '../constants';
@@ -71,7 +71,7 @@ async function processBirthdays(client: Client) {
         const noConnEmbed = makeEmbed({
             title: 'Error',
             description: 'Could not connect to database',
-            color: 'RED',
+            color: Colors.Red,
         });
         await thread.send({ embeds: [noConnEmbed] });
         return;
@@ -90,7 +90,7 @@ async function processBirthdays(client: Client) {
         const birthdayEmbed = makeEmbed({
             title: 'Happy Birthday!',
             description: `${user.displayName}'s birthday is today!`,
-            color: 'GREEN',
+            color: Colors.Green,
             image: { url: gifs[Math.floor(Math.random() * gifs.length)] },
         });
 
