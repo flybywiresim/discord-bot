@@ -36,7 +36,7 @@ module.exports = {
                     description: 'An allowed role has used @everyone',
                     author: {
                         name: msg.author.tag,
-                        icon_url: msg.author.displayAvatarURL({ dynamic: true }),
+                        iconURL: msg.author.displayAvatarURL({ dynamic: true }),
                     },
                     fields: [
                         {
@@ -67,7 +67,7 @@ module.exports = {
                     const noDMEmbed = makeEmbed({
                         author: {
                             name: msg.author.tag,
-                            icon_url: msg.author.displayAvatarURL({ dynamic: true }),
+                            iconURL: msg.author.displayAvatarURL({ dynamic: true }),
                         },
                         description: `DM was not sent to <@${msg.author.id}>.`,
                     });
@@ -80,7 +80,7 @@ module.exports = {
                     thumbnail: { url: 'https://cdn.discordapp.com/attachments/932350968522240101/932625893657026630/Scam.png' },
                     author: {
                         name: msg.author.tag,
-                        icon_url: msg.author.displayAvatarURL({ dynamic: true }),
+                        iconURL: msg.author.displayAvatarURL({ dynamic: true }),
                     },
                     fields: [
                         {
