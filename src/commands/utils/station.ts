@@ -1,4 +1,5 @@
 import fetch from 'node-fetch';
+import { Colors } from 'discord.js';
 import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
@@ -15,7 +16,7 @@ export const station: CommandDefinition = {
             const noQueryEmbed = makeEmbed({
                 title: 'Station Error | Missing Query',
                 description: 'You must provide an airport ICAO code.',
-                color: 'RED',
+                color: Colors.Red,
             });
             await msg.channel.send({ embeds: [noQueryEmbed] });
             return;
@@ -32,7 +33,7 @@ export const station: CommandDefinition = {
                 const invalidEmbed = makeEmbed({
                     title: `Station Error | ${icaoArg.toUpperCase()}`,
                     description: stationReport.error,
-                    color: 'RED',
+                    color: Colors.Red,
                 });
                 await msg.channel.send({ embeds: [invalidEmbed] });
                 return;
@@ -70,7 +71,7 @@ export const station: CommandDefinition = {
             const fetchErrorEmbed = makeEmbed({
                 title: 'Station Error | Fetch Error',
                 description: 'There was an error fetching the station report. Please try again later.',
-                color: 'RED',
+                color: Colors.Red,
             });
             await msg.channel.send({ embeds: [fetchErrorEmbed] });
         }
