@@ -6,7 +6,7 @@ const MICO_URL = 'https://cdn.discordapp.com/attachments/897491699167793182/9617
 export const mico: CommandDefinition = {
     name: 'mico',
     description: 'mico!',
-    category: CommandCategory.FUNNIES,
+    category: CommandCategory.MEMES,
     executor: async (msg) => {
         await msg.channel.send(MICO_URL);
     },

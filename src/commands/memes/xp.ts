@@ -6,7 +6,7 @@ const XP_URL = 'https://tenor.com/view/austin-meyer-austin-slap-annoyed-xplane-g
 export const xp: CommandDefinition = {
     name: ['xp', 'xplane', 'x-plane'],
     description: 'XPlane',
-    category: CommandCategory.FUNNIES,
+    category: CommandCategory.MEMES,
     executor: async (msg) => {
         await msg.channel.send(XP_URL);
     },

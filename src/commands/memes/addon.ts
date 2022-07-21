@@ -7,7 +7,7 @@ const ADDON_URL = 'https://cdn.discordapp.com/attachments/811229810193465344/904
 export const addon: CommandDefinition = {
     name: 'addon',
     description: 'addon not mod meme',
-    category: CommandCategory.FUNNIES,
+    category: CommandCategory.MEMES,
     executor: async (msg) => {
         const addonEmbed = makeEmbed({ image: { url: ADDON_URL } });
         await msg.channel.send({ embeds: [addonEmbed] });

@@ -6,7 +6,7 @@ const P3D_URL = 'https://cdn.discordapp.com/attachments/817470205260726322/96278
 export const p3d: CommandDefinition = {
     name: 'p3d',
     description: 'No!',
-    category: CommandCategory.FUNNIES,
+    category: CommandCategory.MEMES,
     executor: async (msg) => {
         await msg.channel.send(P3D_URL);
     },
