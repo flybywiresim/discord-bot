@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { TextChannel } from 'discord.js';
+import { Colors, TextChannel } from 'discord.js';
 import { CommandDefinition } from '../../../lib/command';
 import { Roles, CommandCategory, Channels } from '../../../constants';
 import { makeEmbed } from '../../../lib/embed';
@@ -14,42 +14,42 @@ const permittedRoles = [
 const noConnEmbed = makeEmbed({
     title: 'Warn - No Connection',
     description: 'Could not connect to the database',
-    color: 'RED',
+    color: Colors.Red,
 });
 
 const noPermEmbed = makeEmbed({
     title: 'Warn',
     description: 'You do not have permission to use this command.',
-    color: 'RED',
+    color: Colors.Red,
 });
 
 const noWarningEmbed = makeEmbed({
     title: 'Warn - No Warning',
     description: 'Could not find warning. Please check the `Warn ID`',
-    color: 'RED',
+    color: Colors.Red,
 });
 
 const deleteFailedEmbed = makeEmbed({
     title: 'Warn - Failed',
     description: 'Warning could not be removed',
-    color: 'RED',
+    color: Colors.Red,
 });
 
 const noModLogs = makeEmbed({
     title: 'Warn - No Mod Log',
     description: 'The warn was removed, but no mod log was sent. Please check the channel still exists',
-    color: 'RED',
+    color: Colors.Red,
 });
 
 const deleteEmbed = makeEmbed({
     title: 'Warn - Removed',
     description: 'Warning has been removed',
-    color: 'GREEN',
+    color: Colors.Green,
 });
 
 export const deleteWarn: CommandDefinition = {
     name: ['deletewarn', 'delwarn', 'deletewarning'],
-    requiredPermissions: ['BAN_MEMBERS'],
+    requiredPermissions: ['BanMembers'],
     description: 'Delete a warning',
     category: CommandCategory.MODERATION,
     executor: async (msg) => {
@@ -103,7 +103,7 @@ export const deleteWarn: CommandDefinition = {
             title: 'Warn - Removed',
             description: `A warning has been remove by <@${msg.author}>`,
             fields,
-            color: 'GREEN',
+            color: Colors.Green,
         });
 
         try {

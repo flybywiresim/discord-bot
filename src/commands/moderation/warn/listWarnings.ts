@@ -1,4 +1,4 @@
-import { User } from 'discord.js';
+import { Colors, User } from 'discord.js';
 import moment from 'moment';
 import { CommandDefinition } from '../../../lib/command';
 import { Roles, CommandCategory } from '../../../constants';
@@ -14,18 +14,18 @@ const permittedRoles = [
 const noConnEmbed = makeEmbed({
     title: 'Warn - No Connection',
     description: 'Could not connect to the database',
-    color: 'RED',
+    color: Colors.Red,
 });
 
 const noPermEmbed = makeEmbed({
     title: 'Warn',
     description: 'You do not have permission to use this command.',
-    color: 'RED',
+    color: Colors.Red,
 });
 
 export const listWarnings: CommandDefinition = {
     name: ['warnings', 'listwarn', 'listwarnings', 'warns'],
-    requiredPermissions: ['BAN_MEMBERS'],
+    requiredPermissions: ['BanMembers'],
     description: 'Returns warnings for a user',
     category: CommandCategory.MODERATION,
     executor: async (msg) => {
@@ -67,7 +67,7 @@ export const listWarnings: CommandDefinition = {
         const warnEmbed = (user: User) => makeEmbed({
             author: {
                 name: `${user.tag}'s warnings`,
-                icon_url: user.displayAvatarURL({ dynamic: true }),
+                iconURL: user.displayAvatarURL(),
             },
             description: fields.length > 0 ? null : 'No Warnings',
             fields,
