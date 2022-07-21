@@ -33,7 +33,7 @@ export const whois: CommandDefinition = {
         const whoisEmbed = makeEmbed({
             author: {
                 name: targetMember.user.username,
-                icon_url: targetMember.user.avatarURL(),
+                iconURL: targetMember.user.avatarURL(),
             },
             description: `<@!${targetMember.id}>`,
             thumbnail: { url: targetMember.user.avatarURL() },
