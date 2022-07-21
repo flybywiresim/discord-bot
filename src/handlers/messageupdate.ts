@@ -1,4 +1,4 @@
-import { TextChannel } from 'discord.js';
+import { Colors, TextChannel } from 'discord.js';
 import { Channels, UserLogExclude } from '../constants';
 import { makeEmbed } from '../lib/embed';
 
@@ -21,11 +21,11 @@ module.exports = {
 
         if (userLogsChannel && !UserLogExclude.some((e) => e === oldMessage.author.id)) {
             const messageUpdateEmbed = makeEmbed({
-                color: 'ORANGE',
+                color: Colors.Orange,
                 thumbnail: { url: 'https://cdn.discordapp.com/attachments/770835189419999262/779963227589050378/edit-message-pngrepo-com.png' },
                 author: {
                     name: oldMessage.author.tag,
-                    icon_url: oldMessage.author.displayAvatarURL({ dynamic: true }),
+                    iconURL: oldMessage.author.displayAvatarURL({ dynamic: true }),
                 },
                 fields: [
                     { name: 'Author', value: `<@${oldMessage.author}>`, inline: true },
