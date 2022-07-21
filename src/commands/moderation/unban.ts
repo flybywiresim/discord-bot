@@ -1,4 +1,4 @@
-import discord, { EmbedField, Snowflake, User } from 'discord.js';
+import { Colors, EmbedBuilder, EmbedField, Snowflake, User } from 'discord.js';
 import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
@@ -7,7 +7,7 @@ type UserLike = User | Snowflake
 
 export const unban: CommandDefinition = {
     name: 'unban',
-    requiredPermissions: ['BAN_MEMBERS'],
+    requiredPermissions: ['BanMembers'],
     category: CommandCategory.MODERATION,
     executor: async (msg) => {
         const splitUp = msg.content.replace(/\.unban\s+/, '').split(' ');
@@ -29,7 +29,7 @@ export const unban: CommandDefinition = {
     },
 };
 
-function makeSuccessfulUnbanEmbed(user: UserLike): discord.MessageEmbed {
+function makeSuccessfulUnbanEmbed(user: UserLike): EmbedBuilder {
     const fields: EmbedField[] = [];
 
     if (user instanceof User) {
@@ -49,11 +49,11 @@ function makeSuccessfulUnbanEmbed(user: UserLike): discord.MessageEmbed {
     return makeEmbed({
         title: 'User Successfully Unbanned',
         fields,
-        color: 'GREEN',
+        color: Colors.Green,
     });
 }
 
-function makeFailedUnbanEmbed(user: UserLike, error: any): discord.MessageEmbed {
+function makeFailedUnbanEmbed(user: UserLike, error: any): EmbedBuilder {
     const fields: EmbedField[] = [];
 
     if (user instanceof User) {
@@ -79,6 +79,6 @@ function makeFailedUnbanEmbed(user: UserLike, error: any): discord.MessageEmbed 
     return makeEmbed({
         title: 'Failed to Unban User',
         fields,
-        color: 'RED',
+        color: Colors.Red,
     });
 }
