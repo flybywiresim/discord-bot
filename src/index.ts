@@ -1,6 +1,6 @@
 import { start } from 'elastic-apm-node';
 import dotenv from 'dotenv';
-import { ChannelType, Client, Colors, GatewayIntentBits, Partials } from 'discord.js';
+import { ChannelType, Client, Colors, Partials } from 'discord.js';
 import express from 'express';
 import { readdirSync } from 'fs';
 import { join } from 'path';
@@ -19,16 +19,16 @@ export const DEBUG_MODE = process.env.DEBUG_MODE === 'true';
 
 const client = new Client({
     intents: [
-        GatewayIntentBits.Guilds,
-        GatewayIntentBits.GuildMembers,
-        GatewayIntentBits.GuildPresences,
-        GatewayIntentBits.GuildMessages,
-        GatewayIntentBits.GuildMessageReactions,
-        GatewayIntentBits.GuildEmojisAndStickers,
-        GatewayIntentBits.DirectMessages,
-        GatewayIntentBits.DirectMessageReactions,
-        GatewayIntentBits.DirectMessageTyping,
-        GatewayIntentBits.MessageContent,
+        'Guilds',
+        'GuildMembers',
+        'GuildPresences',
+        'GuildMessages',
+        'GuildMessageReactions',
+        'GuildEmojisAndStickers',
+        'DirectMessages',
+        'DirectMessageReactions',
+        'DirectMessageTyping',
+        'MessageContent',
     ],
     partials: [
         Partials.Channel,
