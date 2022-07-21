@@ -1,4 +1,4 @@
-import { DMChannel, EmbedFieldData, User } from 'discord.js';
+import { DMChannel, EmbedField, User } from 'discord.js';
 import { CommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
 import commands from '../index';
@@ -145,7 +145,7 @@ async function handleDmCommunication(dmChannel: DMChannel, author: User, index: 
     await sentEmbedMessage.react('❌');
 }
 
-function renderAllCategories(): EmbedFieldData[] {
+function renderAllCategories(): EmbedField[] {
     let commandArray = Object.values(commands);
 
     // Remove duplicates by name
@@ -162,13 +162,14 @@ function renderAllCategories(): EmbedFieldData[] {
             };
         });
 
-    const fields: EmbedFieldData[] = [];
+    const fields: EmbedField[] = [];
 
     for (const category of groupedCommands) {
         const fieldsValues = chunkStringArray(category.commands.map(renderCommand), 1024, '\n');
 
         fieldsValues.forEach((value) => {
             fields.push({
+                inline: false,
                 name: category.name,
                 value: value.join('\n'),
             });
