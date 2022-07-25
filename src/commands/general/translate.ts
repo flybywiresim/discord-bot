@@ -1,5 +1,5 @@
 import { CommandDefinition } from '../../lib/command';
-import { CommandCategory } from '../../constants';
+import { Channels, CommandCategory } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
 
 export const translate: CommandDefinition = {
@@ -10,10 +10,9 @@ export const translate: CommandDefinition = {
         const translateEmbed = makeEmbed({
             title: 'FlyByWire A32NX | Project Translations',
             description: makeLines([
-                'If you have any questions or are looking to contribute to the flyPadOS 3 or Installer translation '
-                + 'efforts please see the following information. ',
+                'If you have any questions or are looking to contribute to the flyPadOS 3 or Installer translation efforts please see the following information.',
                 '',
-                'Discussion Channel: <#964912922272870470> ',
+                `Discussion Channel: <#${Channels.LOCALISATION}>`,
                 '',
                 'You can find the appropriate website for contributions below: ',
                 '- [flyPadOS 3 Translations](https://localazy.com/p/flypados) ',
