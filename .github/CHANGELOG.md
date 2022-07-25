@@ -2,7 +2,7 @@
 
 Update <small>_ July 2022</small>
 
-
+- feat: cowsay command sanitization (25/07/2022)
 - refactor: update deadzones command (19/07/2022)
 - refactor: downscale .pov and .efb gifs (19/07/2022)
 - fix: use non-vanity Synaptic Discord link (19/07/2022)
