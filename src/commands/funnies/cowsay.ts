@@ -9,7 +9,7 @@ export const cowsay: CommandDefinition = {
     category: CommandCategory.FUNNIES,
     executor: (msg) => {
         const filter = new Filter();
-        const text = msg.content.replace(/\.(cowsay|cs)\s*`*/, '');
+        const text = msg.content.replace(/\.(cowsay|cs)\s/, '').replace(/`/g, '');
         if (msg.channel.id !== Channels.BOT_COMMANDS) {
             return msg.reply(`This command can only be used in <#${Channels.BOT_COMMANDS}>`);
         }
