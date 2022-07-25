@@ -2,6 +2,8 @@ import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
 
+const UTF8_HELP_URL = 'https://cdn.discordapp.com/attachments/902990139670814750/1001138306257518682/utf8.PNG';
+
 export const utf8: CommandDefinition = {
     name: 'utf8',
     description: 'Provides a link to resolve UTF-8 issues',
@@ -14,6 +16,7 @@ export const utf8: CommandDefinition = {
                 '',
                 'Please see our [documentation](https://docs.flybywiresim.com/fbw-a32nx/support/reported-issues/?h=utf8#autopilot-fadec-electrical-systems-not-working-as-intended-utf8-issue) for solutions.',
             ]),
+            image: { url: UTF8_HELP_URL },
         });
 
         await msg.channel.send({ embeds: [utf8Embed] });
