@@ -10,10 +10,9 @@ export const audio: CommandDefinition = {
         const audioEmbed = makeEmbed({
             title: 'FlyByWire A32NX | Audio Configuration',
             description: makeLines([
-                'For detailed information about various audio configurations on the EFB '
-                + 'and in-flight audio triggers please see the guide below. ',
+                'For detailed information about various audio configurations on the EFB and in-flight audio triggers please see the guide below.',
                 '',
-                '[A32NX Audio Configuration](https://docs.flybywiresim.com/fbw-a32nx/feature-guides/audio/) ',
+                '[A32NX Audio Configuration](https://docs.flybywiresim.com/fbw-a32nx/feature-guides/audio/)',
             ]),
         });
 

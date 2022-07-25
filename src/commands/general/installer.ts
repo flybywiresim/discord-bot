@@ -9,8 +9,7 @@ export const installer: CommandDefinition = {
     executor: async (msg) => {
         const installerEmbed = makeEmbed({
             title: 'Installer',
-            description: 'Download the new A32NX Installer where you can select either the Stable, Developer or an Experimental Version, '
-                + 'and download and install the addon directly into your Community Folder, [download here](https://api.flybywiresim.com/installer)',
+            description: 'Download the new A32NX Installer where you can select either the Stable, Developer or an Experimental Version, and download and install the addon directly into your Community Folder, [download here](https://api.flybywiresim.com/installer)',
             footer: { text: 'If you are having further problems, let us know in our Support Channel and we will provide more assistance.' },
         });
 
