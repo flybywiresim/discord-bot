@@ -1,7 +1,7 @@
 import Filter from 'bad-words';
 import { say } from 'cowsay';
 import { CommandDefinition } from '../../lib/command';
-import { CommandCategory } from '../../constants';
+import { Channels, CommandCategory } from '../../constants';
 
 export const cowsay: CommandDefinition = {
     name: ['cowsay', 'cs'],
@@ -10,6 +10,9 @@ export const cowsay: CommandDefinition = {
     executor: (msg) => {
         const filter = new Filter();
         const text = msg.content.replace(/\.(cowsay|cs)\s*`*/, '');
+        if (msg.channel.id !== Channels.BOT_COMMANDS) {
+            return msg.reply(`This command can only be used in <#${Channels.BOT_COMMANDS}>`);
+        }
 
         if (filter.isProfane(text)) {
             return msg.reply('Please do not use profane language with this command.');
