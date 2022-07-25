@@ -24,7 +24,7 @@ const warnEmbed = (user: User) => makeEmbed({
 
 const modLogEmbed = (formattedDate, moderator: User, user: User, reason: string) => makeEmbed({
     author: {
-        name: `[WARNED]  ${user.tag}`,
+        name: `[WARNED] ${user.tag}`,
         icon_url: user.displayAvatarURL({ dynamic: true }),
     },
     fields: [
