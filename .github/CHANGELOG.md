@@ -2,6 +2,7 @@
 
 Update <small>_ July 2022</small>
 
+- refactor: add steps and image to utf8 command (26/07/2022)
 - feat: cowsay command sanitization (25/07/2022)
 - refactor: update deadzones command (19/07/2022)
 - refactor: downscale .pov and .efb gifs (19/07/2022)
