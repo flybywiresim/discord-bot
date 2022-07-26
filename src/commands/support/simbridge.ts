@@ -18,6 +18,6 @@ export const simbridge: CommandDefinition = {
             ]),
         });
 
-        await msg.channel.send({ embeds: [simbridgeEmbed] });
+        return msg.channel.send({ embeds: [simbridgeEmbed] });
     },
 };
