@@ -3,7 +3,7 @@ import { CommandCategory } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 
 export const tiller: CommandDefinition = {
-    name: ['tiller', 'steer', 'steering', 'til'],
+    name: ['tiller', 'steer', 'steering', 'til', 'nws'],
     description: 'Provides a link to the tiller feature guide',
     category: CommandCategory.A32NX,
     executor: async (msg) => {
