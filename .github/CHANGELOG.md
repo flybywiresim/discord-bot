@@ -2,6 +2,7 @@
 
 Update <small>_ July 2022</small>
 
+- refactor: add .deadzones alias to .dz command, correct docs (27/07/2022)
 - refactor: add .nws alias to .tiller command (27/07/2022)
 - feat: simbridge support command (27/07/2022)
 - refactor: add steps and image to utf8 command (26/07/2022)
