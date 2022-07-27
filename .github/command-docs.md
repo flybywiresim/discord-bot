@@ -121,7 +121,7 @@
 | .controls       | Instructions on how to switch back to legacy controls and how to use new controls | .legacy                                            |
 | .ctd            | Crash to Desktop                                                                  | .crash                                             |
 | .cursor         | Displays steps to help with EFB cursor focus issue                                | .efbfocus <br> .unfocus                            |
-| .deadzones      | Display help with controller deadzones                                            | .dz                                                |
+| .deadzones      | Display help with controller deadzones                                            | .dz <br> .deadzone                                 |
 | .dx12           | Explaination for the current state of MSFS DirectX12 support                      | ---                                                |
 | .discontinuity  | Link to docs about discontinuities                                                | .disco                                             |
 | .fdr            | Information on how to provide fdr files                                           | ---                                                |
