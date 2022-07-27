@@ -74,6 +74,7 @@
 
 | Command      | Description                                                                                                    | Alias                    |
 |:-------------|:---------------------------------------------------------------------------------------------------------------|:-------------------------|
+| .dfd         | Provides link to the DFD discord server                                                                        | .digitalflightdynamics
 | .donate      | Provides a link to the open collective                                                                         | ---                      |
 | .goldenrules | Provides an image describing the golden rules an Airbus pilot should follow                                    | .golden <br> .gr         |
 | .headwind    | Provides link to the Headwind Discord server                                                                   | .hw                      |

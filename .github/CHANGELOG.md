@@ -2,6 +2,7 @@
 
 Update <small>_ July 2022</small>
 
+- feat: add Digital Flight Dynamics Discord link command (26/07/2022)
 - refactor: add steps and image to utf8 command (26/07/2022)
 - feat: cowsay command sanitization (25/07/2022)
 - refactor: update deadzones command (19/07/2022)
