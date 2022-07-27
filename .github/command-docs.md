@@ -35,7 +35,7 @@
 | .takeoff       | Provides an explanation as to why there is no takeoff calculator for V-speeds or FLEX | .calculator <br> .perf                                 |
 | .takeoffissues | Provides help regarding engine issues on takeoff                                      | .toi <br> .engines <br> .eng                           |
 | .tcas          | Provides support information about A32NX AP/FD TCAS                                   | ---                                                    |
-| .tiller        | Provides a link to the tiller feature guide                                           | .steer <br> .steering <br> .til                        |
+| .tiller        | Provides a link to the tiller feature guide                                           | .steer <br> .steering <br> .til <br> .nws              |
 | .versions      | Explains the different A32NX versions                                                 | ---                                                    |
 | .weather       | Explains the current state of the weather and terrain radars in experimental          | .wx                                                    |
 | .weights       | Provides a link to the fuel and weights docs guide                                    | .fuel <br> .wb <br> .w/b <br> .w+b <br> .wnb <br> .w&b |
