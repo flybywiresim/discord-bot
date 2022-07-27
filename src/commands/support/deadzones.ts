@@ -5,7 +5,7 @@ import { CommandCategory } from '../../constants';
 const DEADZONE_IMAGE_URL = 'https://cdn.discordapp.com/attachments/770835189419999262/802254518376464424/Deadzone_Controls.png';
 
 export const deadzones: CommandDefinition = {
-    name: ['deadzone', 'dz'],
+    name: ['deadzones', 'deadzone', 'dz'],
     description: 'Display help with controller deadzones',
     category: CommandCategory.SUPPORT,
     executor: async (msg) => {
