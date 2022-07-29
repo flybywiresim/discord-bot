@@ -1,4 +1,3 @@
-import { start } from 'elastic-apm-node';
 import dotenv from 'dotenv';
 import { ChannelType, Client, Colors, Partials } from 'discord.js';
 import express from 'express';
@@ -10,7 +9,7 @@ import Logger from './lib/logger';
 import { connect } from './lib/db';
 
 dotenv.config();
-const apm = start({
+const apm = require('elastic-apm-node').start({
     serviceName: 'discord-bot',
     disableSend: true,
 });
