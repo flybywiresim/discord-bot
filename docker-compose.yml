@@ -31,9 +31,11 @@ services:
     env_file:
       - ./.env
 
-  bot:
-    image: bot
-    container_name: bot
+  fbw-bot:
+    build:
+        context: .
+        dockerfile: Dockerfile
+    container_name: fbw-bot
     restart: always
     ports:
       - 3000:3000
