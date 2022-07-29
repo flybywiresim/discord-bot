@@ -120,17 +120,21 @@ client.on('messageCreate', async (msg) => {
     }
 });
 
-const eventHandlers = readdirSync(join(__dirname, 'handlers'));
+try {
+    const eventHandlers = readdirSync(join(__dirname, 'handlers'));
 
-for (const file of eventHandlers) {
-    // eslint-disable-next-line global-require,import/no-dynamic-require
-    const handler = require(`./handlers/${file}`);
+    eventHandlers.map((file) => {
+        // eslint-disable-next-line global-require,import/no-dynamic-require
+        const handler = require(`./handlers/${file}`);
 
-    if (handler.once) {
-        client.once(handler.event, (...args) => handler.executor(...args));
-    } else {
-        client.on(handler.event, (...args) => handler.executor(...args));
-    }
+        if (handler.once) {
+            client.once(handler.event, (...args) => handler.executor(...args));
+        }
+        return client.on(handler.event, (...args) => handler.executor(...args));
+    });
+} catch (err) {
+    Logger.error(err);
+    process.exit(1);
 }
 
 client.login(process.env.BOT_SECRET)
