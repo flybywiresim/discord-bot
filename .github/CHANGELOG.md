@@ -2,6 +2,7 @@
 
 Update <small>_ July 2022</small>
 
+- feat: public holidays command (30/07/2022)
 - chore: bump discord package version with fixes @v14.0.3 (29/07/2022)
 - refactor: add .deadzones alias to .dz command, correct docs (27/07/2022)
 - refactor: add .nws alias to .tiller command (27/07/2022)
