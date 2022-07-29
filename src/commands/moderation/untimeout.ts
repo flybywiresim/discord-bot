@@ -1,4 +1,4 @@
-import { Guild, GuildMember, TextChannel, User } from 'discord.js';
+import { Colors, Guild, GuildMember, TextChannel, User } from 'discord.js';
 import { CommandDefinition } from '../../lib/command';
 import { CommandCategory, Channels } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
@@ -24,14 +24,14 @@ export const unTimeoutEmbed = (user: User) => makeEmbed({
             value: user.id,
         },
     ],
-    color: 'GREEN',
+    color: Colors.Green,
 });
 
 export const unTimeoutModLogEmbed = (moderator: User, user: User) => makeEmbed({
-    color: 'GREEN',
+    color: Colors.Green,
     author: {
         name: `[REMOVED TIMEOUT] ${user.tag}`,
-        icon_url: user.displayAvatarURL({ dynamic: true }),
+        iconURL: user.displayAvatarURL(),
     },
     fields: [
         {
@@ -61,17 +61,18 @@ const failedUnTimeoutEmbed = (user: User) => (makeEmbed({
             value: user.id,
         },
     ],
-    color: 'RED',
+    color: Colors.Red,
 })
 );
 
 export const untimeout: CommandDefinition = {
     name: ['untimeout', 'removetimeout'],
-    requiredPermissions: ['BAN_MEMBERS'],
+    requiredPermissions: ['BanMembers'],
     category: CommandCategory.MODERATION,
     executor: async (msg) => {
         const args = msg.content.replace(/(?:\.untimeout|\.removetimeout)\s+/, '').split(' ');
-        if (args.length < 1) {
+
+        if (args.length < 1 && parseInt(args[1]) !== 0) {
             await msg.reply('You need to provide the following arguments for this command: <id>');
             return;
         }
@@ -80,7 +81,7 @@ export const untimeout: CommandDefinition = {
         const id = args[0];
         const targetUser: GuildMember = await msg.guild.members.fetch(id);
 
-        targetUser.timeout(0).then(async () => {
+        targetUser.timeout(1).then(async () => {
             if (targetUser.isCommunicationDisabled() === false) {
                 const timeoutResponse = await msg.channel.send({ embeds: [unTimeoutEmbed(targetUser.user)] });
                 try {
@@ -93,10 +94,10 @@ export const untimeout: CommandDefinition = {
                                 makeEmbed({
                                     author: {
                                         name: msg.author.tag,
-                                        icon_url: msg.author.displayAvatarURL({ dynamic: true }),
+                                        iconURL: msg.author.displayAvatarURL(),
                                     },
                                     title: 'Error while sending DM',
-                                    color: 'RED',
+                                    color: Colors.Red,
                                     description: `DM was not sent to ${targetUser.toString()} for their timeout removal.`,
                                 }),
                             ],

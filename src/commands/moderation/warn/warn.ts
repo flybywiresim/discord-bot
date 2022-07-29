@@ -1,4 +1,4 @@
-import { TextChannel, User } from 'discord.js';
+import { Colors, TextChannel, User } from 'discord.js';
 import moment from 'moment';
 import { CommandDefinition } from '../../../lib/command';
 import { Roles, Channels, CommandCategory } from '../../../constants';
@@ -14,18 +14,18 @@ const permittedRoles = [
 const noConnEmbed = makeEmbed({
     title: 'Warn - No Connection',
     description: 'Could not connect to the database',
-    color: 'RED',
+    color: Colors.Red,
 });
 
 const warnEmbed = (user: User) => makeEmbed({
     title: `${user.tag} was warned successfully`,
-    color: 'GREEN',
+    color: Colors.Green,
 });
 
 const modLogEmbed = (formattedDate, moderator: User, user: User, reason: string) => makeEmbed({
     author: {
         name: `[WARNED]  ${user.tag}`,
-        icon_url: user.displayAvatarURL({ dynamic: true }),
+        iconURL: user.displayAvatarURL(),
     },
     fields: [
         {
@@ -50,7 +50,7 @@ const modLogEmbed = (formattedDate, moderator: User, user: User, reason: string)
         },
     ],
     footer: { text: `User ID: ${user.id}` },
-    color: 'RED',
+    color: Colors.Red,
 });
 
 const dmEmbed = (formattedDate, moderator: User, user: User, reason: string) => makeEmbed({
@@ -77,30 +77,30 @@ const dmEmbed = (formattedDate, moderator: User, user: User, reason: string) => 
 const noPermEmbed = makeEmbed({
     title: 'Warn',
     description: 'You do not have permission to use this command.',
-    color: 'RED',
+    color: Colors.Red,
 });
 
 const warnFailed = makeEmbed({
     title: 'Warn - Failed',
     description: 'Failed to warn user, doc not saved to mongoDB',
-    color: 'RED',
+    color: Colors.Red,
 });
 
 const noDM = makeEmbed({
     title: 'Warn - DM not sent',
     description: 'User has DMs closed or has no mutual servers with the bot',
-    color: 'RED',
+    color: Colors.Red,
 });
 
 const noModLogs = makeEmbed({
     title: 'Warn - No Mod Log',
     description: 'The user was warned, but no mod log was sent. Please check the channel still exists',
-    color: 'RED',
+    color: Colors.Red,
 });
 
 export const warn: CommandDefinition = {
     name: 'warn',
-    requiredPermissions: ['BAN_MEMBERS'],
+    requiredPermissions: ['BanMembers'],
     description: 'Warns a user',
     category: CommandCategory.MODERATION,
     executor: async (msg) => {

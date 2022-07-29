@@ -1,6 +1,6 @@
 import { start } from 'elastic-apm-node';
 import dotenv from 'dotenv';
-import Discord from 'discord.js';
+import { ChannelType, Client, Colors, Partials } from 'discord.js';
 import express from 'express';
 import { readdirSync } from 'fs';
 import { join } from 'path';
@@ -17,10 +17,26 @@ const apm = start({
 
 export const DEBUG_MODE = process.env.DEBUG_MODE === 'true';
 
-const intents = new Discord.Intents(32767);
-const client = new Discord.Client({
-    partials: ['USER', 'CHANNEL', 'GUILD_MEMBER', 'MESSAGE', 'REACTION'],
-    intents,
+const client = new Client({
+    intents: [
+        'Guilds',
+        'GuildMembers',
+        'GuildPresences',
+        'GuildMessages',
+        'GuildMessageReactions',
+        'GuildEmojisAndStickers',
+        'DirectMessages',
+        'DirectMessageReactions',
+        'DirectMessageTyping',
+        'MessageContent',
+    ],
+    partials: [
+        Partials.Channel,
+        Partials.Message,
+        Partials.User,
+        Partials.GuildMember,
+        Partials.Reaction,
+    ],
 });
 
 let healthy = false;
@@ -42,8 +58,8 @@ client.on('disconnect', () => {
 });
 
 client.on('messageCreate', async (msg) => {
-    const isDm = msg.channel.type === 'DM';
-    const guildId = !isDm ? msg.guild.id : 'DM';
+    const isDm = msg.channel.type === ChannelType.DM;
+    const guildId = !isDm ? msg.guild.id : ChannelType.DM;
 
     Logger.debug(`Processing message ${msg.id} from user ${msg.author.id} in channel ${msg.channel.id} of server ${guildId}.`);
 
@@ -81,7 +97,7 @@ client.on('messageCreate', async (msg) => {
                     } catch ({ name, message, stack }) {
                         Logger.error({ name, message, stack });
                         const errorEmbed = makeEmbed({
-                            color: 'RED',
+                            color: Colors.Red,
                             title: 'Error while Executing Command',
                             description: DEBUG_MODE ? `\`\`\`D\n${stack}\`\`\`` : `\`\`\`\n${name}: ${message}\n\`\`\``,
                         });
@@ -104,17 +120,21 @@ client.on('messageCreate', async (msg) => {
     }
 });
 
-const eventHandlers = readdirSync(join(__dirname, 'handlers'));
+try {
+    const eventHandlers = readdirSync(join(__dirname, 'handlers'));
 
-for (const file of eventHandlers) {
-    // eslint-disable-next-line global-require,import/no-dynamic-require
-    const handler = require(`./handlers/${file}`);
+    eventHandlers.map((file) => {
+        // eslint-disable-next-line global-require,import/no-dynamic-require
+        const handler = require(`./handlers/${file}`);
 
-    if (handler.once) {
-        client.once(handler.event, (...args) => handler.executor(...args));
-    } else {
-        client.on(handler.event, (...args) => handler.executor(...args));
-    }
+        if (handler.once) {
+            client.once(handler.event, (...args) => handler.executor(...args));
+        }
+        return client.on(handler.event, (...args) => handler.executor(...args));
+    });
+} catch (err) {
+    Logger.error(err);
+    process.exit(1);
 }
 
 client.login(process.env.BOT_SECRET)
