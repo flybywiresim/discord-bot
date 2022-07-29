@@ -10,14 +10,14 @@ export const avatar: CommandDefinition = {
         const split = msg.content.replace(/(?:\.av|\.avatar)\s+/, '').split(' ');
         const userID = msg.guild.members.cache.get(split[0]);
         const user = msg.mentions.users.first() || userID || msg.author;
-        user.displayAvatarURL({ dynamic: true });
-        const avatarEmbed = makeEmbed({ image: { url: user.displayAvatarURL({ dynamic: true, size: 4096 }) } });
+        user.displayAvatarURL();
+        const avatarEmbed = makeEmbed({ image: { url: user.displayAvatarURL({ size: 4096 }) } });
         if (user === msg.mentions.users.first()) {
-            avatarEmbed.title = `${user.tag}'s avatar`;
+            avatarEmbed.data.title = `${user.tag}'s avatar`;
         } else if (user === msg.author) {
-            avatarEmbed.title = `${msg.author.tag}'s avatar`;
+            avatarEmbed.data.title = `${msg.author.tag}'s avatar`;
         } else if (user === userID) {
-            avatarEmbed.title = `${userID.user.tag}'s avatar`;
+            avatarEmbed.data.title = `${userID.user.tag}'s avatar`;
         }
         return msg.channel.send({ embeds: [avatarEmbed] });
     },

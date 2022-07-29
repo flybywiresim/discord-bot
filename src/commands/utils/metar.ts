@@ -1,4 +1,5 @@
 import fetch from 'node-fetch';
+import { Colors } from 'discord.js';
 import { CommandDefinition } from '../../lib/command';
 import { CommandCategory, Units } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
@@ -15,7 +16,7 @@ export const metar: CommandDefinition = {
             const noQueryEmbed = makeEmbed({
                 title: 'Metar Error | Missing Query',
                 description: 'You must provide an airport ICAO code.',
-                color: 'RED',
+                color: Colors.Red,
             });
             await msg.channel.send({ embeds: [noQueryEmbed] });
             return Promise.resolve();
@@ -32,7 +33,7 @@ export const metar: CommandDefinition = {
                 const invalidEmbed = makeEmbed({
                     title: `Metar Error | ${icaoArg.toUpperCase()}`,
                     description: metarReport.error,
-                    color: 'RED',
+                    color: Colors.Red,
                 });
                 await msg.channel.send({ embeds: [invalidEmbed] });
                 return Promise.resolve();
@@ -70,7 +71,7 @@ export const metar: CommandDefinition = {
             const fetchErrorEmbed = makeEmbed({
                 title: 'Metar Error | Fetch Error',
                 description: 'There was an error fetching the METAR report. Please try again later.',
-                color: 'RED',
+                color: Colors.Red,
             });
             await msg.channel.send({ embeds: [fetchErrorEmbed] });
         }

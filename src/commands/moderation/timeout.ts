@@ -1,4 +1,4 @@
-import { Guild, TextChannel, User } from 'discord.js';
+import { Colors, Guild, TextChannel, User } from 'discord.js';
 import { CommandDefinition } from '../../lib/command';
 import { CommandCategory, Channels } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
@@ -79,14 +79,14 @@ const timeoutEmbed = (user: User, reason: string, timeoutDuration: string) => ma
             value: timeoutDurationInEnglish(timeoutDuration),
         },
     ],
-    color: 'GREEN',
+    color: Colors.Green,
 });
 
 const modLogEmbed = (moderator: User, user: User, reason: string, timeoutDuration: string) => makeEmbed({
-    color: 'RED',
+    color: Colors.Red,
     author: {
         name: `[TIMED OUT] ${user.tag}`,
-        icon_url: user.displayAvatarURL({ dynamic: true }),
+        iconURL: user.displayAvatarURL(),
     },
     fields: [
         {
@@ -124,13 +124,13 @@ const failedTimeoutEmbed = (user: User) => (makeEmbed({
             value: user.id,
         },
     ],
-    color: 'RED',
+    color: Colors.Red,
 })
 );
 
 export const timeout: CommandDefinition = {
     name: 'timeout',
-    requiredPermissions: ['BAN_MEMBERS'],
+    requiredPermissions: ['BanMembers'],
     category: CommandCategory.MODERATION,
     executor: async (msg) => {
         const args = msg.content.replace(/\.timeout\s+/, '').split(' ');
@@ -185,10 +185,10 @@ export const timeout: CommandDefinition = {
                                 makeEmbed({
                                     author: {
                                         name: msg.author.tag,
-                                        icon_url: msg.author.displayAvatarURL({ dynamic: true }),
+                                        iconURL: msg.author.displayAvatarURL(),
                                     },
                                     title: 'Error while sending DM',
-                                    color: 'RED',
+                                    color: Colors.Red,
                                     description: `DM was not sent to ${targetUser.toString()} for their timeout removal.`,
                                 }),
                             ],
@@ -213,10 +213,10 @@ export const timeout: CommandDefinition = {
                                 makeEmbed({
                                     author: {
                                         name: msg.author.tag,
-                                        icon_url: msg.author.displayAvatarURL({ dynamic: true }),
+                                        iconURL: msg.author.displayAvatarURL(),
                                     },
                                     title: 'Error while sending DM',
-                                    color: 'RED',
+                                    color: Colors.Red,
                                     description: `DM was not sent to ${targetUser.toString()} for their timeout.`,
                                 }),
                             ],

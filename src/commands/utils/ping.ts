@@ -5,7 +5,7 @@ export const ping: CommandDefinition = {
     name: 'ping',
     description: 'Send back a message',
     category: CommandCategory.UTILS,
-    requiredPermissions: ['MANAGE_WEBHOOKS'],
+    requiredPermissions: ['ManageWebhooks'],
     executor: (msg) => {
         // eslint-disable-next-line global-require
         const Filter = require('bad-words');
