@@ -30,3 +30,12 @@ services:
       ME_CONFIG_MONGODB_URL: mongodb://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@mongo:27017/
     env_file:
       - ./.env
+
+  bot:
+    image: bot
+    container_name: bot
+    restart: always
+    ports:
+      - 3000:3000
+    env_file:
+      - ./.env
