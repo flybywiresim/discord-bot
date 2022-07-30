@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-import { ChannelType, Client, Colors, Partials } from 'discord.js';
+import { Client, Partials } from 'discord.js';
 import express from 'express';
 import { readdirSync } from 'fs';
 import { join } from 'path';
@@ -7,14 +7,14 @@ import Logger from './lib/logger';
 import { connect } from './lib/db';
 
 dotenv.config();
-const apm = require('elastic-apm-node').start({
+require('elastic-apm-node').start({
     serviceName: 'discord-bot',
     disableSend: true,
 });
 
 export const DEBUG_MODE = process.env.DEBUG_MODE === 'true';
 
-const client = new Client({
+export const client = new Client({
     intents: [
         'Guilds',
         'GuildMembers',

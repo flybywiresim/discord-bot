@@ -1,4 +1,5 @@
-import { startTransaction } from 'elastic-apm-node';
+import apm from 'elastic-apm-node';
+import { ChannelType, Colors } from 'discord.js';
 import Logger from '../lib/logger';
 import commands from '../commands';
 import { makeEmbed } from '../lib/embed';
@@ -7,9 +8,8 @@ import { client, DEBUG_MODE } from '../index';
 module.exports = {
     event: 'messageCreate',
     executor: async (msg) => {
-        // TODO: Update to v14 handling
-        const isDm = msg.channel.type === 'DM';
-        const guildId = !isDm ? msg.guild.id : 'DM';
+        const isDm = msg.channel.type === ChannelType.DM;
+        const guildId = !isDm ? msg.guild.id : ChannelType.DM;
 
         Logger.debug(`Processing message ${msg.id} from user ${msg.author.id} in channel ${msg.channel.id} of server ${guildId}.`);
 
@@ -24,7 +24,7 @@ module.exports = {
         }
 
         if (msg.content.startsWith('.')) {
-            const transaction = startTransaction('command');
+            const transaction = apm.startTransaction('command');
             Logger.debug('Message starts with dot.');
 
             const usedCommand = msg.content.substring(1, msg.content.includes(' ') ? msg.content.indexOf(' ') : msg.content.length).toLowerCase();
@@ -47,7 +47,7 @@ module.exports = {
                         } catch ({ name, message, stack }) {
                             Logger.error({ name, message, stack });
                             const errorEmbed = makeEmbed({
-                                color: 'RED',
+                                color: Colors.Red,
                                 title: 'Error while Executing Command',
                                 description: DEBUG_MODE ? `\`\`\`D\n${stack}\`\`\`` : `\`\`\`\n${name}: ${message}\n\`\`\``,
                             });
