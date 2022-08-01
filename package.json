@@ -21,7 +21,7 @@
     "express": "^4.17.3",
     "moment": "^2.29.3",
     "mongoose": "^6.3.1",
-    "node-fetch": "^2.6.7",
+    "node-fetch": "^3.2.10",
     "winston": "^3.3.4"
   },
   "devDependencies": {
