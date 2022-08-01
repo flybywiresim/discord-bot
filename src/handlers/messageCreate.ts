@@ -8,7 +8,7 @@ import { client, DEBUG_MODE } from '../index';
 module.exports = {
     event: 'messageCreate',
     executor: async (msg) => {
-        const isDm = msg.channel.type === ChannelType.DM;
+        const isDm = msg.channel.isDMBased();
         const guildId = !isDm ? msg.guild.id : ChannelType.DM;
 
         Logger.debug(`Processing message ${msg.id} from user ${msg.author.id} in channel ${msg.channel.id} of server ${guildId}.`);
