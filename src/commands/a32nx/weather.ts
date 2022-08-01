@@ -10,7 +10,7 @@ export const weather: CommandDefinition = {
         const weatherEmbed = makeEmbed({
             title: 'FlyByWire A32NX | Weather Radar + Terrain Display',
             description: makeLines([
-                'All versions of the A32NX do not have an operating weather radar. This is due to performance issues related to the default systems and the ND being rewritten.',
+                'The A32NX does not have operating weather radar. This is due to performance issues related to the default Asobo systems and implementing a custom ND in our aircraft.',
                 '',
                 'Terrain display is currently  only available on the experimental version via [SimBridge.](https://docs.flybywiresim.com/simbridge/)',
                 '',
