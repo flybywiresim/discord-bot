@@ -30,3 +30,14 @@ services:
       ME_CONFIG_MONGODB_URL: mongodb://${MONGODB_USERNAME}:${MONGODB_PASSWORD}@mongo:27017/
     env_file:
       - ./.env
+
+  fbw-bot:
+    build:
+        context: .
+        dockerfile: Dockerfile
+    container_name: fbw-bot
+    restart: always
+    ports:
+      - 3000:3000
+    env_file:
+      - ./.env

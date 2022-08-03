@@ -9,6 +9,12 @@ on:
       - ready_for_review
 
 jobs:
+  lint_helm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Lint Helm
+        run: helm lint ./charts/discord-bot
   lint:
     runs-on: ubuntu-latest
     if: github.event.pull_request.draft == false
@@ -19,3 +25,15 @@ jobs:
         run: npm install --no-optional
       - name: Check Lint
         run: npm run lint
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+      - name: Install dependencies
+        run: npm ci
+      - name: Build
+        run: npm run build:typescript --if-present
