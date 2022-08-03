@@ -3,6 +3,7 @@
 Update <small>_ August 2022</small>
 
 - feat: FMA command (03/08/2022)
+- fix: grammar in .wx command (02/08/2022)
 - refactor: .wx command terrain display on experimental note (01/08/2022)
 - refactor: change SOP command image (01/08/2022)
 
