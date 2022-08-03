@@ -12,7 +12,7 @@ export const fma: CommandDefinition = {
         const fmaEmbed = makeEmbed({
             title: 'FlyByWire A32NX | Flight Mode Annunciator ',
             description: makeLines([
-                'The Flight Mode Annunciator (FMA) at the top of the PFD, shows the status of the A/THR, the AP/FD vertical and lateral modes, the approach capabilities, and the AP/FD-A/THR engagement status.',
+                'The Flight Mode Annunciator (FMA) at the top of the PFD, shows the status of the A/THR, the AP/FD vertical and lateral modes, the approach capabilities, and the AP, A/THR and FD engagement status.',
                 '',
                 'Please visit our [documentation](https://docs.flybywiresim.com/pilots-corner/a32nx-briefing/pfd/fma/) website to learn more about FMAs.',
             ]),
