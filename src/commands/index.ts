@@ -127,6 +127,9 @@ import { market } from './support/market';
 import { takeoffIssues } from './a32nx/takeoffissues';
 import { simbridge } from './support/simbridge';
 import { fma } from './a32nx/fma';
+import { claimAll } from './utils/wallet/claimAll';
+import { createWallet } from './utils/wallet/createWallet';
+import { balance } from './utils/wallet/balance';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -256,6 +259,9 @@ const commands: CommandDefinition[] = [
     takeoffIssues,
     simbridge,
     fma,
+    claimAll,
+    createWallet,
+    balance,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
