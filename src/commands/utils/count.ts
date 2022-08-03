@@ -24,7 +24,7 @@ export const count: CommandDefinition = {
         if (Number.isNaN(parseInt(countNumber))) {
             await msg.reply('Please provide a number');
         } else if (countNumber) {
-            await (msg.client.channels.cache.get(Channels.COUNT_THREAD) as TextChannel).send(`<@${msg.author}> says ${countNumber}`);
+            await (msg.client.channels.cache.get(Channels.COUNT_THREAD) as TextChannel).send(`${msg.author} says ${countNumber}`);
         }
         return msg.delete();
     },

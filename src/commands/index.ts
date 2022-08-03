@@ -126,6 +126,7 @@ import { atc } from './a32nx/atc';
 import { market } from './support/market';
 import { takeoffIssues } from './a32nx/takeoffissues';
 import { simbridge } from './support/simbridge';
+import { fma } from './a32nx/fma';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -254,6 +255,7 @@ const commands: CommandDefinition[] = [
     market,
     takeoffIssues,
     simbridge,
+    fma,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
