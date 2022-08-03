@@ -143,16 +143,19 @@
 
 ### Utilities
 
-| Command         | Description                                                                            | Alias                                    |
-|:----------------|:---------------------------------------------------------------------------------------|:-----------------------------------------|
-| .avatar         | Shows the selected user's avatar                                                       | .av                                      |
-| .birthday       | Handles adding & removing user birthdays                                               | ---                                      |
-| .count          | counts in the count thread                                                             | ---                                      |
-| .help           | Sends a list of available commands to the user                                         | ---                                      |
-| .membercount    | Lists the guild's current amount of members                                            | ---                                      |
-| .metar          | Provides the METAR report of the requested airport                                     | ---                                      |
-| .ping           | Send back a message                                                                    | ---                                      |
-| .roleinfo       | Lists the guild's current amount of members                                            | ---                                      |
-| .station        | Provides station information                                                           | ---                                      |
-| .wa             | Queries the Wolfram Alpha API                                                          | .calc <br> .ask                          |
-| .zulu           | Get the current time at a given UTC-offset timezone                                    | ---                                      |
+| Command       | Description                                         | Alias             |
+|:--------------|:----------------------------------------------------|:------------------|
+| .avatar       | Shows the selected user's avatar                    | .av               |
+| .birthday     | Handles adding & removing user birthdays            | ---               |
+| .count        | counts in the count thread                          | ---               |
+| .help         | Sends a list of available commands to the user      | ---               |
+| .membercount  | Lists the guild's current amount of members         | ---               |
+| .metar        | Provides the METAR report of the requested airport  | ---               |
+| .ping         | Send back a message                                 | ---               |
+| .roleinfo     | Lists the guild's current amount of members         | ---               |
+| .station      | Provides station information                        | ---               |
+| .wa           | Queries the Wolfram Alpha API                       | .calc <br> .ask   |
+| .zulu         | Get the current time at a given UTC-offset timezone | ---               |
+| .createwallet | Creates a virtual wallet to play mini-games with    | .create <br/> .cw |
+| .claimall     | Claim rewards to add to your wallet balance         | .claim <br/> .ca  |
+| .balance      | Check wallet balance                                | .bal <br/> .b     |
