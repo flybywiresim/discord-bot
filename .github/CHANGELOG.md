@@ -2,7 +2,8 @@
 
 Update <small>_ August 2022</small>
 
-- feat: makeList embed helper (03/07/2022)
+- refactor: extract messageCreate handler (03/08/2022)
+- feat: makeList embed helper (03/08/2022)
 - feat: FMA command (03/08/2022)
 - fix: grammar in .wx command (02/08/2022)
 - refactor: .wx command terrain display on experimental note (01/08/2022)
