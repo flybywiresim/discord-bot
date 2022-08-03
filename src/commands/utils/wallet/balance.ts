@@ -7,7 +7,7 @@ import { findWallet, getBalance, noWalletEmbed } from '../../../handlers/wallet'
 
 export const balance: CommandDefinition = {
     name: ['balance', 'bal', 'b'],
-    description: 'Check wallet your balance',
+    description: 'Check your wallet balance',
     category: CommandCategory.UTILS,
     executor: async (msg) => {
         if (msg.channel.id !== Channels.BOT_COMMANDS) {
