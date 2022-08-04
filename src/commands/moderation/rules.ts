@@ -7,7 +7,7 @@ const RULES_EMBED = makeEmbed({
     description: makeLines([
         'Below are the rules you must follow to participate in this discord server. Failure to abide by these rules could result in a removal from the server. Mute/ban evasions will result in a permanent ban.',
         '',
-        `The <@${Roles.MODERATION_TEAM}> reserve the right to action at discretion.`,
+        `The <@&${Roles.MODERATION_TEAM}> reserve the right to action at discretion.`,
     ]),
 });
 
