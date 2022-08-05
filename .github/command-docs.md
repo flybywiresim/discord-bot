@@ -41,7 +41,6 @@
 | .weather       | Explains the current state of the weather and terrain radars in experimental          | .wx                                                    |
 | .weights       | Provides a link to the fuel and weights docs guide                                    | .fuel <br> .wb <br> .w/b <br> .w+b <br> .wnb <br> .w&b |
 
-
 ### General
 
 | Command      | Description                                                                                                    | Alias                    |
@@ -60,7 +59,6 @@
 | .when        | Explain the absence of release dates or ETAs                                                                   | ---                      |
 | .thumb       | Answers the big question, will it have FEATURE?                                                                | .willithave              |
 | .xbox        | Short response + link to NOTAM for xbox marketplace                                                            | .xboxmarketplace         |
-
 
 ### Memes
 
@@ -91,7 +89,6 @@
 | .shame          | Shame, shame, shame                                                                    | ---                                      |
 | .shomas         | oldest pilot                                                                           | ---                                      |
 | .xp             | XPlane                                                                                 | .xplane <br> .x-plane                    |
-
 
 ### Moderation
 
