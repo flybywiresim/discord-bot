@@ -41,6 +41,27 @@
 | .weather       | Explains the current state of the weather and terrain radars in experimental          | .wx                                                    |
 | .weights       | Provides a link to the fuel and weights docs guide                                    | .fuel <br> .wb <br> .w/b <br> .w+b <br> .wnb <br> .w&b |
 
+
+### General
+
+| Command      | Description                                                                                                    | Alias                    |
+|:-------------|:---------------------------------------------------------------------------------------------------------------|:-------------------------|
+| .donate      | Provides a link to the open collective                                                                         | ---                      |
+| .goldenrules | Provides an image describing the golden rules an Airbus pilot should follow                                    | .golden <br> .gr         |
+| .headwind    | Provides link to the Headwind Discord server                                                                   | .hw                      |
+| .installer   | Provides link to the new installer                                                                             | ---                      |
+| .latlong     | Provides a cheat sheet for conversion between Latitude and longitude coordinates between short and long format | .llfix                   |
+| .msfsdisc    | Provides link to Microsoft Flight Simulator discord server                                                     | .fsdisc <br> .msfsdiscord|
+| .qa          | Links to the Quality Assurance docs page                                                                       | ---                      |
+| .roadmap     | FBW Roadmap                                                                                                    | .goals                   |
+| .salty       | Provides link to salty discord server                                                                          | .sal <br> .ninjo         |
+| .synaptic    | Provides link to synaptic discord server                                                                       | .syn                     |
+| .translate   | Provides information on how to contribute to various FlyByWire translation efforts                             | ---                      |
+| .when        | Explain the absence of release dates or ETAs                                                                   | ---                      |
+| .thumb       | Answers the big question, will it have FEATURE?                                                                | .willithave              |
+| .xbox        | Short response + link to NOTAM for xbox marketplace                                                            | .xboxmarketplace         |
+
+
 ### Memes
 
 | Command         | Description                                                                            | Alias                                    |
@@ -70,25 +91,6 @@
 | .shame          | Shame, shame, shame                                                                    | ---                                      |
 | .shomas         | oldest pilot                                                                           | ---                                      |
 | .xp             | XPlane                                                                                 | .xplane <br> .x-plane                    |
-
-### General
-
-| Command      | Description                                                                                                    | Alias                    |
-|:-------------|:---------------------------------------------------------------------------------------------------------------|:-------------------------|
-| .donate      | Provides a link to the open collective                                                                         | ---                      |
-| .goldenrules | Provides an image describing the golden rules an Airbus pilot should follow                                    | .golden <br> .gr         |
-| .headwind    | Provides link to the Headwind Discord server                                                                   | .hw                      |
-| .installer   | Provides link to the new installer                                                                             | ---                      |
-| .latlong     | Provides a cheat sheet for conversion between Latitude and longitude coordinates between short and long format | .llfix                   |
-| .msfsdisc    | Provides link to Microsoft Flight Simulator discord server                                                     | .fsdisc <br> .msfsdiscord|
-| .qa          | Links to the Quality Assurance docs page                                                                       | ---                      |
-| .roadmap     | FBW Roadmap                                                                                                    | .goals                   |
-| .salty       | Provides link to salty discord server                                                                          | .sal <br> .ninjo         |
-| .synaptic    | Provides link to synaptic discord server                                                                       | .syn                     |
-| .translate   | Provides information on how to contribute to various FlyByWire translation efforts                             | ---                      |
-| .when        | Explain the absence of release dates or ETAs                                                                   | ---                      |
-| .thumb       | Answers the big question, will it have FEATURE?                                                                | .willithave              |
-| .xbox        | Short response + link to NOTAM for xbox marketplace                                                            | .xboxmarketplace         |
 
 
 ### Moderation
