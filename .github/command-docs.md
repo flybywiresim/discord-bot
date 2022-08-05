@@ -41,7 +41,7 @@
 | .weather       | Explains the current state of the weather and terrain radars in experimental          | .wx                                                    |
 | .weights       | Provides a link to the fuel and weights docs guide                                    | .fuel <br> .wb <br> .w/b <br> .w+b <br> .wnb <br> .w&b |
 
-### Funnies
+### Memes
 
 | Command         | Description                                                                            | Alias                                    |
 |:----------------|:---------------------------------------------------------------------------------------|:-----------------------------------------|

@@ -7,7 +7,7 @@ const FRIDGE_URL = 'https://cdn.discordapp.com/attachments/945268463465803796/94
 export const fridge: CommandDefinition = {
     name: 'fridge',
     description: 'fridge',
-    category: CommandCategory.FUNNIES,
+    category: CommandCategory.MEMES,
     executor: async (msg) => {
         const fridgeEmbed = makeEmbed({ image: { url: FRIDGE_URL } });
         await msg.channel.send({ embeds: [fridgeEmbed] });

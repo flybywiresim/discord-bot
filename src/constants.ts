@@ -9,7 +9,7 @@ export enum CommandCategory {
     SUPPORT = 'Support',
     GENERAL = 'General',
     UTILS = 'Utilities',
-    FUNNIES = 'Funnies',
+    MEMES = 'Memes',
     MODERATION = 'Moderation',
 }
 

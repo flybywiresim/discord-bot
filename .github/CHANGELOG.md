@@ -2,6 +2,7 @@
 
 Update <small>_ August 2022</small>
 
+- refactor: rename funnies directory to memes (05/08/2022)
 - refactor: extract messageCreate handler (03/08/2022)
 - feat: makeList embed helper (03/08/2022)
 - feat: FMA command (03/08/2022)
