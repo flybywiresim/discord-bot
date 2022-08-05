@@ -41,73 +41,6 @@
 | .weather       | Explains the current state of the weather and terrain radars in experimental          | .wx                                                    |
 | .weights       | Provides a link to the fuel and weights docs guide                                    | .fuel <br> .wb <br> .w/b <br> .w+b <br> .wnb <br> .w&b |
 
-### Memes
-
-| Command         | Description                                                                            | Alias                                    |
-|:----------------|:---------------------------------------------------------------------------------------|:-----------------------------------------|
-| .addon          | addon not mod meme                                                                     | ---                                      |
-| .boratorium     | B O R A T                                                                              | ---                                      |
-| .boris          | boris soudn                                                                            | ---                                      |
-| .bruheg         | bruheg momen                                                                           | ---                                      |
-| .coffee         | Would you like some coffee?                                                            | ---                                      |
-| .cowsay         | Emulates the famous UNIX program `cowsay`                                              | ---                                      |
-| .crak           | What's your sim version?                                                               | ---                                      |
-| .default        | O_o                                                                                    | ---                                      |
-| .fms            | That's how the real FMS draws it                                                       | ---                                      |
-| .fridge         | fridge                                                                                 | ---                                      |
-| .guard          | MEOW                                                                                   | ---                                      |
-| .jaun           | just... Jaun                                                                           | ---                                      |
-| .merge          | GIT MERGE!                                                                             | ---                                      |
-| .mico           | mico!                                                                                  | ---                                      |
-| .nut            | nut                                                                                    | ---                                      |
-| .oim            | oim                                                                                    | ---                                      |
-| .otter          | Well, it's an otter                                                                    | ---                                      |
-| .p3d            | No!                                                                                    | ---                                      |
-| .poggers        | POG                                                                                    | .pog                                     |
-| .pov            | Oof                                                                                    | ---                                      |
-| .ptu            | Bark                                                                                   | ---                                      |
-| .pw             | Whale noises                                                                           | ---                                      |
-| .shame          | Shame, shame, shame                                                                    | ---                                      |
-| .shomas         | oldest pilot                                                                           | ---                                      |
-| .xp             | XPlane                                                                                 | .xplane <br> .x-plane                    |
-
-### General
-
-| Command      | Description                                                                                                    | Alias                    |
-|:-------------|:---------------------------------------------------------------------------------------------------------------|:-------------------------|
-| .donate      | Provides a link to the open collective                                                                         | ---                      |
-| .goldenrules | Provides an image describing the golden rules an Airbus pilot should follow                                    | .golden <br> .gr         |
-| .headwind    | Provides link to the Headwind Discord server                                                                   | .hw                      |
-| .installer   | Provides link to the new installer                                                                             | ---                      |
-| .latlong     | Provides a cheat sheet for conversion between Latitude and longitude coordinates between short and long format | .llfix                   |
-| .msfsdisc    | Provides link to Microsoft Flight Simulator discord server                                                     | .fsdisc <br> .msfsdiscord|
-| .qa          | Links to the Quality Assurance docs page                                                                       | ---                      |
-| .roadmap     | FBW Roadmap                                                                                                    | .goals                   |
-| .salty       | Provides link to salty discord server                                                                          | .sal <br> .ninjo         |
-| .synaptic    | Provides link to synaptic discord server                                                                       | .syn                     |
-| .translate   | Provides information on how to contribute to various FlyByWire translation efforts                             | ---                      |
-| .when        | Explain the absence of release dates or ETAs                                                                   | ---                      |
-| .thumb       | Answers the big question, will it have FEATURE?                                                                | .willithave              |
-| .xbox        | Short response + link to NOTAM for xbox marketplace                                                            | .xboxmarketplace         |
-
-
-### Moderation
-
-| Command         | Description                                                                            | Alias                                    |
-|:----------------|:---------------------------------------------------------------------------------------|:-----------------------------------------|
-| .ban            | ---                                                                                    | ---                                      |
-| .deletewarn     | Deletes a users warning                                                                | .delwarn <br> .deletewarning             |
-| .faq            | Sends the FAQ                                                                          | ---                                      |
-| .roleassignment | Sends the role assignment messages                                                     | ---                                      |
-| .rules          | Sends the rules                                                                        | ---                                      |
-| .timeout        | ---                                                                                    | ---                                      |
-| .unban          | ---                                                                                    | ---                                      |
-| .untimeout      | ---                                                                                    | .removetimeout                           |
-| .warn           | Warns a user                                                                           | ---                                      |
-| .warnings       | Lists a users warnings                                                                 | .listwarn <br> .listwarnings <br> .warns |
-| .welcome        | Sends the welcome                                                                      | ---                                      |
-| .whois          | Provides an embedded message with information about the mentioned user                 | ---                                      |
-
 ### Support
 
 | Command         | Description                                                                       | Alias                                              |
@@ -141,6 +74,25 @@
 | .wasm           | Explains the long loading times after an install or update                        | .load                                              |
 | .where          | Provides an image of which aircraft to select in the aircraft selector            | ---                                                |
 
+### General
+
+| Command      | Description                                                                                                    | Alias                    |
+|:-------------|:---------------------------------------------------------------------------------------------------------------|:-------------------------|
+| .donate      | Provides a link to the open collective                                                                         | ---                      |
+| .goldenrules | Provides an image describing the golden rules an Airbus pilot should follow                                    | .golden <br> .gr         |
+| .headwind    | Provides link to the Headwind Discord server                                                                   | .hw                      |
+| .installer   | Provides link to the new installer                                                                             | ---                      |
+| .latlong     | Provides a cheat sheet for conversion between Latitude and longitude coordinates between short and long format | .llfix                   |
+| .msfsdisc    | Provides link to Microsoft Flight Simulator discord server                                                     | .fsdisc <br> .msfsdiscord|
+| .qa          | Links to the Quality Assurance docs page                                                                       | ---                      |
+| .roadmap     | FBW Roadmap                                                                                                    | .goals                   |
+| .salty       | Provides link to salty discord server                                                                          | .sal <br> .ninjo         |
+| .synaptic    | Provides link to synaptic discord server                                                                       | .syn                     |
+| .translate   | Provides information on how to contribute to various FlyByWire translation efforts                             | ---                      |
+| .when        | Explain the absence of release dates or ETAs                                                                   | ---                      |
+| .thumb       | Answers the big question, will it have FEATURE?                                                                | .willithave              |
+| .xbox        | Short response + link to NOTAM for xbox marketplace                                                            | .xboxmarketplace         |
+
 ### Utilities
 
 | Command         | Description                                                                            | Alias                                    |
@@ -156,3 +108,50 @@
 | .station        | Provides station information                                                           | ---                                      |
 | .wa             | Queries the Wolfram Alpha API                                                          | .calc <br> .ask                          |
 | .zulu           | Get the current time at a given UTC-offset timezone                                    | ---                                      |
+
+### Memes
+
+| Command         | Description                                                                            | Alias                                    |
+|:----------------|:---------------------------------------------------------------------------------------|:-----------------------------------------|
+| .addon          | addon not mod meme                                                                     | ---                                      |
+| .boratorium     | B O R A T                                                                              | ---                                      |
+| .boris          | boris soudn                                                                            | ---                                      |
+| .bruheg         | bruheg momen                                                                           | ---                                      |
+| .coffee         | Would you like some coffee?                                                            | ---                                      |
+| .cowsay         | Emulates the famous UNIX program `cowsay`                                              | ---                                      |
+| .crak           | What's your sim version?                                                               | ---                                      |
+| .default        | O_o                                                                                    | ---                                      |
+| .fms            | That's how the real FMS draws it                                                       | ---                                      |
+| .fridge         | fridge                                                                                 | ---                                      |
+| .guard          | MEOW                                                                                   | ---                                      |
+| .jaun           | just... Jaun                                                                           | ---                                      |
+| .merge          | GIT MERGE!                                                                             | ---                                      |
+| .mico           | mico!                                                                                  | ---                                      |
+| .nut            | nut                                                                                    | ---                                      |
+| .oim            | oim                                                                                    | ---                                      |
+| .otter          | Well, it's an otter                                                                    | ---                                      |
+| .p3d            | No!                                                                                    | ---                                      |
+| .poggers        | POG                                                                                    | .pog                                     |
+| .pov            | Oof                                                                                    | ---                                      |
+| .ptu            | Bark                                                                                   | ---                                      |
+| .pw             | Whale noises                                                                           | ---                                      |
+| .shame          | Shame, shame, shame                                                                    | ---                                      |
+| .shomas         | oldest pilot                                                                           | ---                                      |
+| .xp             | XPlane                                                                                 | .xplane <br> .x-plane                    |
+
+### Moderation
+
+| Command         | Description                                                                            | Alias                                    |
+|:----------------|:---------------------------------------------------------------------------------------|:-----------------------------------------|
+| .ban            | ---                                                                                    | ---                                      |
+| .deletewarn     | Deletes a users warning                                                                | .delwarn <br> .deletewarning             |
+| .faq            | Sends the FAQ                                                                          | ---                                      |
+| .roleassignment | Sends the role assignment messages                                                     | ---                                      |
+| .rules          | Sends the rules                                                                        | ---                                      |
+| .timeout        | ---                                                                                    | ---                                      |
+| .unban          | ---                                                                                    | ---                                      |
+| .untimeout      | ---                                                                                    | .removetimeout                           |
+| .warn           | Warns a user                                                                           | ---                                      |
+| .warnings       | Lists a users warnings                                                                 | .listwarn <br> .listwarnings <br> .warns |
+| .welcome        | Sends the welcome                                                                      | ---                                      |
+| .whois          | Provides an embedded message with information about the mentioned user                 | ---                                      |
