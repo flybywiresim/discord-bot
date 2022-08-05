@@ -2,7 +2,7 @@
 
 Update <small>_ August 2022</small>
 
-- fix: message update mentions (03/08/2022)
+- fix: mentions in multiple commands (03/08/2022)
 - refactor: extract messageCreate handler (03/08/2022)
 - feat: makeList embed helper (03/08/2022)
 - feat: FMA command (03/08/2022)
