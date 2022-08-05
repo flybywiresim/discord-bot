@@ -1,22 +1,20 @@
 import dotenv from 'dotenv';
-import { ChannelType, Client, Colors, Partials } from 'discord.js';
+import { Client, Partials } from 'discord.js';
 import express from 'express';
 import { readdirSync } from 'fs';
 import { join } from 'path';
-import commands from './commands';
-import { makeEmbed } from './lib/embed';
 import Logger from './lib/logger';
 import { connect } from './lib/db';
 
 dotenv.config();
-const apm = require('elastic-apm-node').start({
+require('elastic-apm-node').start({
     serviceName: 'discord-bot',
     disableSend: true,
 });
 
 export const DEBUG_MODE = process.env.DEBUG_MODE === 'true';
 
-const client = new Client({
+export const client = new Client({
     intents: [
         'Guilds',
         'GuildMembers',
@@ -54,69 +52,6 @@ client.on('ready', () => {
 client.on('disconnect', () => {
     Logger.warn('Client disconnected');
     healthy = false;
-});
-
-client.on('messageCreate', async (msg) => {
-    const isDm = msg.channel.type === ChannelType.DM;
-    const guildId = !isDm ? msg.guild.id : ChannelType.DM;
-
-    Logger.debug(`Processing message ${msg.id} from user ${msg.author.id} in channel ${msg.channel.id} of server ${guildId}.`);
-
-    if (msg.author.bot === true) {
-        Logger.debug('Bailing because message author is a bot.');
-        return;
-    }
-
-    if (isDm) {
-        Logger.debug('Bailing because message is a DM.');
-        return;
-    }
-
-    if (msg.content.startsWith('.')) {
-        const transaction = apm.startTransaction('command');
-        Logger.debug('Message starts with dot.');
-
-        const usedCommand = msg.content.substring(1, msg.content.includes(' ') ? msg.content.indexOf(' ') : msg.content.length).toLowerCase();
-        Logger.info(`Running command '${usedCommand}'`);
-
-        const command = commands[usedCommand];
-
-        if (command) {
-            const { executor, name, requiredPermissions } = command;
-
-            const commandsArray = Array.isArray(name) ? name : [name];
-
-            const member = await msg.guild.members.fetch(msg.author);
-
-            if (!requiredPermissions || requiredPermissions.every((permission) => member.permissions.has(permission))) {
-                if (commandsArray.includes(usedCommand)) {
-                    try {
-                        await executor(msg, client);
-                        transaction.result = 'success';
-                    } catch ({ name, message, stack }) {
-                        Logger.error({ name, message, stack });
-                        const errorEmbed = makeEmbed({
-                            color: Colors.Red,
-                            title: 'Error while Executing Command',
-                            description: DEBUG_MODE ? `\`\`\`D\n${stack}\`\`\`` : `\`\`\`\n${name}: ${message}\n\`\`\``,
-                        });
-
-                        await msg.channel.send({ embeds: [errorEmbed] });
-
-                        transaction.result = 'error';
-                    }
-
-                    Logger.debug('Command executor done.');
-                }
-            } else {
-                await msg.reply(`you do not have sufficient permissions to use this command. (missing: ${requiredPermissions.join(', ')})`);
-            }
-        } else {
-            Logger.info('Command doesn\'t exist');
-            transaction.result = 'error';
-        }
-        transaction.end();
-    }
 });
 
 try {

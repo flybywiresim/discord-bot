@@ -1,8 +1,20 @@
 ## Changelog
 
+Update <small>_ August 2022</small>
+
+- refactor: rename funnies directory to memes (05/08/2022)
+- refactor: extract messageCreate handler (03/08/2022)
+- feat: makeList embed helper (03/08/2022)
+- feat: FMA command (03/08/2022)
+- fix: grammar in .wx command (02/08/2022)
+- refactor: .wx command terrain display on experimental note (01/08/2022)
+- refactor: change SOP command image (01/08/2022)
+
 Update <small>_ July 2022</small>
 
-- refactor: rename funnies directory to memes (30/07/2022)
+- ci: build setup and lint helm for pr (31/07/2022)
+- fix: ping fixed for count command (31/07/2022)
+- chore: bot service to docker-compose (31/07/2022)
 - chore: bump discord package version with fixes @v14.0.3 (29/07/2022)
 - refactor: add .deadzones alias to .dz command, correct docs (27/07/2022)
 - refactor: add .nws alias to .tiller command (27/07/2022)
