@@ -41,6 +41,39 @@
 | .weather       | Explains the current state of the weather and terrain radars in experimental          | .wx                                                    |
 | .weights       | Provides a link to the fuel and weights docs guide                                    | .fuel <br> .wb <br> .w/b <br> .w+b <br> .wnb <br> .w&b |
 
+### Support
+
+| Command         | Description                                                                       | Alias                                              |
+|:----------------|:----------------------------------------------------------------------------------|:---------------------------------------------------|
+| .abbreviations  | Links to most commonly used abbreviations                                         | .abb <br> .abrv                                    |
+| .airac          | Provides information about free SimBrief account AIRAC limitations                | ---                                                |
+| .build          | Link to docs for build info                                                       | .build info <br> .buildinfo                        |
+| .calibrate      | Provides a help for throttle calibration                                          | ---                                                |
+| .clean          | Clean Install                                                                     | .clean install <br> .cleaninstall <br> .order66    |
+| .community      | Help to identify community folder for support                                     | .com                                               |
+| .content        | Help to identify aircraft version for support                                     | .contentmanager                                    |
+| .controls       | Instructions on how to switch back to legacy controls and how to use new controls | .legacy                                            |
+| .ctd            | Crash to Desktop                                                                  | .crash                                             |
+| .cursor         | Displays steps to help with EFB cursor focus issue                                | .efbfocus <br> .unfocus                            |
+| .deadzones      | Display help with controller deadzones                                            | .deadzone <br> .dz                                 |
+| .dx12           | Explaination for the current state of MSFS DirectX12 support                      | ---                                                |
+| .discontinuity  | Link to docs about discontinuities                                                | .disco                                             |
+| .fdr            | Information on how to provide fdr files                                           | ---                                                |
+| .hud            | How to disable in-game HUD                                                        | .logs                                              |
+| .installerlogs  | Provides an explanation on how to receive installer error logs for support        | ---                                                |
+| .manualleg      | Displays image and links to docs about manual waypoints                           | .vm                                                |
+| .market         | Help with removing the marketplace version                                        | .marketremove <br> .removemarket <br> .rm <br> .mr |
+| .msfs           | Provides links to MSFS support for sim issues                                     | .msfsforum                                         |
+| .navdata        | Provides help with Navigraph navdata reinstall                                    | ---                                                |
+| .reportedissues | Provides a link to the reported issues page within docs                           | .issues                                            |
+| .screenshot     | Help to screenshot for support                                                    | .cockpit <br> .ss                                  |
+| .simversion     | Help to identify MSFS version for support                                         | .msfsversion                                       |
+| .trythis        | Provide basic troubleshooting steps                                               | ---                                                |
+| .tug            | Provides a solution to an issue where the tug fails to disconnect                 | .stuck                                             |
+| .utf8           | Provides a link to resolve UTF-8 issues                                           | ---                                                |
+| .wasm           | Explains the long loading times after an install or update                        | .load                                              |
+| .where          | Provides an image of which aircraft to select in the aircraft selector            | ---                                                |
+
 ### General
 
 | Command      | Description                                                                                                    | Alias                    |
@@ -59,6 +92,22 @@
 | .when        | Explain the absence of release dates or ETAs                                                                   | ---                      |
 | .thumb       | Answers the big question, will it have FEATURE?                                                                | .willithave              |
 | .xbox        | Short response + link to NOTAM for xbox marketplace                                                            | .xboxmarketplace         |
+
+### Utilities
+
+| Command         | Description                                                                            | Alias                                    |
+|:----------------|:---------------------------------------------------------------------------------------|:-----------------------------------------|
+| .avatar         | Shows the selected user's avatar                                                       | .av                                      |
+| .birthday       | Handles adding & removing user birthdays                                               | ---                                      |
+| .count          | counts in the count thread                                                             | ---                                      |
+| .help           | Sends a list of available commands to the user                                         | ---                                      |
+| .membercount    | Lists the guild's current amount of members                                            | ---                                      |
+| .metar          | Provides the METAR report of the requested airport                                     | ---                                      |
+| .ping           | Send back a message                                                                    | ---                                      |
+| .roleinfo       | Lists the guild's current amount of members                                            | ---                                      |
+| .station        | Provides station information                                                           | ---                                      |
+| .wa             | Queries the Wolfram Alpha API                                                          | .calc <br> .ask                          |
+| .zulu           | Get the current time at a given UTC-offset timezone                                    | ---                                      |
 
 ### Memes
 
@@ -106,52 +155,3 @@
 | .warnings       | Lists a users warnings                                                                 | .listwarn <br> .listwarnings <br> .warns |
 | .welcome        | Sends the welcome                                                                      | ---                                      |
 | .whois          | Provides an embedded message with information about the mentioned user                 | ---                                      |
-
-### Support
-
-| Command         | Description                                                                       | Alias                                              |
-|:----------------|:----------------------------------------------------------------------------------|:---------------------------------------------------|
-| .abbreviations  | Links to most commonly used abbreviations                                         | .abb <br> .abrv                                    |
-| .airac          | Provides information about free SimBrief account AIRAC limitations                | ---                                                |
-| .build          | Link to docs for build info                                                       | .build info <br> .buildinfo                        |
-| .calibrate      | Provides a help for throttle calibration                                          | ---                                                |
-| .clean          | Clean Install                                                                     | .clean install <br> .cleaninstall <br> .order66    |
-| .community      | Help to identify community folder for support                                     | .com                                               |
-| .content        | Help to identify aircraft version for support                                     | .contentmanager                                    |
-| .controls       | Instructions on how to switch back to legacy controls and how to use new controls | .legacy                                            |
-| .ctd            | Crash to Desktop                                                                  | .crash                                             |
-| .cursor         | Displays steps to help with EFB cursor focus issue                                | .efbfocus <br> .unfocus                            |
-| .deadzones      | Display help with controller deadzones                                            | .deadzone <br> .dz                                 |
-| .dx12           | Explaination for the current state of MSFS DirectX12 support                      | ---                                                |
-| .discontinuity  | Link to docs about discontinuities                                                | .disco                                             |
-| .fdr            | Information on how to provide fdr files                                           | ---                                                |
-| .hud            | How to disable in-game HUD                                                        | .logs                                              |
-| .installerlogs  | Provides an explanation on how to receive installer error logs for support        | ---                                                |
-| .manualleg      | Displays image and links to docs about manual waypoints                           | .vm                                                |
-| .market         | Help with removing the marketplace version                                        | .marketremove <br> .removemarket <br> .rm <br> .mr |
-| .msfs           | Provides links to MSFS support for sim issues                                     | .msfsforum                                         |
-| .navdata        | Provides help with Navigraph navdata reinstall                                    | ---                                                |
-| .reportedissues | Provides a link to the reported issues page within docs                           | .issues                                            |
-| .screenshot     | Help to screenshot for support                                                    | .cockpit <br> .ss                                  |
-| .simversion     | Help to identify MSFS version for support                                         | .msfsversion                                       |
-| .trythis        | Provide basic troubleshooting steps                                               | ---                                                |
-| .tug            | Provides a solution to an issue where the tug fails to disconnect                 | .stuck                                             |
-| .utf8           | Provides a link to resolve UTF-8 issues                                           | ---                                                |
-| .wasm           | Explains the long loading times after an install or update                        | .load                                              |
-| .where          | Provides an image of which aircraft to select in the aircraft selector            | ---                                                |
-
-### Utilities
-
-| Command         | Description                                                                            | Alias                                    |
-|:----------------|:---------------------------------------------------------------------------------------|:-----------------------------------------|
-| .avatar         | Shows the selected user's avatar                                                       | .av                                      |
-| .birthday       | Handles adding & removing user birthdays                                               | ---                                      |
-| .count          | counts in the count thread                                                             | ---                                      |
-| .help           | Sends a list of available commands to the user                                         | ---                                      |
-| .membercount    | Lists the guild's current amount of members                                            | ---                                      |
-| .metar          | Provides the METAR report of the requested airport                                     | ---                                      |
-| .ping           | Send back a message                                                                    | ---                                      |
-| .roleinfo       | Lists the guild's current amount of members                                            | ---                                      |
-| .station        | Provides station information                                                           | ---                                      |
-| .wa             | Queries the Wolfram Alpha API                                                          | .calc <br> .ask                          |
-| .zulu           | Get the current time at a given UTC-offset timezone                                    | ---                                      |
