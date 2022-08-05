@@ -95,7 +95,7 @@ const modLogEmbed = (moderator: User, user: User, reason: string, timeoutDuratio
         },
         {
             name: 'Moderator',
-            value: `<@${moderator}>`,
+            value: `${moderator}`,
         },
         {
             name: 'Reason',
