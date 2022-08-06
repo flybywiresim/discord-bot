@@ -2,7 +2,7 @@ import { CommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 
-const SOP_IMAGE_URL = 'https://cdn.discordapp.com/attachments/864493190471352344/920758283533422632/SOP.png';
+const SOP_IMAGE_URL = 'https://cdn.discordapp.com/attachments/791494566058000434/1003434989918097438/SOP.png';
 
 export const sop: CommandDefinition = {
     name: 'sop',

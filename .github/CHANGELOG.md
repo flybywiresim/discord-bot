@@ -1,7 +1,41 @@
 ## Changelog
 
+Update <small>_ August 2022</small>
+
+- fix: command-docs.md ordering (05/08/2022)
+- refactor: rename funnies directory to memes (05/08/2022)
+- refactor: extract messageCreate handler (03/08/2022)
+- feat: makeList embed helper (03/08/2022)
+- feat: FMA command (03/08/2022)
+- fix: grammar in .wx command (02/08/2022)
+- refactor: .wx command terrain display on experimental note (01/08/2022)
+- refactor: change SOP command image (01/08/2022)
+
 Update <small>_ July 2022</small>
 
+- ci: build setup and lint helm for pr (31/07/2022)
+- fix: ping fixed for count command (31/07/2022)
+- chore: bot service to docker-compose (31/07/2022)
+- chore: bump discord package version with fixes @v14.0.3 (29/07/2022)
+- refactor: add .deadzones alias to .dz command, correct docs (27/07/2022)
+- refactor: add .nws alias to .tiller command (27/07/2022)
+- feat: simbridge support command (27/07/2022)
+- refactor: add steps and image to utf8 command (26/07/2022)
+- feat: cowsay command sanitization (25/07/2022)
+- refactor: update deadzones command (19/07/2022)
+- refactor: downscale .pov and .efb gifs (19/07/2022)
+- fix: use non-vanity Synaptic Discord link (19/07/2022)
+- feat: takeoff issues command (18/07/2022)
+- fix: missing error embed for wolfram alpha (18/07/2022)
+- fix: fixed .bg abbreviations hyperlink (18/072022)
+- chore: add node-fetch dependency (17/07/2022)
+- chore: remove request dependency (17/07/2022)
+- refactor: requests to node-fetch (17/07/2022)
+- fix: update .where image link (16/07/2022)
+- chore: add images to repo (16/07/2022)
+- refactor: add .legacy alias to .controls (15/07/2022)
+- feat: marketplace removal command (14/07/2022)
+- refactor: weather.ts embed title and copy (12/07/2022)
 - docs: add .env.example file. (11/07/2022)
 - refactor: birthday command (11/07/2022)
 - feat: default ATC command (10/07/2022)

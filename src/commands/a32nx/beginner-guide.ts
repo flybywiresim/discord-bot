@@ -23,7 +23,7 @@ export const beginner: CommandDefinition = {
                 '- [Approach and ILS Landing](https://docs.flybywiresim.com/pilots-corner/beginner-guide/landing/)',
                 '- [After Landing and Taxi to Gate](https://docs.flybywiresim.com/pilots-corner/beginner-guide/after-landing/)',
                 '- [Powering Down](https://docs.flybywiresim.com/pilots-corner/beginner-guide/powering-down/)',
-                '- [Abbreviations](https://docs.flybywiresim.com/pilots-corner/beginner-guide/abbreviations/)',
+                '- [Abbreviations](https://docs.flybywiresim.com/pilots-corner/abbreviations/)',
             ]),
         });
 
