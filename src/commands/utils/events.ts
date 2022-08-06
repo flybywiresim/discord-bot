@@ -31,6 +31,7 @@ export const events: CommandDefinition = {
                 .then((res) => res.slice(0, 6));
 
             const fields: EmbedField[] = eventsList.map((event) => {
+                // eslint-disable-next-line camelcase
                 const { name, organisers, end_time, start_time, link } = event;
                 const { division } = organisers[0];
                 const startDate = new Date(start_time);
