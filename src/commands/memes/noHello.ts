@@ -9,5 +9,6 @@ export const noHello: CommandDefinition = {
     category: CommandCategory.MEMES,
     executor: async (msg) => {
         await msg.channel.send(NO_HELLO_URL);
+        return msg.delete();
     },
 };
