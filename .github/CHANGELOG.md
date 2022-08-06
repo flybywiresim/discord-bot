@@ -2,6 +2,7 @@
 
 Update <small>_ August 2022</small>
 
+- feat: add events command (06/08/2022)
 - fix: command-docs.md ordering (05/08/2022)
 - refactor: rename funnies directory to memes (05/08/2022)
 - refactor: extract messageCreate handler (03/08/2022)

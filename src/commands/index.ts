@@ -127,6 +127,7 @@ import { market } from './support/market';
 import { takeoffIssues } from './a32nx/takeoffissues';
 import { simbridge } from './support/simbridge';
 import { fma } from './a32nx/fma';
+import { events } from './utils/events';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -256,6 +257,7 @@ const commands: CommandDefinition[] = [
     takeoffIssues,
     simbridge,
     fma,
+    events,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
