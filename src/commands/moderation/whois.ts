@@ -35,7 +35,7 @@ export const whois: CommandDefinition = {
                 name: targetMember.user.username,
                 iconURL: targetMember.user.avatarURL(),
             },
-            description: `<@!${targetMember.id}>`,
+            description: `${targetMember}`,
             thumbnail: { url: targetMember.user.avatarURL() },
             fields: [
                 {

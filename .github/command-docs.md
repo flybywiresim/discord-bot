@@ -95,19 +95,21 @@
 
 ### Utilities
 
-| Command         | Description                                                                            | Alias                                    |
-|:----------------|:---------------------------------------------------------------------------------------|:-----------------------------------------|
-| .avatar         | Shows the selected user's avatar                                                       | .av                                      |
-| .birthday       | Handles adding & removing user birthdays                                               | ---                                      |
-| .count          | counts in the count thread                                                             | ---                                      |
-| .help           | Sends a list of available commands to the user                                         | ---                                      |
-| .membercount    | Lists the guild's current amount of members                                            | ---                                      |
-| .metar          | Provides the METAR report of the requested airport                                     | ---                                      |
-| .ping           | Send back a message                                                                    | ---                                      |
-| .roleinfo       | Lists the guild's current amount of members                                            | ---                                      |
-| .station        | Provides station information                                                           | ---                                      |
-| .wa             | Queries the Wolfram Alpha API                                                          | .calc <br> .ask                          |
-| .zulu           | Get the current time at a given UTC-offset timezone                                    | ---                                      |
+| Command      | Description                                            | Alias                                                              |
+|:-------------|:-------------------------------------------------------|:-------------------------------------------------------------------|
+| .avatar      | Shows the selected user's avatar                       | .av                                                                |
+| .birthday    | Handles adding & removing user birthdays               | ---                                                                |
+| .count       | counts in the count thread                             | ---                                                                |
+| .events      | Show a list of upcoming VATSIM events.                 | .event <br/> .ev <br/> .vatsimevents <br/> .vatevents <br/> .vatev |
+| .help        | Sends a list of available commands to the user         | ---                                                                |
+| .liveflights | Get the current live flights for FlyByWire Simulations | .flights <br/> .flight                                             |
+| .membercount | Lists the guild's current amount of members            | ---                                                                |
+| .metar       | Provides the METAR report of the requested airport     | ---                                                                |
+| .ping        | Send back a message                                    | ---                                                                |
+| .roleinfo    | Lists the guild's current amount of members            | ---                                                                |
+| .station     | Provides station information                           | ---                                                                |
+| .wa          | Queries the Wolfram Alpha API                          | .calc <br> .ask                                                    |
+| .zulu        | Get the current time at a given UTC-offset timezone    | ---                                                                |
 
 ### Memes
 
@@ -127,6 +129,7 @@
 | .jaun           | just... Jaun                                                                           | ---                                      |
 | .merge          | GIT MERGE!                                                                             | ---                                      |
 | .mico           | mico!                                                                                  | ---                                      |
+| .nohello        | No!                                                                                    | .hello                                   |
 | .nut            | nut                                                                                    | ---                                      |
 | .oim            | oim                                                                                    | ---                                      |
 | .otter          | Well, it's an otter                                                                    | ---                                      |

@@ -1,6 +1,6 @@
 import { Colors } from 'discord.js';
 import { CommandDefinition } from '../../lib/command';
-import { Roles, Channels, CommandCategory } from '../../constants';
+import { Roles, CommandCategory, Threads } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
 import Logger from '../../lib/logger';
 import Birthday from '../../lib/schemas/birthdaySchema';
@@ -43,10 +43,10 @@ export const birthday: CommandDefinition = {
                 description: 'You do not have permission to use this command.',
                 color: Colors.Red,
             });
-        } else if (msg.channel.id !== Channels.BIRTHDAY_THREAD) {
+        } else if (msg.channel.id !== Threads.BIRTHDAY_THREAD) {
             birthdayEmbed = makeEmbed({
                 title: 'Birthday reminder',
-                description: `That command can only be used in <#${Channels.BIRTHDAY_THREAD}>`,
+                description: `That command can only be used in <#${Threads.BIRTHDAY_THREAD}>`,
                 color: Colors.Red,
             });
         } else if (args[0] === 'add' || args[0] === 'set') {
