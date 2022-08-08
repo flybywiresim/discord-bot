@@ -40,7 +40,7 @@ export const unTimeoutModLogEmbed = (moderator: User, user: User) => makeEmbed({
         },
         {
             name: 'Moderator',
-            value: `<@${moderator}>`,
+            value: `${moderator}`,
         },
     ],
     timestamp: Date.now(),
