@@ -1,5 +1,5 @@
 import { CommandDefinition } from '../../lib/command';
-import { Channels, CommandCategory } from '../../constants';
+import { CommandCategory, Threads } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
 
 export const experimental: CommandDefinition = {
@@ -13,8 +13,8 @@ export const experimental: CommandDefinition = {
                 'Currently experimental is geared toward testing the initial version of VNAV and flyPadOS3. Please see our [Experimental Version Support Page](https://docs.flybywiresim.com/fbw-a32nx/support/exp/) for more information. **Do not expect support for the experimental version - use at own risk!**',
                 '',
                 'Please use the appropriate discord thread to discuss any issues:',
-                `- <#${Channels.CFMS_ISSUES}> `,
-                `- <#${Channels.EXP_ISSUES}> `,
+                `- <#${Threads.CFMS_ISSUES_THREAD}> `,
+                `- <#${Threads.EXP_ISSUES_THREAD}> `,
                 '',
                 'The Experimental version is a test version to find problems, issues and to improve functionality based on your feedback. It is not meant to be used for daily use or serious flights with an Online ATC service.',
             ]),

@@ -1,7 +1,7 @@
 import { Client, Colors, Guild, TextChannel } from 'discord.js';
 import { makeEmbed } from '../lib/embed';
 import Logger from '../lib/logger';
-import { GuildID, Channels } from '../constants';
+import { GuildID, Channels, Threads } from '../constants';
 import { getConn } from '../lib/db';
 import Birthday from '../lib/schemas/birthdaySchema';
 
@@ -53,7 +53,7 @@ async function processBirthdays(client: Client) {
     // Get all threads (archived included)
     await channel.threads.fetch({ archived: {} });
 
-    const thread = channel.threads.cache.find((t) => t.id === Channels.BIRTHDAY_THREAD);
+    const thread = channel.threads.cache.find((t) => t.id === Threads.BIRTHDAY_THREAD);
 
     if (!thread) {
         Logger.error('Birthday thread not found');
