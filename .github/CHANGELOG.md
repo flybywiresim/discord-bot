@@ -2,6 +2,7 @@
 
 Update <small>_ August 2022</small>
 
+- feat: add live flights command (08/08/2022)
 - feat: adds noHello (06/08/2022)
 - refactor: command-docs.md ordering (05/08/2022)
 - refactor: rename funnies directory to memes (05/08/2022)
