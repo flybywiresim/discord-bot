@@ -127,6 +127,7 @@ import { market } from './support/market';
 import { takeoffIssues } from './a32nx/takeoffissues';
 import { simbridge } from './support/simbridge';
 import { fma } from './a32nx/fma';
+import { noHello } from './memes/noHello';
 import { vatsimEvents } from './utils/vatsimEvents';
 
 const commands: CommandDefinition[] = [
@@ -257,6 +258,7 @@ const commands: CommandDefinition[] = [
     takeoffIssues,
     simbridge,
     fma,
+    noHello,
     vatsimEvents,
 ];
 

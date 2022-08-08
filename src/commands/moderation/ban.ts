@@ -37,7 +37,7 @@ export const ban: CommandDefinition = {
                         },
                         {
                             name: 'Moderator',
-                            value: `<@${msg.author.id}>`,
+                            value: `${msg.author}`,
                         },
                         {
                             name: 'Reason',

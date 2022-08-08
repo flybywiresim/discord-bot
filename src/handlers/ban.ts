@@ -50,11 +50,11 @@ module.exports = {
                     fields: [
                         {
                             name: 'Member',
-                            value: `<@${msg.user.id}>`,
+                            value: `${msg.user}`,
                         },
                         {
                             name: 'Moderator',
-                            value: `<@${executor.id}>`,
+                            value: `${executor.id}`,
                         },
                         {
                             name: 'Reason',

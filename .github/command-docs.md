@@ -128,6 +128,7 @@
 | .jaun           | just... Jaun                                                                           | ---                                      |
 | .merge          | GIT MERGE!                                                                             | ---                                      |
 | .mico           | mico!                                                                                  | ---                                      |
+| .nohello        | No!                                                                                    | .hello                                   |
 | .nut            | nut                                                                                    | ---                                      |
 | .oim            | oim                                                                                    | ---                                      |
 | .otter          | Well, it's an otter                                                                    | ---                                      |

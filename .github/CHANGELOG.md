@@ -2,8 +2,12 @@
 
 Update <small>_ August 2022</small>
 
-- feat: add events command (07/08/2022)
-- fix: command-docs.md ordering (05/08/2022)
+- feat: add events command (08/08/2022)
+- refactor: command cleanup (08/08/2022)
+- fix: crash in scamlogs with non-existent roles (08/08/2022)
+- fix: mentions in multiple commands (08/08/2022)
+- feat: adds noHello (06/08/2022)
+- refactor: command-docs.md ordering (05/08/2022)
 - refactor: rename funnies directory to memes (05/08/2022)
 - refactor: extract messageCreate handler (03/08/2022)
 - feat: makeList embed helper (03/08/2022)

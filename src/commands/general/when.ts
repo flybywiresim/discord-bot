@@ -9,10 +9,7 @@ export const when: CommandDefinition = {
     executor: async (msg) => {
         const whenEmbed = makeEmbed({
             title: 'When is it coming?',
-            description: 'Due to the community-driven nature of our projects, we do not enforce delivery timelines on our volunteer developers. '
-                + 'We value high-quality, polished releases over frequent and quickly-released ones, which means some features might take time to land in a publicly-available build. '
-                + 'Rest assured that our developers and contributors are working hard on making every FlyByWire project as bug-free and feature-complete as possible, '
-                + 'but that we are not able to provide release dates or estimates for a certain feature/fix.',
+            description: 'Due to the community-driven nature of our projects, we do not enforce delivery timelines on our volunteer developers. We value high-quality, polished releases over frequent and quickly-released ones, which means some features might take time to land in a publicly-available build. Rest assured that our developers and contributors are working hard on making every FlyByWire project as bug-free and feature-complete as possible, but that we are not able to provide release dates or estimates for a certain feature/fix.',
         });
 
         await msg.channel.send({ embeds: [whenEmbed] });
