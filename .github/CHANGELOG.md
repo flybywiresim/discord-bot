@@ -13,7 +13,7 @@ Update <small>_ August 2022</small>
 - refactor: .wx command terrain display on experimental note (01/08/2022)
 - refactor: change SOP command image (01/08/2022)
 
-  Update <small>_ July 2022</small>
+Update <small>_ July 2022</small>
 
 - ci: build setup and lint helm for pr (31/07/2022)
 - fix: ping fixed for count command (31/07/2022)
