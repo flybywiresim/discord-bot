@@ -6,7 +6,7 @@ const POGGERS_URL = 'https://tenor.com/view/lizard-dancing-poggers-lizard-dance-
 export const poggers: CommandDefinition = {
     name: ['poggers', 'pog'],
     description: 'POG',
-    category: CommandCategory.FUNNIES,
+    category: CommandCategory.MEMES,
     executor: async (msg) => {
         await msg.channel.send(POGGERS_URL);
     },
