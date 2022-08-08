@@ -128,6 +128,7 @@ import { takeoffIssues } from './a32nx/takeoffissues';
 import { simbridge } from './support/simbridge';
 import { fma } from './a32nx/fma';
 import { noHello } from './memes/noHello';
+import { vatsimEvents } from './utils/vatsimEvents';
 import { flights } from './utils/flights';
 
 const commands: CommandDefinition[] = [
@@ -259,6 +260,7 @@ const commands: CommandDefinition[] = [
     simbridge,
     fma,
     noHello,
+    vatsimEvents,
     flights,
 ];
 
