@@ -16,8 +16,9 @@ export const flights: CommandDefinition = {
         try {
             const flights = await fetch(`${FBW_API_BASE_URL}/txcxn/_count`).then((res) => res.json());
             const flightsEmbed = makeEmbed({
-                title: 'Current Flights',
-                description: `There are currently **${flights}** flights.`,
+                title: 'Live Flights',
+                description: `There are currently **${flights}** active flights with TELEX enabled.`,
+                footer: { text: 'Note: This includes the A32NX, and other aircraft using FlyByWire systems' },
                 url: FBW_WEB_MAP_URL,
                 timestamp: new Date().toISOString(),
             });
