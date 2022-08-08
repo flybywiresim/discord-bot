@@ -28,8 +28,8 @@ module.exports = {
                     iconURL: message.author.displayAvatarURL({ dynamic: true }),
                 },
                 fields: [
-                    { name: 'Author', value: `<@${message.author.id}>`, inline: true },
-                    { name: 'Channel', value: `<#${message.channel.id}>`, inline: true },
+                    { name: 'Author', value: `${message.author}`, inline: true },
+                    { name: 'Channel', value: `${message.channel}`, inline: true },
                     { name: 'Deleted Message', value: message.content ? `${message.content}` : FEATURE_NOT_AVAIL, inline: false },
                 ],
                 footer: { text: `User ID: ${message.author.id}` },

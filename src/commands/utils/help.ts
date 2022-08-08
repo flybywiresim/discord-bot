@@ -45,7 +45,7 @@ export const help: CommandDefinition = {
                     // Slide into the DMs
                     author.createDM()
                         .then(async (dmChannel) => {
-                            const response = await selectorMsg.channel.send(`<@${msg.author.id}>, I've DM'd you with the list of the commands you can use!`);
+                            const response = await selectorMsg.channel.send(`${msg.author}, I've DM'd you with the list of the commands you can use!`);
                             await selectorMsg.delete();
 
                             setTimeout(() => {
