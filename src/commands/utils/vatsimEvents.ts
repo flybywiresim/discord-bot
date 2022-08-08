@@ -20,7 +20,7 @@ const handleLocaleDateString = (date: Date) => date.toLocaleDateString('en-US', 
 
 export const vatsimEvents: CommandDefinition = {
     name: ['events', 'event', 'ev', 'vatsimevents', 'vatevents', 'vatev'],
-    description: 'Get the upcoming vatsimEvents from the VATSIM network.',
+    description: 'Get the upcoming events from the VATSIM network.',
     category: CommandCategory.UTILS,
     executor: async (msg) => {
         try {
@@ -72,7 +72,7 @@ export const vatsimEvents: CommandDefinition = {
 
             const eventsEmbed = makeEmbed({
                 title: 'VATSIM Events',
-                description: 'A list of upcoming vatsimEvents from the VATSIM network.',
+                description: 'A list of upcoming events on the VATSIM network.',
                 fields,
             });
 
