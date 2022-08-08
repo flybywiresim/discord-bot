@@ -1,19 +1,19 @@
 import { CommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
-import { CommandCategory } from '../../constants';
+import { Channels, CommandCategory, Roles } from '../../constants';
 
 const RULES_EMBED = makeEmbed({
     title: 'FlyByWire Simulations Server Rules',
     description: makeLines([
         'Below are the rules you must follow to participate in this discord server. Failure to abide by these rules could result in a removal from the server. Mute/ban evasions will result in a permanent ban.',
         '',
-        'The <@&739187150909866137> reserve the right to action at discretion.',
+        `The <@&${Roles.MODERATION_TEAM}> reserve the right to action at discretion.`,
     ]),
 });
 
 const FAQ_EMBED = makeEmbed({
     title: '<:question:759405702044975114> Frequently Asked Questions',
-    description: 'Check the <#751774575464939580> for the answers to your questions prior to asking in the channels below, post your question in the appropriate channel.',
+    description: `Check the <#${Channels.FAQ}> for the answers to your questions prior to asking in the channels below, post your question in the appropriate channel.`,
 });
 
 const POLICIES_EMBED = makeEmbed({
@@ -22,11 +22,11 @@ const POLICIES_EMBED = makeEmbed({
     fields: [
         {
             name: 'ToS -',
-            value: 'https://discordapp.com/terms \n',
+            value: 'https://discordapp.com/terms',
         },
         {
             name: 'Guidelines -',
-            value: 'https://discordapp.com/guidelines \n',
+            value: 'https://discordapp.com/guidelines',
         },
     ],
 });
@@ -49,7 +49,7 @@ const DISCUSSION_EMBED = makeEmbed({
 
 const ROLE_EMBED = makeEmbed({
     title: '<:person_raising_hand:759405708994281493> Role Assignment',
-    description: 'We encourage people to use their vast experience and knowledge to help us create a highly detailed addon. If you have skills in Documentation, Modelling and/or Programming, please assign your <#751780817772216401> and get started with the conversation to help us develop the addon.',
+    description: `We encourage people to use their vast experience and knowledge to help us create a highly detailed addon. If you have skills in Documentation, Modelling and/or Programming, please assign your <#${Channels.ROLES}> and get started with the conversation to help us develop the addon.`,
 });
 
 export const rules: CommandDefinition = {
