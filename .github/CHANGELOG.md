@@ -2,6 +2,7 @@
 
 Update <small>_ August 2022</small>
 
+- feat: add live flights command (08/08/2022)
 - feat: add events command (08/08/2022)
 - refactor: command cleanup (08/08/2022)
 - fix: crash in scamlogs with non-existent roles (08/08/2022)

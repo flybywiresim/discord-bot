@@ -129,6 +129,7 @@ import { simbridge } from './support/simbridge';
 import { fma } from './a32nx/fma';
 import { noHello } from './memes/noHello';
 import { vatsimEvents } from './utils/vatsimEvents';
+import { flights } from './utils/flights';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -260,6 +261,7 @@ const commands: CommandDefinition[] = [
     fma,
     noHello,
     vatsimEvents,
+    flights,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
