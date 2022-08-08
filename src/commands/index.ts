@@ -123,6 +123,13 @@ import { warn } from './moderation/warn/warn';
 import { listWarnings } from './moderation/warn/listWarnings';
 import { deleteWarn } from './moderation/warn/deleteWarn';
 import { atc } from './a32nx/atc';
+import { market } from './support/market';
+import { takeoffIssues } from './a32nx/takeoffissues';
+import { simbridge } from './support/simbridge';
+import { fma } from './a32nx/fma';
+import { noHello } from './memes/noHello';
+import { vatsimEvents } from './utils/vatsimEvents';
+import { flights } from './utils/flights';
 import { dlss } from './support/dlss';
 
 const commands: CommandDefinition[] = [
@@ -249,6 +256,13 @@ const commands: CommandDefinition[] = [
     listWarnings,
     deleteWarn,
     atc,
+    market,
+    takeoffIssues,
+    simbridge,
+    fma,
+    noHello,
+    vatsimEvents,
+    flights,
     dlss,
 ];
 
