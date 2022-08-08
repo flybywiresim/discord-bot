@@ -17,7 +17,7 @@ export const flights: CommandDefinition = {
             const flights = await fetch(`${FBW_API_BASE_URL}/txcxn/_count`).then((res) => res.json());
             const flightsEmbed = makeEmbed({
                 title: 'Current Flights',
-                description: `There are currently **${flights}** flights`,
+                description: `There are currently **${flights}** flights.`,
                 url: FBW_WEB_MAP_URL,
                 timestamp: new Date().toISOString(),
             });
