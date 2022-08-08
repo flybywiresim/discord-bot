@@ -41,7 +41,7 @@ module.exports = {
                     fields: [
                         {
                             name: 'User:',
-                            value: `<@${msg.author.id}>`,
+                            value: `${msg.author}`,
                         },
                         {
                             name: 'Channel:',
@@ -69,7 +69,7 @@ module.exports = {
                             name: msg.author.tag,
                             iconURL: msg.author.displayAvatarURL({ dynamic: true }),
                         },
-                        description: `DM was not sent to <@${msg.author.id}>.`,
+                        description: `DM was not sent to ${msg.author.id}.`,
                     });
 
                     await scamLogs.send({ embeds: [noDMEmbed] });
@@ -85,7 +85,7 @@ module.exports = {
                     fields: [
                         {
                             name: 'User:',
-                            value: `<@${msg.author.id}>`,
+                            value: `${msg.author.id}`,
                         },
                         {
                             name: 'Channel:',
