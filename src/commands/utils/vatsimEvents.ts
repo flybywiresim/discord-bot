@@ -72,7 +72,7 @@ export const vatsimEvents: CommandDefinition = {
 
             const eventsEmbed = makeEmbed({
                 title: 'VATSIM Events',
-                description: 'A list of upcoming events on the VATSIM network.',
+                description: 'A list of upcoming events on the VATSIM network. Find the full list [here.](https://my.vatsim.net/events)',
                 fields,
             });
 
