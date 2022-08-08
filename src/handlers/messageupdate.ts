@@ -28,8 +28,8 @@ module.exports = {
                     iconURL: oldMessage.author.displayAvatarURL({ dynamic: true }),
                 },
                 fields: [
-                    { name: 'Author', value: `<@${oldMessage.author}>`, inline: true },
-                    { name: 'Channel', value: `<#${oldMessage.channel.id}>`, inline: true },
+                    { name: 'Author', value: `${oldMessage.author}`, inline: true },
+                    { name: 'Channel', value: `${oldMessage.channel}`, inline: true },
                     { name: 'Original Message', value: oldMessage.content ? `\`\`\`${oldMessage.content}\`\`\`` : FEATURE_NOT_AVAIL, inline: false },
                     { name: 'Edited Message', value: newMessage.content ? `\`\`\`${newMessage.content}\`\`\`` : FEATURE_NOT_AVAIL, inline: false },
                 ],

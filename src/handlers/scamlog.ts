@@ -23,11 +23,15 @@ module.exports = {
                 'FBW Emeritus',
             ];
             let hasRole = false;
-            excludedRoles.forEach((findrole) => {
-                if (msg.member.roles.cache.some((role) => role.name === findrole)) {
-                    hasRole = true;
-                }
-            });
+            try {
+                excludedRoles.forEach((findrole) => {
+                    if (msg.member.roles.cache.some((role) => role.name === findrole)) {
+                        hasRole = true;
+                    }
+                });
+            } catch (e) {
+                Logger.error(e);
+            }
             // @ts-ignore
             if (hasRole === true) {
                 const allowedEmbed = makeEmbed({
@@ -41,7 +45,7 @@ module.exports = {
                     fields: [
                         {
                             name: 'User:',
-                            value: `<@${msg.author.id}>`,
+                            value: `${msg.author}`,
                         },
                         {
                             name: 'Channel:',
@@ -69,7 +73,7 @@ module.exports = {
                             name: msg.author.tag,
                             iconURL: msg.author.displayAvatarURL({ dynamic: true }),
                         },
-                        description: `DM was not sent to <@${msg.author.id}>.`,
+                        description: `DM was not sent to ${msg.author.id}.`,
                     });
 
                     await scamLogs.send({ embeds: [noDMEmbed] });
@@ -85,7 +89,7 @@ module.exports = {
                     fields: [
                         {
                             name: 'User:',
-                            value: `<@${msg.author.id}>`,
+                            value: `${msg.author}`,
                         },
                         {
                             name: 'Channel:',
