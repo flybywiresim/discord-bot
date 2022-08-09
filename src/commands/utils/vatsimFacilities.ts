@@ -25,7 +25,7 @@ export const vatsimFacilities: CommandDefinition = {
         if (splitUp.length <= 1) {
             const noQueryEmbed = makeEmbed({
                 title: 'VATSIM Error | Missing Query',
-                description: 'You must provide a VATSIM facility or location.',
+                description: 'You must provide a VATSIM facility to search for.',
                 color: Colors.Red,
             });
             await msg.channel.send({ embeds: [noQueryEmbed] });
@@ -44,7 +44,7 @@ export const vatsimFacilities: CommandDefinition = {
             if (Object.keys(vatsimFacilities).length === 0 && Object.keys(vatsimAtis).length === 0) {
                 facilityEmbed = makeEmbed({
                     title: `VATSIM Facilities | ${facilityName} - Offline or Not found`,
-                    description: 'No online information available for this facility or group of facilities.',
+                    description: 'No online information available for the VATSIM facilities match you provided.',
                 });
             } else {
                 const fields: EmbedField[] = [...vatsimFacilities, ...vatsimAtis].map((facility) => {
@@ -90,12 +90,12 @@ export const vatsimFacilities: CommandDefinition = {
                     }
 
                     return data;
-                }).slice(0, 6).flat();
+                }).slice(0, 5).flat();
 
                 const totalCount = Object.keys(vatsimFacilities).length + Object.keys(vatsimAtis).length;
                 facilityEmbed = makeEmbed({
                     title: `VATSIM Facility | ${facilityName} - ${totalCount} Online`,
-                    description: `A list of the first 5 Online VATSIM facilities matching ${facilityName}`,
+                    description: `A list of up to 5 Online VATSIM facilities matching ${facilityName}`,
                     fields,
                 });
             }
