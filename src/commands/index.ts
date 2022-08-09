@@ -135,6 +135,7 @@ import { dlss } from './support/dlss';
 import { temporarycommandedit } from './moderation/temporaryCommandEdit';
 import { temporarycommand } from './general/temporaryCommand';
 import { yourControls } from './general/yourControls';
+import { vatsimFacilities } from './utils/vatsimFacilities';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -272,6 +273,7 @@ const commands: CommandDefinition[] = [
     temporarycommandedit,
     temporarycommand,
     yourControls,
+    vatsimFacilities,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};

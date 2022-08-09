@@ -2,6 +2,7 @@
 
 Update <small>_ August 2022</small>
 
+- feat: add vatsim command (16/08/2022)
 - feat: add YourControls discord server command (16/08/2022)
 - refactor: role constants in scam log (15/08/2022)
 - docs: added image from dlss command to assets folder (14/08/2022)
