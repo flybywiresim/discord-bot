@@ -19,7 +19,6 @@ export const docsearch: CommandDefinition = {
             return msg.channel.send({ embeds: [noQueryEmbed] });
         }
 
-        console.log(searchWords);
         // Safety to prevent users from sending their own links in bot output.
         for (const searchWord of searchWords) {
             try {
