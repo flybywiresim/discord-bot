@@ -4,17 +4,19 @@ import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 
+const DOCS_BASE_URL = 'https://docs.flybywiresim.com';
+
 export const docsearch: CommandDefinition = {
-    name: ['docsearch', 'documentation', 'doc'],
+    name: ['docsearch', 'documentation', 'doc', 'docs'],
     description: 'Provides a link to the documentation or documentation search for a quick link if there is no dedicated command.',
     category: CommandCategory.GENERAL,
     executor: (msg) => {
-        const searchWords = msg.content.replace(/^\.(doc|documentation|docsearch)\s+/, ' ').split(' ');
+        const searchWords = msg.content.replace(/^\.(doc|docs|documentation|docsearch)\s+/, ' ').split(' ');
 
         if (searchWords.length <= 1) {
             const noQueryEmbed = makeEmbed({
                 title: 'FlyByWire Documentation',
-                description: 'Find the full FlyByWire Documentation [here](https://docs.flybywiresim.com/).',
+                description: `Find the full FlyByWire Documentation [here](${DOCS_BASE_URL}).`,
             });
             return msg.channel.send({ embeds: [noQueryEmbed] });
         }
@@ -37,7 +39,6 @@ export const docsearch: CommandDefinition = {
             }
         }
 
-        // Removing first element as it is an empty string
         searchWords.shift();
         const searchQuery = searchWords.join(' ');
 
@@ -46,7 +47,7 @@ export const docsearch: CommandDefinition = {
 
         const queryEmbed = makeEmbed({
             title: 'FlyByWire Documentation Search',
-            description: `Search the FlyByWire Documentation for "${searchQuery}" [here](https://docs.flybywiresim.com/?q=${encodedSearchQuery}).`,
+            description: `Search the FlyByWire Documentation for "${searchQuery}" [here](${DOCS_BASE_URL}/?q=${encodedSearchQuery}).`,
         });
         return msg.channel.send({ embeds: [queryEmbed] });
     },
