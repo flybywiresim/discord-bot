@@ -1,6 +1,7 @@
 ## Changelog
 
 Update <small>_ August 2022</small>
+
 - feat: add dlss command (10/08/2022)
 - feat: add docsearch command (10/08/2022)
 - ci: verify changelog in PR (10/08/2022)
