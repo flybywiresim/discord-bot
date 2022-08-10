@@ -1,4 +1,4 @@
-import discord, { EmbedField, Snowflake, TextChannel, User } from 'discord.js';
+import { Colors, EmbedBuilder, EmbedField, Snowflake, TextChannel, User } from 'discord.js';
 import { CommandDefinition } from '../../lib/command';
 import { Channels, CommandCategory } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
@@ -7,7 +7,7 @@ type UserLike = User | Snowflake
 
 export const ban: CommandDefinition = {
     name: 'ban',
-    requiredPermissions: ['BAN_MEMBERS'],
+    requiredPermissions: ['BanMembers'],
     category: CommandCategory.MODERATION,
     executor: async (msg) => {
         const splitUp = msg.content.replace(/\.ban\s+/, '').split(' ');
@@ -25,10 +25,10 @@ export const ban: CommandDefinition = {
         return msg.guild.members.ban(idArg).then((user: User | Snowflake) => {
             if (modLogsChannel && typeof user !== 'string') {
                 const modLogEmbed = makeEmbed({
-                    color: 'RED',
+                    color: Colors.Red,
                     author: {
                         name: `[BANNED] ${user.tag}`,
-                        icon_url: user.displayAvatarURL({ dynamic: true }),
+                        iconURL: user.displayAvatarURL(),
                     },
                     fields: [
                         {
@@ -37,7 +37,7 @@ export const ban: CommandDefinition = {
                         },
                         {
                             name: 'Moderator',
-                            value: `<@${msg.author.id}>`,
+                            value: `${msg.author}`,
                         },
                         {
                             name: 'Reason',
@@ -59,7 +59,7 @@ export const ban: CommandDefinition = {
     },
 };
 
-function makeSuccessfulBanEmbed(user: UserLike, reason: string): discord.MessageEmbed {
+function makeSuccessfulBanEmbed(user: UserLike, reason: string): EmbedBuilder {
     const fields: EmbedField[] = [];
 
     if (user instanceof User) {
@@ -85,11 +85,11 @@ function makeSuccessfulBanEmbed(user: UserLike, reason: string): discord.Message
     return makeEmbed({
         title: 'User Successfully Banned',
         fields,
-        color: 'GREEN',
+        color: Colors.Green,
     });
 }
 
-function makeFailedBanEmbed(user: UserLike, error: any): discord.MessageEmbed {
+function makeFailedBanEmbed(user: UserLike, error: any): EmbedBuilder {
     const fields: EmbedField[] = [];
 
     if (user instanceof User) {
@@ -115,6 +115,6 @@ function makeFailedBanEmbed(user: UserLike, error: any): discord.MessageEmbed {
     return makeEmbed({
         title: 'Failed to Ban User',
         fields,
-        color: 'RED',
+        color: Colors.Red,
     });
 }

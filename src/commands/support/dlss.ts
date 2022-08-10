@@ -2,7 +2,7 @@ import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
 
-const DLSS_URL = 'https://i0.wp.com/blog.cyberpowerpc.com/wp-content/uploads/2021/09/DLSS.jpg?fit=2556%2C1438&ssl=1';
+const DLSS_URL = 'https://cdn.discordapp.com/attachments/897491699167793182/1006801671592087572/dlss_poster.png';
 
 export const dlss: CommandDefinition = {
     name: 'dlss',
@@ -14,7 +14,7 @@ export const dlss: CommandDefinition = {
             description: makeLines([
                 'Deep Learning Super Sampling (DLSS) is a new graphics technology that renders content at a lower resolution, then upscales it to improve FPS. ',
                 '',
-                'You need to have an Nvidia GeForce RTX card to use the setting, and your mileage may vary with respect to sim quality and performance when using the feature.',
+                'You need to have an Nvidia GeForce RTX card to use the setting, and may result in blurred instruments or screens when using the feature.',
                 '',
                 'See [Nvidia\'s page on DLSS](https://www.nvidia.com/en-us/geforce/technologies/dlss/) for more information.',
             ]),

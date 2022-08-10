@@ -10,8 +10,7 @@ export const airac: CommandDefinition = {
         const airacEmbed = makeEmbed({
             title: 'FlyByWire Support | SimBrief AIRACs',
             description: makeLines([
-                'Free SimBrief accounts are limited to generating routes using obsolete AIRAC cycles, while MSFS regularly updates to the latest AIRAC available. '
-                + 'This can lead to route incompatibilies and various error messages when you import to the MCDU, including "NOT ALLOWED", "NOT IN DATABASE", and "AWY/WPT MISMATCH".',
+                'Free SimBrief accounts are limited to generating routes using obsolete AIRAC cycles, while MSFS regularly updates to the latest AIRAC available. This can lead to route incompatibilies and various error messages when you import to the MCDU, including "NOT ALLOWED", "NOT IN DATABASE", and "AWY/WPT MISMATCH".',
                 '',
                 'Any of these errors during route import could mean that your route is no longer valid in the current cycle, and cannot be properly used alongside our SimBrief import feature!',
                 '',

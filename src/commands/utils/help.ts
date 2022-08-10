@@ -1,4 +1,4 @@
-import { DMChannel, EmbedFieldData, User } from 'discord.js';
+import { DMChannel, EmbedField, User } from 'discord.js';
 import { CommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
 import commands from '../index';
@@ -45,7 +45,7 @@ export const help: CommandDefinition = {
                     // Slide into the DMs
                     author.createDM()
                         .then(async (dmChannel) => {
-                            const response = await selectorMsg.channel.send(`<@${msg.author.id}>, I've DM'd you with the list of the commands you can use!`);
+                            const response = await selectorMsg.channel.send(`${msg.author}, I've DM'd you with the list of the commands you can use!`);
                             await selectorMsg.delete();
 
                             setTimeout(() => {
@@ -145,7 +145,7 @@ async function handleDmCommunication(dmChannel: DMChannel, author: User, index: 
     await sentEmbedMessage.react('❌');
 }
 
-function renderAllCategories(): EmbedFieldData[] {
+function renderAllCategories(): EmbedField[] {
     let commandArray = Object.values(commands);
 
     // Remove duplicates by name
@@ -162,13 +162,14 @@ function renderAllCategories(): EmbedFieldData[] {
             };
         });
 
-    const fields: EmbedFieldData[] = [];
+    const fields: EmbedField[] = [];
 
     for (const category of groupedCommands) {
         const fieldsValues = chunkStringArray(category.commands.map(renderCommand), 1024, '\n');
 
         fieldsValues.forEach((value) => {
             fields.push({
+                inline: false,
                 name: category.name,
                 value: value.join('\n'),
             });

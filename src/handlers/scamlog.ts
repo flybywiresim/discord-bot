@@ -23,11 +23,15 @@ module.exports = {
                 'FBW Emeritus',
             ];
             let hasRole = false;
-            excludedRoles.forEach((findrole) => {
-                if (msg.member.roles.cache.some((role) => role.name === findrole)) {
-                    hasRole = true;
-                }
-            });
+            try {
+                excludedRoles.forEach((findrole) => {
+                    if (msg.member.roles.cache.some((role) => role.name === findrole)) {
+                        hasRole = true;
+                    }
+                });
+            } catch (e) {
+                Logger.error(e);
+            }
             // @ts-ignore
             if (hasRole === true) {
                 const allowedEmbed = makeEmbed({
@@ -36,12 +40,12 @@ module.exports = {
                     description: 'An allowed role has used @everyone',
                     author: {
                         name: msg.author.tag,
-                        icon_url: msg.author.displayAvatarURL({ dynamic: true }),
+                        iconURL: msg.author.displayAvatarURL({ dynamic: true }),
                     },
                     fields: [
                         {
                             name: 'User:',
-                            value: `<@${msg.author.id}>`,
+                            value: `${msg.author}`,
                         },
                         {
                             name: 'Channel:',
@@ -67,9 +71,9 @@ module.exports = {
                     const noDMEmbed = makeEmbed({
                         author: {
                             name: msg.author.tag,
-                            icon_url: msg.author.displayAvatarURL({ dynamic: true }),
+                            iconURL: msg.author.displayAvatarURL({ dynamic: true }),
                         },
-                        description: `DM was not sent to <@${msg.author.id}>.`,
+                        description: `DM was not sent to ${msg.author.id}.`,
                     });
 
                     await scamLogs.send({ embeds: [noDMEmbed] });
@@ -80,12 +84,12 @@ module.exports = {
                     thumbnail: { url: 'https://cdn.discordapp.com/attachments/932350968522240101/932625893657026630/Scam.png' },
                     author: {
                         name: msg.author.tag,
-                        icon_url: msg.author.displayAvatarURL({ dynamic: true }),
+                        iconURL: msg.author.displayAvatarURL({ dynamic: true }),
                     },
                     fields: [
                         {
                             name: 'User:',
-                            value: `<@${msg.author.id}>`,
+                            value: `${msg.author}`,
                         },
                         {
                             name: 'Channel:',

@@ -1,7 +1,9 @@
-import request from 'request';
+import fetch from 'node-fetch';
+import { Colors } from 'discord.js';
 import { CommandDefinition } from '../../lib/command';
 import { CommandCategory, Units } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
+import Logger from '../../lib/logger';
 
 export const metar: CommandDefinition = {
     name: 'metar',
@@ -11,65 +13,68 @@ export const metar: CommandDefinition = {
         const splitUp = msg.content.replace(/\.metar\s+/, ' ').split(' ');
 
         if (splitUp.length <= 1) {
-            await msg.reply('please provide an ICAO airport code.');
+            const noQueryEmbed = makeEmbed({
+                title: 'Metar Error | Missing Query',
+                description: 'You must provide an airport ICAO code.',
+                color: Colors.Red,
+            });
+            await msg.channel.send({ embeds: [noQueryEmbed] });
             return Promise.resolve();
         }
         const icaoArg = splitUp[1];
-        request({
-            method: 'GET',
-            url: `https://avwx.rest/api/metar/${icaoArg}`,
-            headers: { Authorization: process.env.METAR_TOKEN },
-        }, async (error, response, body) => {
-            let metarEmbed;
 
-            if (response.statusCode === 200) {
-                // Response OK, parse the JSON
-                const metarReport = JSON.parse(body);
-                metarEmbed = makeEmbed({
-                    title: `METAR Report | ${metarReport.station}`,
-                    description: makeLines([
-                        '**Raw Report**',
-                        metarReport.raw,
-                        '',
-                        '**Basic Report:**',
-                        `**Time Observed:** ${metarReport.time.dt}`,
-                        `**Station:** ${metarReport.station}`,
-                        `**Wind:** ${metarReport.wind_direction.repr}${metarReport.wind_direction.repr === 'VRB' ? '' : Units.DEGREES} at ${metarReport.wind_speed.repr} ${Units.KNOTS}`,
-                        `**Visibility:** ${metarReport.visibility.repr} ${Number.isNaN(+metarReport.visibility.repr) ? '' : metarReport.units.visibility}`,
-                        `**Temperature:** ${metarReport.temperature.repr} ${Units.CELSIUS}`,
-                        `**Dew Point:** ${metarReport.dewpoint.repr} ${Units.CELSIUS}`,
-                        `**Altimeter:** ${metarReport.altimeter.value.toString()} ${metarReport.units.altimeter}`,
-                        `**Flight Rules:** ${metarReport.flight_rules}`,
-                    ]),
-                    fields: [
-                        {
-                            name: 'Unsure of how to read the raw report?',
-                            value: 'Please refer to our guide [here.](https://docs.flybywiresim.com/pilots-corner/airliner-flying-guide/weather/)',
-                            inline: false,
-                        },
-                    ],
-                    footer: { text: 'This METAR report may not accurately reflect the weather in the simulator. However, it will always be similar to the current conditions present in the sim.' },
+        try {
+            const metarReport = await fetch(`https://avwx.rest/api/metar/${icaoArg}`, {
+                method: 'GET',
+                headers: { Authorization: process.env.METAR_TOKEN },
+            }).then((res) => res.json());
+
+            if (metarReport.error) {
+                const invalidEmbed = makeEmbed({
+                    title: `Metar Error | ${icaoArg.toUpperCase()}`,
+                    description: metarReport.error,
+                    color: Colors.Red,
                 });
-            } else if (response.statusCode === 400) {
-                // Invalid ICAO/IATA code
-                metarEmbed = makeEmbed({
-                    title: `METAR Error | ${icaoArg.toUpperCase()}`,
-                    description: makeLines([
-                        `${icaoArg.toUpperCase()} is not a valid station code!`,
-                    ]),
-                });
-            } else {
-                // Unknown error
-                metarEmbed = makeEmbed({
-                    title: 'METAR Error',
-                    description: makeLines([
-                        'There was an unknown error with the METAR request!',
-                    ]),
-                });
+                await msg.channel.send({ embeds: [invalidEmbed] });
+                return Promise.resolve();
             }
 
+            const metarEmbed = makeEmbed({
+                title: `METAR Report | ${metarReport.station}`,
+                description: makeLines([
+                    '**Raw Report**',
+                    metarReport.raw,
+                    '',
+                    '**Basic Report:**',
+                    `**Time Observed:** ${metarReport.time.dt}`,
+                    `**Station:** ${metarReport.station}`,
+                    `**Wind:** ${metarReport.wind_direction.repr}${metarReport.wind_direction.repr === 'VRB' ? '' : Units.DEGREES} at ${metarReport.wind_speed.repr} ${Units.KNOTS}`,
+                    `**Visibility:** ${metarReport.visibility.repr} ${Number.isNaN(+metarReport.visibility.repr) ? '' : metarReport.units.visibility}`,
+                    `**Temperature:** ${metarReport.temperature.repr} ${Units.CELSIUS}`,
+                    `**Dew Point:** ${metarReport.dewpoint.repr} ${Units.CELSIUS}`,
+                    `**Altimeter:** ${metarReport.altimeter.value.toString()} ${metarReport.units.altimeter}`,
+                    `**Flight Rules:** ${metarReport.flight_rules}`,
+                ]),
+                fields: [
+                    {
+                        name: 'Unsure of how to read the raw report?',
+                        value: 'Please refer to our guide [here.](https://docs.flybywiresim.com/pilots-corner/airliner-flying-guide/weather/)',
+                        inline: false,
+                    },
+                ],
+                footer: { text: 'This METAR report may not accurately reflect the weather in the simulator. However, it will always be similar to the current conditions present in the sim.' },
+            });
+
             await msg.channel.send({ embeds: [metarEmbed] });
-        });
+        } catch (e) {
+            Logger.error('metar:', e);
+            const fetchErrorEmbed = makeEmbed({
+                title: 'Metar Error | Fetch Error',
+                description: 'There was an error fetching the METAR report. Please try again later.',
+                color: Colors.Red,
+            });
+            await msg.channel.send({ embeds: [fetchErrorEmbed] });
+        }
         return Promise.resolve();
     },
 };

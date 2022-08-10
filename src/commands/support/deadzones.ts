@@ -5,13 +5,15 @@ import { CommandCategory } from '../../constants';
 const DEADZONE_IMAGE_URL = 'https://cdn.discordapp.com/attachments/770835189419999262/802254518376464424/Deadzone_Controls.png';
 
 export const deadzones: CommandDefinition = {
-    name: ['deadzone', 'dz'],
+    name: ['deadzones', 'deadzone', 'dz'],
     description: 'Display help with controller deadzones',
     category: CommandCategory.SUPPORT,
     executor: async (msg) => {
         const deadzonesEmbed = makeEmbed({
-            title: 'FlyByWire A32NX | AP Problem',
+            title: 'FlyByWire A32NX | Deadzone Configuration',
             description: makeLines([
+                'In certain situations your hardware maybe causing unwanted inputs when attempting to fly the aircraft. Increasing the deadzone setting for your controller can help prevent these inputs. ',
+                '',
                 '1. Go to your settings',
                 '2. Controls and select your yoke/joystick/controller.',
                 '',

@@ -10,8 +10,7 @@ export const beginner: CommandDefinition = {
         const beginnerEmbed = makeEmbed({
             title: 'FlyByWire A32NX | Beginner\'s Guide',
             description: makeLines([
-                'Please see our [beginner\'s guide](https://docs.flybywiresim.com/pilots-corner/beginner-guide/overview/) for information on how to set up and fly the A32NX. '
-                + 'It contains detailed information for both new sim pilots and veterans looking for a refresher on certain topics.',
+                'Please see our [beginner\'s guide](https://docs.flybywiresim.com/pilots-corner/beginner-guide/overview/) for information on how to set up and fly the A32NX. It contains detailed information for both new sim pilots and veterans looking for a refresher on certain topics.',
                 '',
                 'If you\'d like to immediately go to a specific chapter please use the list below:',
                 '- [Preflight](https://docs.flybywiresim.com/pilots-corner/beginner-guide/preflight/)',
@@ -23,7 +22,7 @@ export const beginner: CommandDefinition = {
                 '- [Approach and ILS Landing](https://docs.flybywiresim.com/pilots-corner/beginner-guide/landing/)',
                 '- [After Landing and Taxi to Gate](https://docs.flybywiresim.com/pilots-corner/beginner-guide/after-landing/)',
                 '- [Powering Down](https://docs.flybywiresim.com/pilots-corner/beginner-guide/powering-down/)',
-                '- [Abbreviations](https://docs.flybywiresim.com/pilots-corner/beginner-guide/abbreviations/)',
+                '- [Abbreviations](https://docs.flybywiresim.com/pilots-corner/abbreviations/)',
             ]),
         });
 
