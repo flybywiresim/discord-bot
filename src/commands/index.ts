@@ -123,9 +123,6 @@ import { warn } from './moderation/warn/warn';
 import { listWarnings } from './moderation/warn/listWarnings';
 import { deleteWarn } from './moderation/warn/deleteWarn';
 import { atc } from './a32nx/atc';
-<<<<<<< HEAD
-import { dlss } from './support/dlss';
-=======
 import { market } from './support/market';
 import { takeoffIssues } from './a32nx/takeoffissues';
 import { simbridge } from './support/simbridge';
@@ -134,7 +131,7 @@ import { noHello } from './memes/noHello';
 import { vatsimEvents } from './utils/vatsimEvents';
 import { flights } from './utils/flights';
 import { docsearch } from './general/docsearch';
->>>>>>> 0af789d45339b9ab5a2b0b29eb2effc433c83908
+import { dlss } from './support/dlss';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -260,9 +257,6 @@ const commands: CommandDefinition[] = [
     listWarnings,
     deleteWarn,
     atc,
-<<<<<<< HEAD
-    dlss,
-=======
     market,
     takeoffIssues,
     simbridge,
@@ -271,7 +265,7 @@ const commands: CommandDefinition[] = [
     vatsimEvents,
     flights,
     docsearch,
->>>>>>> 0af789d45339b9ab5a2b0b29eb2effc433c83908
+    dlss,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
