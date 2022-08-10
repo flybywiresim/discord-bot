@@ -4,8 +4,8 @@ import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 
-export const doc: CommandDefinition = {
-    name: ['doc', 'documentation', 'docsearch'],
+export const docsearch: CommandDefinition = {
+    name: ['docsearch', 'documentation', 'doc'],
     description: 'Provides a link to the documentation or documentation search for a quick link if there is no dedicated command.',
     category: CommandCategory.GENERAL,
     executor: (msg) => {
