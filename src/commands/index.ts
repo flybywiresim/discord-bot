@@ -130,6 +130,7 @@ import { fma } from './a32nx/fma';
 import { noHello } from './memes/noHello';
 import { vatsimEvents } from './utils/vatsimEvents';
 import { flights } from './utils/flights';
+import { docsearch } from './general/docsearch';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -262,6 +263,7 @@ const commands: CommandDefinition[] = [
     noHello,
     vatsimEvents,
     flights,
+    docsearch,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
