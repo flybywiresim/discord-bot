@@ -1,7 +1,10 @@
 ## Changelog
 
 Update <small>_ August 2022</small>
-- feat: add dlss command (08/08/2022)
+
+- feat: add dlss command (11/08/2022)
+- feat: add docsearch command (10/08/2022)
+- ci: verify changelog in PR (10/08/2022)
 - feat: add live flights command (08/08/2022)
 - feat: add events command (08/08/2022)
 - refactor: command cleanup (08/08/2022)
@@ -46,7 +49,6 @@ Update <small>_ July 2022</small>
 - refactor: birthday command (11/07/2022)
 - feat: default ATC command (10/07/2022)
 - fix: remove flypados thread from .exp (07/07/2022)
-- refactor: weather.ts embed title and copy (07/12/2022)
 
 Update <small>_ June 2022</small>
 

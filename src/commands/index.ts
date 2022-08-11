@@ -130,6 +130,7 @@ import { fma } from './a32nx/fma';
 import { noHello } from './memes/noHello';
 import { vatsimEvents } from './utils/vatsimEvents';
 import { flights } from './utils/flights';
+import { docsearch } from './general/docsearch';
 import { dlss } from './support/dlss';
 
 const commands: CommandDefinition[] = [
@@ -263,6 +264,7 @@ const commands: CommandDefinition[] = [
     noHello,
     vatsimEvents,
     flights,
+    docsearch,
     dlss,
 ];
 
