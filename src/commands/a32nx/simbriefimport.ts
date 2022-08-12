@@ -3,7 +3,7 @@ import { makeEmbed, makeLines } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 
 export const simbriefimport: CommandDefinition = {
-    name: ['import', 'integration', 'integ'],
+    name: ['import', 'integration', 'integ', 'simbrief'],
     description: 'Shows how to use SimBrief integration',
     category: CommandCategory.A32NX,
     executor: async (msg) => {
