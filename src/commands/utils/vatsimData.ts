@@ -21,7 +21,8 @@ export const vatsimData: CommandDefinition = {
     category: CommandCategory.UTILS,
     executor: async (msg) => {
         const subcommandTerms = msg.content.replace(/\.(vatsim|vatsimdata|vatdata)\s+/, ' ');
-        if (subcommandTerms.split(' ').length <= 1) {
+        let searchTerms = subcommandTerms.split(' ');
+        if (searchTerms.length <= 1) {
             const fields: EmbedField[] = [
                 {
                     name: 'VATSIM details',
@@ -57,7 +58,6 @@ export const vatsimData: CommandDefinition = {
             return msg.channel.send({ embeds: [defaultEmbed] });
         }
 
-        let searchTerms = subcommandTerms.split(' ');
         let commandMode = 'ALL';
         let notFoundMsg = 'No online VATSIM Controllers, Observers, ATIS or Pilots found matching your search query.';
         if (subcommandTerms.startsWith(' stats')) {
@@ -71,7 +71,7 @@ export const vatsimData: CommandDefinition = {
             commandMode = 'PILOTS';
             notFoundMsg = 'No online VATSIM Pilots found matching your search query.';
         }
-        const searchTerm = searchTerms[1].toUpperCase();
+
         try {
             const vatsimData = await fetch(DATA_VATSIM_URL)
                 .then((res) => res.json());
@@ -102,6 +102,7 @@ export const vatsimData: CommandDefinition = {
                 return msg.channel.send({ embeds: [statsEmbed] });
             }
 
+            const searchTerm = searchTerms[1].toUpperCase();
             const vatsimPilotRatings = vatsimData.pilot_ratings ? vatsimData.pilot_ratings : null;
             const vatsimControllerRatings = vatsimData.ratings ? vatsimData.ratings : null;
             const vatsimPilots = vatsimData.pilots ? vatsimData.pilots.filter((pilot) => pilot.callsign.includes(searchTerm)) : null;
