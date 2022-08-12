@@ -6,7 +6,7 @@
 |:---------------|:--------------------------------------------------------------------------------------|:-------------------------------------------------------|
 | .adirs         | Display help with ADIRS alignment                                                     | ---                                                    |
 | .afloor        | Provides a link to the Alpha Floor Tool-Tip                                           | ---                                                    |
-| .airframe      | Provides a link to the updated Simbrief airframe                                      | .simbrief                                              |
+| .airframe      | Provides a link to the updated Simbrief airframe                                      | ---                                                    |
 | .assistance    | Explains to the user why assistance options should be disabled                        | .assi <br> .as                                         |
 | .atc           | Provides a link to the cFMS special notes section.                                    | ---                                                    |
 | .audio         | Provides support information about A32NX audio configuration                          | ---                                                    |
@@ -30,7 +30,7 @@
 | .remotemcdu    | Provides a link to the FlyByWire remote MCDU feature guide                            | .mcdu <br> .remote                                     |
 | .rs            | Provides a link to the recommended settings docs guide                                | ---                                                    |
 | .screens       | Display help with avionics                                                            | .screen                                                |
-| .import        | Shows how to use SimBrief integration                                                 | .integration <br> .integ                               |
+| .import        | Shows how to use SimBrief integration                                                 | .integration <br> .integ <br> .simbrief                |
 | .sop           | Displays first page of SOP and provides PDF download                                  | ---                                                    |
 | .waypoint      | Provides a link to the a32nx data management guid                                     | .storedwaypoint <br> .datamanagement                   |
 | .takeoff       | Provides an explanation as to why there is no takeoff calculator for V-speeds or FLEX | .calculator <br> .perf                                 |
