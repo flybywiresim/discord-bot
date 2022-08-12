@@ -2,6 +2,7 @@
 
 Update <small>_ August 2022</small>
 
+- refactor: remove image from dlss command (12/08/2022)
 - feat: add dlss command (12/08/2022)
 - refactor: simbrief import alias (12/08/2022)
 - feat: add docsearch command (10/08/2022)
