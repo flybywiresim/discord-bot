@@ -56,8 +56,9 @@
 | .ctd            | Crash to Desktop                                                                  | .crash                                             |
 | .cursor         | Displays steps to help with EFB cursor focus issue                                | .efbfocus <br> .unfocus                            |
 | .deadzones      | Display help with controller deadzones                                            | .deadzone <br> .dz                                 |
-| .dx12           | Explaination for the current state of MSFS DirectX12 support                      | ---                                                |
+| .dx12           | Explanation for the current state of MSFS DirectX12 support                       | ---                                                |
 | .discontinuity  | Link to docs about discontinuities                                                | .disco                                             |
+| .dlss           | Explanation of the DLSS option in the MSFS graphics settings.                     |                                                    |
 | .fdr            | Information on how to provide fdr files                                           | ---                                                |
 | .hud            | How to disable in-game HUD                                                        | .logs                                              |
 | .installerlogs  | Provides an explanation on how to receive installer error logs for support        | ---                                                |

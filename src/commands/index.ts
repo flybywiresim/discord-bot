@@ -131,6 +131,7 @@ import { noHello } from './memes/noHello';
 import { vatsimEvents } from './utils/vatsimEvents';
 import { flights } from './utils/flights';
 import { docsearch } from './general/docsearch';
+import { dlss } from './support/dlss';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -264,6 +265,7 @@ const commands: CommandDefinition[] = [
     vatsimEvents,
     flights,
     docsearch,
+    dlss,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
