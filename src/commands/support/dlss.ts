@@ -12,9 +12,9 @@ export const dlss: CommandDefinition = {
         const dlssEmbed = makeEmbed({
             title: 'MSFS | NVIDIA DLSS',
             description: makeLines([
-                'Deep Learning Super Sampling (DLSS) is a graphics technology that renders content at a lower resolution, then upscales it to improve FPS. ',
+                'Deep Learning Super Sampling (DLSS) is a graphics technology that renders content at a lower resolution, then upscales it to improve FPS.',
                 '',
-                'Note that this will affect display quality. ',
+                'Note that this will affect display quality.',
                 '',
                 'You need to have an Nvidia GeForce RTX card to use the setting, and your results may vary with your hardware setup when using the feature.',
                 '',
