@@ -132,6 +132,8 @@ import { vatsimEvents } from './utils/vatsimEvents';
 import { flights } from './utils/flights';
 import { docsearch } from './general/docsearch';
 import { dlss } from './support/dlss';
+import { simplecommand } from './moderation/simplecommand/simpleCommand';
+import { runsimplecommand } from './moderation/simplecommand/runSimpleCommand';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -266,6 +268,8 @@ const commands: CommandDefinition[] = [
     flights,
     docsearch,
     dlss,
+    simplecommand,
+    runsimplecommand,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
