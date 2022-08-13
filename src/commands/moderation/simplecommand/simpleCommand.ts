@@ -208,8 +208,12 @@ export const simplecommand: CommandDefinition = {
             return;
         }
 
-        const subCommand = args[0];
-        const subArgs = args.slice(1).join(' ');
+        let subCommand = args[0].toLowerCase();
+        let subArgs = args.slice(1).join(' ');
+        if (subCommand !== 'add' && subCommand !== 'list' && subCommand !== 'delete' && subCommand !== 'show') {
+            subCommand = 'show';
+            [subArgs] = args;
+        }
         if (subCommand === 'add') {
             const regexCheck = /^["]?\.?(?<command>[\w-]+)["]?\s["]?(?<severity>info|warning|error)["]?\s"(?<title>[^"]*|^[^"]*$)"\s"(?<content>[^"]*|^[^"]*$)"\s*$/;
             const regexMatches = subArgs.match(regexCheck);
