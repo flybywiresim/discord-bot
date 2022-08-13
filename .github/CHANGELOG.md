@@ -2,7 +2,7 @@
 
 Update <small>_ August 2022</small>
 
-- feat: add simplecommand and runsimplecommand (13/08/2022)
+- feat: add temporarycommands and runtemporarycommand (14/08/2022)
 - feat: add dlss command (12/08/2022)
 - refactor: simbrief import alias (12/08/2022)
 - feat: add docsearch command (10/08/2022)

@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
 
-const simpleCommandSchema = new Schema({
+const temporaryCommandSchema = new Schema({
     command: String,
     moderator: String,
     content: String,
@@ -9,6 +9,6 @@ const simpleCommandSchema = new Schema({
     severity: String,
 });
 
-const SimpleCommand = mongoose.model('SimpleCommand', simpleCommandSchema);
+const TemporaryCommand = mongoose.model('TemporaryCommand', temporaryCommandSchema);
 
-export default SimpleCommand;
+export default TemporaryCommand;
