@@ -86,7 +86,7 @@ const temporaryCommandListEmbedField = (command: string, severity: string, title
 export const runtemporarycommand: CommandDefinition = {
     name: ['runtemporarycommand', 'runtempcommand', 'tc', 'rtc'],
     description: 'Runs a temporary command.',
-    category: CommandCategory.MODERATION,
+    category: CommandCategory.GENERAL,
     executor: async (msg) => {
         const conn = await getConn();
         if (!conn) {
