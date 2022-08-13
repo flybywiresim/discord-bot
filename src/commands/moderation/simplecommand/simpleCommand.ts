@@ -31,6 +31,18 @@ const helpEmbed = (evokedCommand: String) => makeEmbed({
             inline: false,
         },
         {
+            name: 'Show a Simple Command',
+            value: makeLines([
+                'To show an existing simple command, run the following bot command: ',
+                `\`${evokedCommand} show <command>\`.`,
+                '`command`: Which command to show the details for.',
+                'Example:',
+                `\`${evokedCommand} show exp-bad-build`,
+                '\u200B',
+            ]),
+            inline: false,
+        },
+        {
             name: 'List existing Simple Commands',
             value: makeLines([
                 'To list the existing simple commands, run the following bot command: ',
@@ -49,7 +61,7 @@ const helpEmbed = (evokedCommand: String) => makeEmbed({
                 `\`${evokedCommand} delete <command>\`.`,
                 '`command`: The command to delete, needs to be an exact match.',
                 'Example:',
-                `\`${evokedCommand} exp-bad-build\``,
+                `\`${evokedCommand} delete exp-bad-build\``,
             ]),
             inline: false,
         },
@@ -64,6 +76,11 @@ const successEmbed = (action: string, command: string) => makeEmbed({
 const listEmbed = (fields: EmbedField[], count: number) => makeEmbed({
     title: 'Simple Command - List',
     description: `List of ${count} Simple command(s) matching the search (maximum of 10).`,
+    fields,
+});
+
+const showEmbed = (fields: EmbedField[], command: string) => makeEmbed({
+    title: `Simple Command - Show - ${command}`,
     fields,
 });
 
@@ -114,6 +131,24 @@ const notFoundEmbed = (action: string, command: string) => makeEmbed({
     description: 'No Simple Command(s) matching the search can be found.',
     color: Colors.Red,
 });
+
+const simpleCommandListEmbedField = (command: string, severity: string, title: string): EmbedField[] => [
+    {
+        inline: true,
+        name: 'Command',
+        value: command,
+    },
+    {
+        inline: true,
+        name: 'Severity',
+        value: severity,
+    },
+    {
+        inline: true,
+        name: 'Title',
+        value: title,
+    },
+];
 
 const simpleCommandEmbedField = (date: string, moderator: string, command: string, severity: string, title: string, content: string): EmbedField[] => [
     {
@@ -227,6 +262,24 @@ export const simplecommand: CommandDefinition = {
             return;
         }
 
+        if (subCommand === 'show') {
+            const regexCheck = /^["]?(?<command>[\w-]+)?["]?\s*$/;
+            const regexMatches = subArgs.match(regexCheck);
+            const { command } = regexMatches.groups;
+            const searchResult = await SimpleCommand.find({ command });
+
+            if (searchResult.length === 0) {
+                await msg.channel.send({ embeds: [notFoundEmbed('Show', command)] });
+                return;
+            }
+
+            const { moderator, content, date, title, severity } = searchResult[0];
+            const dateString = moment(date).utcOffset(0).format('YYYY-MM-DD HH:mm:ss');
+
+            await msg.channel.send({ embeds: [showEmbed(simpleCommandEmbedField(dateString, moderator, command, severity, title, content), command)] });
+            return;
+        }
+
         if (subCommand === 'list') {
             const regexCheck = /^["]?(?<search>[\w-]+)?["]?\s*$/;
             const regexMatches = subArgs.match(regexCheck);
@@ -234,9 +287,8 @@ export const simplecommand: CommandDefinition = {
             const simpleCommands = searchRegex ? await SimpleCommand.find({ command: searchRegex }) : await SimpleCommand.find();
 
             const fields: EmbedField[] = simpleCommands.sort((a, b) => a.command.localeCompare(b.command)).map((simpleCommand) => {
-                const { command, moderator, content, date, title, severity } = simpleCommand;
-                const dateString = moment(date).utcOffset(0).format('YYYY-MM-DD HH:mm:ss');
-                return simpleCommandEmbedField(dateString, moderator, command, severity, title, content);
+                const { command, title, severity } = simpleCommand;
+                return simpleCommandListEmbedField(command, severity, title);
             }).slice(0, 10).flat();
 
             if (simpleCommands.length > 0) {
@@ -248,6 +300,7 @@ export const simplecommand: CommandDefinition = {
                 return;
             }
             await msg.channel.send({ embeds: [notFoundEmbed('List', '')] });
+            return;
         }
 
         if (subCommand === 'delete') {
