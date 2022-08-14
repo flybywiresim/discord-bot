@@ -2,6 +2,8 @@ import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
 
+const DLSS_IMAGE = 'https://media.discordapp.net/attachments/897491699167793182/1006801671592087572/dlss_poster.png?width=832&height=468';
+
 export const dlss: CommandDefinition = {
     name: 'dlss',
     description: 'Explanation of the DLSS option in the MSFS graphics settings.',
@@ -18,6 +20,8 @@ export const dlss: CommandDefinition = {
                 '',
                 'See [Nvidia\'s page on DLSS](https://www.nvidia.com/en-us/geforce/technologies/dlss/) for more information.',
             ]),
+
+            image: { url: DLSS_IMAGE },
         });
 
         return msg.channel.send({ embeds: [dlssEmbed] });
