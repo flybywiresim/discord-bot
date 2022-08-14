@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import fetch from 'node-fetch';
 import { Colors, EmbedField } from 'discord.js';
 import { CommandDefinition } from '../../lib/command';
@@ -115,6 +116,7 @@ const controllersListEmbedFields = (callsign: string, frequency: string, logon: 
             inline: false,
         });
     }
+
     return fields;
 };
 
@@ -131,6 +133,7 @@ const pilotsListEmbedFields = (callsign: string, rating: string, flightPlan: any
             inline: true,
         },
     ];
+
     if (flightPlan !== null) {
         const { aircraft_short, departure, arrival } = flightPlan;
         fields.push(
@@ -141,12 +144,12 @@ const pilotsListEmbedFields = (callsign: string, rating: string, flightPlan: any
             },
             {
                 name: 'Aircraft',
-                // eslint-disable-next-line camelcase
                 value: `${aircraft_short}`,
                 inline: true,
             },
         );
     }
+
     return fields;
 };
 
@@ -165,12 +168,14 @@ export const vatsimData: CommandDefinition = {
     executor: async (msg) => {
         const evokedCommand = msg.content.split(/\s+/)[0];
         const args = msg.content.split(/\s+/).slice(1);
+
         if ((args.length < 1 && parseInt(args[1]) !== 0) || args[0] === 'help') {
             return msg.channel.send({ embeds: [helpEmbed(evokedCommand)] });
         }
 
         let subCommand = args[0].toLowerCase();
         let [subArgs] = args.slice(1);
+
         if (subCommand !== 'stats' && subCommand !== 'controllers' && subCommand !== 'pilots') {
             subCommand = 'all';
             [subArgs] = args;
@@ -178,6 +183,7 @@ export const vatsimData: CommandDefinition = {
 
         let commandMode = 'ALL';
         let notFoundMsg = 'No online VATSIM Controllers, Observers, ATIS or Pilots found matching your callsign search query.';
+
         switch (subCommand) {
         case 'stats':
             commandMode = 'STATS';
@@ -220,11 +226,13 @@ export const vatsimData: CommandDefinition = {
 
         const regexCheck = /^["']?(?<callsignSearch>[\w-]+)?["']?\s*$/;
         const regexMatches = subArgs.match(regexCheck);
+
         if (!regexMatches || !regexMatches.groups || !regexMatches.groups.callsignSearch) {
             return msg.channel.send({ embeds: [missingInfoEmbed(`You need to provide a valid callsign or part of a callsign to search for. Check \`${evokedCommand} help\` for more details.`)] });
         }
 
         const { callsignSearch } = regexMatches.groups;
+
         const vatsimPilotRatings = vatsimData.pilot_ratings ? vatsimData.pilot_ratings : null;
         const vatsimControllerRatings = vatsimData.ratings ? vatsimData.ratings : null;
         const vatsimPilots = vatsimData.pilots ? vatsimData.pilots.filter((pilot) => pilot.callsign.includes(callsignSearch)) : null;
@@ -233,39 +241,39 @@ export const vatsimData: CommandDefinition = {
 
         if ((Object.keys(vatsimControllers).length !== 0 || Object.keys(vatsimAtis).length !== 0) && (commandMode === 'ALL' || commandMode === 'CONTROLLERS')) {
             const fields: EmbedField[] = [...vatsimControllers.sort((a, b) => b.facility - a.facility), ...vatsimAtis].map((vatsimItem) => {
-                // eslint-disable-next-line camelcase
                 const { callsign, frequency, logon_time, atis_code, text_atis, rating } = vatsimItem;
                 const logonTime = new Date(logon_time);
                 const logonTimeString = handleLocaleDateTimeString(logonTime);
                 const ratingDetail = vatsimControllerRatings.filter((ratingInfo) => ratingInfo.id === rating);
                 const { short, long } = ratingDetail[0];
                 const ratingText = `${short} - ${long}`;
-                // eslint-disable-next-line camelcase
                 const atisText = text_atis ? text_atis.join('\n') : null;
+
                 return controllersListEmbedFields(callsign, frequency, logonTimeString, ratingText, atisText, atis_code);
             }).slice(0, 5).flat();
 
             const totalCount = Object.keys(vatsimControllers).length + Object.keys(vatsimAtis).length;
             const shownCount = totalCount < 5 ? totalCount : 5;
+
             return msg.channel.send({ embeds: [listEmbed('Controllers, Observers & ATIS', fields, totalCount, shownCount, callsignSearch)] });
         }
+
         if (Object.keys(vatsimPilots).length !== 0 && (commandMode === 'ALL' || commandMode === 'PILOTS')) {
             const fields: EmbedField[] = [...vatsimPilots.sort((a, b) => b.pilot_rating - a.pilot_rating)].map((vatsimItem) => {
-                // eslint-disable-next-line camelcase
                 const { callsign, pilot_rating, flight_plan } = vatsimItem;
-                // eslint-disable-next-line camelcase
                 const ratingDetail = vatsimPilotRatings.filter((ratingInfo) => ratingInfo.id === pilot_rating);
-                // eslint-disable-next-line camelcase
                 const { short_name, long_name } = ratingDetail[0];
-                // eslint-disable-next-line camelcase
                 const ratingText = `${short_name} - ${long_name}`;
+
                 return pilotsListEmbedFields(callsign, ratingText, flight_plan);
             }).slice(0, 5).flat();
 
             const totalCount = Object.keys(vatsimPilots).length;
             const shownCount = totalCount < 5 ? totalCount : 5;
+
             return msg.channel.send({ embeds: [listEmbed('Pilots', fields, totalCount, shownCount, callsignSearch)] });
         }
+
         return msg.channel.send({ embeds: [notFoundEmbed(callsignSearch, notFoundMsg)] });
     },
 };
