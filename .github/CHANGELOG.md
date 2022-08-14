@@ -26,33 +26,33 @@
 
 ## July 2022
 
-- ci: build setup and lint helm for pr (31/07/2022)
-- fix: ping fixed for count command (31/07/2022)
-- chore: bot service to docker-compose (31/07/2022)
-- chore: bump discord package version with fixes @v14.0.3 (29/07/2022)
-- refactor: add .deadzones alias to .dz command, correct docs (27/07/2022)
-- refactor: add .nws alias to .tiller command (27/07/2022)
-- feat: simbridge support command (27/07/2022)
-- refactor: add steps and image to utf8 command (26/07/2022)
-- feat: cowsay command sanitization (25/07/2022)
-- refactor: update deadzones command (19/07/2022)
-- refactor: downscale .pov and .efb gifs (19/07/2022)
-- fix: use non-vanity Synaptic Discord link (19/07/2022)
-- feat: takeoff issues command (18/07/2022)
-- fix: missing error embed for wolfram alpha (18/07/2022)
-- fix: fixed .bg abbreviations hyperlink (18/072022)
-- chore: add node-fetch dependency (17/07/2022)
-- chore: remove request dependency (17/07/2022)
-- refactor: requests to node-fetch (17/07/2022)
-- fix: update .where image link (16/07/2022)
-- chore: add images to repo (16/07/2022)
-- refactor: add .legacy alias to .controls (15/07/2022)
-- feat: marketplace removal command (14/07/2022)
-- refactor: weather.ts embed title and copy (12/07/2022)
-- docs: add .env.example file. (11/07/2022)
-- refactor: birthday command (11/07/2022)
-- feat: default ATC command (10/07/2022)
-- fix: remove flypados thread from .exp (07/07/2022)
+- ci: build setup and lint helm for pr (31/07/2022) - @NathanInnes, @benw202
+- fix: ping fixed for count command (31/07/2022) - @benw202
+- chore: bot service to docker-compose (31/07/2022) - @NathanInnes, @benw202
+- chore: bump discord package version with fixes @v14.0.3 (29/07/2022) - @NathanInnes
+- refactor: add .deadzones alias to .dz command, correct docs (27/07/2022) - @NUT, @benw202
+- refactor: add .nws alias to .tiller command (27/07/2022) - @ImenesFBW
+- feat: simbridge support command (27/07/2022) - @Valastiri
+- refactor: add steps and image to utf8 command (26/07/2022) - @ImenesFBW
+- feat: cowsay command sanitization (25/07/2022) - @NathanInnes
+- refactor: update deadzones command (19/07/2022) - @Valastiri, @oim1
+- refactor: downscale .pov and .efb gifs (19/07/2022) - @ImenesFBW
+- fix: use non-vanity Synaptic Discord link (19/07/2022) - @Nufflee
+- feat: takeoff issues command (18/07/2022) - @ImenesFBW, @oim1, @benw202
+- fix: missing error embed for wolfram alpha (18/07/2022) - @NathanInnes, @benw202
+- fix: fixed .bg abbreviations hyperlink (18/072022) - @ImenesFBW
+- chore: add node-fetch dependency (17/07/2022) - @NathanInnes
+- chore: remove request dependency (17/07/2022) - @NathanInnes
+- refactor: requests to node-fetch (17/07/2022) - @NathanInnes, @benw202
+- fix: update .where image link (16/07/2022) - @ImenesFBW, @benw202
+- chore: add images to repo (16/07/2022) - @ImenesFBW
+- refactor: add .legacy alias to .controls (15/07/2022) - @ImenesFBW
+- feat: marketplace removal command (14/07/2022) - @ImenesFBW, @NathanInnes, @benw202
+- refactor: weather.ts embed title and copy (12/07/2022) - @Valastiri
+- docs: add .env.example file. (11/07/2022) - @NathanInnes, @benw202
+- refactor: birthday command (11/07/2022) - @NathanInnes, @benw202
+- feat: default ATC command (10/07/2022) - @ImenesFBW
+- fix: remove flypados thread from .exp (07/07/2022) - @NUT
 
 ### June 2022
 
