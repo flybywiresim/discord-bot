@@ -118,7 +118,7 @@ const controllersListEmbedFields = (callsign: string, frequency: string, logon: 
     return fields;
 };
 
-const pilotsListEmbedFields = (callsign: string, rating: string, flightplan: any) => {
+const pilotsListEmbedFields = (callsign: string, rating: string, flightPlan: any) => {
     const fields = [
         {
             name: 'Callsign',
@@ -131,9 +131,8 @@ const pilotsListEmbedFields = (callsign: string, rating: string, flightplan: any
             inline: true,
         },
     ];
-    if (flightplan !== null) {
-        // eslint-disable-next-line camelcase
-        const { aircraft_short, departure, arrival } = flightplan;
+    if (flightPlan !== null) {
+        const { aircraft_short, departure, arrival } = flightPlan;
         fields.push(
             {
                 name: 'Route',
