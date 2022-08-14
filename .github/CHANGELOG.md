@@ -1,6 +1,6 @@
 ## Changelog
 
-Update <small>_ August 2022</small>
+### August 2022
 
 - chore: add editorconfig (14/08/2022)
 - feat: add temporarycommandedit and temporarycommand (14/08/2022)
@@ -24,7 +24,7 @@ Update <small>_ August 2022</small>
 - refactor: .wx command terrain display on experimental note (01/08/2022)
 - refactor: change SOP command image (01/08/2022)
 
-Update <small>_ July 2022</small>
+## July 2022
 
 - ci: build setup and lint helm for pr (31/07/2022)
 - fix: ping fixed for count command (31/07/2022)
@@ -54,7 +54,7 @@ Update <small>_ July 2022</small>
 - feat: default ATC command (10/07/2022)
 - fix: remove flypados thread from .exp (07/07/2022)
 
-Update <small>_ June 2022</small>
+### June 2022
 
 - feat: add docker-compose (28/06/2022)
 - feat: adds a warn system (28/06/2022)
@@ -65,7 +65,7 @@ Update <small>_ June 2022</small>
 - refactor: add .ss as an alias to .screenshot (05/06/2022)
 - refactor: birthday permission order (01/06/2022)
 
-Update <small>_ May 2022</small>
+### May 2022
 
 - fix : birthday list ordering (31/05/2022)
 - refactor: update wording in .cfms (27/05/2022)
@@ -80,7 +80,7 @@ Update <small>_ May 2022</small>
 - fix: Include stable in wx command (04/05/2022)
 - chore: add dependabot config (02/05/2022)
 
-Update <small>_ April 2022</small>
+### April 2022
 
 - refactor: updated Synaptic discord invite link (30/04/2022)
 - docs: copy changelog and command listing from docs repo (29/04/2022)
@@ -114,7 +114,7 @@ Update <small>_ April 2022</small>
 - chore: adds the AGPLv3 license (08/04/2022)
 - fix: station units (01/04/2022)
 
-Update <small>_ March 2022</small>
+### March 2022
 
 - feat: more detailed beginner guide command (30/03/2022)
 - feat: add .count (29/03/2022)
@@ -134,7 +134,7 @@ Update <small>_ March 2022</small>
 - refactor: update commands that reference status of experimental branch (06/03/2022)
 - fix: crash when old message deleted or updated (02/03/2022)
 
-Update <small>_ February 2022</small>
+### February 2022
 
 - fix: DM crash (28/02/2022)
 - fix: whois offline status (28/02/2022)
