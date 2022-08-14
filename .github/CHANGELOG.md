@@ -20,9 +20,9 @@
 - refactor: rename funnies directory to memes (05/08/2022) - @NathanInnes, @benw202
 - refactor: extract messageCreate handler (03/08/2022) - @NathanInnes, @benw202
 - feat: makeList embed helper (03/08/2022) - @NathanInnes, @benw202
-- feat: FMA command (03/08/2022) - @ImenesFBW, @NUT
+- feat: FMA command (03/08/2022) - @ImenesFBW, @NUTTTTTTTT
 - fix: grammar in .wx command (02/08/2022) - @benw202
-- refactor: .wx command terrain display on experimental note (01/08/2022) - @ImenesFBW, @NUT
+- refactor: .wx command terrain display on experimental note (01/08/2022) - @ImenesFBW, @NUTTTTTTTT
 - refactor: change SOP command image (01/08/2022) - @ImenesFBW
 
 ## July 2022
@@ -31,7 +31,7 @@
 - fix: ping fixed for count command (31/07/2022) - @benw202
 - chore: bot service to docker-compose (31/07/2022) - @NathanInnes, @benw202
 - chore: bump discord package version with fixes @v14.0.3 (29/07/2022) - @NathanInnes
-- refactor: add .deadzones alias to .dz command, correct docs (27/07/2022) - @NUT, @benw202
+- refactor: add .deadzones alias to .dz command, correct docs (27/07/2022) - @NUTTTTTTTT, @benw202
 - refactor: add .nws alias to .tiller command (27/07/2022) - @ImenesFBW
 - feat: simbridge support command (27/07/2022) - @Valastiri
 - refactor: add steps and image to utf8 command (26/07/2022) - @ImenesFBW
@@ -53,7 +53,7 @@
 - docs: add .env.example file. (11/07/2022) - @NathanInnes, @benw202
 - refactor: birthday command (11/07/2022) - @NathanInnes, @benw202
 - feat: default ATC command (10/07/2022) - @ImenesFBW
-- fix: remove flypados thread from .exp (07/07/2022) - @NUT
+- fix: remove flypados thread from .exp (07/07/2022) - @NUTTTTTTTT
 
 ### June 2022
 
@@ -109,7 +109,7 @@
 - feat: added .mico (12/04/2022) - @nebula231
 - feat: add .abbreviations command (11/04/2022) - @peregrine-developments, @benw202
 - fix: fixed hyperlink for calibrate command (11/04/2022) - @owen2007
-- refactor: replace p3d (10/04/2022) - @NUT
+- refactor: replace p3d (10/04/2022) - @NUTTTTTTTT
 - docs(README): update logo location (09/04/2022) - @NathanInnes
 - feat: .pw command (08/04/2022) - @Earthsam12
 - chore: adds the AGPLv3 license (08/04/2022) - @benw202
@@ -117,7 +117,7 @@
 
 ### March 2022
 
-- feat: more detailed beginner guide command (30/03/2022) - @Valastiri, @NUT
+- feat: more detailed beginner guide command (30/03/2022) - @Valastiri, @NUTTTTTTTT
 - feat: add .count (29/03/2022) - @oim1, @benw202
 - refactor: changed donate.ts name constructor from array to string (29/03/2022) - @nakajimayoshi
 - feat: add .shomas (28/09/2022) - @oim1
@@ -131,7 +131,7 @@
 - refactor: cfms command (14/03/2022) - @Valastiri
 - fix: prevent various crashes in timeout and untimeout (12/03/2022) - @Earthsam12
 - feat: .timeout (12/03/2022) - @Earthsam12
-- feat: role assignment (10/03/2022) - @NUT
+- feat: role assignment (10/03/2022) - @NUTTTTTTTT
 - refactor: update commands that reference status of experimental branch (06/03/2022) - @Valastiri
 - fix: crash when old message deleted or updated (02/03/2022) - @benw202
 
@@ -140,4 +140,4 @@
 - fix: DM crash (28/02/2022) - @benw202
 - fix: whois offline status (28/02/2022) - @benw202
 - fix: node_modules error (23/02/2022) - @benw202
-- feat: update to discord.js v13 and API v9  (23/02/2022) - @benw202, @oim1, @kiwi2021, @NUT
+- feat: update to discord.js v13 and API v9  (23/02/2022) - @benw202, @oim1, @kiwi2021, @NUTTTTTTTT
