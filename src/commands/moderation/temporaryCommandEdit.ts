@@ -18,7 +18,7 @@ const helpEmbed = (evokedCommand: String) => makeEmbed({
         {
             name: 'Adding a Temporary Command',
             value: makeLines([
-                'To create a temporary command, run the following bot command: ',
+                'To create a temporary command, use the following bot command: ',
                 `\`${evokedCommand} add <command> <severity> <title> <content>\`.`,
                 '`command`: The command to be created that can be executed by regular users.',
                 '`severity`: The type can be `info`, `warning`, or `error`. Depending on the severity, the command output will have an appropriate color: regular, yellow or red.',
@@ -33,7 +33,7 @@ const helpEmbed = (evokedCommand: String) => makeEmbed({
         {
             name: 'Show a Temporary Command',
             value: makeLines([
-                'To show an existing temporary command, run the following bot command: ',
+                'To show an existing temporary command with logging details, use the following bot command: ',
                 `\`${evokedCommand} show <command>\``,
                 '`command`: Which command to show the details for.',
                 'Example:',
@@ -45,9 +45,9 @@ const helpEmbed = (evokedCommand: String) => makeEmbed({
         {
             name: 'List existing Temporary Commands',
             value: makeLines([
-                'To list the existing temporary commands, run the following bot command (Note the different command!): ',
+                'To list the existing temporary commands, use the following bot command (Note the different command!): ',
                 '`.tc list [search]`',
-                '`search`: Optional parameter to filter the Temporary Commands based on command (it results in a `*[search]*` wildcard match).',
+                '`search`: Optional parameter to filter the Temporary Commands listed based a search value (it results in a `*[search]*` wildcard match).',
                 'Example:',
                 '`.tc list good`',
                 '\u200B',
@@ -57,7 +57,7 @@ const helpEmbed = (evokedCommand: String) => makeEmbed({
         {
             name: 'Delete existing Temporary Command',
             value: makeLines([
-                'To delete a temporary command, run the following bot command: ',
+                'To delete a temporary command, use the following bot command: ',
                 `\`${evokedCommand} delete <command>\``,
                 '`command`: The command to delete, needs to be an exact match.',
                 'Example:',

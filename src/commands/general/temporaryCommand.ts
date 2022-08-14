@@ -12,7 +12,7 @@ const helpEmbed = (evokedCommand: String) => makeEmbed({
         {
             name: 'Run a Temporary Command',
             value: makeLines([
-                'To run a temporary command, run the following bot command: ',
+                'To run a temporary command, use the following bot command: ',
                 `\`${evokedCommand} <command>\`.`,
                 '`command`: The command to run, needs to be an exact match.',
                 'Example:',
@@ -24,9 +24,9 @@ const helpEmbed = (evokedCommand: String) => makeEmbed({
         {
             name: 'List existing Temporary Commands',
             value: makeLines([
-                'To list the existing temporary commands, run the following bot command: ',
+                'To list the existing temporary commands, use the following bot command: ',
                 `\`${evokedCommand} list [search]\``,
-                '`search`: Optional parameter to filter the Temporary Commands based on command (it results in a `*[search]*` wildcard match).',
+                '`search`: Optional parameter to filter the Temporary Commands listed based on a search value (it results in a `*[search]*` wildcard match).',
                 'Example:',
                 `\`${evokedCommand} list good\``,
                 '\u200B',
