@@ -56,14 +56,14 @@
 
 ### June 2022
 
-- feat: add docker-compose (28/06/2022)
-- feat: adds a warn system (28/06/2022)
-- chore: update discord.js version to 13.8.0 (11/06/2022)
-- fix: allow the use of removetimeout as alias for untimeout (11/06/2022)
-- fix: avatar command now accepts user id (10/06/2022)
-- fix: metar units (05/06/2022)
-- refactor: add .ss as an alias to .screenshot (05/06/2022)
-- refactor: birthday permission order (01/06/2022)
+- feat: add docker-compose (28/06/2022) - @NathanInnes
+- feat: adds a warn system (28/06/2022) - @benw202, @NathanInnes
+- chore: update discord.js version to 13.8.0 (11/06/2022) - @oim1
+- fix: allow the use of removetimeout as alias for untimeout (11/06/2022) - @oim1
+- fix: avatar command now accepts user id (10/06/2022) - @oim1, @benw202
+- fix: metar units (05/06/2022) - @peregrine-developments
+- refactor: add .ss as an alias to .screenshot (05/06/2022) - @benw202
+- refactor: birthday permission order (01/06/2022) - @benw202
 
 ### May 2022
 
