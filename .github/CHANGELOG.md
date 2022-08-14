@@ -2,6 +2,7 @@
 
 Update <small>_ August 2022</small>
 
+- chore: add editorconfig (14/08/2022)
 - feat: add temporarycommandedit and temporarycommand (14/08/2022)
 - docs: cleanup newlines in command document (14/08/2022)
 - feat: add dlss command (12/08/2022)
