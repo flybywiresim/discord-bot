@@ -14,7 +14,7 @@ const helpEmbed = (evokedCommand: String) => makeEmbed({
             value: makeLines([
                 'To run a temporary command, use the following bot command: ',
                 `\`${evokedCommand} <command>\`.`,
-                '`command`: The command to run, needs to be an exact match.',
+                '`command`: The command you want to run, needs to be an exact match.',
                 'Example:',
                 `\`${evokedCommand} good-news-everyone\``,
                 '\u200B',
