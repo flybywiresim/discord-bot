@@ -67,18 +67,18 @@
 
 ### May 2022
 
-- fix : birthday list ordering (31/05/2022)
-- refactor: update wording in .cfms (27/05/2022)
-- refactor: .birthday command changes (25/05/2022)
-- refactor: add .ninjo alias to .salty (16/05/2022)
-- feat: add birthday command (12/05/2022)
-- refactor: weight and balance command (11/05/2022)
-- feat: recommended settings command (11/05/2022)
-- docs(exp): Update support wording (09/05/2022)
-- fix(dependabot): ignore patch versions (05/05/2022)
-- fix: reword .xbox command and change category (05/05/2022)
-- fix: Include stable in wx command (04/05/2022)
-- chore: add dependabot config (02/05/2022)
+- fix : birthday list ordering (31/05/2022) - @peregrine-developments
+- refactor: update wording in .cfms (27/05/2022) - @benw202
+- refactor: .birthday command changes (25/05/2022) - @peregrine-developments, @benw202
+- refactor: add .ninjo alias to .salty (16/05/2022) - @oim1
+- feat: add birthday command (12/05/2022) - @peregrine-developments, @benw202
+- refactor: weight and balance command (11/05/2022) - @Valastiri
+- feat: recommended settings command (11/05/2022) - @Valastiri
+- docs(exp): Update support wording (09/05/2022) - @benw202
+- fix(dependabot): ignore patch versions (05/05/2022) - @NathanInnes, @benw202
+- fix: reword .xbox command and change category (05/05/2022) - @Earthsam12, @Valastiri
+- fix: Include stable in wx command (04/05/2022) - @Awemeter, @Valastiri
+- chore: add dependabot config (02/05/2022) - @NathanInnes, @benw202
 
 ### April 2022
 
