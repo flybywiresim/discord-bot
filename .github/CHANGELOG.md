@@ -116,23 +116,23 @@
 
 ### March 2022
 
-- feat: more detailed beginner guide command (30/03/2022)
-- feat: add .count (29/03/2022)
-- refactor: changed donate.ts name constructor from array to string (29/03/2022)
-- feat: add .shomas (28/09/2022)
-- rafactor: experimental command info + copy layout (26/03/2022)
-- feat: tcas command (23/03/2022)
-- docs: update .experimental to reflect the new changes to the version (22/03/2022)
-- fix: updated scamlogs to make links unclickable (18/03/2022)
-- feat: add suggested commands (18/03/2022)
-- refactor: audio.ts command category (14/03/2022)
-- feat: make audio command (14/03/2022)
-- refactor: cfms command (14/03/2022)
-- fix: prevent various crashes in timeout and untimeout (12/03/2022)
-- feat: .timeout (12/03/2022)
-- feat: role assignment (10/03/2022)
-- refactor: update commands that reference status of experimental branch (06/03/2022)
-- fix: crash when old message deleted or updated (02/03/2022)
+- feat: more detailed beginner guide command (30/03/2022) - @Valastiri, @NUT
+- feat: add .count (29/03/2022) - @oim1, @benw202
+- refactor: changed donate.ts name constructor from array to string (29/03/2022) - @nakajimayoshi
+- feat: add .shomas (28/09/2022) - @oim1
+- rafactor: experimental command info + copy layout (26/03/2022) - @Valastiri
+- feat: tcas command (23/03/2022) - @Valastiri
+- docs: update .experimental to reflect the new changes to the version (22/03/2022) - @oim1, @benw202
+- fix: updated scamlogs to make links unclickable (18/03/2022) - @oim1
+- feat: add suggested commands (18/03/2022) - @benw202, @Valastiri
+- refactor: audio.ts command category (14/03/2022) - @Valastiri
+- feat: make audio command (14/03/2022) - @Valastiri
+- refactor: cfms command (14/03/2022) - @Valastiri
+- fix: prevent various crashes in timeout and untimeout (12/03/2022) - @Earthsam12
+- feat: .timeout (12/03/2022) - @Earthsam12
+- feat: role assignment (10/03/2022) - @NUT
+- refactor: update commands that reference status of experimental branch (06/03/2022) - @Valastiri
+- fix: crash when old message deleted or updated (02/03/2022) - @benw202
 
 ### February 2022
 
