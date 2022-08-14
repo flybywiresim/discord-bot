@@ -6,7 +6,7 @@ import { getConn } from '../../lib/db';
 import TemporaryCommand from '../../lib/schemas/temporaryCommandSchema';
 
 const helpEmbed = (evokedCommand: String) => makeEmbed({
-    title: 'Run Temporary Command - Help',
+    title: 'Temporary Command - Help',
     description: 'A command to run temporary commands.',
     fields: [
         {
@@ -35,7 +35,7 @@ const helpEmbed = (evokedCommand: String) => makeEmbed({
         },
         {
             name: 'Command aliases',
-            value: '`.runtemporarycommand`, `.runtempcommand`, `.tc`, `.rtc`',
+            value: '`.temporarycommand`, `.tempcommand`, `.tc`',
             inline: false,
         },
     ],
@@ -48,19 +48,19 @@ const listEmbed = (fields: EmbedField[], count: number) => makeEmbed({
 });
 
 const missingInfoEmbed = (action: string, information: string) => makeEmbed({
-    title: `Run Temporary Command - ${action} - missing information`,
+    title: `Temporary Command - ${action} - missing information`,
     description: `${information}.`,
     color: Colors.Red,
 });
 
 const noConnEmbed = makeEmbed({
-    title: 'Run Temporary Command - No Connection',
+    title: 'Temporary Command - No Connection',
     description: 'Could not connect to the database.',
     color: Colors.Red,
 });
 
 const notFoundEmbed = (action: string, command: string) => makeEmbed({
-    title: `Run Temporary Command - ${action} - ${command} not found`,
+    title: `Temporary Command - ${action} - ${command} not found`,
     description: 'No Temporary Command(s) matching the search can be found.',
     color: Colors.Red,
 });
@@ -83,8 +83,8 @@ const temporaryCommandListEmbedField = (command: string, severity: string, title
     },
 ];
 
-export const runtemporarycommand: CommandDefinition = {
-    name: ['runtemporarycommand', 'runtempcommand', 'tc', 'rtc'],
+export const temporarycommand: CommandDefinition = {
+    name: ['temporarycommand', 'tempcommand', 'tc'],
     description: 'Runs a temporary command.',
     category: CommandCategory.GENERAL,
     executor: async (msg) => {

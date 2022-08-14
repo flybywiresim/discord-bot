@@ -12,7 +12,7 @@ const permittedRoles = [
 ];
 
 const helpEmbed = (evokedCommand: String) => makeEmbed({
-    title: 'Temporary Command - Help',
+    title: 'Manage Temporary Commands - Help',
     description: 'A command to manage temporary commands that consist of a Title, Content and Color. This can be used to create temporary commands for different purposes.',
     fields: [
         {
@@ -68,7 +68,7 @@ const helpEmbed = (evokedCommand: String) => makeEmbed({
         },
         {
             name: 'Command aliases',
-            value: '`.temporarycommands`, `.temporarycommand`, `.tempcommands`, `.tempcommand`',
+            value: '`.temporarycommandedit`, `.tempcommandedit`, `.tcedit`, `.tcmod`',
             inline: false,
         },
     ],
@@ -188,8 +188,8 @@ const temporaryCommandEmbedField = (date: string, moderator: string, command: st
     },
 ];
 
-export const temporarycommands: CommandDefinition = {
-    name: ['temporarycommands', 'temporarycommand', 'tempcommands', 'tempcommand'],
+export const temporarycommandedit: CommandDefinition = {
+    name: ['temporarycommandedit', 'tempcommandedit', 'tcedit', 'tcmod'],
     requiredPermissions: ['BanMembers'],
     description: 'Creates a temporary command for temporary use.',
     category: CommandCategory.MODERATION,
