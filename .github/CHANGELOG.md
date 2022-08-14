@@ -3,6 +3,9 @@
 Update <small>_ August 2022</small>
 
 - docs: added image from dlss command to assets folder (14/08/2022)
+- chore: add editorconfig (14/08/2022)
+- feat: add temporarycommandedit and temporarycommand (14/08/2022)
+- docs: cleanup newlines in command document (14/08/2022)
 - feat: add dlss command (12/08/2022)
 - refactor: simbrief import alias (12/08/2022)
 - feat: add docsearch command (10/08/2022)
