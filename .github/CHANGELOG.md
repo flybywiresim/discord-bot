@@ -82,37 +82,37 @@
 
 ### April 2022
 
-- refactor: updated Synaptic discord invite link (30/04/2022)
-- docs: copy changelog and command listing from docs repo (29/04/2022)
-- ci: fix ci linting check (29/04/2022)
-- feat: add headwind server invite link (26/04/2022)
-- feat: Wolfram Alpha command (26/04/2022)
-- refactor: simbrief import link (25/04/2022)
-- ci: eslint (25/04/2022)
-- lint: fix existing linting issues (24/04/2022)
-- feat: lat/long fixes cheatsheet (24/04/2022)
-- feat: add .msfsdisc (24/04/2022)
-- fix: github command category change (23/04/2022)
-- feat: .zulu command (23/04/2022)
-- feat: salty server invite command (19/04/2022)
-- feat: a32nx github link command (19/04/2022)
-- refactor(experimental): add new reporting thread to command (17/04/2022)
-- feat: translate command (16/04/2022)
-- feat(ping): add bad word filer (15/04/2022)
-- fix(README): add light theme option (15/04/2022)
-- feat: add AIRAC command (14/04/2022)
-- refactor(clean): remove search query string from hyperlink (13/04/2022)
-- feat: abb and abrv aliases to abbreviation command (13/04/2022)
-- fix: various .metar improvements (12/04/2022)
-- fix: metar/station command error handling (12/04/2022)
-- feat: added .mico (12/04/2022)
-- feat: add .abbreviations command (11/04/2022)
-- fix: fixed hyperlink for calibrate command (11/04/2022)
-- refactor: replace p3d (10/04/2022)
-- docs(README): update logo location (09/04/2022)
-- feat: .pw command (08/04/2022)
-- chore: adds the AGPLv3 license (08/04/2022)
-- fix: station units (01/04/2022)
+- refactor: updated Synaptic discord invite link (30/04/2022) - @nebula231, @benw202
+- docs: copy changelog and command listing from docs repo (29/04/2022) - @Valastiri, @NathanInnes, @benw202
+- ci: fix ci linting check (29/04/2022) - @NathanInnes
+- feat: add headwind server invite link (26/04/2022) - @iamdumdum1234, @benw202
+- feat: Wolfram Alpha command (26/04/2022) - @Zowlyfon, @benw202
+- refactor: simbrief import link (25/04/2022) - @benw202, @Valastiri
+- ci: eslint (25/04/2022) - @NathanInnes
+- lint: fix existing linting issues (24/04/2022) - @NathanInnes
+- feat: lat/long fixes cheatsheet (24/04/2022) - @nakajimayoshi, @benw202
+- feat: add .msfsdisc (24/04/2022) - @oim1, @benw202
+- fix: github command category change (23/04/2022) - @owen2007, @benw202
+- feat: .zulu command (23/04/2022) - @Earthsam12, @benw202
+- feat: salty server invite command (19/04/2022) - @nebula231, @NathanInnes
+- feat: a32nx github link command (19/04/2022) - @ownen2007
+- refactor(experimental): add new reporting thread to command (17/04/2022) - @Valastiri
+- feat: translate command (16/04/2022) - @Valastiri
+- feat(ping): add bad word filer (15/04/2022) - @NathanInnes
+- fix(README): add light theme option (15/04/2022) - @NathanInnes, @benw202
+- feat: add AIRAC command (14/04/2022) - @peregrine-developments, @Valastiri
+- refactor(clean): remove search query string from hyperlink (13/04/2022) - @Valastiri
+- feat: abb and abrv aliases to abbreviation command (13/04/2022) - @owen2007
+- fix: various .metar improvements (12/04/2022) - @benw202
+- fix: metar/station command error handling (12/04/2022) - @peregrine-developments
+- feat: added .mico (12/04/2022) - @nebula231
+- feat: add .abbreviations command (11/04/2022) - @peregrine-developments, @benw202
+- fix: fixed hyperlink for calibrate command (11/04/2022) - @owen2007
+- refactor: replace p3d (10/04/2022) - @NUT
+- docs(README): update logo location (09/04/2022) - @NathanInnes
+- feat: .pw command (08/04/2022) - @Earthsam12
+- chore: adds the AGPLv3 license (08/04/2022) - @benw202
+- fix: station units (01/04/2022) - @benw202
 
 ### March 2022
 
