@@ -190,7 +190,6 @@ const temporaryCommandEmbedField = (date: string, moderator: string, command: st
 
 export const temporarycommandedit: CommandDefinition = {
     name: ['temporarycommandedit', 'tempcommandedit', 'tcedit', 'tcmod'],
-    requiredPermissions: ['BanMembers'],
     description: 'Creates a temporary command for temporary use.',
     category: CommandCategory.MODERATION,
     executor: async (msg) => {
