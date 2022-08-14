@@ -31,13 +31,13 @@ const helpEmbed = (evokedCommand: String) => makeEmbed({
             inline: false,
         },
         {
-            name: 'Show a Temporary Command',
+            name: 'Show info about a Temporary Command',
             value: makeLines([
-                'To show an existing temporary command with logging details, use the following bot command: ',
-                `\`${evokedCommand} show <command>\``,
+                'To show info about an existing temporary command with logging details, use the following bot command: ',
+                `\`${evokedCommand} info <command>\``,
                 '`command`: Which command to show the details for.',
                 'Example:',
-                `\`${evokedCommand} show good-news-everyone\``,
+                `\`${evokedCommand} info good-news-everyone\``,
                 '\u200B',
             ]),
             inline: false,
@@ -79,8 +79,8 @@ const successEmbed = (action: string, command: string) => makeEmbed({
     color: Colors.Green,
 });
 
-const showEmbed = (fields: EmbedField[], command: string) => makeEmbed({
-    title: `Temporary Command - Show - ${command}`,
+const infoEmbed = (fields: EmbedField[], command: string) => makeEmbed({
+    title: `Temporary Command - Info - ${command}`,
     fields,
 });
 
@@ -216,8 +216,8 @@ export const temporarycommandedit: CommandDefinition = {
 
         let subCommand = args[0].toLowerCase();
         let subArgs = args.slice(1).join(' ');
-        if (subCommand !== 'add' && subCommand !== 'delete' && subCommand !== 'show') {
-            subCommand = 'show';
+        if (subCommand !== 'add' && subCommand !== 'delete' && subCommand !== 'info') {
+            subCommand = 'info';
             [subArgs] = args;
         }
         if (subCommand === 'add') {
@@ -280,22 +280,23 @@ export const temporarycommandedit: CommandDefinition = {
         const regexCheck = /^["]?\.?(?<command>[\w-]+)?["]?.*$/;
         const regexMatches = subArgs.match(regexCheck);
         if (!regexMatches || !regexMatches.groups || !regexMatches.groups.command) {
-            await msg.channel.send({ embeds: [missingInfoEmbed(subCommand, `You need to provide the expected format to ${subCommand} a temporary command. Check \`${evokedCommand} help\` for more details.`)] });
+            const subCommandText = subCommand === 'info' ? 'show the info of' : subCommand;
+            await msg.channel.send({ embeds: [missingInfoEmbed(subCommand, `You need to provide the expected format to ${subCommandText} a temporary command. Check \`${evokedCommand} help\` for more details.`)] });
             return;
         }
         const { command } = regexMatches.groups;
-        if (subCommand === 'show') {
+        if (subCommand === 'info') {
             const searchResult = await TemporaryCommand.find({ command });
 
             if (searchResult.length === 0) {
-                await msg.channel.send({ embeds: [notFoundEmbed('Show', command)] });
+                await msg.channel.send({ embeds: [notFoundEmbed('Info', command)] });
                 return;
             }
 
             const { moderator, content, date, title, severity } = searchResult[0];
             const dateString = moment(date).utcOffset(0).format('YYYY-MM-DD HH:mm:ss');
 
-            await msg.channel.send({ embeds: [showEmbed(temporaryCommandEmbedField(dateString, moderator, command, severity, title, content), command)] });
+            await msg.channel.send({ embeds: [infoEmbed(temporaryCommandEmbedField(dateString, moderator, command, severity, title, content), command)] });
             return;
         }
 
