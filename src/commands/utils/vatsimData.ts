@@ -185,7 +185,7 @@ export const vatsimData: CommandDefinition = {
             break;
         case 'controllers':
             commandMode = 'CONTROLLERS';
-            notFoundMsg = 'No online VATSIM Controllers, Observers or ATIS found matching your callsing search query.';
+            notFoundMsg = 'No online VATSIM Controllers, Observers or ATIS found matching your callsign search query.';
             break;
         case 'pilots':
             commandMode = 'PILOTS';
