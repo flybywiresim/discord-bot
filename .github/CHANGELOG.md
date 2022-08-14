@@ -2,27 +2,28 @@
 
 ### August 2022
 
-- chore: add editorconfig (14/08/2022)
-- feat: add temporarycommandedit and temporarycommand (14/08/2022)
-- docs: cleanup newlines in command document (14/08/2022)
-- feat: add dlss command (12/08/2022)
-- refactor: simbrief import alias (12/08/2022)
-- feat: add docsearch command (10/08/2022)
-- ci: verify changelog in PR (10/08/2022)
-- feat: add live flights command (08/08/2022)
-- feat: add events command (08/08/2022)
-- refactor: command cleanup (08/08/2022)
-- fix: crash in scamlogs with non-existent roles (08/08/2022)
-- fix: mentions in multiple commands (08/08/2022)
-- feat: adds noHello (06/08/2022)
-- refactor: command-docs.md ordering (05/08/2022)
-- refactor: rename funnies directory to memes (05/08/2022)
-- refactor: extract messageCreate handler (03/08/2022)
-- feat: makeList embed helper (03/08/2022)
-- feat: FMA command (03/08/2022)
-- fix: grammar in .wx command (02/08/2022)
-- refactor: .wx command terrain display on experimental note (01/08/2022)
-- refactor: change SOP command image (01/08/2022)
+- docs: refactor changelog (14/08/2022) - @benw202
+- chore: add editorconfig (14/08/2022) - @NathanInnes
+- feat: add temporarycommandedit and temporarycommand (14/08/2022) - @pdellaert, @benw202
+- docs: cleanup newlines in command document (14/08/2022) - @pdellaert
+- feat: add dlss command (12/08/2022) - @nakajimayoshi, @Hypesim
+- refactor: simbrief import alias (12/08/2022) - @peregrine-developments
+- feat: add docsearch command (10/08/2022) - @pdellaert
+- ci: verify changelog in PR (10/08/2022) - @Valastiri
+- feat: add live flights command (08/08/2022) - @NathanInnes, @benw202
+- feat: add events command (08/08/2022) - @NathanInnes, @benw202
+- refactor: command cleanup (08/08/2022) - @NathanInnes, @benw202
+- fix: crash in scamlogs with non-existent roles (08/08/2022) - @benw202
+- fix: mentions in multiple commands (08/08/2022) - @benw202
+- feat: adds noHello (06/08/2022) - @benw202
+- refactor: command-docs.md ordering (05/08/2022) - @benw202
+- refactor: rename funnies directory to memes (05/08/2022) - @NathanInnes, @benw202
+- refactor: extract messageCreate handler (03/08/2022) - @NathanInnes, @benw202
+- feat: makeList embed helper (03/08/2022) - @NathanInnes, @benw202
+- feat: FMA command (03/08/2022) - @ImenesFBW, @NUT
+- fix: grammar in .wx command (02/08/2022) - @benw202
+- refactor: .wx command terrain display on experimental note (01/08/2022) - @ImenesFBW, @NUT
+- refactor: change SOP command image (01/08/2022) - @ImenesFBW
 
 ## July 2022
 
