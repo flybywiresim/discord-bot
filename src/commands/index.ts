@@ -132,8 +132,8 @@ import { vatsimEvents } from './utils/vatsimEvents';
 import { flights } from './utils/flights';
 import { docsearch } from './general/docsearch';
 import { dlss } from './support/dlss';
-import { temporarycommands } from './moderation/temporarycommands';
-import { runtemporarycommand } from './general/runtemporarycommand';
+import { temporarycommands } from './moderation/temporaryCommands';
+import { runtemporarycommand } from './general/runTemporaryCommand';
 
 const commands: CommandDefinition[] = [
     ping,
