@@ -1,7 +1,7 @@
 import { DMChannel, TextChannel } from 'discord.js';
 import { makeEmbed } from '../lib/embed';
 import Logger from '../lib/logger';
-import { Channels } from '../constants';
+import { Roles, Channels } from '../constants';
 
 module.exports = {
     event: 'messageCreate',
@@ -15,17 +15,17 @@ module.exports = {
 
         if (scamLogs && msg.content.toLowerCase().includes('@everyone') && msg.author.bot === false && !(msg.channel instanceof DMChannel)) {
             const excludedRoles = [
-                'Admin Team',
-                'Moderation Team',
-                'Development Team',
-                'Media Team',
-                'Community Support',
-                'FBW Emeritus',
+                Roles.ADMIN_TEAM,
+                Roles.MODERATION_TEAM,
+                Roles.DEVELOPMENT_TEAM,
+                Roles.MEDIA_TEAM,
+                Roles.COMMUNITY_SUPPORT,
+                Roles.FBW_EMERITUS,
             ];
             let hasRole = false;
             try {
                 excludedRoles.forEach((findrole) => {
-                    if (msg.member.roles.cache.some((role) => role.name === findrole)) {
+                    if (msg.member.roles.cache.some((role) => role.id === findrole)) {
                         hasRole = true;
                     }
                 });
