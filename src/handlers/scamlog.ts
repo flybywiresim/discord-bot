@@ -24,8 +24,8 @@ module.exports = {
             ];
             let hasRole = false;
             try {
-                excludedRoles.forEach((findrole) => {
-                    if (msg.member.roles.cache.some((role) => role.id === findrole)) {
+                excludedRoles.forEach((roleList) => {
+                    if (msg.member.roles.cache.some((role) => role.id === roleList)) {
                         hasRole = true;
                     }
                 });
