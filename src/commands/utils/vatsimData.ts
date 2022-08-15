@@ -202,13 +202,12 @@ export const vatsimData: CommandDefinition = {
 
         let vatsimData;
         try {
-            vatsimData = await fetch(DATA_VATSIM_URL)
-                .then((response) => {
-                    if (response.ok) {
-                        return response.json();
-                    }
-                    throw new Error(response.statusText);
-                });
+            vatsimData = await fetch(DATA_VATSIM_URL).then((response) => {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw new Error(response.statusText);
+            });
         } catch (error) {
             return msg.channel.send({ embeds: [fetchErrorEmbed(error)] });
         }
@@ -239,36 +238,39 @@ export const vatsimData: CommandDefinition = {
         const vatsimControllers = vatsimData.controllers ? vatsimData.controllers.filter((controller) => controller.callsign.includes(callsignSearch)) : null;
         const vatsimAtis = vatsimData.atis ? vatsimData.atis.filter((atis) => atis.callsign.includes(callsignSearch)) : null;
 
-        if ((Object.keys(vatsimControllers).length !== 0 || Object.keys(vatsimAtis).length !== 0) && (commandMode === 'ALL' || commandMode === 'CONTROLLERS')) {
-            const fields: EmbedField[] = [...vatsimControllers.sort((a, b) => b.facility - a.facility), ...vatsimAtis].map((vatsimItem) => {
-                const { callsign, frequency, logon_time, atis_code, text_atis, rating } = vatsimItem;
-                const logonTime = new Date(logon_time);
-                const logonTimeString = handleLocaleDateTimeString(logonTime);
-                const ratingDetail = vatsimControllerRatings.filter((ratingInfo) => ratingInfo.id === rating);
-                const { short, long } = ratingDetail[0];
-                const ratingText = `${short} - ${long}`;
-                const atisText = text_atis ? text_atis.join('\n') : null;
+        const { keys }: ObjectConstructor = Object;
 
-                return controllersListEmbedFields(callsign, frequency, logonTimeString, ratingText, atisText, atis_code);
-            }).slice(0, 5).flat();
+        if ((keys(vatsimControllers).length !== 0 || keys(vatsimAtis).length !== 0) && (commandMode === 'ALL' || commandMode === 'CONTROLLERS')) {
+            const fields: EmbedField[] = [...vatsimControllers.sort((a, b) => b.facility - a.facility), ...vatsimAtis]
+                .map((vatsimController) => {
+                    const { callsign, frequency, logon_time, atis_code, text_atis, rating } = vatsimController;
+                    const logonTime = new Date(logon_time);
+                    const logonTimeString = handleLocaleDateTimeString(logonTime);
+                    const ratingDetail = vatsimControllerRatings.filter((ratingInfo) => ratingInfo.id === rating);
+                    const { short, long } = ratingDetail[0];
+                    const ratingText = `${short} - ${long}`;
+                    const atisText = text_atis ? text_atis.join('\n') : null;
 
-            const totalCount = Object.keys(vatsimControllers).length + Object.keys(vatsimAtis).length;
+                    return controllersListEmbedFields(callsign, frequency, logonTimeString, ratingText, atisText, atis_code);
+                }).slice(0, 5).flat();
+
+            const totalCount = keys(vatsimControllers).length + keys(vatsimAtis).length;
             const shownCount = totalCount < 5 ? totalCount : 5;
 
             return msg.channel.send({ embeds: [listEmbed('Controllers, Observers & ATIS', fields, totalCount, shownCount, callsignSearch)] });
         }
 
-        if (Object.keys(vatsimPilots).length !== 0 && (commandMode === 'ALL' || commandMode === 'PILOTS')) {
-            const fields: EmbedField[] = [...vatsimPilots.sort((a, b) => b.pilot_rating - a.pilot_rating)].map((vatsimItem) => {
-                const { callsign, pilot_rating, flight_plan } = vatsimItem;
-                const ratingDetail = vatsimPilotRatings.filter((ratingInfo) => ratingInfo.id === pilot_rating);
+        if (keys(vatsimPilots).length !== 0 && (commandMode === 'ALL' || commandMode === 'PILOTS')) {
+            const fields: EmbedField[] = [...vatsimPilots.sort((a, b) => b.pilot_rating - a.pilot_rating)].map((vatsimPilot) => {
+                const { callsign, pilot_rating, flight_plan } = vatsimPilot;
+                const ratingDetail = vatsimPilotRatings.filter((ratingInfo: { id: number; }) => ratingInfo.id === pilot_rating);
                 const { short_name, long_name } = ratingDetail[0];
                 const ratingText = `${short_name} - ${long_name}`;
 
                 return pilotsListEmbedFields(callsign, ratingText, flight_plan);
             }).slice(0, 5).flat();
 
-            const totalCount = Object.keys(vatsimPilots).length;
+            const totalCount = keys(vatsimPilots).length;
             const shownCount = totalCount < 5 ? totalCount : 5;
 
             return msg.channel.send({ embeds: [listEmbed('Pilots', fields, totalCount, shownCount, callsignSearch)] });
