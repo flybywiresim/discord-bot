@@ -6,6 +6,7 @@ export const yourControls: CommandDefinition = {
     description: 'Provides link to the YourControls Discord server',
     category: CommandCategory.GENERAL,
     executor: async (msg) => {
-        return msg.channel.send('https://discord.gg/p7Bzcv3Yjd');
+        await msg.channel.send('https://discord.gg/p7Bzcv3Yjd');
+        return msg.delete();
     },
 };
