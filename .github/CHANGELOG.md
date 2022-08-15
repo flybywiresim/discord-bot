@@ -2,6 +2,7 @@
 
 Update <small>_ August 2022</small>
 
+- docs: added image from dlss command to assets folder (14/08/2022)
 - chore: add editorconfig (14/08/2022)
 - feat: add temporarycommandedit and temporarycommand (14/08/2022)
 - docs: cleanup newlines in command document (14/08/2022)
