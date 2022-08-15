@@ -143,4 +143,3 @@ Update <small>_ February 2022</small>
 - fix: whois offline status (28/02/2022)
 - fix: node_modules error (23/02/2022)
 - feat: update to discord.js v13 and API v9 (23/02/2022)
-
