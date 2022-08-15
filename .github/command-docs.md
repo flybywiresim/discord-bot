@@ -96,6 +96,7 @@
 | .thumb            | Answers the big question, will it have FEATURE?                                                                         | .willithave                         |
 | .xbox             | Short response + link to NOTAM for xbox marketplace                                                                     | .xboxmarketplace                    |
 | .yourcontrols     | Provides link to the YourControls discord                                                                               | .yc                                 |
+
 ### Utilities
 
 | Command      | Description                                            | Alias                                                          |

@@ -1,11 +1,11 @@
 import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 
-export const yourcontrols: CommandDefinition = {
+export const yourControls: CommandDefinition = {
     name: ['yourcontrols', 'yc'],
     description: 'Provides link to the YourControls Discord server',
     category: CommandCategory.GENERAL,
     executor: async (msg) => {
-        await msg.channel.send('https://discord.gg/p7Bzcv3Yjd');
+        return msg.channel.send('https://discord.gg/p7Bzcv3Yjd');
     },
 };

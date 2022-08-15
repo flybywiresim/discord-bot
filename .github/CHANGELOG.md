@@ -2,6 +2,7 @@
 
 Update <small>_ August 2022</small>
 
+- feat: add YourControls discord server command (16/08/2022)
 - refactor: role constants in scam log (15/08/2022)
 - docs: added image from dlss command to assets folder (14/08/2022)
 - chore: add editorconfig (14/08/2022)
@@ -142,4 +143,4 @@ Update <small>_ February 2022</small>
 - fix: whois offline status (28/02/2022)
 - fix: node_modules error (23/02/2022)
 - feat: update to discord.js v13 and API v9 (23/02/2022)
-- feat: add YourControls discord server command (15/08/2022)
+
