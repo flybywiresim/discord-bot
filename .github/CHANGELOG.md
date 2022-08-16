@@ -1,7 +1,7 @@
 ## Changelog
 
 Update <small>_ August 2022</small>
-
+- docs: Improve readme (15/08/2022) 
 - refactor: role constants in scam log (15/08/2022)
 - docs: added image from dlss command to assets folder (14/08/2022)
 - chore: add editorconfig (14/08/2022)
