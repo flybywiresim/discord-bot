@@ -8,8 +8,8 @@ export const pw: CommandDefinition = {
     name: 'pw',
     description: 'Whale noises',
     category: CommandCategory.MEMES,
-    executor: async (msg) => {
+    executor: (msg) => {
         const pwEmbed = makeEmbed({ image: { url: PW_URL } });
-        await msg.channel.send({ embeds: [pwEmbed] });
+        return msg.channel.send({ embeds: [pwEmbed] });
     },
 };

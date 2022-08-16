@@ -134,6 +134,7 @@ import { docsearch } from './general/docsearch';
 import { dlss } from './support/dlss';
 import { temporarycommandedit } from './moderation/temporaryCommandEdit';
 import { temporarycommand } from './general/temporaryCommand';
+import { yourControls } from './general/yourControls';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -270,6 +271,7 @@ const commands: CommandDefinition[] = [
     dlss,
     temporarycommandedit,
     temporarycommand,
+    yourControls,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};

@@ -7,7 +7,5 @@ export const merge: CommandDefinition = {
     name: 'merge',
     description: 'GIT MERGE!',
     category: CommandCategory.MEMES,
-    executor: async (msg) => {
-        await msg.channel.send(MERGE_URL);
-    },
+    executor: (msg) => msg.channel.send(MERGE_URL),
 };

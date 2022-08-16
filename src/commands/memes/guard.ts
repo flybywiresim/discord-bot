@@ -7,7 +7,5 @@ export const guard: CommandDefinition = {
     name: 'guard',
     description: 'MEOW',
     category: CommandCategory.MEMES,
-    executor: async (msg) => {
-        await msg.channel.send(GUARD_URL);
-    },
+    executor: (msg) => msg.channel.send(GUARD_URL),
 };

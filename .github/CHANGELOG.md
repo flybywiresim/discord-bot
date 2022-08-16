@@ -3,6 +3,8 @@
 Update <small>_ August 2022</small>
 
 - refactor: remove async from MSFS command and message delete (16/08/2022)
+- refactor: remove async/await from memes (16/08/2022)
+- feat: add YourControls discord server command (16/08/2022)
 - refactor: role constants in scam log (15/08/2022)
 - docs: added image from dlss command to assets folder (14/08/2022)
 - chore: add editorconfig (14/08/2022)
