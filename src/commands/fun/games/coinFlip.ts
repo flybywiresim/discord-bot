@@ -12,23 +12,19 @@ const wrongChannelEmbed = makeEmbed({
     color: Colors.Red,
 });
 
-const noGuessEmbed = makeEmbed({
-    title: 'Coin Flip | No Guess',
-    description: 'Please provide a guess. For example: `.coinflip heads`',
-    color: Colors.Red,
-});
-
-const coinFlipEmbed = (hasWon: boolean, flipResult: string, user: User) => makeEmbed({
-    title: `Coin Flip | You ${hasWon ? 'Won' : 'Lost'}!`,
+const coinFlipEmbed = (flipResult: string, user: User) => makeEmbed({
+    title: `Coin Flip | ${flipResult}`,
     description: `It's ${bold(flipResult)}!`,
     thumbnail: { url: flipResult === 'heads' ? headsImage : tailsImage },
     author: { name: user.username, iconURL: user.displayAvatarURL() },
     timestamp: new Date().toISOString(),
 });
 
+const coinSides = ['Heads', 'Tails'];
+
 export const coinFlip: CommandDefinition = {
-    name: ['coinflip', 'cf'],
-    description: 'Flips a coin and returns the result',
+    name: ['coinflip', 'cf', 'flip'],
+    description: 'Flips a coin.',
     category: CommandCategory.FUN,
     executor: async (msg) => {
         if (msg.channelId !== Channels.BOT_COMMANDS) {
@@ -40,27 +36,8 @@ export const coinFlip: CommandDefinition = {
             }, 10_000);
         }
 
-        let hasWon = false;
-        const side = ['heads', 'tails'];
-        const flipResult = side[Math.floor(Math.random() * side.length)];
+        const flipResult = coinSides[Math.floor(Math.random() * coinSides.length)];
 
-        const splitMsg = msg.content.replace(/\.coinflip|.cf\s+/, ' ').split(' ');
-        let userGuess = splitMsg.slice(1).join(' ');
-
-        if (!userGuess) {
-            return msg.reply({ embeds: [noGuessEmbed] });
-        }
-
-        if (userGuess === 'heads' || 'h') {
-            userGuess = 'heads';
-        } else if (userGuess === 'tails' || 't') {
-            userGuess = 'tails';
-        }
-
-        if (flipResult === userGuess) {
-            hasWon = true;
-        }
-
-        return msg.reply({ embeds: [coinFlipEmbed(hasWon, flipResult, msg.author)] });
+        return msg.reply({ embeds: [coinFlipEmbed(flipResult, msg.author)] });
     },
 };
