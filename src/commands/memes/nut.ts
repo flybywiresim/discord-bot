@@ -8,8 +8,8 @@ export const nut: CommandDefinition = {
     name: 'nut',
     description: 'nut',
     category: CommandCategory.MEMES,
-    executor: async (msg) => {
+    executor: (msg) => {
         const nutEmbed = makeEmbed({ image: { url: NUT_URL } });
-        await msg.channel.send({ embeds: [nutEmbed] });
+        return msg.channel.send({ embeds: [nutEmbed] });
     },
 };

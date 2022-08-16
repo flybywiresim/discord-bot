@@ -8,8 +8,8 @@ export const pov: CommandDefinition = {
     name: 'pov',
     description: 'Oof',
     category: CommandCategory.MEMES,
-    executor: async (msg) => {
+    executor: (msg) => {
         const povEmbed = makeEmbed({ image: { url: POV_URL } });
-        await msg.channel.send({ embeds: [povEmbed] });
+        return msg.channel.send({ embeds: [povEmbed] });
     },
 };

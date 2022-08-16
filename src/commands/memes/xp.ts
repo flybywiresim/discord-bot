@@ -7,7 +7,5 @@ export const xp: CommandDefinition = {
     name: ['xp', 'xplane', 'x-plane'],
     description: 'XPlane',
     category: CommandCategory.MEMES,
-    executor: async (msg) => {
-        await msg.channel.send(XP_URL);
-    },
+    executor: async (msg) => msg.channel.send(XP_URL),
 };

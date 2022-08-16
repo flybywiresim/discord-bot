@@ -8,8 +8,8 @@ export const fridge: CommandDefinition = {
     name: 'fridge',
     description: 'fridge',
     category: CommandCategory.MEMES,
-    executor: async (msg) => {
+    executor: (msg) => {
         const fridgeEmbed = makeEmbed({ image: { url: FRIDGE_URL } });
-        await msg.channel.send({ embeds: [fridgeEmbed] });
+        return msg.channel.send({ embeds: [fridgeEmbed] });
     },
 };
