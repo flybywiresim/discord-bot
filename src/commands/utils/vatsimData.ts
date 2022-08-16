@@ -175,7 +175,6 @@ export const vatsimData: CommandDefinition = {
 
         let subCommand = args[0].toLowerCase();
         let [query] = args.slice(1);
-        query.toUpperCase();
 
         if (subCommand !== 'stats' && subCommand !== 'controllers' && subCommand !== 'pilots') {
             subCommand = 'all';
