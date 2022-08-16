@@ -224,6 +224,8 @@ export const vatsimData: CommandDefinition = {
             return msg.channel.send({ embeds: [missingInfoEmbed(`You need to provide a single callsign or part of a callsign to search for. Check \`${evokedCommand} help\` for more details.`)] });
         }
 
+        query = query.toUpperCase();
+
         const regexCheck = /^["']?(?<callsignSearch>[\w-]+)?["']?\s*$/;
         const regexMatches = query.match(regexCheck);
 
