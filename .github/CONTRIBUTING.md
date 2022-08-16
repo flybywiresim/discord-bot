@@ -5,7 +5,7 @@ Please reference the information below when contributing to this repository.
 Welcome to the FlyByWire Simulations Discord bot repository. Thank you for your interest in contributing to the project. Full details and guidelines on how to ensure this project is managed are included below.
 
 ## Helping others
-Please help other contributors to the project wherever you can, as people all start somewhere. If you require assistance or wish to provide assistance you can ask/answer questions on the #dev-support or #discord-bot channel on [discord](https://discord.gg/flybywire).
+Please help other contributors to the project wherever you can, as people all start somewhere. If you require assistance or wish to provide assistance you can ask/answer questions in the #discord-bot or #dev-support channel on [discord](https://discord.gg/flybywire).
 
 ## Prerequisites
 - [node](https://nodejs.org/) version >= 16.x
@@ -40,8 +40,20 @@ You can find the pull request template [here](PULL_REQUEST_TEMPLATE.md).
 3. Give your application a name.
 4. Navigate to the `Bot` tab and click `Add Bot`. You will have to confirm by clicking `Yes, do it!`.
 5. Click the `Copy` button underneath token. (Do not share this).
-6. Create a file called `.env` in your bot repo.
+6. Copy the `.env.example` file and rename it to `.env`.
 7. Inside the .env file, type `BOT_SECRET=TOKEN` replacing TOKEN with what you copied in `step 6.`
+
+## Setting Up Privileged Gateway Intents
+Privileged Gateway Intents must now be enabled within the Discord Developer Portal in order for your bot to function. The steps below will explain how to enable them.
+
+1. Log into the Discord website and navigate to the [applications page](https://discord.com/developers/applications) and select your application. Then select `Bot` under `Settings`
+2. Scroll down to the Privileged Gateway Intents section and enable all the intents.
+
+### Inviting the Bot to Your Server
+1. Create a Discord server where you can test your bot.
+2. On the [applications page](https://discord.com/developers/applications), select your application and navigate to the `OAuth2` tab. Then select `bot` under the `scopes` section.
+3. Tick `Administrator` box under the `Bot Permissions` section.
+4. Click the `Copy` button and paste it into your search bar in the browser of choice, and invite it to your test server.
 
 ## Running the Bot
 2. Run `npm install` to install the dependencies.
