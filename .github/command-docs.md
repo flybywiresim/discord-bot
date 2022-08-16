@@ -115,6 +115,12 @@
 | .wa          | Queries the Wolfram Alpha API                          | .calc <br> .ask                                                |
 | .zulu        | Get the current time at a given UTC-offset timezone    | ---                                                            |
 
+### Fun
+
+| Command   | Description  | Alias |
+|:----------|:-------------|:------|
+| .coinflip | Flips a coin | .cf   |
+
 ### Memes
 
 | Command         | Description                                                                            | Alias                                    |
