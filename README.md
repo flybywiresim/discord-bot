@@ -13,8 +13,9 @@ This is the repository for the FlyByWire Simulations Discord bot.
 
 ## Best Practices
 
-* Please use clear names for your PR's and commands
-* Check [here](https://github.com/flybywiresim/discord-bot/projects/1) to see a list of wanted commands that you may want to work on, or check the #discord-bot channel in the Discord Server
+* Please use clear names for your PR's and commands.
+* Check [here](https://github.com/flybywiresim/discord-bot/projects/1) what is being worked on, or check the #discord-bot channel in the Discord Server.
+* Check the #discord-bot channel for regular discussions about the repository.
 
 ## Contributing
 
