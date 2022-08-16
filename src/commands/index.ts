@@ -135,6 +135,7 @@ import { dlss } from './support/dlss';
 import { temporarycommandedit } from './moderation/temporaryCommandEdit';
 import { temporarycommand } from './general/temporaryCommand';
 import { yourControls } from './general/yourControls';
+import { coinFlip } from './fun/games/coinFlip';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -272,6 +273,7 @@ const commands: CommandDefinition[] = [
     temporarycommandedit,
     temporarycommand,
     yourControls,
+    coinFlip,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
