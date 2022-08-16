@@ -117,9 +117,9 @@
 
 ### Fun
 
-| Command   | Description  | Alias |
-|:----------|:-------------|:------|
-| .coinflip | Flips a coin | .cf   |
+| Command   | Description   | Alias          |
+|:----------|:--------------|:---------------|
+| .coinflip | Flips a coin. | .cf <br> .flip |
 
 ### Memes
 
