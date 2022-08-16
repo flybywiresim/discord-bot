@@ -174,11 +174,11 @@ export const vatsimData: CommandDefinition = {
         }
 
         let subCommand = args[0].toLowerCase();
-        let [subArgs] = args.slice(1);
+        let [query] = args.slice(1);
 
         if (subCommand !== 'stats' && subCommand !== 'controllers' && subCommand !== 'pilots') {
             subCommand = 'all';
-            [subArgs] = args;
+            [query] = args;
         }
 
         let commandMode = 'ALL';
@@ -219,12 +219,12 @@ export const vatsimData: CommandDefinition = {
             return msg.channel.send({ embeds: [statsEmbed(vatsimPilotCount, vatsimControllerCount, vatsimAtisCount)] });
         }
 
-        if (!subArgs) {
+        if (!query) {
             return msg.channel.send({ embeds: [missingInfoEmbed(`You need to provide a single callsign or part of a callsign to search for. Check \`${evokedCommand} help\` for more details.`)] });
         }
 
         const regexCheck = /^["']?(?<callsignSearch>[\w-]+)?["']?\s*$/;
-        const regexMatches = subArgs.match(regexCheck);
+        const regexMatches = query.match(regexCheck);
 
         if (!regexMatches || !regexMatches.groups || !regexMatches.groups.callsignSearch) {
             return msg.channel.send({ embeds: [missingInfoEmbed(`You need to provide a valid callsign or part of a callsign to search for. Check \`${evokedCommand} help\` for more details.`)] });
