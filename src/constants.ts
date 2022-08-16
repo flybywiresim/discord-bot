@@ -11,6 +11,7 @@ export enum CommandCategory {
     UTILS = 'Utilities',
     MEMES = 'Memes',
     MODERATION = 'Moderation',
+    FUN = 'Fun',
 }
 
 export enum Channels {
