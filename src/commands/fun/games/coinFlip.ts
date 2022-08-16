@@ -15,7 +15,7 @@ const wrongChannelEmbed = makeEmbed({
 const coinFlipEmbed = (flipResult: string, user: User) => makeEmbed({
     title: `Coin Flip | ${flipResult}`,
     description: `It's ${bold(flipResult)}!`,
-    thumbnail: { url: flipResult === 'heads' ? headsImage : tailsImage },
+    thumbnail: { url: flipResult === coinSides[0] ? headsImage : tailsImage },
     author: { name: user.username, iconURL: user.displayAvatarURL() },
     timestamp: new Date().toISOString(),
 });
