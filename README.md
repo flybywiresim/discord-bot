@@ -7,7 +7,7 @@
 [![Facebook](https://img.shields.io/badge/-FlyByWireSimulations-e84393?label=&logo=facebook&logoColor=ffffff&color=6399AE&labelColor=00C2CB)](https://www.facebook.com/FlyByWireSimulations/)
 [![Instagram](https://img.shields.io/badge/-@FlyByWireSim-e84393?label=&logo=instagram&logoColor=ffffff&color=6399AE&labelColor=00C2CB)](https://instagram.com/flybywiresim)
 
-# FlyByWire Discord bot
+# FlyByWire Discord Bot
 
 This is the repository for the FlyByWire Simulations Discord bot.
 
