@@ -137,6 +137,7 @@ import { temporarycommand } from './general/temporaryCommand';
 import { yourControls } from './general/yourControls';
 import { notams } from './general/notams';
 import { vatsimData } from './utils/vatsimData';
+import { website } from './general/website';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -276,6 +277,7 @@ const commands: CommandDefinition[] = [
     yourControls,
     notams,
     vatsimData,
+    website,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};

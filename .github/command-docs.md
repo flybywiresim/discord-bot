@@ -93,6 +93,7 @@
 | .synaptic         | Provides link to synaptic discord server                                                                                | .syn                                |
 | .temporarycommand | Runs a temporary command created by the Moderators and can list them. These are temporary commands for simple messages. | .tempcommand <br> .tc               |
 | .translate        | Provides information on how to contribute to various FlyByWire translation efforts                                      | ---                                 |
+| .website          | Provides a link to the FlyByWire Simulations website                                                                    | .web                                |
 | .when             | Explain the absence of release dates or ETAs                                                                            | ---                                 |
 | .thumb            | Answers the big question, will it have FEATURE?                                                                         | .willithave                         |
 | .xbox             | Short response + link to NOTAM for xbox marketplace                                                                     | .xboxmarketplace                    |
