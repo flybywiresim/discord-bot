@@ -12,11 +12,18 @@ export const weightBalance: CommandDefinition = {
             description: makeLines([
                 'We have improved the A32NX flight model and finalized our weight and balance loading integration.',
                 '',
-                '**Please note:**',
-                '- We have disabled the MSFS fuel and weights UI to prevent issues.',
-                '- Use the EFB for fueling and the AOC W/B Page on the MCDU for payload.',
+                '> **Please note:**',
+                '> - We have disabled the MSFS fuel and weights UI to prevent issues.',
+                '> - There are differences between Stable and Development versions.',
                 '',
-                'Please read our guide [here.](https://docs.flybywiresim.com/fbw-a32nx/feature-guides/loading-fuel-weight/)',
+                '**Stable Version**',
+                '- Use the EFB for fueling.',
+                '- Use the AOC W/B Page on the MCDU for payload management.',
+                '',
+                '**Development Version**',
+                '- Use the EFB Ground Page for both fueling and payload management.',
+                '',
+                'For detailed information please read [here.](https://docs.flybywiresim.com/fbw-a32nx/feature-guides/loading-fuel-weight/)',
             ]),
         });
 

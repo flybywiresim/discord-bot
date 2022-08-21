@@ -135,6 +135,7 @@ import { dlss } from './support/dlss';
 import { temporarycommandedit } from './moderation/temporaryCommandEdit';
 import { temporarycommand } from './general/temporaryCommand';
 import { yourControls } from './general/yourControls';
+import { notams } from './general/notams';
 import { vatsimData } from './utils/vatsimData';
 
 const commands: CommandDefinition[] = [
@@ -273,6 +274,7 @@ const commands: CommandDefinition[] = [
     temporarycommandedit,
     temporarycommand,
     yourControls,
+    notams,
     vatsimData,
 ];
 
