@@ -2,6 +2,7 @@
 
 Update <small>_ August 2022</small>
 
+- feat: add vatsim command (21/08/2022)
 - refactor: remove async from MSFS command and message delete (21/08/2022)
 - refactor: remove async/await from invites (21/08/2022)
 - feat: error handling for process start (21/08/2022)
