@@ -5,7 +5,5 @@ export const salty: CommandDefinition = {
     name: ['salty', 'sal', 'ninjo'],
     description: 'Provides link to salty discord server',
     category: CommandCategory.GENERAL,
-    executor: async (msg) => {
-        await msg.channel.send('https://discord.gg/S4PJDwk');
-    },
+    executor: (msg) => msg.channel.send('https://discord.gg/S4PJDwk'),
 };
