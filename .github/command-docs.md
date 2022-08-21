@@ -86,6 +86,7 @@
 | .installer        | Provides link to the new installer                                                                                      | ---                                 |
 | .latlong          | Provides a cheat sheet for conversion between Latitude and longitude coordinates between short and long format          | .llfix                              |
 | .msfsdisc         | Provides link to Microsoft Flight Simulator discord server                                                              | .fsdisc <br> .msfsdiscord           |
+| .notams           | Links to the FlyByWire Simulations NOTAMS                                                                               | .notam <br> .news                   |
 | .qa               | Links to the Quality Assurance docs page                                                                                | ---                                 |
 | .roadmap          | FBW Roadmap                                                                                                             | .goals                              |
 | .salty            | Provides link to salty discord server                                                                                   | .sal <br> .ninjo                    |
@@ -95,6 +96,7 @@
 | .when             | Explain the absence of release dates or ETAs                                                                            | ---                                 |
 | .thumb            | Answers the big question, will it have FEATURE?                                                                         | .willithave                         |
 | .xbox             | Short response + link to NOTAM for xbox marketplace                                                                     | .xboxmarketplace                    |
+| .yourcontrols     | Provides link to the YourControls discord                                                                               | .yc                                 |
 
 ### Utilities
 

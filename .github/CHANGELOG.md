@@ -2,7 +2,14 @@
 
 Update <small>_ August 2022</small>
 
-- refactor: remove async/await from invites (16/08/2022)
+- refactor: remove async/await from invites (21/08/2022)
+- feat: error handling for process start (21/08/2022)
+- refactor(scamlog): code cleanup and error handling (21/08/2022)
+- docs: improve readme (21/08/2022) 
+- feat: notams command (21/08/2022)
+- refactor: weight and balance command (21/08/2022)
+- refactor: remove async/await from memes (17/08/2022)
+- feat: add YourControls discord server command (16/08/2022)
 - refactor: role constants in scam log (15/08/2022)
 - docs: added image from dlss command to assets folder (14/08/2022)
 - chore: add editorconfig (14/08/2022)
