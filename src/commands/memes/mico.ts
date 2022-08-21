@@ -7,7 +7,5 @@ export const mico: CommandDefinition = {
     name: 'mico',
     description: 'mico!',
     category: CommandCategory.MEMES,
-    executor: async (msg) => {
-        await msg.channel.send(MICO_URL);
-    },
+    executor: (msg) => msg.channel.send(MICO_URL),
 };
