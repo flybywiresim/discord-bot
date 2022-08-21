@@ -2,6 +2,7 @@
 
 Update <small>_ August 2022</small>
 
+- docs: improve readme (21/08/2022) 
 - feat: notams command (21/08/2022)
 - refactor: weight and balance command (21/08/2022)
 - refactor: remove async/await from memes (17/08/2022)
