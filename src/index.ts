@@ -85,8 +85,11 @@ const app = express();
 app.get('/healthz', (req, res) => (healthy ? res.status(200)
     .send('Ready') : res.status(500)
     .send('Not Ready')));
+
 app.listen(3000, () => {
     Logger.info('Server is running at http://localhost:3000');
+}).on('error', (err) => {
+    Logger.error(err);
 });
 
 process.on('SIGTERM', () => {
