@@ -2,7 +2,11 @@
 
 Update <small>_ August 2022</small>
 
-- docs: Improve readme (15/08/2022) 
+- docs: Improve readme (21/08/2022) 
+- feat: notams command (21/08/2022)
+- refactor: weight and balance command (21/08/2022)
+- refactor: remove async/await from memes (17/08/2022)
+- feat: add YourControls discord server command (16/08/2022)
 - refactor: role constants in scam log (15/08/2022)
 - docs: added image from dlss command to assets folder (14/08/2022)
 - chore: add editorconfig (14/08/2022)

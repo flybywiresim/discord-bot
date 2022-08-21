@@ -7,7 +7,5 @@ export const shame: CommandDefinition = {
     name: 'shame',
     description: 'Shame, shame, shame',
     category: CommandCategory.MEMES,
-    executor: async (msg) => {
-        await msg.channel.send(SHAME_URL);
-    },
+    executor: async (msg) => msg.channel.send(SHAME_URL),
 };

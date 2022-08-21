@@ -8,8 +8,8 @@ export const defaultmeme: CommandDefinition = {
     name: 'default',
     description: 'O_o',
     category: CommandCategory.MEMES,
-    executor: async (msg) => {
+    executor: (msg) => {
         const defaultEmbed = makeEmbed({ image: { url: DEFAULT_URL } });
-        await msg.channel.send({ embeds: [defaultEmbed] });
+        return msg.channel.send({ embeds: [defaultEmbed] });
     },
 };

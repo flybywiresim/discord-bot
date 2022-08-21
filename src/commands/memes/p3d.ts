@@ -7,7 +7,5 @@ export const p3d: CommandDefinition = {
     name: 'p3d',
     description: 'No!',
     category: CommandCategory.MEMES,
-    executor: async (msg) => {
-        await msg.channel.send(P3D_URL);
-    },
+    executor: (msg) => msg.channel.send(P3D_URL),
 };
