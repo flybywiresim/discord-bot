@@ -6,7 +6,7 @@ export const tug: CommandDefinition = {
     name: ['tug', 'stuck'],
     description: 'Provides a solution to an issue where the tug fails to disconnect.',
     category: CommandCategory.SUPPORT,
-    executor: async (msg) => {
+    executor: (msg) => {
         const tugEmbed = makeEmbed({
             title: 'FlyByWire Support | My Aircraft is Stuck!',
             description: makeLines([
@@ -18,6 +18,6 @@ export const tug: CommandDefinition = {
             ]),
         });
 
-        await msg.channel.send({ embeds: [tugEmbed] });
+        return msg.channel.send({ embeds: [tugEmbed] });
     },
 };

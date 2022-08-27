@@ -8,7 +8,7 @@ export const navdata: CommandDefinition = {
     name: 'navdata',
     description: 'Provides help with Navigraph navdata reinstall',
     category: CommandCategory.SUPPORT,
-    executor: async (msg) => {
+    executor: (msg) => {
         const navdataEmbed = makeEmbed({
             title: 'FlyByWire Support | Navigraph Navdata',
             description: makeLines([
@@ -17,6 +17,6 @@ export const navdata: CommandDefinition = {
             image: { url: NAVDATA_URL },
         });
 
-        await msg.channel.send({ embeds: [navdataEmbed] });
+        return msg.channel.send({ embeds: [navdataEmbed] });
     },
 };

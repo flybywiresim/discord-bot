@@ -6,7 +6,7 @@ export const ctrlE: CommandDefinition = {
     name: ['ctrle', 'ctrl+e', 'ctrl-e', 'enginestart'],
     description: 'Displays help regarding CTRL+E engine start',
     category: CommandCategory.A32NX,
-    executor: async (msg) => {
+    executor: (msg) => {
         const ctrlEembed = makeEmbed({
             title: 'FlyByWire A32NX | Engine Start',
             description: makeLines([
@@ -16,6 +16,6 @@ export const ctrlE: CommandDefinition = {
             ]),
         });
 
-        await msg.channel.send({ embeds: [ctrlEembed] });
+        return msg.channel.send({ embeds: [ctrlEembed] });
     },
 };
