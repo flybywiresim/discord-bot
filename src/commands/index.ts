@@ -138,6 +138,7 @@ import { yourControls } from './general/yourControls';
 import { notams } from './general/notams';
 import { vatsimData } from './utils/vatsimData';
 import { website } from './general/website';
+import { flyPadOS } from './a32nx/flyPadOS';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -278,6 +279,7 @@ const commands: CommandDefinition[] = [
     notams,
     vatsimData,
     website,
+    flyPadOS,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
