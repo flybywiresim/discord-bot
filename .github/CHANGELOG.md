@@ -2,6 +2,7 @@
 
 Update <small>_ August 2022</small>
 
+- feat: verticalguidance, verticalguidancesymbols and verticalspeedpriority commands (27/08/2022)
 - feat: flypados command (27/08/2022)
 - feat: website command (22/08/2022)
 - feat: add vatsim command (21/08/2022)
