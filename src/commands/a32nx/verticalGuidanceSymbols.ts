@@ -9,7 +9,7 @@ export const verticalGuidanceSymbols: CommandDefinition = {
     executor: (msg) => {
         const verticalGuidanceSymbolsEmbed = makeEmbed({
             title: 'FlyByWire A32NX | Vertical Guidance Navigation Display Symbols documentation',
-            description: 'Please see our [Vertical Guidance Navigation Display Symbols documentation](https://docs.flybywiresim.com/pilots-corner/advanced-guides/flight-guidance/vertical-guidance/nd-symbols/) for information on the VNAV symbols on the ND of the FlyByWire A32nx.',
+            description: 'Please see our [Vertical Guidance Navigation Display Symbols documentation](https://docs.flybywiresim.com/pilots-corner/advanced-guides/flight-guidance/vertical-guidance/nd-symbols/) for information on the VNAV symbols on the ND of the FlyByWire A32NX.',
         });
 
         return msg.channel.send({ embeds: [verticalGuidanceSymbolsEmbed] });
