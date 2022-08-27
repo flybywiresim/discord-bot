@@ -10,7 +10,7 @@ export const verticalGuidance: CommandDefinition = {
         const verticalGuidanceEmbed = makeEmbed({
             title: 'FlyByWire A32NX | Vertical Guidance Documentation',
             description: makeLines([
-                'Please see our [Vertical Guidance documentation](https://docs.flybywiresim.com/pilots-corner/advanced-guides/flight-guidance/vertical-guidance/overview/) for information on the VNAV capabilities of the FlyByWire A32nx.',
+                'Please see our [Vertical Guidance documentation](https://docs.flybywiresim.com/pilots-corner/advanced-guides/flight-guidance/vertical-guidance/overview/) for information on the VNAV capabilities of the FlyByWire A32NX.',
                 '',
                 'If you\'d like to immediately go to a specific chapter please use the list below:',
                 '- [Overview](https://docs.flybywiresim.com/pilots-corner/advanced-guides/flight-guidance/vertical-guidance/overview/)',
