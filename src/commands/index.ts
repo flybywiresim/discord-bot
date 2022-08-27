@@ -138,6 +138,9 @@ import { yourControls } from './general/yourControls';
 import { notams } from './general/notams';
 import { vatsimData } from './utils/vatsimData';
 import { website } from './general/website';
+import { verticalGuidance } from './a32nx/verticalGuidance';
+import { verticalGuidanceSymbols } from './a32nx/verticalGuidanceSymbols';
+import { verticalSpeedPriority } from './a32nx/verticalSpeedPriority';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -278,6 +281,9 @@ const commands: CommandDefinition[] = [
     notams,
     vatsimData,
     website,
+    verticalGuidance,
+    verticalGuidanceSymbols,
+    verticalSpeedPriority,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
