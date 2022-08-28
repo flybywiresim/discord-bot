@@ -142,6 +142,7 @@ import { verticalGuidance } from './a32nx/verticalGuidance';
 import { verticalGuidanceSymbols } from './a32nx/verticalGuidanceSymbols';
 import { verticalSpeedPriority } from './a32nx/verticalSpeedPriority';
 import { flyPadOS } from './a32nx/flyPadOS';
+import { simulationRate } from './support/simulationRate';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -286,6 +287,7 @@ const commands: CommandDefinition[] = [
     verticalGuidanceSymbols,
     verticalSpeedPriority,
     flyPadOS,
+    simulationRate,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};

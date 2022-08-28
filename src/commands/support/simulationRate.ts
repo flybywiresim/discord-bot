@@ -1,0 +1,26 @@
+import { CommandDefinition } from '../../lib/command';
+import { CommandCategory } from '../../constants';
+import { makeEmbed, makeLines } from '../../lib/embed';
+
+export const simulationRate: CommandDefinition = {
+    name: ['simulationrate', 'simrate'],
+    description: 'Describe how the simulation rate of is limited for optimal use of the FlyByWire A32NX Auto-Pilot',
+    category: CommandCategory.SUPPORT,
+    executor: (msg) => {
+        const simrateEmbed = makeEmbed({
+            title: 'FlyByWire Support | Simulation Rate',
+            description: makeLines([
+                'The Simulation Rate is limited by the FlyByWire A32NX to protect and guarantee the Auto-Pilot is able to work reliably. The Auto-Pilot needs the equivalent of about 17 frames per second (FPS) in a real time simulation. This is needed for the Auto-Pilot to be able to do enough calculations for each real time second.',
+                '',
+                'The required FPS for a specific simulation rate can be calculated using `<sim rate> * 17`. Another way of calculating the simulation rate your system can support is by using `<FPS at sim rate 1> / 17`.',
+                '',
+                'Example:',
+                '1) If your FPS at simulation rate 1 is 60, you can support a simulation rate up to 3.5 (`60/17=3.5`). At simulation rate 2, the Auto-Pilot would be able to use 30 FPS for its calculations (`60/2=30`). At simulation rate 3, it would be able to use 20 FPS (`60/3=20`)',
+                '',
+                '2) If you would like to enable a simulation rate of 4, you need at least 68 FPS (`4*17=68`), so that the Auto-Pilot still has 17 FPS available for its calculations for each real time second.',
+            ]),
+        });
+
+        return msg.channel.send({ embeds: [simrateEmbed] });
+    },
+};

@@ -72,6 +72,7 @@
 | .navdata        | Provides help with Navigraph navdata reinstall                                    | ---                                                |
 | .reportedissues | Provides a link to the reported issues page within docs                           | .issues                                            |
 | .screenshot     | Help to screenshot for support                                                    | .cockpit <br> .ss                                  |
+| .simulationrate | Explanation of the limitation of the Simulation Rate based on frame rate          | .simrate                                           |
 | .simversion     | Help to identify MSFS version for support                                         | .msfsversion                                       |
 | .trythis        | Provide basic troubleshooting steps                                               | ---                                                |
 | .tug            | Provides a solution to an issue where the tug fails to disconnect                 | .stuck                                             |
