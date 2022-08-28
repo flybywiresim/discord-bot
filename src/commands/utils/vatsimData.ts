@@ -22,8 +22,8 @@ const helpEmbed = (evokedCommand: string) => makeEmbed({
             inline: false,
         },
         {
-            name: `Statistics: \`${evokedCommand} stats\``,
-            value: 'Returns statics about the number of online Pilots, Controllers and ATIS',
+            name: `Statistics: \`${evokedCommand} stats [callsign query]\``,
+            value: 'Returns statics about the number of online Pilots, Controllers and ATIS. If the optional callsign query is provided, it will only return statistics for callsigns matching the query.',
             inline: false,
         },
         {
@@ -45,9 +45,9 @@ const listEmbed = (type: string, fields: EmbedField[], totalCount: number, shown
     fields,
 });
 
-const statsEmbed = (pilots: string, controllers: string, atis: string) => makeEmbed({
-    title: 'VATSIM Data | Statistics',
-    description: 'An overview of the current active Pilots, Controllers and ATIS.',
+const statsEmbed = (pilots: string, controllers: string, atis: string, callsign: string) => makeEmbed({
+    title: callsign ? `VATSIM Data | Statistics for callsign ${callsign}` : 'VATSIM Data | Statistics',
+    description: callsign ? `An overview of the current active Pilots, Controllers and ATIS matching ${callsign}.` : 'An overview of the current active Pilots, Controllers and ATIS.',
     fields: [
         {
             name: 'Pilots',
@@ -217,11 +217,11 @@ export const vatsimData: CommandDefinition = {
             return msg.channel.send({ embeds: [fetchErrorEmbed(error)] });
         }
 
-        if (commandMode === 'STATS') {
+        if (commandMode === 'STATS' && !query) {
             const vatsimPilotCount = vatsimData.pilots ? vatsimData.pilots.length : 0;
             const vatsimControllerCount = vatsimData.controllers ? vatsimData.controllers.length : 0;
             const vatsimAtisCount = vatsimData.atis ? vatsimData.atis.length : 0;
-            return msg.channel.send({ embeds: [statsEmbed(vatsimPilotCount, vatsimControllerCount, vatsimAtisCount)] });
+            return msg.channel.send({ embeds: [statsEmbed(vatsimPilotCount, vatsimControllerCount, vatsimAtisCount, null)] });
         }
 
         if (!query) {
@@ -246,6 +246,13 @@ export const vatsimData: CommandDefinition = {
         const vatsimAtis = vatsimData.atis ? vatsimData.atis.filter((atis) => atis.callsign.includes(callsignSearch)) : null;
 
         const { keys }: ObjectConstructor = Object;
+
+        if (commandMode === 'STATS') {
+            const vatsimPilotCount = vatsimPilots ? vatsimPilots.length : 0;
+            const vatsimControllerCount = vatsimControllers ? vatsimControllers.length : 0;
+            const vatsimAtisCount = vatsimAtis ? vatsimAtis.length : 0;
+            return msg.channel.send({ embeds: [statsEmbed(vatsimPilotCount, vatsimControllerCount, vatsimAtisCount, callsignSearch)] });
+        }
 
         if ((keys(vatsimControllers).length !== 0 || keys(vatsimAtis).length !== 0) && (commandMode === 'ALL' || commandMode === 'CONTROLLERS')) {
             const fields: EmbedField[] = [...vatsimControllers.sort((a, b) => b.facility - a.facility), ...vatsimAtis]
