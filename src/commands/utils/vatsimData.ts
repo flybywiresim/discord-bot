@@ -109,7 +109,12 @@ const controllersListEmbedFields = (callsign: string, frequency: string, logon: 
         },
     ];
     if (atis !== null) {
-        const atisTitle = atisCode ? `ATIS - Code: ${atisCode}` : 'ATIS';
+        let atisTitle = 'Info';
+        if (atisCode) {
+            atisTitle = `ATIS - Code: ${atisCode}`;
+        } else if (atisCode !== undefined) {
+            atisTitle = 'ATIS';
+        }
         fields.push({
             name: atisTitle,
             value: atis,
