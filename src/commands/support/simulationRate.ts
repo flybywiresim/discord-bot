@@ -10,7 +10,7 @@ export const simulationRate: CommandDefinition = {
         const simrateEmbed = makeEmbed({
             title: 'FlyByWire Support | Simulation Rate',
             description: makeLines([
-                'The Simulation Rate is limited by the FlyByWire A32NX to protect and guarantee the Autopilot is able to work reliably. The Autopilot needs the equivalent of about 17 frames per second (FPS) in a real time simulation. This is needed for the Autopilot to be able to do enough calculations for each real time second.',
+                'The Simulation Rate is limited by the FlyByWire A32NX to protect and guarantee the Autopilot is able to work reliably. The Autopilot needs the equivalent of about 17 or more frames per second (FPS) in a real time simulation. This is needed for the Autopilot to be able to do enough calculations for each real time second.',
                 '',
                 'The required FPS for a specific simulation rate can be calculated using `<sim rate> * 17`. Another way of calculating the simulation rate your system can support is by using `<FPS at sim rate 1> / 17`.',
                 '',
