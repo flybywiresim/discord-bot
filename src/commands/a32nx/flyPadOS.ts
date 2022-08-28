@@ -4,13 +4,13 @@ import { makeEmbed, makeLines } from '../../lib/embed';
 
 export const flyPadOS: CommandDefinition = {
     name: ['flypados', 'flypad', 'efbos'],
-    description: 'Provides a link to the FlyPadOS documentation',
+    description: 'Provides a link to the flyPadOS documentation',
     category: CommandCategory.A32NX,
     executor: (msg) => {
         const flyPadOSEmbed = makeEmbed({
-            title: 'FlyByWire A32NX | FlyPadOS Documentation',
+            title: 'FlyByWire A32NX | flyPadOS Documentation',
             description: makeLines([
-                'Please see our [flyPadOS3 Documentation](https://docs.flybywiresim.com/fbw-a32nx/feature-guides/flypados3/) for information on how to set up and use the Electronic Flight Bag with flyPadOS3.',
+                'Please see our [flyPadOS 3 Documentation](https://docs.flybywiresim.com/fbw-a32nx/feature-guides/flypados3/) for information on how to set up and use the Electronic Flight Bag with flyPadOS 3.',
                 '',
                 'If you\'d like to immediately go to a specific chapter please use the list below:',
                 '- [Overview](https://docs.flybywiresim.com/fbw-a32nx/feature-guides/flypados3/)',
@@ -26,7 +26,7 @@ export const flyPadOS: CommandDefinition = {
                 '- [Settings](https://docs.flybywiresim.com/fbw-a32nx/feature-guides/flypados3/settings/)',
                 '- [Throttle Calibration](https://docs.flybywiresim.com/fbw-a32nx/feature-guides/flypados3/throttle-calibration/)',
                 '',
-                'See the [flyPadOS2 documentation](https://docs.flybywiresim.com/fbw-a32nx/feature-guides/flypados2/) for the older version of flyPadOS.',
+                'See the [flyPadOS 2 documentation](https://docs.flybywiresim.com/fbw-a32nx/feature-guides/flypados2/) for the older version of flyPadOS.',
             ]),
         });
 
