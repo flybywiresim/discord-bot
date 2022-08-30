@@ -5,7 +5,7 @@ import { Channels, CommandCategory } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 
 //mod logs embed
-const modLogEmbed = (moderator: User, user: User, reason: string) => makeEmbed({
+const modLogEmbed = (formattedDate, moderator: User, user: User, reason: string) => makeEmbed({
     color: Colors.Red,
     author: {
         name: `[BANNED] ${user.tag}`,
@@ -23,6 +23,11 @@ const modLogEmbed = (moderator: User, user: User, reason: string) => makeEmbed({
         {
             name: 'Reason',
             value: `\u200B${reason}`,
+        },
+        {
+            inline: false,
+            name: 'Date',
+            value: formattedDate,
         },
     ],
     footer: { text: ` User ID: ${user.id}` },
@@ -99,7 +104,7 @@ const dmEmbed = (formattedDate, moderator: User, reason: string) => makeEmbed({
         {
             inline: false,
             name: 'Appeal',
-            value: 'If you would like to appeal your ban, please fill out [this form.](www.google.co.uk)',
+            value: 'If you would like to appeal your ban, please fill out [this form.](https://www.google.co.uk/)',
         },
     ],
 });
@@ -134,21 +139,19 @@ export const ban: CommandDefinition = {
         const modLogsChannel = msg.guild.channels.resolve(Channels.MOD_LOGS) as TextChannel | null;
 
         //ban user then send mod log
+        try {
+            await targetUser.send({ embeds: [dmEmbed(formattedDate, moderator, reason)] });
+        } catch {
+            //sends msg if cant send DM
+            msg.channel.send({ embeds: [noDM] });
+        }
         return msg.guild.members.ban(idArg).then((user) => {
             if (modLogsChannel && typeof user !== 'string') {
-                modLogsChannel.send({ embeds: [modLogEmbed(moderator, targetUser.user, reason)] });
+                modLogsChannel.send({ embeds: [modLogEmbed(formattedDate, moderator, targetUser.user, reason)] });
             }
 
             //send ban embed in channel
             msg.channel.send({ embeds: [successfulBanEmbed(targetUser.user, reason)] });
-            //sends DM to user
-            try {
-                targetUser.send({ embeds: [dmEmbed(formattedDate, moderator, reason)] });
-            } catch {
-                //sends msg if cant send DM
-                msg.channel.send({ embeds: [noDM] });
-            }
-            //catches error if cant ban
         }).catch(async (error) => {
             //failed ban embed
             msg.channel.send({ embeds: [failedBanEmbed(targetUser.user, error)] });
