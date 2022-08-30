@@ -1,4 +1,4 @@
-import { Colors, Snowflake, TextChannel, User } from 'discord.js';
+import { Colors, TextChannel, User } from 'discord.js';
 import moment from 'moment';
 import { CommandDefinition } from '../../lib/command';
 import { Channels, CommandCategory } from '../../constants';
@@ -25,27 +25,27 @@ const modLogEmbed = (moderator: User, user: User, reason: string) => makeEmbed({
             value: `\u200B${reason}`,
         },
     ],
-    footer: { text: ` User ID: ${(user instanceof User) ? user.id : user}` },
+    footer: { text: ` User ID: ${user.id}` },
 });
 
-//DM to user
-const dmEmbed = (formattedDate, moderator: User, user: User, reason: string) => makeEmbed({
-    title: 'You have been banned from FlyByWire Simulations',
+const successfulBanEmbed = (user: User, reason: string) => makeEmbed({
+    title: 'User Successfully Banned',
+    color: Colors.Green,
     fields: [
         {
-            inline: false,
-            name: 'Moderator',
-            value: moderator.toString(),
+            inline: true,
+            name: 'Username',
+            value: user.toString(),
+        },
+        {
+            inline: true,
+            name: 'ID',
+            value: (user instanceof User) ? user.id : user,
         },
         {
             inline: false,
             name: 'Reason',
             value: reason,
-        },
-        {
-            inline: false,
-            name: 'Date',
-            value: formattedDate,
         },
     ],
 });
@@ -77,24 +77,29 @@ const failedBanEmbed = (user: User, error: any) => makeEmbed({
     ],
 });
 
-const successfulBanEmbed = (user: User, reason: string) => makeEmbed({
-    title: 'User Successfully Banned',
-    color: Colors.Green,
+//DM to user
+const dmEmbed = (formattedDate, moderator: User, user: User, reason: string) => makeEmbed({
+    title: 'You have been banned from FlyByWire Simulations',
     fields: [
         {
-            inline: true,
-            name: 'Username',
-            value: user.toString(),
-        },
-        {
-            inline: true,
-            name: 'ID',
-            value: (user instanceof User) ? user.id : user,
+            inline: false,
+            name: 'Moderator',
+            value: moderator.toString(),
         },
         {
             inline: false,
             name: 'Reason',
             value: reason,
+        },
+        {
+            inline: false,
+            name: 'Date',
+            value: formattedDate,
+        },
+        {
+            inline: false,
+            name: 'Appeal',
+            value: 'If you would like to appeal your ban, please fill out [this form.](www.google.co.uk)',
         },
     ],
 });
@@ -129,7 +134,7 @@ export const ban: CommandDefinition = {
         const modLogsChannel = msg.guild.channels.resolve(Channels.MOD_LOGS) as TextChannel | null;
 
         //ban user then send mod log
-        return msg.guild.members.ban(idArg).then((user: User | Snowflake) => {
+        return msg.guild.members.ban(idArg).then((user) => {
             if (modLogsChannel && typeof user !== 'string') {
                 modLogsChannel.send({ embeds: [modLogEmbed(moderator, targetUser.user, reason)] });
             }
