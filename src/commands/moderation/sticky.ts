@@ -5,6 +5,7 @@ import { Roles, Channels, CommandCategory } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 import { getConn } from '../../lib/db';
 import StickyMessage from '../../lib/schemas/stickyMessageSchema';
+import { stickyMessageEmbed } from '../../lib/stickyEmbed';
 
 const permittedRoles = [
     Roles.ADMIN_TEAM,
@@ -13,7 +14,7 @@ const permittedRoles = [
 const DEFAULT_TIME_INTERVAL = 15;
 const DEFAULT_MESSAGE_COUNT = 5;
 const MAX_TIME_INTERVAL = 86400;
-const MAX_MESSAGE_COUNT = 100;
+const MAX_MESSAGE_COUNT = 50;
 const MIN_TIME_INTERVAL = 15;
 const MIN_MESSAGE_COUNT = 5;
 
@@ -96,7 +97,7 @@ const notFoundEmbed = (action: string, channel: string) => makeEmbed({
     color: Colors.Red,
 });
 
-const stickyMessageEmbedField = (date: string, moderator: string, message: string, timeInterval: string, messageCount: string, channel: string): EmbedField[] => [
+const stickyMessageEmbedField = (updatedDate: string, moderator: string, message: string, timeInterval: string, messageCount: string, channel: string): EmbedField[] => [
     {
         inline: true,
         name: 'Channel',
@@ -109,8 +110,8 @@ const stickyMessageEmbedField = (date: string, moderator: string, message: strin
     },
     {
         inline: true,
-        name: 'Date',
-        value: date,
+        name: 'Last updated date',
+        value: updatedDate,
     },
     {
         inline: true,
@@ -180,7 +181,7 @@ export const sticky: CommandDefinition = {
             }
             stickyMessage.message = message;
             stickyMessage.moderator = author.toString();
-            stickyMessage.date = new Date();
+            stickyMessage.updatedDate = new Date();
 
             try {
                 stickyMessage.save();
@@ -189,11 +190,12 @@ export const sticky: CommandDefinition = {
             }
 
             try {
-                modLogsChannel.send({ embeds: [channelEmbed('Set', stickyMessageEmbedField(moment(stickyMessage.date).utcOffset(0).format('YYYY-MM-DD HH:mm:ss'), stickyMessage.moderator, stickyMessage.message, `${stickyMessage.timeInterval}`, `${stickyMessage.messageCount}`, stickyMessage.channelId), Colors.Green)] });
+                modLogsChannel.send({ embeds: [channelEmbed('Set', stickyMessageEmbedField(moment(stickyMessage.updatedDate).utcOffset(0).format('YYYY-MM-DD HH:mm:ss'), stickyMessage.moderator, stickyMessage.message, `${stickyMessage.timeInterval}`, `${stickyMessage.messageCount}`, stickyMessage.channelId), Colors.Green)] });
             } catch {
                 msg.channel.send({ embeds: [noChannelEmbed('Set', 'Mod Log')] });
             }
 
+            msg.channel.send({ embeds: [stickyMessageEmbed(stickyMessage.message)] });
             return msg.react('✅');
         }
 
@@ -214,7 +216,7 @@ export const sticky: CommandDefinition = {
             }
             stickyMessage.messageCount = parseInt(messageCount);
             stickyMessage.moderator = author.toString();
-            stickyMessage.date = new Date();
+            stickyMessage.updatedDate = new Date();
 
             try {
                 stickyMessage.save();
@@ -223,7 +225,7 @@ export const sticky: CommandDefinition = {
             }
 
             try {
-                modLogsChannel.send({ embeds: [channelEmbed('Configure minimum message count', stickyMessageEmbedField(moment(stickyMessage.date).utcOffset(0).format('YYYY-MM-DD HH:mm:ss'), stickyMessage.moderator, stickyMessage.message, `${stickyMessage.timeInterval}`, `${stickyMessage.messageCount}`, stickyMessage.channelId), Colors.Green)] });
+                modLogsChannel.send({ embeds: [channelEmbed('Configure minimum message count', stickyMessageEmbedField(moment(stickyMessage.updatedDate).utcOffset(0).format('YYYY-MM-DD HH:mm:ss'), stickyMessage.moderator, stickyMessage.message, `${stickyMessage.timeInterval}`, `${stickyMessage.messageCount}`, stickyMessage.channelId), Colors.Green)] });
             } catch {
                 msg.channel.send({ embeds: [noChannelEmbed('Configure minimum message count', 'Mod Log')] });
             }
@@ -248,7 +250,7 @@ export const sticky: CommandDefinition = {
             }
             stickyMessage.timeInterval = parseInt(timeInterval);
             stickyMessage.moderator = author.toString();
-            stickyMessage.date = new Date();
+            stickyMessage.updatedDate = new Date();
 
             try {
                 stickyMessage.save();
@@ -257,7 +259,7 @@ export const sticky: CommandDefinition = {
             }
 
             try {
-                modLogsChannel.send({ embeds: [channelEmbed('Configure minimum message count', stickyMessageEmbedField(moment(stickyMessage.date).utcOffset(0).format('YYYY-MM-DD HH:mm:ss'), stickyMessage.moderator, stickyMessage.message, `${stickyMessage.timeInterval}`, `${stickyMessage.messageCount}`, stickyMessage.channelId), Colors.Green)] });
+                modLogsChannel.send({ embeds: [channelEmbed('Configure minimum message count', stickyMessageEmbedField(moment(stickyMessage.updatedDate).utcOffset(0).format('YYYY-MM-DD HH:mm:ss'), stickyMessage.moderator, stickyMessage.message, `${stickyMessage.timeInterval}`, `${stickyMessage.messageCount}`, stickyMessage.channelId), Colors.Green)] });
             } catch {
                 msg.channel.send({ embeds: [noChannelEmbed('Configure minimum message count', 'Mod Log')] });
             }
@@ -271,13 +273,16 @@ export const sticky: CommandDefinition = {
             }
 
             try {
+                if (stickyMessage.lastPostedId) {
+                    msg.channel.messages.fetch(stickyMessage.lastPostedId).then((message) => message.delete());
+                }
                 stickyMessage.delete();
             } catch {
                 return msg.channel.send({ embeds: [failedEmbed('Delete', channelId)] });
             }
 
             try {
-                modLogsChannel.send({ embeds: [channelEmbed('Delete', stickyMessageEmbedField(moment(stickyMessage.date).utcOffset(0).format('YYYY-MM-DD HH:mm:ss'), stickyMessage.moderator, stickyMessage.message, `${stickyMessage.timeInterval}`, `${stickyMessage.messageCount}`, stickyMessage.channelId), Colors.Red)] });
+                modLogsChannel.send({ embeds: [channelEmbed('Delete', stickyMessageEmbedField(moment(stickyMessage.updatedDate).utcOffset(0).format('YYYY-MM-DD HH:mm:ss'), stickyMessage.moderator, stickyMessage.message, `${stickyMessage.timeInterval}`, `${stickyMessage.messageCount}`, stickyMessage.channelId), Colors.Red)] });
             } catch {
                 msg.channel.send({ embeds: [noChannelEmbed('Delete', 'Mod Log')] });
             }
@@ -299,7 +304,7 @@ export const sticky: CommandDefinition = {
             }
 
             const [stickyMessage] = searchResult;
-            return msg.channel.send({ embeds: [infoEmbed(stickyMessageEmbedField(moment(stickyMessage.date).utcOffset(0).format('YYYY-MM-DD HH:mm:ss'), stickyMessage.moderator, stickyMessage.message, `${stickyMessage.timeInterval}`, `${stickyMessage.messageCount}`, stickyMessage.channelId))] });
+            return msg.channel.send({ embeds: [infoEmbed(stickyMessageEmbedField(moment(stickyMessage.updatedDate).utcOffset(0).format('YYYY-MM-DD HH:mm:ss'), stickyMessage.moderator, stickyMessage.message, `${stickyMessage.timeInterval}`, `${stickyMessage.messageCount}`, stickyMessage.channelId))] });
         }
 
         return msg.channel.send({ embeds: [helpEmbed(evokedCommand)] });

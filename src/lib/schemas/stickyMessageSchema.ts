@@ -9,7 +9,8 @@ const stickyMessageSchema = new Schema({
     timeInterval: Number,
     messageCount: Number,
     moderator: String,
-    date: Date,
+    updatedDate: Date,
+    lastPostedId: String,
 });
 
 const stickyMessage = mongoose.model('StickyMessage', stickyMessageSchema);

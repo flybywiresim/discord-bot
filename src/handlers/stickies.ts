@@ -1,16 +1,9 @@
-import { Colors, Message } from 'discord.js';
+import { Message } from 'discord.js';
+import commands from '../commands';
 import { getConn } from '../lib/db';
-import { makeEmbed } from '../lib/embed';
 import Logger from '../lib/logger';
 import StickyMessage from '../lib/schemas/stickyMessageSchema';
-
-const STICKY_TITLE = 'Stickied Message';
-
-const stickyEmbed = (description: string) => makeEmbed({
-    title: STICKY_TITLE,
-    description,
-    color: Colors.Aqua,
-});
+import { stickyMessageEmbed, STICKY_MESSAGE_TITLE } from '../lib/stickyEmbed';
 
 const runningChannelIds = [];
 
@@ -30,7 +23,7 @@ module.exports = {
     executor: async (msg) => {
         const { channel, guild, content, embeds } = msg;
         if (runningChannelIds.includes(channel.id)) {
-            Logger.debug('SM - Channel already being processed, skipping.');
+            Logger.debug('Sticky Message - Channel already being processed, skipping.');
             return;
         }
 
@@ -44,55 +37,73 @@ module.exports = {
             return;
         }
 
+        if (msg.content.startsWith('.')) {
+            const usedCommand = msg.content.substring(1, msg.content.includes(' ') ? msg.content.indexOf(' ') : msg.content.length).toLowerCase();
+            const command = commands[usedCommand];
+            if (command) {
+                Logger.debug('Sticky Message - Recognized command, skipping processing');
+                return;
+            }
+        }
+
         const [receivedEmbed] = embeds.length > 0 ? embeds : [];
-        if (receivedEmbed && receivedEmbed.title === STICKY_TITLE && msg.author.bot === true) {
+        if (receivedEmbed && receivedEmbed.title === STICKY_MESSAGE_TITLE && msg.author.bot === true) {
             // Sticky message itself
-            Logger.debug('SM - Message is the Sticky Message for the channel, skipping.');
+            Logger.debug('Sticky Message - Message is the Sticky Message for the channel, skipping.');
             return;
         }
 
         const conn = getConn();
         if (!conn) {
-            Logger.debug('SM - Unable to connect to database, skipping.');
+            Logger.debug('Sticky Message - Unable to connect to database, skipping.');
             return;
         }
 
         const stickyMessageSearchResult = await StickyMessage.find({ channelId: channel.id });
         const [stickyMessage] = stickyMessageSearchResult.length === 1 ? stickyMessageSearchResult : [];
         if (!stickyMessage) {
-            Logger.debug('SM - No Sticky Message for the channel, skipping.');
+            Logger.debug('Sticky Message - No Sticky Message for the channel, skipping.');
             return;
         }
 
         addRunningChannelId(channel.id);
 
-        const { message, messageCount, timeInterval } = stickyMessage;
-        let messageCounter = 0;
-        let previousSticky = null;
-        const histMessagesMap = await channel.messages.fetch({ limit: (messageCount + 1) });
-        const histMessages: Message[] = Array.from(histMessagesMap.values());
-        for (const histMessage of histMessages) {
-            messageCounter++;
-            const [messageEmbed] = histMessage.embeds.length > 0 ? histMessage.embeds : [];
-            if (messageEmbed && messageEmbed.title === STICKY_TITLE && histMessage.author.bot === true) {
-                previousSticky = histMessage;
-                Logger.debug(`SM - 06 - Found previous Sticky at "${previousSticky.createdTimestamp}"`);
-                break;
+        let postNewSticky = true;
+        const { message, messageCount, timeInterval, lastPostedId } = stickyMessage;
+        const previousSticky = lastPostedId ? await channel.messages.fetch(lastPostedId) : null;
+        if (previousSticky) {
+            Logger.debug('Sticky Message - Previous Sticky found');
+            const timeDifference = new Date().getTime() - previousSticky.createdTimestamp;
+            if (timeDifference <= timeInterval * 1000) {
+                Logger.debug('Sticky Message - Previous Sticky time difference lower than interval');
+                const histMessagesMap = await channel.messages.fetch({ limit: (messageCount) });
+                const histMessages: Message[] = Array.from(histMessagesMap.values());
+                for (const histMessage of histMessages) {
+                    if (histMessage.id === previousSticky.id) {
+                        Logger.debug('Sticky Message - Previous Sticky within message count > No new post');
+                        postNewSticky = false;
+                        break;
+                    }
+                }
+            }
+
+            if (postNewSticky) {
+                Logger.debug('Sticky Message - Previous Sticky too old or not in message count > Deleting old one');
+                await previousSticky.delete();
             }
         }
 
-        if (previousSticky) {
-            const timeDifference = new Date().getTime() - previousSticky.createdTimestamp;
-            if (timeDifference > timeInterval * 1000 || messageCounter >= messageCount) {
-                Logger.debug('SM - Deleting older sticky and posting new one.');
-                await previousSticky.delete();
-                await channel.send({ embeds: [stickyEmbed(message)] });
+        if (postNewSticky) {
+            Logger.debug('Sticky Message - Previous Sticky does not exist, is too old or not in message count > Posting new one');
+            const currentSticky = await channel.send({ embeds: [stickyMessageEmbed(message)] });
+            stickyMessage.lastPostedId = currentSticky.id;
+            try {
+                stickyMessage.save();
+            } catch {
+                Logger.error(`Sticky Message - unable to update Sticky Message lastPostedId for channel ${channel.id}`);
             }
-            removeRunningChannelId(channel.id);
-            return;
         }
-        Logger.debug('SM - Posting new sticky.');
-        await channel.send({ embeds: [stickyEmbed(message)] });
+
         removeRunningChannelId(channel.id);
     },
 };
