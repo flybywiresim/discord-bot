@@ -1,4 +1,4 @@
-import { Colors, EmbedBuilder, EmbedField, Snowflake, TextChannel, User } from 'discord.js';
+import { Colors, Snowflake, TextChannel, User } from 'discord.js';
 import moment from 'moment';
 import { CommandDefinition } from '../../lib/command';
 import { Channels, CommandCategory } from '../../constants';
@@ -50,14 +50,61 @@ const dmEmbed = (formattedDate, moderator: User, user: User, reason: string) => 
     ],
 });
 
+const failedBanEmbed = (user: User, error: any) => makeEmbed({
+    title: 'Failed to Ban User',
+    color: Colors.Red,
+    fields: [
+        {
+            inline: true,
+            name: 'Username',
+            value: user.toString(),
+        },
+        {
+            inline: true,
+            name: 'Username',
+            value: user.toString(),
+        },
+        {
+            inline: true,
+            name: 'ID',
+            value: user.id,
+        },
+        {
+            inline: false,
+            name: 'Error',
+            value: `\u200B${error}`,
+        },
+    ],
+});
+
+const successfulBanEmbed = (user: User, reason: string) => makeEmbed({
+    title: 'User Successfully Banned',
+    color: Colors.Green,
+    fields: [
+        {
+            inline: true,
+            name: 'Username',
+            value: user.toString(),
+        },
+        {
+            inline: true,
+            name: 'ID',
+            value: (user instanceof User) ? user.id : user,
+        },
+        {
+            inline: false,
+            name: 'Reason',
+            value: reason,
+        },
+    ],
+});
+
 //If user has DM's disabled
 const noDM = makeEmbed({
     title: 'Warn - DM not sent',
     description: 'User has DMs closed or has no mutual servers with the bot',
     color: Colors.Red,
 });
-
-type UserLike = User | Snowflake
 
 export const ban: CommandDefinition = {
     name: 'ban',
@@ -76,7 +123,6 @@ export const ban: CommandDefinition = {
 
         const targetUser = await msg.guild.members.fetch(idArg);
         const moderator = msg.author;
-        const userID = targetUser.user.id;
         const currentDate = new Date();
         const formattedDate: string = moment(currentDate).utcOffset(0).format('DD, MM, YYYY, HH:mm:ss');
 
@@ -89,7 +135,7 @@ export const ban: CommandDefinition = {
             }
 
             //send ban embed in channel
-            msg.channel.send({ embeds: [makeSuccessfulBanEmbed(user, reason)] });
+            msg.channel.send({ embeds: [successfulBanEmbed(targetUser.user, reason)] });
             //sends DM to user
             try {
                 targetUser.send({ embeds: [dmEmbed(formattedDate, moderator, targetUser.user, reason)] });
@@ -99,71 +145,8 @@ export const ban: CommandDefinition = {
             }
             //catches error if cant ban
         }).catch(async (error) => {
-            const guildMember = await msg.guild.members.fetch(idArg);
-
             //failed ban embed
-            msg.channel.send({ embeds: [makeFailedBanEmbed(guildMember?.user ?? idArg, error)] });
+            msg.channel.send({ embeds: [failedBanEmbed(targetUser.user, error)] });
         });
     },
 };
-
-//functions for embeds
-function makeSuccessfulBanEmbed(user: UserLike, reason: string): EmbedBuilder {
-    const fields: EmbedField[] = [];
-
-    if (user instanceof User) {
-        fields.push({
-            inline: true,
-            name: 'Username',
-            value: user.toString(),
-        });
-    }
-
-    fields.push({
-        inline: true,
-        name: 'ID',
-        value: (user instanceof User) ? user.id : user,
-    });
-
-    fields.push({
-        inline: false,
-        name: 'Reason',
-        value: reason,
-    });
-
-    return makeEmbed({
-        title: 'User Successfully Banned',
-        fields,
-        color: Colors.Green,
-    });
-}
-
-function makeFailedBanEmbed(user: UserLike, error: any): EmbedBuilder {
-    const fields: EmbedField[] = [];
-
-    if (user instanceof User) {
-        fields.push({
-            inline: true,
-            name: 'Username',
-            value: user.toString(),
-        });
-    }
-
-    fields.push({
-        inline: true,
-        name: 'ID',
-        value: (user instanceof User) ? user.id : user,
-    });
-
-    fields.push({
-        inline: false,
-        name: 'Error',
-        value: `\u200B${error}`,
-    });
-
-    return makeEmbed({
-        title: 'Failed to Ban User',
-        fields,
-        color: Colors.Red,
-    });
-}
