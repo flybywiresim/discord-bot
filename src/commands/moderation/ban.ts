@@ -1,7 +1,61 @@
 import { Colors, EmbedBuilder, EmbedField, Snowflake, TextChannel, User } from 'discord.js';
+import moment from 'moment';
 import { CommandDefinition } from '../../lib/command';
 import { Channels, CommandCategory } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
+
+//mod logs embed
+const modLogEmbed = (moderator: User, user: User, reason: string) => makeEmbed({
+    color: Colors.Red,
+    author: {
+        name: `[BANNED] ${user.tag}`,
+        iconURL: user.displayAvatarURL(),
+    },
+    fields: [
+        {
+            name: 'Member',
+            value: user.toString(),
+        },
+        {
+            name: 'Moderator',
+            value: moderator.toString(),
+        },
+        {
+            name: 'Reason',
+            value: `\u200B${reason}`,
+        },
+    ],
+    footer: { text: ` User ID: ${(user instanceof User) ? user.id : user}` },
+});
+
+//DM to user
+const dmEmbed = (formattedDate, moderator: User, user: User, reason: string) => makeEmbed({
+    title: 'You have been banned from FlyByWire Simulations',
+    fields: [
+        {
+            inline: false,
+            name: 'Moderator',
+            value: moderator.toString(),
+        },
+        {
+            inline: false,
+            name: 'Reason',
+            value: reason,
+        },
+        {
+            inline: false,
+            name: 'Date',
+            value: formattedDate,
+        },
+    ],
+});
+
+//If user has DM's disabled
+const noDM = makeEmbed({
+    title: 'Warn - DM not sent',
+    description: 'User has DMs closed or has no mutual servers with the bot',
+    color: Colors.Red,
+});
 
 type UserLike = User | Snowflake
 
@@ -20,45 +74,40 @@ export const ban: CommandDefinition = {
         const idArg = splitUp[0];
         const reason = splitUp.slice(1).join(' ');
 
+        const targetUser = await msg.guild.members.fetch(idArg);
+        const moderator = msg.author;
+        const userID = targetUser.user.id;
+        const currentDate = new Date();
+        const formattedDate: string = moment(currentDate).utcOffset(0).format('DD, MM, YYYY, HH:mm:ss');
+
         const modLogsChannel = msg.guild.channels.resolve(Channels.MOD_LOGS) as TextChannel | null;
 
+        //ban user then send mod log
         return msg.guild.members.ban(idArg).then((user: User | Snowflake) => {
             if (modLogsChannel && typeof user !== 'string') {
-                const modLogEmbed = makeEmbed({
-                    color: Colors.Red,
-                    author: {
-                        name: `[BANNED] ${user.tag}`,
-                        iconURL: user.displayAvatarURL(),
-                    },
-                    fields: [
-                        {
-                            name: 'Member',
-                            value: user.toString(),
-                        },
-                        {
-                            name: 'Moderator',
-                            value: `${msg.author}`,
-                        },
-                        {
-                            name: 'Reason',
-                            value: `\u200B${reason}`,
-                        },
-                    ],
-                    footer: { text: ` User ID: ${(user instanceof User) ? user.id : user}` },
-                });
-
-                modLogsChannel.send({ embeds: [modLogEmbed] });
+                modLogsChannel.send({ embeds: [modLogEmbed(moderator, targetUser.user, reason)] });
             }
 
+            //send ban embed in channel
             msg.channel.send({ embeds: [makeSuccessfulBanEmbed(user, reason)] });
+            //sends DM to user
+            try {
+                targetUser.send({ embeds: [dmEmbed(formattedDate, moderator, targetUser.user, reason)] });
+            } catch {
+                //sends msg if cant send DM
+                msg.channel.send({ embeds: [noDM] });
+            }
+            //catches error if cant ban
         }).catch(async (error) => {
             const guildMember = await msg.guild.members.fetch(idArg);
 
+            //failed ban embed
             msg.channel.send({ embeds: [makeFailedBanEmbed(guildMember?.user ?? idArg, error)] });
         });
     },
 };
 
+//functions for embeds
 function makeSuccessfulBanEmbed(user: UserLike, reason: string): EmbedBuilder {
     const fields: EmbedField[] = [];
 
