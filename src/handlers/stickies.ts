@@ -72,15 +72,13 @@ module.exports = {
         const { message, messageCount, timeInterval, lastPostedId } = stickyMessage;
         const previousSticky = lastPostedId ? await channel.messages.fetch(lastPostedId) : null;
         if (previousSticky) {
-            Logger.debug('Sticky Message - Previous Sticky found');
             const timeDifference = new Date().getTime() - previousSticky.createdTimestamp;
             if (timeDifference <= timeInterval * 1000) {
-                Logger.debug('Sticky Message - Previous Sticky time difference lower than interval');
                 const histMessagesMap = await channel.messages.fetch({ limit: (messageCount) });
                 const histMessages: Message[] = Array.from(histMessagesMap.values());
                 for (const histMessage of histMessages) {
                     if (histMessage.id === previousSticky.id) {
-                        Logger.debug('Sticky Message - Previous Sticky within message count > No new post');
+                        Logger.debug('Sticky Message - Previous Sticky not too old and within message count - No new post needed.');
                         postNewSticky = false;
                         break;
                     }
@@ -88,19 +86,19 @@ module.exports = {
             }
 
             if (postNewSticky) {
-                Logger.debug('Sticky Message - Previous Sticky too old or not in message count > Deleting old one');
+                Logger.debug('Sticky Message - Previous Sticky too old or not in message count - Deleting old post.');
                 previousSticky.delete();
             }
         }
 
         if (postNewSticky) {
-            Logger.debug('Sticky Message - Previous Sticky does not exist, is too old or not in message count > Posting new one');
+            Logger.debug('Sticky Message - Previous Sticky does not exist, is too old or not in message count - Posting new sticky.');
             const currentSticky = await channel.send({ embeds: [stickyMessageEmbed(message)] });
             stickyMessage.lastPostedId = currentSticky.id;
             try {
                 stickyMessage.save();
             } catch {
-                Logger.error(`Sticky Message - unable to update Sticky Message lastPostedId for channel ${channel.id}`);
+                Logger.error(`Sticky Message - unable to update Sticky Message lastPostedId for channel ${channel.id}.`);
             }
         }
 
