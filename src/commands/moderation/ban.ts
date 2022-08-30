@@ -78,7 +78,7 @@ const failedBanEmbed = (user: User, error: any) => makeEmbed({
 });
 
 //DM to user
-const dmEmbed = (formattedDate, moderator: User, user: User, reason: string) => makeEmbed({
+const dmEmbed = (formattedDate, moderator: User, reason: string) => makeEmbed({
     title: 'You have been banned from FlyByWire Simulations',
     fields: [
         {
@@ -143,7 +143,7 @@ export const ban: CommandDefinition = {
             msg.channel.send({ embeds: [successfulBanEmbed(targetUser.user, reason)] });
             //sends DM to user
             try {
-                targetUser.send({ embeds: [dmEmbed(formattedDate, moderator, targetUser.user, reason)] });
+                targetUser.send({ embeds: [dmEmbed(formattedDate, moderator, reason)] });
             } catch {
                 //sends msg if cant send DM
                 msg.channel.send({ embeds: [noDM] });
