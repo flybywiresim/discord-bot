@@ -3,7 +3,7 @@ import commands from '../commands';
 import { getConn } from '../lib/db';
 import Logger from '../lib/logger';
 import StickyMessage from '../lib/schemas/stickyMessageSchema';
-import { stickyMessageEmbed, STICKY_MESSAGE_TITLE } from '../lib/stickyEmbed';
+import { stickyMessageEmbed, STICKY_MESSAGE_TITLE } from '../lib/stickyMessageEmbed';
 
 const runningChannelIds = [];
 
@@ -89,7 +89,7 @@ module.exports = {
 
             if (postNewSticky) {
                 Logger.debug('Sticky Message - Previous Sticky too old or not in message count > Deleting old one');
-                await previousSticky.delete();
+                previousSticky.delete();
             }
         }
 

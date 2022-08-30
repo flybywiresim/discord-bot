@@ -9,7 +9,7 @@ const stickyMessageSchema = new Schema({
     timeInterval: Number,
     messageCount: Number,
     moderator: String,
-    updatedDate: Date,
+    updatedTimestamp: Date,
     lastPostedId: String,
 });
 
