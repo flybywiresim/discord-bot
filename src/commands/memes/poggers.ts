@@ -7,7 +7,5 @@ export const poggers: CommandDefinition = {
     name: ['poggers', 'pog'],
     description: 'POG',
     category: CommandCategory.MEMES,
-    executor: async (msg) => {
-        await msg.channel.send(POGGERS_URL);
-    },
+    executor: (msg) => msg.channel.send(POGGERS_URL),
 };

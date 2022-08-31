@@ -7,8 +7,5 @@ export const msfsdisc: CommandDefinition = {
     name: ['msfsdisc', 'fsdisc', 'msfsdiscord'],
     description: 'Provides link to Microsoft Flight Simulator discord server',
     category: CommandCategory.GENERAL,
-    executor: async (msg) => {
-        await msg.channel.send(MSFS_DISCORD_LINK);
-        await msg.delete();
-    },
+    executor: (msg) => msg.channel.send(MSFS_DISCORD_LINK),
 };

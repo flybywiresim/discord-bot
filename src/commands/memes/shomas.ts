@@ -8,8 +8,8 @@ export const shomas: CommandDefinition = {
     name: 'shomas',
     description: 'oldest pilot',
     category: CommandCategory.MEMES,
-    executor: async (msg) => {
+    executor: (msg) => {
         const shomasEmbed = makeEmbed({ image: { url: SHOMAS_URL } });
-        await msg.channel.send({ embeds: [shomasEmbed] });
+        return msg.channel.send({ embeds: [shomasEmbed] });
     },
 };

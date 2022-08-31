@@ -130,6 +130,18 @@ import { fma } from './a32nx/fma';
 import { noHello } from './memes/noHello';
 import { vatsimEvents } from './utils/vatsimEvents';
 import { flights } from './utils/flights';
+import { docsearch } from './general/docsearch';
+import { dlss } from './support/dlss';
+import { temporarycommandedit } from './moderation/temporaryCommandEdit';
+import { temporarycommand } from './general/temporaryCommand';
+import { yourControls } from './general/yourControls';
+import { notams } from './general/notams';
+import { vatsimData } from './utils/vatsimData';
+import { website } from './general/website';
+import { verticalGuidance } from './a32nx/verticalGuidance';
+import { verticalGuidanceSymbols } from './a32nx/verticalGuidanceSymbols';
+import { verticalSpeedPriority } from './a32nx/verticalSpeedPriority';
+import { flyPadOS } from './a32nx/flyPadOS';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -262,6 +274,18 @@ const commands: CommandDefinition[] = [
     noHello,
     vatsimEvents,
     flights,
+    docsearch,
+    dlss,
+    temporarycommandedit,
+    temporarycommand,
+    yourControls,
+    notams,
+    vatsimData,
+    website,
+    verticalGuidance,
+    verticalGuidanceSymbols,
+    verticalSpeedPriority,
+    flyPadOS,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};

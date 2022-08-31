@@ -3,7 +3,7 @@ import { CommandCategory } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 
 export const airframe: CommandDefinition = {
-    name: ['airframe', 'simbrief'],
+    name: ['airframe'],
     description: 'Provides a link to the updated Simbrief airframe',
     category: CommandCategory.A32NX,
     executor: async (msg) => {
