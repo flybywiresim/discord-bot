@@ -2,7 +2,8 @@
 
 Update <small>_ August 2022</small>
 
-- fix: use correct spacing between flypados and version (28/08/2022)
+- fix: use correct spacing between flypados and version (31/08/2022)
+- docs: update contributing guide and fix punctuation (31/08/2022)
 - feat: verticalguidance, verticalguidancesymbols and verticalspeedpriority commands (27/08/2022)
 - feat: flypados command (27/08/2022)
 - feat: website command (22/08/2022)
