@@ -1,6 +1,8 @@
 ## Changelog
 
 Update <small>_ September 2022</small>
+
+- feat: sticky command and handler for sticky messages (04/09/2022)
 - fix: Fix typo for experimental command in docs (03/09/2022)
 - refactor: Remove async and await from all simple commands (03/09/2022)
 - refactor: updated reported issues docs link (02/09/2022)

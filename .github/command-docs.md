@@ -163,6 +163,7 @@
 | .faq                  | Sends the FAQ                                                                                           | ---                                        |
 | .roleassignment       | Sends the role assignment messages                                                                      | ---                                        |
 | .rules                | Sends the rules                                                                                         | ---                                        |
+| .sticky               | Manage the sticky message configuration for a channel.                                                  | ---                                        |
 | .temporarycommandedit | Manage temporary commands, which are simple output commands to highlight temporary situations to users. | .tempcommandedit <br> .tcedit <br> .tcmod  |
 | .timeout              | ---                                                                                                     | ---                                        |
 | .unban                | ---                                                                                                     | ---                                        |
