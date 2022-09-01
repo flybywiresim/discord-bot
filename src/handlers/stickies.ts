@@ -72,7 +72,7 @@ module.exports = {
         addRunningChannelId(channel.id);
 
         let postNewSticky = true;
-        const { message, messageCount, timeInterval, lastPostedId } = stickyMessage;
+        const { message, imageUrl, messageCount, timeInterval, lastPostedId } = stickyMessage;
         let previousSticky = null;
         if (lastPostedId) {
             try {
@@ -107,7 +107,7 @@ module.exports = {
 
         if (postNewSticky) {
             Logger.debug('Sticky Message - Previous Sticky does not exist, is too old or not in message count - Posting new sticky.');
-            const currentSticky = await channel.send({ embeds: [stickyMessageEmbed(message)] });
+            const currentSticky = await channel.send({ embeds: [stickyMessageEmbed(message, imageUrl)] });
             stickyMessage.lastPostedId = currentSticky.id;
             try {
                 stickyMessage.save();

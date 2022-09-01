@@ -6,6 +6,7 @@ const stickyMessageSchema = new Schema({
         unique: true,
     },
     message: String,
+    imageUrl: String,
     timeInterval: Number,
     messageCount: Number,
     moderator: String,
