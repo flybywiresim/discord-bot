@@ -3,12 +3,14 @@ import commands from '../commands';
 import { getConn } from '../lib/db';
 import Logger from '../lib/logger';
 import StickyMessage from '../lib/schemas/stickyMessageSchema';
-import { stickyMessageEmbed, STICKY_MESSAGE_TITLE } from '../lib/stickyMessageEmbed';
+import { stickyMessageEmbed, STICKY_MESSAGE_TITLE, STICKY_MOD_TITLE } from '../lib/stickyMessageEmbed';
 
 const runningChannelIds = [];
 
 const addRunningChannelId = (channelId: string) => {
-    runningChannelIds.push(channelId);
+    if (!runningChannelIds.includes(channelId)) {
+        runningChannelIds.push(channelId);
+    }
 };
 
 const removeRunningChannelId = (channelId: string) => {
@@ -21,6 +23,7 @@ const removeRunningChannelId = (channelId: string) => {
 module.exports = {
     event: 'messageCreate',
     executor: async (msg) => {
+        Logger.debug(`Sticky Message - Handling message in ${msg.channel.name}`);
         const { channel, guild, content, embeds } = msg;
         if (runningChannelIds.includes(channel.id)) {
             Logger.debug('Sticky Message - Channel already being processed, skipping.');
@@ -47,9 +50,9 @@ module.exports = {
         }
 
         const [receivedEmbed] = embeds.length > 0 ? embeds : [];
-        if (receivedEmbed && receivedEmbed.title === STICKY_MESSAGE_TITLE && msg.author.bot === true) {
+        if (receivedEmbed && msg.author.bot === true && (receivedEmbed.title === STICKY_MESSAGE_TITLE || receivedEmbed.title.startsWith(STICKY_MOD_TITLE))) {
             // Sticky message itself
-            Logger.debug('Sticky Message - Message is the Sticky Message for the channel, skipping.');
+            Logger.debug('Sticky Message - Message is the Sticky Message for the channel or the Mod Log message, skipping.');
             return;
         }
 
@@ -70,7 +73,14 @@ module.exports = {
 
         let postNewSticky = true;
         const { message, messageCount, timeInterval, lastPostedId } = stickyMessage;
-        const previousSticky = lastPostedId ? await channel.messages.fetch(lastPostedId) : null;
+        let previousSticky = null;
+        if (lastPostedId) {
+            try {
+                previousSticky = await channel.messages.fetch(lastPostedId);
+            } catch {
+                Logger.debug('Sticky Message - Previous sticky can not be found.');
+            }
+        }
         if (previousSticky) {
             const timeDifference = new Date().getTime() - previousSticky.createdTimestamp;
             if (timeDifference <= timeInterval * 1000) {
@@ -87,7 +97,11 @@ module.exports = {
 
             if (postNewSticky) {
                 Logger.debug('Sticky Message - Previous Sticky too old or not in message count - Deleting old post.');
-                previousSticky.delete();
+                try {
+                    previousSticky.delete();
+                } catch {
+                    Logger.warn('Sticky Message - Unable to delete older post.');
+                }
             }
         }
 
