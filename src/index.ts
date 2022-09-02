@@ -22,6 +22,7 @@ export const client = new Client({
         'GuildMessages',
         'GuildMessageReactions',
         'GuildEmojisAndStickers',
+        'GuildBans',
         'DirectMessages',
         'DirectMessageReactions',
         'DirectMessageTyping',
