@@ -2,7 +2,7 @@ import { Colors, TextChannel, User } from 'discord.js';
 import moment from 'moment';
 import { CommandDefinition } from '../../lib/command';
 import { Channels, CommandCategory } from '../../constants';
-import { makeEmbed } from '../../lib/embed';
+import { makeEmbed, makeLines } from '../../lib/embed';
 
 const modLogEmbed = (formattedDate, moderator: User, user: User, reason: string) => makeEmbed({
     color: Colors.Red,
@@ -102,6 +102,7 @@ const dmEmbed = (formattedDate, moderator: User, reason: string) => makeEmbed({
         {
             inline: false,
             name: 'Appeal',
+            //value: `If you would like to appeal your ban, please fill out [this form.](${process.env.BAN_APPEAL_URL})`,
             value: 'If you would like to appeal your ban, please fill out [this form.](https://www.google.co.uk/)',
         },
     ],
@@ -109,7 +110,11 @@ const dmEmbed = (formattedDate, moderator: User, reason: string) => makeEmbed({
 
 const noDM = makeEmbed({
     title: 'Warn - DM not sent',
-    description: 'User has DMs closed or has no mutual servers with the bot',
+    description: makeLines([
+        'User has DMs closed or has no mutual servers with the bot',
+        '',
+        'Please remember to send the user the reason they were banned and the ban appeal form - INSERT BAN APPEAL FORM HERE',
+    ]),
     color: Colors.Red,
 });
 
@@ -133,7 +138,9 @@ export const ban: CommandDefinition = {
         try {
             await targetUser.send({ embeds: [dmEmbed(formattedDate, moderator, reason)] });
         } catch {
-            msg.channel.send({ embeds: [noDM] });
+            //msg.channel.send({ embeds: [noDM] });
+
+            await modLogsChannel.send({ content: moderator.toString(), embeds: [noDM] });
         }
         return msg.guild.members.ban(idArg).then((user) => {
             if (modLogsChannel && typeof user !== 'string') {
