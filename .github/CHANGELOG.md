@@ -1,7 +1,8 @@
 ## Changelog
 
 Update <small>_ August 2022</small>
-
+       
+- refactor: updated reported issues docs link (02/09/2022)
 - feat: simrate command (31/08/2022)
 - fix: use correct spacing between flypados and version (31/08/2022)
 - docs: update contributing guide and fix punctuation (31/08/2022)
