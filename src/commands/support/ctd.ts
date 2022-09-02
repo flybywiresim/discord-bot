@@ -9,7 +9,7 @@ export const ctd: CommandDefinition = {
     executor: async (msg) => {
         const ctdEmbed = makeEmbed({
             title: 'FlyByWire Support | Crash To Desktop',
-            description: 'Find a collection of tips to help with crash to desktops [here.](https://docs.flybywiresim.com/fbw-a32nx/support/reported-issues/#ctd-crash-to-desktop)',
+            description: 'Find a collection of tips to help with crash to desktops [here.](https://docs.flybywiresim.com/fbw-a32nx/support/reported-issues/#crash-to-desktop-ctd)',
         });
 
         await msg.channel.send({ embeds: [ctdEmbed] });
