@@ -36,7 +36,7 @@ module.exports = {
                 '',
                 '**NOTE - This was a non bot ban.**',
                 '',
-                'Please remember to send the user the reason they were banned and the ban appeal form - INSERT BAN APPEAL FORM HERE',
+                `Please remember to send the user the reason they were banned and the ban appeal form - ${process.env.BAN_APPEAL_URL}`,
             ]),
             footer: { text: `User ID: ${msg.user.id}` },
         });
@@ -50,7 +50,7 @@ module.exports = {
             description: makeLines([
                 '**NOTE - This was a non bot ban.**',
                 '',
-                'Please remember to send the user the reason they were banned and the ban appeal form - INSERT BAN APPEAL FORM HERE',
+                `Please remember to send the user the reason they were banned and the ban appeal form - ${process.env.BAN_APPEAL_URL}`,
             ]),
             fields: [
                 {
@@ -78,7 +78,7 @@ module.exports = {
             description: makeLines([
                 '**NOTE - This was a non bot ban.**',
                 '',
-                'Please remember to send the user the reason they were banned and the ban appeal form - INSERT BAN APPEAL FORM HERE',
+                `Please remember to send the user the reason they were banned and the ban appeal form - ${process.env.BAN_APPEAL_URL}`,
             ]),
             fields: [
                 {

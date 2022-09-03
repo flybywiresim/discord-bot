@@ -102,8 +102,7 @@ const dmEmbed = (formattedDate, moderator: User, reason: string) => makeEmbed({
         {
             inline: false,
             name: 'Appeal',
-            //value: `If you would like to appeal your ban, please fill out [this form.](${process.env.BAN_APPEAL_URL})`,
-            value: 'If you would like to appeal your ban, please fill out [this form.](https://www.google.co.uk/)',
+            value: `If you would like to appeal your ban, please fill out [this form.](${process.env.BAN_APPEAL_URL})`,
         },
     ],
 });
@@ -138,8 +137,6 @@ export const ban: CommandDefinition = {
         try {
             await targetUser.send({ embeds: [dmEmbed(formattedDate, moderator, reason)] });
         } catch {
-            //msg.channel.send({ embeds: [noDM] });
-
             await modLogsChannel.send({ content: moderator.toString(), embeds: [noDM] });
         }
         return msg.guild.members.ban(idArg).then((user) => {
