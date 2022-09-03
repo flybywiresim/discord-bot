@@ -84,10 +84,10 @@ module.exports = {
         if (previousSticky) {
             const timeDifference = new Date().getTime() - previousSticky.createdTimestamp;
             if (timeDifference <= timeInterval * 1000) {
-                const histMessagesMap = await channel.messages.fetch({ limit: (messageCount) });
-                const histMessages: Message[] = Array.from(histMessagesMap.values());
-                for (const histMessage of histMessages) {
-                    if (histMessage.id === previousSticky.id) {
+                const historyMessagesMap = await channel.messages.fetch({ limit: (messageCount) });
+                const historyMessages: Message[] = Array.from(historyMessagesMap.values());
+                for (const historyMessage of historyMessages) {
+                    if (historyMessage.id === previousSticky.id) {
                         Logger.debug('Sticky Message - Previous Sticky not too old and within message count - No new post needed.');
                         postNewSticky = false;
                         break;
