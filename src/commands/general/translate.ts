@@ -6,7 +6,7 @@ export const translate: CommandDefinition = {
     name: ['translate'],
     description: 'Provides information on how to contribute to various FlyByWire translation efforts.',
     category: CommandCategory.GENERAL,
-    executor: async (msg) => {
+    executor: (msg) => {
         const translateEmbed = makeEmbed({
             title: 'FlyByWire A32NX | Project Translations',
             description: makeLines([
@@ -20,6 +20,6 @@ export const translate: CommandDefinition = {
             ]),
         });
 
-        await msg.channel.send({ embeds: [translateEmbed] });
+        return msg.channel.send({ embeds: [translateEmbed] });
     },
 };

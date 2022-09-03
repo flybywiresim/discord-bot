@@ -8,7 +8,7 @@ export const utf8: CommandDefinition = {
     name: 'utf8',
     description: 'Provides a link to resolve UTF-8 issues',
     category: CommandCategory.SUPPORT,
-    executor: async (msg) => {
+    executor: (msg) => {
         const utf8Embed = makeEmbed({
             title: 'FlyByWire A32NX | UTF-8',
             description: makeLines([
@@ -24,11 +24,11 @@ export const utf8: CommandDefinition = {
                 '',
                 '• Click OK and restart your computer.',
                 '',
-                'Please see our [documentation](https://docs.flybywiresim.com/fbw-a32nx/support/reported-issues/?h=utf8#autopilot-fadec-electrical-systems-not-working-as-intended-utf8-issue) for more information.',
+                'Please see our [documentation](https://docs.flybywiresim.com/fbw-a32nx/settings/#utf8-support) for more information.',
             ]),
             image: { url: UTF8_HELP_URL },
         });
 
-        await msg.channel.send({ embeds: [utf8Embed] });
+        return msg.channel.send({ embeds: [utf8Embed] });
     },
 };

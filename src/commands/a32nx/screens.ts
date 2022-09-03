@@ -8,7 +8,7 @@ export const screens: CommandDefinition = {
     name: ['screens', 'screen'],
     description: 'Display help with avionics',
     category: CommandCategory.A32NX,
-    executor: async (msg) => {
+    executor: (msg) => {
         const screensEmbed = makeEmbed({
             title: 'FlyByWire A32NX | Screens Fix',
             description: makeLines([
@@ -18,6 +18,6 @@ export const screens: CommandDefinition = {
             image: { url: SCREENS_HELP_URL },
         });
 
-        await msg.channel.send({ embeds: [screensEmbed] });
+        return msg.channel.send({ embeds: [screensEmbed] });
     },
 };

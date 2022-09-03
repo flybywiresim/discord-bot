@@ -6,7 +6,7 @@ export const beginner: CommandDefinition = {
     name: ['beginnerguide', 'bg'],
     description: 'Provides a link to the Beginner Guide',
     category: CommandCategory.A32NX,
-    executor: async (msg) => {
+    executor: (msg) => {
         const beginnerEmbed = makeEmbed({
             title: 'FlyByWire A32NX | Beginner\'s Guide',
             description: makeLines([
@@ -26,6 +26,6 @@ export const beginner: CommandDefinition = {
             ]),
         });
 
-        await msg.channel.send({ embeds: [beginnerEmbed] });
+        return msg.channel.send({ embeds: [beginnerEmbed] });
     },
 };

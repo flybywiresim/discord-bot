@@ -6,7 +6,7 @@ export const simbridge: CommandDefinition = {
     name: ['simbridge', 'sb'],
     description: 'Describe SimBridge and provide support information',
     category: CommandCategory.SUPPORT,
-    executor: async (msg) => {
+    executor: (msg) => {
         const simbridgeEmbed = makeEmbed({
             title: 'FlyByWire Support | SimBridge',
             description: makeLines([

@@ -8,7 +8,7 @@ export const market: CommandDefinition = {
     name: ['market', 'marketremove', 'removemarket', 'rm', 'mr'],
     description: 'Help with removing the marketplace version',
     category: CommandCategory.SUPPORT,
-    executor: async (msg) => {
+    executor: (msg) => {
         const contentEmbed = makeEmbed({
             title: 'FlyByWire Support | Removing Marketplace Version',
             description: makeLines([
@@ -19,6 +19,6 @@ export const market: CommandDefinition = {
             image: { url: MARKETPLACE_HELP_URL },
         });
 
-        await msg.channel.send({ embeds: [contentEmbed] });
+        return msg.channel.send({ embeds: [contentEmbed] });
     },
 };

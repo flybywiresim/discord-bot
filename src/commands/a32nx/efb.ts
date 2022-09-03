@@ -8,9 +8,9 @@ export const efb: CommandDefinition = {
     name: 'efb',
     description: 'Inquire about the state of the EFB',
     category: CommandCategory.A32NX,
-    executor: async (msg) => {
+    executor: (msg) => {
         const efbEmbed = makeEmbed({ image: { url: EFB_URL } });
 
-        await msg.channel.send({ embeds: [efbEmbed] });
+        return msg.channel.send({ embeds: [efbEmbed] });
     },
 };

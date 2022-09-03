@@ -8,7 +8,7 @@ export const takeoffIssues: CommandDefinition = {
     name: ['takeoffissues', 'toi', 'engines', 'eng'],
     description: 'Help with engine issues on takeoff',
     category: CommandCategory.A32NX,
-    executor: async (msg) => {
+    executor: (msg) => {
         const contentEmbed = makeEmbed({
             title: 'FlyByWire A32NX | Engine Issues on Takeoff',
             description: makeLines([
@@ -19,6 +19,6 @@ export const takeoffIssues: CommandDefinition = {
             image: { url: TAKEOFF_ISSUES_IMAGE_URL },
         });
 
-        await msg.channel.send({ embeds: [contentEmbed] });
+        return msg.channel.send({ embeds: [contentEmbed] });
     },
 };

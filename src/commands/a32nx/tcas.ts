@@ -6,7 +6,7 @@ export const tcas: CommandDefinition = {
     name: 'tcas',
     description: 'Provides support information about A32NX AP/FD TCAS',
     category: CommandCategory.A32NX,
-    executor: async (msg) => {
+    executor: (msg) => {
         const tcasEmbed = makeEmbed({
             title: 'FlyByWire A32NX | AP/FD TCAS',
             description: makeLines([
@@ -18,6 +18,6 @@ export const tcas: CommandDefinition = {
             ]),
         });
 
-        await msg.channel.send({ embeds: [tcasEmbed] });
+        return msg.channel.send({ embeds: [tcasEmbed] });
     },
 };

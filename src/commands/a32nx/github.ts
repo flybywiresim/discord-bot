@@ -6,7 +6,7 @@ export const github: CommandDefinition = {
     name: ['github', 'repo', 'repository'],
     description: 'provides the link to the A32NX GitHub Repository',
     category: CommandCategory.A32NX,
-    executor: async (msg) => {
+    executor: (msg) => {
         const githubEmbed = makeEmbed({
             title: 'FlyByWire A32NX | GitHub Repository',
             description: makeLines([
@@ -14,6 +14,6 @@ export const github: CommandDefinition = {
             ]),
         });
 
-        await msg.channel.send({ embeds: [githubEmbed] });
+        return msg.channel.send({ embeds: [githubEmbed] });
     },
 };
