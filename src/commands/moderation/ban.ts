@@ -21,7 +21,7 @@ const modLogEmbed = (formattedDate, moderator: User, user: User, reason: string)
         },
         {
             name: 'Reason',
-            value: `\u200B${reason}`,
+            value: reason,
         },
         {
             inline: false,
