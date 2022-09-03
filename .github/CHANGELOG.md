@@ -2,6 +2,7 @@
 
 Update <small>_ August 2022</small>
 
+- feat: adds ban dm, refine ban command and handler (09/09/2022)
 - feat: verticalguidance, verticalguidancesymbols and verticalspeedpriority commands (27/08/2022)
 - feat: flypados command (27/08/2022)
 - feat: website command (22/08/2022)
