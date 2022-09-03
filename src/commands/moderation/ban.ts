@@ -76,7 +76,7 @@ const failedBanEmbed = (user: User, error: any) => makeEmbed({
         {
             inline: false,
             name: 'Error',
-            value: `\u200B${error}`,
+            value: error,
         },
     ],
 });

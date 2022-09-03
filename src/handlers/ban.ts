@@ -63,7 +63,7 @@ module.exports = {
                 },
                 {
                     name: 'Reason',
-                    value: `\u200B${reason}`,
+                    value: reason,
                 },
             ],
             footer: { text: `User ID: ${msg.user.id}` },
