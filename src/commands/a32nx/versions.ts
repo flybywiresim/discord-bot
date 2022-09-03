@@ -6,7 +6,7 @@ export const versions: CommandDefinition = {
     name: 'versions',
     description: 'Explains the different A32NX versions',
     category: CommandCategory.A32NX,
-    executor: async (msg) => {
+    executor: (msg) => {
         const versionsEmbed = makeEmbed({
             title: 'FlyByWire A32NX | Versions',
             footer: { text: 'If you are having further problems, let us know in our #support channel.' },
@@ -46,6 +46,6 @@ export const versions: CommandDefinition = {
             ],
         });
 
-        await msg.channel.send({ embeds: [versionsEmbed] });
+        return msg.channel.send({ embeds: [versionsEmbed] });
     },
 };

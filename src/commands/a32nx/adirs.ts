@@ -8,7 +8,7 @@ export const adirs: CommandDefinition = {
     name: 'adirs',
     description: 'Display help with ADIRS alignment',
     category: CommandCategory.A32NX,
-    executor: async (msg) => {
+    executor: (msg) => {
         const adirsEmbed = makeEmbed({
             title: 'FlyByWire A32NX | ADIRS align',
             description: makeLines([
@@ -18,6 +18,6 @@ export const adirs: CommandDefinition = {
             image: { url: ADIRS_IMAGE_URL },
         });
 
-        await msg.channel.send({ embeds: [adirsEmbed] });
+        return msg.channel.send({ embeds: [adirsEmbed] });
     },
 };

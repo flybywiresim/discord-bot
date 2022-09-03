@@ -18,7 +18,7 @@
 | .cpdlc                   | Provide info and docs link for Hoppie ACARS                                                       | .pdc <br> .hoppie <br> .acars                          |
 | .ctrle                   | Displays help regarding CTRL+E engine start                                                       | .ctrl+e <br> .ctrl-e <br> .enginestart                 |
 | .efb                     | Inquire about the state of the EFB                                                                | ---                                                    |
-| .experimantal            | Explains the current state of the experimental build                                              | .exp                                                   |
+| .experimental            | Explains the current state of the experimental build                                              | .exp                                                   |
 | .fixinfo                 | Provide information about the fix info feature                                                    | ---                                                    |
 | .flextemp                | Provides a link to the a32nx flex temp guide                                                      | .flex                                                  |
 | .flypados                | Provides a link to the flyPadOS 3 documentation                                                   | .flypad <br> .efbos                                    |

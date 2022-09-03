@@ -6,7 +6,7 @@ export const recommendedSettings: CommandDefinition = {
     name: 'rs',
     category: CommandCategory.A32NX,
     description: 'Provides a link to the recommended settings docs guide.',
-    executor: async (msg) => {
+    executor: (msg) => {
         const recommendedSettingsEmbed = makeEmbed({
             title: 'FlyByWire A32NX | Recommended Settings',
             description: makeLines([
@@ -18,6 +18,6 @@ export const recommendedSettings: CommandDefinition = {
             ]),
         });
 
-        await msg.channel.send({ embeds: [recommendedSettingsEmbed] });
+        return msg.channel.send({ embeds: [recommendedSettingsEmbed] });
     },
 };

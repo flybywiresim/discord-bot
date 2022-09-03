@@ -8,7 +8,7 @@ export const fma: CommandDefinition = {
     name: 'fma',
     description: 'Provides a link to the FMA docs guide',
     category: CommandCategory.A32NX,
-    executor: async (msg) => {
+    executor: (msg) => {
         const fmaEmbed = makeEmbed({
             title: 'FlyByWire A32NX | Flight Mode Annunciator ',
             description: makeLines([
@@ -19,6 +19,6 @@ export const fma: CommandDefinition = {
             image: { url: FMA_IMAGE_URL },
         });
 
-        await msg.channel.send({ embeds: [fmaEmbed] });
+        return msg.channel.send({ embeds: [fmaEmbed] });
     },
 };

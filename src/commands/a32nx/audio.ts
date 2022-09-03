@@ -6,7 +6,7 @@ export const audio: CommandDefinition = {
     name: 'audio',
     description: 'Provides support information about A32NX audio configuration',
     category: CommandCategory.A32NX,
-    executor: async (msg) => {
+    executor: (msg) => {
         const audioEmbed = makeEmbed({
             title: 'FlyByWire A32NX | Audio Configuration',
             description: makeLines([
@@ -16,6 +16,6 @@ export const audio: CommandDefinition = {
             ]),
         });
 
-        await msg.channel.send({ embeds: [audioEmbed] });
+        return msg.channel.send({ embeds: [audioEmbed] });
     },
 };
