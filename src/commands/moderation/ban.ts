@@ -65,11 +65,6 @@ const failedBanEmbed = (user: User, error: any) => makeEmbed({
         },
         {
             inline: true,
-            name: 'Username',
-            value: user.toString(),
-        },
-        {
-            inline: true,
             name: 'ID',
             value: user.id,
         },
@@ -107,12 +102,12 @@ const dmEmbed = (formattedDate, moderator: User, reason: string) => makeEmbed({
     ],
 });
 
-const noDM = makeEmbed({
+const noDM = (user: User) => makeEmbed({
     title: 'Warn - DM not sent',
     description: makeLines([
-        'User has DMs closed or has no mutual servers with the bot',
+        `${user.toString()} has DMs closed or has no mutual servers with the bot`,
         '',
-        'Please remember to send the user the reason they were banned and the ban appeal form - INSERT BAN APPEAL FORM HERE',
+        `Please remember to send the user the reason they were banned and the ban appeal form - ${process.env.BAN_APPEAL_URL}`,
     ]),
     color: Colors.Red,
 });
@@ -137,7 +132,7 @@ export const ban: CommandDefinition = {
         try {
             await targetUser.send({ embeds: [dmEmbed(formattedDate, moderator, reason)] });
         } catch {
-            await modLogsChannel.send({ content: moderator.toString(), embeds: [noDM] });
+            await modLogsChannel.send({ content: moderator.toString(), embeds: [noDM(targetUser.user)] });
         }
         return msg.guild.members.ban(idArg).then((user) => {
             if (modLogsChannel && typeof user !== 'string') {
