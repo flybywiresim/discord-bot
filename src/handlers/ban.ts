@@ -1,6 +1,6 @@
 import { AuditLogEvent, Colors, TextChannel } from 'discord.js';
 import { Channels, ModLogsExclude } from '../constants';
-import { makeEmbed } from '../lib/embed';
+import { makeEmbed, makeLines } from '../lib/embed';
 
 module.exports = {
     event: 'guildBanAdd',
@@ -31,7 +31,13 @@ module.exports = {
                 name: `[BANNED] ${msg.user.tag}`,
                 iconURL: msg.user.displayAvatarURL(),
             },
-            description: `${msg.user.tag} was banned from ${msg.guild.name} but no audit log could be found.`,
+            description: makeLines([
+                `${msg.user.tag} was banned from ${msg.guild.name} but no audit log could be found.`,
+                '',
+                '**NOTE - This was a non bot ban.**',
+                '',
+                'Please remember to send the user the reason they were banned and the ban appeal form - INSERT BAN APPEAL FORM HERE',
+            ]),
             footer: { text: `User ID: ${msg.user.id}` },
         });
 
@@ -41,6 +47,11 @@ module.exports = {
                 name: `[BANNED] ${msg.user.tag}`,
                 iconURL: msg.user.displayAvatarURL(),
             },
+            description: makeLines([
+                '**NOTE - This was a non bot ban.**',
+                '',
+                'Please remember to send the user the reason they were banned and the ban appeal form - INSERT BAN APPEAL FORM HERE',
+            ]),
             fields: [
                 {
                     name: 'Member',
@@ -64,6 +75,11 @@ module.exports = {
                 name: `[BANNED] ${msg.user.tag}`,
                 iconURL: msg.user.displayAvatarURL(),
             },
+            description: makeLines([
+                '**NOTE - This was a non bot ban.**',
+                '',
+                'Please remember to send the user the reason they were banned and the ban appeal form - INSERT BAN APPEAL FORM HERE',
+            ]),
             fields: [
                 {
                     name: 'Member',
@@ -82,14 +98,14 @@ module.exports = {
         });
 
         if (modLogsChannel && !ModLogsExclude.some((e) => e)) {
-            if (!banLog) await modLogsChannel.send({ embeds: [noLogEmbed] });
+            if (!banLog) await modLogsChannel.send({ content: executor.toString(), embeds: [noLogEmbed] });
         }
 
         if (modLogsChannel && !ModLogsExclude.some((e) => e === executor.id)) {
             if (target.id === msg.user.id) {
-                await modLogsChannel.send({ embeds: [userBannedEmbed] });
+                await modLogsChannel.send({ content: executor.toString(), embeds: [userBannedEmbed] });
             } else {
-                await modLogsChannel.send({ embeds: [userBannedIncompleteEmbed] });
+                await modLogsChannel.send({ content: executor.toString(), embeds: [userBannedIncompleteEmbed] });
             }
         }
     },
