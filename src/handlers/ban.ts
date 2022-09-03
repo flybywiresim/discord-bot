@@ -1,4 +1,4 @@
-import { AuditLogEvent, Colors, TextChannel } from 'discord.js';
+import { AuditLogEvent, bold, Colors, TextChannel } from 'discord.js';
 import { Channels, ModLogsExclude } from '../constants';
 import { makeEmbed, makeLines } from '../lib/embed';
 
@@ -48,7 +48,8 @@ module.exports = {
                 iconURL: msg.user.displayAvatarURL(),
             },
             description: makeLines([
-                '**NOTE - This was a non bot ban.**',
+                //'**NOTE - This was a non bot ban.**',
+                bold('This was a non bot ban.'),
                 '',
                 `Please remember to send the user the reason they were banned and the ban appeal form - ${process.env.BAN_APPEAL_URL}`,
             ]),
@@ -63,7 +64,7 @@ module.exports = {
                 },
                 {
                     name: 'Reason',
-                    value: reason,
+                    value: reason || 'No reason provided',
                 },
             ],
             footer: { text: `User ID: ${msg.user.id}` },
