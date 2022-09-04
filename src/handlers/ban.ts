@@ -34,7 +34,7 @@ module.exports = {
             description: makeLines([
                 `${msg.user.tag} was banned from ${msg.guild.name} but no audit log could be found.`,
                 '',
-                '**NOTE - This was a non bot ban.**',
+                bold('NOTE - This was a non bot ban.'),
                 '',
                 `Please remember to send the user the reason they were banned and the ban appeal form - ${process.env.BAN_APPEAL_URL}`,
             ]),
@@ -76,7 +76,7 @@ module.exports = {
                 iconURL: msg.user.displayAvatarURL(),
             },
             description: makeLines([
-                '**NOTE - This was a non bot ban.**',
+                bold('NOTE - This was a non bot ban.'),
                 '',
                 `Please remember to send the user the reason they were banned and the ban appeal form - ${process.env.BAN_APPEAL_URL}`,
             ]),
