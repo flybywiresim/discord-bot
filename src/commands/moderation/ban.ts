@@ -103,7 +103,7 @@ const dmEmbed = (formattedDate, moderator: User, reason: string) => makeEmbed({
 });
 
 const noDM = (user: User) => makeEmbed({
-    title: 'Warn - DM not sent',
+    title: 'Ban - DM not sent',
     description: makeLines([
         `${user.toString()} has DMs closed or has no mutual servers with the bot`,
         '',
