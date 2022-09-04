@@ -6,7 +6,7 @@ export const discontinuity: CommandDefinition = {
     name: ['discontinuity', 'disco'],
     description: 'Link to docs about discontinuities',
     category: CommandCategory.A32NX,
-    executor: async (msg) => {
+    executor: (msg) => {
         const discontinuityEmbed = makeEmbed({
             title: 'FlyByWire A32NX | Discontinuity',
             description: makeLines([
@@ -14,6 +14,6 @@ export const discontinuity: CommandDefinition = {
             ]),
         });
 
-        await msg.channel.send({ embeds: [discontinuityEmbed] });
+        return msg.channel.send({ embeds: [discontinuityEmbed] });
     },
 };

@@ -6,7 +6,7 @@ export const tug: CommandDefinition = {
     name: ['tug', 'stuck'],
     description: 'Provides a solution to an issue where the tug fails to disconnect.',
     category: CommandCategory.SUPPORT,
-    executor: async (msg) => {
+    executor: (msg) => {
         const tugEmbed = makeEmbed({
             title: 'FlyByWire Support | My Aircraft is Stuck!',
             description: makeLines([
@@ -14,10 +14,10 @@ export const tug: CommandDefinition = {
                 '',
                 'If you do, please press "Shift" + "P" on your keyboard to disconnect the invisible pushback tug.',
                 '',
-                'Please read our guide [here](https://docs.flybywiresim.com/fbw-a32nx/support/reported-issues/#nose-wheel-steering-locked-nw-strg-disc) for more information. ',
+                'Please read our guide [here](https://docs.flybywiresim.com/fbw-a32nx/support/reported-issues/#unable-to-move-or-taxi) for more information. ',
             ]),
         });
 
-        await msg.channel.send({ embeds: [tugEmbed] });
+        return msg.channel.send({ embeds: [tugEmbed] });
     },
 };

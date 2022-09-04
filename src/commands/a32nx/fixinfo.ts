@@ -8,7 +8,7 @@ export const fixinfo: CommandDefinition = {
     name: 'fixinfo',
     description: 'Provide information about the fix info feature.',
     category: CommandCategory.A32NX,
-    executor: async (msg) => {
+    executor: (msg) => {
         const fixinfoEmbed = makeEmbed({
             title: 'FlyByWire A32NX | Fix Info',
             description: makeLines([
@@ -25,6 +25,6 @@ export const fixinfo: CommandDefinition = {
             footer: { text: 'Please Note: The computed intercept waypoints and ABEAM functionality are not yet implemented.' },
         });
 
-        await msg.channel.send({ embeds: [fixinfoEmbed] });
+        return msg.channel.send({ embeds: [fixinfoEmbed] });
     },
 };

@@ -8,7 +8,7 @@ export const sop: CommandDefinition = {
     name: 'sop',
     description: 'Displays first page of SOP and provides PDF download',
     category: CommandCategory.A32NX,
-    executor: async (msg) => {
+    executor: (msg) => {
         const sopEmbed = makeEmbed({
             title: 'FlyByWire A32NX | SOP',
             url: 'https://github.com/flybywiresim/manuals/raw/master/pdf/A32NX%20Documentation/FBW%20A32NX%20SOP.pdf',
@@ -18,6 +18,6 @@ export const sop: CommandDefinition = {
             image: { url: SOP_IMAGE_URL },
         });
 
-        await msg.channel.send({ embeds: [sopEmbed] });
+        return msg.channel.send({ embeds: [sopEmbed] });
     },
 };

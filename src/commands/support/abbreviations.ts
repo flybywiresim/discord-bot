@@ -6,7 +6,7 @@ export const abbreviations: CommandDefinition = {
     name: ['abbreviations', 'abb', 'abrv'],
     description: 'Links to most commonly used abbreviations',
     category: CommandCategory.SUPPORT,
-    executor: async (msg) => {
+    executor: (msg) => {
         const abbreviationsEmbed = makeEmbed({
             title: 'FlyByWire Support | Abbreviations',
             description: makeLines([
@@ -17,6 +17,6 @@ export const abbreviations: CommandDefinition = {
             ]),
         });
 
-        await msg.channel.send({ embeds: [abbreviationsEmbed] });
+        return msg.channel.send({ embeds: [abbreviationsEmbed] });
     },
 };

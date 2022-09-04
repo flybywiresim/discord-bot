@@ -6,7 +6,7 @@ export const cursor: CommandDefinition = {
     name: ['cursor', 'efbfocus', 'unfocus'],
     description: 'Displays steps to help with EFB cursor focus issue',
     category: CommandCategory.SUPPORT,
-    executor: async (msg) => {
+    executor: (msg) => {
         const cursorEmbed = makeEmbed({
             title: 'FlyByWire A32NX | EFB Focus',
             description: makeLines([
@@ -24,6 +24,6 @@ export const cursor: CommandDefinition = {
             footer: { text: 'Affected versions: Stable, Development' },
         });
 
-        await msg.channel.send({ embeds: [cursorEmbed] });
+        return msg.channel.send({ embeds: [cursorEmbed] });
     },
 };

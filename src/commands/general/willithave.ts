@@ -6,7 +6,7 @@ export const willithave: CommandDefinition = {
     name: ['thumb', 'willithave'],
     description: 'Answers the big question, will it have FEATURE?',
     category: CommandCategory.GENERAL,
-    executor: async (msg) => {
+    executor: (msg) => {
         const willithaveEmbed = makeEmbed({
             title: 'Will the aircraft have [FEATURE]?',
             description: makeLines([
@@ -16,6 +16,6 @@ export const willithave: CommandDefinition = {
             ]),
         });
 
-        await msg.channel.send({ embeds: [willithaveEmbed] });
+        return msg.channel.send({ embeds: [willithaveEmbed] });
     },
 };

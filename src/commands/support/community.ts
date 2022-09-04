@@ -8,7 +8,7 @@ export const community: CommandDefinition = {
     name: ['community', 'com'],
     description: 'Help to identify community folder for support',
     category: CommandCategory.SUPPORT,
-    executor: async (msg) => {
+    executor: (msg) => {
         const communityEmbed = makeEmbed({
             title: 'FlyByWire Support | Identifying your Community folder',
             description: makeLines([
@@ -24,6 +24,6 @@ export const community: CommandDefinition = {
             footer: { text: 'Tip: Click the image to view in full size' },
         });
 
-        await msg.channel.send({ embeds: [communityEmbed] });
+        return msg.channel.send({ embeds: [communityEmbed] });
     },
 };

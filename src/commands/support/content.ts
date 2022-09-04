@@ -8,7 +8,7 @@ export const content: CommandDefinition = {
     name: ['content', 'contentmanager'],
     description: 'Help to identify aircraft version for support',
     category: CommandCategory.SUPPORT,
-    executor: async (msg) => {
+    executor: (msg) => {
         const contentEmbed = makeEmbed({
             title: 'FlyByWire Support | Checking your aircraft version',
             description: makeLines([
@@ -19,6 +19,6 @@ export const content: CommandDefinition = {
             image: { url: CONTENT_MANAGER_HELP_URL },
         });
 
-        await msg.channel.send({ embeds: [contentEmbed] });
+        return msg.channel.send({ embeds: [contentEmbed] });
     },
 };

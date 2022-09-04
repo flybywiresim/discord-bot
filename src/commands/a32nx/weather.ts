@@ -6,7 +6,7 @@ export const weather: CommandDefinition = {
     name: ['weather', 'wx'],
     description: 'Explains the current state of the weather and terrain radars in experimental',
     category: CommandCategory.A32NX,
-    executor: async (msg) => {
+    executor: (msg) => {
         const weatherEmbed = makeEmbed({
             title: 'FlyByWire A32NX | Weather Radar + Terrain Display',
             description: makeLines([
@@ -18,6 +18,6 @@ export const weather: CommandDefinition = {
             ]),
         });
 
-        await msg.channel.send({ embeds: [weatherEmbed] });
+        return msg.channel.send({ embeds: [weatherEmbed] });
     },
 };

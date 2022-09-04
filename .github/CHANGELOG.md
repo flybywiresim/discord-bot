@@ -1,8 +1,17 @@
 ## Changelog
 
+Update <small>_ September 2022</small>
+
+- feat: adds ban dm, refine ban command and handler (03/09/2022)
+- fix: Fix typo for experimental command in docs (03/09/2022)
+- refactor: Remove async and await from all simple commands (03/09/2022)
+- refactor: updated reported issues docs link (02/09/2022)
+
 Update <small>_ August 2022</small>
 
-- feat: adds ban dm, refine ban command and handler (09/09/2022)
+- feat: simrate command (31/08/2022)
+- fix: use correct spacing between flypados and version (31/08/2022)
+- docs: update contributing guide and fix punctuation (31/08/2022)
 - feat: verticalguidance, verticalguidancesymbols and verticalspeedpriority commands (27/08/2022)
 - feat: flypados command (27/08/2022)
 - feat: website command (22/08/2022)

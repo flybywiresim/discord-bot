@@ -8,7 +8,7 @@ export const screenshot: CommandDefinition = {
     name: ['screenshot', 'cockpit', 'ss'],
     description: 'Help to screenshot for support',
     category: CommandCategory.SUPPORT,
-    executor: async (msg) => {
+    executor: (msg) => {
         const screenshotEmbed = makeEmbed({
             title: 'FlyByWire Support | How to take a good screenshot',
             description: makeLines([
@@ -18,6 +18,6 @@ export const screenshot: CommandDefinition = {
             image: { url: SCREENSHOT_HELP_URL },
         });
 
-        await msg.channel.send({ embeds: [screenshotEmbed] });
+        return msg.channel.send({ embeds: [screenshotEmbed] });
     },
 };

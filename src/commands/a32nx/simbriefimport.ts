@@ -6,7 +6,7 @@ export const simbriefimport: CommandDefinition = {
     name: ['import', 'integration', 'integ', 'simbrief'],
     description: 'Shows how to use SimBrief integration',
     category: CommandCategory.A32NX,
-    executor: async (msg) => {
+    executor: (msg) => {
         const simbriefImportEmbed = makeEmbed({
             title: 'FlyByWire A32NX | simBrief import',
             description: makeLines([
@@ -14,6 +14,6 @@ export const simbriefimport: CommandDefinition = {
             ]),
         });
 
-        await msg.channel.send({ embeds: [simbriefImportEmbed] });
+        return msg.channel.send({ embeds: [simbriefImportEmbed] });
     },
 };
