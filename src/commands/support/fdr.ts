@@ -6,7 +6,7 @@ export const fdr: CommandDefinition = {
     name: 'fdr',
     description: 'Information on how to provide fdr files',
     category: CommandCategory.SUPPORT,
-    executor: async (msg) => {
+    executor: (msg) => {
         const fdrEmbed = makeEmbed({
             title: 'FlyByWire Support | Flight Data Recorder',
             description: makeLines([
@@ -22,6 +22,6 @@ export const fdr: CommandDefinition = {
             ]),
         });
 
-        await msg.channel.send({ embeds: [fdrEmbed] });
+        return msg.channel.send({ embeds: [fdrEmbed] });
     },
 };

@@ -6,7 +6,7 @@ export const logs: CommandDefinition = {
     name: ['installerlogs', 'logs'],
     description: 'Provides an explanation on how to receive installer error logs for support',
     category: CommandCategory.SUPPORT,
-    executor: async (msg) => {
+    executor: (msg) => {
         const logsEmbed = makeEmbed({
             title: 'FlyByWire Support | Installer Logs',
             description: makeLines([
@@ -19,6 +19,6 @@ export const logs: CommandDefinition = {
             ]),
         });
 
-        await msg.channel.send({ embeds: [logsEmbed] });
+        return msg.channel.send({ embeds: [logsEmbed] });
     },
 };

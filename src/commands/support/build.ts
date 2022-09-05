@@ -6,7 +6,7 @@ export const build: CommandDefinition = {
     name: ['build', 'build info', 'buildinfo'],
     description: 'Link to docs for build info',
     category: CommandCategory.SUPPORT,
-    executor: async (msg) => {
+    executor: (msg) => {
         const buildEmbed = makeEmbed({
             title: 'FlyByWire Support | Build Info',
             description: makeLines([
@@ -22,6 +22,6 @@ export const build: CommandDefinition = {
             ]),
         });
 
-        await msg.channel.send({ embeds: [buildEmbed] });
+        return msg.channel.send({ embeds: [buildEmbed] });
     },
 };

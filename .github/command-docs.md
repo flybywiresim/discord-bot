@@ -18,10 +18,10 @@
 | .cpdlc                   | Provide info and docs link for Hoppie ACARS                                                       | .pdc <br> .hoppie <br> .acars                          |
 | .ctrle                   | Displays help regarding CTRL+E engine start                                                       | .ctrl+e <br> .ctrl-e <br> .enginestart                 |
 | .efb                     | Inquire about the state of the EFB                                                                | ---                                                    |
-| .experimantal            | Explains the current state of the experimental build                                              | .exp                                                   |
+| .experimental            | Explains the current state of the experimental build                                              | .exp                                                   |
 | .fixinfo                 | Provide information about the fix info feature                                                    | ---                                                    |
 | .flextemp                | Provides a link to the a32nx flex temp guide                                                      | .flex                                                  |
-| .flypados                | Provides a link to the flyPadOS3 documentation                                                    | .flypad <br> .efbos                                    |
+| .flypados                | Provides a link to the flyPadOS 3 documentation                                                   | .flypad <br> .efbos                                    |
 | .freetext                | Provides a link to the FlyByWire free text feature guide                                          | .ft                                                    |
 | .fma                     | Provides a link to the FMA docs guide                                                             | ---                                                    |
 | .github                  | provides the link to the A32NX GitHub Repository                                                  | .repo <br> .repository                                 |
@@ -72,6 +72,7 @@
 | .navdata        | Provides help with Navigraph navdata reinstall                                    | ---                                                |
 | .reportedissues | Provides a link to the reported issues page within docs                           | .issues                                            |
 | .screenshot     | Help to screenshot for support                                                    | .cockpit <br> .ss                                  |
+| .simulationrate | Explanation of the limitation of the Simulation Rate based on frame rate          | .simrate                                           |
 | .simversion     | Help to identify MSFS version for support                                         | .msfsversion                                       |
 | .trythis        | Provide basic troubleshooting steps                                               | ---                                                |
 | .tug            | Provides a solution to an issue where the tug fails to disconnect                 | .stuck                                             |

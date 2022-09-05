@@ -6,7 +6,7 @@ export const calibrate: CommandDefinition = {
     name: 'calibrate',
     description: 'Provides a help for throttle calibration',
     category: CommandCategory.SUPPORT,
-    executor: async (msg) => {
+    executor: (msg) => {
         const calibrateEmbed = makeEmbed({
             title: 'FlyByWire A32NX | Throttle Calibration',
             description: makeLines([
@@ -16,6 +16,6 @@ export const calibrate: CommandDefinition = {
             ]),
         });
 
-        await msg.channel.send({ embeds: [calibrateEmbed] });
+        return msg.channel.send({ embeds: [calibrateEmbed] });
     },
 };

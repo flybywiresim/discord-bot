@@ -6,7 +6,7 @@ export const experimental: CommandDefinition = {
     name: ['experimental', 'exp'],
     description: 'Explains the current state of the experimental build',
     category: CommandCategory.A32NX,
-    executor: async (msg) => {
+    executor: (msg) => {
         const experimentalEmbed = makeEmbed({
             title: 'FlyByWire A32NX | Experimental Version',
             description: makeLines([
@@ -20,6 +20,6 @@ export const experimental: CommandDefinition = {
             ]),
         });
 
-        await msg.channel.send({ embeds: [experimentalEmbed] });
+        return msg.channel.send({ embeds: [experimentalEmbed] });
     },
 };

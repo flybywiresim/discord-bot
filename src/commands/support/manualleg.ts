@@ -9,13 +9,13 @@ export const manualleg: CommandDefinition = {
     name: ['manualleg', 'vm'],
     description: 'Displays image and links to docs about manual waypoints',
     category: CommandCategory.SUPPORT,
-    executor: async (msg) => {
+    executor: (msg) => {
         const manualLegEmbed = makeEmbed({
             title: 'FlyByWire Support | Manual Leg',
             image: { url: MANUAL_LEG_IMAGE_URL },
             description: `Please see our [documentation](${DISCON_DOCS_URL}) for information on how to deal with a manual leg in your flight plan.`,
         });
 
-        await msg.channel.send({ embeds: [manualLegEmbed] });
+        return msg.channel.send({ embeds: [manualLegEmbed] });
     },
 };

@@ -6,7 +6,7 @@ export const atc: CommandDefinition = {
     name: 'atc',
     category: CommandCategory.A32NX,
     description: 'Provides a link to the cFMS special notes section.',
-    executor: async (msg) => {
+    executor: (msg) => {
         const atcEmbed = makeEmbed({
             title: 'FlyByWire A32NX | Default ATC',
             description: makeLines([
@@ -16,6 +16,6 @@ export const atc: CommandDefinition = {
             ]),
         });
 
-        await msg.channel.send({ embeds: [atcEmbed] });
+        return msg.channel.send({ embeds: [atcEmbed] });
     },
 };

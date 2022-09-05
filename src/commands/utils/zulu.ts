@@ -8,7 +8,7 @@ export const zulu: CommandDefinition = {
     name: 'zulu',
     description: 'Get the current time at a given UTC-offset timezone.',
     category: CommandCategory.UTILS,
-    executor: async (msg) => {
+    executor: (msg) => {
         const args = msg.content.split(' ').slice(1);
         const utcOffset = args.length ? parseFloat(args.join('')) : 0;
         if (Number.isNaN(utcOffset)) return msg.reply('Please provide a valid timezone.');

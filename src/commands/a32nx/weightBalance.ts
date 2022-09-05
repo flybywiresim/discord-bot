@@ -6,7 +6,7 @@ export const weightBalance: CommandDefinition = {
     name: ['weights', 'fuel', 'wb', 'w/b', 'w+b', 'wnb', 'w&b'],
     category: CommandCategory.A32NX,
     description: 'Provides a link to the fuel and weights docs guide.',
-    executor: async (msg) => {
+    executor: (msg) => {
         const weightBalanceEmbed = makeEmbed({
             title: 'FlyByWire A32NX | Fuel and Weight',
             description: makeLines([
@@ -27,6 +27,6 @@ export const weightBalance: CommandDefinition = {
             ]),
         });
 
-        await msg.channel.send({ embeds: [weightBalanceEmbed] });
+        return msg.channel.send({ embeds: [weightBalanceEmbed] });
     },
 };

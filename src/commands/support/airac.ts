@@ -6,7 +6,7 @@ export const airac: CommandDefinition = {
     name: 'airac',
     description: 'Provides information about free SimBrief account AIRAC limitations',
     category: CommandCategory.SUPPORT,
-    executor: async (msg) => {
+    executor: (msg) => {
         const airacEmbed = makeEmbed({
             title: 'FlyByWire Support | SimBrief AIRACs',
             description: makeLines([
@@ -22,6 +22,6 @@ export const airac: CommandDefinition = {
             ]),
         });
 
-        await msg.channel.send({ embeds: [airacEmbed] });
+        return msg.channel.send({ embeds: [airacEmbed] });
     },
 };

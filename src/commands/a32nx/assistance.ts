@@ -6,7 +6,7 @@ export const assistance: CommandDefinition = {
     name: ['assistance', 'assi', 'as'],
     description: 'Explains to the user why assistance options should be disabled',
     category: CommandCategory.A32NX,
-    executor: async (msg) => {
+    executor: (msg) => {
         const assistanceEmbed = makeEmbed({
             title: 'FlyByWire A32NX | Assistance Options',
             description: makeLines([
@@ -17,6 +17,6 @@ export const assistance: CommandDefinition = {
             image: { url: 'https://docs.flybywiresim.com/fbw-a32nx/assets/nw-tiller/assistance-options.png' },
         });
 
-        await msg.channel.send({ embeds: [assistanceEmbed] });
+        return msg.channel.send({ embeds: [assistanceEmbed] });
     },
 };

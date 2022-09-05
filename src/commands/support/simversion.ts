@@ -8,7 +8,7 @@ export const simversion: CommandDefinition = {
     name: ['simversion', 'msfsversion'],
     description: 'Help to identify MSFS version for support',
     category: CommandCategory.SUPPORT,
-    executor: async (msg) => {
+    executor: (msg) => {
         const simversionEmbed = makeEmbed({
             title: 'FlyByWire Support | Checking your MSFS version',
             description: makeLines([
@@ -19,6 +19,6 @@ export const simversion: CommandDefinition = {
             image: { url: SIMVERSION_HELP_URL },
         });
 
-        await msg.channel.send({ embeds: [simversionEmbed] });
+        return msg.channel.send({ embeds: [simversionEmbed] });
     },
 };

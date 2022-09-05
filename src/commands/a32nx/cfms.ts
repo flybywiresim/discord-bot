@@ -6,7 +6,7 @@ export const cfms: CommandDefinition = {
     name: 'cfms',
     description: 'Provides information on the new cfms',
     category: CommandCategory.A32NX,
-    executor: async (msg) => {
+    executor: (msg) => {
         const cfmsEmbed = makeEmbed({
             title: 'FlyByWire A32NX | Custom Flight Management System',
             description: makeLines([
@@ -16,6 +16,6 @@ export const cfms: CommandDefinition = {
             ]),
         });
 
-        await msg.channel.send({ embeds: [cfmsEmbed] });
+        return msg.channel.send({ embeds: [cfmsEmbed] });
     },
 };
