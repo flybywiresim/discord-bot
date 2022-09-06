@@ -95,6 +95,9 @@ If your command requires environment variables please add them to the ```.env.ex
 2. You can do this manually or using the command line by typing ```cp .env.example .env```.
 3. Fill out the ```.env``` file with your environment variables.
 
+### Ban Appeal Form
+A ban appeal form is sent to a user when they are banned. The URL for the form is stored as an environment variable, `BAN_APPEAL_URL`. For testing, you could set to a URL like `https://flybywiresim.com/`.
+
 ## Tokens
 Some commands may require additional tokens. If you would like to test them out on your bot, you must include the tokens inside your .env file. These commands include the metar, station and Wolfram Alpha commands. The steps below will explain how to set this up.
 
@@ -108,7 +111,6 @@ Some commands may require additional tokens. If you would like to test them out 
 2. Once you have an account you will need to get an AppID from [here](https://developer.wolframalpha.com/portal/myapps/).
 3. Inside the .env file, on a new line type `WOLFRAMALPHA_TOKEN=TOKEN` replacing TOKEN with your wolfram alpha AppID.
 
-
 ## Adding a New Command
 >Please note, this will only show the basics of adding a command.
 
@@ -119,7 +121,7 @@ Some commands may require additional tokens. If you would like to test them out 
 
 If you need help creating a command, you may find it useful to copy an existing command as a template, changing what you need.
 
-Please ensure that the command category is appropriate for the command. You can find what each category means in `src/lib/constants.ts`. For example, a command used for support would use the `SUPPORT` category. 
+Please ensure that the command category is appropriate for the command. You can find what each category means in `src/lib/constants.ts`. For example, a command used for support would use the `SUPPORT` category.
 
 >### Considerations
 > * Choose user-friendly command names.
