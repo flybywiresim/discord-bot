@@ -38,8 +38,16 @@ module.exports = {
                 iconURL: message.author.displayAvatarURL({ dynamic: true }),
             },
             fields: [
-                { name: 'Author', value: `${message.author}`, inline: true },
-                { name: 'Channel', value: `${message.channel}`, inline: true },
+                {
+                    name: 'Author',
+                    value: `${message.author}`,
+                    inline: true,
+                },
+                {
+                    name: 'Channel',
+                    value: `${message.channel}`,
+                    inline: true,
+                },
                 {
                     name: 'Deleted by',
                     value: 'No audit log was found, message was either deleted by author, or a bot',
@@ -63,9 +71,21 @@ module.exports = {
                 iconURL: message.author.displayAvatarURL({ dynamic: true }),
             },
             fields: [
-                { name: 'Author', value: `${message.author}`, inline: true },
-                { name: 'Channel', value: `${message.channel}`, inline: true },
-                { name: 'Deleted by', value: `${executor}`, inline: false },
+                {
+                    name: 'Author',
+                    value: `${message.author}`,
+                    inline: true,
+                },
+                {
+                    name: 'Channel',
+                    value: `${message.channel}`,
+                    inline: true,
+                },
+                {
+                    name: 'Deleted by',
+                    value: `${executor}`,
+                    inline: false,
+                },
                 {
                     name: 'Deleted Message',
                     value: message.content ? `${message.content}` : FEATURE_NOT_AVAIL,
