@@ -18,22 +18,27 @@ const helpEmbed = (evokedCommand: string) => makeEmbed({
         },
         {
             name: `Default usage: \`${evokedCommand} <callsign query>\``,
-            value: 'Returns information for online Controllers, Observers and ATIS matching the callsign query; or online Pilots with matching callsigns if no Controllers, Observers or ATIS were found.',
+            value: 'Returns information for online Controllers and ATIS matching the callsign query; or online Pilots with matching callsigns if no Controllers or ATIS were found; or online Observers if no Pilots were found.',
             inline: false,
         },
         {
-            name: `Statistics: \`${evokedCommand} stats\``,
-            value: 'Returns statics about the number of online Pilots, Controllers and ATIS',
+            name: `Statistics: \`${evokedCommand} stats [callsign query]\``,
+            value: 'Returns statics about the number of online Pilots, Controllers, ATIS and Observers. If the optional callsign query is provided, it will only return statistics for callsigns matching the query.',
             inline: false,
         },
         {
             name: `Search online Controllers and ATIS: \`${evokedCommand} controllers <callsign query>\``,
-            value: 'Returns information for Controllers, Observers and ATIS matching the callsign query.',
+            value: 'Returns information for Controllers and ATIS matching the callsign query.',
             inline: false,
         },
         {
             name: `Search online Pilots: \`${evokedCommand} pilots <callsign query>\``,
             value: 'Returns information for Pilots matching the callsign query.',
+            inline: false,
+        },
+        {
+            name: `Search online Observers: \`${evokedCommand} observers <callsign query>\``,
+            value: 'Returns information for Observers matching the callsign query.',
             inline: false,
         },
     ],
@@ -45,9 +50,9 @@ const listEmbed = (type: string, fields: EmbedField[], totalCount: number, shown
     fields,
 });
 
-const statsEmbed = (pilots: string, controllers: string, atis: string) => makeEmbed({
-    title: 'VATSIM Data | Statistics',
-    description: 'An overview of the current active Pilots, Controllers and ATIS.',
+const statsEmbed = (pilots: string, controllers: string, atis: string, observers: string, callsign: string) => makeEmbed({
+    title: callsign ? `VATSIM Data | Statistics for callsign ${callsign}` : 'VATSIM Data | Statistics',
+    description: callsign ? `An overview of the current active Pilots, Controllers, ATIS and Observers matching ${callsign}.` : 'An overview of the current active Pilots, Controllers, ATIS and Observers.',
     fields: [
         {
             name: 'Pilots',
@@ -62,6 +67,11 @@ const statsEmbed = (pilots: string, controllers: string, atis: string) => makeEm
         {
             name: 'ATIS',
             value: atis,
+            inline: true,
+        },
+        {
+            name: 'Observers',
+            value: observers,
             inline: true,
         },
     ],
@@ -109,7 +119,12 @@ const controllersListEmbedFields = (callsign: string, frequency: string, logon: 
         },
     ];
     if (atis !== null) {
-        const atisTitle = atisCode ? `ATIS - Code: ${atisCode}` : 'ATIS';
+        let atisTitle = 'Info';
+        if (atisCode) {
+            atisTitle = `ATIS - Code: ${atisCode}`;
+        } else if (atisCode !== undefined) {
+            atisTitle = 'ATIS';
+        }
         fields.push({
             name: atisTitle,
             value: atis,
@@ -153,6 +168,36 @@ const pilotsListEmbedFields = (callsign: string, rating: string, flightPlan: any
     return fields;
 };
 
+const observersListEmbedFields = (callsign: string, logon: string, rating: string, atis: string): EmbedField[] => {
+    const fields = [
+        {
+            name: 'Callsign',
+            value: `${callsign}`,
+            inline: false,
+        },
+        {
+            name: 'Logon Date & Time',
+            value: `${logon}`,
+            inline: true,
+        },
+        {
+            name: 'Rating',
+            value: `${rating}`,
+            inline: true,
+        },
+    ];
+    if (atis !== null) {
+        const atisTitle = 'Info';
+        fields.push({
+            name: atisTitle,
+            value: atis,
+            inline: false,
+        });
+    }
+
+    return fields;
+};
+
 const handleLocaleDateTimeString = (date: Date) => date.toLocaleDateString('en-US', {
     hour: 'numeric',
     minute: 'numeric',
@@ -176,13 +221,13 @@ export const vatsimData: CommandDefinition = {
         let subCommand = args[0].toLowerCase();
         let [query] = args.slice(1);
 
-        if (subCommand !== 'stats' && subCommand !== 'controllers' && subCommand !== 'pilots') {
+        if (subCommand !== 'stats' && subCommand !== 'controllers' && subCommand !== 'pilots' && subCommand !== 'observers') {
             subCommand = 'all';
             [query] = args;
         }
 
         let commandMode = 'ALL';
-        let notFoundMsg = 'No online VATSIM Controllers, Observers, ATIS or Pilots found matching your callsign search query.';
+        let notFoundMsg = 'No online VATSIM Controllers, ATIS, Pilots or Observers found matching your callsign search query.';
 
         switch (subCommand) {
         case 'stats':
@@ -190,11 +235,15 @@ export const vatsimData: CommandDefinition = {
             break;
         case 'controllers':
             commandMode = 'CONTROLLERS';
-            notFoundMsg = 'No online VATSIM Controllers, Observers or ATIS found matching your callsign search query.';
+            notFoundMsg = 'No online VATSIM Controllers or ATIS found matching your callsign search query.';
             break;
         case 'pilots':
             commandMode = 'PILOTS';
             notFoundMsg = 'No online VATSIM Pilots found matching your callsign search query.';
+            break;
+        case 'observers':
+            commandMode = 'OBSERVERS';
+            notFoundMsg = 'No online VATSIM Observers found matching your callsign search query.';
             break;
         default:
             break;
@@ -212,11 +261,15 @@ export const vatsimData: CommandDefinition = {
             return msg.channel.send({ embeds: [fetchErrorEmbed(error)] });
         }
 
-        if (commandMode === 'STATS') {
+        const vatsimAllControllers = vatsimData.controllers ? vatsimData.controllers.filter((controller) => controller.facility > 0) : null;
+        const vatsimAllObservers = vatsimData.controllers ? vatsimData.controllers.filter((controller) => controller.facility <= 0) : null;
+
+        if (commandMode === 'STATS' && !query) {
             const vatsimPilotCount = vatsimData.pilots ? vatsimData.pilots.length : 0;
-            const vatsimControllerCount = vatsimData.controllers ? vatsimData.controllers.length : 0;
+            const vatsimControllerCount = vatsimAllControllers ? vatsimAllControllers.length : 0;
             const vatsimAtisCount = vatsimData.atis ? vatsimData.atis.length : 0;
-            return msg.channel.send({ embeds: [statsEmbed(vatsimPilotCount, vatsimControllerCount, vatsimAtisCount)] });
+            const vatsimObserverCount = vatsimAllObservers ? vatsimAllObservers.length : 0;
+            return msg.channel.send({ embeds: [statsEmbed(vatsimPilotCount, vatsimControllerCount, vatsimAtisCount, vatsimObserverCount, null)] });
         }
 
         if (!query) {
@@ -237,10 +290,19 @@ export const vatsimData: CommandDefinition = {
         const vatsimPilotRatings = vatsimData.pilot_ratings ? vatsimData.pilot_ratings : null;
         const vatsimControllerRatings = vatsimData.ratings ? vatsimData.ratings : null;
         const vatsimPilots = vatsimData.pilots ? vatsimData.pilots.filter((pilot) => pilot.callsign.includes(callsignSearch)) : null;
-        const vatsimControllers = vatsimData.controllers ? vatsimData.controllers.filter((controller) => controller.callsign.includes(callsignSearch)) : null;
+        const vatsimControllers = vatsimAllControllers ? vatsimAllControllers.filter((controller) => controller.callsign.includes(callsignSearch)) : null;
         const vatsimAtis = vatsimData.atis ? vatsimData.atis.filter((atis) => atis.callsign.includes(callsignSearch)) : null;
+        const vatsimObservers = vatsimAllObservers ? vatsimAllObservers.filter((observer) => observer.callsign.includes(callsignSearch)) : null;
 
         const { keys }: ObjectConstructor = Object;
+
+        if (commandMode === 'STATS') {
+            const vatsimPilotCount = vatsimPilots ? vatsimPilots.length : 0;
+            const vatsimControllerCount = vatsimControllers ? vatsimControllers.length : 0;
+            const vatsimAtisCount = vatsimAtis ? vatsimAtis.length : 0;
+            const vatsimObserverCount = vatsimObservers ? vatsimObservers.length : 0;
+            return msg.channel.send({ embeds: [statsEmbed(vatsimPilotCount, vatsimControllerCount, vatsimAtisCount, vatsimObserverCount, callsignSearch)] });
+        }
 
         if ((keys(vatsimControllers).length !== 0 || keys(vatsimAtis).length !== 0) && (commandMode === 'ALL' || commandMode === 'CONTROLLERS')) {
             const fields: EmbedField[] = [...vatsimControllers.sort((a, b) => b.facility - a.facility), ...vatsimAtis]
@@ -259,7 +321,7 @@ export const vatsimData: CommandDefinition = {
             const totalCount = keys(vatsimControllers).length + keys(vatsimAtis).length;
             const shownCount = totalCount < 5 ? totalCount : 5;
 
-            return msg.channel.send({ embeds: [listEmbed('Controllers, Observers & ATIS', fields, totalCount, shownCount, callsignSearch)] });
+            return msg.channel.send({ embeds: [listEmbed('Controllers & ATIS', fields, totalCount, shownCount, callsignSearch)] });
         }
 
         if (keys(vatsimPilots).length !== 0 && (commandMode === 'ALL' || commandMode === 'PILOTS')) {
@@ -276,6 +338,25 @@ export const vatsimData: CommandDefinition = {
             const shownCount = totalCount < 5 ? totalCount : 5;
 
             return msg.channel.send({ embeds: [listEmbed('Pilots', fields, totalCount, shownCount, callsignSearch)] });
+        }
+
+        if (keys(vatsimObservers).length !== 0 && (commandMode === 'ALL' || commandMode === 'OBSERVERS')) {
+            const fields: EmbedField[] = [...vatsimObservers.sort((a, b) => b.rating - a.rating)].map((vatsimObserver) => {
+                const { callsign, logon_time, text_atis, rating } = vatsimObserver;
+                const logonTime = new Date(logon_time);
+                const logonTimeString = handleLocaleDateTimeString(logonTime);
+                const ratingDetail = vatsimControllerRatings.filter((ratingInfo) => ratingInfo.id === rating);
+                const { short, long } = ratingDetail[0];
+                const ratingText = `${short} - ${long}`;
+                const atisText = text_atis ? text_atis.join('\n') : null;
+
+                return observersListEmbedFields(callsign, logonTimeString, ratingText, atisText);
+            }).slice(0, 5).flat();
+
+            const totalCount = keys(vatsimObservers).length;
+            const shownCount = totalCount < 5 ? totalCount : 5;
+
+            return msg.channel.send({ embeds: [listEmbed('Observers', fields, totalCount, shownCount, callsignSearch)] });
         }
 
         return msg.channel.send({ embeds: [notFoundEmbed(callsignSearch, notFoundMsg)] });
