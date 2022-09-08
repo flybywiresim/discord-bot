@@ -2,7 +2,7 @@
 
 Update <small>_ September 2022</small>
 
-- feat: add !dfd command (08/09/2022)
+- feat: add .dfd command (08/09/2022)
 - feat: executor added to the msgDelete log (07/09/2022)
 - feat: adds ban dm, refine ban command and handler (06/09/2022)
 - feat: expand vatsim stats with search and separate observers in its own category (05/09/2022)

@@ -84,6 +84,7 @@
 
 | Command           | Description                                                                                                             | Alias                               |
 |:------------------|:------------------------------------------------------------------------------------------------------------------------|:------------------------------------|
+| .dfd              | Provides link to Digital Flight Dynamics discord server                                                                 | ---                                 |
 | .docsearch        | Provides a link to the FlyByWire documentation, either a general link, or a link for a specific search                  | .documentation <br> .docs <br> .doc |
 | .donate           | Provides a link to the open collective                                                                                  | ---                                 |
 | .goldenrules      | Provides an image describing the golden rules an Airbus pilot should follow                                             | .golden <br> .gr                    |
