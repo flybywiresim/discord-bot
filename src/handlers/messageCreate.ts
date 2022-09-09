@@ -42,7 +42,7 @@ function satisfiesRequirements(requirements: CommandRequirements, member: GuildM
 
                 error = [false, rolesError];
             } else {
-                error = [false, "You don't have the required roles to run that!"];
+                error = [false, 'You don\'t have the required roles to run that!'];
             }
         }
 
@@ -60,12 +60,12 @@ function satisfiesRequirements(requirements: CommandRequirements, member: GuildM
                 if (!requirements.channelsBlacklist) {
                     channelsError = `That can only be used in ${requirements.channels.map((c) => member.guild.channels.cache.get(c).toString()).join(', ')}!`;
                 } else {
-                    channelsError = `That cannot be used in ${requirements.channels.map((c) => member.guild.channels.cache.get(c).toString()).join(', ')}!`;
+                    channelsError = `That can't be used in ${requirements.channels.map((c) => member.guild.channels.cache.get(c).toString()).join(', ')}!`;
                 }
 
                 error = [false, channelsError];
             } else {
-                error = [false, "That can't be used here!"];
+                error = [false, 'That can\'t be used here!'];
             }
         }
 
