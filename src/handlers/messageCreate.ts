@@ -10,15 +10,18 @@ function satisfiesRequirements(requirements: CommandRequirements, member: GuildM
     if (requirements) {
         let error: [boolean, string];
 
-        const hasPermissions = requirements.permissions.every((permission) => member.permissions.has(permission));
-        if (requirements.permissions && !hasPermissions) {
-            if (requirements.permissionsError) {
-                error = [false, requirements.permissionsError];
-            } else if (requirements.verboseErrors) {
-                const permissionsError = `The ${requirements.permissions.join(', ')} permissions(s) ${requirements.permissions.length > 1 ? 'are' : 'is'} required to use that!`;
-                error = [false, permissionsError];
-            } else {
-                error = [false, 'You don\'t have the permissions to run that!'];
+        if (requirements.permissions) {
+            const hasPermissions = requirements.permissions.every((permission) => member.permissions.has(permission));
+            
+            if (!hasPermissions) {
+                if (requirements.permissionsError) {
+                    error = [false, requirements.permissionsError];
+                } else if (requirements.verboseErrors) {
+                    const permissionsError = `The ${requirements.permissions.join(', ')} permission${requirements.permissions.length > 1 ? 's are' : ' is'} required to use that!`;
+                    error = [false, permissionsError];
+                } else {
+                    error = [false, 'You don\'t have the permissions to run that!'];
+                }
             }
         }
 
@@ -26,23 +29,25 @@ function satisfiesRequirements(requirements: CommandRequirements, member: GuildM
             return error;
         }
 
-        const hasAllRoles = requirements.roles.every((role) => member.roles.cache.has(role));
-        const hasAnyRole = requirements.roles.some((role) => member.roles.cache.has(role));
-        if (requirements.roles && ((!requirements.rolesBlacklist && !hasAllRoles) || (requirements.rolesBlacklist && hasAnyRole))) {
-            if (requirements.rolesError) {
-                error = [false, requirements.rolesError];
-            } else if (requirements.verboseErrors) {
-                let rolesError: string;
+        if (requirements.roles) {
+            const hasAllRoles = requirements.roles.every((role) => member.roles.cache.has(role));
+            const hasAnyRole = requirements.roles.some((role) => member.roles.cache.has(role));
+            if (requirements.roles && ((!requirements.rolesBlacklist && !hasAllRoles) || (requirements.rolesBlacklist && hasAnyRole))) {
+                if (requirements.rolesError) {
+                    error = [false, requirements.rolesError];
+                } else if (requirements.verboseErrors) {
+                    let rolesError: string;
 
-                if (!requirements.rolesBlacklist) {
-                    rolesError = `The ${requirements.roles.map((r) => member.roles.cache.get(r).name).join(', ')} role(s) ${requirements.roles.length > 1 ? 'are' : 'is'} required to use that!`;
+                    if (!requirements.rolesBlacklist) {
+                        rolesError = `The ${requirements.roles.map((r) => member.guild.roles.cache.get(r).name).join(', ')} role${requirements.roles.length > 1 ? 's are' : ' is'} required to use that!`;
+                    } else {
+                        rolesError = `The ${requirements.roles.map((r) => member.guild.roles.cache.get(r).name).join(', ')} role${requirements.roles.length > 1 ? 's are' : ' is'} not allowed to use that!`;
+                    }
+
+                    error = [false, rolesError];
                 } else {
-                    rolesError = `The ${requirements.roles.map((r) => member.roles.cache.get(r).name).join(', ')} role(s) ${requirements.roles.length > 1 ? 'are' : 'is'} not allowed to use that!`;
+                    error = [false, 'You don\'t have the required roles to run that!'];
                 }
-
-                error = [false, rolesError];
-            } else {
-                error = [false, 'You don\'t have the required roles to run that!'];
             }
         }
 
@@ -50,22 +55,24 @@ function satisfiesRequirements(requirements: CommandRequirements, member: GuildM
             return error;
         }
 
-        const isChannel = requirements.channels.map((c) => c.toString()).includes(channel);
-        if (requirements.channels && ((!requirements.channelsBlacklist && !isChannel) || (requirements.channelsBlacklist && isChannel))) {
-            if (requirements.channelsError) {
-                error = [false, requirements.channelsError];
-            } else if (requirements.verboseErrors) {
-                let channelsError: string;
+        if (requirements.channels) {
+            const isChannel = requirements.channels.map((c) => c.toString()).some((c) => c === channel);
+            if (requirements.channels && ((!requirements.channelsBlacklist && !isChannel) || (requirements.channelsBlacklist && isChannel))) {
+                if (requirements.channelsError) {
+                    error = [false, requirements.channelsError];
+                } else if (requirements.verboseErrors) {
+                    let channelsError: string;
 
-                if (!requirements.channelsBlacklist) {
-                    channelsError = `That can only be used in ${requirements.channels.map((c) => member.guild.channels.cache.get(c).toString()).join(', ')}!`;
+                    if (!requirements.channelsBlacklist) {
+                        channelsError = `That can only be used in ${requirements.channels.map((c) => member.guild.channels.cache.get(c).toString()).join(', ')}!`;
+                    } else {
+                        channelsError = `That can't be used in ${requirements.channels.map((c) => member.guild.channels.cache.get(c).toString()).join(', ')}!`;
+                    }
+
+                    error = [false, channelsError];
                 } else {
-                    channelsError = `That can't be used in ${requirements.channels.map((c) => member.guild.channels.cache.get(c).toString()).join(', ')}!`;
+                    error = [false, 'That can\'t be used here!'];
                 }
-
-                error = [false, channelsError];
-            } else {
-                error = [false, 'That can\'t be used here!'];
             }
         }
 
@@ -73,6 +80,9 @@ function satisfiesRequirements(requirements: CommandRequirements, member: GuildM
             return error;
         }
     }
+
+    Logger.debug('User satisfies all requirements');
+
     return [true, ''];
 }
 
@@ -99,7 +109,6 @@ module.exports = {
             Logger.debug('Message starts with dot.');
 
             const usedCommand = msg.content.substring(1, msg.content.includes(' ') ? msg.content.indexOf(' ') : msg.content.length).toLowerCase();
-            Logger.info(`Running command '${usedCommand}'`);
 
             const command = commands[usedCommand];
 
@@ -118,9 +127,12 @@ module.exports = {
                 */
                 const [satisfied, error] = satisfiesRequirements(requirements, member, msg.channel.id);
 
+                Logger.debug("Requirements checked");
+
                 if (satisfied) {
                     if (commandsArray.includes(usedCommand)) {
                         try {
+                            Logger.debug(`Running command '${usedCommand}'`);
                             await executor(msg, client);
                             transaction.result = 'success';
                         } catch ({ name, message, stack }) {
@@ -139,10 +151,17 @@ module.exports = {
                         Logger.debug('Command executor done.');
                     }
                 } else {
-                    await msg.reply(error);
+                    Logger.debug('Bailing due to unsatisfied requirements');
+                    const permEmbed = makeEmbed({
+                        color: Colors.Red,
+                        title: 'Command Requirements',
+                        description: error
+                    });
+                    let permMsg = await msg.reply({ embeds: [permEmbed] });
+                    setTimeout(() => permMsg.delete(), 10000); // Delete after 10 seconds
                 }
             } else {
-                Logger.info('Command doesn\'t exist');
+                Logger.debug('Command doesn\'t exist');
                 transaction.result = 'error';
             }
 

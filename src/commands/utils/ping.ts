@@ -1,12 +1,17 @@
 import Filter from 'bad-words';
 import { CommandDefinition } from '../../lib/command';
-import { CommandCategory } from '../../constants';
+import { CommandCategory, Roles, Channels } from '../../constants';
 
 export const ping: CommandDefinition = {
     name: 'ping',
     description: 'Send back a message',
     category: CommandCategory.UTILS,
-    requiredPermissions: ['ManageWebhooks'],
+    requirements: {
+        permissions: ['ManageWebhooks'],
+        roles: [Roles.ADMIN_TEAM],
+        channels: [Channels.BOT_COMMANDS, Channels.MOD_LOGS],
+        verboseErrors: true
+    },
     executor: (msg) => {
         const msgFilter = new Filter();
 
@@ -17,10 +22,8 @@ export const ping: CommandDefinition = {
         }
         if (!msgFilter.isProfane(text)) {
             return msg.channel.send(text);
-        }
-        if (msgFilter.isProfane(text)) {
+        } else {
             return msg.reply('Please do not use profane language with this command.');
         }
-        return Promise.resolve();
     },
 };

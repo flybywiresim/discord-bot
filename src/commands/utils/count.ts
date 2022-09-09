@@ -6,17 +6,15 @@ export const count: CommandDefinition = {
     name: 'count',
     description: 'counts in the count thread',
     category: CommandCategory.UTILS,
+    requirements: {
+        roles: [Roles.BOT_DEVELOPER],
+        rolesError: 'Go count yourself'
+    },
     executor: async (msg) => {
         const countThread = msg.guild.channels.resolve(Threads.COUNT_THREAD) as TextChannel | null;
 
         if (!countThread) {
             return msg.reply('That channel no longer exists');
-        }
-
-        const botDeveloperRole = msg.member.roles.cache.some((role) => role.id === Roles.BOT_DEVELOPER);
-
-        if (!botDeveloperRole) {
-            return msg.reply('Go count yourself');
         }
 
         const countNumber = msg.content.replace(/\.count\s*/, '');
