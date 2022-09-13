@@ -14,7 +14,7 @@ export const assistance: CommandDefinition = {
                 '',
                 'We recommend turning off all assistance features in MSFS as they interfere with the A32NX systems.',
             ]),
-            image: { url: 'https://docs.flybywiresim.com/fbw-a32nx/assets/nw-tiller/assistance-options.png' },
+            image: { url: 'https://docs.flybywiresim.com/fbw-a32nx/assets/settings/assistance-options.png' },
         });
 
         return msg.channel.send({ embeds: [assistanceEmbed] });
