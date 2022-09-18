@@ -144,6 +144,7 @@ import { verticalSpeedPriority } from './a32nx/verticalSpeedPriority';
 import { flyPadOS } from './a32nx/flyPadOS';
 import { simulationRate } from './support/simulationRate';
 import { dfd } from './general/dfd';
+import { mcdu } from './a32nx/mcdu';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -290,6 +291,7 @@ const commands: CommandDefinition[] = [
     flyPadOS,
     simulationRate,
     dfd,
+    mcdu,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
