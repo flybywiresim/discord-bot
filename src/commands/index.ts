@@ -88,7 +88,7 @@ import { assistance } from './a32nx/assistance';
 import { ctd } from './support/ctd';
 import { hud } from './support/hud';
 import { fms } from './memes/fms';
-import { mcdu } from './a32nx/mcdu';
+import { remoteMcdu } from './a32nx/remoteMcdu';
 import { takeoffPerf } from './a32nx/takeoffPerf';
 import { manualleg } from './support/manualleg';
 import { oim } from './memes/oim';
@@ -234,7 +234,7 @@ const commands: CommandDefinition[] = [
     ctd,
     hud,
     fms,
-    mcdu,
+    remoteMcdu,
     takeoffPerf,
     manualleg,
     oim,
