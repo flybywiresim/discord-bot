@@ -2,6 +2,8 @@
 
 Update <small>_ September 2022</small>
 
+- feat: mcdu command for the detailed MCDU documentation (21/09/2022)
+- refactor: mcdu alias removed from remotemcdu command (21/09/2022)
 - fix: Changed image for assistance command (19/09/2022)
 - feat: add .dfd command (19/09/2022)
 - feat: executor added to the msgDelete log (07/09/2022)
