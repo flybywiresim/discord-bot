@@ -10,7 +10,7 @@ export const assistance: CommandDefinition = {
         const assistanceEmbed = makeEmbed({
             title: 'FlyByWire A32NX | Assistance Options',
             description: makeLines([
-                'The A32NX is not compatible with the Microsoft Flight Simulator assistance feature "Auto-Rudder".** It is required to deactivate this feature in MSFS.**',
+                'The A32NX is not compatible with the Microsoft Flight Simulator assistance feature "Auto-Rudder". **It is required to deactivate this feature in MSFS.**',
                 '',
                 'We recommend turning off all assistance features in MSFS as they interfere with the A32NX systems.',
             ]),
