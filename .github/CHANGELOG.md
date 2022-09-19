@@ -2,6 +2,7 @@
 
 Update <small>_ September 2022</small>
 
+- fix: Changed image for assistance command (19/09/2022)
 - feat: add .dfd command (19/09/2022)
 - feat: executor added to the msgDelete log (07/09/2022)
 - feat: adds ban dm, refine ban command and handler (06/09/2022)
