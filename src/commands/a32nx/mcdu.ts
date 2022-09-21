@@ -2,6 +2,8 @@ import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
 
+const MCDU_BASE_URL = 'https://docs.flybywiresim.com/pilots-corner/a32nx-briefing/mcdu';
+
 export const mcdu: CommandDefinition = {
     name: ['mcdu', 'mcdudoc'],
     description: 'Provides a link to the MCDU documentation',
@@ -10,23 +12,23 @@ export const mcdu: CommandDefinition = {
         const mcduEmbed = makeEmbed({
             title: 'FlyByWire A32NX | MCDU Documentation',
             description: makeLines([
-                'Please see our [MCDU documentation](https://docs.flybywiresim.com/pilots-corner/a32nx-briefing/mcdu/) for information on the MCDU of the FlyByWire A32NX.',
+                `Please see our [MCDU documentation](${MCDU_BASE_URL}) for information on the MCDU of the FlyByWire A32NX.`,
                 '',
                 'If you\'d like to immediately go to a specific chapter please use the list below:',
-                '- [Overview](https://docs.flybywiresim.com/pilots-corner/a32nx-briefing/mcdu/)',
-                '- [MCDU Interface](https://docs.flybywiresim.com/pilots-corner/a32nx-briefing/mcdu/interface/)',
-                '- [DIR TO page](https://docs.flybywiresim.com/pilots-corner/a32nx-briefing/mcdu/dir/)',
-                '- [PROG page](https://docs.flybywiresim.com/pilots-corner/a32nx-briefing/mcdu/prog/)',
-                '- [PERF page](https://docs.flybywiresim.com/pilots-corner/a32nx-briefing/mcdu/perf/)',
-                '- [INIT page](https://docs.flybywiresim.com/pilots-corner/a32nx-briefing/mcdu/init/)',
-                '- [DATA page](https://docs.flybywiresim.com/pilots-corner/a32nx-briefing/mcdu/data/)',
-                '- [F-PLN page](https://docs.flybywiresim.com/pilots-corner/a32nx-briefing/mcdu/f-pln/)',
-                '- [RAD NAV page](https://docs.flybywiresim.com/pilots-corner/a32nx-briefing/mcdu/rad-nav/)',
-                '- [FUEL PRED page](https://docs.flybywiresim.com/pilots-corner/a32nx-briefing/mcdu/fuel-pred/)',
-                '- [SEC F-PLN page](https://docs.flybywiresim.com/pilots-corner/a32nx-briefing/mcdu/sec-f-plan/)',
-                '- [ATC COMM page](https://docs.flybywiresim.com/pilots-corner/a32nx-briefing/mcdu/atc-comm/)',
-                '- [MCDU MENU page](https://docs.flybywiresim.com/pilots-corner/a32nx-briefing/mcdu/mcdu-menu/)',
-                '- [MCDU Messages](https://docs.flybywiresim.com/pilots-corner/a32nx-briefing/mcdu/messages/)',
+                `- [Overview](${MCDU_BASE_URL})`,
+                `- [MCDU Interface](${MCDU_BASE_URL}/interface/)`,
+                `- [DIR TO page](${MCDU_BASE_URL}/dir/)`,
+                `- [PROG page](${MCDU_BASE_URL}/prog/)`,
+                `- [PERF page](${MCDU_BASE_URL}/perf/)`,
+                `- [INIT page](${MCDU_BASE_URL}/init/)`,
+                `- [DATA page](${MCDU_BASE_URL}/data/)`,
+                `- [F-PLN page](${MCDU_BASE_URL}/f-pln/)`,
+                `- [RAD NAV page](${MCDU_BASE_URL}/rad-nav/)`,
+                `- [FUEL PRED page](${MCDU_BASE_URL}/fuel-pred/)`,
+                `- [SEC F-PLN page](${MCDU_BASE_URL}/sec-f-plan/)`,
+                `- [ATC COMM page](${MCDU_BASE_URL}/atc-comm/)`,
+                `- [MCDU MENU page](${MCDU_BASE_URL}/mcdu-menu/)`,
+                `- [MCDU Messages](${MCDU_BASE_URL}/messages/)`,
             ]),
         });
 
