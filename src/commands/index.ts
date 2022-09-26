@@ -88,7 +88,7 @@ import { assistance } from './a32nx/assistance';
 import { ctd } from './support/ctd';
 import { hud } from './support/hud';
 import { fms } from './memes/fms';
-import { mcdu } from './a32nx/mcdu';
+import { remoteMcdu } from './a32nx/remoteMcdu';
 import { takeoffPerf } from './a32nx/takeoffPerf';
 import { manualleg } from './support/manualleg';
 import { oim } from './memes/oim';
@@ -147,6 +147,7 @@ import { dfd } from './general/dfd';
 import { direct } from './a32nx/direct';
 import { autoland } from './a32nx/autoland';
 import { holds } from './a32nx/holds';
+import { mcdu } from './a32nx/mcdu';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -237,7 +238,7 @@ const commands: CommandDefinition[] = [
     ctd,
     hud,
     fms,
-    mcdu,
+    remoteMcdu,
     takeoffPerf,
     manualleg,
     oim,
@@ -296,6 +297,7 @@ const commands: CommandDefinition[] = [
     direct,
     autoland,
     holds,
+    mcdu,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};

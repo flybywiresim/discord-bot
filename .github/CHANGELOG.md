@@ -2,6 +2,8 @@
 
 Update <small>_ September 2022</small>
 
+- feat: mcdu command for the detailed MCDU documentation (26/09/2022)
+- refactor: mcdu alias removed from remotemcdu command (26/09/2022)
 - feat: holds command for Holds documentation (26/09/2022)
 - feat: autoland command for Autoland documentation (26/09/2022)
 - feat: direct command for Direct documentation (26/09/2022)
