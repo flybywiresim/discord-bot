@@ -27,6 +27,7 @@
 | .freetext                | Provides a link to the FlyByWire free text feature guide                                          | .ft                                                    |
 | .fma                     | Provides a link to the FMA docs guide                                                             | ---                                                    |
 | .github                  | provides the link to the A32NX GitHub Repository                                                  | .repo <br> .repository                                 |
+| .holds                   | Provides a link to the Holds documentation                                                        | .hold <br> .holding                                    |
 | .liveries                | Provides a link to the flightsim.to A32NX liveries page                                           | .liv                                                   |
 | .preflight               | Provides a link to the a32nx preflight guide                                                      | ---                                                    |
 | .printer                 | Provides a link to the FlyByWire printer tutorial video                                           | ---                                                    |
