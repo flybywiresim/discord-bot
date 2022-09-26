@@ -3,7 +3,7 @@ import { CommandCategory } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 
 export const remoteMcdu: CommandDefinition = {
-    name: ['remotemcdu', 'remote'],
+    name: 'remotemcdu',
     description: 'Provides a link to the FlyByWire remote MCDU feature guide',
     category: CommandCategory.A32NX,
     executor: (msg) => {
