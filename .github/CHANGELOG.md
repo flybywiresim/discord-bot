@@ -2,7 +2,9 @@
 
 Update <small>_ September 2022</small>
 
-- feat: direct command for Direct documentation (18/09/2022)
+- feat: direct command for Direct documentation (26/09/2022)
+- fix: Changed image for assistance command (19/09/2022)
+- feat: add .dfd command (19/09/2022)
 - feat: executor added to the msgDelete log (07/09/2022)
 - feat: adds ban dm, refine ban command and handler (06/09/2022)
 - feat: expand vatsim stats with search and separate observers in its own category (05/09/2022)
