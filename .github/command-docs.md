@@ -17,6 +17,7 @@
 | .checklist               | Displays the checklist                                                                            | ---                                                    |
 | .cpdlc                   | Provide info and docs link for Hoppie ACARS                                                       | .pdc <br> .hoppie <br> .acars                          |
 | .ctrle                   | Displays help regarding CTRL+E engine start                                                       | .ctrl+e <br> .ctrl-e <br> .enginestart                 |
+| .direct                  | Provides a link to the Direct documentation (also referred to as DIR TO)                          | .dirto <br> .directto                                  |
 | .efb                     | Inquire about the state of the EFB                                                                | ---                                                    |
 | .experimental            | Explains the current state of the experimental build                                              | .exp                                                   |
 | .fixinfo                 | Provide information about the fix info feature                                                    | ---                                                    |
