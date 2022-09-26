@@ -10,6 +10,7 @@
 | .assistance              | Explains to the user why assistance options should be disabled                                    | .assi <br> .as                                         |
 | .atc                     | Provides a link to the cFMS special notes section.                                                | ---                                                    |
 | .audio                   | Provides support information about A32NX audio configuration                                      | ---                                                    |
+| .autoland                | Provides a link to the Autoland documentation                                                     | ---                                                    |
 | .autopilot               | Provides a link to the autopilot/fly-by-wire page within docs                                     | .ap                                                    |
 | .beginnerguide           | Provides a link to the Beginner Guide                                                             | .bg                                                    |
 | .briefing                | Provides a link to the A320neo Pilot Briefing                                                     | .flightdeck <br> .pfd                                  |

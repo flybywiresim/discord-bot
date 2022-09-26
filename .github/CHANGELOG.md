@@ -2,6 +2,7 @@
 
 Update <small>_ September 2022</small>
 
+- feat: autoland command for Autoland documentation (26/09/2022)
 - feat: direct command for Direct documentation (26/09/2022)
 - fix: Changed image for assistance command (19/09/2022)
 - feat: add .dfd command (19/09/2022)
