@@ -295,7 +295,7 @@ const commands: CommandDefinition[] = [
     dfd,
     direct,
     autoland,
-    holds,    
+    holds,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
