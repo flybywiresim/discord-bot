@@ -9,7 +9,7 @@ export const autoland: CommandDefinition = {
     executor: (msg) => {
         const autolandEmbed = makeEmbed({
             title: 'FlyByWire A32NX | Autoland documentation',
-            description: 'Please see our [Autoland documentation](https://docs.flybywiresim.com/pilots-corner/advanced-guides/flight-guidance/autoland/) for information on the Autoland feature on the FlyByWire A32NX.',
+            description: 'Please see our [Autoland documentation](https://docs.flybywiresim.com/pilots-corner/advanced-guides/flight-guidance/autoland/) for information about the Autoland feature on the FlyByWire A32NX.',
         });
 
         return msg.channel.send({ embeds: [autolandEmbed] });
