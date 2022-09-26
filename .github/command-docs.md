@@ -10,6 +10,7 @@
 | .assistance              | Explains to the user why assistance options should be disabled                                    | .assi <br> .as                                         |
 | .atc                     | Provides a link to the cFMS special notes section.                                                | ---                                                    |
 | .audio                   | Provides support information about A32NX audio configuration                                      | ---                                                    |
+| .autoland                | Provides a link to the Autoland documentation                                                     | ---                                                    |
 | .autopilot               | Provides a link to the autopilot/fly-by-wire page within docs                                     | .ap                                                    |
 | .beginnerguide           | Provides a link to the Beginner Guide                                                             | .bg                                                    |
 | .briefing                | Provides a link to the A320neo Pilot Briefing                                                     | .flightdeck <br> .pfd                                  |
@@ -17,6 +18,7 @@
 | .checklist               | Displays the checklist                                                                            | ---                                                    |
 | .cpdlc                   | Provide info and docs link for Hoppie ACARS                                                       | .pdc <br> .hoppie <br> .acars                          |
 | .ctrle                   | Displays help regarding CTRL+E engine start                                                       | .ctrl+e <br> .ctrl-e <br> .enginestart                 |
+| .direct                  | Provides a link to the Direct documentation (also referred to as DIR TO)                          | .dirto <br> .directto                                  |
 | .efb                     | Inquire about the state of the EFB                                                                | ---                                                    |
 | .experimental            | Explains the current state of the experimental build                                              | .exp                                                   |
 | .fixinfo                 | Provide information about the fix info feature                                                    | ---                                                    |
@@ -25,6 +27,7 @@
 | .freetext                | Provides a link to the FlyByWire free text feature guide                                          | .ft                                                    |
 | .fma                     | Provides a link to the FMA docs guide                                                             | ---                                                    |
 | .github                  | provides the link to the A32NX GitHub Repository                                                  | .repo <br> .repository                                 |
+| .holds                   | Provides a link to the Holds documentation                                                        | .hold <br> .holding                                    |
 | .liveries                | Provides a link to the flightsim.to A32NX liveries page                                           | .liv                                                   |
 | .mcdu                    | Provides a set of links to the detailed MCDU documentation                                        | .mcdudoc                                               |
 | .preflight               | Provides a link to the a32nx preflight guide                                                      | ---                                                    |
