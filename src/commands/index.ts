@@ -143,6 +143,8 @@ import { verticalGuidanceSymbols } from './a32nx/verticalGuidanceSymbols';
 import { verticalSpeedPriority } from './a32nx/verticalSpeedPriority';
 import { flyPadOS } from './a32nx/flyPadOS';
 import { simulationRate } from './support/simulationRate';
+import { dfd } from './general/dfd';
+import { direct } from './a32nx/direct';
 import { autoland } from './a32nx/autoland';
 
 const commands: CommandDefinition[] = [
@@ -289,6 +291,8 @@ const commands: CommandDefinition[] = [
     verticalSpeedPriority,
     flyPadOS,
     simulationRate,
+    dfd,
+    direct,
     autoland,
 ];
 

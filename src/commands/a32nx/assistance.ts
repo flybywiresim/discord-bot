@@ -10,11 +10,11 @@ export const assistance: CommandDefinition = {
         const assistanceEmbed = makeEmbed({
             title: 'FlyByWire A32NX | Assistance Options',
             description: makeLines([
-                'The A32NX is not compatible with the Microsoft Flight Simulator assistance feature "Auto-Rudder".** It is required to deactivate this feature in MSFS.**',
+                'The A32NX is not compatible with the Microsoft Flight Simulator assistance feature "Auto-Rudder". **It is required to deactivate this feature in MSFS.**',
                 '',
                 'We recommend turning off all assistance features in MSFS as they interfere with the A32NX systems.',
             ]),
-            image: { url: 'https://docs.flybywiresim.com/fbw-a32nx/assets/nw-tiller/assistance-options.png' },
+            image: { url: 'https://docs.flybywiresim.com/fbw-a32nx/assets/settings/assistance-options.png' },
         });
 
         return msg.channel.send({ embeds: [assistanceEmbed] });

@@ -18,6 +18,7 @@
 | .checklist               | Displays the checklist                                                                            | ---                                                    |
 | .cpdlc                   | Provide info and docs link for Hoppie ACARS                                                       | .pdc <br> .hoppie <br> .acars                          |
 | .ctrle                   | Displays help regarding CTRL+E engine start                                                       | .ctrl+e <br> .ctrl-e <br> .enginestart                 |
+| .direct                  | Provides a link to the Direct documentation (also referred to as DIR TO)                          | .dirto <br> .directto                                  |
 | .efb                     | Inquire about the state of the EFB                                                                | ---                                                    |
 | .experimental            | Explains the current state of the experimental build                                              | .exp                                                   |
 | .fixinfo                 | Provide information about the fix info feature                                                    | ---                                                    |
@@ -85,6 +86,7 @@
 
 | Command           | Description                                                                                                             | Alias                               |
 |:------------------|:------------------------------------------------------------------------------------------------------------------------|:------------------------------------|
+| .dfd              | Provides link to Digital Flight Dynamics discord server                                                                 | ---                                 |
 | .docsearch        | Provides a link to the FlyByWire documentation, either a general link, or a link for a specific search                  | .documentation <br> .docs <br> .doc |
 | .donate           | Provides a link to the open collective                                                                                  | ---                                 |
 | .goldenrules      | Provides an image describing the golden rules an Airbus pilot should follow                                             | .golden <br> .gr                    |
