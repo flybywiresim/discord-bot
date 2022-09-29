@@ -2,6 +2,7 @@
 
 Update <small>_ September 2022</small>
 
+- feat: add fsltl discord server command (29/9/2022)
 - feat: mcdu command for the detailed MCDU documentation (26/09/2022)
 - refactor: mcdu alias removed from remotemcdu command (26/09/2022)
 - feat: holds command for Holds documentation (26/09/2022)
