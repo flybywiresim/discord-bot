@@ -68,6 +68,7 @@
 | .discontinuity  | Link to docs about discontinuities                                                | .disco                                             |
 | .dlss           | Explanation of the DLSS option in the MSFS graphics settings.                     |                                                    |
 | .fdr            | Information on how to provide fdr files                                           | ---                                                |
+| .flypadabout    | Help to identify the flyPadOS and aircraft version for support                    | .flypadversion <br> .efbabout <br> .efbversion     |
 | .hud            | How to disable in-game HUD                                                        | .logs                                              |
 | .installerlogs  | Provides an explanation on how to receive installer error logs for support        | ---                                                |
 | .manualleg      | Displays image and links to docs about manual waypoints                           | .vm                                                |
