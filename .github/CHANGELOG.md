@@ -1,8 +1,11 @@
 ## Changelog
 
+Update <small>_ October 2022</small>
+
+- feat: add flypadabout command for flyPadOS and aircraft version (03/10/2022)
+
 Update <small>_ September 2022</small>
 
-- feat: add flypadabout command for flyPadOS and aircraft version (02/10/2022)
 - feat: add fsltl discord server command (29/9/2022)
 - feat: mcdu command for the detailed MCDU documentation (26/09/2022)
 - refactor: mcdu alias removed from remotemcdu command (26/09/2022)
