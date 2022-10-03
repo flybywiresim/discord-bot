@@ -149,6 +149,7 @@ import { autoland } from './a32nx/autoland';
 import { holds } from './a32nx/holds';
 import { mcdu } from './a32nx/mcdu';
 import { fsltl } from './general/fsltl';
+import { flyPadAbout } from './support/flyPadAbout';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -300,6 +301,7 @@ const commands: CommandDefinition[] = [
     holds,
     mcdu,
     fsltl,
+    flyPadAbout,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};

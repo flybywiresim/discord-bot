@@ -1,5 +1,9 @@
 ## Changelog
 
+Update <small>_ October 2022</small>
+
+- feat: add flypadabout command for flyPadOS and aircraft version (03/10/2022)
+
 Update <small>_ September 2022</small>
 
 - feat: add fsltl discord server command (29/9/2022)
