@@ -4,6 +4,11 @@ import { CommandDefinition } from '../../lib/command';
 import { Channels, CommandCategory } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
 
+const moderatableFailEmbed = makeEmbed({
+    color: Colors.Red,
+    description: 'You can\'t ban a moderator!',
+});
+
 const modLogEmbed = (formattedDate, moderator: User, user: User, reason: string) => makeEmbed({
     color: Colors.Red,
     author: {
@@ -71,7 +76,7 @@ const failedBanEmbed = (user: User, error: any) => makeEmbed({
         {
             inline: false,
             name: 'Error',
-            value: error || 'No error provided',
+            value: error.toString() || 'No error provided',
         },
     ],
 });
@@ -129,6 +134,10 @@ export const ban: CommandDefinition = {
         const currentDate = new Date();
         const formattedDate: string = moment(currentDate).utcOffset(0).format('DD, MM, YYYY, HH:mm:ss');
         const modLogsChannel = msg.guild.channels.resolve(Channels.MOD_LOGS) as TextChannel | null;
+
+        if (!targetUser.moderatable) {
+            return msg.channel.send({ embeds: [moderatableFailEmbed] });
+        }
         try {
             await targetUser.send({ embeds: [dmEmbed(formattedDate, moderator, reason)] });
         } catch {
