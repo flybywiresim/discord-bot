@@ -1,6 +1,6 @@
-import { Colors, EmbedField } from 'discord.js';
+import { Colors, EmbedField, TextChannel } from 'discord.js';
 import { CommandDefinition } from '../../lib/command';
-import { CommandCategory, Colors as FBWColors } from '../../constants';
+import { CommandCategory, Colors as FBWColors, Channels } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
 import { getConn } from '../../lib/db';
 import TemporaryCommand from '../../lib/schemas/temporaryCommandSchema';
@@ -65,6 +65,12 @@ const notFoundEmbed = (action: string, command: string) => makeEmbed({
     color: Colors.Red,
 });
 
+const failedEmbed = (action: string, command: string) => makeEmbed({
+    title: `Temporary Command - ${action} failed`,
+    description: `Failed to ${action} the temporary command "${command}", change not saved to mongoDB.`,
+    color: Colors.Red,
+});
+
 const temporaryCommandListEmbedField = (command: string, severity: string, title: string): EmbedField[] => [
     {
         inline: true,
@@ -88,6 +94,7 @@ export const temporarycommand: CommandDefinition = {
     description: 'Runs a temporary command.',
     category: CommandCategory.GENERAL,
     executor: async (msg) => {
+        const modLogsChannel = msg.guild.channels.resolve(Channels.MOD_LOGS) as TextChannel | null;
         const conn = await getConn();
         if (!conn) {
             await msg.channel.send({ embeds: [noConnEmbed] });
@@ -134,7 +141,9 @@ export const temporarycommand: CommandDefinition = {
             }
 
             let color = FBWColors.FBW_CYAN;
-            switch (temporaryCommands[0].severity) {
+            const [temporaryCommand] = temporaryCommands;
+            const { title, content, severity, imageUrl } = temporaryCommand;
+            switch (severity) {
             case 'warning':
                 color = Colors.Yellow;
                 break;
@@ -145,12 +154,21 @@ export const temporarycommand: CommandDefinition = {
                 break;
             }
             const runTemporaryCommand = makeEmbed({
-                title: temporaryCommands[0].title,
-                description: temporaryCommands[0].content,
+                title,
+                description: content,
                 color,
+                image: imageUrl ? { url: imageUrl } : null,
             });
 
             await msg.channel.send({ embeds: [runTemporaryCommand] });
+
+            temporaryCommand.lastUsed = new Date();
+            try {
+                temporaryCommand.save();
+            } catch {
+                await modLogsChannel.send({ embeds: [failedEmbed('Update last used', command)] });
+            }
+
             return;
         }
 
