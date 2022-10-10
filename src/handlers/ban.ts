@@ -100,7 +100,7 @@ module.exports = {
         }
 
         const { executor, reason, target } = banLog;
-        if (executor && ModLogsExclude.indexOf(executor.id)) {
+        if (executor && ModLogsExclude.indexOf(executor.id) > -1) {
             // Ignore executor
             return;
         }
