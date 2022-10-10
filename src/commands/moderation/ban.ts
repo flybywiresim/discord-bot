@@ -143,13 +143,14 @@ export const ban: CommandDefinition = {
         } catch {
             await modLogsChannel.send({ content: moderator.toString(), embeds: [noDM(targetUser.user)] });
         }
-        return msg.guild.members.ban(idArg).then((user) => {
+        try {
+            const user = await msg.guild.members.ban(idArg);
             if (modLogsChannel && typeof user !== 'string') {
-                modLogsChannel.send({ embeds: [modLogEmbed(formattedDate, moderator, targetUser.user, reason)] });
+                await modLogsChannel.send({ embeds: [modLogEmbed(formattedDate, moderator, targetUser.user, reason)] });
             }
-            msg.channel.send({ embeds: [successfulBanEmbed(targetUser.user, reason)] });
-        }).catch(async (error) => {
-            msg.channel.send({ embeds: [failedBanEmbed(targetUser.user, error)] });
-        });
+            return msg.channel.send({ embeds: [successfulBanEmbed(targetUser.user, reason)] });
+        } catch (error) {
+            return msg.channel.send({ embeds: [failedBanEmbed(targetUser.user, error)] });
+        }
     },
 };
