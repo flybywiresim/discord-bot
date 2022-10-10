@@ -2,6 +2,7 @@
 
 Update <small>_ October 2022</small>
 
+- feat: Add image and last used functionality to temporary commands (18/10/2022)
 - fix: metar use of proper unit for wind speed (17/10/2022)
 - refactor: nut meme randomizer cause there's more than one meme (17/10/2022)
 - refactor: Improve DLSS data to highlight blurry displays (17/10/2022)
