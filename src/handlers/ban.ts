@@ -1,6 +1,10 @@
 import { AuditLogEvent, bold, Colors, TextChannel, User } from 'discord.js';
 import { Channels, ModLogsExclude } from '../constants';
 import { makeEmbed, makeLines } from '../lib/embed';
+import Logger from '../lib/logger';
+
+const MAX_RETRIES = 5;
+const SLEEP_TIMER = 0.5 * 1000;
 
 const noLogEmbed = (user: User, guildName: string) => makeEmbed({
     color: Colors.Red,
@@ -76,41 +80,52 @@ const userBannedIncompleteEmbed = (user: User) => makeEmbed({
 
 module.exports = {
     event: 'guildBanAdd',
-    executor: async (msg) => {
-        if (msg.guild === null) {
+    executor: async (guildBanAdd) => {
+        Logger.debug('Starting Ban Handler');
+        if (guildBanAdd.guild === null) {
             // DMs
             return;
         }
 
-        const modLogsChannel = msg.guild.channels.resolve(Channels.MOD_LOGS) as TextChannel | null;
+        const modLogsChannel = await guildBanAdd.guild.channels.resolve(Channels.MOD_LOGS) as TextChannel | null;
         if (!modLogsChannel) {
             // Exit as can't post
             return;
         }
 
-        const fetchedLogs = await msg.guild.fetchAuditLogs({
-            limit: 1,
-            type: AuditLogEvent.MemberBanAdd,
-        });
+        let executor;
+        let reason;
+        let target;
+        let retryCount = MAX_RETRIES;
+        do {
+            Logger.debug(`Ban Handler - Finding Audit Log entry retries left: ${retryCount}`);
+            if (retryCount < MAX_RETRIES) {
+                // eslint-disable-next-line no-await-in-loop
+                await new Promise((f) => setTimeout(f, SLEEP_TIMER));
+            }
+            // eslint-disable-next-line no-await-in-loop
+            const fetchedLogs = await guildBanAdd.guild.fetchAuditLogs({
+                limit: 1,
+                type: AuditLogEvent.MemberBanAdd,
+            });
+            const banLog = fetchedLogs.entries.first();
+            if (banLog) {
+                ({ executor, reason, target } = banLog);
+            }
+            retryCount--;
+        }
+        while ((!target || target.id !== guildBanAdd.user.id) && retryCount > 0);
 
-        const banLog = fetchedLogs.entries.first();
-        if (!banLog) {
-            await modLogsChannel.send({ embeds: [noLogEmbed(msg.user, msg.guild.name)] });
+        if (!target) {
+            await modLogsChannel.send({ embeds: [noLogEmbed(guildBanAdd.user, guildBanAdd.guild.name)] });
             return;
         }
-
-        const { executor, reason, target } = banLog;
-        if (target && target.id !== msg.user.id) {
-            // Not the correct AuditLog MemberBanAdd entry
-            // TODO: introduce retry loop with sleep and max number of retries
-            await modLogsChannel.send({ embeds: [userBannedIncompleteEmbed(msg.user)] });
+        if (target.id !== guildBanAdd.user.id) {
+            await modLogsChannel.send({ embeds: [userBannedIncompleteEmbed(guildBanAdd.user)] });
             return;
         }
-        if (executor && ModLogsExclude.indexOf(executor.id) > -1) {
-            // Ignore executor
-            return;
+        if (executor && ModLogsExclude.indexOf(executor.id) < 0) {
+            await modLogsChannel.send({ embeds: [userBannedEmbed(guildBanAdd.user, executor, reason)] });
         }
-
-        await modLogsChannel.send({ embeds: [userBannedEmbed(msg.user, executor, reason)] });
     },
 };
