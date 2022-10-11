@@ -100,14 +100,14 @@ module.exports = {
         }
 
         const { executor, reason, target } = banLog;
-        if (executor && ModLogsExclude.indexOf(executor.id) > -1) {
-            // Ignore executor
-            return;
-        }
         if (target && target.id !== msg.user.id) {
             // Not the correct AuditLog MemberBanAdd entry
             // TODO: introduce retry loop with sleep and max number of retries
             await modLogsChannel.send({ embeds: [userBannedIncompleteEmbed(msg.user)] });
+            return;
+        }
+        if (executor && ModLogsExclude.indexOf(executor.id) > -1) {
+            // Ignore executor
             return;
         }
 
