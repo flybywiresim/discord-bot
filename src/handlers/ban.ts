@@ -125,7 +125,7 @@ module.exports = {
             return;
         }
         if (executor && ModLogsExclude.indexOf(executor.id) < 0) {
-            await modLogsChannel.send({ embeds: [userBannedEmbed(guildBanAdd.user, executor, reason)] });
+            await modLogsChannel.send({ content: executor.toString(), embeds: [userBannedEmbed(guildBanAdd.user, executor, reason)] });
         }
     },
 };
