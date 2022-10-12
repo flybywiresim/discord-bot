@@ -2,6 +2,7 @@
 
 Update <small>_ October 2022</small>
 
+- refactor: ban and unban commands stability improvements and ban handler fixes for manual bans (18/10/2022)
 - fix: metar use of proper unit for wind speed (17/10/2022)
 - refactor: nut meme randomizer cause there's more than one meme (17/10/2022)
 - refactor: Improve DLSS data to highlight blurry displays (17/10/2022)
