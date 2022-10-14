@@ -20,6 +20,7 @@ const weightedRandom = (items, weights) => {
             return items[itemIndex];
         }
     }
+    return items[0];
 };
 
 export const nut: CommandDefinition = {
