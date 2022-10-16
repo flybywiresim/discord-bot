@@ -72,7 +72,7 @@ import { directx12 } from './support/directx12';
 import { cfms } from './a32nx/cfms';
 import { fdr } from './support/fdr';
 import { discontinuity } from './support/discontinuity';
-import { navdata } from './support/navdata';
+import { navigraphNavdata } from './support/navigraphNavdata';
 import { build } from './support/build';
 import { tug } from './support/tug';
 import { crak } from './memes/crak';
@@ -224,7 +224,7 @@ const commands: CommandDefinition[] = [
     cfms,
     fdr,
     discontinuity,
-    navdata,
+    navigraphNavdata,
     build,
     tug,
     crak,
