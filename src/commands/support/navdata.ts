@@ -18,7 +18,7 @@ export const navdata: CommandDefinition = {
                 '',
                 'More information can be found in our [Commonly Reported Issues](https://docs.flybywiresim.com/fbw-a32nx/support/reported-issues/?h=nav+data#nav-data-issues).',
                 '',
-                'Note: This is different from other addon planes using their own external database for navdata.',
+                'Note: This is different from some other addon planes using their own external database for navdata.',
             ]),
         });
 
