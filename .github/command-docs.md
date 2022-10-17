@@ -74,7 +74,7 @@
 | .manualleg      | Displays image and links to docs about manual waypoints                           | .vm                                                |
 | .market         | Help with removing the marketplace version                                        | .marketremove <br> .removemarket <br> .rm <br> .mr |
 | .msfs           | Provides links to MSFS support for sim issues                                     | .msfsforum                                         |
-| .navigraph      | Provides help with Navigraph navdata reinstall                                    | .navigraphnavdata                                                |
+| .navigraph      | Provides help with Navigraph navdata reinstall                                    | .navigraphnavdata                                  |
 | .reportedissues | Provides a link to the reported issues page within docs                           | .issues                                            |
 | .screenshot     | Help to screenshot for support                                                    | .cockpit <br> .ss                                  |
 | .simulationrate | Explanation of the limitation of the Simulation Rate based on frame rate          | .simrate                                           |
