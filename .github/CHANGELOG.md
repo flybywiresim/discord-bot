@@ -2,7 +2,8 @@
 
 Update <small>_ October 2022</small>
 
-- refactor: nut meme randomizer cause there's more than one meme (14/10/2022)
+- refactor: nut meme randomizer cause there's more than one meme (17/10/2022)
+- refactor: Improve DLSS data to highlight blurry displays (17/10/2022)
 - fix: crash when trying to ban a moderator (07/10/2022)
 - feat: add flypadabout command for flyPadOS and aircraft version (03/10/2022)
 
