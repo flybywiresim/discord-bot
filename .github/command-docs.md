@@ -74,6 +74,7 @@
 | .manualleg      | Displays image and links to docs about manual waypoints                           | .vm                                                |
 | .market         | Help with removing the marketplace version                                        | .marketremove <br> .removemarket <br> .rm <br> .mr |
 | .msfs           | Provides links to MSFS support for sim issues                                     | .msfsforum                                         |
+| .navdata        | Explains the use of navdata by the FlyByWire A32NX and how to check its accuracy  | ---                                                |
 | .navigraph      | Provides help with Navigraph navdata reinstall                                    | .navigraphnavdata                                  |
 | .reportedissues | Provides a link to the reported issues page within docs                           | .issues                                            |
 | .screenshot     | Help to screenshot for support                                                    | .cockpit <br> .ss                                  |

@@ -2,6 +2,7 @@
 
 Update <small>_ October 2022</small>
 
+- feat: add new navdata command explaining the use of navdata by the FBW A32NX (17/10/2022)
 - refactor: rename navdata to navigraph (17/10/2022)
 - fix: crash when trying to ban a moderator (07/10/2022)
 - feat: add flypadabout command for flyPadOS and aircraft version (03/10/2022)
