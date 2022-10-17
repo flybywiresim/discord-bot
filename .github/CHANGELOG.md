@@ -2,6 +2,7 @@
 
 Update <small>_ October 2022</small>
 
+- refactor: Improve DLSS data to highlight blurry displays (17/10/2022)
 - fix: crash when trying to ban a moderator (07/10/2022)
 - feat: add flypadabout command for flyPadOS and aircraft version (03/10/2022)
 
