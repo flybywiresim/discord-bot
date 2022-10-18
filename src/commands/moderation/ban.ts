@@ -84,7 +84,7 @@ const failedBanEmbed = (user: User, error: any) => makeEmbed({
 const unknownUserEmbed = (userId: string) => makeEmbed({
     title: 'Failed to Ban User - Unknown user',
     color: Colors.Red,
-    description: `Can not ban an unknown user ${userId}. They are not part of this server.`,
+    description: `Can not ban an unknown user ${userId}. Please verify the User ID and if it is correct, the user is not a member of the server.`,
 });
 
 const dmEmbed = (formattedDate, moderator: User, reason: string) => makeEmbed({
