@@ -352,9 +352,6 @@ export const temporarycommandedit: CommandDefinition = {
             const [temporaryCommand] = temporaryCommandSearchResult;
 
             temporaryCommand.imageUrl = imageUrl;
-            temporaryCommand.moderator = msg.author.toString();
-            temporaryCommand.date = new Date();
-
             try {
                 temporaryCommand.save();
             } catch {
