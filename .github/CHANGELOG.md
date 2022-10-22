@@ -2,6 +2,7 @@
 
 Update <small>_ October 2022</small>
 
+- feat: scam protection now uses timeout instead of a 'muted' role (22/10/2022)
 - fix: metar use of proper unit for wind speed (17/10/2022)
 - refactor: nut meme randomizer cause there's more than one meme (17/10/2022)
 - refactor: Improve DLSS data to highlight blurry displays (17/10/2022)
