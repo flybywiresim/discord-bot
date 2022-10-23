@@ -7,6 +7,8 @@ const temporaryCommandSchema = new Schema({
     date: Date,
     title: String,
     severity: String,
+    imageUrl: String,
+    lastUsed: Date,
 });
 
 const TemporaryCommand = mongoose.model('TemporaryCommand', temporaryCommandSchema);
