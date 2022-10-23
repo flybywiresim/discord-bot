@@ -2,7 +2,9 @@
 
 Update <small>_ October 2022</small>
 
-- feat: Add image and last used functionality to temporary commands (18/10/2022)
+- feat: Add image and last used functionality to temporary commands (23/10/2022)
+- feat: add new navdata command explaining the use of navdata by the FBW A32NX (23/10/2022)
+- refactor: rename navdata to navigraph (23/10/2022)
 - fix: metar use of proper unit for wind speed (17/10/2022)
 - refactor: nut meme randomizer cause there's more than one meme (17/10/2022)
 - refactor: Improve DLSS data to highlight blurry displays (17/10/2022)

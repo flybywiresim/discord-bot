@@ -72,7 +72,7 @@ import { directx12 } from './support/directx12';
 import { cfms } from './a32nx/cfms';
 import { fdr } from './support/fdr';
 import { discontinuity } from './support/discontinuity';
-import { navdata } from './support/navdata';
+import { navigraphNavdata } from './support/navigraphNavdata';
 import { build } from './support/build';
 import { tug } from './support/tug';
 import { crak } from './memes/crak';
@@ -150,6 +150,7 @@ import { holds } from './a32nx/holds';
 import { mcdu } from './a32nx/mcdu';
 import { fsltl } from './general/fsltl';
 import { flyPadAbout } from './support/flyPadAbout';
+import { navdata } from './support/navdata';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -224,7 +225,7 @@ const commands: CommandDefinition[] = [
     cfms,
     fdr,
     discontinuity,
-    navdata,
+    navigraphNavdata,
     build,
     tug,
     crak,
@@ -302,6 +303,7 @@ const commands: CommandDefinition[] = [
     mcdu,
     fsltl,
     flyPadAbout,
+    navdata,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
