@@ -81,6 +81,12 @@ const failedBanEmbed = (user: User, error: any) => makeEmbed({
     ],
 });
 
+const unknownUserEmbed = (userId: string) => makeEmbed({
+    title: 'Failed to Ban User - Unknown user',
+    color: Colors.Red,
+    description: `Can not ban an unknown user ${userId}. Please verify the User ID and if it is correct, the user is not a member of the server.`,
+});
+
 const dmEmbed = (formattedDate, moderator: User, reason: string) => makeEmbed({
     title: 'You have been banned from FlyByWire Simulations',
     fields: [
@@ -129,11 +135,16 @@ export const ban: CommandDefinition = {
         }
         const idArg = splitUp[0];
         const reason = splitUp.slice(1).join(' ');
-        const targetUser = await msg.guild.members.fetch(idArg);
+        let targetUser;
+        try {
+            targetUser = await msg.guild.members.fetch(idArg);
+        } catch {
+            return msg.channel.send({ embeds: [unknownUserEmbed(idArg)] });
+        }
         const moderator = msg.author;
         const currentDate = new Date();
         const formattedDate: string = moment(currentDate).utcOffset(0).format('DD, MM, YYYY, HH:mm:ss');
-        const modLogsChannel = msg.guild.channels.resolve(Channels.MOD_LOGS) as TextChannel | null;
+        const modLogsChannel = await msg.guild.channels.resolve(Channels.MOD_LOGS) as TextChannel | null;
 
         if (!targetUser.moderatable) {
             return msg.channel.send({ embeds: [moderatableFailEmbed] });
@@ -143,13 +154,14 @@ export const ban: CommandDefinition = {
         } catch {
             await modLogsChannel.send({ content: moderator.toString(), embeds: [noDM(targetUser.user)] });
         }
-        return msg.guild.members.ban(idArg).then((user) => {
+        try {
+            const user = await msg.guild.members.ban(idArg);
             if (modLogsChannel && typeof user !== 'string') {
-                modLogsChannel.send({ embeds: [modLogEmbed(formattedDate, moderator, targetUser.user, reason)] });
+                await modLogsChannel.send({ embeds: [modLogEmbed(formattedDate, moderator, targetUser.user, reason)] });
             }
-            msg.channel.send({ embeds: [successfulBanEmbed(targetUser.user, reason)] });
-        }).catch(async (error) => {
-            msg.channel.send({ embeds: [failedBanEmbed(targetUser.user, error)] });
-        });
+            return msg.channel.send({ embeds: [successfulBanEmbed(targetUser.user, reason)] });
+        } catch (error) {
+            return msg.channel.send({ embeds: [failedBanEmbed(targetUser.user, error)] });
+        }
     },
 };

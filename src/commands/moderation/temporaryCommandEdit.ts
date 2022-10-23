@@ -19,13 +19,26 @@ const helpEmbed = (evokedCommand: String) => makeEmbed({
             name: 'Adding a Temporary Command',
             value: makeLines([
                 'To create a temporary command, use the following bot command: ',
-                `\`${evokedCommand} add <command> <severity> <title> <content>\`.`,
+                `\`${evokedCommand} add <command> <severity> <title> <content>\``,
                 '`command`: The command to be created that can be executed by regular users.',
                 '`severity`: The type can be `info`, `warning`, or `error`. Depending on the severity, the command output will have an appropriate color: regular, yellow or red.',
                 '`title`: A double quote (`"`) encapsulated string used as the title of the bot message.',
                 '`content`: A double quote (`"`) encapsulated string used as the content of the bot message.',
                 'Example:',
                 `\`${evokedCommand} add good-news-everyone info "Good News Everyone!" "The Experimental version is the greatest in the world!"\``,
+                '\u200B',
+            ]),
+            inline: false,
+        },
+        {
+            name: 'Set an image to Temporary Command',
+            value: makeLines([
+                'To set an image to a temporary command, use the following bot command: ',
+                `\`${evokedCommand} image <command> <image url>\``,
+                '`command`: The command to set an image for.',
+                '`image url`: The URL to the image to set.',
+                'Example:',
+                `\`${evokedCommand} image good-news-everyone https://domain.tld/good-news.png\``,
                 '\u200B',
             ]),
             inline: false,
@@ -132,7 +145,9 @@ const notFoundEmbed = (action: string, command: string) => makeEmbed({
     color: Colors.Red,
 });
 
-const temporaryCommandSupportEmbedField = (command: string, severity: string, title: string, content: string): EmbedField[] => [
+const timestampText = (updatedTimestamp: Date) => moment(updatedTimestamp).utcOffset(0).format('YYYY-MM-DD HH:mm:ss');
+
+const temporaryCommandSupportEmbedField = (command: string, severity: string, title: string, content: string, imageUrl: string): EmbedField[] => [
     {
         inline: true,
         name: 'Command',
@@ -145,6 +160,11 @@ const temporaryCommandSupportEmbedField = (command: string, severity: string, ti
     },
     {
         inline: true,
+        name: 'Image',
+        value: imageUrl || 'Empty',
+    },
+    {
+        inline: false,
         name: 'Title',
         value: title,
     },
@@ -155,7 +175,7 @@ const temporaryCommandSupportEmbedField = (command: string, severity: string, ti
     },
 ];
 
-const temporaryCommandEmbedField = (date: string, moderator: string, command: string, severity: string, title: string, content: string): EmbedField[] => [
+const temporaryCommandEmbedField = (date: string, moderator: string, command: string, severity: string, title: string, content: string, imageUrl: string, actionModerator: string, lastUsed: string): EmbedField[] => [
     {
         inline: false,
         name: 'Command',
@@ -163,8 +183,13 @@ const temporaryCommandEmbedField = (date: string, moderator: string, command: st
     },
     {
         inline: true,
-        name: 'Moderator',
+        name: 'Created by',
         value: moderator,
+    },
+    {
+        inline: true,
+        name: 'Action by',
+        value: actionModerator,
     },
     {
         inline: true,
@@ -173,8 +198,18 @@ const temporaryCommandEmbedField = (date: string, moderator: string, command: st
     },
     {
         inline: true,
+        name: 'Last used',
+        value: lastUsed,
+    },
+    {
+        inline: true,
         name: 'Severity',
         value: severity,
+    },
+    {
+        inline: true,
+        name: 'Image',
+        value: imageUrl || 'Empty',
     },
     {
         inline: false,
@@ -193,57 +228,53 @@ export const temporarycommandedit: CommandDefinition = {
     description: 'Creates a temporary command for temporary use.',
     category: CommandCategory.MODERATION,
     executor: async (msg) => {
+        const subCommands = ['add', 'image', 'delete', 'info'];
         const conn = await getConn();
         if (!conn) {
-            await msg.channel.send({ embeds: [noConnEmbed] });
-            return;
+            return msg.channel.send({ embeds: [noConnEmbed] });
         }
 
         const modLogsChannel = msg.guild.channels.resolve(Channels.MOD_LOGS) as TextChannel | null;
         const supportOpsChannel = msg.guild.channels.resolve(Channels.SUPPORT_OPS) as TextChannel | null;
         const hasPermittedRole = msg.member.roles.cache.some((role) => permittedRoles.map((r) => r.toString()).includes(role.id));
         const evokedCommand = msg.content.split(/\s+/)[0];
-        const args = msg.content.split(/\s+/).slice(1);
+        const args = msg.content.replace(evokedCommand, '').trim();
         if (!hasPermittedRole) {
-            await msg.channel.send({ embeds: [noPermEmbed] });
-            return;
+            return msg.channel.send({ embeds: [noPermEmbed] });
         }
         if ((args.length < 1 && parseInt(args[1]) !== 0) || args[0] === 'help') {
-            await msg.channel.send({ embeds: [helpEmbed(evokedCommand)] });
-            return;
+            return msg.channel.send({ embeds: [helpEmbed(evokedCommand)] });
         }
 
-        let subCommand = args[0].toLowerCase();
-        let subArgs = args.slice(1).join(' ');
-        if (subCommand !== 'add' && subCommand !== 'delete' && subCommand !== 'info') {
+        let [subCommand] = args.split(/\s+/);
+        let subArgs = args.replace(subCommand, '').trim();
+        if (!subCommands.includes(subCommand)) {
             subCommand = 'info';
-            [subArgs] = args;
+            subArgs = args;
         }
+
         if (subCommand === 'add') {
             const regexCheck = /^["]?\.?(?<command>[\w-]+)["]?\s["]?(?<severity>info|warning|error)["]?\s"(?<title>[^"]*|^[^"]*$)"\s"(?<content>[^"]*|^[^"]*$)"\s*$/;
             const regexMatches = subArgs.match(regexCheck);
             if (regexMatches === null || !regexMatches.groups.command || !regexMatches.groups.severity) {
-                await msg.channel.send({ embeds: [missingInfoEmbed('Add', `You need to provide the expected format to create a temporary command. Check \`${evokedCommand} help\` for more details.`)] });
-                return;
+                return msg.channel.send({ embeds: [missingInfoEmbed('Add', `You need to provide the expected format to create a temporary command. Check \`${evokedCommand} help\` for more details.`)] });
             }
             if (regexMatches.groups.title === '') {
-                await msg.channel.send({ embeds: [missingInfoEmbed('Add', `You need to provide a non-empty title to create a temporary command. Check \`${evokedCommand} help\` for more details.`)] });
-                return;
+                return msg.channel.send({ embeds: [missingInfoEmbed('Add', `You need to provide a non-empty title to create a temporary command. Check \`${evokedCommand} help\` for more details.`)] });
             }
             if (regexMatches.groups.content === '') {
-                await msg.channel.send({ embeds: [missingInfoEmbed('Add', `You need to provide a non-empty content to create a temporary command. Check \`${evokedCommand} help\` for more details.`)] });
-                return;
+                return msg.channel.send({ embeds: [missingInfoEmbed('Add', `You need to provide a non-empty content to create a temporary command. Check \`${evokedCommand} help\` for more details.`)] });
             }
             const { command, content, title, severity } = regexMatches.groups;
             const searchResult = await TemporaryCommand.find({ command });
 
             if (searchResult.length !== 0) {
-                await msg.channel.send({ embeds: [alreadyExistsEmbed('Add', command)] });
-                return;
+                return msg.channel.send({ embeds: [alreadyExistsEmbed('Add', command)] });
             }
 
             const moderator = msg.author;
-            const date = moment(new Date()).utcOffset(0).format('YYYY-MM-DD HH:mm:ss');
+            const date = new Date();
+            const lastUsed = new Date();
             const temporaryCommand = new TemporaryCommand({
                 command,
                 moderator,
@@ -251,52 +282,159 @@ export const temporarycommandedit: CommandDefinition = {
                 date,
                 title,
                 severity,
+                lastUsed,
             });
 
             try {
                 await temporaryCommand.save();
             } catch {
-                await msg.channel.send({ embeds: [failedEmbed('Add', command)] });
-                return;
+                return msg.channel.send({ embeds: [failedEmbed('Add', command)] });
             }
 
+            const { imageUrl } = temporaryCommand;
             try {
-                await modLogsChannel.send({ embeds: [channelEmbed('Add', command, temporaryCommandEmbedField(date, moderator.toString(), command, severity, title, content), Colors.Green)] });
+                await modLogsChannel.send({
+                    embeds: [channelEmbed(
+                        'Add',
+                        command,
+                        temporaryCommandEmbedField(
+                            timestampText(date),
+                            moderator.toString(),
+                            command,
+                            severity,
+                            title,
+                            content,
+                            imageUrl,
+                            moderator.toString(),
+                            timestampText(lastUsed),
+                        ),
+                        Colors.Green,
+                    )],
+                });
             } catch {
                 await msg.channel.send({ embeds: [noChannelEmbed('Add', 'Mod Log')] });
             }
 
             try {
-                await supportOpsChannel.send({ embeds: [channelEmbed('Add', command, temporaryCommandSupportEmbedField(command, severity, title, content), Colors.Green)] });
+                await supportOpsChannel.send({
+                    embeds: [channelEmbed(
+                        'Add',
+                        command,
+                        temporaryCommandSupportEmbedField(
+                            command,
+                            severity,
+                            title,
+                            content,
+                            imageUrl,
+                        ),
+                        Colors.Green,
+                    )],
+                });
             } catch {
                 await msg.channel.send({ embeds: [noChannelEmbed('Add', 'Support')] });
             }
 
-            await msg.channel.send({ embeds: [successEmbed('Add', command)] });
-            return;
+            return msg.channel.send({ embeds: [successEmbed('Add', command)] });
+        }
+
+        if (subCommand === 'image') {
+            const regexCheck = /^["]?\.?(?<command>[\w-]+)["]?\s["]?(?<imageUrl>https?:\/\/[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*))["]?\s*$/;
+            const regexMatches = subArgs.match(regexCheck);
+            if (regexMatches === null || !regexMatches.groups.command || !regexMatches.groups.imageUrl) {
+                return msg.channel.send({ embeds: [missingInfoEmbed('Configure image URL', `You need to provide the expected format to set the image for a temporary command. Check \`${evokedCommand} help\` for more details.`)] });
+            }
+
+            const { command, imageUrl } = regexMatches.groups;
+            const temporaryCommandSearchResult = await TemporaryCommand.find({ command });
+            if (temporaryCommandSearchResult.length === 0) {
+                return msg.channel.send({ embeds: [notFoundEmbed('Configure image URL', command)] });
+            }
+            const [temporaryCommand] = temporaryCommandSearchResult;
+
+            temporaryCommand.imageUrl = imageUrl;
+            try {
+                temporaryCommand.save();
+            } catch {
+                return msg.channel.send({ embeds: [failedEmbed('Configure image URL', command)] });
+            }
+
+            const { date, moderator, severity, title, content, lastUsed } = temporaryCommand;
+            try {
+                await modLogsChannel.send({
+                    embeds: [channelEmbed(
+                        'Configure image URL',
+                        command,
+                        temporaryCommandEmbedField(
+                            timestampText(date),
+                            moderator.toString(),
+                            command,
+                            severity,
+                            title,
+                            content,
+                            imageUrl,
+                            moderator.toString(),
+                            timestampText(lastUsed),
+                        ),
+                        Colors.Green,
+                    )],
+                });
+            } catch {
+                await msg.channel.send({ embeds: [noChannelEmbed('Configure image URL', 'Mod Log')] });
+            }
+
+            try {
+                await supportOpsChannel.send({
+                    embeds: [channelEmbed(
+                        'Configure image URL',
+                        command,
+                        temporaryCommandSupportEmbedField(
+                            command,
+                            severity,
+                            title,
+                            content,
+                            imageUrl,
+                        ),
+                        Colors.Green,
+                    )],
+                });
+            } catch {
+                await msg.channel.send({ embeds: [noChannelEmbed('Configure image URL', 'Support')] });
+            }
+
+            return msg.channel.send({ embeds: [successEmbed('Configure image URL', command)] });
         }
 
         const regexCheck = /^["]?\.?(?<command>[\w-]+)?["]?.*$/;
         const regexMatches = subArgs.match(regexCheck);
         if (!regexMatches || !regexMatches.groups || !regexMatches.groups.command) {
             const subCommandText = subCommand === 'info' ? 'show the info of' : subCommand;
-            await msg.channel.send({ embeds: [missingInfoEmbed(subCommand, `You need to provide the expected format to ${subCommandText} a temporary command. Check \`${evokedCommand} help\` for more details.`)] });
-            return;
+            return msg.channel.send({ embeds: [missingInfoEmbed(subCommand, `You need to provide the expected format to ${subCommandText} a temporary command. Check \`${evokedCommand} help\` for more details.`)] });
         }
         const { command } = regexMatches.groups;
         if (subCommand === 'info') {
             const searchResult = await TemporaryCommand.find({ command });
 
             if (searchResult.length === 0) {
-                await msg.channel.send({ embeds: [notFoundEmbed('Info', command)] });
-                return;
+                return msg.channel.send({ embeds: [notFoundEmbed('Info', command)] });
             }
-
-            const { moderator, content, date, title, severity } = searchResult[0];
-            const dateString = moment(date).utcOffset(0).format('YYYY-MM-DD HH:mm:ss');
-
-            await msg.channel.send({ embeds: [infoEmbed(temporaryCommandEmbedField(dateString, moderator, command, severity, title, content), command)] });
-            return;
+            const { author } = msg;
+            const { moderator, content, date, title, severity, imageUrl, lastUsed } = searchResult[0];
+            return msg.channel.send({
+                embeds: [infoEmbed(
+                    temporaryCommandEmbedField(
+                        timestampText(date),
+                        moderator.toString(),
+                        command,
+                        severity,
+                        title,
+                        content,
+                        imageUrl,
+                        author.toString(),
+                        timestampText(lastUsed),
+                    ),
+                    command,
+                )],
+            });
         }
 
         if (subCommand === 'delete') {
@@ -304,36 +442,65 @@ export const temporarycommandedit: CommandDefinition = {
             try {
                 temporaryCommands = await TemporaryCommand.find({ command });
                 if (!temporaryCommands || temporaryCommands.length !== 1) {
-                    await msg.channel.send({ embeds: [notFoundEmbed('Delete', command)] });
-                    return;
+                    return msg.channel.send({ embeds: [notFoundEmbed('Delete', command)] });
                 }
             } catch {
-                await msg.channel.send({ embeds: [notFoundEmbed('Delete', command)] });
-                return;
+                return msg.channel.send({ embeds: [notFoundEmbed('Delete', command)] });
             }
 
             try {
                 temporaryCommands[0].delete();
             } catch {
-                await msg.channel.send({ embeds: [failedEmbed('Delete', command)] });
-                return;
+                return msg.channel.send({ embeds: [failedEmbed('Delete', command)] });
             }
 
-            const { moderator, content, date, title, severity } = temporaryCommands[0];
+            const { author } = msg;
+            const { moderator, content, date, title, severity, imageUrl, lastUsed } = temporaryCommands[0];
             try {
-                const dateString = moment(date).utcOffset(0).format('YYYY-MM-DD HH:mm:ss');
-                await modLogsChannel.send({ embeds: [channelEmbed('Delete', command, temporaryCommandEmbedField(dateString, moderator.toString(), command, severity, title, content), Colors.Red)] });
+                await modLogsChannel.send({
+                    embeds: [channelEmbed(
+                        'Delete',
+                        command,
+                        temporaryCommandEmbedField(
+                            timestampText(date),
+                            moderator.toString(),
+                            command,
+                            severity,
+                            title,
+                            content,
+                            imageUrl,
+                            author.toString(),
+                            timestampText(lastUsed),
+                        ),
+                        Colors.Red,
+                    )],
+                });
             } catch {
                 await msg.channel.send({ embeds: [noChannelEmbed('Delete', 'Mod Log')] });
             }
 
             try {
-                await supportOpsChannel.send({ embeds: [channelEmbed('Delete', command, temporaryCommandSupportEmbedField(command, severity, title, content), Colors.Red)] });
+                await supportOpsChannel.send({
+                    embeds: [channelEmbed(
+                        'Delete',
+                        command,
+                        temporaryCommandSupportEmbedField(
+                            command,
+                            severity,
+                            title,
+                            content,
+                            imageUrl,
+                        ),
+                        Colors.Red,
+                    )],
+                });
             } catch {
                 await msg.channel.send({ embeds: [noChannelEmbed('Delete', 'Support')] });
             }
 
-            await msg.channel.send({ embeds: [successEmbed('Delete', command)] });
+            return msg.channel.send({ embeds: [successEmbed('Delete', command)] });
         }
+
+        return msg.channel.send({ embeds: [helpEmbed(evokedCommand)] });
     },
 };
