@@ -2,6 +2,7 @@
 
 Update <small>_ October 2022</small>
 
+- refactor: ban and unban commands stability improvements and ban handler fixes for manual bans (23/10/2022)
 - feat: Add image and last used functionality to temporary commands (23/10/2022)
 - feat: add new navdata command explaining the use of navdata by the FBW A32NX (23/10/2022)
 - refactor: rename navdata to navigraph (23/10/2022)

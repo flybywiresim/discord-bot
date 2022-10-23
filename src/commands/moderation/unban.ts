@@ -1,4 +1,4 @@
-import { Colors, EmbedBuilder, EmbedField, Snowflake, User } from 'discord.js';
+import { Colors, EmbedBuilder, EmbedField, GuildMember, Snowflake, User } from 'discord.js';
 import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
@@ -18,14 +18,12 @@ export const unban: CommandDefinition = {
         }
 
         const idArg = splitUp[0];
-
-        return msg.guild.members.unban(idArg).then((user: User | Snowflake) => {
-            msg.channel.send({ embeds: [makeSuccessfulUnbanEmbed(user)] });
-        }).catch(async (error) => {
-            const guildMember = await msg.guild.members.fetch(idArg);
-
-            msg.channel.send({ embeds: [makeFailedUnbanEmbed(guildMember?.user ?? idArg, error)] });
-        });
+        try {
+            const user = await msg.guild.members.unban(idArg);
+            return msg.channel.send({ embeds: [makeSuccessfulUnbanEmbed(!(user instanceof GuildMember) ? user : idArg)] });
+        } catch {
+            return msg.channel.send({ embeds: [makeFailedUnbanEmbed(idArg, 'The user is either not banned, or an unknown user.')] });
+        }
     },
 };
 
