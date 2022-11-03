@@ -1,5 +1,9 @@
 ## Changelog
 
+Update <small>_ November 2022</small>
+
+- feat: Purge messages on ban (03/11/2022)
+
 Update <small>_ October 2022</small>
 
 - feat: scam protection now uses timeout instead of a 'muted' role (23/10/2022)
