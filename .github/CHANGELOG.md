@@ -2,6 +2,7 @@
 
 Update <small>_ November 2022</small>
 
+- fix: language on ATC command (03/11/2022)
 - refactor: update the ATC command for more clarity and more options (01/11/2022)
 
 Update <small>_ October 2022</small>
