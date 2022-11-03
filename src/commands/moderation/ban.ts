@@ -146,7 +146,7 @@ export const ban: CommandDefinition = {
             return Promise.resolve();
         }
         if (!(deleteDaysNumber >= 0 && deleteDaysNumber <= 7)) {
-            await msg.reply('<Days> needs to be between and including 0 and 7');
+            await msg.reply('<Days> needs to be between and including 0 and 7.');
             return Promise.resolve();
         }
         let targetUser;
