@@ -15,7 +15,7 @@ export const atc: CommandDefinition = {
             fields: [
                 {
                     name: 'Synchronizing the MCDU flight plan back to MSFS ATC',
-                    value: 'In this mode, you only select a departure airport and gate (or runway). You should not select a destination airport. Once the EFB setting for **Sync MSFS Flight Plan** is set to **Safe**, any flight plan entered, or loaded, into the MCDU F-PLN page, will be synced to the MSFS ATC service.',
+                    value: 'In this mode, you only select a departure airport and gate (or runway). You should not select a destination airport. Once the EFB setting for **Sync MSFS Flight Plan** is set to **Save**, any flight plan entered, or loaded, into the MCDU F-PLN page, will be synced to the MSFS ATC service.',
                     inline: false,
                 },
                 {
