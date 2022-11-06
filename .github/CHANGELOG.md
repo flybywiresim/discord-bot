@@ -2,7 +2,9 @@
 
 Update <small>_ November 2022</small>
 
-- feat: Purge messages on ban (03/11/2022)
+- feat: Purge messages on ban (06/11/2022)
+- refactor: update youtube account information (06/11/2022)
+- fix: language on ATC command (06/11/2022)
 - refactor: update the ATC command for more clarity and more options (01/11/2022)
 
 Update <small>_ October 2022</small>
