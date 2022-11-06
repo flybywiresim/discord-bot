@@ -9,7 +9,7 @@ const moderatableFailEmbed = makeEmbed({
     description: 'You can\'t ban a moderator!',
 });
 
-const modLogEmbed = (formattedDate, moderator: User, user: User, reason: string) => makeEmbed({
+const modLogEmbed = (formattedDate, moderator: User, user: User, reason: string, deleteDays: string) => makeEmbed({
     color: Colors.Red,
     author: {
         name: `[BANNED] ${user.tag}`,
@@ -27,6 +27,10 @@ const modLogEmbed = (formattedDate, moderator: User, user: User, reason: string)
         {
             name: 'Reason',
             value: reason,
+        },
+        {
+            name: 'Days of messages deleted',
+            value: deleteDays,
         },
         {
             inline: false,
@@ -129,12 +133,22 @@ export const ban: CommandDefinition = {
     category: CommandCategory.MODERATION,
     executor: async (msg) => {
         const splitUp = msg.content.replace(/\.ban\s+/, '').split(' ');
-        if (splitUp.length < 2) {
-            await msg.reply('you did not provide enough arguments for this command. (<id> <reason>)');
+        if (splitUp.length < 3) {
+            await msg.reply('You did not provide enough arguments for this command. (<id> <days> <reason>)');
             return Promise.resolve();
         }
         const idArg = splitUp[0];
-        const reason = splitUp.slice(1).join(' ');
+        const deleteDays = splitUp[1];
+        const reason = splitUp.slice(2).join(' ');
+        const deleteDaysNumber = Number(deleteDays);
+        if (Number.isNaN(deleteDaysNumber)) {
+            await msg.reply('You did not provide enough arguments for this command. (<id> <days> <reason>)');
+            return Promise.resolve();
+        }
+        if (!(deleteDaysNumber >= 0 && deleteDaysNumber <= 7)) {
+            await msg.reply('<Days> needs to be between and including 0 and 7.');
+            return Promise.resolve();
+        }
         let targetUser;
         try {
             targetUser = await msg.guild.members.fetch(idArg);
@@ -155,9 +169,9 @@ export const ban: CommandDefinition = {
             await modLogsChannel.send({ content: moderator.toString(), embeds: [noDM(targetUser.user)] });
         }
         try {
-            const user = await msg.guild.members.ban(idArg);
+            const user = await msg.guild.members.ban(idArg, { deleteMessageDays: deleteDaysNumber, reason });
             if (modLogsChannel && typeof user !== 'string') {
-                await modLogsChannel.send({ embeds: [modLogEmbed(formattedDate, moderator, targetUser.user, reason)] });
+                await modLogsChannel.send({ embeds: [modLogEmbed(formattedDate, moderator, targetUser.user, reason, deleteDays)] });
             }
             return msg.channel.send({ embeds: [successfulBanEmbed(targetUser.user, reason)] });
         } catch (error) {
