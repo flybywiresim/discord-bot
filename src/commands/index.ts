@@ -1,4 +1,4 @@
-import { CommandDefinition } from '../lib/command';
+import { BaseCommandDefinition } from '../lib/command';
 import Logger from '../lib/logger';
 import { ping } from './utils/ping';
 import { whois } from './moderation/whois';
@@ -153,8 +153,9 @@ import { flyPadAbout } from './support/flyPadAbout';
 import { navdata } from './support/navdata';
 import { winss } from './support/winss';
 import { simridgeLog } from './support/simbridgeLog';
+import { typeCommand } from './utils/typeCommand';
 
-const commands: CommandDefinition[] = [
+const commands: BaseCommandDefinition[] = [
     ping,
     whois,
     bruheg,
@@ -308,9 +309,10 @@ const commands: CommandDefinition[] = [
     navdata,
     winss,
     simridgeLog,
+    typeCommand,
 ];
 
-const commandsObject: { [k: string]: CommandDefinition } = {};
+const commandsObject: { [k: string]: BaseCommandDefinition } = {};
 
 for (const def of commands) {
     for (const name of (typeof def.name === 'string' ? [def.name] : def.name)) {

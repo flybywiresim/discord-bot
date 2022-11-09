@@ -65,3 +65,10 @@ export enum Units {
     CELSIUS = '\u2103',
     KNOTS = 'kts',
 }
+
+export const AircraftTypeList = {
+    a32nx: '2️⃣',
+    a380x: '8️⃣',
+};
+
+export const AircraftDefaultType = 'GENERIC';
