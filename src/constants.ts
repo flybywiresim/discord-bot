@@ -71,4 +71,4 @@ export const AircraftTypeList = {
     a380x: '8️⃣',
 };
 
-export const AircraftDefaultType = 'GENERIC';
+export const EnableMultipleAircraftTypes = false;
