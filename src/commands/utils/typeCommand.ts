@@ -6,7 +6,7 @@ import Logger from '../../lib/logger';
 import { makeEmbed, makeLines } from '../../lib/embed';
 
 const REACTION_WAIT_TIME = 60000;
-const enableMultipleAircraftTypes = false;
+const enableMultipleAircraftTypes = true;
 const defaultDisabledAircraftType = 'a32nx';
 const supportedAircraftTypes = Object.keys(AircraftTypeList);
 
@@ -50,7 +50,7 @@ export const typeCommand: CommandDefinition = {
             return;
         }
         const { genericEmbed, typeEmbeds } = (command as MessageCommandDefinition);
-        if (!enableMultipleAircraftTypes || !typeEmbeds) {
+        if (!enableMultipleAircraftTypes || !typeEmbeds || Object.keys(typeEmbeds).length === 0) {
             if (subCommand === evokedCommand) {
                 const postEmbed = typeEmbeds && Object.keys(typeEmbeds).includes(defaultDisabledAircraftType) ? typeEmbeds[defaultDisabledAircraftType] : genericEmbed;
                 await msg.channel.send({ embeds: [postEmbed] });
