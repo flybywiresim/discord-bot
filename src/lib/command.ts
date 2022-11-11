@@ -12,7 +12,10 @@ export interface CommandDefinition extends BaseCommandDefinition {
 }
 export interface MessageCommandDefinition extends BaseCommandDefinition {
     genericEmbed: EmbedBuilder,
-    typeEmbeds?: { [type: string]: EmbedBuilder },
+    typeEmbeds?: {
+        a32nx?: EmbedBuilder,
+        a380x?: EmbedBuilder,
+    },
 }
 
 export function isExecutorCommand(command: BaseCommandDefinition) {
