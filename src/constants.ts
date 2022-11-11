@@ -67,8 +67,6 @@ export enum Units {
 }
 
 export const AircraftTypeList = {
-    a32nx: '2️⃣',
-    a380x: '8️⃣',
+    a32nx: '🛫',
+    a380x: '✈️',
 };
-
-export const EnableMultipleAircraftTypes = false;

@@ -1,11 +1,13 @@
 import { EmbedData } from 'discord.js';
 import { CommandDefinition, isMessageCommand, MessageCommandDefinition } from '../../lib/command';
-import { AircraftTypeList, CommandCategory, EnableMultipleAircraftTypes } from '../../constants';
+import { AircraftTypeList, CommandCategory } from '../../constants';
 import commands from '../index';
 import Logger from '../../lib/logger';
 import { makeEmbed, makeLines } from '../../lib/embed';
 
 const REACTION_WAIT_TIME = 10000;
+const enableMultipleAircraftTypes = true;
+const defaultAircraftType = 'a32nx';
 const supportedAircraftTypes = Object.keys(AircraftTypeList);
 
 export const typeCommand: CommandDefinition = {
@@ -48,9 +50,10 @@ export const typeCommand: CommandDefinition = {
             return;
         }
         const { genericEmbed, typeEmbeds } = (command as MessageCommandDefinition);
-        if (!EnableMultipleAircraftTypes || !typeEmbeds) {
+        if (!enableMultipleAircraftTypes || !typeEmbeds) {
             if (subCommand === evokedCommand) {
-                await msg.channel.send({ embeds: [genericEmbed] });
+                const postEmbed = typeEmbeds && Object.keys(typeEmbeds).includes(defaultAircraftType) ? typeEmbeds[defaultAircraftType] : genericEmbed;
+                await msg.channel.send({ embeds: [postEmbed] });
             }
             return;
         }
