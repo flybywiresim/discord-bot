@@ -17,7 +17,7 @@ export const winss: CommandDefinition = {
                 '3. Release the mouse to finish the selection.',
                 '4. The screenshot is saved into your clipboard. Paste it in chat with `Ctrl + V`.',
                 '',
-                'Alternatively, you can use the Snipping Tool. Click \'New\' and follow steps 2 - 4.'
+                'Alternatively, you can use the Snipping Tool. Click \'New\' and follow steps 2 - 4.',
             ]),
             image: { url: SNIPPING_TOOL_URL },
         });
