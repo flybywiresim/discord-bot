@@ -10,7 +10,7 @@ export const winss: CommandDefinition = {
     category: CommandCategory.SUPPORT,
     executor: (msg) => {
         const winssEmbed = makeEmbed({
-            title: 'How to screenshot on Windows',
+            title: 'FlyByWire Support | How to screenshot on Windows',
             description: makeLines([
                 '1. Press `Win + Shift + S` to start taking a screenshot.',
                 '2. Press and drag to make a rectangle selection of everything you want to include in the screenshot.',
