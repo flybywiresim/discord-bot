@@ -2,6 +2,8 @@
 
 Update <small>_ November 2022</small>
 
+- feat: Add logic to show the appropriate message for type specific commands and the option to select using reactions (20/11/2022)
+- feat: Add simple Message Command that can be used with different aircraft types (20/11/2022)
 - feat: SimBridge logs command (14/11/2022)
 - feat: added windows screenshot command (14/11/2022)
 - fix: bugfix where help subcommand was not working for tcedit (14/11/2022)
