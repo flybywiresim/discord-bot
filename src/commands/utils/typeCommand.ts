@@ -5,8 +5,8 @@ import commands from '../index';
 import Logger from '../../lib/logger';
 import { makeEmbed, makeLines } from '../../lib/embed';
 
-const REACTION_WAIT_TIME = 60000;
-const enableMultipleAircraftTypes = true;
+const REACTION_WAIT_TIME = 10000;
+const enableMultipleAircraftTypes = false;
 const defaultDisabledAircraftType = 'a32nx';
 const supportedAircraftTypes = Object.keys(AircraftTypeList);
 
