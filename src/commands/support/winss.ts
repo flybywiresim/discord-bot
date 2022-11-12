@@ -5,7 +5,7 @@ import { CommandCategory } from '../../constants';
 const SNIPPING_TOOL_URL = 'https://cdn.discordapp.com/attachments/897491699167793182/1040649316672479232/image.png';
 
 export const winss: CommandDefinition = {
-    name: ['winss', 'sswin'],
+    name: ['winss', 'sswin', 'howtoss'],
     description: 'Explains how to screenshot on Windows',
     category: CommandCategory.SUPPORT,
     executor: (msg) => {
