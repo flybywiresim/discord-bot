@@ -2,6 +2,7 @@
 
 Update <small>_ November 2022</small>
 
+- refactor: update wasm command with extra details (14/11/2022)
 - feat: Purge messages on ban (06/11/2022)
 - refactor: update youtube account information (06/11/2022)
 - fix: language on ATC command (06/11/2022)
