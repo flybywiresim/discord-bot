@@ -151,6 +151,7 @@ import { mcdu } from './a32nx/mcdu';
 import { fsltl } from './general/fsltl';
 import { flyPadAbout } from './support/flyPadAbout';
 import { navdata } from './support/navdata';
+import { winss } from './support/winss';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -304,6 +305,7 @@ const commands: CommandDefinition[] = [
     fsltl,
     flyPadAbout,
     navdata,
+	winss,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};

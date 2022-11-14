@@ -85,6 +85,7 @@
 | .utf8           | Provides a link to resolve UTF-8 issues                                           | ---                                                |
 | .wasm           | Explains the long loading times after an install or update                        | .load                                              |
 | .where          | Provides an image of which aircraft to select in the aircraft selector            | ---                                                |
+| .winss          | Explains how to screenshot on Windows                                             | .sswin <br> .howtoss                               |
 
 ### General
 
