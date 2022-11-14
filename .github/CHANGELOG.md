@@ -2,6 +2,7 @@
 
 Update <small>_ November 2022</small>
 
+- feat: SimBridge logs command (14/11/2022)
 - feat: added windows screenshot command (14/11/2022)
 - fix: bugfix where help subcommand was not working for tcedit (14/11/2022)
 - refactor: update wasm command with extra details (14/11/2022)

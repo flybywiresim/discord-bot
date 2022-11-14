@@ -78,6 +78,7 @@
 | .navigraph      | Provides help with Navigraph navdata reinstall                                    | .navigraphnavdata                                  |
 | .reportedissues | Provides a link to the reported issues page within docs                           | .issues                                            |
 | .screenshot     | Help to screenshot for support                                                    | .cockpit <br> .ss                                  |
+| .simbridgelog   | Information on how to provide SimBridge Log                                       | .slog                                              |
 | .simulationrate | Explanation of the limitation of the Simulation Rate based on frame rate          | .simrate                                           |
 | .simversion     | Help to identify MSFS version for support                                         | .msfsversion                                       |
 | .trythis        | Provide basic troubleshooting steps                                               | ---                                                |
