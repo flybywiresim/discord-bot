@@ -242,7 +242,7 @@ export const temporarycommandedit: CommandDefinition = {
         if (!hasPermittedRole) {
             return msg.channel.send({ embeds: [noPermEmbed] });
         }
-        if ((args.length < 1 && parseInt(args[1]) !== 0) || args[0] === 'help') {
+        if (!args || args === 'help') {
             return msg.channel.send({ embeds: [helpEmbed(evokedCommand)] });
         }
 
