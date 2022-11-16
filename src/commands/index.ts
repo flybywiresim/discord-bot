@@ -152,6 +152,7 @@ import { fsltl } from './general/fsltl';
 import { flyPadAbout } from './support/flyPadAbout';
 import { navdata } from './support/navdata';
 import { winss } from './support/winss';
+import { simridgeLog } from './support/simbridgeLog';
 
 const commands: CommandDefinition[] = [
     ping,
@@ -305,7 +306,8 @@ const commands: CommandDefinition[] = [
     fsltl,
     flyPadAbout,
     navdata,
-	winss,
+    winss,
+    simridgeLog,
 ];
 
 const commandsObject: { [k: string]: CommandDefinition } = {};
