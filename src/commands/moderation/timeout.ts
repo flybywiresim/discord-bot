@@ -44,6 +44,7 @@ const noConnEmbed = makeEmbed({
 const DMEmbed = (moderator: User, timeoutDuration: string, reason: string, guild: Guild, timedOutUntil: Date) => makeEmbed({
     title: `You were timed out in ${guild.name}`,
     thumbnail: { url: guild.iconURL() },
+    description: 'This timeout automatically generates an official warning, this is used for logging purposes.',
     fields: [
         {
             inline: true,
