@@ -115,8 +115,11 @@ const modLogEmbed = (moderator: User, user: User, reason: string, timeoutDuratio
             name: 'Duration',
             value: timeoutDurationInEnglish(timeoutDuration),
         },
+        {
+            name: 'Date',
+            value: `${formattedDate} Z`,
+        },
     ],
-    timestamp: `${formattedDate} Zulu`,
     footer: { text: `User ID: ${user.id}` },
 });
 
@@ -167,7 +170,7 @@ export const timeout: CommandDefinition = {
         const timeoutArg = args[1];
         const reason = args.slice(2).join(' ');
         const currentDate = new Date();
-        const formattedDate: string = moment(currentDate).utcOffset(0).format('DD, MM, YYYY, HH:mm:ss');
+        const formattedDate: string = moment(currentDate).utcOffset(0).format('YYYY-MM-DDTHH:mm:ss');
 
         let timeoutDuration: number;
         switch (timeoutArg[timeoutArg.length - 1].toLowerCase()) {
