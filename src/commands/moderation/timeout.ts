@@ -1,9 +1,12 @@
 import { Colors, Guild, TextChannel, User } from 'discord.js';
+import moment from 'moment';
 import { CommandDefinition } from '../../lib/command';
 import { CommandCategory, Channels } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 import { unTimeoutDMEmbed, unTimeoutModLogEmbed, unTimeoutEmbed } from './untimeout';
 import Logger from '../../lib/logger';
+import { getConn } from '../../lib/db';
+import Warn from '../../lib/schemas/warnSchema';
 
 enum TimeConversions {
     MINUTES_TO_MILLISECONDS = 60 * 1000,
@@ -31,6 +34,12 @@ const timeoutDurationInEnglish = (timeoutDurationString: string) => {
     word += (timeoutDurationNumber > 1 || timeoutDurationNumber === 0 ? 's' : ''); // Determines plurality
     return `${timeoutDurationNumber} ${word}`;
 };
+
+const noConnEmbed = makeEmbed({
+    title: 'Warn - No Connection',
+    description: 'Could not connect to the database, warn will not be logged.',
+    color: Colors.Red,
+});
 
 const DMEmbed = (moderator: User, timeoutDuration: string, reason: string, guild: Guild, timedOutUntil: Date) => makeEmbed({
     title: `You were timed out in ${guild.name}`,
@@ -82,7 +91,7 @@ const timeoutEmbed = (user: User, reason: string, timeoutDuration: string) => ma
     color: Colors.Green,
 });
 
-const modLogEmbed = (moderator: User, user: User, reason: string, timeoutDuration: string) => makeEmbed({
+const modLogEmbed = (moderator: User, user: User, reason: string, timeoutDuration: string, formattedDate) => makeEmbed({
     color: Colors.Red,
     author: {
         name: `[TIMED OUT] ${user.tag}`,
@@ -106,8 +115,14 @@ const modLogEmbed = (moderator: User, user: User, reason: string, timeoutDuratio
             value: timeoutDurationInEnglish(timeoutDuration),
         },
     ],
-    timestamp: Date.now(),
+    timestamp: `${formattedDate} Zulu`,
     footer: { text: `User ID: ${user.id}` },
+});
+
+const warnFailed = makeEmbed({
+    title: 'Warn - Failed',
+    description: 'Failed to warn user, doc not saved to mongoDB',
+    color: Colors.Red,
 });
 
 const failedTimeoutEmbed = (user: User) => (makeEmbed({
@@ -133,6 +148,11 @@ export const timeout: CommandDefinition = {
     requiredPermissions: ['BanMembers'],
     category: CommandCategory.MODERATION,
     executor: async (msg) => {
+        const conn = await getConn();
+
+        if (!conn) {
+            await msg.channel.send({ embeds: [noConnEmbed] });
+        }
         const args = msg.content.replace(/\.timeout\s+/, '').split(' ');
         if (args.length < 3 && parseInt(args[1]) !== 0) {
             return msg.reply('You need to provide the following arguments for this command: <id> <timeoutDuration> <reason>');
@@ -141,8 +161,12 @@ export const timeout: CommandDefinition = {
         const modLogsChannel = msg.guild.channels.resolve(Channels.MOD_LOGS) as TextChannel | null;
         const id = args[0];
         const targetUser = await msg.guild.members.fetch(id);
+        const userID = targetUser.user.id;
+        const moderator = msg.author;
         const timeoutArg = args[1];
         const reason = args.slice(2).join(' ');
+        const currentDate = new Date();
+        const formattedDate: string = moment(currentDate).utcOffset(0).format('DD, MM, YYYY, HH:mm:ss');
 
         let timeoutDuration: number;
         switch (timeoutArg[timeoutArg.length - 1].toLowerCase()) {
@@ -224,7 +248,18 @@ export const timeout: CommandDefinition = {
                     }
                 }
                 if (modLogsChannel) {
-                    await modLogsChannel.send({ embeds: [modLogEmbed(msg.author, targetUser.user, reason, timeoutArg)] });
+                    await modLogsChannel.send({ embeds: [modLogEmbed(msg.author, targetUser.user, reason, timeoutArg, formattedDate)] });
+                }
+                const warnDoc = new Warn({
+                    userID,
+                    moderator,
+                    reason: `This user was timed out because: ${reason}`,
+                });
+
+                try {
+                    await warnDoc.save();
+                } catch {
+                    await msg.channel.send({ embeds: [warnFailed] });
                 }
                 return setTimeout(() => { // Delete the command and response after 4 seconds
                     timeoutResponse.delete();

@@ -2,6 +2,7 @@
 
 Update <small>_ November 2022</small>
 
+- feat: warns a user automatically when timed out for logging (19/11/2022)
 - feat: SimBridge logs command (14/11/2022)
 - feat: added windows screenshot command (14/11/2022)
 - fix: bugfix where help subcommand was not working for tcedit (14/11/2022)
