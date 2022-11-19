@@ -257,7 +257,7 @@ export const timeout: CommandDefinition = {
                 const warnDoc = new Warn({
                     userID,
                     moderator,
-                    reason: `This user was timed out because: ${reason}`,
+                    reason: `*This user was timed out because:* ${reason}`,
                 });
 
                 try {
