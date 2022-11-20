@@ -2,6 +2,7 @@
 
 Update <small>_ November 2022</small>
 
+- refactor: sort commands in help alphabetically (20/11/2022)
 - feat: SimBridge logs command (14/11/2022)
 - feat: added windows screenshot command (14/11/2022)
 - fix: bugfix where help subcommand was not working for tcedit (14/11/2022)
