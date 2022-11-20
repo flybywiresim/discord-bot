@@ -5,7 +5,7 @@ import { makeEmbed, makeLines } from '../../lib/embed';
 export const discontinuity: CommandDefinition = {
     name: ['discontinuity', 'disco'],
     description: 'Link to docs about discontinuities',
-    category: CommandCategory.A32NX,
+    category: CommandCategory.SUPPORT,
     executor: (msg) => {
         const discontinuityEmbed = makeEmbed({
             title: 'FlyByWire A32NX | Discontinuity',

@@ -5,7 +5,7 @@ export enum Colors {
 }
 
 export enum CommandCategory {
-    A32NX = 'A32NX',
+    AIRCRAFT = 'Aircraft',
     SUPPORT = 'Support',
     GENERAL = 'General',
     UTILS = 'Utilities',
