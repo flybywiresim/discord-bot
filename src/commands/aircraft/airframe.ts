@@ -4,7 +4,7 @@ import { makeEmbed } from '../../lib/embed';
 
 const genericAirframeEmbed = makeEmbed({
     title: 'FlyByWire | simBrief Airframes',
-    description: 'Updated simBrief airframes exists for our different available aircraft. Please use the below reactions to select the correct airframe.',
+    description: 'Updated simBrief airframes exist for our different available aircraft. Please use the below reactions to select the correct airframe.',
 });
 
 const a32nxAirframeEmbed = makeEmbed({
