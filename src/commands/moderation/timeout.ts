@@ -263,7 +263,9 @@ export const timeout: CommandDefinition = {
                 try {
                     await warnDoc.save();
                 } catch {
-                    await msg.channel.send({ embeds: [warnFailed] });
+                    if (modLogsChannel) {
+                        await modLogsChannel.send({ embeds: [warnFailed] });
+                    }
                 }
                 return setTimeout(() => { // Delete the command and response after 4 seconds
                     timeoutResponse.delete();
