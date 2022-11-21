@@ -63,7 +63,7 @@ export const typeCommand: CommandDefinition = {
             const { data: genericEmbedData } = genericEmbed;
             const postGenericEmbed = makeEmbed((genericEmbedData as EmbedData));
             const choiceEmbedFieldLines = [];
-            choiceEmbedFieldLines.push('Please select the appropriate reaction for the Aircraft for which you would like more information:');
+            choiceEmbedFieldLines.push('Please select the appropriate reaction for the Aircraft you would like more information about:');
             commandSupportedAircraftTypes.forEach((typeName) => {
                 if (typeName in AircraftTypeList) {
                     commandSupportedAircraftTypeEmojies.push(AircraftTypeList[typeName]);
