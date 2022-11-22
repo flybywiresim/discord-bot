@@ -59,14 +59,14 @@ export const typeCommand: CommandDefinition = {
         }
         const commandSupportedAircraftTypes = typeEmbeds ? Object.keys(typeEmbeds) : [];
         if (subCommand === evokedCommand) {
-            const commandSupportedAircraftTypeEmojies = [];
+            const commandSupportedAircraftTypeEmojis = [];
             const { data: genericEmbedData } = genericEmbed;
             const postGenericEmbed = makeEmbed((genericEmbedData as EmbedData));
             const choiceEmbedFieldLines = [];
             choiceEmbedFieldLines.push('Please select the appropriate reaction for the Aircraft you would like more information about:');
             commandSupportedAircraftTypes.forEach((typeName) => {
                 if (typeName in AircraftTypeList) {
-                    commandSupportedAircraftTypeEmojies.push(AircraftTypeList[typeName]);
+                    commandSupportedAircraftTypeEmojis.push(AircraftTypeList[typeName]);
                     choiceEmbedFieldLines.push(`<:${AircraftTypeList[typeName]}> - ${typeName.toUpperCase()}`);
                 }
             });
@@ -75,10 +75,10 @@ export const typeCommand: CommandDefinition = {
                 value: makeLines(choiceEmbedFieldLines),
             });
             await msg.channel.send({ embeds: [postGenericEmbed] }).then(async (genericMessage) => {
-                commandSupportedAircraftTypeEmojies.forEach(async (element) => {
+                commandSupportedAircraftTypeEmojis.forEach(async (element) => {
                     genericMessage.react(element);
                 });
-                const filter = (reaction, user) => commandSupportedAircraftTypeEmojies.includes(reaction.emoji.identifier) && user.id === author.id;
+                const filter = (reaction, user) => commandSupportedAircraftTypeEmojis.includes(reaction.emoji.identifier) && user.id === author.id;
                 await genericMessage.awaitReactions({
                     filter,
                     max: 1,

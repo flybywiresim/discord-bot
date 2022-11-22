@@ -68,7 +68,7 @@ export enum Units {
 
 // Custom emoji must be used. Identifier is determined through typing the following in the message box and pressing enter:
 // \:A32:
-// (Backslash<emojie code>)
+// (Backslash<emoji code>)
 // This returns a format like:
 // <:A32:1044359345493790850>
 // Strip <, > and the first :, add this entry below. Anything else will not work.
