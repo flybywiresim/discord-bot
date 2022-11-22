@@ -2,9 +2,10 @@
 
 Update <small>_ November 2022</small>
 
-- refactor: rename A32NX type to a more generic AIRCRAFT type for the future (20/11/2022)
-- feat: Add logic to show the appropriate message for type specific commands and the option to select using reactions (20/11/2022)
-- feat: Add simple Message Command that can be used with different aircraft types (20/11/2022)
+- refactor: update CONTRIBUTING documentation to include an explanation on MessageCommandDefinition (22/11/2022)
+- refactor: rename A32NX type to a more generic AIRCRAFT type for the future (22/11/2022)
+- feat: Add logic to show the appropriate message for type specific commands and the option to select using reactions (22/11/2022)
+- feat: Add simple Message Command that can be used with different aircraft types (22/11/2022)
 - feat: SimBridge logs command (14/11/2022)
 - feat: added windows screenshot command (14/11/2022)
 - fix: bugfix where help subcommand was not working for tcedit (14/11/2022)
