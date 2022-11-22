@@ -1,5 +1,6 @@
 import { BaseCommandDefinition } from '../lib/command';
 import Logger from '../lib/logger';
+import { typeCommand } from '../lib/typeCommand';
 import { ping } from './utils/ping';
 import { whois } from './moderation/whois';
 import { bruheg } from './memes/bruheg';
@@ -153,9 +154,9 @@ import { flyPadAbout } from './support/flyPadAbout';
 import { navdata } from './support/navdata';
 import { winss } from './support/winss';
 import { simridgeLog } from './support/simbridgeLog';
-import { typeCommand } from './utils/typeCommand';
 
 const commands: BaseCommandDefinition[] = [
+    typeCommand,
     ping,
     whois,
     bruheg,
@@ -309,7 +310,6 @@ const commands: BaseCommandDefinition[] = [
     navdata,
     winss,
     simridgeLog,
-    typeCommand,
 ];
 
 const commandsObject: { [k: string]: BaseCommandDefinition } = {};

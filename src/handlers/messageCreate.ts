@@ -5,7 +5,7 @@ import commands from '../commands';
 import { makeEmbed } from '../lib/embed';
 import { client, DEBUG_MODE } from '../index';
 import { CommandDefinition, isExecutorCommand, isMessageCommand } from '../lib/command';
-import { typeCommand } from '../commands/utils/typeCommand';
+import { typeCommand } from '../lib/typeCommand';
 
 module.exports = {
     event: 'messageCreate',

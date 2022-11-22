@@ -1,9 +1,9 @@
 import { EmbedData } from 'discord.js';
-import { CommandDefinition, isMessageCommand, MessageCommandDefinition } from '../../lib/command';
-import { AircraftTypeList, CommandCategory } from '../../constants';
-import commands from '../index';
-import Logger from '../../lib/logger';
-import { makeEmbed, makeLines } from '../../lib/embed';
+import { CommandDefinition, isMessageCommand, MessageCommandDefinition } from './command';
+import { AircraftTypeList, CommandCategory } from '../constants';
+import commands from '../commands/index';
+import Logger from './logger';
+import { makeEmbed, makeLines } from './embed';
 
 const REACTION_WAIT_TIME = 60000;
 const enableMultipleAircraftTypes = false;
