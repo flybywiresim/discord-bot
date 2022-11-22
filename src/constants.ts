@@ -66,7 +66,13 @@ export enum Units {
     KNOTS = 'kts',
 }
 
+// Custom emoji must be used. Identifier is determined through typing the following in the message box and pressing enter:
+// \:A32:
+// (Backslash<emojie code>)
+// This returns a format like:
+// <:A32:1044359345493790850>
+// Strip <, > and the first :, add this entry below. Anything else will not work.
 export const AircraftTypeList = {
-    a32nx: '🛫',
-    a380x: '✈️',
+    a32nx: 'A32:1044359345493790850',
+    a380x: 'A38:1044359365949403166',
 };

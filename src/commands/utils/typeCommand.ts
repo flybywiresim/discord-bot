@@ -5,7 +5,7 @@ import commands from '../index';
 import Logger from '../../lib/logger';
 import { makeEmbed, makeLines } from '../../lib/embed';
 
-const REACTION_WAIT_TIME = 10000;
+const REACTION_WAIT_TIME = 60000;
 const enableMultipleAircraftTypes = false;
 const defaultDisabledAircraftType = 'a32nx';
 const supportedAircraftTypes = Object.keys(AircraftTypeList);
@@ -67,7 +67,7 @@ export const typeCommand: CommandDefinition = {
             commandSupportedAircraftTypes.forEach((typeName) => {
                 if (typeName in AircraftTypeList) {
                     commandSupportedAircraftTypeEmojies.push(AircraftTypeList[typeName]);
-                    choiceEmbedFieldLines.push(`${AircraftTypeList[typeName]} - ${typeName.toUpperCase()}`);
+                    choiceEmbedFieldLines.push(`<:${AircraftTypeList[typeName]}> - ${typeName.toUpperCase()}`);
                 }
             });
             postGenericEmbed.addFields({
@@ -78,7 +78,7 @@ export const typeCommand: CommandDefinition = {
                 commandSupportedAircraftTypeEmojies.forEach(async (element) => {
                     genericMessage.react(element);
                 });
-                const filter = (reaction, user) => commandSupportedAircraftTypeEmojies.includes(reaction.emoji.name) && user.id === author.id;
+                const filter = (reaction, user) => commandSupportedAircraftTypeEmojies.includes(reaction.emoji.identifier) && user.id === author.id;
                 await genericMessage.awaitReactions({
                     filter,
                     max: 1,
@@ -88,7 +88,7 @@ export const typeCommand: CommandDefinition = {
                     const reaction = collected.first();
                     let foundAircraftType;
                     for (const element of commandSupportedAircraftTypes) {
-                        if (reaction.emoji.name === AircraftTypeList[element]) {
+                        if (reaction.emoji.identifier === AircraftTypeList[element]) {
                             foundAircraftType = element;
                             break;
                         }
