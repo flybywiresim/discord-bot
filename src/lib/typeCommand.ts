@@ -76,7 +76,11 @@ export const typeCommand: CommandDefinition = {
             });
             await msg.channel.send({ embeds: [postGenericEmbed] }).then(async (genericMessage) => {
                 commandSupportedAircraftTypeEmojis.forEach(async (element) => {
-                    genericMessage.react(element);
+                    try {
+                        await genericMessage.react(element);
+                    } catch (e) {
+                        Logger.debug(`Failed to add reaction: ${e}`);
+                    }
                 });
                 const filter = (reaction, user) => commandSupportedAircraftTypeEmojis.includes(reaction.emoji.identifier) && user.id === author.id;
                 await genericMessage.awaitReactions({
