@@ -66,7 +66,8 @@ export enum Units {
     KNOTS = 'kts',
 }
 
-// Custom emoji must be used. Identifier is determined through typing the following in the message box and pressing enter:
+// Custom emoji must be used. These custom emojis MUST be on the server the bot runs
+// Identifier is determined through typing the following in the message box and pressing enter:
 // \:A32:
 // (Backslash<emoji code>)
 // This returns a format like:
