@@ -73,6 +73,6 @@ export enum Units {
 // <:A32:1044359345493790850>
 // Strip <, > and the first :, add this entry below. Anything else will not work.
 export const AircraftTypeList = {
-    a32nx: 'A32:1044359345493790850',
-    a380x: 'A38:1044359365949403166',
+    a32nx: '32:1044695612337168494',
+    a380x: '38:1044695718348210177',
 };
