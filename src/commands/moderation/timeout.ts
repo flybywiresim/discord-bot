@@ -125,7 +125,7 @@ const modLogEmbed = (moderator: User, user: User, reason: string, timeoutDuratio
 
 const warnFailed = makeEmbed({
     title: 'Warn - Failed',
-    description: 'Failed to warn user, doc not saved to mongoDB',
+    description: 'Failed to warn user as part of the timeout, warning is not saved to mongoDB',
     color: Colors.Red,
 });
 
