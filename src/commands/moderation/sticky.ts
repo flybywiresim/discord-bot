@@ -181,7 +181,7 @@ export const sticky: CommandDefinition = {
         let [subCommand] = args.split(/\s+/);
         let subArgs = args.replace(subCommand, '').trim();
         if (!subCommands.includes(subCommand)) {
-            subCommand = 'set';
+            subCommand = 'info';
             subArgs = args;
         }
 
