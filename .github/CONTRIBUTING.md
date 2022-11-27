@@ -1,25 +1,31 @@
 # Contributing Guide
+
 Please reference the information below when contributing to this repository.
 
 ## Welcome
+
 Welcome to the FlyByWire Simulations Discord bot repository. Thank you for your interest in contributing to the project. Full details and guidelines on how to ensure this project is managed are included below.
 
 ## Helping others
+
 Please help other contributors to the project wherever you can, as people all start somewhere. If you require assistance or wish to provide assistance you can ask/answer questions in the #discord-bot or #dev-support channel on [discord](https://discord.gg/flybywire).
 
 ## Prerequisites
+
 - [node](https://nodejs.org/) version >= 16.x
 
 ## Ground Rules
+
 To ensure that commands are written professionally and clearly, please follow the guide below:
 
-* Use the proper name for third party services. For example: simBrief and not SimBrief.
-* If you are using images within the command, please ensure that they are clear and easy to understand.
-* Refrain from using exclamation points unless it is a warning.
-* Ensure that the contents of the command are correct. If you are unsure if something is correct please speak to any bot developer, and they will be able to verify anything.
-* Ensure that grammar and spelling is correct.
+- Use the proper name for third party services. For example: simBrief and not SimBrief.
+- If you are using images within the command, please ensure that they are clear and easy to understand.
+- Refrain from using exclamation points unless it is a warning.
+- Ensure that the contents of the command are correct. If you are unsure if something is correct please speak to any bot developer, and they will be able to verify anything.
+- Ensure that grammar and spelling is correct.
 
 ## Pull Request Process
+
 Reminder: When submitting a pull request, please ensure you target the `staging` branch.
 
 1. Fork the repository.
@@ -32,9 +38,11 @@ Reminder: When submitting a pull request, please ensure you target the `staging`
 Note: It may be beneficial to create a draft PR while working on your command. This will allow us to see who is working on what, and will enable the community to give active feedback on your work.
 
 ## Pull Request Template
+
 You can find the pull request template [here](PULL_REQUEST_TEMPLATE.md).
 
 ## Setting up the Bot
+
 1. Log into the Discord website and navigate to the [applications page](https://discord.com/developers/applications).
 2. Click `New Application`.
 3. Give your application a name.
@@ -44,23 +52,28 @@ You can find the pull request template [here](PULL_REQUEST_TEMPLATE.md).
 7. Inside the .env file, type `BOT_SECRET=TOKEN` replacing TOKEN with what you copied in `step 6.`
 
 ## Setting Up Privileged Gateway Intents
+
 Privileged Gateway Intents must now be enabled within the Discord Developer Portal in order for your bot to function. The steps below will explain how to enable them.
 
 1. Log into the Discord website and navigate to the [applications page](https://discord.com/developers/applications) and select your application. Then select `Bot` under `Settings`
 2. Scroll down to the Privileged Gateway Intents section and enable all the intents.
 
 ### Inviting the Bot to Your Server
+
 1. Create a Discord server where you can test your bot.
 2. On the [applications page](https://discord.com/developers/applications), select your application and navigate to the `OAuth2` tab. Then select `bot` under the `scopes` section.
 3. Tick `Administrator` box under the `Bot Permissions` section.
 4. Click the `Copy` button and paste it into your search bar in the browser of choice, and invite it to your test server.
 
 ## Running the Bot
-2. Run `npm install` to install the dependencies.
-3. Run `npm run dev` to start the development build.
+
+1. Run `npm install` to install the dependencies.
+2. Run `npm run dev` to start the development build.
 
 ## Database Setup
+
 ### MongoDB
+
 Some commands require access to a MongoDB server to store persistence data. The steps below outline MongoDB's setup procedure, and the necessary steps to
 connect your application to your MongoDB instance.
 
@@ -73,6 +86,7 @@ If you have installed MongoDB locally, your access url will be `mongodb://localh
 `Connect->Connect your application` in Database, located under Deployments.
 
 ### MongoDB with Docker
+
 This is a guide on how to set up a MongoDB instance with Docker.
 
 1. Install Docker from [their website](https://www.docker.com/get-started/) and read the guide on how to get started if unsure how to use.
@@ -89,6 +103,7 @@ The`MONGODB_URL` will be `mongodb://USERNAME:PASSWORD@localhost:27017/DATABASE_N
 You can access mongo-express by visiting [localhost:8081](http://localhost:8081/).
 
 ## Environment Variables
+
 If your command requires environment variables please add them to the ```.env.example``` file for documentation.
 
 1. Copy the ```.env.example``` file to ```.env```.
@@ -96,22 +111,27 @@ If your command requires environment variables please add them to the ```.env.ex
 3. Fill out the ```.env``` file with your environment variables.
 
 ### Ban Appeal Form
+
 A ban appeal form is sent to a user when they are banned. The URL for the form is stored as an environment variable, `BAN_APPEAL_URL`. For testing, you could set to a URL like `https://flybywiresim.com/`.
 
 ## Tokens
+
 Some commands may require additional tokens. If you would like to test them out on your bot, you must include the tokens inside your .env file. These commands include the metar, station and Wolfram Alpha commands. The steps below will explain how to set this up.
 
 ### AVWX (Metar and Station)
+
 1. Make a free account [here](https://avwx.rest/). Then, follow the steps [here](https://account.avwx.rest/getting-started) to get your token.
 2. Inside the .env file, on a new line type `METAR_TOKEN=TOKEN` replacing TOKEN with what you copied in `step 1`.
 3. Then, on another new line within the .env file, type `STATION_TOKEN=TOKEN` replacing TOKEN with what you copied in `step 1`.
 
 ### Wolfram Alpha
+
 1. Select get API access [here](https://products.wolframalpha.com/api/) to create an account.
 2. Once you have an account you will need to get an AppID from [here](https://developer.wolframalpha.com/portal/myapps/).
 3. Inside the .env file, on a new line type `WOLFRAMALPHA_TOKEN=TOKEN` replacing TOKEN with your wolfram alpha AppID.
 
 ## Adding a New Command
+
 >Please note, this will only show the basics of adding a command.
 
 1. Create a new file in the relevant folder within `src/commands/` and name it appropriately. `yourcommand.ts`.
@@ -123,9 +143,10 @@ If you need help creating a command, you may find it useful to copy an existing 
 
 Please ensure that the command category is appropriate for the command. You can find what each category means in `src/lib/constants.ts`. For example, a command used for support would use the `SUPPORT` category.
 
->### Considerations
-> * Choose user-friendly command names.
-> * Test your build locally before submitting as ready for review.
+> ### Considerations
+>
+> - Choose user-friendly command names.
+> - Test your build locally before submitting as ready for review.
 
 ## Modifying a Command
 
@@ -133,29 +154,81 @@ Please ensure that the command category is appropriate for the command. You can 
 2. Add changes to `.github/CHANGELOG.md` (and `.github/command-docs.md` if necessary).
 3. Commit and Push.
 
-### Example Command
+## Example Message Commands
+
+For commands that need to respond with a message (no complex logic), take a look at a command that is based on the `MessageCommandDefinition` interface. This interface is specifically designed to minimize the effort of creating these types of commands.
+
+The basic structure of such a command looks similar to the this example:
+
 ```ts
-import { CommandDefinition } from '../../lib/command';
-import { makeEmbed, makeLines } from '../../lib/embed';
+import { MessageCommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
+import { makeEmbed } from '../../lib/embed';
 
-const ADIRS_IMAGE_URL = 'https://cdn.discordapp.com/attachments/838062729398976522/894173641682616381/unknown.png';
+const genericCommandEmbed = makeEmbed({
+    title: 'Command Title',
+    description: 'A simple message that is returned when the command is executed.',
+    fields: [ // optional
+        {
+            name: 'field name',
+            value: 'value of field',
+            inline: false, // or true
+        }
+    ],
+    image: { url: 'URL to image to show' }, // optional
+});
 
-export const adirs: CommandDefinition = {
-    name: 'adirs',
-    description: 'Display help with ADIRS alignment',
-    category: CommandCategory.A32NX,
-    executor: async (msg) => {
-        const adirsEmbed = makeEmbed({
-            title: 'FlyByWire A32NX | ADIRS align',
-            description: makeLines([
-                'On the overhead panel you will see the three switches under \'ADIRS\'. Turn these three to the \'NAV\' position. It takes several minutes for the ADIRUs to align.',
-                'You can check how long you have to wait by looking at the align time on your Upper Ecam.',
-            ]),
-            image: { url: ADIRS_IMAGE_URL },
-        });
+export const command: MessageCommandDefinition = {
+    name: ['command', 'alias'],
+    description: 'A short description of the purpose of the command.',
+    category: CommandCategory.AIRCRAFT,
+    genericEmbed: genericCommandEmbed,
+};
+```
 
-        return msg.channel.send({ embeds: [adirsEmbed] });
+In the above example, you should change the following:
+
+- `const genericCommandEmbed`: Replace `Command` with a proper unique name for your command. Also update the `title` and `description`.
+- `export const command`: Replace `command` with the same proper unique name for your command. Also update the `name` of the command with the proper command and aliases.
+- `genericEmbed: genericCommandEmbed`: Replace `Command` with the same unique name for your command as in the actual `const genericCommandEmbed`.
+
+### Example Message Command with different responses per aircraft type
+
+The bot supports using a single command (with aliases) to contain multiple responses. Each response corresponds with a supported Aircraft type.
+Using this solution, the users can use a single command and then choose the aircraft type they want the detailed information for.
+
+The example below contains a generic response, a response for the A32NX aircraft and a response for a not-yet-released A380X aircraft.
+
+```ts
+import { MessageCommandDefinition } from '../../lib/command';
+import { CommandCategory } from '../../constants';
+import { makeEmbed } from '../../lib/embed';
+
+const genericChoicesEmbed = makeEmbed({
+    title: 'FlyByWire | Choices Title',
+    description: 'This message and title will be shown when the `.choices` command is executed in a channel. Additionally, the user is asked to select (using reactions) which Aircraft Type to get the detailed information for.',
+});
+
+const a32nxChoicesEmbed = makeEmbed({
+    title: 'FlyByWire A32NX | Choices Specific Title',
+    description: 'This message and title will be shown when the user selects the A32NX reaction, or when the user executes the `.a32nx choices` command.',
+});
+
+const a380xChoicesEmbed = makeEmbed({
+    title: 'FlyByWire A380X | Choices Specific Title',
+    description: 'This message and title will be shown when the user selects the A380X reaction, or when the user executes the `.a380x choices` command.',
+});
+
+export const choices: MessageCommandDefinition = {
+    name: ['choices'],
+    description: 'Provides choices for the different aircraft types',
+    category: CommandCategory.AIRCRAFT,
+    genericEmbed: genericChoicesEmbed,
+    typeEmbeds: {
+        a32nx: a32nxChoicesEmbed,
+        a380x: a380xChoicesEmbed,
     },
 };
 ```
+
+> In the above example, the `choices` name is an example and needs to be changed to an appropriate command name.

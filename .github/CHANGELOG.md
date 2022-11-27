@@ -2,6 +2,10 @@
 
 Update <small>_ November 2022</small>
 
+- refactor: update CONTRIBUTING documentation to include an explanation on MessageCommandDefinition (27/11/2022)
+- refactor: rename A32NX type to a more generic AIRCRAFT type for the future (27/11/2022)
+- feat: Add logic to show the appropriate message for type specific commands and the option to select using reactions (27/11/2022)
+- feat: Add simple Message Command that can be used with different aircraft types (27/11/2022)
 - refactor: sort commands in help alphabetically (27/11/2022)
 - feat: warns a user automatically when timed out for logging (27/11/2022)
 - feat: SimBridge logs command (14/11/2022)

@@ -5,7 +5,7 @@ export enum Colors {
 }
 
 export enum CommandCategory {
-    A32NX = 'A32NX',
+    AIRCRAFT = 'Aircraft',
     SUPPORT = 'Support',
     GENERAL = 'General',
     UTILS = 'Utilities',
@@ -65,3 +65,15 @@ export enum Units {
     CELSIUS = '\u2103',
     KNOTS = 'kts',
 }
+
+// Custom emoji must be used. These custom emojis MUST be on the server the bot runs
+// Identifier is determined through typing the following in the message box and pressing enter:
+// \:A32:
+// (Backslash<emoji code>)
+// This returns a format like:
+// <:A32:1044359345493790850>
+// Strip <, > and the first :, add this entry below. Anything else will not work.
+export const AircraftTypeList = {
+    a32nx: '32:1044695612337168494',
+    a380x: '38:1044695718348210177',
+};
