@@ -151,6 +151,9 @@ function renderAllCategories(): EmbedField[] {
     // Remove duplicates by name
     commandArray = commandArray.filter((v, i, a) => a.findIndex((t) => t.name === v.name) === i);
 
+    // Sort commands
+    commandArray.sort((a, b) => a.name[0].localeCompare(b.name[0]));
+
     // Group all commands by their category
     const groupedCommands = Object.values(CommandCategory)
         .map((category) => {
