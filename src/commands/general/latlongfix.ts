@@ -2,7 +2,7 @@ import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 
-const LATLONG_IMAGE_URL = 'https://cdn.discordapp.com/attachments/817517626045104149/967659373054816286/unknown.png';
+const LATLONG_IMAGE_URL = 'https://cdn.discordapp.com/attachments/943530743978672138/1048823475084722246/latlongfix.png';
 
 export const latlongfix: CommandDefinition = {
     name: ['latlong', 'llfix'],

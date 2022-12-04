@@ -1,6 +1,10 @@
 ## Changelog
 
 Update <small>_ November 2022</small>
+- fix: fix latlong image typo and prime meridian alignment (04/12/2022)
+
+
+Update <small>_ November 2022</small>
 
 - refactor: update CONTRIBUTING documentation to include an explanation on MessageCommandDefinition (27/11/2022)
 - refactor: rename A32NX type to a more generic AIRCRAFT type for the future (27/11/2022)
