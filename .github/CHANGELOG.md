@@ -2,6 +2,7 @@
 
 Update <small>_ December 2022</small>
 
+- fix: fix latlong image typo and prime meridian alignment (04/12/2022)
 - refactor: update wb command for change in Stable (03/12/2022)
 
 Update <small>_ November 2022</small>
