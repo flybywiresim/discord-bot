@@ -1,5 +1,9 @@
 ## Changelog
 
+Update <small>_ December 2022</small>
+
+- refactor: update wb command for change in Stable (03/12/2022)
+
 Update <small>_ November 2022</small>
 
 - refactor: update CONTRIBUTING documentation to include an explanation on MessageCommandDefinition (27/11/2022)
