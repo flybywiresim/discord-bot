@@ -9,7 +9,7 @@ export const remoteMcdu: CommandDefinition = {
     executor: (msg) => {
         const remoteMcduEmbed = makeEmbed({
             title: 'FlyByWire A32NX | Remote MCDU',
-            description: 'Please see our [guide](https://docs.flybywiresim.com/fbw-a32nx/feature-guides/web-mcdu/) on how to use the FlyByWire A32NX remote MCDU feature.',
+            description: 'Please see our [guide](https://docs.flybywiresim.com/simbridge/simbridge-feature-guides/remote-displays/remote-mcdu/) on how to use the FlyByWire A32NX remote MCDU feature.',
         });
 
         return msg.channel.send({ embeds: [remoteMcduEmbed] });
