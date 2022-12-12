@@ -71,7 +71,7 @@
 | .flypadabout    | Help to identify the flyPadOS and aircraft version for support                    | .flypadversion <br> .efbabout <br> .efbversion     |
 | .hud            | How to disable in-game HUD                                                        | .logs                                              |
 | .installerlogs  | Provides an explanation on how to receive installer error logs for support        | ---                                                |
-| .manualleg      | Displays image and links to docs about manual waypoints                           | .vm                                                |
+| .manualleg      | Displays image and links to docs about manual waypoints                           | .manual                                            |
 | .market         | Help with removing the marketplace version                                        | .marketremove <br> .removemarket <br> .rm <br> .mr |
 | .msfs           | Provides links to MSFS support for sim issues                                     | .msfsforum                                         |
 | .navdata        | Explains the use of navdata by the FlyByWire A32NX and how to check its accuracy  | ---                                                |
