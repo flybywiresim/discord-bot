@@ -1,6 +1,6 @@
 ## Bot Commands
 
-### A32NX
+### Aircraft
 
 | Command                  | Description                                                                                       | Alias                                                  |
 |:-------------------------|:--------------------------------------------------------------------------------------------------|:-------------------------------------------------------|
@@ -30,6 +30,7 @@
 | .holds                   | Provides a link to the Holds documentation                                                        | .hold <br> .holding                                    |
 | .liveries                | Provides a link to the flightsim.to A32NX liveries page                                           | .liv                                                   |
 | .mcdu                    | Provides a set of links to the detailed MCDU documentation                                        | .mcdudoc                                               |
+| .navroutetypes           | Displays an image explaining different Navigation Route Types                                     | .navroutes <br> .rnp-rnav <br> .rnp                    |
 | .preflight               | Provides a link to the a32nx preflight guide                                                      | ---                                                    |
 | .printer                 | Provides a link to the FlyByWire printer tutorial video                                           | ---                                                    |
 | .remotemcdu              | Provides a link to the FlyByWire remote MCDU feature guide                                        | ---                                                    |
