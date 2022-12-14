@@ -154,6 +154,7 @@ import { flyPadAbout } from './support/flyPadAbout';
 import { navdata } from './support/navdata';
 import { winss } from './support/winss';
 import { simridgeLog } from './support/simbridgeLog';
+import { navRouteTypes } from './aircraft/navRouteTypes';
 
 const commands: BaseCommandDefinition[] = [
     typeCommand,
@@ -310,6 +311,7 @@ const commands: BaseCommandDefinition[] = [
     navdata,
     winss,
     simridgeLog,
+    navRouteTypes,
 ];
 
 const commandsObject: { [k: string]: BaseCommandDefinition } = {};
