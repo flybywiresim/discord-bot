@@ -40,7 +40,7 @@ module.exports = {
             // eslint-disable-next-line no-await-in-loop
             await new Promise((f) => setTimeout(f, SLEEP_TIMER));
             // eslint-disable-next-line no-await-in-loop
-            await thread.messages.fetch({ limit: 1, cache: false });
+            await thread.messages.fetch({ limit: 1 });
             retryCount--;
         }
         if (thread.messageCount > 0) {
