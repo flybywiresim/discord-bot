@@ -2,6 +2,7 @@
 
 Update <small>_ December 2022</small>
 
+- fix: manualleg image of the doc site and add alias (26/12/2022)
 - feat: navroutetypes command to show different navigation route types (26/12/2022)
 - fix: code typo on simbridgeLog command (26/12/2022)
 - fix: forum post handler was too fast for Discord API and tried to post before the thread really existed (26/12/2022)
