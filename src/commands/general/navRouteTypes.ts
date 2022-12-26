@@ -11,7 +11,7 @@ const genericNavRouteTypesEmbed = makeEmbed({
 
 export const navRouteTypes: MessageCommandDefinition = {
     name: ['navroutetypes', 'navroutes', 'rnp-rnav', 'rnp'],
-    category: CommandCategory.AIRCRAFT,
+    category: CommandCategory.GENERAL,
     description: 'Provides an overview of different types of Navigation Routes.',
     genericEmbed: genericNavRouteTypesEmbed,
 };
