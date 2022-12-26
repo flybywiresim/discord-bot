@@ -2,6 +2,7 @@
 
 Update <small>_ December 2022</small>
 
+- refactor: add flightplanning alias to atc command (26/12/2022)
 - refactor: update atc command with new link and information (26/12/2022)
 - feat: stickies for forum posts which get posted on forum post create (19/12/2022)
 - refactor: outdated information + links in commands (08/12/2022)
