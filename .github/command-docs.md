@@ -173,6 +173,7 @@
 | .faq                  | Sends the FAQ                                                                                           | ---                                        |
 | .roleassignment       | Sends the role assignment messages                                                                      | ---                                        |
 | .rules                | Sends the rules                                                                                         | ---                                        |
+| .sticky               | Manage sticky messages which are posted in Forum Posts when a new post is created                       | ---                                        |
 | .temporarycommandedit | Manage temporary commands, which are simple output commands to highlight temporary situations to users. | .tempcommandedit <br> .tcedit <br> .tcmod  |
 | .timeout              | ---                                                                                                     | ---                                        |
 | .unban                | ---                                                                                                     | ---                                        |
