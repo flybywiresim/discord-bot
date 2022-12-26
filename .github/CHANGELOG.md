@@ -2,7 +2,12 @@
 
 Update <small>_ December 2022</small>
 
-- feat: navroutetypes command to show different navigation route types (14/12/2022)
+- feat: navroutetypes command to show different navigation route types (26/12/2022)
+- fix: code typo on simbridgeLog command (26/12/2022)
+- fix: forum post handler was too fast for Discord API and tried to post before the thread really existed (26/12/2022)
+- refactor: add flightplanning alias to atc command (26/12/2022)
+- refactor: update atc command with new link and information (26/12/2022)
+- feat: stickies for forum posts which get posted on forum post create (19/12/2022)
 - refactor: outdated information + links in commands (08/12/2022)
 - fix: fix latlong image typo and prime meridian alignment (04/12/2022)
 - refactor: update wb command for change in Stable (03/12/2022)
