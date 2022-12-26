@@ -1,6 +1,6 @@
 ## Bot Commands
 
-### A32NX
+### Aircraft
 
 | Command                  | Description                                                                                       | Alias                                                  |
 |:-------------------------|:--------------------------------------------------------------------------------------------------|:-------------------------------------------------------|
@@ -8,7 +8,7 @@
 | .afloor                  | Provides a link to the Alpha Floor Tool-Tip                                                       | ---                                                    |
 | .airframe                | Provides a link to the updated Simbrief airframe                                                  | ---                                                    |
 | .assistance              | Explains to the user why assistance options should be disabled                                    | .assi <br> .as                                         |
-| .atc                     | Provides details on the use of the built-in ATC and a link to the cFMS special notes section.     | ---                                                    |
+| .atc                     | Provides details on the use of the built-in ATC and on Flight Planning in general                 | .flightplanning                                        |
 | .audio                   | Provides support information about A32NX audio configuration                                      | ---                                                    |
 | .autoland                | Provides a link to the Autoland documentation                                                     | ---                                                    |
 | .autopilot               | Provides a link to the autopilot/fly-by-wire page within docs                                     | .ap                                                    |
@@ -30,6 +30,7 @@
 | .holds                   | Provides a link to the Holds documentation                                                        | .hold <br> .holding                                    |
 | .liveries                | Provides a link to the flightsim.to A32NX liveries page                                           | .liv                                                   |
 | .mcdu                    | Provides a set of links to the detailed MCDU documentation                                        | .mcdudoc                                               |
+| .navroutetypes           | Displays an image explaining different Navigation Route Types                                     | .navroutes <br> .rnp-rnav <br> .rnp                    |
 | .preflight               | Provides a link to the a32nx preflight guide                                                      | ---                                                    |
 | .printer                 | Provides a link to the FlyByWire printer tutorial video                                           | ---                                                    |
 | .remotemcdu              | Provides a link to the FlyByWire remote MCDU feature guide                                        | ---                                                    |
@@ -173,6 +174,7 @@
 | .faq                  | Sends the FAQ                                                                                           | ---                                        |
 | .roleassignment       | Sends the role assignment messages                                                                      | ---                                        |
 | .rules                | Sends the rules                                                                                         | ---                                        |
+| .sticky               | Manage sticky messages which are posted in Forum Posts when a new post is created                       | ---                                        |
 | .temporarycommandedit | Manage temporary commands, which are simple output commands to highlight temporary situations to users. | .tempcommandedit <br> .tcedit <br> .tcmod  |
 | .timeout              | ---                                                                                                     | ---                                        |
 | .unban                | ---                                                                                                     | ---                                        |

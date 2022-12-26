@@ -153,7 +153,9 @@ import { fsltl } from './general/fsltl';
 import { flyPadAbout } from './support/flyPadAbout';
 import { navdata } from './support/navdata';
 import { winss } from './support/winss';
-import { simridgeLog } from './support/simbridgeLog';
+import { simbridgeLog } from './support/simbridgeLog';
+import { sticky } from './moderation/sticky';
+import { navRouteTypes } from './general/navRouteTypes';
 
 const commands: BaseCommandDefinition[] = [
     typeCommand,
@@ -309,7 +311,9 @@ const commands: BaseCommandDefinition[] = [
     flyPadAbout,
     navdata,
     winss,
-    simridgeLog,
+    simbridgeLog,
+    sticky,
+    navRouteTypes,
 ];
 
 const commandsObject: { [k: string]: BaseCommandDefinition } = {};
