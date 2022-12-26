@@ -155,6 +155,7 @@ import { navdata } from './support/navdata';
 import { winss } from './support/winss';
 import { simbridgeLog } from './support/simbridgeLog';
 import { sticky } from './moderation/sticky';
+import { navRouteTypes } from './general/navRouteTypes';
 
 const commands: BaseCommandDefinition[] = [
     typeCommand,
@@ -312,6 +313,7 @@ const commands: BaseCommandDefinition[] = [
     winss,
     simbridgeLog,
     sticky,
+    navRouteTypes,
 ];
 
 const commandsObject: { [k: string]: BaseCommandDefinition } = {};
