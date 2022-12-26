@@ -2,7 +2,7 @@ import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
 
-export const simridgeLog: CommandDefinition = {
+export const simbridgeLog: CommandDefinition = {
     name: ['simbridgelog', 'slog'],
     description: 'Information on how to provide SimBridge Log',
     category: CommandCategory.SUPPORT,
