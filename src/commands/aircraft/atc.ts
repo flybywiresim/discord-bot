@@ -30,7 +30,7 @@ const genericAtcEmbed = makeEmbed({
 });
 
 export const atc: MessageCommandDefinition = {
-    name: 'atc',
+    name: ['atc', 'flightplanning'],
     category: CommandCategory.AIRCRAFT,
     description: 'Provides details on the use of the built-in ATC and a link to the cFMS special notes section.',
     genericEmbed: genericAtcEmbed,
