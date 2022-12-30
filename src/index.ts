@@ -5,6 +5,7 @@ import { readdirSync } from 'fs';
 import { join } from 'path';
 import Logger from './lib/logger';
 import { connect } from './lib/db';
+import { setupScheduler } from './lib/scheduler';
 
 dotenv.config();
 require('elastic-apm-node').start({
@@ -46,6 +47,8 @@ client.on('ready', () => {
     // Connect to database
     if (process.env.MONGODB_URL) {
         connect(process.env.MONGODB_URL)
+            .catch(Logger.error);
+        setupScheduler('fbwBotScheduler', process.env.MONGODB_URL)
             .catch(Logger.error);
     }
 });

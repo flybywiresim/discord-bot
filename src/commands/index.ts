@@ -159,6 +159,7 @@ import { navRouteTypes } from './general/navRouteTypes';
 import { cacheUpdate } from './moderation/cacheUpdate';
 import { navigraph } from './general/navigraph';
 import { botIssue } from './support/botIssue';
+import { slowMode } from './moderation/slowmode';
 
 const commands: BaseCommandDefinition[] = [
     typeCommand,
@@ -320,6 +321,7 @@ const commands: BaseCommandDefinition[] = [
     cacheUpdate,
     navigraph,
     botIssue,
+    slowMode,
 ];
 
 const commandsObject: { [k: string]: BaseCommandDefinition } = {};
