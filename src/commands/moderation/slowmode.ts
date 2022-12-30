@@ -160,6 +160,9 @@ export const slowMode: CommandDefinition = {
             }
 
             const { rateLimit, timeout } = regexMatches.groups;
+            if (parseInt(rateLimit) > 21600) {
+                return msg.channel.send({ embeds: [missingInfoEmbed('Set', `The slow mode setting can not be over 21600 seconds (6h). Check \`${evokedCommand} help\` for more details.`)] });
+            }
 
             try {
                 if (slowmodeChannel.type === ChannelType.GuildForum || slowmodeChannel.type === ChannelType.GuildText || slowmodeChannel.type === ChannelType.PrivateThread || slowmodeChannel.type === ChannelType.PublicThread) {
@@ -167,27 +170,27 @@ export const slowMode: CommandDefinition = {
                     if (scheduler) {
                         await scheduler.cancel({ name: 'autoDisableSlowMode', data: { channelId } });
                         if (timeout) {
-                            let timoutMillis: number;
+                            let timeoutMillis: number;
                             switch (timeout[timeout.length - 1].toLowerCase()) {
                             default: {
                                 // defaults to minutes; 'm' will also run this block
-                                timoutMillis = parseInt(timeout.replace('s', '')) * TimeConversions.SECONDS_TO_MILLISECONDS;
+                                timeoutMillis = parseInt(timeout.replace('s', '')) * TimeConversions.SECONDS_TO_MILLISECONDS;
                                 break;
                             }
                             case 'm': {
-                                timoutMillis = parseInt(timeout.replace('m', '')) * TimeConversions.MINUTES_TO_MILLISECONDS;
+                                timeoutMillis = parseInt(timeout.replace('m', '')) * TimeConversions.MINUTES_TO_MILLISECONDS;
                                 break;
                             }
                             case 'h': {
-                                timoutMillis = parseInt(timeout.replace('h', '')) * TimeConversions.HOURS_TO_MILLISECONDS;
+                                timeoutMillis = parseInt(timeout.replace('h', '')) * TimeConversions.HOURS_TO_MILLISECONDS;
                                 break;
                             }
                             case 'd': {
-                                timoutMillis = parseInt(timeout.replace('d', '')) * TimeConversions.DAYS_TO_MILLISECONDS;
+                                timeoutMillis = parseInt(timeout.replace('d', '')) * TimeConversions.DAYS_TO_MILLISECONDS;
                                 break;
                             }
                             }
-                            const executionDate: Date = new Date(Date.now() + timoutMillis);
+                            const executionDate: Date = new Date(Date.now() + timeoutMillis);
                             await scheduler.schedule(executionDate, 'autoDisableSlowMode', { channelId });
                         }
                     }
