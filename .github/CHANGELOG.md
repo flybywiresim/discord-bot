@@ -9,6 +9,7 @@ Update <small>_ January 2023</small>
 
 Update <small>_ December 2022</small>
 
+- feat: slowmode with timeout and introducing proper scheduler (31/12/2022)
 - fix: manualleg image of the doc site and add alias (26/12/2022)
 - feat: navroutetypes command to show different navigation route types (26/12/2022)
 - fix: code typo on simbridgeLog command (26/12/2022)
