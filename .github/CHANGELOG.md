@@ -1,8 +1,9 @@
 ## Changelog
 
-Update <small>_ January 2022</small>
+Update <small>_ January 2023</small>
 
-- feat: cacheupdate command to update the bots cache on different server aspects (02/01/2022)
+- fix: roleinfo showing wrong count because of caching (02/01/2023)
+- feat: cacheupdate command to update the bots cache on different server aspects (02/01/2023)
 
 Update <small>_ December 2022</small>
 
