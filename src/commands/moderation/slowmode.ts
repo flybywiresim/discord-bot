@@ -45,7 +45,7 @@ const helpEmbed = (evokedCommand: String) => makeEmbed({
 });
 
 const failedEmbed = (action: string, channel: string) => makeEmbed({
-    title: `Slow Message - ${action} failed`,
+    title: `Slow Mode - ${action} failed`,
     description: `Failed to ${action} the slow mode for channel <#${channel}>.`,
     color: Colors.Red,
 });
