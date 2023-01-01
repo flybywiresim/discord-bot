@@ -8,7 +8,8 @@ export async function setupScheduler(name: string, url: string, callback = Logge
     try {
         scheduler = new Agenda({
             name,
-            processEvery: '1 minute',
+            processEvery: '30 seconds',
+            defaultLockLifetime: 30000, // In milliseconds, this makes sure that if the bot restarts with locked jobs, they get released quickly and tried again.
             db: {
                 address: url,
                 collection: `${name}Jobs`,
