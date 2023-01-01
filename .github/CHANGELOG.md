@@ -1,5 +1,9 @@
 ## Changelog
 
+Update <small>_ January 2022</small>
+
+- feat: cacheupdate command to update the bots cache on different server aspects (02/01/2022)
+
 Update <small>_ December 2022</small>
 
 - fix: manualleg image of the doc site and add alias (26/12/2022)
