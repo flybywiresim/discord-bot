@@ -16,6 +16,7 @@ export const roleinfo: CommandDefinition = {
         }
 
         // Checks the query against the id and checks if the name contains the query
+        await msg.guild.members.fetch();
         const rolesCache = msg.guild.roles.cache;
         const role = rolesCache.find((role) => (
             role.name.toLowerCase().includes(query) || role.id === query
