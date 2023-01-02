@@ -2,6 +2,7 @@
 
 Update <small>_ January 2023</small>
 
+- feat: Github issues templates and accompanying command (02/01/2023)
 - fix: roleinfo showing wrong count because of caching (02/01/2023)
 - feat: cacheupdate command to update the bots cache on different server aspects (02/01/2023)
 
