@@ -170,6 +170,7 @@
 | Command               | Description                                                                                             | Alias                                      |
 |:----------------------|:--------------------------------------------------------------------------------------------------------|:-------------------------------------------|
 | .ban                  | ---                                                                                                     | ---                                        |
+| .cacheupdate          | Update the cache of the bot with the information from discord for different aspects                     | .cache-update                              |
 | .deletewarn           | Deletes a users warning                                                                                 | .delwarn <br/> .deletewarning              |
 | .faq                  | Sends the FAQ                                                                                           | ---                                        |
 | .roleassignment       | Sends the role assignment messages                                                                      | ---                                        |

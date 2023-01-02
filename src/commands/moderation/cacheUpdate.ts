@@ -1,0 +1,151 @@
+import { Colors, EmbedField, TextChannel } from 'discord.js';
+import { CommandDefinition } from '../../lib/command';
+import { Roles, Channels, CommandCategory } from '../../constants';
+import { makeEmbed } from '../../lib/embed';
+import { client } from '../..';
+
+const permittedRoles = [
+    Roles.ADMIN_TEAM,
+    Roles.MODERATION_TEAM,
+];
+
+const helpEmbed = (evokedCommand: String) => makeEmbed({
+    title: 'Cache Update - Help',
+    description: 'A command to force a cache update of the bot.',
+    fields: [
+        {
+            name: `Updating bans cache: \`${evokedCommand} bans\``,
+            value: 'Updates the bans cache by fetching all bans.',
+            inline: false,
+        },
+        {
+            name: `Updating channels cache: \`${evokedCommand} channels\``,
+            value: 'Updates the channels cache by fetching all channels.',
+            inline: false,
+        },
+        {
+            name: `Updating members cache: \`${evokedCommand} members\``,
+            value: 'Updates the members cache by fetching all members.',
+            inline: false,
+        },
+        {
+            name: `Updating roles cache: \`${evokedCommand} roles\``,
+            value: 'Updates the roles cache by fetching all roles.',
+            inline: false,
+        },
+    ],
+});
+
+const modLogEmbed = (action: string, fields: any, color: number) => makeEmbed({
+    title: `Cache Update - ${action}`,
+    fields,
+    color,
+});
+
+const noChannelEmbed = (action:string, channelName: string) => makeEmbed({
+    title: `Sticky Message - ${action} - No ${channelName} channel`,
+    description: `The command was successful, but no message to ${channelName} was sent. Please check the channel still exists.`,
+    color: Colors.Yellow,
+});
+
+const noPermEmbed = makeEmbed({
+    title: 'Cache Update - Permission missing',
+    description: 'You do not have permission to use this command.',
+    color: Colors.Red,
+});
+
+const cacheUpdateEmbedField = (moderator: string, cacheType: string, cacheSize: string, duration: string): EmbedField[] => [
+    {
+        name: 'Type',
+        value: cacheType,
+        inline: true,
+    },
+    {
+        name: 'Count',
+        value: cacheSize,
+        inline: true,
+    },
+    {
+        name: 'Moderator',
+        value: moderator,
+        inline: true,
+    },
+    {
+        name: 'Duration',
+        value: `${duration}s`,
+        inline: true,
+    },
+];
+
+export const cacheUpdate: CommandDefinition = {
+    name: ['cacheupdate', 'cache-update'],
+    description: 'Updates the cache of the bot for a specific cache type.',
+    category: CommandCategory.MODERATION,
+    executor: async (msg) => {
+        const subCommands = ['bans', 'channels', 'members', 'roles'];
+
+        const hasPermittedRole = msg.member.roles.cache.some((role) => permittedRoles.map((r) => r.toString()).includes(role.id));
+        if (!hasPermittedRole) {
+            return msg.channel.send({ embeds: [noPermEmbed] });
+        }
+
+        const modLogsChannel = client.channels.resolve(Channels.MOD_LOGS) as TextChannel | null;
+        const { author } = msg;
+        const [evokedCommand] = msg.content.trim().split(/\s+/);
+        const args = msg.content.replace(evokedCommand, '').trim();
+        if (!args || args === 'help') {
+            return msg.channel.send({ embeds: [helpEmbed(evokedCommand)] });
+        }
+
+        const [subCommand] = args.split(/\s+/);
+        if (!subCommands.includes(subCommand)) {
+            return msg.channel.send({ embeds: [helpEmbed(evokedCommand)] });
+        }
+
+        const { bans, channels, members, roles } = msg.guild;
+        let cacheSize;
+        const start = new Date().getTime();
+        switch (subCommand) {
+        case 'bans':
+            await bans.fetch();
+            cacheSize = bans.cache.size;
+            break;
+        case 'channels':
+            await channels.fetch();
+            cacheSize = channels.cache.size;
+            break;
+        case 'members':
+            await members.fetch();
+            cacheSize = members.cache.size;
+            break;
+        case 'roles':
+            await roles.fetch();
+            cacheSize = roles.cache.size;
+            break;
+        default:
+            break;
+        }
+        const duration = ((new Date().getTime() - start) / 1000).toFixed(2);
+
+        if (cacheSize !== null) {
+            try {
+                await modLogsChannel.send({
+                    embeds: [modLogEmbed(subCommand,
+                        cacheUpdateEmbedField(
+                            author.toString(),
+                            subCommand,
+                            cacheSize,
+                            duration,
+                        ),
+                        Colors.Green)],
+                });
+            } catch {
+                msg.channel.send({ embeds: [noChannelEmbed(subCommand, 'Mod Log')] });
+            }
+
+            return msg.react('✅');
+        }
+
+        return msg.channel.send({ embeds: [helpEmbed(evokedCommand)] });
+    },
+};

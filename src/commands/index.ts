@@ -156,6 +156,7 @@ import { winss } from './support/winss';
 import { simbridgeLog } from './support/simbridgeLog';
 import { sticky } from './moderation/sticky';
 import { navRouteTypes } from './general/navRouteTypes';
+import { cacheUpdate } from './moderation/cacheUpdate';
 
 const commands: BaseCommandDefinition[] = [
     typeCommand,
@@ -314,6 +315,7 @@ const commands: BaseCommandDefinition[] = [
     simbridgeLog,
     sticky,
     navRouteTypes,
+    cacheUpdate,
 ];
 
 const commandsObject: { [k: string]: BaseCommandDefinition } = {};
