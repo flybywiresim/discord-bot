@@ -76,7 +76,7 @@
 | .market         | Help with removing the marketplace version                                        | .marketremove <br> .removemarket <br> .rm <br> .mr |
 | .msfs           | Provides links to MSFS support for sim issues                                     | .msfsforum                                         |
 | .navdata        | Explains the use of navdata by the FlyByWire A32NX and how to check its accuracy  | ---                                                |
-| .navigraph      | Provides help with Navigraph navdata reinstall                                    | .navigraphnavdata                                  |
+| .navigraphdata  | Provides help with Navigraph NavData reinstall                                    | .navigraphnavdata                                  |
 | .reportedissues | Provides a link to the reported issues page within docs                           | .issues                                            |
 | .screenshot     | Help to screenshot for support                                                    | .cockpit <br> .ss                                  |
 | .simbridgelog   | Information on how to provide SimBridge Log                                       | .slog                                              |
@@ -102,6 +102,7 @@
 | .installer        | Provides link to the new installer                                                                                      | ---                                 |
 | .latlong          | Provides a cheat sheet for conversion between Latitude and longitude coordinates between short and long format          | .llfix                              |
 | .msfsdisc         | Provides link to Microsoft Flight Simulator discord server                                                              | .fsdisc <br> .msfsdiscord           |
+| .navigraph        | Provides link to Navigraph discord server                                                                               | ---                                 |
 | .notams           | Links to the FlyByWire Simulations NOTAMS                                                                               | .notam <br> .news                   |
 | .qa               | Links to the Quality Assurance docs page                                                                                | ---                                 |
 | .roadmap          | FBW Roadmap                                                                                                             | .goals                              |
