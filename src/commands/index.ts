@@ -157,6 +157,7 @@ import { simbridgeLog } from './support/simbridgeLog';
 import { sticky } from './moderation/sticky';
 import { navRouteTypes } from './general/navRouteTypes';
 import { cacheUpdate } from './moderation/cacheUpdate';
+import { navigraph } from './general/navigraph';
 
 const commands: BaseCommandDefinition[] = [
     typeCommand,
@@ -316,6 +317,7 @@ const commands: BaseCommandDefinition[] = [
     sticky,
     navRouteTypes,
     cacheUpdate,
+    navigraph,
 ];
 
 const commandsObject: { [k: string]: BaseCommandDefinition } = {};

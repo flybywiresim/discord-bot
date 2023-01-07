@@ -5,7 +5,7 @@ import { makeEmbed, makeLines } from '../../lib/embed';
 const NAVIGRAPH_NAVDATA_URL = 'https://cdn.discordapp.com/attachments/785976111875751956/912394143844696154/unknown.png';
 
 export const navigraphNavdata: CommandDefinition = {
-    name: ['navigraph', 'navigraphdata'],
+    name: ['navigraphdata', 'navigraphnavdata'],
     description: 'Provides help with Navigraph navdata reinstall',
     category: CommandCategory.SUPPORT,
     executor: (msg) => {
