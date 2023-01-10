@@ -3,7 +3,7 @@ import { makeEmbed } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 
 const genericBotIssueEmbed = makeEmbed({
-    title: 'FlyByWire Discord Bot | Opening an Issue of Feature request',
+    title: 'FlyByWire Discord Bot | Opening an Issue or Feature request',
     description: 'You can open an issue or feature request for the FlyByWire Discord Bot using [this link](https://github.com/flybywiresim/discord-bot/issues/new/choose).',
 });
 
