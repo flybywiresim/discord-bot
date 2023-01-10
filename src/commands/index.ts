@@ -158,6 +158,7 @@ import { sticky } from './moderation/sticky';
 import { navRouteTypes } from './general/navRouteTypes';
 import { cacheUpdate } from './moderation/cacheUpdate';
 import { navigraph } from './general/navigraph';
+import { botIssue } from './support/botIssue';
 
 const commands: BaseCommandDefinition[] = [
     typeCommand,
@@ -318,6 +319,7 @@ const commands: BaseCommandDefinition[] = [
     navRouteTypes,
     cacheUpdate,
     navigraph,
+    botIssue,
 ];
 
 const commandsObject: { [k: string]: BaseCommandDefinition } = {};
