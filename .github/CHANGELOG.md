@@ -2,6 +2,7 @@
 
 Update <small>_ January 2023</small>
 
+- feat: ECONNRESET support command (31/1/2023)
 - feat: slowmode with timeout and introducing proper scheduler (20/01/2023)
 - feat: Github issues templates and accompanying command (10/01/2023)
 - feat: navigraph discord link, requires a small change in navigraphNavdata command (02/01/2023)
