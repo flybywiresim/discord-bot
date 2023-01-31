@@ -3,7 +3,7 @@ import { CommandCategory } from "../../constants";
 import { makeEmbed, makeLines } from "../../lib/embed";
 
 export const econnreset: MessageCommandDefinition = {
-    name: 'econnreset',
+    name: ['econnreset', 'econreset'],
     category: CommandCategory.SUPPORT,
     genericEmbed: makeEmbed({
         title: 'FlyByWire Support | ECONNRESET',
