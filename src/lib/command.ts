@@ -123,5 +123,7 @@ export async function sendPermissionsEmbed(msg: Message, error: string) {
         description: error
     });
     let permMsg = await msg.reply({ embeds: [permEmbed] });
-    setTimeout(() => permMsg.delete(), PermissionsEmbedDelay); // Delete after 10 seconds
+    if(PermissionsEmbedDelay && PermissionsEmbedDelay > 0) {
+        setTimeout(() => permMsg.delete(), PermissionsEmbedDelay); // Delete after 10 seconds
+    }
 }
