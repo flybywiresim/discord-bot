@@ -149,7 +149,9 @@ const failedTimeoutEmbed = (user: User) => (makeEmbed({
 
 export const timeout: CommandDefinition = {
     name: 'timeout',
-    requiredPermissions: ['BanMembers'],
+    requirements: {
+        permissions: ['BanMembers']
+    },
     category: CommandCategory.MODERATION,
     executor: async (msg) => {
         const conn = await getConn();

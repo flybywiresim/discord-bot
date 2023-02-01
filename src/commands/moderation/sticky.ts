@@ -158,16 +158,14 @@ export const sticky: CommandDefinition = {
     name: ['sticky'],
     description: 'Manages sticky messages.',
     category: CommandCategory.MODERATION,
+    requirements: {
+        roles: permittedRoles
+    },
     executor: async (msg) => {
         const subCommands = ['set', 'image', 'count', 'time', 'unset', 'info'];
         const conn = getConn();
         if (!conn) {
             return msg.channel.send({ embeds: [noConnEmbed] });
-        }
-
-        const hasPermittedRole = msg.member.roles.cache.some((role) => permittedRoles.map((r) => r.toString()).includes(role.id));
-        if (!hasPermittedRole) {
-            return msg.channel.send({ embeds: [noPermEmbed] });
         }
 
         const modLogsChannel = msg.guild.channels.resolve(Channels.MOD_LOGS) as TextChannel | null;

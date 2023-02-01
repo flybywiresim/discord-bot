@@ -227,6 +227,9 @@ export const temporarycommandedit: CommandDefinition = {
     name: ['temporarycommandedit', 'tempcommandedit', 'tcedit', 'tcmod'],
     description: 'Creates a temporary command for temporary use.',
     category: CommandCategory.MODERATION,
+    requirements: {
+        roles: permittedRoles
+    },
     executor: async (msg) => {
         const subCommands = ['add', 'image', 'delete', 'info'];
         const conn = await getConn();
@@ -236,12 +239,8 @@ export const temporarycommandedit: CommandDefinition = {
 
         const modLogsChannel = msg.guild.channels.resolve(Channels.MOD_LOGS) as TextChannel | null;
         const supportOpsChannel = msg.guild.channels.resolve(Channels.SUPPORT_OPS) as TextChannel | null;
-        const hasPermittedRole = msg.member.roles.cache.some((role) => permittedRoles.map((r) => r.toString()).includes(role.id));
         const evokedCommand = msg.content.split(/\s+/)[0];
         const args = msg.content.replace(evokedCommand, '').trim();
-        if (!hasPermittedRole) {
-            return msg.channel.send({ embeds: [noPermEmbed] });
-        }
         if (!args || args === 'help') {
             return msg.channel.send({ embeds: [helpEmbed(evokedCommand)] });
         }

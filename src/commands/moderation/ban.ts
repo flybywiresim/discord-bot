@@ -129,7 +129,9 @@ const noDM = (user: User) => makeEmbed({
 
 export const ban: CommandDefinition = {
     name: 'ban',
-    requiredPermissions: ['BanMembers'],
+    requirements: {
+        permissions: ['BanMembers']
+    },
     category: CommandCategory.MODERATION,
     executor: async (msg) => {
         const splitUp = msg.content.replace(/\.ban\s+/, '').split(' ');
