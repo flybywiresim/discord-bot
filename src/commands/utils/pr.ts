@@ -23,7 +23,7 @@ const noQueryEmbed = makeEmbed({
 });
 
 const invalidEmbed = makeEmbed({
-    title: 'PR Error',
+    title: 'PR Error | Invalid',
     description: `Something went wrong! Did you provide the correct repo/PR id?${syntaxHelp}`,
     color: Colors.Red,
 });
@@ -43,21 +43,18 @@ export const pr: CommandDefinition = {
             return msg.reply({ embeds: [noPermEmbed] });
         }
 
-        const command = msg.content.replace('.', '').split(/\s/);
+        const command = msg.content.replace('.', '').split(/ +/);
 
-        if (command.length <= 1) {
-            return msg.reply({ embeds: [noQueryEmbed] });
-        }
-        if (command.length === 2) {
+        if (/\.pr +\d+/i.test(msg.content)) {
             command[1] = command[1].replace('#', '');
             try {
                 const response = await request('GET /repos/flybywiresim/a32nx/pulls/{pull_number}', { pull_number: command[1] });
                 return msg.channel.send(response.data.html_url);
-            } catch (error) {
+            } catch {
                 return msg.reply({ embeds: [invalidEmbed] });
             }
         }
-        if (command.length > 2) {
+        if (/\.pr +[A-Z]+ +\d+/i.test(msg.content)) {
             command[2] = command[2].replace('#', '');
             try {
                 const response = await request('GET /repos/flybywiresim/{repo}/pulls/{pull_number}', {
@@ -65,10 +62,10 @@ export const pr: CommandDefinition = {
                     pull_number: command[2],
                 });
                 return msg.channel.send(response.data.html_url);
-            } catch (error) {
+            } catch {
                 return msg.reply({ embeds: [invalidEmbed] });
             }
         }
-        return Promise.resolve();
+        return msg.reply({ embeds: [noQueryEmbed] });
     },
 };
