@@ -4,7 +4,7 @@ import Logger from '../lib/logger';
 import commands from '../commands';
 import { makeEmbed } from '../lib/embed';
 import { client, DEBUG_MODE } from '../index';
-import { CommandDefinition, isExecutorCommand, isMessageCommand } from '../lib/command';
+import { CommandDefinition, isExecutorCommand, isMessageCommand, hasRequiredPermissions } from '../lib/command';
 import { typeCommand } from '../lib/typeCommand';
 
 module.exports = {
@@ -39,7 +39,7 @@ module.exports = {
                 const commandsArray = Array.isArray(name) ? name : [name];
                 const member = await msg.guild.members.fetch(msg.author);
 
-                if (!requiredPermissions || requiredPermissions.every((permission) => member.permissions.has(permission))) {
+                if (!requiredPermissions || hasRequiredPermissions(command, member)) {
                     if (commandsArray.includes(usedCommand)) {
                         let executor;
                         if (isExecutorCommand(command)) {

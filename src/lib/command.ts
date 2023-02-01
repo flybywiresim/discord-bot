@@ -38,7 +38,7 @@ export function isMessageCommand(command: BaseCommandDefinition) {
     return 'genericEmbed' in command;
 }
 
-export function checkCommandPermissions(command: BaseCommandDefinition, member: GuildMember) {
+export function hasRequiredPermissions(command: BaseCommandDefinition, member: GuildMember) {
     // all checks have passed, we're cleared for liftoff
     return true;
 }
