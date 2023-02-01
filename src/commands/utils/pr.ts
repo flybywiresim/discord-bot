@@ -1,0 +1,54 @@
+import { request } from '@octokit/request';
+import { Colors } from 'discord.js';
+import { CommandDefinition } from '../../lib/command';
+import { CommandCategory } from '../../constants';
+import { makeEmbed } from '../../lib/embed';
+
+const syntaxHelp = '\nSyntax:\nA32NX repo: `.pr <id>`\nAny FBW repo: `.pr <repo> <id>`';
+
+const noQueryEmbed = makeEmbed({
+    title: 'PR Error | Missing Query',
+    description: `Invalid command!${syntaxHelp}`,
+    color: Colors.Red,
+});
+
+const invalidEmbed = makeEmbed({
+    title: 'PR Error',
+    description: `Something went wrong! Did you provide the correct repo/PR id?${syntaxHelp}`,
+    color: Colors.Red,
+});
+
+export const pr: CommandDefinition = {
+    name: 'pr',
+    description: `Retrieves the link of the provided GitHub PR.${syntaxHelp}`,
+    category: CommandCategory.UTILS,
+    executor: async (msg) => {
+        const command = msg.content.replace('.', '').split(/\s/);
+
+        if (command.length <= 1) {
+            return msg.reply({ embeds: [noQueryEmbed] });
+        }
+        if (command.length === 2) {
+            command[1] = command[1].replace('#', '');
+            try {
+                const response = await request('GET /repos/flybywiresim/a32nx/pulls/{pull_number}', { pull_number: command[1] });
+                return msg.channel.send(response.data.html_url);
+            } catch (error) {
+                return msg.reply({ embeds: [invalidEmbed] });
+            }
+        }
+        if (command.length > 2) {
+            command[2] = command[2].replace('#', '');
+            try {
+                const response = await request('GET /repos/flybywiresim/{repo}/pulls/{pull_number}', {
+                    repo: command[1],
+                    pull_number: command[2],
+                });
+                return msg.channel.send(response.data.html_url);
+            } catch (error) {
+                return msg.reply({ embeds: [invalidEmbed] });
+            }
+        }
+        return Promise.resolve();
+    },
+};
