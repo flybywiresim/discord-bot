@@ -54,7 +54,7 @@ export const pr: CommandDefinition = {
                 return msg.reply({ embeds: [invalidEmbed] });
             }
         }
-        if (/\.pr +[A-Z]+ +\d+/i.test(msg.content)) {
+        if (/\.pr +[A-Z]+ +#?\d+/i.test(msg.content)) {
             command[2] = command[2].replace('#', '');
             try {
                 const response = await request('GET /repos/flybywiresim/{repo}/pulls/{pull_number}', {
