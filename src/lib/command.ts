@@ -1,5 +1,17 @@
-import { Client, EmbedBuilder, Message, PermissionsString } from 'discord.js';
-import { CommandCategory } from '../constants';
+import { Client, EmbedBuilder, Message, PermissionsString, GuildMember } from 'discord.js';
+import { CommandCategory, Roles, Channels, Threads } from '../constants';
+
+export interface CommandPermissions {
+    permissions?: PermissionsString[],
+    permissionsError?: string,
+    roles?: Roles[],
+    rolesError?: string,
+    rolesBlacklist?: boolean,
+    channels?: (Channels | Threads)[],
+    channelsError?: string,
+    channelsBlacklist?: boolean,
+    verboseErrors?: boolean,
+}
 
 export interface BaseCommandDefinition {
     name: string | string[],
@@ -24,4 +36,9 @@ export function isExecutorCommand(command: BaseCommandDefinition) {
 
 export function isMessageCommand(command: BaseCommandDefinition) {
     return 'genericEmbed' in command;
+}
+
+export function checkCommandPermissions(command: BaseCommandDefinition, member: GuildMember) {
+    // all checks have passed, we're cleared for liftoff
+    return true;
 }
