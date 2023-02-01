@@ -1,10 +1,20 @@
 import { request } from '@octokit/request';
 import { Colors } from 'discord.js';
 import { CommandDefinition } from '../../lib/command';
-import { CommandCategory } from '../../constants';
+import { CommandCategory, Roles } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 
 const syntaxHelp = '\nSyntax:\nA32NX repo: `.pr <id>`\nAny FBW repo: `.pr <repo> <id>`';
+const permittedRoles = [
+    Roles.ADMIN_TEAM,
+    Roles.MEDIA_TEAM,
+    Roles.MODERATION_TEAM,
+    Roles.DEVELOPMENT_TEAM,
+    Roles.BOT_DEVELOPER,
+    Roles.CONTRIBUTOR,
+    Roles.QA_TRAINEE,
+    Roles.QA_TESTER,
+];
 
 const noQueryEmbed = makeEmbed({
     title: 'PR Error | Missing Query',
@@ -18,11 +28,21 @@ const invalidEmbed = makeEmbed({
     color: Colors.Red,
 });
 
+const noPermEmbed = makeEmbed({
+    title: 'PR | Permission missing',
+    description: 'You do not have permission to use this command.',
+    color: Colors.Red,
+});
+
 export const pr: CommandDefinition = {
     name: 'pr',
     description: `Retrieves the link of the provided GitHub PR.${syntaxHelp}`,
     category: CommandCategory.UTILS,
     executor: async (msg) => {
+        if (!msg.member.roles.cache.some((role) => permittedRoles.map((current) => current.toString()).includes(role.id))) {
+            return msg.reply({ embeds: [noPermEmbed] });
+        }
+
         const command = msg.content.replace('.', '').split(/\s/);
 
         if (command.length <= 1) {
