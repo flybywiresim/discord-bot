@@ -4,7 +4,7 @@ import Logger from '../lib/logger';
 import commands from '../commands';
 import { makeEmbed } from '../lib/embed';
 import { client, DEBUG_MODE } from '../index';
-import { CommandDefinition, isExecutorCommand, isMessageCommand, hasRequiredPermissions } from '../lib/command';
+import { CommandDefinition, isExecutorCommand, isMessageCommand, hasRequiredPermissions, sendPermissionsEmbed } from '../lib/command';
 import { typeCommand } from '../lib/typeCommand';
 
 module.exports = {
@@ -72,13 +72,7 @@ module.exports = {
                     }
                 } else {
                     Logger.debug('Bailing due to unsatisfied command requirements');
-                    const permEmbed = makeEmbed({
-                        color: Colors.Red,
-                        title: 'Command Requirements',
-                        description: requirementsError
-                    });
-                    let permMsg = await msg.reply({ embeds: [permEmbed] });
-                    setTimeout(() => permMsg.delete(), 10000); // Delete after 10 seconds
+                    await sendPermissionsEmbed(msg, requirementsError);
                 }
             } else {
                 Logger.info('Command doesn\'t exist');

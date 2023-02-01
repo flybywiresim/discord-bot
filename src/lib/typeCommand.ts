@@ -1,5 +1,5 @@
-import { EmbedData, Colors } from 'discord.js';
-import { CommandDefinition, isMessageCommand, MessageCommandDefinition, hasRequiredPermissions } from './command';
+import { EmbedData } from 'discord.js';
+import { CommandDefinition, isMessageCommand, MessageCommandDefinition, hasRequiredPermissions, sendPermissionsEmbed } from './command';
 import { AircraftTypeList, CommandCategory } from '../constants';
 import commands from '../commands/index';
 import Logger from './logger';
@@ -131,13 +131,7 @@ export const typeCommand: CommandDefinition = {
         else
         {
             Logger.debug('Type Command - Bailing due to unsatisfied command requirements');
-            const permEmbed = makeEmbed({
-                color: Colors.Red,
-                title: 'Command Requirements',
-                description: requirementsError
-            });
-            let permMsg = await msg.reply({ embeds: [permEmbed] });
-            setTimeout(() => permMsg.delete(), 10000); // Delete after 10 seconds
+            await sendPermissionsEmbed(msg, requirementsError);
         }
     },
 };

@@ -1,5 +1,6 @@
-import { Client, EmbedBuilder, Message, PermissionsString, GuildMember } from 'discord.js';
-import { CommandCategory, Roles, Channels, Threads } from '../constants';
+import { Client, EmbedBuilder, Message, PermissionsString, GuildMember, Colors } from 'discord.js';
+import { CommandCategory, Roles, Channels, Threads, PermissionsEmbedDelay } from '../constants';
+import { makeEmbed } from './embed';
 import Logger from './logger';
 
 export interface CommandPermissions {
@@ -113,4 +114,14 @@ export function hasRequiredPermissions(requirements: CommandPermissions, member:
     
     // all checks have passed, we're cleared for liftoff
     return [true, ''];
+}
+
+export async function sendPermissionsEmbed(msg: Message, error: string) {
+    const permEmbed = makeEmbed({
+        color: Colors.Red,
+        title: 'Command Requirements',
+        description: error
+    });
+    let permMsg = await msg.reply({ embeds: [permEmbed] });
+    setTimeout(() => permMsg.delete(), PermissionsEmbedDelay); // Delete after 10 seconds
 }
