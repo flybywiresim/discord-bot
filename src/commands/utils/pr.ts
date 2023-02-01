@@ -45,7 +45,7 @@ export const pr: CommandDefinition = {
 
         const command = msg.content.replace('.', '').split(/ +/);
 
-        if (/\.pr +\d+/i.test(msg.content)) {
+        if (/\.pr +#?\d+/i.test(msg.content)) {
             command[1] = command[1].replace('#', '');
             try {
                 const response = await request('GET /repos/flybywiresim/a32nx/pulls/{pull_number}', { pull_number: command[1] });
