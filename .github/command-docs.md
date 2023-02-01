@@ -68,6 +68,7 @@
 | .dx12           | Explanation for the current state of MSFS DirectX12 support                       | ---                                                |
 | .discontinuity  | Link to docs about discontinuities                                                | .disco                                             |
 | .dlss           | Explanation of the DLSS option in the MSFS graphics settings.                     |                                                    |
+| .econnreset     | Troubleshooting info for installer ECONNRESET error.                              | .econreset                                         |
 | .fdr            | Information on how to provide fdr files                                           | ---                                                |
 | .flypadabout    | Help to identify the flyPadOS and aircraft version for support                    | .flypadversion <br> .efbabout <br> .efbversion     |
 | .hud            | How to disable in-game HUD                                                        | .logs                                              |
