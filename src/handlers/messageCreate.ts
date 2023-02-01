@@ -39,9 +39,11 @@ module.exports = {
                 const commandsArray = Array.isArray(name) ? name : [name];
                 const member = await msg.guild.members.fetch(msg.author);
 
+                Logger.debug('Checking requirements');
                 const [requirementsSatisfied, requirementsError] = hasRequiredPermissions(requirements, member, msg.channel.id);
 
                 if (requirementsSatisfied) {
+                    Logger.debug('Requirements satisfied')
                     if (commandsArray.includes(usedCommand)) {
                         let executor;
                         if (isExecutorCommand(command)) {

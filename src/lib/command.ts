@@ -46,18 +46,18 @@ export function hasRequiredPermissions(requirements: CommandPermissions, member:
     }
 
     // check requirement precursors
-    const hasAllPermissions = requirements.permissions.every((permission) => member.permissions.has(permission));
+    const hasAllPermissions = requirements.permissions && requirements.permissions.every((permission) => member.permissions.has(permission));
 
-    const hasAnyRole = requirements.roles.some((role) => member.roles.cache.has(role));
+    const hasAnyRole = requirements.roles && requirements.roles.some((role) => member.roles.cache.has(role));
 
-    const isInChannel = requirements.channels.some((c) => c.toString() === channelId);
+    const isInChannel = requirements.channels && requirements.channels.some((c) => c.toString() === channelId);
 
     // check requirements
     const meetsPermissionRequirement = !requirements.permissions || hasAllPermissions;
     const meetsRolesRequirement = !requirements.roles ||
                                   (hasAnyRole && !requirements.rolesBlacklist) ||
                                   (!hasAnyRole && requirements.rolesBlacklist);
-    const meetsChannelRequirement = !requirements.permissions || 
+    const meetsChannelRequirement = !requirements.channels || 
                                   (isInChannel && !requirements.channelsBlacklist) ||
                                   (!isInChannel && requirements.channelsBlacklist);
 
