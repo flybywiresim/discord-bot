@@ -77,6 +77,7 @@
 | .msfs           | Provides links to MSFS support for sim issues                                     | .msfsforum                                         |
 | .navdata        | Explains the use of navdata by the FlyByWire A32NX and how to check its accuracy  | ---                                                |
 | .navigraphdata  | Provides help with Navigraph NavData reinstall                                    | .navigraphnavdata                                  |
+| .pr             | Provides the link to any given FBW PR                                             | ---
 | .reportedissues | Provides a link to the reported issues page within docs                           | .issues                                            |
 | .screenshot     | Help to screenshot for support                                                    | .cockpit <br> .ss                                  |
 | .simbridgelog   | Information on how to provide SimBridge Log                                       | .slog                                              |
