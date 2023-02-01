@@ -39,7 +39,7 @@ module.exports = {
                 const commandsArray = Array.isArray(name) ? name : [name];
                 const member = await msg.guild.members.fetch(msg.author);
 
-                if (!requiredPermissions || hasRequiredPermissions(command, member)) {
+                if (!requiredPermissions || hasRequiredPermissions(command, member, msg.channel.id)) {
                     if (commandsArray.includes(usedCommand)) {
                         let executor;
                         if (isExecutorCommand(command)) {
