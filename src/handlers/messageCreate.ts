@@ -35,11 +35,13 @@ module.exports = {
             const command = commands[usedCommand];
 
             if (command) {
-                const { name, requiredPermissions } = command;
+                const { name, requirements } = command;
                 const commandsArray = Array.isArray(name) ? name : [name];
                 const member = await msg.guild.members.fetch(msg.author);
 
-                if (!requiredPermissions || hasRequiredPermissions(command, member, msg.channel.id)) {
+                const [requirementsSatisfied, requirementsError] = hasRequiredPermissions(requirements, member, msg.channel.id);
+
+                if (requirementsSatisfied) {
                     if (commandsArray.includes(usedCommand)) {
                         let executor;
                         if (isExecutorCommand(command)) {
@@ -67,7 +69,14 @@ module.exports = {
                         }
                     }
                 } else {
-                    await msg.reply(`you do not have sufficient permissions to use this command. (missing: ${requiredPermissions.join(', ')})`);
+                    Logger.debug('Bailing due to unsatisfied command requirements');
+                    const permEmbed = makeEmbed({
+                        color: Colors.Red,
+                        title: 'Command Requirements',
+                        description: requirementsError
+                    });
+                    let permMsg = await msg.reply({ embeds: [permEmbed] });
+                    setTimeout(() => permMsg.delete(), 10000); // Delete after 10 seconds
                 }
             } else {
                 Logger.info('Command doesn\'t exist');
