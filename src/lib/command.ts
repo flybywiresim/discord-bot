@@ -12,6 +12,7 @@ export interface CommandPermissions {
     channels?: (Channels | Threads)[],
     channelsError?: string,
     channelsBlacklist?: boolean,
+    quietErrors?: boolean,
     verboseErrors?: boolean,
 }
 
@@ -64,7 +65,9 @@ export function hasRequiredPermissions(requirements: CommandPermissions, member:
 
     // return permissions error if needed
     if(!meetsPermissionRequirement) {
-        if(requirements.permissionsError) {
+        if(requirements.quietErrors) {
+            return [false, ''];
+        } else if(requirements.permissionsError) {
             return [false, requirements.permissionsError];
         } else if(requirements.verboseErrors) {
             const errorText = `The ${requirements.permissions.join(', ')} permission${requirements.permissions.length > 1 ? 's are' : ' is'} required to use that!`;
@@ -76,7 +79,9 @@ export function hasRequiredPermissions(requirements: CommandPermissions, member:
 
     // return roles error if needed
     if(!meetsRolesRequirement) {
-        if(requirements.rolesError) {
+        if(requirements.quietErrors) {
+            return [false, ''];
+        } else if(requirements.rolesError) {
             return [false, requirements.rolesError];
         } else if(requirements.verboseErrors) {
             let errorText: string;
@@ -95,7 +100,9 @@ export function hasRequiredPermissions(requirements: CommandPermissions, member:
 
     // return channel error if needed
     if(!meetsChannelRequirement) {
-        if(requirements.channelsError) {
+        if(requirements.quietErrors) {
+            return [false, ''];
+        } else if(requirements.channelsError) {
             return [false, requirements.channelsError];
         } else if(requirements.verboseErrors) {
             let errorText: string;
@@ -117,6 +124,11 @@ export function hasRequiredPermissions(requirements: CommandPermissions, member:
 }
 
 export async function sendPermissionsEmbed(msg: Message, error: string) {
+    // return silently for quiet error commands
+    if(!msg) {
+        return;
+    }
+
     const permEmbed = makeEmbed({
         color: Colors.Red,
         title: 'Command Requirements',
