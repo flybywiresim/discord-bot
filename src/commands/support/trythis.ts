@@ -1,5 +1,5 @@
-import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
+import { MessageCommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
 
 const trythisDescription = makeLines([
@@ -8,17 +8,15 @@ const trythisDescription = makeLines([
     'See [this article](https://docs.flybywiresim.com/fbw-a32nx/support/reported-issues/#test-with-only-the-a32nx-add-on-in-community) on how to this quickly.',
 ]);
 
-export const trythis: CommandDefinition = {
+const trythisEmbed = makeEmbed({
+    title: 'Try This',
+    description: trythisDescription,
+    footer: { text: 'Report back the result of this test.' },
+});
+
+export const trythis: MessageCommandDefinition = {
     name: 'trythis',
     description: 'Provide basic troubleshooting steps',
     category: CommandCategory.SUPPORT,
-    executor: (msg) => {
-        const trythisEmbed = makeEmbed({
-            title: 'Try This',
-            description: trythisDescription,
-            footer: { text: 'Report back the result of this test.' },
-        });
-
-        return msg.channel.send({ embeds: [trythisEmbed] });
-    },
+    genericEmbed: trythisEmbed,
 };
