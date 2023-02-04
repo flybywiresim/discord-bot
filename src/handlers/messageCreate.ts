@@ -43,7 +43,7 @@ module.exports = {
                 const [requirementsSatisfied, requirementsError] = hasRequiredPermissions(requirements, member, msg.channel.id);
 
                 if (requirementsSatisfied) {
-                    Logger.debug('Requirements satisfied')
+                    Logger.debug('Requirements satisfied');
                     if (commandsArray.includes(usedCommand)) {
                         let executor;
                         if (isExecutorCommand(command)) {

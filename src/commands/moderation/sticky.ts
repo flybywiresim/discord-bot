@@ -102,12 +102,6 @@ const noConnEmbed = makeEmbed({
     color: Colors.Red,
 });
 
-const noPermEmbed = makeEmbed({
-    title: 'Sticky Message - Permission missing',
-    description: 'You do not have permission to use this command.',
-    color: Colors.Red,
-});
-
 const notFoundEmbed = (action: string, channel: string) => makeEmbed({
     title: `Sticky Message - ${action} - Not found`,
     description: `No Sticky Message for <#${channel}> was found.`,
@@ -158,9 +152,7 @@ export const sticky: CommandDefinition = {
     name: ['sticky'],
     description: 'Manages sticky messages.',
     category: CommandCategory.MODERATION,
-    requirements: {
-        roles: permittedRoles
-    },
+    requirements: { roles: permittedRoles },
     executor: async (msg) => {
         const subCommands = ['set', 'image', 'count', 'time', 'unset', 'info'];
         const conn = getConn();

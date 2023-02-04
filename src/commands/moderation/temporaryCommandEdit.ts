@@ -133,12 +133,6 @@ const noConnEmbed = makeEmbed({
     color: Colors.Red,
 });
 
-const noPermEmbed = makeEmbed({
-    title: 'Temporary Command - Permission missing',
-    description: 'You do not have permission to use this command.',
-    color: Colors.Red,
-});
-
 const notFoundEmbed = (action: string, command: string) => makeEmbed({
     title: `Temporary Command - ${action} - ${command} not found`,
     description: 'No Temporary Command(s) matching the search can be found.',
@@ -227,9 +221,7 @@ export const temporarycommandedit: CommandDefinition = {
     name: ['temporarycommandedit', 'tempcommandedit', 'tcedit', 'tcmod'],
     description: 'Creates a temporary command for temporary use.',
     category: CommandCategory.MODERATION,
-    requirements: {
-        roles: permittedRoles
-    },
+    requirements: { roles: permittedRoles },
     executor: async (msg) => {
         const subCommands = ['add', 'image', 'delete', 'info'];
         const conn = await getConn();

@@ -6,9 +6,7 @@ export const ping: CommandDefinition = {
     name: 'ping',
     description: 'Send back a message',
     category: CommandCategory.UTILS,
-    requirements: {
-        permissions: ['ManageWebhooks'],
-    },
+    requirements: { permissions: ['ManageWebhooks'] },
     executor: (msg) => {
         const msgFilter = new Filter();
 

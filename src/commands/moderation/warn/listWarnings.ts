@@ -17,12 +17,6 @@ const noConnEmbed = makeEmbed({
     color: Colors.Red,
 });
 
-const noPermEmbed = makeEmbed({
-    title: 'Warn',
-    description: 'You do not have permission to use this command.',
-    color: Colors.Red,
-});
-
 export const listWarnings: CommandDefinition = {
     name: ['warnings', 'listwarn', 'listwarnings', 'warns'],
     requirements: {

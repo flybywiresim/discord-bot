@@ -9,7 +9,7 @@ export const cowsay: CommandDefinition = {
     category: CommandCategory.MEMES,
     requirements: {
         channels: [Channels.BOT_COMMANDS],
-        verboseErrors: true
+        verboseErrors: true,
     },
     executor: (msg) => {
         const filter = new Filter();

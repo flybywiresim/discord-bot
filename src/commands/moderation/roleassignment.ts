@@ -27,9 +27,7 @@ const MEDIA_ANNOUNCEMENT_EMBED = makeEmbed({
 export const roleassignment: CommandDefinition = {
     name: 'roleassignment',
     description: 'Sends the role assignment messages',
-    requirements: {
-        permissions: ['BanMembers']
-    },
+    requirements: { permissions: ['BanMembers'] },
     category: CommandCategory.MODERATION,
     executor: async (msg) => {
         await msg.channel.send({ embeds: [ROLES_EMBED] });

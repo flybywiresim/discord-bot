@@ -1,7 +1,6 @@
 import { Client, EmbedBuilder, Message, PermissionsString, GuildMember, Colors } from 'discord.js';
 import { CommandCategory, Roles, Channels, Threads, PermissionsEmbedDelay } from '../constants';
 import { makeEmbed } from './embed';
-import Logger from './logger';
 
 export interface CommandPermissions {
     permissions?: PermissionsString[],
@@ -43,7 +42,7 @@ export function isMessageCommand(command: BaseCommandDefinition) {
 
 export function hasRequiredPermissions(requirements: CommandPermissions, member: GuildMember, channelId: string): [boolean, string] {
     // bail if no requirements defined
-    if(!requirements) {
+    if (!requirements) {
         return [true, ''];
     }
 
@@ -56,86 +55,83 @@ export function hasRequiredPermissions(requirements: CommandPermissions, member:
 
     // check requirements
     const meetsPermissionRequirement = !requirements.permissions || hasAllPermissions;
-    const meetsRolesRequirement = !requirements.roles ||
-                                  (hasAnyRole && !requirements.rolesBlacklist) ||
-                                  (!hasAnyRole && requirements.rolesBlacklist);
-    const meetsChannelRequirement = !requirements.channels || 
-                                  (isInChannel && !requirements.channelsBlacklist) ||
-                                  (!isInChannel && requirements.channelsBlacklist);
+    const meetsRolesRequirement = !requirements.roles
+                                  || (hasAnyRole && !requirements.rolesBlacklist)
+                                  || (!hasAnyRole && requirements.rolesBlacklist);
+    const meetsChannelRequirement = !requirements.channels
+                                  || (isInChannel && !requirements.channelsBlacklist)
+                                  || (!isInChannel && requirements.channelsBlacklist);
 
     // return permissions error if needed
-    if(!meetsPermissionRequirement) {
-        if(requirements.quietErrors) {
+    if (!meetsPermissionRequirement) {
+        if (requirements.quietErrors) {
             return [false, ''];
-        } else if(requirements.permissionsError) {
+        } if (requirements.permissionsError) {
             return [false, requirements.permissionsError];
-        } else if(requirements.verboseErrors) {
+        } if (requirements.verboseErrors) {
             const errorText = `The ${requirements.permissions.join(', ')} permission${requirements.permissions.length > 1 ? 's are' : ' is'} required to use that!`;
             return [false, errorText];
-        } else {
-            return [false, 'You don\'t have the permissions to use that!'];
         }
+        return [false, 'You don\'t have the permissions to use that!'];
     }
 
     // return roles error if needed
-    if(!meetsRolesRequirement) {
-        if(requirements.quietErrors) {
+    if (!meetsRolesRequirement) {
+        if (requirements.quietErrors) {
             return [false, ''];
-        } else if(requirements.rolesError) {
+        } if (requirements.rolesError) {
             return [false, requirements.rolesError];
-        } else if(requirements.verboseErrors) {
+        } if (requirements.verboseErrors) {
             let errorText: string;
 
-            if(requirements.rolesBlacklist) {
+            if (requirements.rolesBlacklist) {
                 errorText = `The ${requirements.roles.map((r) => member.guild.roles.cache.get(r).name).join(', ')} role${requirements.roles.length > 1 ? 's are' : ' is'} not allowed to use that!`;
             } else {
                 errorText = `Only the ${requirements.roles.map((r) => member.guild.roles.cache.get(r).name).join(', ')} role${requirements.roles.length > 1 ? 's are' : ' is'} are allowed to use that!`;
             }
-            
+
             return [false, errorText];
-        } else {
-            return [false, 'You don\'t have the required roles to use that!'];
         }
+        return [false, 'You don\'t have the required roles to use that!'];
     }
 
     // return channel error if needed
-    if(!meetsChannelRequirement) {
-        if(requirements.quietErrors) {
+    if (!meetsChannelRequirement) {
+        if (requirements.quietErrors) {
             return [false, ''];
-        } else if(requirements.channelsError) {
+        } if (requirements.channelsError) {
             return [false, requirements.channelsError];
-        } else if(requirements.verboseErrors) {
+        } if (requirements.verboseErrors) {
             let errorText: string;
 
-            if(requirements.channelsBlacklist) {
+            if (requirements.channelsBlacklist) {
                 errorText = `That can't be used in ${requirements.channels.map((c) => member.guild.channels.cache.get(c).toString()).join(', ')}!`;
             } else {
                 errorText = `That can only be used in ${requirements.channels.map((c) => member.guild.channels.cache.get(c).toString()).join(', ')}!`;
             }
 
             return [false, errorText];
-        } else {
-            return [false, 'That can\'t be used here!'];
         }
+        return [false, 'That can\'t be used here!'];
     }
-    
+
     // all checks have passed, we're cleared for liftoff
     return [true, ''];
 }
 
 export async function sendPermissionsEmbed(msg: Message, error: string) {
     // return silently for quiet error commands
-    if(!msg) {
+    if (!msg) {
         return;
     }
 
     const permEmbed = makeEmbed({
         color: Colors.Red,
         title: 'Command Requirements',
-        description: error
+        description: error,
     });
-    let permMsg = await msg.reply({ embeds: [permEmbed] });
-    if(PermissionsEmbedDelay && PermissionsEmbedDelay > 0) {
+    const permMsg = await msg.reply({ embeds: [permEmbed] });
+    if (PermissionsEmbedDelay && PermissionsEmbedDelay > 0) {
         setTimeout(() => permMsg.delete(), PermissionsEmbedDelay); // Delete after 10 seconds
     }
 }

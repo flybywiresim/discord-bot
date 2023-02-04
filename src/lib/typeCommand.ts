@@ -53,7 +53,7 @@ export const typeCommand: CommandDefinition = {
         const member = await msg.guild.members.fetch(msg.author);
         const [requirementsSatisfied, requirementsError] = hasRequiredPermissions(requirements, member, msg.channel.id);
 
-        if(requirementsSatisfied) {
+        if (requirementsSatisfied) {
             const { genericEmbed, typeEmbeds } = (command as MessageCommandDefinition);
             if (!enableMultipleAircraftTypes || !typeEmbeds || Object.keys(typeEmbeds).length === 0) {
                 if (subCommand === evokedCommand) {
@@ -127,9 +127,7 @@ export const typeCommand: CommandDefinition = {
                 return;
             }
             Logger.debug(`Type Command - evoked: ${evokedCommand} - sub: ${subCommand} - No Embed for the specified type (evoked command)`);
-        }
-        else
-        {
+        } else {
             Logger.debug('Type Command - Bailing due to unsatisfied command requirements');
             await sendPermissionsEmbed(msg, requirementsError);
         }

@@ -48,12 +48,6 @@ const noChannelEmbed = (action:string, channelName: string) => makeEmbed({
     color: Colors.Yellow,
 });
 
-const noPermEmbed = makeEmbed({
-    title: 'Cache Update - Permission missing',
-    description: 'You do not have permission to use this command.',
-    color: Colors.Red,
-});
-
 const cacheUpdateEmbedField = (moderator: string, cacheType: string, cacheSize: string, duration: string): EmbedField[] => [
     {
         name: 'Type',
@@ -81,9 +75,7 @@ export const cacheUpdate: CommandDefinition = {
     name: ['cacheupdate', 'cache-update'],
     description: 'Updates the cache of the bot for a specific cache type.',
     category: CommandCategory.MODERATION,
-    requirements: {
-        roles: permittedRoles
-    },
+    requirements: { roles: permittedRoles },
     executor: async (msg) => {
         const subCommands = ['bans', 'channels', 'members', 'roles'];
 

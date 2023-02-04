@@ -20,7 +20,7 @@ export const birthday: CommandDefinition = {
     category: CommandCategory.UTILS,
     requirements: {
         roles: permittedRoles,
-        channels: [Threads.BIRTHDAY_THREAD]
+        channels: [Threads.BIRTHDAY_THREAD],
     },
     executor: async (msg) => {
         const conn = await getConn();
