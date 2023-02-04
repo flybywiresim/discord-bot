@@ -1,5 +1,9 @@
 ## Changelog
 
+Update <small>_ Febuary 2023</small>
+
+- fix: add link to docs to .trythis command (4/2/2023)
+
 Update <small>_ January 2023</small>
 
 - feat: slowmode with timeout and introducing proper scheduler (20/01/2023)
