@@ -121,7 +121,7 @@ export function hasRequiredPermissions(requirements: CommandPermissions, member:
 
 export async function sendPermissionsEmbed(msg: Message, error: string) {
     // return silently for quiet error commands
-    if (!msg) {
+    if (!msg || !error) {
         return;
     }
 
