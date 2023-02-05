@@ -87,7 +87,7 @@ export function hasRequiredPermissions(requirements: CommandPermissions, member:
             if (requirements.rolesBlacklist) {
                 errorText = `The ${requirements.roles.map((r) => member.guild.roles.cache.get(r).name).join(', ')} role${requirements.roles.length > 1 ? 's are' : ' is'} not allowed to use that!`;
             } else {
-                errorText = `Only the ${requirements.roles.map((r) => member.guild.roles.cache.get(r).name).join(', ')} role${requirements.roles.length > 1 ? 's are' : ' is'} are allowed to use that!`;
+                errorText = `Only the ${requirements.roles.map((r) => member.guild.roles.cache.get(r).name).join(', ')} role${requirements.roles.length > 1 ? 's are' : ' is'} allowed to use that!`;
             }
 
             return [false, errorText];
