@@ -5,7 +5,7 @@ import { makeEmbed, makeLines } from '../../lib/embed';
 const trythisDescription = makeLines([
     'Please try and remove all other mods/liveries from the community folder and test our addon again. This will help rule out mod conflicts.',
     '',
-    'See [this article](https://docs.flybywiresim.com/fbw-a32nx/support/reported-issues/#test-with-only-the-a32nx-add-on-in-community) on how to this quickly.',
+    'See [this step](https://docs.flybywiresim.com/fbw-a32nx/support/reported-issues/#test-with-only-the-a32nx-add-on-in-community) in our troubleshooting guide for more details on how to do this easily.',
 ]);
 
 const trythisEmbed = makeEmbed({
