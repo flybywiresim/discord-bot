@@ -3,6 +3,8 @@
 Update <small>_ February 2023</small>
 
 - feat: ECONNRESET support command (07/02/2023)
+- fix: add link to docs to .trythis command (07/02/2023)
+- feat: PR command (07/02/2023)
 
 Update <small>_ January 2023</small>
 

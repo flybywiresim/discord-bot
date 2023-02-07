@@ -130,6 +130,7 @@
 | .membercount | Lists the guild's current amount of members                                          | ---                                                            |
 | .metar       | Provides the METAR report of the requested airport                                   | ---                                                            |
 | .ping        | Send back a message                                                                  | ---                                                            |
+| .pr          | Provide a link to any given FBW PRs                                                  | ---                                                            |
 | .roleinfo    | Lists the guild's current amount of members                                          | ---                                                            |
 | .station     | Provides station information                                                         | ---                                                            |
 | .vatsim      | Show statistics and details of online VATSIM Controllers, Observers, ATIS and Pilots | .vatsimdata <br/> .vatdata                                     |
