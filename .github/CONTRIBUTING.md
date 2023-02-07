@@ -272,18 +272,20 @@ export const cowsay: CommandDefinition = {
     },
 };
 ```
+Permissions work for all types of commands.
 
 ### Command Permissions Options
+
 *NOTE: All fields are optional*
-| Field             | Description |
-| ----------------- | ----------- |
-| permissions       | List of all permissions a member must have. |
-| permissionsError  | Custom error message to return for failed permission checks. If omitted, a generic error will be returned. |
-| roles             | List of `Roles` which a member must have at least one of, or must not have any of if blacklisted. Roles are defined in `constants.ts`. |
-| rolesError        | Custom error message to return for failed role checks. If omitted, a generic error will be returned. |
-| rolesBlacklist    | Boolean flag to indicate whether the list of `roles` should be treated as a blacklist (defaults as whitelist). |
-| channels          | List of `Channels` & `Threads` that the command can be executed in, or is not allowed to be executed in if blacklisted. |
-| channelsError     | Custom error message to return for failed channel checks. If omitted, a generic error will be returned. |
-| channelsBlacklist | Boolean flag to indicate whether the list of `channels` should be treated as a blacklist (defaults as whitelist). |
-| quietErrors       | Boolean flag to disable role messages completely & silently fail out of command execution. Will override all other error message fields. |
+| Field             | Description                                                                                                                                                                                        |
+|:------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| permissions       | List of all Discord type permissions a member must have.                                                                                                                                           |
+| permissionsError  | Custom error message to return for a failed permission checks. If omitted, a generic error will be returned.                                                                                       |
+| roles             | List of `Roles` which a member must have at least one of, or must not have any of if blacklisted. Roles are defined in `constants.ts`.                                                             |
+| rolesError        | Custom error message to return for a failed role checks. If omitted, a generic error will be returned.                                                                                             |
+| rolesBlacklist    | Boolean flag to indicate whether the list of `roles` should be treated as a blacklist (defaults as whitelist).                                                                                     |
+| channels          | List of `Channels` & `Threads` that the command can be executed in, or is not allowed to be executed in if blacklisted. Channels are defined in `constants.ts`.                                    |
+| channelsError     | Custom error message to return for a failed channel checks. If omitted, a generic error will be returned.                                                                                          |
+| channelsBlacklist | Boolean flag to indicate whether the list of `channels` should be treated as a blacklist (defaults as whitelist).                                                                                  |
+| quietErrors       | Boolean flag to disable permission failure messages completely & silently fail out of command execution. Will override all other error message fields.                                             |
 | verboseErrors     | Boolean flag to enable a more verbose error message for failed requirement checks. Any `permissionsError`, `rolesError`, or `channelsError` will override this setting in their respective groups. |
