@@ -2,7 +2,7 @@
 
 Update <small>_ Febuary 2023</small>
 
-- fix: add link to docs to .trythis command (4/2/2023)
+- fix: add link to docs to .trythis command (7/2/2023)
 
 Update <small>_ January 2023</small>
 
