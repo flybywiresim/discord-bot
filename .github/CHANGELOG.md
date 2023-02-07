@@ -1,8 +1,9 @@
 ## Changelog
 
-Update <small>_ Febuary 2023</small>
+Update <small>_ February 2023</small>
 
 - fix: add link to docs to .trythis command (07/02/2023)
+- feat: PR command (07/02/2023)
 
 Update <small>_ January 2023</small>
 
