@@ -1,5 +1,9 @@
 ## Changelog
 
+Update <small>_ February 2023</small>
+
+- feat: PR command (07/02/2023)
+
 Update <small>_ January 2023</small>
 
 - feat: slowmode with timeout and introducing proper scheduler (20/01/2023)

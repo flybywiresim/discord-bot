@@ -160,6 +160,7 @@ import { cacheUpdate } from './moderation/cacheUpdate';
 import { navigraph } from './general/navigraph';
 import { botIssue } from './support/botIssue';
 import { slowMode } from './moderation/slowmode';
+import { pr } from './utils/pr';
 
 const commands: BaseCommandDefinition[] = [
     typeCommand,
@@ -322,6 +323,7 @@ const commands: BaseCommandDefinition[] = [
     navigraph,
     botIssue,
     slowMode,
+    pr,
 ];
 
 const commandsObject: { [k: string]: BaseCommandDefinition } = {};
