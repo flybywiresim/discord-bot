@@ -68,6 +68,7 @@
 | .dx12           | Explanation for the current state of MSFS DirectX12 support                       | ---                                                |
 | .discontinuity  | Link to docs about discontinuities                                                | .disco                                             |
 | .dlss           | Explanation of the DLSS option in the MSFS graphics settings.                     |                                                    |
+| .econnreset     | Troubleshooting info for installer ECONNRESET error.                              | .econreset                                         |
 | .fdr            | Information on how to provide fdr files                                           | ---                                                |
 | .flypadabout    | Help to identify the flyPadOS and aircraft version for support                    | .flypadversion <br> .efbabout <br> .efbversion     |
 | .hud            | How to disable in-game HUD                                                        | .logs                                              |
@@ -129,6 +130,7 @@
 | .membercount | Lists the guild's current amount of members                                          | ---                                                            |
 | .metar       | Provides the METAR report of the requested airport                                   | ---                                                            |
 | .ping        | Send back a message                                                                  | ---                                                            |
+| .pr          | Provide a link to any given FBW PRs                                                  | ---                                                            |
 | .roleinfo    | Lists the guild's current amount of members                                          | ---                                                            |
 | .station     | Provides station information                                                         | ---                                                            |
 | .vatsim      | Show statistics and details of online VATSIM Controllers, Observers, ATIS and Pilots | .vatsimdata <br/> .vatdata                                     |
