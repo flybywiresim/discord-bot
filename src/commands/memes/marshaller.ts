@@ -4,7 +4,7 @@ import { CommandCategory } from '../../constants';
 
 const MARSHALLER_URL = 'https://tenor.com/view/cute-girl-trying-to-warning-pilot-anime-meme-gif-21114064';
 
-export const addon: CommandDefinition = {
+export const marshaller: CommandDefinition = {
     name: 'marshaller',
     description: 'The marshaller is always right',
     category: CommandCategory.MEMES,
