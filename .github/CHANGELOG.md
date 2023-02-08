@@ -2,6 +2,7 @@
 
 Update <small>_ February 2023</small>
 
+- fix: update the link of .addon command (08/02/2023)
 - feat: ECONNRESET support command (07/02/2023)
 - fix: add link to docs to .trythis command (07/02/2023)
 - feat: PR command (07/02/2023)
