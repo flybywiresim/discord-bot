@@ -32,9 +32,7 @@ export const pr: CommandDefinition = {
     name: 'pr',
     description: `Retrieves the link of the provided GitHub PR.${syntaxHelp}`,
     category: CommandCategory.UTILS,
-    requirements: {
-        roles: permittedRoles,
-    },
+    requirements: { roles: permittedRoles },
     executor: async (msg) => {
         const command = msg.content.replace('.', '').split(/ +/);
 
