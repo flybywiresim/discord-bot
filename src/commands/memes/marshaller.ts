@@ -2,14 +2,16 @@ import { CommandDefinition } from '../../lib/command';
 import { makeEmbed } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 
-const MARSHALLER_URL = 'https://tenor.com/view/cute-girl-trying-to-warning-pilot-anime-meme-gif-21114064';
 
-export const marshaller: CommandDefinition = {
-    name: 'marshaller',
-    description: 'The marshaller is always right',
+const genericCommandEmbed = marshallerEmbed({
+    title: 'Command Title',
+    description: 'The marshaller is always right :) funny meme for when users cant park the plane in the parking line',
+    image: { url: 'https://tenor.com/view/cute-girl-trying-to-warning-pilot-anime-meme-gif-21114064' }, // optional
+});
+
+export const command: MessageCommandDefinition = {
+    name: ['marshaller'],
+    description: 'The marshaller is always right :) funny meme for when users cant park the plane in the parking line',
     category: CommandCategory.MEMES,
-    executor: (msg) => {
-        const MARSHALLER_embed = makeEmbed({ image: { url: MARSHALLER_URL } });
-        return msg.channel.send({ embeds: [MARSHALLER_embed] });
-    },
+    genericEmbed: genericCommandEmbed,
 };
