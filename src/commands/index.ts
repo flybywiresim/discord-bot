@@ -1,3 +1,4 @@
+import { marshaller } from './memes/marshaller';
 import { BaseCommandDefinition } from '../lib/command';
 import Logger from '../lib/logger';
 import { typeCommand } from '../lib/typeCommand';
@@ -164,6 +165,7 @@ import { econnreset } from './support/econnreset';
 import { pr } from './utils/pr';
 
 const commands: BaseCommandDefinition[] = [
+    marshaller,
     typeCommand,
     ping,
     whois,
