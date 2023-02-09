@@ -4,7 +4,7 @@ import Logger from '../lib/logger';
 import commands from '../commands';
 import { makeEmbed } from '../lib/embed';
 import { client, DEBUG_MODE } from '../index';
-import { CommandDefinition, isExecutorCommand, isMessageCommand } from '../lib/command';
+import { CommandDefinition, isExecutorCommand, isMessageCommand, hasRequiredPermissions, sendPermissionsEmbed } from '../lib/command';
 import { typeCommand } from '../lib/typeCommand';
 
 module.exports = {
@@ -35,11 +35,15 @@ module.exports = {
             const command = commands[usedCommand];
 
             if (command) {
-                const { name, requiredPermissions } = command;
+                const { name, requirements } = command;
                 const commandsArray = Array.isArray(name) ? name : [name];
                 const member = await msg.guild.members.fetch(msg.author);
 
-                if (!requiredPermissions || requiredPermissions.every((permission) => member.permissions.has(permission))) {
+                Logger.debug('Checking requirements');
+                const [requirementsSatisfied, requirementsError] = hasRequiredPermissions(requirements, member, msg.channel.id);
+
+                if (requirementsSatisfied) {
+                    Logger.debug('Requirements satisfied');
                     if (commandsArray.includes(usedCommand)) {
                         let executor;
                         if (isExecutorCommand(command)) {
@@ -67,7 +71,8 @@ module.exports = {
                         }
                     }
                 } else {
-                    await msg.reply(`you do not have sufficient permissions to use this command. (missing: ${requiredPermissions.join(', ')})`);
+                    Logger.debug('Bailing due to unsatisfied command requirements');
+                    await sendPermissionsEmbed(msg, requirementsError);
                 }
             } else {
                 Logger.info('Command doesn\'t exist');

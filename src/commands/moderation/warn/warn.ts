@@ -74,12 +74,6 @@ const dmEmbed = (formattedDate, moderator: User, user: User, reason: string) => 
     ],
 });
 
-const noPermEmbed = makeEmbed({
-    title: 'Warn',
-    description: 'You do not have permission to use this command.',
-    color: Colors.Red,
-});
-
 const warnFailed = makeEmbed({
     title: 'Warn - Failed',
     description: 'Failed to warn user, doc not saved to mongoDB',
@@ -100,7 +94,10 @@ const noModLogs = makeEmbed({
 
 export const warn: CommandDefinition = {
     name: 'warn',
-    requiredPermissions: ['BanMembers'],
+    requirements: {
+        permissions: ['BanMembers'],
+        roles: permittedRoles,
+    },
     description: 'Warns a user',
     category: CommandCategory.MODERATION,
     executor: async (msg) => {
@@ -112,13 +109,8 @@ export const warn: CommandDefinition = {
         }
 
         const modLogsChannel = msg.guild.channels.resolve(Channels.MOD_LOGS) as TextChannel | null;
-        const hasPermittedRole = msg.member.roles.cache.some((role) => permittedRoles.map((r) => r.toString()).includes(role.id));
         const args = msg.content.split(/\s+/).slice(1);
 
-        if (!hasPermittedRole) {
-            await msg.channel.send({ embeds: [noPermEmbed] });
-            return;
-        }
         if (args.length < 2 && parseInt(args[1]) !== 0) {
             await msg.reply('You need to provide the following arguments for this command: <id> <reason>');
             return;

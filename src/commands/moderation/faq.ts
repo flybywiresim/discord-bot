@@ -82,7 +82,7 @@ const faqEmbeds = [
 export const faq: CommandDefinition = {
     name: 'faq',
     description: 'Sends the FAQ',
-    requiredPermissions: ['BanMembers'],
+    requirements: { permissions: ['BanMembers'] },
     category: CommandCategory.MODERATION,
     executor: async (msg) => {
         await msg.channel.send({ files: [FLIGHT_DECK_IMAGE_URL] });

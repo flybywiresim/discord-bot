@@ -67,7 +67,7 @@ const failedUnTimeoutEmbed = (user: User) => (makeEmbed({
 
 export const untimeout: CommandDefinition = {
     name: ['untimeout', 'removetimeout'],
-    requiredPermissions: ['BanMembers'],
+    requirements: { permissions: ['BanMembers'] },
     category: CommandCategory.MODERATION,
     executor: async (msg) => {
         const args = msg.content.replace(/(?:\.untimeout|\.removetimeout)\s+/, '').split(' ');

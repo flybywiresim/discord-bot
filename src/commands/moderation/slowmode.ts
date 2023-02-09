@@ -80,12 +80,6 @@ const noSchedulerEmbed = makeEmbed({
     color: Colors.Red,
 });
 
-const noPermEmbed = makeEmbed({
-    title: 'Slow Mode - Permission missing',
-    description: 'You do not have permission to use this command.',
-    color: Colors.Red,
-});
-
 const slowModeEmbedField = (moderator: string, channel: string, slowmode: string, timeout: string): EmbedField[] => [
     {
         inline: true,
@@ -113,16 +107,12 @@ export const slowMode: CommandDefinition = {
     name: ['slowmode'],
     description: 'Manages slow mode for channels and potentially disable slow mode after a certain time.',
     category: CommandCategory.MODERATION,
+    requirements: { roles: permittedRoles },
     executor: async (msg) => {
         const subCommands = ['set', 'disable'];
         const scheduler = getScheduler();
         if (!scheduler) {
             await msg.channel.send({ embeds: [noSchedulerEmbed] });
-        }
-
-        const hasPermittedRole = msg.member.roles.cache.some((role) => permittedRoles.map((r) => r.toString()).includes(role.id));
-        if (!hasPermittedRole) {
-            return msg.channel.send({ embeds: [noPermEmbed] });
         }
 
         const modLogsChannel = client.channels.resolve(Channels.MOD_LOGS) as TextChannel | null;

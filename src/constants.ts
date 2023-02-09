@@ -80,3 +80,5 @@ export const AircraftTypeList = {
     a32nx: '32:1044695612337168494',
     a380x: '38:1044695718348210177',
 };
+
+export const PermissionsEmbedDelay = 10000;

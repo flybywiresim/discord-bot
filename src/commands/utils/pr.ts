@@ -28,21 +28,12 @@ const invalidEmbed = makeEmbed({
     color: Colors.Red,
 });
 
-const noPermEmbed = makeEmbed({
-    title: 'PR | Permission missing',
-    description: 'You do not have permission to use this command.',
-    color: Colors.Red,
-});
-
 export const pr: CommandDefinition = {
     name: 'pr',
     description: `Retrieves the link of the provided GitHub PR.${syntaxHelp}`,
     category: CommandCategory.UTILS,
+    requirements: { roles: permittedRoles },
     executor: async (msg) => {
-        if (!msg.member.roles.cache.some((role) => permittedRoles.map((current) => current.toString()).includes(role.id))) {
-            return msg.reply({ embeds: [noPermEmbed] });
-        }
-
         const command = msg.content.replace('.', '').split(/ +/);
 
         if (/\.pr +#?\d+/i.test(msg.content)) {

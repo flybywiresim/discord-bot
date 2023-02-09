@@ -7,12 +7,13 @@ export const cowsay: CommandDefinition = {
     name: ['cowsay', 'cs'],
     description: 'Emulates the famous UNIX program `cowsay`.',
     category: CommandCategory.MEMES,
+    requirements: {
+        channels: [Channels.BOT_COMMANDS],
+        verboseErrors: true,
+    },
     executor: (msg) => {
         const filter = new Filter();
         const text = msg.content.replace(/\.(cowsay|cs)\s/, '').replace(/`/g, '');
-        if (msg.channel.id !== Channels.BOT_COMMANDS) {
-            return msg.reply(`This command can only be used in <#${Channels.BOT_COMMANDS}>`);
-        }
 
         if (filter.isProfane(text)) {
             return msg.reply('Please do not use profane language with this command.');
