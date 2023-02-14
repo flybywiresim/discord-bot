@@ -55,10 +55,15 @@ export const typeCommand: CommandDefinition = {
 
         if (requirementsSatisfied) {
             const { genericEmbed, typeEmbeds } = (command as MessageCommandDefinition);
+            const repliedToMessage = msg.referenced_message;
             if (!enableMultipleAircraftTypes || !typeEmbeds || Object.keys(typeEmbeds).length === 0) {
                 if (subCommand === evokedCommand) {
                     const postEmbed = typeEmbeds && Object.keys(typeEmbeds).includes(defaultDisabledAircraftType) ? typeEmbeds[defaultDisabledAircraftType] : genericEmbed;
-                    await msg.channel.send({ embeds: [postEmbed] });
+                    if(repliedToMessage){
+                        await repliedToMessage.reply({ embeds: [postEmbed]});
+                    } else {
+                        await msg.channel.send({ embeds: [postEmbed] });
+                    }
                 }
                 return;
             }
