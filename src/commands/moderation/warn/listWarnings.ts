@@ -14,10 +14,7 @@ const noConnEmbed = makeEmbed({
 
 export const listWarnings: CommandDefinition = {
     name: ['warnings', 'listwarn', 'listwarnings', 'warns'],
-    requirements: {
-        permissions: ['BanMembers'],
-        roles: RoleGroups.STAFF,
-    },
+    requirements: { roles: RoleGroups.STAFF },
     description: 'Returns warnings for a user',
     category: CommandCategory.MODERATION,
     executor: async (msg) => {

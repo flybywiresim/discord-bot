@@ -38,10 +38,7 @@ const deleteEmbed = makeEmbed({
 
 export const deleteWarn: CommandDefinition = {
     name: ['deletewarn', 'delwarn', 'deletewarning'],
-    requirements: {
-        permissions: ['BanMembers'],
-        roles: RoleGroups.STAFF,
-    },
+    requirements: { roles: RoleGroups.STAFF },
     description: 'Delete a warning',
     category: CommandCategory.MODERATION,
     executor: async (msg) => {

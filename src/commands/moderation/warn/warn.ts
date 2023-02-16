@@ -89,10 +89,7 @@ const noModLogs = makeEmbed({
 
 export const warn: CommandDefinition = {
     name: 'warn',
-    requirements: {
-        permissions: ['BanMembers'],
-        roles: RoleGroups.STAFF,
-    },
+    requirements: { roles: RoleGroups.STAFF },
     description: 'Warns a user',
     category: CommandCategory.MODERATION,
     executor: async (msg) => {
