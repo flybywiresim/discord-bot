@@ -1,15 +1,10 @@
 import moment from 'moment';
 import { Colors, TextChannel } from 'discord.js';
 import { CommandDefinition } from '../../../lib/command';
-import { Roles, CommandCategory, Channels } from '../../../constants';
+import { CommandCategory, Channels, RoleGroups } from '../../../constants';
 import { makeEmbed } from '../../../lib/embed';
 import { getConn } from '../../../lib/db';
 import Warn from '../../../lib/schemas/warnSchema';
-
-const permittedRoles = [
-    Roles.ADMIN_TEAM,
-    Roles.MODERATION_TEAM,
-];
 
 const noConnEmbed = makeEmbed({
     title: 'Warn - No Connection',
@@ -45,7 +40,7 @@ export const deleteWarn: CommandDefinition = {
     name: ['deletewarn', 'delwarn', 'deletewarning'],
     requirements: {
         permissions: ['BanMembers'],
-        roles: permittedRoles,
+        roles: RoleGroups.STAFF,
     },
     description: 'Delete a warning',
     category: CommandCategory.MODERATION,

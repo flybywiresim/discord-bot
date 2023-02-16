@@ -1,15 +1,10 @@
 import { Colors, EmbedField, TextChannel } from 'discord.js';
 import moment from 'moment';
 import { CommandDefinition } from '../../lib/command';
-import { Roles, Channels, CommandCategory } from '../../constants';
+import { Channels, CommandCategory, RoleGroups } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
 import { getConn } from '../../lib/db';
 import TemporaryCommand from '../../lib/schemas/temporaryCommandSchema';
-
-const permittedRoles = [
-    Roles.ADMIN_TEAM,
-    Roles.MODERATION_TEAM,
-];
 
 const helpEmbed = (evokedCommand: String) => makeEmbed({
     title: 'Manage Temporary Commands - Help',
@@ -221,7 +216,7 @@ export const temporarycommandedit: CommandDefinition = {
     name: ['temporarycommandedit', 'tempcommandedit', 'tcedit', 'tcmod'],
     description: 'Creates a temporary command for temporary use.',
     category: CommandCategory.MODERATION,
-    requirements: { roles: permittedRoles },
+    requirements: { roles: RoleGroups.STAFF },
     executor: async (msg) => {
         const subCommands = ['add', 'image', 'delete', 'info'];
         const conn = await getConn();

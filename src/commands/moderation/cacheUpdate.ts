@@ -1,13 +1,8 @@
 import { Colors, EmbedField, TextChannel } from 'discord.js';
 import { CommandDefinition } from '../../lib/command';
-import { Roles, Channels, CommandCategory } from '../../constants';
+import { Channels, CommandCategory, RoleGroups } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 import { client } from '../..';
-
-const permittedRoles = [
-    Roles.ADMIN_TEAM,
-    Roles.MODERATION_TEAM,
-];
 
 const helpEmbed = (evokedCommand: String) => makeEmbed({
     title: 'Cache Update - Help',
@@ -75,7 +70,7 @@ export const cacheUpdate: CommandDefinition = {
     name: ['cacheupdate', 'cache-update'],
     description: 'Updates the cache of the bot for a specific cache type.',
     category: CommandCategory.MODERATION,
-    requirements: { roles: permittedRoles },
+    requirements: { roles: RoleGroups.STAFF },
     executor: async (msg) => {
         const subCommands = ['bans', 'channels', 'members', 'roles'];
 

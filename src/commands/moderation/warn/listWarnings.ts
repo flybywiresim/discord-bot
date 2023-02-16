@@ -1,15 +1,10 @@
 import { Colors, User } from 'discord.js';
 import moment from 'moment';
 import { CommandDefinition } from '../../../lib/command';
-import { Roles, CommandCategory } from '../../../constants';
+import { CommandCategory, RoleGroups } from '../../../constants';
 import { makeEmbed } from '../../../lib/embed';
 import { getConn } from '../../../lib/db';
 import Warn from '../../../lib/schemas/warnSchema';
-
-const permittedRoles = [
-    Roles.ADMIN_TEAM,
-    Roles.MODERATION_TEAM,
-];
 
 const noConnEmbed = makeEmbed({
     title: 'Warn - No Connection',
@@ -21,7 +16,7 @@ export const listWarnings: CommandDefinition = {
     name: ['warnings', 'listwarn', 'listwarnings', 'warns'],
     requirements: {
         permissions: ['BanMembers'],
-        roles: permittedRoles,
+        roles: RoleGroups.STAFF,
     },
     description: 'Returns warnings for a user',
     category: CommandCategory.MODERATION,

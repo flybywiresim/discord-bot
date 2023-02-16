@@ -1,6 +1,6 @@
 import { CommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
-import { Channels, CommandCategory, Roles } from '../../constants';
+import { Channels, CommandCategory, Roles, RoleGroups } from '../../constants';
 
 const RULES_EMBED = makeEmbed({
     title: 'FlyByWire Simulations Server Rules',
@@ -55,7 +55,7 @@ const ROLE_EMBED = makeEmbed({
 export const rules: CommandDefinition = {
     name: 'rules',
     description: 'Sends the rules',
-    requirements: { permissions: ['BanMembers'] },
+    requirements: { roles: RoleGroups.STAFF },
     category: CommandCategory.MODERATION,
     executor: async (msg) => {
         await msg.channel.send({ embeds: [RULES_EMBED] });
