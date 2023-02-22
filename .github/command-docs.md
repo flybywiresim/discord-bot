@@ -26,7 +26,8 @@
 | .flypados                | Provides a link to the flyPadOS 3 documentation                                                   | .flypad <br> .efbos                                    |
 | .freetext                | Provides a link to the FlyByWire free text feature guide                                          | .ft                                                    |
 | .fma                     | Provides a link to the FMA docs guide                                                             | ---                                                    |
-| .github                  | provides the link to the A32NX GitHub Repository                                                  | .repo <br> .repository                                 |
+| .github                  | Provides the link to the A32NX GitHub Repository                                                  | .repo <br> .repository                                 |
+| .gsx-integration         | Provides links to the GSX Integration documentation                                               | .gsx                                                   |
 | .holds                   | Provides a link to the Holds documentation                                                        | .hold <br> .holding                                    |
 | .liveries                | Provides a link to the flightsim.to A32NX liveries page                                           | .liv                                                   |
 | .mcdu                    | Provides a set of links to the detailed MCDU documentation                                        | .mcdudoc                                               |
