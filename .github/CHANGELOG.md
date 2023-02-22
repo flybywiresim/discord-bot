@@ -2,6 +2,7 @@
 
 Update <small>_ February 2023</small>
 
+- feat: Add GSX Integration command (22/02/2023)
 - feat: feat: unified command permissions framework (09/02/2023)
 - fix: update the link of .addon command (08/02/2023)
 - feat: ECONNRESET support command (07/02/2023)
