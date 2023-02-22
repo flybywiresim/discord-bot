@@ -9,7 +9,7 @@ export const reportedissues: CommandDefinition = {
     executor: (msg) => {
         const reportedissuesEmbed = makeEmbed({
             title: 'FlyByWire A32NX | Reported Issues',
-            description: 'Please see [this link](https://docs.flybywiresim.com/start/reported-issues/) for a current list of reported issues.',
+            description: 'Please see [this link](https://docs.flybywiresim.com/fbw-a32nx/support/reported-issues/) for a current list of reported issues.',
         });
 
         return msg.channel.send({ embeds: [reportedissuesEmbed] });
