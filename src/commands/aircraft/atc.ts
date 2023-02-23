@@ -23,7 +23,7 @@ const genericAtcEmbed = makeEmbed({
         },
         {
             name: 'More information',
-            value: 'Please read the [Flight Planning guide](https://docs.flybywiresim.com/fbw-a32nx/feature-guides/flight-planning/) for more details.',
+            value: 'Please read the [Flight Planning Guide](https://docs.flybywiresim.com/fbw-a32nx/feature-guides/flight-planning/) for more details.',
             inline: false,
         },
     ],
