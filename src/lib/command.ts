@@ -135,3 +135,19 @@ export async function sendPermissionsEmbed(msg: Message, error: string) {
         setTimeout(() => permMsg.delete(), PermissionsEmbedDelay); // Delete after 10 seconds
     }
 }
+
+export async function replyToMessage(msg, postEmbed) {
+    let sentMessage;
+    if (msg.reference) {
+        await msg.fetchReference()
+            .then(async (res) => res.reply({ embeds: [postEmbed] })
+                .then((res) => {
+                    sentMessage = res;
+                }));
+    } else {
+        await msg.reply({ embeds: [postEmbed] }).then((res) => {
+            sentMessage = res;
+        });
+    }
+    return Promise.resolve(sentMessage);
+}
