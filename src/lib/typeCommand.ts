@@ -55,15 +55,10 @@ export const typeCommand: CommandDefinition = {
 
         if (requirementsSatisfied) {
             const { genericEmbed, typeEmbeds } = (command as MessageCommandDefinition);
-            const repliedToMessage = msg.referenced_message;
             if (!enableMultipleAircraftTypes || !typeEmbeds || Object.keys(typeEmbeds).length === 0) {
                 if (subCommand === evokedCommand) {
                     const postEmbed = typeEmbeds && Object.keys(typeEmbeds).includes(defaultDisabledAircraftType) ? typeEmbeds[defaultDisabledAircraftType] : genericEmbed;
-                    if(repliedToMessage){
-                        await repliedToMessage.reply({ embeds: [postEmbed]});
-                    } else {
-                        await msg.channel.send({ embeds: [postEmbed] });
-                    }
+                    await sendMessage(msg, postEmbed);
                 }
                 return;
             }
@@ -84,7 +79,7 @@ export const typeCommand: CommandDefinition = {
                     name: 'Select the aircraft for more details:',
                     value: makeLines(choiceEmbedFieldLines),
                 });
-                await msg.channel.send({ embeds: [postGenericEmbed] }).then(async (genericMessage) => {
+                await sendMessage(msg, postGenericEmbed).then(async (genericMessage) => {
                     commandSupportedAircraftTypeEmojis.forEach(async (element) => {
                         try {
                             await genericMessage.react(element);
@@ -113,7 +108,7 @@ export const typeCommand: CommandDefinition = {
                             } catch (e) {
                                 Logger.debug('Type Command - Generic message with choices was already deleted');
                             }
-                            await msg.channel.send({ embeds: [typeEmbeds[foundAircraftType]] });
+                            await sendMessage(msg, typeEmbeds[foundAircraftType]);
                         }
                     }).catch(async () => {
                         try {
@@ -128,7 +123,7 @@ export const typeCommand: CommandDefinition = {
             }
             if (commandSupportedAircraftTypes.includes(evokedCommand)) {
                 const keyTyped = evokedCommand as keyof typeof typeEmbeds;
-                await msg.channel.send({ embeds: [typeEmbeds[keyTyped]] });
+                await sendMessage(msg, typeEmbeds[keyTyped]);
                 return;
             }
             Logger.debug(`Type Command - evoked: ${evokedCommand} - sub: ${subCommand} - No Embed for the specified type (evoked command)`);
@@ -138,3 +133,19 @@ export const typeCommand: CommandDefinition = {
         }
     },
 };
+
+async function sendMessage(msg, postEmbed) {
+    let sentMessage;
+    if (msg.reference) {
+        await msg.fetchReference()
+            .then(async (res) => res.reply({ embeds: [postEmbed] })
+                .then((res) => {
+                    sentMessage = res;
+                }));
+    } else {
+        await msg.reply({ embeds: [postEmbed] }).then((res) => {
+            sentMessage = res;
+        });
+    }
+    return Promise.resolve(sentMessage);
+}
