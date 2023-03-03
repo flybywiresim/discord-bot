@@ -2,9 +2,7 @@ import { Colors, EmbedField } from 'discord.js';
 import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
-import { getConn } from '../../lib/db';
 import Logger from '../../lib/logger';
-import ReportedIssue from '../../lib/schemas/reportedIssuesSchema';
 
 const jsdom = require('jsdom');
 
@@ -31,12 +29,6 @@ const foundIssueEmbedFields = (id: string): EmbedField[] => [
     },
 ];
 
-const noDbConnEmbed = makeEmbed({
-    title: 'Reported Issues - No Connection',
-    description: 'Could not connect to the database.',
-    color: Colors.Red,
-});
-
 const notFoundEmbed = (action: string, command: string) => makeEmbed({
     title: `Reported Issues - ${action} - ${command} not found`,
     description: 'No reported issue matching the search can be found.',
@@ -49,67 +41,37 @@ export const reportedissues: CommandDefinition = {
     category: CommandCategory.SUPPORT,
     executor: async (msg) => {
         try {
-            const dbConn = getConn();
-            if (!dbConn) {
-                await msg.channel.send({ embeds: [noDbConnEmbed] });
-            }
-
-            const args = msg.content.split(/\s+/).slice(1);
-            if ((args.length < 1 && parseInt(args[1]) !== 0) || !dbConn) {
+            let [args] = msg.content.split(/\s+/).slice(1);
+            if ((args.length < 1 && parseInt(args[1]) !== 0)) {
                 await msg.channel.send({ embeds: [genericReportedIssuesEmbed] });
                 return;
             }
 
-            let subCommand = args[0].toLowerCase();
-            let [subArgs] = args.slice(1);
-            if (subCommand !== 'show' && subCommand !== 'update') {
-                subCommand = 'show';
-                [subArgs] = args;
-            }
-            subArgs = subArgs.replace('+', '.*');
+            args = args.replace('+', '*').toLowerCase();
 
-            if (subCommand === 'show') {
-                let reportedIssues = [];
-                try {
-                    reportedIssues = await ReportedIssue.find({ id: { $regex: `.*${subArgs}.*` } });
-                    if (!reportedIssues || reportedIssues.length === 0) {
-                        await msg.channel.send({ embeds: [notFoundEmbed('Show', subArgs)] });
-                        return;
-                    }
-                } catch {
-                    await msg.channel.send({ embeds: [notFoundEmbed('Show', subArgs)] });
-                    return;
+            const reportedIssues = [];
+            const dom = await JSDOM.fromURL(`${FBW_DOCS_REPORTED_ISSUES_URL}`);
+            const { document } = dom.window;
+            const h3Elements = document.querySelectorAll('h3');
+            h3Elements.forEach((element) => {
+                const { id } = element;
+                if (id.toLowerCase().match(new RegExp(`${args}`))) {
+                    reportedIssues.push(id);
                 }
+            });
 
-                const fields = reportedIssues.map((reportedIssue) => {
-                    const { id } = reportedIssue;
-                    return foundIssueEmbedFields(id);
-                }).flat();
-
-                await msg.channel.send({ embeds: [foundIssuesEmbed(fields)] });
-
+            if (reportedIssues.length === 0) {
+                await msg.channel.send({ embeds: [notFoundEmbed('Show', args)] });
                 return;
             }
 
-            if (subCommand === 'update') {
-                const dom = await JSDOM.fromURL(`${FBW_DOCS_REPORTED_ISSUES_URL}`);
-                const { document } = dom.window;
-                const h3Elements = document.querySelectorAll('h3');
-                h3Elements.forEach((element) => {
-                    const { id } = element;
-                    const elementId = new ReportedIssue({
-                        id,
-                    });
-                    try {
-                        ReportedIssue.deleteMany();
-                        elementId.save();
-                    } catch {
-                        return;
-                    }
-                });
-            }
+            const fields = reportedIssues.map((id) => foundIssueEmbedFields(id)).flat();
+            await msg.channel.send({ embeds: [foundIssuesEmbed(fields)] });
+
+            return;
         } catch (e) {
             Logger.error(e);
+            Logger.error(e.stack);
             const errorEmbed = makeEmbed({
                 title: 'Error | Reported Issues',
                 description: e.message,
