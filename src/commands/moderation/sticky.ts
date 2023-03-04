@@ -1,17 +1,13 @@
 import { Colors, EmbedField, BaseChannel, TextChannel, TextBasedChannel } from 'discord.js';
 import moment from 'moment';
 import { CommandDefinition } from '../../lib/command';
-import { Roles, Channels, CommandCategory } from '../../constants';
+import { Channels, CommandCategory, RoleGroups } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 import { getConn } from '../../lib/db';
 import StickyMessage from '../../lib/schemas/stickyMessageSchema';
 import { stickyMessageEmbed, STICKY_MOD_TITLE } from '../../lib/stickyMessageEmbed';
 import Logger from '../../lib/logger';
 
-const permittedRoles = [
-    Roles.ADMIN_TEAM,
-    Roles.MODERATION_TEAM,
-];
 const DEFAULT_TIME_INTERVAL = 15;
 const DEFAULT_MESSAGE_COUNT = 5;
 const MAX_TIME_INTERVAL = 86400;
@@ -152,7 +148,7 @@ export const sticky: CommandDefinition = {
     name: ['sticky'],
     description: 'Manages sticky messages.',
     category: CommandCategory.MODERATION,
-    requirements: { roles: permittedRoles },
+    requirements: { roles: RoleGroups.STAFF },
     executor: async (msg) => {
         const subCommands = ['set', 'image', 'count', 'time', 'unset', 'info'];
         const conn = getConn();
