@@ -2,7 +2,7 @@ import { MessageCommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
 
-const genericVersionsEmbed = makeEmbed({
+const versionsEmbed = makeEmbed({
     title: 'FlyByWire A32NX | Versions',
     footer: { text: 'If you are having further problems, let us know in our #support channel.' },
     fields: [
@@ -45,5 +45,5 @@ export const versions: MessageCommandDefinition = {
     name: 'versions',
     description: 'Explains the different A32NX versions',
     category: CommandCategory.AIRCRAFT,
-    genericEmbed: genericVersionsEmbed,
+    genericEmbed: versionsEmbed,
 };

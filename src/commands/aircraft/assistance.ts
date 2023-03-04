@@ -2,7 +2,7 @@ import { MessageCommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
 
-const genericAssistanceEmbed = makeEmbed({
+const assistanceEmbed = makeEmbed({
     title: 'FlyByWire A32NX | Assistance Options',
     description: makeLines([
         'The A32NX is not compatible with the Microsoft Flight Simulator assistance feature "Auto-Rudder". **It is required to deactivate this feature in MSFS.**',
@@ -16,5 +16,5 @@ export const assistance: MessageCommandDefinition = {
     name: ['assistance', 'assi', 'as'],
     description: 'Explains to the user why assistance options should be disabled',
     category: CommandCategory.AIRCRAFT,
-    genericEmbed: genericAssistanceEmbed,
+    genericEmbed: assistanceEmbed,
 };

@@ -2,7 +2,7 @@ import { MessageCommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
 
-const genericAudioEmbed = makeEmbed({
+const audioEmbed = makeEmbed({
     title: 'FlyByWire A32NX | Audio Configuration',
     description: makeLines([
         'For detailed information about various audio configurations on the EFB and in-flight audio triggers please see the guide below.',
@@ -15,5 +15,5 @@ export const audio: MessageCommandDefinition = {
     name: 'audio',
     description: 'Provides support information about A32NX audio configuration',
     category: CommandCategory.AIRCRAFT,
-    genericEmbed: genericAudioEmbed,
+    genericEmbed: audioEmbed,
 };

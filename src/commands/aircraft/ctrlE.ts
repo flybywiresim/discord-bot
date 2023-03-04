@@ -2,7 +2,7 @@ import { MessageCommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 
-const genericCtrlEembed = makeEmbed({
+const ctrlEEmbed = makeEmbed({
     title: 'FlyByWire A32NX | Engine Start',
     description: makeLines([
         'The FlyByWire A32NX is not compatible with the CTRL+E method of starting your engines.',
@@ -15,5 +15,5 @@ export const ctrlE: MessageCommandDefinition = {
     name: ['ctrle', 'ctrl+e', 'ctrl-e', 'enginestart'],
     description: 'Displays help regarding CTRL+E engine start',
     category: CommandCategory.AIRCRAFT,
-    genericEmbed: genericCtrlEembed,
+    genericEmbed: ctrlEEmbed,
 };

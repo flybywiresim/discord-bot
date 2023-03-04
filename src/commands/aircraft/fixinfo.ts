@@ -4,7 +4,7 @@ import { CommandCategory } from '../../constants';
 
 const FIX_INFO_URL = 'https://cdn.discordapp.com/attachments/630529130189946882/914959833709563905/nd-orl-fixinfo2.png';
 
-const genericFixinfoEmbed = makeEmbed({
+const fixInfoEmbed = makeEmbed({
     title: 'FlyByWire A32NX | Fix Info',
     description: makeLines([
         'The A320 comes with a feature called fix info, which allows you to create radii and radials around a waypoint.',
@@ -24,5 +24,5 @@ export const fixinfo: MessageCommandDefinition = {
     name: 'fixinfo',
     description: 'Provide information about the fix info feature.',
     category: CommandCategory.AIRCRAFT,
-    genericEmbed: genericFixinfoEmbed,
+    genericEmbed: fixInfoEmbed,
 };

@@ -4,7 +4,7 @@ import { CommandCategory } from '../../constants';
 
 const TAKEOFF_ISSUES_IMAGE_URL = 'https://cdn.discordapp.com/attachments/819557805912621056/998403696343928852/engines1.png';
 
-const genericContentEmbed = makeEmbed({
+const takeoffIssuesEmbed = makeEmbed({
     title: 'FlyByWire A32NX | Engine Issues on Takeoff',
     description: makeLines([
         'Engine shutdown on takeoff is caused by the \'ENGINE AUTOSTOP\' and \'AUTO START ENGINE\' bindings. Please make sure that you unbind these in the controls options.',
@@ -18,5 +18,5 @@ export const takeoffIssues: MessageCommandDefinition = {
     name: ['takeoffissues', 'toi', 'engines', 'eng'],
     description: 'Help with engine issues on takeoff',
     category: CommandCategory.AIRCRAFT,
-    genericEmbed: genericContentEmbed,
+    genericEmbed: takeoffIssuesEmbed,
 };

@@ -2,7 +2,7 @@ import { MessageCommandDefinition } from '../../lib/command';
 import { makeEmbed } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 
-const genericAtcEmbed = makeEmbed({
+const atcEmbed = makeEmbed({
     title: 'FlyByWire A32NX | Using the built-in Microsoft Flight Simulator ATC',
     description: 'There are multiple ways of using the built-in ATC of MSFS:',
     fields: [
@@ -33,5 +33,5 @@ export const atc: MessageCommandDefinition = {
     name: ['atc', 'flightplanning'],
     category: CommandCategory.AIRCRAFT,
     description: 'Provides details on the use of the built-in ATC and a link to the cFMS special notes section.',
-    genericEmbed: genericAtcEmbed,
+    genericEmbed: atcEmbed,
 };

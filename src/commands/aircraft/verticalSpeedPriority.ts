@@ -2,7 +2,7 @@ import { MessageCommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
 
-const genericVerticalSpeedPriorityEmbed = makeEmbed({
+const verticalSpeedPriorityEmbed = makeEmbed({
     title: 'FlyByWire A32NX | V/S & FPA Priority',
     description: makeLines([
         'The V/S (FPA) guidance has priority over the speed guidance. If the selected target V/S or FPA is too high (relative to the current thrust condition and speed), the FMGC will steer the aircraft to the target V/S or FPA, but the aircraft will also accelerate or decelerate.',
@@ -17,5 +17,5 @@ export const verticalSpeedPriority: MessageCommandDefinition = {
     name: ['verticalspeedpriority', 'vspriority', 'fpapriority', 'vspeed'],
     description: 'Explain the priority of Vertical Speed or Flight Path Angle over Speed guidance.',
     category: CommandCategory.AIRCRAFT,
-    genericEmbed: genericVerticalSpeedPriorityEmbed,
+    genericEmbed: verticalSpeedPriorityEmbed,
 };

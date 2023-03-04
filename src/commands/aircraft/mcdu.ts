@@ -4,7 +4,7 @@ import { makeEmbed, makeLines } from '../../lib/embed';
 
 const MCDU_BASE_URL = 'https://docs.flybywiresim.com/pilots-corner/a32nx-briefing/mcdu';
 
-const genericMcduEmbed = makeEmbed({
+const mcduEmbed = makeEmbed({
     title: 'FlyByWire A32NX | MCDU Documentation',
     description: makeLines([
         `Please see our [MCDU documentation](${MCDU_BASE_URL}) for information on the MCDU of the FlyByWire A32NX.`,
@@ -31,5 +31,5 @@ export const mcdu: MessageCommandDefinition = {
     name: ['mcdu', 'mcdudoc'],
     description: 'Provides a link to the MCDU documentation',
     category: CommandCategory.AIRCRAFT,
-    genericEmbed: genericMcduEmbed,
+    genericEmbed: mcduEmbed,
 };

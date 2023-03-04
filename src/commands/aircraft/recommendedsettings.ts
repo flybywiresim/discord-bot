@@ -2,7 +2,7 @@ import { MessageCommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 
-const genericRecommendedSettingsEmbed = makeEmbed({
+const recommendedSettingsEmbed = makeEmbed({
     title: 'FlyByWire A32NX | Recommended Settings',
     description: makeLines([
         'Before embarking on your flight please ensure you have looked at our recommended settings guide.',
@@ -17,5 +17,5 @@ export const recommendedSettings: MessageCommandDefinition = {
     name: 'rs',
     category: CommandCategory.AIRCRAFT,
     description: 'Provides a link to the recommended settings docs guide.',
-    genericEmbed: genericRecommendedSettingsEmbed,
+    genericEmbed: recommendedSettingsEmbed,
 };

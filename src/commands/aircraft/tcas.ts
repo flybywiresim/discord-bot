@@ -2,7 +2,7 @@ import { MessageCommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
 
-const genericTcasEmbed = makeEmbed({
+const tcasEmbed = makeEmbed({
     title: 'FlyByWire A32NX | AP/FD TCAS',
     description: makeLines([
         'The A32NX utilizes AP/FD TCAS by Airbus which allows for fully automated flight for both traffic advisories (TA) and resolution advisories (RA).',
@@ -17,5 +17,5 @@ export const tcas: MessageCommandDefinition = {
     name: 'tcas',
     description: 'Provides support information about A32NX AP/FD TCAS',
     category: CommandCategory.AIRCRAFT,
-    genericEmbed: genericTcasEmbed,
+    genericEmbed: tcasEmbed,
 };

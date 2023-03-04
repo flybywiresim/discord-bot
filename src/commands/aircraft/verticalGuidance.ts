@@ -2,7 +2,7 @@ import { MessageCommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
 
-const genericVerticalGuidanceEmbed = makeEmbed({
+const verticalGuidanceEmbed = makeEmbed({
     title: 'FlyByWire A32NX | Vertical Guidance Documentation',
     description: makeLines([
         'Please see our [Vertical Guidance documentation](https://docs.flybywiresim.com/pilots-corner/advanced-guides/flight-guidance/vertical-guidance/overview/) for information on the VNAV capabilities of the FlyByWire A32NX.',
@@ -22,5 +22,5 @@ export const verticalGuidance: MessageCommandDefinition = {
     name: ['verticalguidance', 'vnavdoc', 'vnav'],
     description: 'Provides a link to the Vertical Guidance documentation',
     category: CommandCategory.AIRCRAFT,
-    genericEmbed: genericVerticalGuidanceEmbed,
+    genericEmbed: verticalGuidanceEmbed,
 };

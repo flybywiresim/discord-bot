@@ -2,7 +2,7 @@ import { MessageCommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
 
-const genericCfmsEmbed = makeEmbed({
+const cfmsEmbed = makeEmbed({
     title: 'FlyByWire A32NX | Custom Flight Management System',
     description: makeLines([
         'Our custom flight management system is available in both the stable and development version of the A32NX.',
@@ -15,5 +15,5 @@ export const cfms: MessageCommandDefinition = {
     name: 'cfms',
     description: 'Provides information on the new cfms',
     category: CommandCategory.AIRCRAFT,
-    genericEmbed: genericCfmsEmbed,
+    genericEmbed: cfmsEmbed,
 };

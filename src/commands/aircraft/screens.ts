@@ -4,7 +4,7 @@ import { CommandCategory } from '../../constants';
 
 const SCREENS_HELP_URL = 'https://media.discordapp.net/attachments/885885609007276062/894955124399693844/unknown.png';
 
-const genericScreensEmbed = makeEmbed({
+const screensEmbed = makeEmbed({
     title: 'FlyByWire A32NX | Screens Fix',
     description: makeLines([
         'Turn the following knobs to illuminate the dark screens.',
@@ -17,5 +17,5 @@ export const screens: MessageCommandDefinition = {
     name: ['screens', 'screen'],
     description: 'Display help with avionics',
     category: CommandCategory.AIRCRAFT,
-    genericEmbed: genericScreensEmbed,
+    genericEmbed: screensEmbed,
 };
