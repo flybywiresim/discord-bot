@@ -2,11 +2,11 @@
 
 Update <small>_ March 2023</small>
 
+- refactor: update and fix various commands (04/03/2023)
 - refactor: update existing command permissions (04/03/2023)
 
 Update <small>_ February 2023</small>
 
-- refactor: update and fix various commands (23/02/2023)
 - fix: update report channel for experimental (22/02/2023)
 - feat: Add GSX Integration command (22/02/2023)
 - feat: feat: unified command permissions framework (09/02/2023)
