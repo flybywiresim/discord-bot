@@ -48,7 +48,7 @@
 | .verticalguidance        | Provides a link to the Vertical Guidance documentation (also referred to as VNAV)                 | .vnavdoc <br> .vnav                                    |
 | .verticalguidancesymbols | Provides a link to the Vertical Guidance Navigation Display Symbols documentation                 | .vnavsymbols <br> .vnavnd                              |
 | .verticalspeedpriority   | Explains the priority of V/S and FPA over the speed guidance and provides a link for more details | .vspriority <br> .fpapriority <br> .vspeed             |
-| .weather                 | Explains the current state of the weather and terrain radars in experimental                      | .wx                                                    |
+| .weather                 | Explains the current state of the weather and terrain radars in experimental                      | .wx <br> .wxr <br> .terrain <br> .terr <br> .terronnd  |
 | .weights                 | Provides a link to the fuel and weights docs guide                                                | .fuel <br> .wb <br> .w/b <br> .w+b <br> .wnb <br> .w&b |
 
 ### Support
