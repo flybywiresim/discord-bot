@@ -1,25 +1,17 @@
 import { Colors } from 'discord.js';
 import { CommandDefinition } from '../../lib/command';
-import { Roles, CommandCategory, Threads } from '../../constants';
+import { RoleGroups, CommandCategory, Threads } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
 import Logger from '../../lib/logger';
 import Birthday from '../../lib/schemas/birthdaySchema';
 import { getConn } from '../../lib/db';
-
-const permittedRoles = [
-    Roles.ADMIN_TEAM,
-    Roles.MODERATION_TEAM,
-    Roles.DEVELOPMENT_TEAM,
-    Roles.MEDIA_TEAM,
-    Roles.FBW_EMERITUS,
-];
 
 export const birthday: CommandDefinition = {
     name: 'birthday',
     description: 'Manages birthday reminders',
     category: CommandCategory.UTILS,
     requirements: {
-        roles: permittedRoles,
+        roles: RoleGroups.TEAM,
         channels: [Threads.BIRTHDAY_THREAD],
     },
     executor: async (msg) => {

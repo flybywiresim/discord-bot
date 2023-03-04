@@ -1,15 +1,10 @@
 import { Colors, TextChannel, User } from 'discord.js';
 import moment from 'moment';
 import { CommandDefinition } from '../../../lib/command';
-import { Roles, Channels, CommandCategory } from '../../../constants';
+import { Channels, CommandCategory, RoleGroups } from '../../../constants';
 import { makeEmbed } from '../../../lib/embed';
 import { getConn } from '../../../lib/db';
 import Warn from '../../../lib/schemas/warnSchema';
-
-const permittedRoles = [
-    Roles.ADMIN_TEAM,
-    Roles.MODERATION_TEAM,
-];
 
 const noConnEmbed = makeEmbed({
     title: 'Warn - No Connection',
@@ -94,10 +89,7 @@ const noModLogs = makeEmbed({
 
 export const warn: CommandDefinition = {
     name: 'warn',
-    requirements: {
-        permissions: ['BanMembers'],
-        roles: permittedRoles,
-    },
+    requirements: { roles: RoleGroups.STAFF },
     description: 'Warns a user',
     category: CommandCategory.MODERATION,
     executor: async (msg) => {
