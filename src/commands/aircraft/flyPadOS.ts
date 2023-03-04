@@ -25,8 +25,6 @@ export const flyPadOS: CommandDefinition = {
                 '- [Interior Lighting and Aircraft Presets](https://docs.flybywiresim.com/fbw-a32nx/feature-guides/flypados3/presets/)',
                 '- [Settings](https://docs.flybywiresim.com/fbw-a32nx/feature-guides/flypados3/settings/)',
                 '- [Throttle Calibration](https://docs.flybywiresim.com/fbw-a32nx/feature-guides/flypados3/throttle-calibration/)',
-                '',
-                'See the [flyPadOS 2 documentation](https://docs.flybywiresim.com/fbw-a32nx/feature-guides/flypados2/) for the older version of flyPadOS.',
             ]),
         });
 
