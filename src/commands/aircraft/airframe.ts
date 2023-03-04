@@ -9,7 +9,7 @@ const genericAirframeEmbed = makeEmbed({
 
 const a32nxAirframeEmbed = makeEmbed({
     title: 'FlyByWire A32NX | simBrief Airframe',
-    description: 'Our updated simBrief airframe for the A32NX with correct weights is available [here](https://docs.flybywiresim.com/fbw-a32nx/installation/#simbrief-airframe). This is a new airframe based on our updated flight model, and will always be kept up-to-date.',
+    description: 'Our updated simBrief airframe for the A32NX with correct weights is available [here](https://docs.flybywiresim.com/fbw-a32nx/feature-guides/simbrief/#simbrief-airframe). This is a new airframe based on our updated flight model, and will always be kept up-to-date.',
 });
 
 const a380xAirframeEmbed = makeEmbed({

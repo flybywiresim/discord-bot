@@ -5,7 +5,7 @@ import { makeEmbed, makeLines } from '../../lib/embed';
 const experimentalEmbed = makeEmbed({
     title: 'FlyByWire A32NX | Experimental Version',
     description: makeLines([
-        'Currently experimental is geared toward testing the initial version of VNAV and flyPadOS3. Please see our [Experimental Version Support Page](https://docs.flybywiresim.com/fbw-a32nx/support/exp/) for more information. **Do not expect support for the experimental version - use at own risk!**',
+        'Currently, experimental is geared toward testing the initial version of VNAV with additional features added at the development team\'s discretion. Please see our [Experimental Version Support Page](https://docs.flybywiresim.com/exp/) for more information. **Do not expect support for the experimental version - use at own risk!**',
         '',
         'Please use the appropriate discord channel or forum to discuss any issues:',
         `<#${Channels.EXP_CFMS_ISSUES}>`,

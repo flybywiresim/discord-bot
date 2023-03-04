@@ -2,6 +2,7 @@
 
 Update <small>_ March 2023</small>
 
+- refactor: update and fix various commands (04/03/2023)
 - refactor: update existing command permissions (04/03/2023)
 
 Update <small>_ February 2023</small>
