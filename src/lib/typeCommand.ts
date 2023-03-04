@@ -79,13 +79,7 @@ export const typeCommand: CommandDefinition = {
                     name: 'Select the aircraft for more details:',
                     value: makeLines(choiceEmbedFieldLines),
                 });
-                let messageToAnswer;
-                if (msg.reference) {
-                    messageToAnswer = await msg.fetchReference();
-                } else {
-                    messageToAnswer = msg;
-                }
-                await replyToMessage(messageToAnswer, postGenericEmbed).then(async (genericMessage) => {
+                await replyToCommandOrQuestion(msg, postGenericEmbed).then(async (genericMessage) => {
                     commandSupportedAircraftTypeEmojis.forEach(async (element) => {
                         try {
                             await genericMessage.react(element);
@@ -93,7 +87,12 @@ export const typeCommand: CommandDefinition = {
                             Logger.debug(`Failed to add reaction: ${e}`);
                         }
                     });
-                    const repliedToUser = messageToAnswer.author;
+
+                    let repliedToUser = msg.author;
+                    if (msg.reference) {
+                        repliedToUser = (await msg.fetchReference()).author;
+                    }
+
                     const filter = (reaction, user) => commandSupportedAircraftTypeEmojis.includes(reaction.emoji.identifier) && (user.id === author.id || user.id === repliedToUser.id);
                     await genericMessage.awaitReactions({
                         filter,
@@ -115,7 +114,7 @@ export const typeCommand: CommandDefinition = {
                             } catch (e) {
                                 Logger.debug('Type Command - Generic message with choices was already deleted');
                             }
-                            await replyToMessage(messageToAnswer, typeEmbeds[foundAircraftType]);
+                            await replyToCommandOrQuestion(msg, typeEmbeds[foundAircraftType]);
                         }
                     }).catch(async () => {
                         try {

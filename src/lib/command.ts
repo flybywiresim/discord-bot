@@ -1,6 +1,6 @@
 import { Client, EmbedBuilder, Message, PermissionsString, GuildMember, Colors } from 'discord.js';
 import { CommandCategory, Roles, Channels, Threads, PermissionsEmbedDelay } from '../constants';
-import { makeEmbed } from './embed';
+import { makeEmbed, makeLines } from './embed';
 
 export interface CommandPermissions {
     permissions?: PermissionsString[],
@@ -136,9 +136,17 @@ export async function sendPermissionsEmbed(msg: Message, error: string) {
     }
 }
 
-export async function replyToCommandOrQuestion(msg: Message, embed: EmbedBuilder) {
-    msg.fetchReference()
-        .then((res) => replyToMessage(res, embed))
+export async function replyToCommandOrQuestion(msg: Message, embed: EmbedBuilder) : Promise<Message<boolean>> {
+    return msg.fetchReference()
+        .then((res) => {
+            let existingFooterText = '';
+            const existingFooter = embed.data.footer;
+            if (existingFooter) {
+                existingFooterText = `${existingFooter.text}\n\n`;
+            }
+            embed.setFooter({ text: `${existingFooterText} executed by ${msg.author.tag} - ${msg.author.id}` });
+            return replyToMessage(res, embed);
+        })
         .catch(() => replyToMessage(msg, embed));
 }
 
