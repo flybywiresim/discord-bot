@@ -1,6 +1,6 @@
 import { Client, EmbedBuilder, Message, PermissionsString, GuildMember, Colors } from 'discord.js';
 import { CommandCategory, Roles, Channels, Threads, PermissionsEmbedDelay } from '../constants';
-import { makeEmbed, makeLines } from './embed';
+import { makeEmbed } from './embed';
 
 export interface CommandPermissions {
     permissions?: PermissionsString[],
