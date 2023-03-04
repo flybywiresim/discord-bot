@@ -1,17 +1,13 @@
 import { Colors, EmbedField, BaseChannel, TextChannel, TextBasedChannel } from 'discord.js';
 import moment from 'moment';
 import { CommandDefinition } from '../../lib/command';
-import { Roles, Channels, CommandCategory } from '../../constants';
+import { Channels, CommandCategory, RoleGroups } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 import { getConn } from '../../lib/db';
 import StickyMessage from '../../lib/schemas/stickyMessageSchema';
 import { stickyMessageEmbed, STICKY_MOD_TITLE } from '../../lib/stickyMessageEmbed';
 import Logger from '../../lib/logger';
 
-const permittedRoles = [
-    Roles.ADMIN_TEAM,
-    Roles.MODERATION_TEAM,
-];
 const DEFAULT_TIME_INTERVAL = 15;
 const DEFAULT_MESSAGE_COUNT = 5;
 const MAX_TIME_INTERVAL = 86400;
@@ -102,12 +98,6 @@ const noConnEmbed = makeEmbed({
     color: Colors.Red,
 });
 
-const noPermEmbed = makeEmbed({
-    title: 'Sticky Message - Permission missing',
-    description: 'You do not have permission to use this command.',
-    color: Colors.Red,
-});
-
 const notFoundEmbed = (action: string, channel: string) => makeEmbed({
     title: `Sticky Message - ${action} - Not found`,
     description: `No Sticky Message for <#${channel}> was found.`,
@@ -158,16 +148,12 @@ export const sticky: CommandDefinition = {
     name: ['sticky'],
     description: 'Manages sticky messages.',
     category: CommandCategory.MODERATION,
+    requirements: { roles: RoleGroups.STAFF },
     executor: async (msg) => {
         const subCommands = ['set', 'image', 'count', 'time', 'unset', 'info'];
         const conn = getConn();
         if (!conn) {
             return msg.channel.send({ embeds: [noConnEmbed] });
-        }
-
-        const hasPermittedRole = msg.member.roles.cache.some((role) => permittedRoles.map((r) => r.toString()).includes(role.id));
-        if (!hasPermittedRole) {
-            return msg.channel.send({ embeds: [noPermEmbed] });
         }
 
         const modLogsChannel = msg.guild.channels.resolve(Channels.MOD_LOGS) as TextChannel | null;

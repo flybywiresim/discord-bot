@@ -1,6 +1,6 @@
 import { CommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
-import { CommandCategory } from '../../constants';
+import { CommandCategory, RoleGroups } from '../../constants';
 
 const ROLES_EMBED = makeEmbed({
     title: 'Role Assignment',
@@ -27,7 +27,7 @@ const MEDIA_ANNOUNCEMENT_EMBED = makeEmbed({
 export const roleassignment: CommandDefinition = {
     name: 'roleassignment',
     description: 'Sends the role assignment messages',
-    requiredPermissions: ['BanMembers'],
+    requirements: { roles: RoleGroups.STAFF },
     category: CommandCategory.MODERATION,
     executor: async (msg) => {
         await msg.channel.send({ embeds: [ROLES_EMBED] });

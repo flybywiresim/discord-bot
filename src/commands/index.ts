@@ -160,6 +160,9 @@ import { cacheUpdate } from './moderation/cacheUpdate';
 import { navigraph } from './general/navigraph';
 import { botIssue } from './support/botIssue';
 import { slowMode } from './moderation/slowmode';
+import { econnreset } from './support/econnreset';
+import { pr } from './utils/pr';
+import { gsxIntegration } from './aircraft/gsxIntegration';
 
 const commands: BaseCommandDefinition[] = [
     typeCommand,
@@ -322,6 +325,9 @@ const commands: BaseCommandDefinition[] = [
     navigraph,
     botIssue,
     slowMode,
+    econnreset,
+    pr,
+    gsxIntegration,
 ];
 
 const commandsObject: { [k: string]: BaseCommandDefinition } = {};

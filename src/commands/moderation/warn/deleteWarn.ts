@@ -1,25 +1,14 @@
 import moment from 'moment';
 import { Colors, TextChannel } from 'discord.js';
 import { CommandDefinition } from '../../../lib/command';
-import { Roles, CommandCategory, Channels } from '../../../constants';
+import { CommandCategory, Channels, RoleGroups } from '../../../constants';
 import { makeEmbed } from '../../../lib/embed';
 import { getConn } from '../../../lib/db';
 import Warn from '../../../lib/schemas/warnSchema';
 
-const permittedRoles = [
-    Roles.ADMIN_TEAM,
-    Roles.MODERATION_TEAM,
-];
-
 const noConnEmbed = makeEmbed({
     title: 'Warn - No Connection',
     description: 'Could not connect to the database',
-    color: Colors.Red,
-});
-
-const noPermEmbed = makeEmbed({
-    title: 'Warn',
-    description: 'You do not have permission to use this command.',
     color: Colors.Red,
 });
 
@@ -49,7 +38,7 @@ const deleteEmbed = makeEmbed({
 
 export const deleteWarn: CommandDefinition = {
     name: ['deletewarn', 'delwarn', 'deletewarning'],
-    requiredPermissions: ['BanMembers'],
+    requirements: { roles: RoleGroups.STAFF },
     description: 'Delete a warning',
     category: CommandCategory.MODERATION,
     executor: async (msg) => {
@@ -60,16 +49,10 @@ export const deleteWarn: CommandDefinition = {
             return;
         }
 
-        const hasPermittedRole = msg.member.roles.cache.some((role) => permittedRoles.map((r) => r.toString()).includes(role.id));
         const modLogsChannel = msg.guild.channels.resolve(Channels.MOD_LOGS) as TextChannel | null;
 
         const args = msg.content.split(/\s+/).slice(1);
         const warnId = args[0];
-
-        if (!hasPermittedRole) {
-            await msg.channel.send({ embeds: [noPermEmbed] });
-            return;
-        }
 
         if (args.length < 1 && parseInt(args[1]) !== 0) {
             await msg.reply('You need to provide the following arguments for this command: <Warn ID>');

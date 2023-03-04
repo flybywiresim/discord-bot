@@ -1,13 +1,8 @@
 import { Colors, EmbedField, TextChannel } from 'discord.js';
 import { CommandDefinition } from '../../lib/command';
-import { Roles, Channels, CommandCategory } from '../../constants';
+import { Channels, CommandCategory, RoleGroups } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 import { client } from '../..';
-
-const permittedRoles = [
-    Roles.ADMIN_TEAM,
-    Roles.MODERATION_TEAM,
-];
 
 const helpEmbed = (evokedCommand: String) => makeEmbed({
     title: 'Cache Update - Help',
@@ -48,12 +43,6 @@ const noChannelEmbed = (action:string, channelName: string) => makeEmbed({
     color: Colors.Yellow,
 });
 
-const noPermEmbed = makeEmbed({
-    title: 'Cache Update - Permission missing',
-    description: 'You do not have permission to use this command.',
-    color: Colors.Red,
-});
-
 const cacheUpdateEmbedField = (moderator: string, cacheType: string, cacheSize: string, duration: string): EmbedField[] => [
     {
         name: 'Type',
@@ -81,13 +70,9 @@ export const cacheUpdate: CommandDefinition = {
     name: ['cacheupdate', 'cache-update'],
     description: 'Updates the cache of the bot for a specific cache type.',
     category: CommandCategory.MODERATION,
+    requirements: { roles: RoleGroups.STAFF },
     executor: async (msg) => {
         const subCommands = ['bans', 'channels', 'members', 'roles'];
-
-        const hasPermittedRole = msg.member.roles.cache.some((role) => permittedRoles.map((r) => r.toString()).includes(role.id));
-        if (!hasPermittedRole) {
-            return msg.channel.send({ embeds: [noPermEmbed] });
-        }
 
         const modLogsChannel = client.channels.resolve(Channels.MOD_LOGS) as TextChannel | null;
         const { author } = msg;

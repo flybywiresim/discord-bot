@@ -2,7 +2,7 @@ import { MessageCommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
 
-const genericFlyPadOSEmbed = makeEmbed({
+const flyPadOSEmbed = makeEmbed({
     title: 'FlyByWire A32NX | flyPadOS Documentation',
     description: makeLines([
         'Please see our [flyPadOS 3 Documentation](https://docs.flybywiresim.com/fbw-a32nx/feature-guides/flypados3/) for information on how to set up and use the Electronic Flight Bag with flyPadOS 3.',
@@ -20,8 +20,6 @@ const genericFlyPadOSEmbed = makeEmbed({
         '- [Interior Lighting and Aircraft Presets](https://docs.flybywiresim.com/fbw-a32nx/feature-guides/flypados3/presets/)',
         '- [Settings](https://docs.flybywiresim.com/fbw-a32nx/feature-guides/flypados3/settings/)',
         '- [Throttle Calibration](https://docs.flybywiresim.com/fbw-a32nx/feature-guides/flypados3/throttle-calibration/)',
-        '',
-        'See the [flyPadOS 2 documentation](https://docs.flybywiresim.com/fbw-a32nx/feature-guides/flypados2/) for the older version of flyPadOS.',
     ]),
 });
 
@@ -29,5 +27,5 @@ export const flyPadOS: MessageCommandDefinition = {
     name: ['flypados', 'flypad', 'efbos'],
     description: 'Provides a link to the flyPadOS documentation',
     category: CommandCategory.AIRCRAFT,
-    genericEmbed: genericFlyPadOSEmbed,
+    genericEmbed: flyPadOSEmbed,
 };

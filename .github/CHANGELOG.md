@@ -1,5 +1,21 @@
 ## Changelog
 
+Update <small>_ March 2023</small>
+
+- fix: improve wxr and terr command (04/03/2023)
+- refactor: update and fix various commands (04/03/2023)
+- refactor: update existing command permissions (04/03/2023)
+
+Update <small>_ February 2023</small>
+
+- fix: update report channel for experimental (22/02/2023)
+- feat: Add GSX Integration command (22/02/2023)
+- feat: feat: unified command permissions framework (09/02/2023)
+- fix: update the link of .addon command (08/02/2023)
+- feat: ECONNRESET support command (07/02/2023)
+- fix: add link to docs to .trythis command (07/02/2023)
+- feat: PR command (07/02/2023)
+
 Update <small>_ January 2023</small>
 
 - feat: slowmode with timeout and introducing proper scheduler (20/01/2023)

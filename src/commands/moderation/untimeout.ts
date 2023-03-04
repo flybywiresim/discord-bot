@@ -1,6 +1,6 @@
 import { Colors, Guild, GuildMember, TextChannel, User } from 'discord.js';
 import { CommandDefinition } from '../../lib/command';
-import { CommandCategory, Channels } from '../../constants';
+import { CommandCategory, Channels, RoleGroups } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 import Logger from '../../lib/logger';
 
@@ -67,7 +67,7 @@ const failedUnTimeoutEmbed = (user: User) => (makeEmbed({
 
 export const untimeout: CommandDefinition = {
     name: ['untimeout', 'removetimeout'],
-    requiredPermissions: ['BanMembers'],
+    requirements: { roles: RoleGroups.STAFF },
     category: CommandCategory.MODERATION,
     executor: async (msg) => {
         const args = msg.content.replace(/(?:\.untimeout|\.removetimeout)\s+/, '').split(' ');

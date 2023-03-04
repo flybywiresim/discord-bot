@@ -1,6 +1,6 @@
 import { CommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
-import { Channels, CommandCategory } from '../../constants';
+import { Channels, CommandCategory, RoleGroups } from '../../constants';
 
 const HEADER_IMAGE_URL = 'https://cdn.discordapp.com/attachments/825674445342638120/916820978900824084/discord_banner.png';
 const SOCIAL_IMAGE_URL = 'https://cdn.discordapp.com/attachments/825674445342638120/909527268714496000/social_media.png';
@@ -79,7 +79,7 @@ const HELP_EMBED = makeEmbed({
 export const welcome: CommandDefinition = {
     name: 'welcome',
     description: 'Sends the welcome',
-    requiredPermissions: ['BanMembers'],
+    requirements: { roles: RoleGroups.STAFF },
     category: CommandCategory.MODERATION,
     executor: async (msg) => {
         await msg.channel.send({ files: [HEADER_IMAGE_URL] });

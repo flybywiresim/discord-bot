@@ -26,7 +26,8 @@
 | .flypados                | Provides a link to the flyPadOS 3 documentation                                                   | .flypad <br> .efbos                                    |
 | .freetext                | Provides a link to the FlyByWire free text feature guide                                          | .ft                                                    |
 | .fma                     | Provides a link to the FMA docs guide                                                             | ---                                                    |
-| .github                  | provides the link to the A32NX GitHub Repository                                                  | .repo <br> .repository                                 |
+| .github                  | Provides the link to the A32NX GitHub Repository                                                  | .repo <br> .repository                                 |
+| .gsx-integration         | Provides links to the GSX Integration documentation                                               | .gsx                                                   |
 | .holds                   | Provides a link to the Holds documentation                                                        | .hold <br> .holding                                    |
 | .liveries                | Provides a link to the flightsim.to A32NX liveries page                                           | .liv                                                   |
 | .mcdu                    | Provides a set of links to the detailed MCDU documentation                                        | .mcdudoc                                               |
@@ -47,7 +48,7 @@
 | .verticalguidance        | Provides a link to the Vertical Guidance documentation (also referred to as VNAV)                 | .vnavdoc <br> .vnav                                    |
 | .verticalguidancesymbols | Provides a link to the Vertical Guidance Navigation Display Symbols documentation                 | .vnavsymbols <br> .vnavnd                              |
 | .verticalspeedpriority   | Explains the priority of V/S and FPA over the speed guidance and provides a link for more details | .vspriority <br> .fpapriority <br> .vspeed             |
-| .weather                 | Explains the current state of the weather and terrain radars in experimental                      | .wx                                                    |
+| .weather                 | Explains the current state of the weather and terrain radars in experimental                      | .wx <br> .wxr <br> .terrain <br> .terr <br> .terronnd  |
 | .weights                 | Provides a link to the fuel and weights docs guide                                                | .fuel <br> .wb <br> .w/b <br> .w+b <br> .wnb <br> .w&b |
 
 ### Support
@@ -68,6 +69,7 @@
 | .dx12           | Explanation for the current state of MSFS DirectX12 support                       | ---                                                |
 | .discontinuity  | Link to docs about discontinuities                                                | .disco                                             |
 | .dlss           | Explanation of the DLSS option in the MSFS graphics settings.                     |                                                    |
+| .econnreset     | Troubleshooting info for installer ECONNRESET error.                              | .econreset                                         |
 | .fdr            | Information on how to provide fdr files                                           | ---                                                |
 | .flypadabout    | Help to identify the flyPadOS and aircraft version for support                    | .flypadversion <br> .efbabout <br> .efbversion     |
 | .hud            | How to disable in-game HUD                                                        | .logs                                              |
@@ -129,6 +131,7 @@
 | .membercount | Lists the guild's current amount of members                                          | ---                                                            |
 | .metar       | Provides the METAR report of the requested airport                                   | ---                                                            |
 | .ping        | Send back a message                                                                  | ---                                                            |
+| .pr          | Provide a link to any given FBW PRs                                                  | ---                                                            |
 | .roleinfo    | Lists the guild's current amount of members                                          | ---                                                            |
 | .station     | Provides station information                                                         | ---                                                            |
 | .vatsim      | Show statistics and details of online VATSIM Controllers, Observers, ATIS and Pilots | .vatsimdata <br/> .vatdata                                     |

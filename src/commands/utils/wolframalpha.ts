@@ -13,17 +13,11 @@ export const wolframalpha: CommandDefinition = {
     name: ['wa', 'calc', 'ask'],
     description: 'Queries the Wolfram Alpha API',
     category: CommandCategory.UTILS,
+    requirements: {
+        channels: [Channels.BOT_COMMANDS],
+        verboseErrors: true,
+    },
     executor: async (msg) => {
-        if (msg.channelId !== Channels.BOT_COMMANDS) {
-            const wrongChannelEmbed = makeEmbed({
-                title: 'Wolfram Alpha Error | Wrong Channel',
-                description: `This command can only be used in the <#${Channels.BOT_COMMANDS}> channel.`,
-                color: Colors.Red,
-            });
-            await msg.channel.send({ embeds: [wrongChannelEmbed] });
-            return;
-        }
-
         const splitUp = msg.content.replace(/\.wa\s+/, ' ').split(' ');
 
         if (splitUp.length <= 1) {

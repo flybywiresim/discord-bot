@@ -1,6 +1,6 @@
 import { CommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
-import { Channels, CommandCategory, Roles } from '../../constants';
+import { Channels, CommandCategory, Roles, RoleGroups } from '../../constants';
 
 const FLIGHT_DECK_IMAGE_URL = 'https://media.discordapp.net/attachments/838062729398976522/889484404697743381/unknown.png?width=1214&height=683';
 
@@ -82,7 +82,7 @@ const faqEmbeds = [
 export const faq: CommandDefinition = {
     name: 'faq',
     description: 'Sends the FAQ',
-    requiredPermissions: ['BanMembers'],
+    requirements: { roles: RoleGroups.STAFF },
     category: CommandCategory.MODERATION,
     executor: async (msg) => {
         await msg.channel.send({ files: [FLIGHT_DECK_IMAGE_URL] });

@@ -1,12 +1,12 @@
 import Filter from 'bad-words';
 import { CommandDefinition } from '../../lib/command';
-import { CommandCategory } from '../../constants';
+import { CommandCategory, RoleGroups } from '../../constants';
 
 export const ping: CommandDefinition = {
     name: 'ping',
     description: 'Send back a message',
     category: CommandCategory.UTILS,
-    requiredPermissions: ['ManageWebhooks'],
+    requirements: { roles: RoleGroups.BOT },
     executor: (msg) => {
         const msgFilter = new Filter();
 

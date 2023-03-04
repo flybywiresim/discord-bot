@@ -1,7 +1,7 @@
 import { Colors, Guild, TextChannel, User } from 'discord.js';
 import moment from 'moment';
 import { CommandDefinition } from '../../lib/command';
-import { CommandCategory, Channels } from '../../constants';
+import { CommandCategory, Channels, RoleGroups } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 import { unTimeoutDMEmbed, unTimeoutModLogEmbed, unTimeoutEmbed } from './untimeout';
 import Logger from '../../lib/logger';
@@ -149,7 +149,7 @@ const failedTimeoutEmbed = (user: User) => (makeEmbed({
 
 export const timeout: CommandDefinition = {
     name: 'timeout',
-    requiredPermissions: ['BanMembers'],
+    requirements: { roles: RoleGroups.STAFF },
     category: CommandCategory.MODERATION,
     executor: async (msg) => {
         const conn = await getConn();
