@@ -1,7 +1,7 @@
 import { Colors, TextChannel, User } from 'discord.js';
 import moment from 'moment';
 import { CommandDefinition } from '../../lib/command';
-import { Channels, CommandCategory } from '../../constants';
+import { Channels, CommandCategory, RoleGroups } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
 
 const moderatableFailEmbed = makeEmbed({
@@ -129,7 +129,7 @@ const noDM = (user: User) => makeEmbed({
 
 export const ban: CommandDefinition = {
     name: 'ban',
-    requirements: { permissions: ['BanMembers'] },
+    requirements: { roles: RoleGroups.STAFF },
     category: CommandCategory.MODERATION,
     executor: async (msg) => {
         const splitUp = msg.content.replace(/\.ban\s+/, '').split(' ');

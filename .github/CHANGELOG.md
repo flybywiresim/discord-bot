@@ -1,5 +1,11 @@
 ## Changelog
 
+Update <small>_ March 2023</small>
+
+- fix: improve wxr and terr command (04/03/2023)
+- refactor: update and fix various commands (04/03/2023)
+- refactor: update existing command permissions (04/03/2023)
+
 Update <small>_ February 2023</small>
 
 - feat: reply to question or command message (27/02/2023)

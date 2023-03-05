@@ -1,13 +1,13 @@
 import { Colors, EmbedBuilder, EmbedField, GuildMember, Snowflake, User } from 'discord.js';
 import { CommandDefinition } from '../../lib/command';
-import { CommandCategory } from '../../constants';
+import { CommandCategory, RoleGroups } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 
 type UserLike = User | Snowflake
 
 export const unban: CommandDefinition = {
     name: 'unban',
-    requirements: { permissions: ['BanMembers'] },
+    requirements: { roles: RoleGroups.STAFF },
     category: CommandCategory.MODERATION,
     executor: async (msg) => {
         const splitUp = msg.content.replace(/\.unban\s+/, '').split(' ');

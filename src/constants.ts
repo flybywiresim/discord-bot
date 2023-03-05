@@ -49,6 +49,12 @@ export enum Roles {
     QA_TRAINEE = '779347636565442560',
 }
 
+export const RoleGroups = {
+    STAFF: [Roles.ADMIN_TEAM, Roles.MODERATION_TEAM],
+    TEAM: [Roles.ADMIN_TEAM, Roles.MODERATION_TEAM, Roles.DEVELOPMENT_TEAM, Roles.MEDIA_TEAM, Roles.FBW_EMERITUS],
+    BOT: [Roles.ADMIN_TEAM, Roles.MODERATION_TEAM, Roles.BOT_DEVELOPER],
+};
+
 export const UserLogExclude = [
     '628400349979344919', // StickyBot
     '910632773117702185', //FBW Bot
