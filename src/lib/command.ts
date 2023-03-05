@@ -145,11 +145,7 @@ export async function replyToCommandOrQuestion(msg: Message, embed: EmbedBuilder
                 existingFooterText = `${existingFooter.text}\n\n`;
             }
             embed.setFooter({ text: `${existingFooterText} Executed by ${msg.author.tag} - ${msg.author.id}` });
-            return replyToMessage(res, embed);
+            return res.reply({ embeds: [embed] });
         })
-        .catch(() => replyToMessage(msg, embed));
-}
-
-export async function replyToMessage(msg: Message, embed: EmbedBuilder) {
-    return msg.reply({ embeds: [embed] });
+        .catch(() => msg.reply({ embeds: [embed] }));
 }
