@@ -136,7 +136,7 @@ export async function sendPermissionsEmbed(msg: Message, error: string) {
     }
 }
 
-export async function replyToCommandOrQuestion(msg: Message, embed: EmbedBuilder) : Promise<Message<boolean>> {
+export async function replyWithEmbed(msg: Message, embed: EmbedBuilder) : Promise<Message<boolean>> {
     return msg.fetchReference()
         .then((res) => {
             let existingFooterText = '';
