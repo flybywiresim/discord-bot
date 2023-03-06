@@ -2,6 +2,7 @@
 
 Update <small>_ March 2023</small>
 
+- refactor: migrate commands to new MessageCommandDefinition (06/03/2023)
 - fix: improve wxr and terr command (04/03/2023)
 - refactor: update and fix various commands (04/03/2023)
 - refactor: update existing command permissions (04/03/2023)
