@@ -1,5 +1,5 @@
 import { EmbedData } from 'discord.js';
-import { CommandDefinition, isMessageCommand, MessageCommandDefinition, hasRequiredPermissions, sendPermissionsEmbed, replyToMessage, replyToCommandOrQuestion } from './command';
+import { CommandDefinition, isMessageCommand, MessageCommandDefinition, hasRequiredPermissions, sendPermissionsEmbed, replyToCommandOrQuestion } from './command';
 import { AircraftTypeList, CommandCategory } from '../constants';
 import commands from '../commands/index';
 import Logger from './logger';
