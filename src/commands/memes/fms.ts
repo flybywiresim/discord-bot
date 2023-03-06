@@ -2,7 +2,7 @@ import { CommandDefinition } from '../../lib/command';
 import { makeEmbed } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 
-const FMS_URL = 'https://media.discordapp.net/attachments/897491699167793182/927340975725109329/unknown.png?width=673&height=676';
+const FMS_URL = `${process.env.IMAGE_BASE_URL}memes/fms.png`;
 
 export const fms: CommandDefinition = {
     name: 'fms',

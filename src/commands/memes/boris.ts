@@ -2,7 +2,7 @@ import { CommandDefinition } from '../../lib/command';
 import { makeEmbed } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 
-const BORIS_URL = 'https://c.tenor.com/1bIsb5roaSsAAAAd/haggisbandit-sound.gif';
+const BORIS_URL = `${process.env.IMAGE_BASE_URL}memes/boris.gif`;
 
 export const boris: CommandDefinition = {
     name: 'boris',

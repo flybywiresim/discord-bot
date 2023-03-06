@@ -3,8 +3,8 @@ import { makeEmbed } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 
 const NUT_URLS = [
-    'https://media.discordapp.net/attachments/838062729398976522/879523609926832198/meme.png',
-    'https://media.discordapp.net/attachments/902918266958282762/1030222802839666738/6wtds8.jpg',
+    `${process.env.IMAGE_BASE_URL}memes/nut.png`,
+    `${process.env.IMAGE_BASE_URL}memes/nut-2.png`,
 ];
 const NUT_URL_WEIGHTS = [0.2, 0.8];
 
