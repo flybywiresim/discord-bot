@@ -144,7 +144,7 @@ export async function replyToCommandOrQuestion(msg: Message, embed: EmbedBuilder
             if (existingFooter) {
                 existingFooterText = `${existingFooter.text}\n\n`;
             }
-            embed = EmbedBuilder.from(embed);
+            embed = EmbedBuilder.from(embed.data);
             embed.setFooter({ text: `${existingFooterText} Executed by ${msg.author.tag} - ${msg.author.id}` });
             return res.reply({ embeds: [embed] });
         })
