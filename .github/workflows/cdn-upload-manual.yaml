@@ -1,0 +1,22 @@
+name: CDN Upload - Production
+
+on:
+  workflow_dispatch:
+
+jobs:
+    cdn_upload:
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout
+              uses: actions/checkout@v3
+              with:
+                  fetch-depth: 0
+            - name: R2 Directory Upload
+              uses: willfurstenau/r2-dir-upload@main
+              with:
+                  accountid: ${{ secrets.R2_ACCOUNT_ID }}
+                  accesskeyid: ${{ secrets.R2_ACCESS_KEY_ID }}
+                  secretaccesskey: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+                  bucket: ${{ secrets.R2_BUCKET_PRODUCTION }}
+                  source: assets/images
+                  destination: assets/images/
