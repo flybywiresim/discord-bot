@@ -2,7 +2,7 @@ import { CommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 
-const SCREENS_HELP_URL = 'https://media.discordapp.net/attachments/885885609007276062/894955124399693844/unknown.png';
+const SCREENS_HELP_URL = `${process.env.IMAGE_BASE_URL}a32nx/screens.png`;
 
 export const screens: CommandDefinition = {
     name: ['screens', 'screen'],

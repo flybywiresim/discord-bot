@@ -2,6 +2,8 @@ import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
 
+const ASSISTANCE_IMAGE_URL = `${process.env.IMAGE_BASE_URL}a32nx/assistance-options.png`;
+
 export const assistance: CommandDefinition = {
     name: ['assistance', 'assi', 'as'],
     description: 'Explains to the user why assistance options should be disabled',
@@ -14,7 +16,7 @@ export const assistance: CommandDefinition = {
                 '',
                 'We recommend turning off all assistance features in MSFS as they interfere with the A32NX systems.',
             ]),
-            image: { url: 'https://docs.flybywiresim.com/fbw-a32nx/assets/settings/assistance-options.png' },
+            image: { url: ASSISTANCE_IMAGE_URL },
         });
 
         return msg.channel.send({ embeds: [assistanceEmbed] });
