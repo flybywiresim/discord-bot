@@ -2,11 +2,11 @@ import { CommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
 import { Channels, CommandCategory, RoleGroups } from '../../constants';
 
-const HEADER_IMAGE_URL = 'https://cdn.discordapp.com/attachments/825674445342638120/916820978900824084/discord_banner.png';
-const SOCIAL_IMAGE_URL = 'https://cdn.discordapp.com/attachments/825674445342638120/909527268714496000/social_media.png';
-const SUPPORT_IMAGE_URL = 'https://cdn.discordapp.com/attachments/825674445342638120/909527264218210334/support.png';
-const HELP_IMAGE_URL = 'https://cdn.discordapp.com/attachments/825674445342638120/909527270564167690/help_and_support.png';
-const IMPORTANT_INFO_IMAGE_URL = 'https://cdn.discordapp.com/attachments/825674445342638120/909527271398834226/impt_info.png';
+const HEADER_IMAGE_URL = `${process.env.IMAGE_BASE_URL}moderation/welcome_discord_banner.png`;
+const SOCIAL_IMAGE_URL = `${process.env.IMAGE_BASE_URL}moderation/welcome_social_media.png`;
+const SUPPORT_IMAGE_URL = `${process.env.IMAGE_BASE_URL}moderation/welcome_support.png`;
+const HELP_IMAGE_URL = `${process.env.IMAGE_BASE_URL}moderation/welcome_help_and_support.png`;
+const IMPORTANT_INFO_IMAGE_URL = `${process.env.IMAGE_BASE_URL}moderation/welcome_impt_info.png`;
 
 const SOCIAL_EMBED = makeEmbed({
     title: '<:Partnered:921520970123059231> FlyByWireSimulations | Socials',
