@@ -2,7 +2,7 @@ import { CommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 
-const SIMVERSION_HELP_URL = 'https://docs.flybywiresim.com/fbw-a32nx/assets/support-guide/MSFS-Version.jpg';
+const SIMVERSION_HELP_URL = `${process.env.IMAGE_BASE_URL}support/simversion.jpg`;
 
 export const simversion: CommandDefinition = {
     name: ['simversion', 'msfsversion'],

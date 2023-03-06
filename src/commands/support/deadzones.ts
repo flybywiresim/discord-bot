@@ -2,7 +2,7 @@ import { CommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 
-const DEADZONE_IMAGE_URL = 'https://cdn.discordapp.com/attachments/770835189419999262/802254518376464424/Deadzone_Controls.png';
+const DEADZONE_IMAGE_URL = `${process.env.IMAGE_BASE_URL}support/deadzones.png`;
 
 export const deadzones: CommandDefinition = {
     name: ['deadzones', 'deadzone', 'dz'],

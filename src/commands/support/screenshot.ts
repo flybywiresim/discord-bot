@@ -2,7 +2,7 @@ import { CommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 
-const SCREENSHOT_HELP_URL = 'https://docs.flybywiresim.com/fbw-a32nx/assets/support-guide/cockpit-screenshot.jpg';
+const SCREENSHOT_HELP_URL = `${process.env.IMAGE_BASE_URL}support/screenshot.jpg`;
 
 export const screenshot: CommandDefinition = {
     name: ['screenshot', 'cockpit', 'ss'],

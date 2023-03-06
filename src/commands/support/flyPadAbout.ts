@@ -2,7 +2,7 @@ import { CommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 
-const FLYPAD_ABOUT_URL = 'https://docs.flybywiresim.com/fbw-a32nx/assets/flypados3/flypad-settings-about.png';
+const FLYPAD_ABOUT_URL = `${process.env.IMAGE_BASE_URL}support/flypad-settings-about.png`;
 
 export const flyPadAbout: CommandDefinition = {
     name: ['flypadabout', 'efbabout', 'flypadversion', 'efbversion'],

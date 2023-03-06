@@ -2,7 +2,7 @@ import { CommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
 import { Channels, CommandCategory } from '../../constants';
 
-const CONTENT_MANAGER_HELP_URL = 'https://media.discordapp.net/attachments/740722295009706034/885966763089625088/unknown.png';
+const CONTENT_MANAGER_HELP_URL = `${process.env.IMAGE_BASE_URL}support/content.png`;
 
 export const content: CommandDefinition = {
     name: ['content', 'contentmanager'],

@@ -2,7 +2,7 @@ import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
 
-const UTF8_HELP_URL = 'https://docs.flybywiresim.com/fbw-a32nx/assets/settings/utf8-windows-setting.png';
+const UTF8_HELP_URL = `${process.env.IMAGE_BASE_URL}support/utf-8.PNG`;
 
 export const utf8: CommandDefinition = {
     name: 'utf8',

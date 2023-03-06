@@ -2,7 +2,7 @@ import { CommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 
-const COMFOLDER_HELP_URL = 'https://docs.flybywiresim.com/fbw-a32nx/assets/find-community-folder.png';
+const COMFOLDER_HELP_URL = `${process.env.IMAGE_BASE_URL}support/community.png`;
 
 export const community: CommandDefinition = {
     name: ['community', 'com'],
