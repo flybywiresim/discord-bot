@@ -79,7 +79,7 @@
 | .msfs           | Provides links to MSFS support for sim issues                                     | .msfsforum                                         |
 | .navdata        | Explains the use of navdata by the FlyByWire A32NX and how to check its accuracy  | ---                                                |
 | .navigraphdata  | Provides help with Navigraph NavData reinstall                                    | .navigraphnavdata                                  |
-| .reportedissues | Provides a link to the reported issues page within docs, either a general link, or a link for a specific search <br> Search terms can be terminated by a dot or line break                     | .issues                                            |
+| .reportedissues | Provides a link to the reported issues page within docs, either a general link, or a link for a specific search <br> The search term "autopilot" leads to the autopilot typical issues page <br> Search terms can be terminated by a dot or line break                     | .issues                                            |
 | .screenshot     | Help to screenshot for support                                                    | .cockpit <br> .ss                                  |
 | .simbridgelog   | Information on how to provide SimBridge Log                                       | .slog                                              |
 | .simulationrate | Explanation of the limitation of the Simulation Rate based on frame rate          | .simrate                                           |
