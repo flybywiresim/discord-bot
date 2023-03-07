@@ -2,7 +2,7 @@
 
 Update <small>_ March 2023</small>
 
-- feat: 
+- feat: Show specific section link for reported issues command (07/03/2023)
 - fix: improve wxr and terr command (04/03/2023)
 - refactor: update and fix various commands (04/03/2023)
 - refactor: update existing command permissions (04/03/2023)
