@@ -2,7 +2,7 @@ import { MessageCommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 
-const genericAirframeEmbed = makeEmbed({
+const airframeEmbed = makeEmbed({
     title: 'FlyByWire | simBrief Airframes',
     description: 'Updated simBrief airframes exist for our different available aircraft. Please use the below reactions to select the correct airframe.',
 });
@@ -21,7 +21,7 @@ export const airframe: MessageCommandDefinition = {
     name: ['airframe'],
     description: 'Provides a link to the updated simBrief airframe',
     category: CommandCategory.AIRCRAFT,
-    genericEmbed: genericAirframeEmbed,
+    genericEmbed: airframeEmbed,
     typeEmbeds: {
         a32nx: a32nxAirframeEmbed,
         a380x: a380xAirframeEmbed,
