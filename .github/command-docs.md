@@ -79,7 +79,7 @@
 | .msfs           | Provides links to MSFS support for sim issues                                     | .msfsforum                                         |
 | .navdata        | Explains the use of navdata by the FlyByWire A32NX and how to check its accuracy  | ---                                                |
 | .navigraphdata  | Provides help with Navigraph NavData reinstall                                    | .navigraphnavdata                                  |
-| .reportedissues | Provides a link to the reported issues page within docs, either a general link, or a link for a specific search. Search terms can be terminated by a dot or line break                     | .issues                                            |
+| .reportedissues | Provides a link to the reported issues page within docs, either a general link, or a link for a specific search. Search terms can be terminated by a dot, line break, or greather-than sign                     | .issues                                            |
 | .screenshot     | Help to screenshot for support                                                    | .cockpit <br> .ss                                  |
 | .simbridgelog   | Information on how to provide SimBridge Log                                       | .slog                                              |
 | .simulationrate | Explanation of the limitation of the Simulation Rate based on frame rate          | .simrate                                           |
@@ -97,7 +97,7 @@
 |:------------------|:------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------|
 | .botissue         | Provides details on where to create a FBW Discord Bot Issue or Feature Request                                          | .bot-issue <br> .botfeature <br> .bot-feature <br> .botfeat |
 | .dfd              | Provides link to Digital Flight Dynamics discord server                                                                 | ---                                                         |
-| .docsearch        | Provides a link to the FlyByWire documentation, either a general link, or a link for a specific search. Search terms can be terminated by a dot or line break                  | .documentation <br> .docs <br> .doc                         |
+| .docsearch        | Provides a link to the FlyByWire documentation, either a general link, or a link for a specific search. Search terms can be terminated by a dot, line break, or greather-than sign                  | .documentation <br> .docs <br> .doc                         |
 | .donate           | Provides a link to the open collective                                                                                  | ---                                                         |
 | .goldenrules      | Provides an image describing the golden rules an Airbus pilot should follow                                             | .golden <br> .gr                                            |
 | .fsltl            | Provides link to the FS Live Traffic Liveries Discord server                                                            | .fslivetrafficliveries                                      |

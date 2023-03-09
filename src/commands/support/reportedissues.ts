@@ -32,23 +32,30 @@ const autopilotEmbed = makeEmbed({
     description: `Please see [this Link](${FBW_DOCS_AUTOPILOT_ISSUES_URL}) for typical issues with the custom autopilot and how to solve them.`,
 });
 
+const tooManyResultsEmbed = makeEmbed({
+    title: 'FlyByWire A32NX | Error',
+    description: 'The search term returned too many results',
+    color: Colors.Red,
+});
+
 export const reportedissues: CommandDefinition = {
     name: ['reportedissues', 'issues'],
     description: 'Provides a link to the reported issues page within docs',
     category: CommandCategory.SUPPORT,
     executor: async (msg) => {
         try {
-            const args = msg.content.split(/\.|\n|\r/)
-                .at(1).toLowerCase()
+            const args = msg.content.split(/\.|\n|\r|>/)
+                .at(1).toLowerCase().trim()
                 .split(/\s+/)
-                .slice(1);
+                .slice(1)
+                .filter((word) => word.length > 2);
 
             if (args === undefined || args.length === 0) {
-                await msg.channel.send({ embeds: [genericReportedIssuesEmbed] });
+                msg.channel.send({ embeds: [genericReportedIssuesEmbed] });
                 return;
             }
             if (args.length === 1 && args.at(0) === 'autopilot') {
-                await msg.channel.send({ embeds: [autopilotEmbed] });
+                msg.channel.send({ embeds: [autopilotEmbed] });
                 return;
             }
 
@@ -63,13 +70,16 @@ export const reportedissues: CommandDefinition = {
                 }
             });
 
-            if (reportedIssues.length === 0) {
-                await msg.channel.send({ embeds: [genericReportedIssuesEmbed] });
+            if (reportedIssues.length === 0 || reportedIssues.length > 4) {
+                if (reportedIssues.length > 4) {
+                    msg.reply({ embeds: [tooManyResultsEmbed] });
+                }
+                msg.channel.send({ embeds: [genericReportedIssuesEmbed] });
                 return;
             }
 
             const fields = reportedIssues.map((id) => subsectionLinkEmbedField(id)).flat();
-            await msg.channel.send({ embeds: [issueInSubsectionEmbed(fields)] });
+            msg.channel.send({ embeds: [issueInSubsectionEmbed(fields)] });
 
             return;
         } catch (e) {
