@@ -1,19 +1,17 @@
-import { CommandDefinition } from '../../lib/command';
+import { MessageCommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 
-export const clean: CommandDefinition = {
+const cleanEmbed = makeEmbed({
+    title: 'FlyByWire A32NX | Clean Install',
+    description: makeLines([
+        'We suggest trying a clean install. Please see [this guide](https://docs.flybywiresim.com/fbw-a32nx/installation/#clean-install-steps) for detailed instructions.',
+    ]),
+});
+
+export const clean: MessageCommandDefinition = {
     name: ['clean', 'clean install', 'cleaninstall', 'order66'],
     description: 'Clean Install',
     category: CommandCategory.SUPPORT,
-    executor: (msg) => {
-        const cleanEmbed = makeEmbed({
-            title: 'FlyByWire A32NX | Clean Install',
-            description: makeLines([
-                'We suggest trying a clean install. Please see [this guide](https://docs.flybywiresim.com/fbw-a32nx/installation/#clean-install-steps) for detailed instructions.',
-            ]),
-        });
-
-        return msg.channel.send({ embeds: [cleanEmbed] });
-    },
+    genericEmbed: cleanEmbed,
 };
