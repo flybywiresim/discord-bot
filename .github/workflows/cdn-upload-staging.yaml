@@ -16,12 +16,9 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-      - name: R2 Directory Upload
-        uses: willfurstenau/r2-dir-upload@main
-        with:
-          accountid: ${{ secrets.R2_ACCOUNT_ID }}
-          accesskeyid: ${{ secrets.R2_ACCESS_KEY_ID }}
-          secretaccesskey: ${{ secrets.R2_SECRET_ACCESS_KEY }}
-          bucket: ${{ secrets.R2_BUCKET_STAGING }}
-          source: assets/images
-          destination: assets/images/
+      - name: Upload to CloudFlare CDN
+        env:
+          CLOUDFLARE_CDN_URL: ${{ secrets.CLOUDFLARE_CDN_URL_STAGING }}
+          CLOUDFLARE_ACCESS_KEY: ${{ secrets.CLOUDFLARE_ACCESS_KEY_STAGING }}
+        run: |
+          ./.github/workflow_scripts/cf-cdn.sh
