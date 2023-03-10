@@ -2,7 +2,7 @@ import { MessageCommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 
-const genericWeightBalanceEmbed = makeEmbed({
+const weightBalanceEmbed = makeEmbed({
     title: 'FlyByWire | Fuel and Weight Management',
     description: makeLines([
         'We have improved the flight model and integrated the weight and balance management into the EFB Ground Page.',
@@ -19,5 +19,5 @@ export const weightBalance: MessageCommandDefinition = {
     name: ['weights', 'fuel', 'wb', 'w/b', 'w+b', 'wnb', 'w&b'],
     category: CommandCategory.AIRCRAFT,
     description: 'Provides a link to the fuel and weights docs guide.',
-    genericEmbed: genericWeightBalanceEmbed,
+    genericEmbed: weightBalanceEmbed,
 };

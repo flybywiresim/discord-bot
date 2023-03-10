@@ -1,17 +1,15 @@
-import { CommandDefinition } from '../../lib/command';
+import { MessageCommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 
-export const reportedissues: CommandDefinition = {
+const reportedissuesEmbed = makeEmbed({
+    title: 'FlyByWire A32NX | Reported Issues',
+    description: 'Please see [this link](https://docs.flybywiresim.com/reported-issues/) for a current list of reported issues.',
+});
+
+export const reportedissues: MessageCommandDefinition = {
     name: ['reportedissues', 'issues'],
     description: 'Provides a link to the reported issues page within docs',
     category: CommandCategory.SUPPORT,
-    executor: (msg) => {
-        const reportedissuesEmbed = makeEmbed({
-            title: 'FlyByWire A32NX | Reported Issues',
-            description: 'Please see [this link](https://docs.flybywiresim.com/reported-issues/) for a current list of reported issues.',
-        });
-
-        return msg.channel.send({ embeds: [reportedissuesEmbed] });
-    },
+    genericEmbed: reportedissuesEmbed,
 };
