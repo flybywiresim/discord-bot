@@ -4,7 +4,7 @@ import { CommandCategory } from '../../constants';
 
 const NUT_URLS = [
     `${process.env.IMAGE_BASE_URL}memes/nut.png`,
-    `${process.env.IMAGE_BASE_URL}memes/nut-2.png`,
+    `${process.env.IMAGE_BASE_URL}memes/nut-2.jpg`,
 ];
 const NUT_URL_WEIGHTS = [0.2, 0.8];
 
