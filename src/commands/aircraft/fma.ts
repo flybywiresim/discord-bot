@@ -2,7 +2,7 @@ import { MessageCommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 
-const FMA_IMAGE_URL = 'https://media.discordapp.net/attachments/902990139670814750/1004144477717401671/unknown.png';
+const FMA_IMAGE_URL = `${process.env.IMAGE_BASE_URL}/a32nx/fma.png`;
 
 const fmaEmbed = makeEmbed({
     title: 'FlyByWire A32NX | Flight Mode Annunciator ',

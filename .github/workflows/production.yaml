@@ -54,6 +54,7 @@ jobs:
       WOLFRAMALPHA_TOKEN: ${{ secrets.WOLFRAMALPHA_TOKEN }}
       MONGODB_URL: ${{ secrets.MONGODB_URL }}
       BAN_APPEAL_URL: ${{ secrets.BAN_APPEAL_URL }}
+      IMAGE_BASE_URL: ${{ secrets.IMAGE_BASE_URL_PROD }}
     steps:
       - uses: actions/checkout@v1
       - name: Install doctl
@@ -73,4 +74,5 @@ jobs:
             --set bot.wolframAlphaToken=${WOLFRAMALPHA_TOKEN} \
             --set bot.mongodbUrl=${MONGODB_URL} \
             --set bot.banAppealUrl=${BAN_APPEAL_URL} \
+            --set bot.imageBaseUrl=${IMAGE_BASE_URL} \
             -f ./charts/discord-bot/values.yaml -f ${VALUES_FILE} ${RELEASE_NAME} ./charts/discord-bot

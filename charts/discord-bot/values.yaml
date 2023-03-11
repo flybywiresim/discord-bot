@@ -16,6 +16,7 @@ bot:
   wolframAlphaToken: change_me
   mongodbUrl: change_me
   banAppealUrl : change_me
+  imageBaseUrl : change_me
 
 serviceAccount:
   # Specifies whether a service account should be created

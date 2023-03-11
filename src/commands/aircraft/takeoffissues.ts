@@ -2,7 +2,7 @@ import { MessageCommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 
-const TAKEOFF_ISSUES_IMAGE_URL = 'https://cdn.discordapp.com/attachments/819557805912621056/998403696343928852/engines1.png';
+const TAKEOFF_ISSUES_IMAGE_URL = `${process.env.IMAGE_BASE_URL}a32nx/takeoffissues.png`;
 
 const takeoffIssuesEmbed = makeEmbed({
     title: 'FlyByWire A32NX | Engine Issues on Takeoff',

@@ -2,6 +2,8 @@ import { MessageCommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
 
+const ASSISTANCE_IMAGE_URL = `${process.env.IMAGE_BASE_URL}a32nx/assistance-options.png`;
+
 const assistanceEmbed = makeEmbed({
     title: 'FlyByWire A32NX | Assistance Options',
     description: makeLines([
@@ -9,7 +11,7 @@ const assistanceEmbed = makeEmbed({
         '',
         'We recommend turning off all assistance features in MSFS as they interfere with the A32NX systems.',
     ]),
-    image: { url: 'https://docs.flybywiresim.com/fbw-a32nx/assets/settings/assistance-options.png' },
+    image: { url: ASSISTANCE_IMAGE_URL },
 });
 
 export const assistance: MessageCommandDefinition = {
