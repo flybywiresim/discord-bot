@@ -2,7 +2,7 @@ import { MessageCommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 
-const MARKETPLACE_HELP_URL = 'https://cdn.discordapp.com/attachments/897491699167793182/995841973900541962/marketplace.png';
+const MARKETPLACE_HELP_URL = `${process.env.IMAGE_BASE_URL}support/market.png`;
 
 const contentEmbed = makeEmbed({
     title: 'FlyByWire Support | Removing Marketplace Version',

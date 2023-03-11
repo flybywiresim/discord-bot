@@ -2,9 +2,11 @@ import { MessageCommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 
+const GOLDEN_RULES_IMAGE_URL = `${process.env.IMAGE_BASE_URL}general/goldenrules.png`;
+
 const goldenRulesEmbed = makeEmbed({
     title: 'FlyByWire | Golden Rules',
-    image: { url: 'https://media.discordapp.net/attachments/898602626436964402/921043008923795466/55982629-DD45-4E98-97E6-2B61479D5401.png?width=554&height=676' },
+    image: { url: GOLDEN_RULES_IMAGE_URL },
 });
 
 export const goldenRules: MessageCommandDefinition = {

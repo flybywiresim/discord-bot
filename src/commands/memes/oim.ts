@@ -1,7 +1,7 @@
 import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 
-const OIM_URL = 'https://cdn.discordapp.com/attachments/879400460891594772/931921828128120962/883969995053338644.gif';
+const OIM_URL = `${process.env.IMAGE_BASE_URL}memes/oim.gif`;
 
 export const oim: CommandDefinition = {
     name: 'oim',

@@ -1,7 +1,7 @@
 import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 
-const MERGE_URL = 'https://tenor.com/view/git-merge-gitmerge-gif-18010083';
+const MERGE_URL = `${process.env.IMAGE_BASE_URL}memes/merge.gif`;
 
 export const merge: CommandDefinition = {
     name: 'merge',

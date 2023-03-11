@@ -2,7 +2,7 @@ import { MessageCommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
 
-const NAVIGRAPH_NAVDATA_URL = 'https://cdn.discordapp.com/attachments/785976111875751956/912394143844696154/unknown.png';
+const NAVIGRAPH_NAVDATA_URL = `${process.env.IMAGE_BASE_URL}support/navdata.png`;
 
 const navigraphNavdataEmbed = makeEmbed({
     title: 'FlyByWire Support | Navigraph Navdata',

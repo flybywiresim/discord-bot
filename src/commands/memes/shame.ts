@@ -1,7 +1,7 @@
 import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 
-const SHAME_URL = 'https://tenor.com/view/the-simpsons-homer-simpson-homer-good-bye-im-done-gif-3610339';
+const SHAME_URL = `${process.env.IMAGE_BASE_URL}memes/shame.gif`;
 
 export const shame: CommandDefinition = {
     name: 'shame',

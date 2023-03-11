@@ -2,7 +2,7 @@ import { CommandDefinition } from '../../lib/command';
 import { makeEmbed } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 
-const BORATORIUM_URL = 'https://cdn.discordapp.com/attachments/747571948342476850/803668297844260874/hqdefault.png';
+const BORATORIUM_URL = `${process.env.IMAGE_BASE_URL}memes/boratorium.png`;
 
 export const boratorium: CommandDefinition = {
     name: 'boratorium',

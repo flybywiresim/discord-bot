@@ -2,7 +2,7 @@ import { MessageCommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 
-const CHECKLIST_IMAGE_URL = 'https://cdn.discordapp.com/attachments/898602626436964402/923602202495418458/FBW_A32NX_Checklist_3-1.png';
+const CHECKLIST_IMAGE_URL = `${process.env.IMAGE_BASE_URL}a32nx/A32NX_checklist.png`;
 
 const checklistEmbed = makeEmbed({
     title: 'FlyByWire A32NX | Checklist',

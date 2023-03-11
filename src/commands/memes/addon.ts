@@ -2,7 +2,7 @@ import { CommandDefinition } from '../../lib/command';
 import { makeEmbed } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 
-const ADDON_URL = 'https://cdn.discordapp.com/attachments/740722295009706034/1072687692573315204/addon.png';
+const ADDON_URL = `${process.env.IMAGE_BASE_URL}memes/addon.png`;
 
 export const addon: CommandDefinition = {
     name: 'addon',

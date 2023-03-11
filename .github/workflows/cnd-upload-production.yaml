@@ -1,0 +1,24 @@
+name: CDN Upload - Production
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+    paths:
+      - 'assets/images**'
+
+jobs:
+  cdn_upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Upload to CloudFlare CDN
+        env:
+          CLOUDFLARE_CDN_URL: ${{ secrets.CLOUDFLARE_CDN_URL_PRODUCTION }}
+          CLOUDFLARE_ACCESS_KEY: ${{ secrets.CLOUDFLARE_ACCESS_KEY_PRODUCTION }}
+        run: |
+          ./.github/workflow_scripts/cf-cdn.sh
