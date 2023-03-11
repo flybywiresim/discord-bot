@@ -2,7 +2,7 @@ import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 
-const PTU_URL = `${process.env.IMAGE_BASE_URL}memes/put.jpg`;
+const PTU_URL = `${process.env.IMAGE_BASE_URL}memes/ptu.jpg`;
 
 export const ptu: CommandDefinition = {
     name: 'ptu',
