@@ -2,7 +2,8 @@
 
 Update <small>_ March 2023</small>
 
-- ci: upload images to Cloudflare R2 (10/03/2023)
+- refactor: use downscaled gifs for efb and pov (11/03/2023)
+- ci: upload images to Cloudflare R2 (11/03/2023)
 - refactor: migrate commands to new MessageCommandDefinition (09/03/2023)
 - fix: improve wxr and terr command (04/03/2023)
 - refactor: update and fix various commands (04/03/2023)
