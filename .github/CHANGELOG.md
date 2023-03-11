@@ -2,6 +2,7 @@
 
 Update <small>_ March 2023</small>
 
+- feat: reply to question or command message (11/03/2023)
 - refactor: use downscaled gifs for efb and pov (11/03/2023)
 - ci: upload images to Cloudflare R2 (11/03/2023)
 - refactor: migrate commands to new MessageCommandDefinition (09/03/2023)
@@ -11,7 +12,6 @@ Update <small>_ March 2023</small>
 
 Update <small>_ February 2023</small>
 
-- feat: reply to question or command message (27/02/2023)
 - fix: update report channel for experimental (22/02/2023)
 - feat: Add GSX Integration command (22/02/2023)
 - feat: feat: unified command permissions framework (09/02/2023)
