@@ -165,6 +165,8 @@ import { MessageCommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 
+const genericCommandImage = `${process.env.IMAGE_BASE_URL}a32nx/adirs.png`; // optional
+
 const genericCommandEmbed = makeEmbed({
     title: 'Command Title',
     description: 'A simple message that is returned when the command is executed.',
@@ -175,7 +177,7 @@ const genericCommandEmbed = makeEmbed({
             inline: false, // or true
         }
     ],
-    image: { url: 'URL to image to show' }, // optional
+    image: { url: genericCommandImage }, // optional
 });
 
 export const command: MessageCommandDefinition = {
