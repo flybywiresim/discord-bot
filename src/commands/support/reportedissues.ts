@@ -15,7 +15,7 @@ const genericReportedIssuesEmbed = makeEmbed({
 
 const issueInSubsectionEmbed = (fields: EmbedField[]) => makeEmbed({
     title: 'FlyByWire A32NX | Reported Issues',
-    description: 'Your issue is in our reported issues list. Please try the possible solutions in the following link(s) and report back if it didn\'t help, with all the steps you tried.',
+    description: 'Your issue is in our reported issues list. Please try the possible solutions in the following link(s) and report back if they didn\'t help. Include all the steps you tried.',
     fields,
 });
 
@@ -23,7 +23,7 @@ const subsectionLinkEmbedField = (id: string): EmbedField[] => [
     {
         inline: false,
         name: `${id.replace(/-/gi, ' ')}`,
-        value: `[link to reported issue section](${FBW_DOCS_REPORTED_ISSUES_URL}#${id})`,
+        value: `[Link to reported issue section](${FBW_DOCS_REPORTED_ISSUES_URL}#${id})`,
     },
 ];
 
@@ -38,18 +38,13 @@ const tooManyResultsEmbed = makeEmbed({
     color: Colors.Red,
 });
 
-const reportedissuesEmbed = makeEmbed({
-    title: 'FlyByWire A32NX | Reported Issues',
-    description: 'Please see [this link](https://docs.flybywiresim.com/reported-issues/) for a current list of reported issues.',
-});
-
-export const reportedissues: MessageCommandDefinition = {
+export const reportedissues: CommandDefinition = {
     name: ['reportedissues', 'issues'],
     description: 'Provides a link to the reported issues page within docs',
     category: CommandCategory.SUPPORT,
     executor: async (msg) => {
         try {
-            const args = msg.content.split(/\.|\n|\r|>/)
+            const args = msg.content.split(/\n|\r|\.|-|>/)
                 .at(1).toLowerCase().trim()
                 .split(/\s+/)
                 .slice(1)
