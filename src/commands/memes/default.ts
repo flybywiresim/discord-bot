@@ -2,7 +2,7 @@ import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 
-const DEFAULT_URL = 'https://c.tenor.com/QWjhCWftI2YAAAAC/airplane-fly.gif';
+const DEFAULT_URL = `${process.env.IMAGE_BASE_URL}memes/default.png`;
 
 export const defaultmeme: CommandDefinition = {
     name: 'default',

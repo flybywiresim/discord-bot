@@ -2,7 +2,7 @@ import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 
-const POV_URL = 'https://cdn.discordapp.com/attachments/897491699167793182/998837092538925057/pov50-30rl.gif';
+const POV_URL = `${process.env.IMAGE_BASE_URL}memes/pov_downscaled.gif`;
 
 export const pov: CommandDefinition = {
     name: 'pov',

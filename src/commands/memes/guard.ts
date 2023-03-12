@@ -1,7 +1,7 @@
 import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 
-const GUARD_URL = 'https://tenor.com/view/cat-meow-big-lips-gif-13233291';
+const GUARD_URL = `${process.env.IMAGE_BASE_URL}memes/guard.gif`;
 
 export const guard: CommandDefinition = {
     name: 'guard',

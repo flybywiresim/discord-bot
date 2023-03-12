@@ -2,7 +2,7 @@ import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 
-const PW_URL = 'https://cdn.discordapp.com/attachments/748761999747579944/961760315949867129/PW.png';
+const PW_URL = `${process.env.IMAGE_BASE_URL}memes/pw.png`;
 
 export const pw: CommandDefinition = {
     name: 'pw',

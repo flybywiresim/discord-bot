@@ -1,5 +1,5 @@
 import { EmbedData } from 'discord.js';
-import { CommandDefinition, isMessageCommand, MessageCommandDefinition, hasRequiredPermissions, sendPermissionsEmbed } from './command';
+import { CommandDefinition, isMessageCommand, MessageCommandDefinition, hasRequiredPermissions, sendPermissionsEmbed, replyWithEmbed } from './command';
 import { AircraftTypeList, CommandCategory } from '../constants';
 import commands from '../commands/index';
 import Logger from './logger';
@@ -58,7 +58,7 @@ export const typeCommand: CommandDefinition = {
             if (!enableMultipleAircraftTypes || !typeEmbeds || Object.keys(typeEmbeds).length === 0) {
                 if (subCommand === evokedCommand) {
                     const postEmbed = typeEmbeds && Object.keys(typeEmbeds).includes(defaultDisabledAircraftType) ? typeEmbeds[defaultDisabledAircraftType] : genericEmbed;
-                    await msg.channel.send({ embeds: [postEmbed] });
+                    await replyWithEmbed(msg, postEmbed);
                 }
                 return;
             }
@@ -79,7 +79,7 @@ export const typeCommand: CommandDefinition = {
                     name: 'Select the aircraft for more details:',
                     value: makeLines(choiceEmbedFieldLines),
                 });
-                await msg.channel.send({ embeds: [postGenericEmbed] }).then(async (genericMessage) => {
+                await replyWithEmbed(msg, postGenericEmbed).then(async (genericMessage) => {
                     commandSupportedAircraftTypeEmojis.forEach(async (element) => {
                         try {
                             await genericMessage.react(element);
@@ -87,7 +87,13 @@ export const typeCommand: CommandDefinition = {
                             Logger.debug(`Failed to add reaction: ${e}`);
                         }
                     });
-                    const filter = (reaction, user) => commandSupportedAircraftTypeEmojis.includes(reaction.emoji.identifier) && user.id === author.id;
+
+                    let repliedToUser = msg.author;
+                    if (msg.reference) {
+                        repliedToUser = (await msg.fetchReference()).author;
+                    }
+
+                    const filter = (reaction, user) => commandSupportedAircraftTypeEmojis.includes(reaction.emoji.identifier) && (user.id === author.id || user.id === repliedToUser.id);
                     await genericMessage.awaitReactions({
                         filter,
                         max: 1,
@@ -108,7 +114,7 @@ export const typeCommand: CommandDefinition = {
                             } catch (e) {
                                 Logger.debug('Type Command - Generic message with choices was already deleted');
                             }
-                            await msg.channel.send({ embeds: [typeEmbeds[foundAircraftType]] });
+                            await replyWithEmbed(msg, typeEmbeds[foundAircraftType]);
                         }
                     }).catch(async () => {
                         try {
@@ -123,7 +129,7 @@ export const typeCommand: CommandDefinition = {
             }
             if (commandSupportedAircraftTypes.includes(evokedCommand)) {
                 const keyTyped = evokedCommand as keyof typeof typeEmbeds;
-                await msg.channel.send({ embeds: [typeEmbeds[keyTyped]] });
+                await replyWithEmbed(msg, typeEmbeds[keyTyped]);
                 return;
             }
             Logger.debug(`Type Command - evoked: ${evokedCommand} - sub: ${subCommand} - No Embed for the specified type (evoked command)`);

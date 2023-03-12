@@ -2,7 +2,10 @@
 
 Update <small>_ March 2023</small>
 
-- feat: Show specific section link for reported issues command (10/03/2023)
+- feat: Show specific section link for reported issues command (12/03/2023)
+- feat: reply to question or command message (11/03/2023)
+- refactor: use downscaled gifs for efb and pov (11/03/2023)
+- ci: upload images to Cloudflare R2 (11/03/2023)
 - refactor: migrate commands to new MessageCommandDefinition (09/03/2023)
 - fix: improve wxr and terr command (04/03/2023)
 - refactor: update and fix various commands (04/03/2023)

@@ -2,7 +2,7 @@ import { MessageCommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 
-const SNIPPING_TOOL_URL = 'https://cdn.discordapp.com/attachments/897491699167793182/1040649316672479232/image.png';
+const SNIPPING_TOOL_URL = `${process.env.IMAGE_BASE_URL}support/winss.png`;
 
 const winssEmbed = makeEmbed({
     title: 'FlyByWire Support | How to screenshot on Windows',

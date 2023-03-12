@@ -2,7 +2,7 @@ import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 
-const PTU_URL = 'https://cdn.discordapp.com/attachments/898602626436964402/902346330146471996/302164c.jpg';
+const PTU_URL = `${process.env.IMAGE_BASE_URL}memes/ptu.jpg`;
 
 export const ptu: CommandDefinition = {
     name: 'ptu',

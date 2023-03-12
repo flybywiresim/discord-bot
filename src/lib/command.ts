@@ -135,3 +135,18 @@ export async function sendPermissionsEmbed(msg: Message, error: string) {
         setTimeout(() => permMsg.delete(), PermissionsEmbedDelay); // Delete after 10 seconds
     }
 }
+
+export async function replyWithEmbed(msg: Message, embed: EmbedBuilder) : Promise<Message<boolean>> {
+    return msg.fetchReference()
+        .then((res) => {
+            let existingFooterText = '';
+            const existingFooter = embed.data.footer;
+            if (existingFooter) {
+                existingFooterText = `${existingFooter.text}\n\n`;
+            }
+            embed = EmbedBuilder.from(embed.data);
+            embed.setFooter({ text: `${existingFooterText} Executed by ${msg.author.tag} - ${msg.author.id}` });
+            return res.reply({ embeds: [embed] });
+        })
+        .catch(() => msg.reply({ embeds: [embed] }));
+}
