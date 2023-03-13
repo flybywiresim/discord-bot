@@ -11,9 +11,11 @@ export const docsearch: CommandDefinition = {
     description: 'Provides a link to the documentation or documentation search for a quick link if there is no dedicated command.',
     category: CommandCategory.GENERAL,
     executor: (msg) => {
-        const searchWords = msg.content.replace(/^\.(doc|docs|documentation|docsearch)\s+/, ' ').split(' ');
+        const searchWords = msg.content.split(/\n|\r|\.|-|>/)
+            .at(1).split(/\s+/).slice(1)
+            .filter((word) => word.length > 2);
 
-        if (searchWords.length <= 1) {
+        if (searchWords.length === 0) {
             const noQueryEmbed = makeEmbed({
                 title: 'FlyByWire Documentation',
                 description: `Find the full FlyByWire Documentation [here](${DOCS_BASE_URL}).`,
@@ -39,7 +41,6 @@ export const docsearch: CommandDefinition = {
             }
         }
 
-        searchWords.shift();
         const searchQuery = searchWords.join(' ');
 
         // Safety to prevent users from entering unexpected data that might result in strange behavior in a URL.
