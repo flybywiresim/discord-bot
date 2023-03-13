@@ -1,8 +1,8 @@
 import { MessageCommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
-import { Channels, CommandCategory } from '../../constants';
+import { Channels, CommandCategory, imageBaseUrl } from '../../constants';
 
-const CONTENT_MANAGER_HELP_URL = `${process.env.IMAGE_BASE_URL}support/content.png`;
+const CONTENT_MANAGER_HELP_URL = `${imageBaseUrl}/support/content.png`;
 
 const contentEmbed = makeEmbed({
     title: 'FlyByWire Support | Checking your aircraft version',

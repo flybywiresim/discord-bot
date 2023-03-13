@@ -1,8 +1,8 @@
 import { MessageCommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
-import { CommandCategory } from '../../constants';
+import { CommandCategory, imageBaseUrl } from '../../constants';
 
-const SIMVERSION_HELP_URL = `${process.env.IMAGE_BASE_URL}support/simversion.jpg`;
+const SIMVERSION_HELP_URL = `${imageBaseUrl}/support/simversion.jpg`;
 
 const simversionEmbed = makeEmbed({
     title: 'FlyByWire Support | Checking your MSFS version',

@@ -1,8 +1,8 @@
 import { MessageCommandDefinition } from '../../lib/command';
-import { CommandCategory } from '../../constants';
+import { CommandCategory, imageBaseUrl } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
 
-const NAVIGRAPH_NAVDATA_URL = `${process.env.IMAGE_BASE_URL}support/navdata.png`;
+const NAVIGRAPH_NAVDATA_URL = `${imageBaseUrl}/support/navdata.png`;
 
 const navigraphNavdataEmbed = makeEmbed({
     title: 'FlyByWire Support | Navigraph Navdata',

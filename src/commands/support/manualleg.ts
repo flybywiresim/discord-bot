@@ -1,8 +1,8 @@
 import { MessageCommandDefinition } from '../../lib/command';
 import { makeEmbed } from '../../lib/embed';
-import { CommandCategory } from '../../constants';
+import { CommandCategory, imageBaseUrl } from '../../constants';
 
-const MANUAL_LEG_IMAGE_URL = `${process.env.IMAGE_BASE_URL}support/manualleg.png`;
+const MANUAL_LEG_IMAGE_URL = `${imageBaseUrl}/support/manualleg.png`;
 const DISCON_DOCS_URL = 'https://docs.flybywiresim.com/pilots-corner/advanced-guides/flight-planning/disco/';
 
 const genericManualLegEmbed = makeEmbed({
