@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
 import { Colors, EmbedField } from 'discord.js';
-import { CommandDefinition } from '../../lib/command';
+import { CommandDefinition, replyWithEmbed } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import Logger from '../../lib/logger';
 import { makeEmbed } from '../../lib/embed';
@@ -76,7 +76,7 @@ export const vatsimEvents: CommandDefinition = {
                 fields,
             });
 
-            return msg.channel.send({ embeds: [eventsEmbed] });
+            return replyWithEmbed(msg, eventsEmbed);
         } catch (err) {
             Logger.error(err);
             const errorEmbed = makeEmbed({
@@ -84,7 +84,7 @@ export const vatsimEvents: CommandDefinition = {
                 description: err.message,
                 color: Colors.Red,
             });
-            return msg.channel.send({ embeds: [errorEmbed] });
+            return msg.reply({ embeds: [errorEmbed] });
         }
     },
 };

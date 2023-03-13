@@ -273,7 +273,7 @@ export const timeout: CommandDefinition = {
                 }, 4000);
             }
 
-            return msg.channel.send({ embeds: [failedTimeoutEmbed(targetUser)] }); // Timeout unsuccessful
+            return msg.reply({ embeds: [failedTimeoutEmbed(targetUser)] }); // Timeout unsuccessful
         });
     },
 };

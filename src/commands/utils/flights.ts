@@ -22,7 +22,7 @@ export const flights: CommandDefinition = {
                 url: FBW_WEB_MAP_URL,
                 timestamp: new Date().toISOString(),
             });
-            return msg.channel.send({ embeds: [flightsEmbed] });
+            return msg.reply({ embeds: [flightsEmbed] });
         } catch (e) {
             Logger.error(e);
             const errorEmbed = makeEmbed({
@@ -30,7 +30,7 @@ export const flights: CommandDefinition = {
                 description: e.message,
                 color: Colors.Red,
             });
-            return msg.channel.send({ embeds: [errorEmbed] });
+            return msg.reply({ embeds: [errorEmbed] });
         }
     },
 };

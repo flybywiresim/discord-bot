@@ -32,6 +32,6 @@ export const roleinfo: CommandDefinition = {
             description: `**${role.members.size}** members have that role.`,
         });
 
-        return msg.channel.send({ embeds: [roleinfoEmbed] });
+        return msg.reply({ embeds: [roleinfoEmbed] });
     },
 };

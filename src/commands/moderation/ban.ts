@@ -153,7 +153,7 @@ export const ban: CommandDefinition = {
         try {
             targetUser = await msg.guild.members.fetch(idArg);
         } catch {
-            return msg.channel.send({ embeds: [unknownUserEmbed(idArg)] });
+            return msg.reply({ embeds: [unknownUserEmbed(idArg)] });
         }
         const moderator = msg.author;
         const currentDate = new Date();
@@ -161,7 +161,7 @@ export const ban: CommandDefinition = {
         const modLogsChannel = await msg.guild.channels.resolve(Channels.MOD_LOGS) as TextChannel | null;
 
         if (!targetUser.moderatable) {
-            return msg.channel.send({ embeds: [moderatableFailEmbed] });
+            return msg.reply({ embeds: [moderatableFailEmbed] });
         }
         try {
             await targetUser.send({ embeds: [dmEmbed(formattedDate, moderator, reason)] });
@@ -175,7 +175,7 @@ export const ban: CommandDefinition = {
             }
             return msg.channel.send({ embeds: [successfulBanEmbed(targetUser.user, reason)] });
         } catch (error) {
-            return msg.channel.send({ embeds: [failedBanEmbed(targetUser.user, error)] });
+            return msg.reply({ embeds: [failedBanEmbed(targetUser.user, error)] });
         }
     },
 };

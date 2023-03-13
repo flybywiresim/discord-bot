@@ -1,4 +1,4 @@
-import { CommandDefinition } from '../../lib/command';
+import { CommandDefinition, replyWithMsg } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 
 const NO_HELLO_URL = 'https://nohello.net/';
@@ -8,7 +8,7 @@ export const noHello: CommandDefinition = {
     description: 'No!',
     category: CommandCategory.MEMES,
     executor: (msg) => {
-        msg.channel.send(NO_HELLO_URL);
+        replyWithMsg(msg, NO_HELLO_URL);
         return msg.delete();
     },
 };

@@ -151,7 +151,7 @@ export async function replyWithEmbed(msg: Message, embed: EmbedBuilder) : Promis
         .catch(() => msg.reply({ embeds: [embed] }));
 }
 
-export async function replyWithMsg(msg: Message, text: String) : Promise<Message<boolean>> {
+export async function replyWithMsg(msg: Message, text: string) : Promise<Message<boolean>> {
     return msg.fetchReference()
         .then((res) => {
             return res.reply(`${text}\n\n\`Executed by ${msg.author.tag} - ${msg.author.id}\``);

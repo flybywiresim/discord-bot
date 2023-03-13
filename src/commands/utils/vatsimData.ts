@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import fetch from 'node-fetch';
 import { Colors, EmbedField } from 'discord.js';
-import { CommandDefinition } from '../../lib/command';
+import { CommandDefinition, replyWithEmbed } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 
@@ -215,7 +215,7 @@ export const vatsimData: CommandDefinition = {
         const args = msg.content.split(/\s+/).slice(1);
 
         if ((args.length < 1 && parseInt(args[1]) !== 0) || args[0] === 'help') {
-            return msg.channel.send({ embeds: [helpEmbed(evokedCommand)] });
+            return msg.reply({ embeds: [helpEmbed(evokedCommand)] });
         }
 
         let subCommand = args[0].toLowerCase();
@@ -258,7 +258,7 @@ export const vatsimData: CommandDefinition = {
                 throw new Error(response.statusText);
             });
         } catch (error) {
-            return msg.channel.send({ embeds: [fetchErrorEmbed(error)] });
+            return msg.reply({ embeds: [fetchErrorEmbed(error)] });
         }
 
         const vatsimAllControllers = vatsimData.controllers ? vatsimData.controllers.filter((controller) => controller.facility > 0) : null;
@@ -269,11 +269,11 @@ export const vatsimData: CommandDefinition = {
             const vatsimControllerCount = vatsimAllControllers ? vatsimAllControllers.length : 0;
             const vatsimAtisCount = vatsimData.atis ? vatsimData.atis.length : 0;
             const vatsimObserverCount = vatsimAllObservers ? vatsimAllObservers.length : 0;
-            return msg.channel.send({ embeds: [statsEmbed(vatsimPilotCount, vatsimControllerCount, vatsimAtisCount, vatsimObserverCount, null)] });
+            return replyWithEmbed(msg, statsEmbed(vatsimPilotCount, vatsimControllerCount, vatsimAtisCount, vatsimObserverCount, null));
         }
 
         if (!query) {
-            return msg.channel.send({ embeds: [missingInfoEmbed(`You need to provide a single callsign or part of a callsign to search for. Check \`${evokedCommand} help\` for more details.`)] });
+            return msg.reply({ embeds: [missingInfoEmbed(`You need to provide a single callsign or part of a callsign to search for. Check \`${evokedCommand} help\` for more details.`)] });
         }
 
         query = query.toUpperCase();
@@ -282,7 +282,7 @@ export const vatsimData: CommandDefinition = {
         const regexMatches = query.match(regexCheck);
 
         if (!regexMatches || !regexMatches.groups || !regexMatches.groups.callsignSearch) {
-            return msg.channel.send({ embeds: [missingInfoEmbed(`You need to provide a valid callsign or part of a callsign to search for. Check \`${evokedCommand} help\` for more details.`)] });
+            return msg.reply({ embeds: [missingInfoEmbed(`You need to provide a valid callsign or part of a callsign to search for. Check \`${evokedCommand} help\` for more details.`)] });
         }
 
         const { callsignSearch } = regexMatches.groups;
@@ -301,7 +301,7 @@ export const vatsimData: CommandDefinition = {
             const vatsimControllerCount = vatsimControllers ? vatsimControllers.length : 0;
             const vatsimAtisCount = vatsimAtis ? vatsimAtis.length : 0;
             const vatsimObserverCount = vatsimObservers ? vatsimObservers.length : 0;
-            return msg.channel.send({ embeds: [statsEmbed(vatsimPilotCount, vatsimControllerCount, vatsimAtisCount, vatsimObserverCount, callsignSearch)] });
+            return replyWithEmbed(msg, statsEmbed(vatsimPilotCount, vatsimControllerCount, vatsimAtisCount, vatsimObserverCount, callsignSearch));
         }
 
         if ((keys(vatsimControllers).length !== 0 || keys(vatsimAtis).length !== 0) && (commandMode === 'ALL' || commandMode === 'CONTROLLERS')) {
@@ -321,7 +321,7 @@ export const vatsimData: CommandDefinition = {
             const totalCount = keys(vatsimControllers).length + keys(vatsimAtis).length;
             const shownCount = totalCount < 5 ? totalCount : 5;
 
-            return msg.channel.send({ embeds: [listEmbed('Controllers & ATIS', fields, totalCount, shownCount, callsignSearch)] });
+            return replyWithEmbed(msg, listEmbed('Controllers & ATIS', fields, totalCount, shownCount, callsignSearch));
         }
 
         if (keys(vatsimPilots).length !== 0 && (commandMode === 'ALL' || commandMode === 'PILOTS')) {
@@ -337,7 +337,7 @@ export const vatsimData: CommandDefinition = {
             const totalCount = keys(vatsimPilots).length;
             const shownCount = totalCount < 5 ? totalCount : 5;
 
-            return msg.channel.send({ embeds: [listEmbed('Pilots', fields, totalCount, shownCount, callsignSearch)] });
+            return replyWithEmbed(msg, listEmbed('Pilots', fields, totalCount, shownCount, callsignSearch));
         }
 
         if (keys(vatsimObservers).length !== 0 && (commandMode === 'ALL' || commandMode === 'OBSERVERS')) {
@@ -356,9 +356,9 @@ export const vatsimData: CommandDefinition = {
             const totalCount = keys(vatsimObservers).length;
             const shownCount = totalCount < 5 ? totalCount : 5;
 
-            return msg.channel.send({ embeds: [listEmbed('Observers', fields, totalCount, shownCount, callsignSearch)] });
+            return replyWithEmbed(msg, listEmbed('Observers', fields, totalCount, shownCount, callsignSearch));
         }
 
-        return msg.channel.send({ embeds: [notFoundEmbed(callsignSearch, notFoundMsg)] });
+        return msg.reply({ embeds: [notFoundEmbed(callsignSearch, notFoundMsg)] });
     },
 };

@@ -2,6 +2,7 @@
 
 Update <small>_ March 2023</small>
 
+- feat: add reply functionality for complex commands (13/03/2023))
 - feat: Show specific section link for reported issues command (12/03/2023)
 - feat: reply to question or command message (11/03/2023)
 - refactor: use downscaled gifs for efb and pov (11/03/2023)

@@ -112,7 +112,7 @@ export const untimeout: CommandDefinition = {
                     msg.delete();
                 }, 4000);
             }
-            return msg.channel.send({ embeds: [failedUnTimeoutEmbed(targetUser.user)] });
+            return msg.reply({ embeds: [failedUnTimeoutEmbed(targetUser.user)] });
         });
     },
 };

@@ -63,11 +63,11 @@ export const deleteWarn: CommandDefinition = {
             const warn = await Warn.findById(warnId);
 
             if (!warn) {
-                await msg.channel.send({ embeds: [noWarningEmbed] });
+                await msg.reply({ embeds: [noWarningEmbed] });
                 return;
             }
         } catch {
-            await msg.channel.send({ embeds: [noWarningEmbed] });
+            await msg.reply({ embeds: [noWarningEmbed] });
             return;
         }
 
@@ -92,16 +92,16 @@ export const deleteWarn: CommandDefinition = {
         try {
             await Warn.deleteOne({ _id: args });
         } catch {
-            await msg.channel.send({ embeds: [deleteFailedEmbed] });
+            await msg.reply({ embeds: [deleteFailedEmbed] });
             return;
         }
         try {
             await modLogsChannel.send({ embeds: [modLogsEmbed] });
         } catch {
-            await msg.channel.send({ embeds: [noModLogs] });
+            await msg.reply({ embeds: [noModLogs] });
             return;
         }
 
-        await msg.channel.send({ embeds: [deleteEmbed] });
+        await msg.reply({ embeds: [deleteEmbed] });
     },
 };
