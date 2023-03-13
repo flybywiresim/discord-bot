@@ -1,7 +1,7 @@
 import { CommandDefinition } from '../../lib/command';
-import { CommandCategory } from '../../constants';
+import { CommandCategory, imageBaseUrl } from '../../constants';
 
-const MICO_URL = `${process.env.IMAGE_BASE_URL}memes/mico.png`;
+const MICO_URL = `${imageBaseUrl}/memes/mico.png`;
 
 export const mico: CommandDefinition = {
     name: 'mico',

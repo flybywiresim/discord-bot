@@ -1,7 +1,7 @@
 import { CommandDefinition } from '../../lib/command';
-import { CommandCategory } from '../../constants';
+import { CommandCategory, imageBaseUrl } from '../../constants';
 
-const XP_URL = `${process.env.IMAGE_BASE_URL}memes/xp.gif`;
+const XP_URL = `${imageBaseUrl}/memes/xp.gif`;
 
 export const xp: CommandDefinition = {
     name: ['xp', 'xplane', 'x-plane'],

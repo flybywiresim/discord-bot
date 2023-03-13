@@ -1,7 +1,7 @@
 import { CommandDefinition } from '../../lib/command';
-import { CommandCategory } from '../../constants';
+import { CommandCategory, imageBaseUrl } from '../../constants';
 
-const GUARD_URL = `${process.env.IMAGE_BASE_URL}memes/guard.gif`;
+const GUARD_URL = `${imageBaseUrl}/memes/guard.gif`;
 
 export const guard: CommandDefinition = {
     name: 'guard',
