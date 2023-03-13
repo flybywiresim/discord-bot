@@ -156,5 +156,5 @@ export async function replyWithMsg(msg: Message, text: String) : Promise<Message
         .then((res) => {
             return res.reply(`${text}\n\n\`Executed by ${msg.author.tag} - ${msg.author.id}\``);
         })
-        .catch(() => msg.reply({ embeds: [embed] }));
+        .catch(() => msg.reply(text));
 }
