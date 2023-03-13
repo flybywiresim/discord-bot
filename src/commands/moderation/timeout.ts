@@ -170,7 +170,7 @@ export const timeout: CommandDefinition = {
         const timeoutArg = args[1];
         const reason = args.slice(2).join(' ');
         const currentDate = new Date();
-        const formattedDate: string = moment(currentDate).utcOffset(0).format('YYYY-MM-DDTHH:mm:ss');
+        const formattedDate: string = moment(currentDate).utcOffset(0).format('DD, MM, YYYY, HH:mm:ss');
 
         let timeoutDuration: number;
         switch (timeoutArg[timeoutArg.length - 1].toLowerCase()) {
@@ -258,6 +258,7 @@ export const timeout: CommandDefinition = {
                     userID,
                     moderator,
                     reason: `*This user was timed out because:* ${reason}`,
+                    date: currentDate,
                 });
 
                 try {
