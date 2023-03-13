@@ -1,3 +1,5 @@
+import dotenv from 'dotenv';
+
 export const GuildID = '738864299392630914';
 
 export enum Colors {
@@ -87,3 +89,24 @@ export const AircraftTypeList = {
 };
 
 export const PermissionsEmbedDelay = 10000;
+
+// imageBaseUrl
+
+dotenv.config();
+
+const originalBaseUrl = `${process.env.IMAGE_BASE_URL}`;
+console.log(originalBaseUrl);
+const charToRemove = '/';
+
+// eslint-disable-next-line import/no-mutable-exports
+let imageBaseUrl: string;
+
+if (originalBaseUrl.endsWith(charToRemove)) {
+    imageBaseUrl = originalBaseUrl.slice(0, -1);
+    console.log(imageBaseUrl);
+} else {
+    imageBaseUrl = originalBaseUrl;
+    console.log(imageBaseUrl);
+}
+
+export { imageBaseUrl };
