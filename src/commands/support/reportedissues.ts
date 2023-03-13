@@ -19,17 +19,17 @@ const issueInSubsectionEmbed = (fields: EmbedField[]) => makeEmbed({
     fields,
 });
 
-const subsectionLinkEmbedField = (id: string): EmbedField[] => [
+const subsectionLinkEmbedField = (id: string, title: string): EmbedField[] => [
     {
         inline: false,
-        name: `${id.replace(/-/gi, ' ')}`,
-        value: `[Link to reported issue section](${FBW_DOCS_REPORTED_ISSUES_URL}#${id})`,
+        name: `${title}`,
+        value: `[Link to reported issues section](${FBW_DOCS_REPORTED_ISSUES_URL}#${id})`,
     },
 ];
 
 const autopilotEmbed = makeEmbed({
     title: 'FlyByWire A32NX | Reported Issues',
-    description: `Please see [this Link](${FBW_DOCS_AUTOPILOT_ISSUES_URL}) for typical issues with the custom autopilot and how to solve them.`,
+    description: `Please see [this link](${FBW_DOCS_AUTOPILOT_ISSUES_URL}) for typical issues with the custom autopilot and how to solve them.`,
 });
 
 const tooManyResultsEmbed = makeEmbed({
@@ -66,7 +66,7 @@ export const reportedissues: CommandDefinition = {
             h3Elements.forEach((element) => {
                 const { id } = element;
                 if (args.every((searchWord) => id.toLowerCase().includes(searchWord))) {
-                    reportedIssues.push(id);
+                    reportedIssues.push({ id, title: element.textContent });
                 }
             });
 
@@ -78,7 +78,7 @@ export const reportedissues: CommandDefinition = {
                 return;
             }
 
-            const fields = reportedIssues.map((id) => subsectionLinkEmbedField(id)).flat();
+            const fields = reportedIssues.map((sectionElement) => subsectionLinkEmbedField(sectionElement.id, sectionElement.title)).flat();
             replyWithEmbed(msg, issueInSubsectionEmbed(fields));
 
             return;
