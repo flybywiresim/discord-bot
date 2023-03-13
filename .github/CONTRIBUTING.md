@@ -161,9 +161,9 @@ For commands that need to respond with a message (no complex logic), take a look
 The basic structure of such a command looks similar to this example:
 
 ```ts
-import {MessageCommandDefinition} from '../../lib/command';
-import {CommandCategory, imageBaseUrl } from '../../constants';
-import {makeEmbed} from '../../lib/embed';
+import { MessageCommandDefinition } from '../../lib/command';
+import { CommandCategory, imageBaseUrl } from '../../constants';
+import { makeEmbed } from '../../lib/embed';
 
 const GENERIC_COMMAND_IMAGE = `${imageBaseUrl}a32nx/adirs.png`; // optional
 
