@@ -1,6 +1,6 @@
 import { Colors, EmbedField } from 'discord.js';
 import { JSDOM } from 'jsdom';
-import { CommandDefinition } from '../../lib/command';
+import { CommandDefinition, replyWithEmbed } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 import Logger from '../../lib/logger';
@@ -51,11 +51,11 @@ export const reportedissues: CommandDefinition = {
                 .filter((word) => word.length > 2);
 
             if (args === undefined || args.length === 0) {
-                msg.channel.send({ embeds: [genericReportedIssuesEmbed] });
+                replyWithEmbed(msg, genericReportedIssuesEmbed);
                 return;
             }
             if (args.length === 1 && args.at(0) === 'autopilot') {
-                msg.channel.send({ embeds: [autopilotEmbed] });
+                replyWithEmbed(msg, autopilotEmbed);
                 return;
             }
 
@@ -74,12 +74,12 @@ export const reportedissues: CommandDefinition = {
                 if (reportedIssues.length > 4) {
                     msg.reply({ embeds: [tooManyResultsEmbed] });
                 }
-                msg.channel.send({ embeds: [genericReportedIssuesEmbed] });
+                replyWithEmbed(msg, genericReportedIssuesEmbed);
                 return;
             }
 
             const fields = reportedIssues.map((id) => subsectionLinkEmbedField(id)).flat();
-            msg.channel.send({ embeds: [issueInSubsectionEmbed(fields)] });
+            replyWithEmbed(msg, issueInSubsectionEmbed(fields));
 
             return;
         } catch (e) {
@@ -90,7 +90,7 @@ export const reportedissues: CommandDefinition = {
                 description: e.message,
                 color: Colors.Red,
             });
-            msg.channel.send({ embeds: [errorEmbed] });
+            msg.reply({ embeds: [errorEmbed] });
         }
     },
 };
