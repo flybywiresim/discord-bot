@@ -90,23 +90,9 @@ export const AircraftTypeList = {
 
 export const PermissionsEmbedDelay = 10000;
 
-// imageBaseUrl
+// imageBaseUrl - Below takes the IMAGE_BASE_URL entry from the `env` and strips the trailing `/` if present
 
 dotenv.config();
-
 const originalBaseUrl = `${process.env.IMAGE_BASE_URL}`;
-console.log(originalBaseUrl);
-const charToRemove = '/';
-
-// eslint-disable-next-line import/no-mutable-exports
-let imageBaseUrl: string;
-
-if (originalBaseUrl.endsWith(charToRemove)) {
-    imageBaseUrl = originalBaseUrl.slice(0, -1);
-    console.log(imageBaseUrl);
-} else {
-    imageBaseUrl = originalBaseUrl;
-    console.log(imageBaseUrl);
-}
-
+const imageBaseUrl = originalBaseUrl.endsWith('/') ? originalBaseUrl.slice(0, -1) : originalBaseUrl;
 export { imageBaseUrl };
