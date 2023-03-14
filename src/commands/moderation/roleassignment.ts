@@ -1,4 +1,4 @@
-import { CommandDefinition, replyWithEmbed } from '../../lib/command';
+import { CommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
 import { CommandCategory, RoleGroups } from '../../constants';
 
@@ -30,7 +30,7 @@ export const roleassignment: CommandDefinition = {
     requirements: { roles: RoleGroups.STAFF },
     category: CommandCategory.MODERATION,
     executor: async (msg) => {
-        await replyWithEmbed(msg, ROLES_EMBED);
-        await replyWithEmbed(msg, MEDIA_ANNOUNCEMENT_EMBED);
+        await msg.channel.send({ embeds: [ROLES_EMBED] });
+        await msg.channel.send({ embeds: [MEDIA_ANNOUNCEMENT_EMBED] });
     },
 };

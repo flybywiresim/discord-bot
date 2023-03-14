@@ -25,7 +25,7 @@ const utf8Embed = makeEmbed({
 });
 
 export const utf8: MessageCommandDefinition = {
-    name: 'UTF-8',
+    name: 'utf8',
     description: 'Provides a link to resolve UTF-8 issues',
     category: CommandCategory.SUPPORT,
     genericEmbed: utf8Embed,
