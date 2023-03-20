@@ -8,7 +8,11 @@ export const noHello: CommandDefinition = {
     description: 'No!',
     category: CommandCategory.MEMES,
     executor: (msg) => {
-        replyWithMsg(msg, NO_HELLO_URL);
-        return msg.delete();
+        const sentMsg = msg.fetchReference()
+        .then((res) => res.reply(NO_HELLO_URL))
+        .catch(() => msg.channel.send(NO_HELLO_URL));
+        
+        msg.delete();
+        return sentMsg;
     },
 };
