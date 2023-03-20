@@ -155,7 +155,7 @@ export const timeout: CommandDefinition = {
         const conn = await getConn();
 
         if (!conn) {
-            await msg.channel.send({ embeds: [noConnEmbed] });
+            await msg.reply({ embeds: [noConnEmbed] });
         }
         const args = msg.content.replace(/\.timeout\s+/, '').split(' ');
         if (args.length < 3 && parseInt(args[1]) !== 0) {
@@ -199,7 +199,7 @@ export const timeout: CommandDefinition = {
 
         return targetUser.timeout(timeoutDuration, reason).then(async () => {
             if (timeoutDuration === 0) { // Timeout removed
-                const timeoutResponse = await msg.channel.send({ embeds: [unTimeoutEmbed(targetUser.user)] });
+                const timeoutResponse = await msg.reply({ embeds: [unTimeoutEmbed(targetUser.user)] });
                 if (modLogsChannel) {
                     await modLogsChannel.send({ embeds: [unTimeoutModLogEmbed(msg.author, targetUser.user)] });
                 }
@@ -230,7 +230,7 @@ export const timeout: CommandDefinition = {
             }
 
             if (targetUser.isCommunicationDisabled()) { // Timeout successful
-                const timeoutResponse = await msg.channel.send({ embeds: [timeoutEmbed(targetUser.user, reason, timeoutArg)] });
+                const timeoutResponse = await msg.reply({ embeds: [timeoutEmbed(targetUser.user, reason, timeoutArg)] });
                 try {
                     await targetUser.send({ embeds: [DMEmbed(msg.author, timeoutArg, reason, msg.guild, targetUser.communicationDisabledUntil)] });
                 } catch (e) {

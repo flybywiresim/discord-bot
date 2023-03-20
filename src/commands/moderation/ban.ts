@@ -173,7 +173,7 @@ export const ban: CommandDefinition = {
             if (modLogsChannel && typeof user !== 'string') {
                 await modLogsChannel.send({ embeds: [modLogEmbed(formattedDate, moderator, targetUser.user, reason, deleteDays)] });
             }
-            return msg.channel.send({ embeds: [successfulBanEmbed(targetUser.user, reason)] });
+            return msg.reply({ embeds: [successfulBanEmbed(targetUser.user, reason)] });
         } catch (error) {
             return msg.reply({ embeds: [failedBanEmbed(targetUser.user, error)] });
         }

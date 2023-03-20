@@ -45,7 +45,7 @@ export const help: CommandDefinition = {
                     // Slide into the DMs
                     author.createDM()
                         .then(async (dmChannel) => {
-                            const response = await selectorMsg.reply(`${msg.author}, I've DM'd you with the list of the commands you can use!`);
+                            const response = await msg.reply(`${msg.author}, I've DM'd you with the list of the commands you can use!`);
                             await selectorMsg.delete();
 
                             setTimeout(() => {
@@ -67,7 +67,7 @@ export const help: CommandDefinition = {
                         description: 'https://docs.flybywiresim.com/discord-bot/',
                     });
 
-                    await selectorMsg.reply({ embeds: [embed] });
+                    await msg.reply({ embeds: [embed] });
 
                     // Delete the selector
                     await selectorMsg.delete();

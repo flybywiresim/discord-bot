@@ -58,6 +58,6 @@ export const listWarnings: CommandDefinition = {
             footer: { text: `UserID: ${userID}` },
         });
 
-        await msg.channel.send({ embeds: [warnEmbed(targetUser.user)] });
+        await msg.reply({ embeds: [warnEmbed(targetUser.user)] });
     },
 };

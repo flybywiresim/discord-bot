@@ -246,7 +246,7 @@ export const sticky: CommandDefinition = {
 
         if (subCommand === 'image') {
             if (!stickyMessage) {
-                return msg.channel.send({ embeds: [notFoundEmbed('Configure image URL', channelId)] });
+                return msg.reply({ embeds: [notFoundEmbed('Configure image URL', channelId)] });
             }
 
             const regexCheck = /^(?<imageUrl>https?:\/\/[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*))\s*$/;
@@ -426,7 +426,7 @@ export const sticky: CommandDefinition = {
             }
 
             const [stickyMessage] = searchResult;
-            return msg.channel.send({
+            return msg.reply({
                 embeds: [infoEmbed(
                     stickyMessageEmbedField(
                         updatedTimestampText(stickyMessage.updatedTimestamp),
