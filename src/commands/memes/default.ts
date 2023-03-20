@@ -2,7 +2,7 @@ import { CommandDefinition } from '../../lib/command';
 import { CommandCategory, imageBaseUrl } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 
-const DEFAULT_URL = `${imageBaseUrl}/memes/default.png`;
+const DEFAULT_URL = `${imageBaseUrl}/memes/default.gif`;
 
 export const defaultmeme: CommandDefinition = {
     name: 'default',
