@@ -3,7 +3,7 @@
 ### Aircraft
 
 | Command                  | Description                                                                                       | Alias                                                  |
-|:-------------------------|:--------------------------------------------------------------------------------------------------|:-------------------------------------------------------|
+| :----------------------- | :------------------------------------------------------------------------------------------------ | :----------------------------------------------------- |
 | .adirs                   | Display help with ADIRS alignment                                                                 | ---                                                    |
 | .afloor                  | Provides a link to the Alpha Floor Tool-Tip                                                       | ---                                                    |
 | .airframe                | Provides a link to the updated Simbrief airframe                                                  | ---                                                    |
@@ -54,7 +54,7 @@
 ### Support
 
 | Command         | Description                                                                                                                                                                                                                                                                 | Alias                                              |
-|:----------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------|
+| :-------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------- |
 | .abbreviations  | Links to most commonly used abbreviations                                                                                                                                                                                                                                   | .abb <br> .abrv                                    |
 | .airac          | Provides information about free SimBrief account AIRAC limitations                                                                                                                                                                                                          | ---                                                |
 | .build          | Link to docs for build info                                                                                                                                                                                                                                                 | .build info <br> .buildinfo                        |
@@ -84,6 +84,7 @@
 | .simbridgelog   | Information on how to provide SimBridge Log                                                                                                                                                                                                                                 | .slog                                              |
 | .simulationrate | Explanation of the limitation of the Simulation Rate based on frame rate                                                                                                                                                                                                    | .simrate                                           |
 | .simversion     | Help to identify MSFS version for support                                                                                                                                                                                                                                   | .msfsversion                                       |
+| .supportguide   | Provides information on where to find solutions to issues and how to describe the problem to support                                                                                                                                                                        | .sp                                                |
 | .trythis        | Provide basic troubleshooting steps                                                                                                                                                                                                                                         | ---                                                |
 | .tug            | Provides a solution to an issue where the tug fails to disconnect                                                                                                                                                                                                           | .stuck                                             |
 | .utf8           | Provides a link to resolve UTF-8 issues                                                                                                                                                                                                                                     | ---                                                |
@@ -94,7 +95,7 @@
 ### General
 
 | Command           | Description                                                                                                                                                                            | Alias                                                       |
-|:------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------|
+| :---------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------- |
 | .botissue         | Provides details on where to create a FBW Discord Bot Issue or Feature Request                                                                                                         | .bot-issue <br> .botfeature <br> .bot-feature <br> .botfeat |
 | .dfd              | Provides link to Digital Flight Dynamics discord server                                                                                                                                | ---                                                         |
 | .docsearch        | Provides a link to the FlyByWire documentation, either a general link, or a link for a specific search <br> Search terms can be terminated by a line break or one of the symbols . - > | .documentation <br> .docs <br> .doc                         |
@@ -121,7 +122,7 @@
 ### Utilities
 
 | Command      | Description                                                                          | Alias                                                          |
-|:-------------|:-------------------------------------------------------------------------------------|:---------------------------------------------------------------|
+| :----------- | :----------------------------------------------------------------------------------- | :------------------------------------------------------------- |
 | .avatar      | Shows the selected user's avatar                                                     | .av                                                            |
 | .birthday    | Handles adding & removing user birthdays                                             | ---                                                            |
 | .count       | counts in the count thread                                                           | ---                                                            |
@@ -140,39 +141,39 @@
 
 ### Memes
 
-| Command         | Description                                                                            | Alias                                    |
-|:----------------|:---------------------------------------------------------------------------------------|:-----------------------------------------|
-| .addon          | addon not mod meme                                                                     | ---                                      |
-| .boratorium     | B O R A T                                                                              | ---                                      |
-| .boris          | boris soudn                                                                            | ---                                      |
-| .bruheg         | bruheg momen                                                                           | ---                                      |
-| .coffee         | Would you like some coffee?                                                            | ---                                      |
-| .cowsay         | Emulates the famous UNIX program `cowsay`                                              | ---                                      |
-| .crak           | What's your sim version?                                                               | ---                                      |
-| .default        | O_o                                                                                    | ---                                      |
-| .fms            | That's how the real FMS draws it                                                       | ---                                      |
-| .fridge         | fridge                                                                                 | ---                                      |
-| .guard          | MEOW                                                                                   | ---                                      |
-| .jaun           | just... Jaun                                                                           | ---                                      |
-| .merge          | GIT MERGE!                                                                             | ---                                      |
-| .mico           | mico!                                                                                  | ---                                      |
-| .nohello        | No!                                                                                    | .hello                                   |
-| .nut            | nut                                                                                    | ---                                      |
-| .oim            | oim                                                                                    | ---                                      |
-| .otter          | Well, it's an otter                                                                    | ---                                      |
-| .p3d            | No!                                                                                    | ---                                      |
-| .poggers        | POG                                                                                    | .pog                                     |
-| .pov            | Oof                                                                                    | ---                                      |
-| .ptu            | Bark                                                                                   | ---                                      |
-| .pw             | Whale noises                                                                           | ---                                      |
-| .shame          | Shame, shame, shame                                                                    | ---                                      |
-| .shomas         | oldest pilot                                                                           | ---                                      |
-| .xp             | XPlane                                                                                 | .xplane <br> .x-plane                    |
+| Command     | Description                               | Alias                 |
+| :---------- | :---------------------------------------- | :-------------------- |
+| .addon      | addon not mod meme                        | ---                   |
+| .boratorium | B O R A T                                 | ---                   |
+| .boris      | boris soudn                               | ---                   |
+| .bruheg     | bruheg momen                              | ---                   |
+| .coffee     | Would you like some coffee?               | ---                   |
+| .cowsay     | Emulates the famous UNIX program `cowsay` | ---                   |
+| .crak       | What's your sim version?                  | ---                   |
+| .default    | O_o                                       | ---                   |
+| .fms        | That's how the real FMS draws it          | ---                   |
+| .fridge     | fridge                                    | ---                   |
+| .guard      | MEOW                                      | ---                   |
+| .jaun       | just... Jaun                              | ---                   |
+| .merge      | GIT MERGE!                                | ---                   |
+| .mico       | mico!                                     | ---                   |
+| .nohello    | No!                                       | .hello                |
+| .nut        | nut                                       | ---                   |
+| .oim        | oim                                       | ---                   |
+| .otter      | Well, it's an otter                       | ---                   |
+| .p3d        | No!                                       | ---                   |
+| .poggers    | POG                                       | .pog                  |
+| .pov        | Oof                                       | ---                   |
+| .ptu        | Bark                                      | ---                   |
+| .pw         | Whale noises                              | ---                   |
+| .shame      | Shame, shame, shame                       | ---                   |
+| .shomas     | oldest pilot                              | ---                   |
+| .xp         | XPlane                                    | .xplane <br> .x-plane |
 
 ### Moderation
 
 | Command               | Description                                                                                             | Alias                                      |
-|:----------------------|:--------------------------------------------------------------------------------------------------------|:-------------------------------------------|
+| :-------------------- | :------------------------------------------------------------------------------------------------------ | :----------------------------------------- |
 | .ban                  | ---                                                                                                     | ---                                        |
 | .cacheupdate          | Update the cache of the bot with the information from discord for different aspects                     | .cache-update                              |
 | .deletewarn           | Deletes a users warning                                                                                 | .delwarn <br/> .deletewarning              |
