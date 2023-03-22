@@ -5,16 +5,15 @@ import { CommandCategory } from '../../constants';
 const supportGuideEmbed = makeEmbed({
     title: 'FlyByWire Support | Support Guide',
     description: makeLines([
-        'To be able to give support please for your problem, follow this guide:',
+        'To be able to give you the best support for your problem, please follow these steps:',
         '',
-        '- grab a screenshot while you experience the problem',
-        '- be sure you know how to fly the a32nx -> visit the [beginners guide](https://docs.flybywiresim.com/pilots-corner/beginner-guide/overview/)',
-        '- check if you can find it in our [reported issues list](https://docs.flybywiresim.com/fbw-a32nx/support/reported-issues/)',
-        '- make sure it is reproducible',
-        '- try to reproduce it with only the a32nx in the community folder and no external programs like gsx, SPAD.neXt, etc. running',
-        '- ask in #a32nx-support with the screenshot you made and provide as much detail as possible',
+        '- Take one or more screenshots while you experience the problem. You can use the `.ss` bot command to see an example of a good screenshot.',
+        '- Be sure you know how to fly the A32NX by reading our [beginners guide](https://docs.flybywiresim.com/pilots-corner/beginner-guide/overview/).',
+        '- Check our [reported issues list](https://docs.flybywiresim.com/fbw-a32nx/support/reported-issues/) to see if your issue has a known solution.',
+        '- Verify the issue is reproducible with only the A32NX in the community folder and no external programs affecting MSFS are running. For example: GSX, SPAD.neXt, ...',
+        '- Clearly document the steps to reproduce the issue and provide them together with the screenshots in the #a32nx-support channel.',
         '',
-        'View our documentation for the full [support guide](https://docs.flybywiresim.com/fbw-a32nx/support/) and more information on how to fly the FlyByWire a32nx',
+        'View our documentation for the full [support guide](https://docs.flybywiresim.com/fbw-a32nx/support/) and more information on how to fly the FlyByWire A32NX.',
     ]),
 });
 
