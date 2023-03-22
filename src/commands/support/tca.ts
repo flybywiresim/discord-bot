@@ -7,10 +7,8 @@ const TCA_URL = `${process.env.IMAGE_BASE_URL}support/tca-settings.png`;
 const tcaEmbed = makeEmbed({
     title: 'FlyByWire Support | TCA Throttle',
     description: makeLines([
-        'The Thrustmaster TCA Quadrant Airbus Edition is a popular hardware throttle for flying the FlyByWire A32NX. ',
-        'The Quadrant can be bought and used with or without the add-ons which include axis and buttons for flaps, spoilers, gear, and more.',
-        'The default controller settings in MSFS always includes the key bindings for the add-on axis and buttons aswell which can cause problems if the add-ons are not connected.',
-        'E.g., automatically deploying full flaps, especially after pausing the sim.',
+        'The Thrustmaster TCA Quadrant Airbus Edition is a popular hardware throttle for flying the FlyByWire A32NX. The Quadrant can be bought and used with or without the add-ons which include axis and buttons for flaps, spoilers, gear, and more.',
+        'The default controller settings in MSFS always includes the key bindings for the add-on axis and buttons aswell which can cause problems if the add-ons are not connected, e.g., automatically deploying full flaps, especially after pausing the sim.',
         '',
         'Make sure to remove any key bindings for hardware not connected.',
         '',
