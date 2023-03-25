@@ -84,6 +84,7 @@
 | .simbridgelog   | Information on how to provide SimBridge Log                                                                                                                                                                                                                                 | .slog                                              |
 | .simulationrate | Explanation of the limitation of the Simulation Rate based on frame rate                                                                                                                                                                                                    | .simrate                                           |
 | .simversion     | Help to identify MSFS version for support                                                                                                                                                                                                                                   | .msfsversion                                       |
+| .supportguide   | Provides information on where to find solutions to issues and how to describe the problem to support                                                                                                                                                                        | .sp                                                |
 | .trythis        | Provide basic troubleshooting steps                                                                                                                                                                                                                                         | ---                                                |
 | .tug            | Provides a solution to an issue where the tug fails to disconnect                                                                                                                                                                                                           | .stuck                                             |
 | .utf8           | Provides a link to resolve UTF-8 issues                                                                                                                                                                                                                                     | ---                                                |
@@ -140,34 +141,34 @@
 
 ### Memes
 
-| Command         | Description                                                                            | Alias                                    |
-|:----------------|:---------------------------------------------------------------------------------------|:-----------------------------------------|
-| .addon          | addon not mod meme                                                                     | ---                                      |
-| .boratorium     | B O R A T                                                                              | ---                                      |
-| .boris          | boris soudn                                                                            | ---                                      |
-| .bruheg         | bruheg momen                                                                           | ---                                      |
-| .coffee         | Would you like some coffee?                                                            | ---                                      |
-| .cowsay         | Emulates the famous UNIX program `cowsay`                                              | ---                                      |
-| .crak           | What's your sim version?                                                               | ---                                      |
-| .default        | O_o                                                                                    | ---                                      |
-| .fms            | That's how the real FMS draws it                                                       | ---                                      |
-| .fridge         | fridge                                                                                 | ---                                      |
-| .guard          | MEOW                                                                                   | ---                                      |
-| .jaun           | just... Jaun                                                                           | ---                                      |
-| .merge          | GIT MERGE!                                                                             | ---                                      |
-| .mico           | mico!                                                                                  | ---                                      |
-| .nohello        | No!                                                                                    | .hello                                   |
-| .nut            | nut                                                                                    | ---                                      |
-| .oim            | oim                                                                                    | ---                                      |
-| .otter          | Well, it's an otter                                                                    | ---                                      |
-| .p3d            | No!                                                                                    | ---                                      |
-| .poggers        | POG                                                                                    | .pog                                     |
-| .pov            | Oof                                                                                    | ---                                      |
-| .ptu            | Bark                                                                                   | ---                                      |
-| .pw             | Whale noises                                                                           | ---                                      |
-| .shame          | Shame, shame, shame                                                                    | ---                                      |
-| .shomas         | oldest pilot                                                                           | ---                                      |
-| .xp             | XPlane                                                                                 | .xplane <br> .x-plane                    |
+| Command     | Description                               | Alias                 |
+|:------------|:------------------------------------------|:----------------------|
+| .addon      | addon not mod meme                        | ---                   |
+| .boratorium | B O R A T                                 | ---                   |
+| .boris      | boris soudn                               | ---                   |
+| .bruheg     | bruheg momen                              | ---                   |
+| .coffee     | Would you like some coffee?               | ---                   |
+| .cowsay     | Emulates the famous UNIX program `cowsay` | ---                   |
+| .crak       | What's your sim version?                  | ---                   |
+| .default    | O_o                                       | ---                   |
+| .fms        | That's how the real FMS draws it          | ---                   |
+| .fridge     | fridge                                    | ---                   |
+| .guard      | MEOW                                      | ---                   |
+| .jaun       | just... Jaun                              | ---                   |
+| .merge      | GIT MERGE!                                | ---                   |
+| .mico       | mico!                                     | ---                   |
+| .nohello    | No!                                       | .hello                |
+| .nut        | nut                                       | ---                   |
+| .oim        | oim                                       | ---                   |
+| .otter      | Well, it's an otter                       | ---                   |
+| .p3d        | No!                                       | ---                   |
+| .poggers    | POG                                       | .pog                  |
+| .pov        | Oof                                       | ---                   |
+| .ptu        | Bark                                      | ---                   |
+| .pw         | Whale noises                              | ---                   |
+| .shame      | Shame, shame, shame                       | ---                   |
+| .shomas     | oldest pilot                              | ---                   |
+| .xp         | XPlane                                    | .xplane <br> .x-plane |
 
 ### Moderation
 

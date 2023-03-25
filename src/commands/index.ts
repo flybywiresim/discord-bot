@@ -163,6 +163,7 @@ import { slowMode } from './moderation/slowmode';
 import { econnreset } from './support/econnreset';
 import { pr } from './utils/pr';
 import { gsxIntegration } from './aircraft/gsxIntegration';
+import { supportGuide } from './support/supportGuide';
 
 const commands: BaseCommandDefinition[] = [
     typeCommand,
@@ -328,6 +329,7 @@ const commands: BaseCommandDefinition[] = [
     econnreset,
     pr,
     gsxIntegration,
+    supportGuide,
 ];
 
 const commandsObject: { [k: string]: BaseCommandDefinition } = {};
