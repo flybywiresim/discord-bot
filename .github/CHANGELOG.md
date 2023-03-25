@@ -2,6 +2,7 @@
 
 Update <small>_ March 2023</small>
 
+- fix: add link for support channel to sg (25/03/2023)
 - feat: Add support Guide command (25/03/2023)
 - feat: add reply functionality for complex commands (25/03/2023)
 - refactor: image optimisations and safer imageBaseUrl (25/03/2023)
