@@ -20,9 +20,9 @@ export const unban: CommandDefinition = {
         const idArg = splitUp[0];
         try {
             const user = await msg.guild.members.unban(idArg);
-            return msg.channel.send({ embeds: [makeSuccessfulUnbanEmbed(!(user instanceof GuildMember) ? user : idArg)] });
+            return msg.reply({ embeds: [makeSuccessfulUnbanEmbed(!(user instanceof GuildMember) ? user : idArg)] });
         } catch {
-            return msg.channel.send({ embeds: [makeFailedUnbanEmbed(idArg, 'The user is either not banned, or an unknown user.')] });
+            return msg.reply({ embeds: [makeFailedUnbanEmbed(idArg, 'The user is either not banned, or an unknown user.')] });
         }
     },
 };

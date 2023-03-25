@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
 import { Colors } from 'discord.js';
-import { CommandDefinition } from '../../lib/command';
+import { CommandDefinition, replyWithEmbed } from '../../lib/command';
 import { CommandCategory, Units } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
 import Logger from '../../lib/logger';
@@ -18,7 +18,7 @@ export const metar: CommandDefinition = {
                 description: 'You must provide an airport ICAO code.',
                 color: Colors.Red,
             });
-            await msg.channel.send({ embeds: [noQueryEmbed] });
+            await msg.reply({ embeds: [noQueryEmbed] });
             return Promise.resolve();
         }
         const icaoArg = splitUp[1];
@@ -35,7 +35,7 @@ export const metar: CommandDefinition = {
                     description: metarReport.error,
                     color: Colors.Red,
                 });
-                await msg.channel.send({ embeds: [invalidEmbed] });
+                await msg.reply({ embeds: [invalidEmbed] });
                 return Promise.resolve();
             }
 
@@ -65,7 +65,7 @@ export const metar: CommandDefinition = {
                 footer: { text: 'This METAR report may not accurately reflect the weather in the simulator. However, it will always be similar to the current conditions present in the sim.' },
             });
 
-            await msg.channel.send({ embeds: [metarEmbed] });
+            await replyWithEmbed(msg, metarEmbed);
         } catch (e) {
             Logger.error('metar:', e);
             const fetchErrorEmbed = makeEmbed({
@@ -73,7 +73,7 @@ export const metar: CommandDefinition = {
                 description: 'There was an error fetching the METAR report. Please try again later.',
                 color: Colors.Red,
             });
-            await msg.channel.send({ embeds: [fetchErrorEmbed] });
+            await msg.reply({ embeds: [fetchErrorEmbed] });
         }
         return Promise.resolve();
     },

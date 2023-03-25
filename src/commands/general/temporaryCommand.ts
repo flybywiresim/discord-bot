@@ -1,5 +1,5 @@
 import { Colors, EmbedField, TextChannel } from 'discord.js';
-import { CommandDefinition } from '../../lib/command';
+import { CommandDefinition, replyWithEmbed } from '../../lib/command';
 import { CommandCategory, Colors as FBWColors, Channels } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
 import { getConn } from '../../lib/db';
@@ -97,14 +97,14 @@ export const temporarycommand: CommandDefinition = {
         const modLogsChannel = msg.guild.channels.resolve(Channels.MOD_LOGS) as TextChannel | null;
         const conn = await getConn();
         if (!conn) {
-            await msg.channel.send({ embeds: [noConnEmbed] });
+            await msg.reply({ embeds: [noConnEmbed] });
             return;
         }
 
         const evokedCommand = msg.content.split(/\s+/)[0];
         const args = msg.content.split(/\s+/).slice(1);
         if ((args.length < 1 && parseInt(args[1]) !== 0) || args[0] === 'help') {
-            await msg.channel.send({ embeds: [helpEmbed(evokedCommand)] });
+            await msg.reply({ embeds: [helpEmbed(evokedCommand)] });
             return;
         }
 
@@ -118,13 +118,13 @@ export const temporarycommand: CommandDefinition = {
         const regexCheck = /^["]?\.?(?<command>[\w-]+)?["]?.*$/;
         const regexMatches = subArgs.match(regexCheck);
         if (subArgs.length > 0 && (!regexMatches || !regexMatches.groups || !regexMatches.groups.command)) {
-            await msg.channel.send({ embeds: [missingInfoEmbed(subCommand, `You need to provide the expected format to ${subCommand} a temporary command. Check \`${evokedCommand} help\` for more details.`)] });
+            await msg.reply({ embeds: [missingInfoEmbed(subCommand, `You need to provide the expected format to ${subCommand} a temporary command. Check \`${evokedCommand} help\` for more details.`)] });
             return;
         }
 
         if (subCommand === 'show') {
             if (!regexMatches || !regexMatches.groups || !regexMatches.groups.command) {
-                await msg.channel.send({ embeds: [missingInfoEmbed(subCommand, `You need to provide the expected format to ${subCommand} a temporary command. Check \`${evokedCommand} help\` for more details.`)] });
+                await msg.reply({ embeds: [missingInfoEmbed(subCommand, `You need to provide the expected format to ${subCommand} a temporary command. Check \`${evokedCommand} help\` for more details.`)] });
                 return;
             }
             const { command } = regexMatches.groups;
@@ -132,11 +132,11 @@ export const temporarycommand: CommandDefinition = {
             try {
                 temporaryCommands = await TemporaryCommand.find({ command });
                 if (!temporaryCommands || temporaryCommands.length !== 1) {
-                    await msg.channel.send({ embeds: [notFoundEmbed('Show', command)] });
+                    await msg.reply({ embeds: [notFoundEmbed('Show', command)] });
                     return;
                 }
             } catch {
-                await msg.channel.send({ embeds: [notFoundEmbed('Show', command)] });
+                await msg.reply({ embeds: [notFoundEmbed('Show', command)] });
                 return;
             }
 
@@ -160,7 +160,7 @@ export const temporarycommand: CommandDefinition = {
                 image: imageUrl ? { url: imageUrl } : null,
             });
 
-            await msg.channel.send({ embeds: [runTemporaryCommand] });
+            await replyWithEmbed(msg, runTemporaryCommand);
 
             temporaryCommand.lastUsed = new Date();
             try {
@@ -182,14 +182,14 @@ export const temporarycommand: CommandDefinition = {
             }).slice(0, 10).flat();
 
             if (temporaryCommands.length > 0) {
-                await msg.channel.send({ embeds: [listEmbed(fields, temporaryCommands.length)] });
+                await msg.reply({ embeds: [listEmbed(fields, temporaryCommands.length)] });
                 return;
             }
             if (searchRegex) {
-                await msg.channel.send({ embeds: [notFoundEmbed('List', regexMatches.groups.command)] });
+                await msg.reply({ embeds: [notFoundEmbed('List', regexMatches.groups.command)] });
                 return;
             }
-            await msg.channel.send({ embeds: [notFoundEmbed('List', '')] });
+            await msg.reply({ embeds: [notFoundEmbed('List', '')] });
         }
     },
 };

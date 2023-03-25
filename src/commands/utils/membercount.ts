@@ -1,4 +1,4 @@
-import { CommandDefinition } from '../../lib/command';
+import { CommandDefinition, replyWithEmbed } from '../../lib/command';
 import { makeEmbed } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
 
@@ -13,6 +13,6 @@ export const membercount: CommandDefinition = {
             description: `${memberCount}`,
         });
 
-        return msg.channel.send({ embeds: [membercountEmbed] });
+        return replyWithEmbed(msg, membercountEmbed);
     },
 };

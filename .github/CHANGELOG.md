@@ -2,6 +2,7 @@
 
 Update <small>_ March 2023</small>
 
+- feat: add reply functionality for complex commands (25/03/2023)
 - refactor: image optimisations and safer imageBaseUrl (25/03/2023)
 - fix: adds date to warn doc for timeout (25/03/2023)
 - feat: Show specific section link for reported issues command (12/03/2023)

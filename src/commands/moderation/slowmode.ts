@@ -107,7 +107,7 @@ export const slowMode: CommandDefinition = {
         const subCommands = ['set', 'disable'];
         const scheduler = getScheduler();
         if (!scheduler) {
-            await msg.channel.send({ embeds: [noSchedulerEmbed] });
+            await msg.reply({ embeds: [noSchedulerEmbed] });
         }
 
         const modLogsChannel = client.channels.resolve(Channels.MOD_LOGS) as TextChannel | null;
@@ -115,7 +115,7 @@ export const slowMode: CommandDefinition = {
         const [evokedCommand] = msg.content.trim().split(/\s+/);
         const args = msg.content.replace(evokedCommand, '').trim();
         if (!args || args === 'help') {
-            return msg.channel.send({ embeds: [helpEmbed(evokedCommand)] });
+            return msg.reply({ embeds: [helpEmbed(evokedCommand)] });
         }
 
         let [subCommand] = args.split(/\s+/);
@@ -134,19 +134,19 @@ export const slowMode: CommandDefinition = {
         }
         const slowmodeChannel = msg.guild.channels.resolve(channelId);
         if (!slowmodeChannel || [ChannelType.GuildText, ChannelType.GuildForum, ChannelType.PublicThread, ChannelType.PrivateThread].indexOf(slowmodeChannel.type) === -1) {
-            return msg.channel.send({ embeds: [missingChannelEmbed(channelId)] });
+            return msg.reply({ embeds: [missingChannelEmbed(channelId)] });
         }
 
         if (subCommand === 'set') {
             const regexCheck = /^(?<rateLimit>[\d]+)(?:\s+(?<timeout>[\d]+[s|m|h|d]))?\s*$/s;
             const regexMatches = subArgs.toLowerCase().match(regexCheck);
             if (regexMatches === null || !regexMatches.groups.rateLimit) {
-                return msg.channel.send({ embeds: [missingInfoEmbed('Set', `You need to provide the expected format to set the slow mode for a channel. Check \`${evokedCommand} help\` for more details.`)] });
+                return msg.reply({ embeds: [missingInfoEmbed('Set', `You need to provide the expected format to set the slow mode for a channel. Check \`${evokedCommand} help\` for more details.`)] });
             }
 
             const { rateLimit, timeout } = regexMatches.groups;
             if (parseInt(rateLimit) > 21600) {
-                return msg.channel.send({ embeds: [missingInfoEmbed('Set', `The slow mode setting can not be over 21600 seconds (6h). Check \`${evokedCommand} help\` for more details.`)] });
+                return msg.reply({ embeds: [missingInfoEmbed('Set', `The slow mode setting can not be over 21600 seconds (6h). Check \`${evokedCommand} help\` for more details.`)] });
             }
 
             try {
@@ -181,7 +181,7 @@ export const slowMode: CommandDefinition = {
                     }
                 }
             } catch {
-                return msg.channel.send({ embeds: [failedEmbed('Set', channelId)] });
+                return msg.reply({ embeds: [failedEmbed('Set', channelId)] });
             }
 
             try {
@@ -196,7 +196,7 @@ export const slowMode: CommandDefinition = {
                         Colors.Green)],
                 });
             } catch {
-                msg.channel.send({ embeds: [noChannelEmbed('Set', 'Mod Log')] });
+                msg.reply({ embeds: [noChannelEmbed('Set', 'Mod Log')] });
             }
 
             return msg.react('✅');
@@ -211,7 +211,7 @@ export const slowMode: CommandDefinition = {
                     }
                 }
             } catch {
-                return msg.channel.send({ embeds: [failedEmbed('Disable', channelId)] });
+                return msg.reply({ embeds: [failedEmbed('Disable', channelId)] });
             }
 
             try {
@@ -226,12 +226,12 @@ export const slowMode: CommandDefinition = {
                         Colors.Green)],
                 });
             } catch {
-                msg.channel.send({ embeds: [noChannelEmbed('Disable', 'Mod Log')] });
+                msg.reply({ embeds: [noChannelEmbed('Disable', 'Mod Log')] });
             }
 
             return msg.react('✅');
         }
 
-        return msg.channel.send({ embeds: [helpEmbed(evokedCommand)] });
+        return msg.reply({ embeds: [helpEmbed(evokedCommand)] });
     },
 };

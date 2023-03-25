@@ -70,6 +70,6 @@ export const whois: CommandDefinition = {
             ],
         });
 
-        return msg.channel.send({ embeds: [whoisEmbed] });
+        return msg.reply({ embeds: [whoisEmbed] });
     },
 };
