@@ -23,40 +23,24 @@ const gifs: string[] = [
 ];
 
 async function processBirthdays(client: Client) {
-    // Get current date
-    const currentDate = new Date();
-
-    // Get new birthdays
-    const birthdays = await Birthday.find({ utcDatetime: { $lt: currentDate } });
-
-    // Bail if no birthdays
-    if (!birthdays.length) {
-        return;
-    }
-
     // Get parent channel
     const guild = client.guilds.resolve(GuildID) as Guild | null;
-
     if (!guild) {
-        Logger.error('Guild not found');
+        Logger.error('Birthday handler - Guild not found');
         return;
     }
 
     const channel = guild.channels.resolve(Channels.BIRTHDAY_CHANNEL) as TextChannel | null;
-
-    // Bail if no channel
     if (!channel) {
-        Logger.error('Birthday channel not found');
+        Logger.error('Birthday handler - Channel not found');
         return;
     }
 
     // Get all threads (archived included)
     await channel.threads.fetch({ archived: {} });
-
     const thread = channel.threads.cache.find((t) => t.id === Threads.BIRTHDAY_THREAD);
-
     if (!thread) {
-        Logger.error('Birthday thread not found');
+        Logger.error('Birthday handler - Thread not found');
         return;
     }
 
@@ -65,22 +49,29 @@ async function processBirthdays(client: Client) {
         await thread.setArchived(false);
     }
 
+    // Get DB Connection
     const conn = await getConn();
-
     if (!conn) {
-        const noConnEmbed = makeEmbed({
-            title: 'Error',
-            description: 'Could not connect to database',
-            color: Colors.Red,
-        });
-        await thread.send({ embeds: [noConnEmbed] });
+        Logger.error('Birthday handler - Can not connect to the database, skipping processing');
         return;
     }
+
+    // Get current date
+    const currentDate = new Date();
+
+    // Get new birthdays
+    const birthdays = await Birthday.find({ utcDatetime: { $lt: currentDate } });
+
+    // Bail if no birthdays
+    if (!birthdays.length) {
+        Logger.info('Birthday handler - No birthdays to handle');
+        return;
+    }
+    Logger.info(`Birthday handler - Handling ${birthdays.length} birthdays`);
 
     // Send birthday messages
     for (const birthday of birthdays) {
         const user = guild.members.resolve(birthday.userID);
-
         // If the user is not found, we can't mention them
         if (!user) {
             continue;
@@ -94,14 +85,15 @@ async function processBirthdays(client: Client) {
             image: { url: gifs[Math.floor(Math.random() * gifs.length)] },
         });
 
-        // Potential future consideration: handle birthdays that we missed? (bot outages, etc)
-
         // Update birthday to next year
         const nextBirthdayDatetime = new Date(Date.UTC(currentDate.getUTCFullYear() + 1, birthday.month - 1, birthday.day));
         nextBirthdayDatetime.setUTCHours(10 - birthday.timezone);
-
         birthday.utcDatetime = nextBirthdayDatetime;
-        birthday.save();
+        try {
+            birthday.save();
+        } catch (e) {
+            Logger.error(`Birthday handler - Failed to save the new birthday trigger: ${e}`);
+        }
 
         // Send the birthday message
         thread.send({ content: user.toString(), embeds: [birthdayEmbed] });
@@ -111,7 +103,7 @@ async function processBirthdays(client: Client) {
 module.exports = {
     event: 'ready',
     executor: async (client) => {
-        birthdayInterval = setInterval(processBirthdays, 1000 * 60 * 60, client);
+        birthdayInterval = setInterval(processBirthdays, 1000 * 60 * 30, client);
 
         // Remove the interval if the bot disconnects
         client.on('disconnect', () => {
