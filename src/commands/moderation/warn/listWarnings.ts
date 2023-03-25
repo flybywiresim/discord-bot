@@ -21,7 +21,7 @@ export const listWarnings: CommandDefinition = {
         const conn = await getConn();
 
         if (!conn) {
-            await msg.channel.send({ embeds: [noConnEmbed] });
+            await msg.reply({ embeds: [noConnEmbed] });
             return;
         }
 
@@ -58,6 +58,6 @@ export const listWarnings: CommandDefinition = {
             footer: { text: `UserID: ${userID}` },
         });
 
-        await msg.channel.send({ embeds: [warnEmbed(targetUser.user)] });
+        await msg.reply({ embeds: [warnEmbed(targetUser.user)] });
     },
 };

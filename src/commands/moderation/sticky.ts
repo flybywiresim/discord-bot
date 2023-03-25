@@ -153,7 +153,7 @@ export const sticky: CommandDefinition = {
         const subCommands = ['set', 'image', 'count', 'time', 'unset', 'info'];
         const conn = getConn();
         if (!conn) {
-            return msg.channel.send({ embeds: [noConnEmbed] });
+            return msg.reply({ embeds: [noConnEmbed] });
         }
 
         const modLogsChannel = msg.guild.channels.resolve(Channels.MOD_LOGS) as TextChannel | null;
@@ -161,7 +161,7 @@ export const sticky: CommandDefinition = {
         const [evokedCommand] = msg.content.trim().split(/\s+/);
         const args = msg.content.replace(evokedCommand, '').trim();
         if (!args || args === 'help') {
-            return msg.channel.send({ embeds: [helpEmbed(evokedCommand)] });
+            return msg.reply({ embeds: [helpEmbed(evokedCommand)] });
         }
 
         let [subCommand] = args.split(/\s+/);
@@ -180,7 +180,7 @@ export const sticky: CommandDefinition = {
         }
         const stickiedChannel = msg.guild.channels.resolve(channelId) as BaseChannel | null;
         if (!stickiedChannel || ['TextChannel', 'ForumChannel', 'ThreadChannel'].indexOf(stickiedChannel.constructor.name) === -1) {
-            return msg.channel.send({ embeds: [missingChannelEmbed(channelId)] });
+            return msg.reply({ embeds: [missingChannelEmbed(channelId)] });
         }
 
         const stickyMessageSearchResult = await StickyMessage.find({ channelId });
@@ -190,7 +190,7 @@ export const sticky: CommandDefinition = {
             const regexCheck = /^(?<message>[\S].+[\S])\s*$/s;
             const regexMatches = subArgs.match(regexCheck);
             if (regexMatches === null || !regexMatches.groups.message) {
-                return msg.channel.send({ embeds: [missingInfoEmbed('Set', `You need to provide the expected format to create a sticky message. Check \`${evokedCommand} help\` for more details.`)] });
+                return msg.reply({ embeds: [missingInfoEmbed('Set', `You need to provide the expected format to create a sticky message. Check \`${evokedCommand} help\` for more details.`)] });
             }
 
             const { message } = regexMatches.groups;
@@ -220,7 +220,7 @@ export const sticky: CommandDefinition = {
             try {
                 stickyMessage.save();
             } catch {
-                return msg.channel.send({ embeds: [failedEmbed('Set', channelId)] });
+                return msg.reply({ embeds: [failedEmbed('Set', channelId)] });
             }
 
             try {
@@ -238,7 +238,7 @@ export const sticky: CommandDefinition = {
                         Colors.Green)],
                 });
             } catch {
-                msg.channel.send({ embeds: [noChannelEmbed('Set', 'Mod Log')] });
+                msg.reply({ embeds: [noChannelEmbed('Set', 'Mod Log')] });
             }
 
             return msg.react('✅');
@@ -246,13 +246,13 @@ export const sticky: CommandDefinition = {
 
         if (subCommand === 'image') {
             if (!stickyMessage) {
-                return msg.channel.send({ embeds: [notFoundEmbed('Configure image URL', channelId)] });
+                return msg.reply({ embeds: [notFoundEmbed('Configure image URL', channelId)] });
             }
 
             const regexCheck = /^(?<imageUrl>https?:\/\/[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*))\s*$/;
             const regexMatches = subArgs.match(regexCheck);
             if (regexMatches === null || !regexMatches.groups.imageUrl) {
-                return msg.channel.send({ embeds: [missingInfoEmbed('Configure image URL', `You need to provide a URL for the image to include in the sticky. Check \`${evokedCommand} help\` for more details.`)] });
+                return msg.reply({ embeds: [missingInfoEmbed('Configure image URL', `You need to provide a URL for the image to include in the sticky. Check \`${evokedCommand} help\` for more details.`)] });
             }
 
             const { imageUrl } = regexMatches.groups;
@@ -263,7 +263,7 @@ export const sticky: CommandDefinition = {
             try {
                 stickyMessage.save();
             } catch {
-                return msg.channel.send({ embeds: [failedEmbed('Configure image URL', channelId)] });
+                return msg.reply({ embeds: [failedEmbed('Configure image URL', channelId)] });
             }
 
             try {
@@ -281,7 +281,7 @@ export const sticky: CommandDefinition = {
                         Colors.Green)],
                 });
             } catch {
-                msg.channel.send({ embeds: [noChannelEmbed('Configure image URL', 'Mod Log')] });
+                msg.reply({ embeds: [noChannelEmbed('Configure image URL', 'Mod Log')] });
             }
 
             return msg.react('✅');
@@ -289,7 +289,7 @@ export const sticky: CommandDefinition = {
 
         if (subCommand === 'count') {
             if (!stickyMessage) {
-                return msg.channel.send({ embeds: [notFoundEmbed('Configure minimum message count', channelId)] });
+                return msg.reply({ embeds: [notFoundEmbed('Configure minimum message count', channelId)] });
             }
 
             const regexCheck = /^(?<messageCount>[\d]+)\s*$/;
@@ -300,7 +300,7 @@ export const sticky: CommandDefinition = {
 
             const { messageCount } = regexMatches.groups;
             if (parseInt(messageCount) < MIN_MESSAGE_COUNT || parseInt(messageCount) > MAX_MESSAGE_COUNT) {
-                return msg.channel.send({ embeds: [missingInfoEmbed('Configure minimum message count', `You need to provide a number between ${MIN_MESSAGE_COUNT} and ${MAX_MESSAGE_COUNT} to set the minimum message count for a sticky message. Check \`${evokedCommand} help\` for more details.`)] });
+                return msg.reply({ embeds: [missingInfoEmbed('Configure minimum message count', `You need to provide a number between ${MIN_MESSAGE_COUNT} and ${MAX_MESSAGE_COUNT} to set the minimum message count for a sticky message. Check \`${evokedCommand} help\` for more details.`)] });
             }
             stickyMessage.messageCount = parseInt(messageCount);
             stickyMessage.moderator = author.toString();
@@ -309,7 +309,7 @@ export const sticky: CommandDefinition = {
             try {
                 stickyMessage.save();
             } catch {
-                return msg.channel.send({ embeds: [failedEmbed('Configure minimum message count', channelId)] });
+                return msg.reply({ embeds: [failedEmbed('Configure minimum message count', channelId)] });
             }
 
             try {
@@ -327,7 +327,7 @@ export const sticky: CommandDefinition = {
                         Colors.Green)],
                 });
             } catch {
-                msg.channel.send({ embeds: [noChannelEmbed('Configure minimum message count', 'Mod Log')] });
+                msg.reply({ embeds: [noChannelEmbed('Configure minimum message count', 'Mod Log')] });
             }
 
             return msg.react('✅');
@@ -335,18 +335,18 @@ export const sticky: CommandDefinition = {
 
         if (subCommand === 'time') {
             if (!stickyMessage) {
-                return msg.channel.send({ embeds: [notFoundEmbed('Configure minimum time interval', channelId)] });
+                return msg.reply({ embeds: [notFoundEmbed('Configure minimum time interval', channelId)] });
             }
 
             const regexCheck = /^(?<timeInterval>[\d]+)\s*$/;
             const regexMatches = subArgs.match(regexCheck);
             if (regexMatches === null || !regexMatches.groups.timeInterval) {
-                return msg.channel.send({ embeds: [missingInfoEmbed('Configure minimum time interval', `You need to provide a number to set the minimum time interval for a sticky message. Check \`${evokedCommand} help\` for more details.`)] });
+                return msg.reply({ embeds: [missingInfoEmbed('Configure minimum time interval', `You need to provide a number to set the minimum time interval for a sticky message. Check \`${evokedCommand} help\` for more details.`)] });
             }
 
             const { timeInterval } = regexMatches.groups;
             if (parseInt(timeInterval) < MIN_TIME_INTERVAL || parseInt(timeInterval) > MAX_TIME_INTERVAL) {
-                return msg.channel.send({ embeds: [missingInfoEmbed('Configure minimum time interval', `You need to provide a number between ${MIN_TIME_INTERVAL} and ${MAX_TIME_INTERVAL} to set the minimum time interval for a sticky message. Check \`${evokedCommand} help\` for more details.`)] });
+                return msg.reply({ embeds: [missingInfoEmbed('Configure minimum time interval', `You need to provide a number between ${MIN_TIME_INTERVAL} and ${MAX_TIME_INTERVAL} to set the minimum time interval for a sticky message. Check \`${evokedCommand} help\` for more details.`)] });
             }
             stickyMessage.timeInterval = parseInt(timeInterval);
             stickyMessage.moderator = author.toString();
@@ -355,7 +355,7 @@ export const sticky: CommandDefinition = {
             try {
                 stickyMessage.save();
             } catch {
-                return msg.channel.send({ embeds: [failedEmbed('Configure minimum message count', channelId)] });
+                return msg.reply({ embeds: [failedEmbed('Configure minimum message count', channelId)] });
             }
 
             try {
@@ -373,7 +373,7 @@ export const sticky: CommandDefinition = {
                         Colors.Green)],
                 });
             } catch {
-                msg.channel.send({ embeds: [noChannelEmbed('Configure minimum message count', 'Mod Log')] });
+                msg.reply({ embeds: [noChannelEmbed('Configure minimum message count', 'Mod Log')] });
             }
 
             return msg.react('✅');
@@ -381,7 +381,7 @@ export const sticky: CommandDefinition = {
 
         if (subCommand === 'unset') {
             if (!stickyMessage) {
-                return msg.channel.send({ embeds: [notFoundEmbed('Delete', channelId)] });
+                return msg.reply({ embeds: [notFoundEmbed('Delete', channelId)] });
             }
 
             try {
@@ -395,7 +395,7 @@ export const sticky: CommandDefinition = {
                 }
                 stickyMessage.delete();
             } catch {
-                return msg.channel.send({ embeds: [failedEmbed('Delete', channelId)] });
+                return msg.reply({ embeds: [failedEmbed('Delete', channelId)] });
             }
 
             try {
@@ -413,7 +413,7 @@ export const sticky: CommandDefinition = {
                         Colors.Red)],
                 });
             } catch {
-                msg.channel.send({ embeds: [noChannelEmbed('Delete', 'Mod Log')] });
+                msg.reply({ embeds: [noChannelEmbed('Delete', 'Mod Log')] });
             }
 
             return msg.react('✅');
@@ -422,11 +422,11 @@ export const sticky: CommandDefinition = {
         if (subCommand === 'info') {
             const searchResult = await StickyMessage.find({ channelId });
             if (searchResult.length === 0) {
-                return msg.channel.send({ embeds: [notFoundEmbed('Info', channelId)] });
+                return msg.reply({ embeds: [notFoundEmbed('Info', channelId)] });
             }
 
             const [stickyMessage] = searchResult;
-            return msg.channel.send({
+            return msg.reply({
                 embeds: [infoEmbed(
                     stickyMessageEmbedField(
                         updatedTimestampText(stickyMessage.updatedTimestamp),
@@ -441,6 +441,6 @@ export const sticky: CommandDefinition = {
             });
         }
 
-        return msg.channel.send({ embeds: [helpEmbed(evokedCommand)] });
+        return msg.reply({ embeds: [helpEmbed(evokedCommand)] });
     },
 };

@@ -1,8 +1,8 @@
 import { MessageCommandDefinition } from '../../lib/command';
-import { CommandCategory } from '../../constants';
+import { CommandCategory, imageBaseUrl } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 
-const LATLONG_IMAGE_URL = `${process.env.IMAGE_BASE_URL}general/latlongfix.png`;
+const LATLONG_IMAGE_URL = `${imageBaseUrl}/general/latlongfix.png`;
 
 const latlongfixEmbed = makeEmbed({
     title: 'FlyByWire | Latitude & Longitude Fix Conversion Chart',

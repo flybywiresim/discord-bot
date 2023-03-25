@@ -79,12 +79,12 @@ export const cacheUpdate: CommandDefinition = {
         const [evokedCommand] = msg.content.trim().split(/\s+/);
         const args = msg.content.replace(evokedCommand, '').trim();
         if (!args || args === 'help') {
-            return msg.channel.send({ embeds: [helpEmbed(evokedCommand)] });
+            return msg.reply({ embeds: [helpEmbed(evokedCommand)] });
         }
 
         const [subCommand] = args.split(/\s+/);
         if (!subCommands.includes(subCommand)) {
-            return msg.channel.send({ embeds: [helpEmbed(evokedCommand)] });
+            return msg.reply({ embeds: [helpEmbed(evokedCommand)] });
         }
 
         const { bans, channels, members, roles } = msg.guild;
@@ -125,12 +125,12 @@ export const cacheUpdate: CommandDefinition = {
                         Colors.Green)],
                 });
             } catch {
-                msg.channel.send({ embeds: [noChannelEmbed(subCommand, 'Mod Log')] });
+                msg.reply({ embeds: [noChannelEmbed(subCommand, 'Mod Log')] });
             }
 
             return msg.react('✅');
         }
 
-        return msg.channel.send({ embeds: [helpEmbed(evokedCommand)] });
+        return msg.reply({ embeds: [helpEmbed(evokedCommand)] });
     },
 };

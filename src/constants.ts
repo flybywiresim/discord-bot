@@ -1,3 +1,5 @@
+import dotenv from 'dotenv';
+
 export const GuildID = '738864299392630914';
 
 export enum Colors {
@@ -87,3 +89,10 @@ export const AircraftTypeList = {
 };
 
 export const PermissionsEmbedDelay = 10000;
+
+// imageBaseUrl - Below takes the IMAGE_BASE_URL entry from the `env` and strips the trailing `/` if present
+
+dotenv.config();
+const originalBaseUrl = `${process.env.IMAGE_BASE_URL}`;
+const imageBaseUrl = originalBaseUrl.endsWith('/') ? originalBaseUrl.slice(0, -1) : originalBaseUrl;
+export { imageBaseUrl };

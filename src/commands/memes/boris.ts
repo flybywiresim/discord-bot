@@ -1,8 +1,8 @@
 import { CommandDefinition } from '../../lib/command';
 import { makeEmbed } from '../../lib/embed';
-import { CommandCategory } from '../../constants';
+import { CommandCategory, imageBaseUrl } from '../../constants';
 
-const BORIS_URL = `${process.env.IMAGE_BASE_URL}memes/boris.gif`;
+const BORIS_URL = `${imageBaseUrl}/memes/boris.gif`;
 
 export const boris: CommandDefinition = {
     name: 'boris',

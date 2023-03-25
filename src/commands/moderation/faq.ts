@@ -1,8 +1,8 @@
 import { CommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
-import { Channels, CommandCategory, Roles, RoleGroups } from '../../constants';
+import { Channels, CommandCategory, Roles, RoleGroups, imageBaseUrl } from '../../constants';
 
-const FLIGHT_DECK_IMAGE_URL = `${process.env.IMAGE_BASE_URL}moderation/faq.png`;
+const FLIGHT_DECK_IMAGE_URL = `${imageBaseUrl}/moderation/faq.png`;
 
 const faqEmbeds = [
     makeEmbed({

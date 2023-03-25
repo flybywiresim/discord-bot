@@ -145,8 +145,14 @@ export async function replyWithEmbed(msg: Message, embed: EmbedBuilder) : Promis
                 existingFooterText = `${existingFooter.text}\n\n`;
             }
             embed = EmbedBuilder.from(embed.data);
-            embed.setFooter({ text: `${existingFooterText} Executed by ${msg.author.tag} - ${msg.author.id}` });
+            embed.setFooter({ text: `${existingFooterText}Executed by ${msg.author.tag} - ${msg.author.id}` });
             return res.reply({ embeds: [embed] });
         })
         .catch(() => msg.reply({ embeds: [embed] }));
+}
+
+export async function replyWithMsg(msg: Message, text: string) : Promise<Message<boolean>> {
+    return msg.fetchReference()
+        .then((res) => res.reply(`${text}\n\n\`Executed by ${msg.author.tag} - ${msg.author.id}\``))
+        .catch(() => msg.reply(text));
 }
