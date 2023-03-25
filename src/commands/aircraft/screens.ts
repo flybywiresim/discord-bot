@@ -1,8 +1,8 @@
 import { MessageCommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
-import { CommandCategory } from '../../constants';
+import { CommandCategory, imageBaseUrl } from '../../constants';
 
-const SCREENS_HELP_URL = `${process.env.IMAGE_BASE_URL}a32nx/screens.png`;
+const SCREENS_HELP_URL = `${imageBaseUrl}/a32nx/screens.png`;
 
 const screensEmbed = makeEmbed({
     title: 'FlyByWire A32NX | Screens Fix',

@@ -1,8 +1,8 @@
 import { CommandDefinition } from '../../lib/command';
 import { makeEmbed } from '../../lib/embed';
-import { CommandCategory } from '../../constants';
+import { CommandCategory, imageBaseUrl } from '../../constants';
 
-const CRAK_URL = `${process.env.IMAGE_BASE_URL}memes/crak.png`;
+const CRAK_URL = `${imageBaseUrl}/memes/crak.png`;
 
 export const crak: CommandDefinition = {
     name: 'crak',

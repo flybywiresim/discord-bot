@@ -1,8 +1,8 @@
 import { MessageCommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
-import { CommandCategory } from '../../constants';
+import { CommandCategory, imageBaseUrl } from '../../constants';
 
-const MARKETPLACE_HELP_URL = `${process.env.IMAGE_BASE_URL}support/market.png`;
+const MARKETPLACE_HELP_URL = `${imageBaseUrl}/support/market.png`;
 
 const contentEmbed = makeEmbed({
     title: 'FlyByWire Support | Removing Marketplace Version',

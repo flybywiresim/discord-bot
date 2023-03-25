@@ -1,8 +1,8 @@
 import { MessageCommandDefinition } from '../../lib/command';
 import { makeEmbed } from '../../lib/embed';
-import { CommandCategory } from '../../constants';
+import { CommandCategory, imageBaseUrl } from '../../constants';
 
-const EFB_URL = `${process.env.IMAGE_BASE_URL}a32nx/efb_downscaled.gif`;
+const EFB_URL = `${imageBaseUrl}/a32nx/efb_downscaled.gif`;
 
 const efbEmbed = makeEmbed({ image: { url: EFB_URL } });
 

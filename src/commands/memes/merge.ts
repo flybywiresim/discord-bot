@@ -1,7 +1,7 @@
 import { CommandDefinition } from '../../lib/command';
-import { CommandCategory } from '../../constants';
+import { CommandCategory, imageBaseUrl } from '../../constants';
 
-const MERGE_URL = `${process.env.IMAGE_BASE_URL}memes/merge.gif`;
+const MERGE_URL = `${imageBaseUrl}/memes/merge.gif`;
 
 export const merge: CommandDefinition = {
     name: 'merge',

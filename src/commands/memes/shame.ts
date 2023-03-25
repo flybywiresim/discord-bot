@@ -1,7 +1,7 @@
 import { CommandDefinition } from '../../lib/command';
-import { CommandCategory } from '../../constants';
+import { CommandCategory, imageBaseUrl } from '../../constants';
 
-const SHAME_URL = `${process.env.IMAGE_BASE_URL}memes/shame.gif`;
+const SHAME_URL = `${imageBaseUrl}/memes/shame.gif`;
 
 export const shame: CommandDefinition = {
     name: 'shame',

@@ -1,12 +1,12 @@
 import { CommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
-import { Channels, CommandCategory, RoleGroups } from '../../constants';
+import { Channels, CommandCategory, imageBaseUrl, RoleGroups } from '../../constants';
 
-const HEADER_IMAGE_URL = `${process.env.IMAGE_BASE_URL}moderation/welcome_discord_banner.png`;
-const SOCIAL_IMAGE_URL = `${process.env.IMAGE_BASE_URL}moderation/welcome_social_media.png`;
-const SUPPORT_IMAGE_URL = `${process.env.IMAGE_BASE_URL}moderation/welcome_support.png`;
-const HELP_IMAGE_URL = `${process.env.IMAGE_BASE_URL}moderation/welcome_help_and_support.png`;
-const IMPORTANT_INFO_IMAGE_URL = `${process.env.IMAGE_BASE_URL}moderation/welcome_impt_info.png`;
+const HEADER_IMAGE_URL = `${imageBaseUrl}/moderation/welcome_discord_banner.png`;
+const SOCIAL_IMAGE_URL = `${imageBaseUrl}/moderation/welcome_social_media.png`;
+const SUPPORT_IMAGE_URL = `${imageBaseUrl}/moderation/welcome_support.png`;
+const HELP_IMAGE_URL = `${imageBaseUrl}/moderation/welcome_help_and_support.png`;
+const IMPORTANT_INFO_IMAGE_URL = `${imageBaseUrl}/moderation/welcome_impt_info.png`;
 
 const SOCIAL_EMBED = makeEmbed({
     title: '<:Partnered:921520970123059231> FlyByWireSimulations | Socials',

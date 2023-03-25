@@ -1,8 +1,8 @@
 import { MessageCommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
-import { CommandCategory } from '../../constants';
+import { CommandCategory, imageBaseUrl } from '../../constants';
 
-const COMFOLDER_HELP_URL = `${process.env.IMAGE_BASE_URL}support/community.png`;
+const COMFOLDER_HELP_URL = `${imageBaseUrl}/support/community.png`;
 
 const communityEmbed = makeEmbed({
     title: 'FlyByWire Support | Identifying your Community folder',

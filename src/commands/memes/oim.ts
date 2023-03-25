@@ -1,7 +1,7 @@
 import { CommandDefinition } from '../../lib/command';
-import { CommandCategory } from '../../constants';
+import { CommandCategory, imageBaseUrl } from '../../constants';
 
-const OIM_URL = `${process.env.IMAGE_BASE_URL}memes/oim.gif`;
+const OIM_URL = `${imageBaseUrl}/memes/oim.gif`;
 
 export const oim: CommandDefinition = {
     name: 'oim',

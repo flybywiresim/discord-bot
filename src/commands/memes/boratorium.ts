@@ -1,8 +1,8 @@
 import { CommandDefinition } from '../../lib/command';
 import { makeEmbed } from '../../lib/embed';
-import { CommandCategory } from '../../constants';
+import { CommandCategory, imageBaseUrl } from '../../constants';
 
-const BORATORIUM_URL = `${process.env.IMAGE_BASE_URL}memes/boratorium.png`;
+const BORATORIUM_URL = `${imageBaseUrl}/memes/boratorium.png`;
 
 export const boratorium: CommandDefinition = {
     name: 'boratorium',

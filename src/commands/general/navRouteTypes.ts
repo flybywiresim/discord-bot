@@ -1,8 +1,8 @@
 import { MessageCommandDefinition } from '../../lib/command';
 import { makeEmbed } from '../../lib/embed';
-import { CommandCategory } from '../../constants';
+import { CommandCategory, imageBaseUrl } from '../../constants';
 
-const navRoutesURL = `${process.env.IMAGE_BASE_URL}general/navroutes.png`;
+const navRoutesURL = `${imageBaseUrl}/general/navroutes.png`;
 
 const genericNavRouteTypesEmbed = makeEmbed({
     title: 'FlyByWire | Navigation Route Types',
