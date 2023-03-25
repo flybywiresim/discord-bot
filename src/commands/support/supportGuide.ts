@@ -1,6 +1,6 @@
 import { MessageCommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
-import { CommandCategory } from '../../constants';
+import { Channels, CommandCategory } from '../../constants';
 
 const supportGuideEmbed = makeEmbed({
     title: 'FlyByWire Support | Support Guide',
