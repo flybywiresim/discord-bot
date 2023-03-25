@@ -1,8 +1,8 @@
 import { CommandDefinition } from '../../lib/command';
 import { makeEmbed } from '../../lib/embed';
-import { CommandCategory } from '../../constants';
+import { CommandCategory, imageBaseUrl } from '../../constants';
 
-const FRIDGE_URL = `${process.env.IMAGE_BASE_URL}memes/fridge.png`;
+const FRIDGE_URL = `${imageBaseUrl}/memes/fridge.png`;
 
 export const fridge: CommandDefinition = {
     name: 'fridge',

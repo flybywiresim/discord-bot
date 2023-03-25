@@ -1,7 +1,7 @@
 import { CommandDefinition } from '../../lib/command';
-import { CommandCategory } from '../../constants';
+import { CommandCategory, imageBaseUrl } from '../../constants';
 
-const POGGERS_URL = `${process.env.IMAGE_BASE_URL}memes/poggers.gif`;
+const POGGERS_URL = `${imageBaseUrl}/memes/poggers.gif`;
 
 export const poggers: CommandDefinition = {
     name: ['poggers', 'pog'],

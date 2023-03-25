@@ -92,7 +92,7 @@ This is a guide on how to set up a MongoDB instance with Docker.
 1. Install Docker from [their website](https://www.docker.com/get-started/) and read the guide on how to get started if unsure how to use.
 2. In the .env file, on a new line type `MONGODB_URL=URL` replacing URL with your MongoDB access URL.
 3. In the .env file, on a new line type `MONGODB_DATABASE=DATABASE_NAME` replacing DATABASE with your MongoDB database name.
-4. In the .env file, on a new line type `MONGODB_USERNAME=USER_NAME` replacing USER with your MongoDB user name.
+4. In the .env file, on a new line type `MONGODB_USERNAME=USER_NAME` replacing USER with your MongoDB username.
 5. In the .env file, on a new line type `MONGODB_PASSWORD=PASSWORD` replacing PASSWORD with your MongoDB password.
 6. To run the docker-compose file, run `docker-compose up -d` this will start the MongoDB instance along with mongo-express to view the DB.
 7. To stop the container run `docker-compose down`.
@@ -158,14 +158,14 @@ Please ensure that the command category is appropriate for the command. You can 
 
 For commands that need to respond with a message (no complex logic), take a look at a command that is based on the `MessageCommandDefinition` interface. This interface is specifically designed to minimize the effort of creating these types of commands.
 
-The basic structure of such a command looks similar to the this example:
+The basic structure of such a command looks similar to this example:
 
 ```ts
 import { MessageCommandDefinition } from '../../lib/command';
-import { CommandCategory } from '../../constants';
+import { CommandCategory, imageBaseUrl } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 
-const GENERIC_COMMAND_IMAGE = `${process.env.IMAGE_BASE_URL}a32nx/adirs.png`; // optional
+const GENERIC_COMMAND_IMAGE = `${imageBaseUrl}a32nx/adirs.png`; // optional
 
 const genericCommandEmbed = makeEmbed({
     title: 'Command Title',
@@ -177,7 +177,7 @@ const genericCommandEmbed = makeEmbed({
             inline: false, // or true
         }
     ],
-    image: { url: GENERIC_COMMAND_IMAGE }, // optional
+    image: {url: GENERIC_COMMAND_IMAGE}, // optional
 });
 
 export const command: MessageCommandDefinition = {

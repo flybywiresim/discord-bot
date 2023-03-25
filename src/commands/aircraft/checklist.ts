@@ -1,8 +1,8 @@
 import { MessageCommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
-import { CommandCategory } from '../../constants';
+import { CommandCategory, imageBaseUrl } from '../../constants';
 
-const CHECKLIST_IMAGE_URL = `${process.env.IMAGE_BASE_URL}a32nx/A32NX_checklist.png`;
+const CHECKLIST_IMAGE_URL = `${imageBaseUrl}/a32nx/A32NX_checklist.png`;
 
 const checklistEmbed = makeEmbed({
     title: 'FlyByWire A32NX | Checklist',

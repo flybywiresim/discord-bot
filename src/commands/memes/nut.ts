@@ -1,10 +1,10 @@
 import { CommandDefinition } from '../../lib/command';
 import { makeEmbed } from '../../lib/embed';
-import { CommandCategory } from '../../constants';
+import { CommandCategory, imageBaseUrl } from '../../constants';
 
 const NUT_URLS = [
-    `${process.env.IMAGE_BASE_URL}memes/nut.png`,
-    `${process.env.IMAGE_BASE_URL}memes/nut-2.jpg`,
+    `${imageBaseUrl}/memes/nut.png`,
+    `${imageBaseUrl}/memes/nut-2.jpg`,
 ];
 const NUT_URL_WEIGHTS = [0.2, 0.8];
 

@@ -1,8 +1,8 @@
 import { MessageCommandDefinition } from '../../lib/command';
-import { CommandCategory } from '../../constants';
+import { CommandCategory, imageBaseUrl } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
 
-const UTF8_HELP_URL = `${process.env.IMAGE_BASE_URL}support/utf-8.PNG`;
+const UTF8_HELP_URL = `${imageBaseUrl}/support/utf-8.PNG`;
 
 const utf8Embed = makeEmbed({
     title: 'FlyByWire A32NX | UTF-8',

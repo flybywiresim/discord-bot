@@ -1,8 +1,8 @@
 import { MessageCommandDefinition } from '../../lib/command';
-import { CommandCategory } from '../../constants';
+import { CommandCategory, imageBaseUrl } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 
-const GOLDEN_RULES_IMAGE_URL = `${process.env.IMAGE_BASE_URL}general/goldenrules.png`;
+const GOLDEN_RULES_IMAGE_URL = `${imageBaseUrl}/general/goldenrules.png`;
 
 const goldenRulesEmbed = makeEmbed({
     title: 'FlyByWire | Golden Rules',

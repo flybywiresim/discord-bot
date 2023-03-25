@@ -1,8 +1,8 @@
 import { CommandDefinition } from '../../lib/command';
-import { CommandCategory } from '../../constants';
+import { CommandCategory, imageBaseUrl } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 
-const PW_URL = `${process.env.IMAGE_BASE_URL}memes/pw.png`;
+const PW_URL = `${imageBaseUrl}/memes/pw.png`;
 
 export const pw: CommandDefinition = {
     name: 'pw',

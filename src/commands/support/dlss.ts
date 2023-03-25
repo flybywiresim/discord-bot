@@ -1,8 +1,8 @@
 import { MessageCommandDefinition } from '../../lib/command';
-import { CommandCategory } from '../../constants';
+import { CommandCategory, imageBaseUrl } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
 
-const DLSS_IMAGE = `${process.env.IMAGE_BASE_URL}support/dlss.png`;
+const DLSS_IMAGE = `${imageBaseUrl}/support/dlss.png`;
 
 const dlssEmbed = makeEmbed({
     title: 'MSFS | NVIDIA DLSS',

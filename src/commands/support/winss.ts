@@ -1,8 +1,8 @@
 import { MessageCommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
-import { CommandCategory } from '../../constants';
+import { CommandCategory, imageBaseUrl } from '../../constants';
 
-const SNIPPING_TOOL_URL = `${process.env.IMAGE_BASE_URL}support/winss.png`;
+const SNIPPING_TOOL_URL = `${imageBaseUrl}/support/winss.png`;
 
 const winssEmbed = makeEmbed({
     title: 'FlyByWire Support | How to screenshot on Windows',
