@@ -2,6 +2,7 @@
 
 Update <small>_ March 2023</small>
 
+- fix: birthday handler proper handling of connections and improvements (25/03/2023)
 - fix: add link for support channel to sg (25/03/2023)
 - feat: Add support Guide command (25/03/2023)
 - feat: add reply functionality for complex commands (25/03/2023)
