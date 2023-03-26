@@ -32,6 +32,16 @@ const autopilotEmbed = makeEmbed({
     description: `Please see [this link](${FBW_DOCS_AUTOPILOT_ISSUES_URL}) for typical issues with the custom autopilot and how to solve them.`,
 });
 
+const generalTroubleshootingEmbed = makeEmbed({
+    title: 'FlyByWire A32NX | Reported Issues',
+    description: 'Please try the general troubleshooting steps from our reported issues page and report back if they didn\'t help. Include all the steps you tried.',
+    fields: Array({
+        inline: false,
+        name: 'General Troubleshooting Steps',
+        value: `[Link to reported issues section](${FBW_DOCS_REPORTED_ISSUES_URL}#general-troubleshooting-steps)`,
+    }),
+});
+
 const tooManyResultsEmbed = makeEmbed({
     title: 'FlyByWire A32NX | Error',
     description: 'The search term returned too many results',
@@ -56,6 +66,11 @@ export const reportedissues: CommandDefinition = {
             }
             if (args.length === 1 && args.at(0) === 'autopilot') {
                 replyWithEmbed(msg, autopilotEmbed);
+                return;
+            }
+
+            if (args.length === 1 && args.at(0).includes('troubleshoot')) {
+                replyWithEmbed(msg, generalTroubleshootingEmbed);
                 return;
             }
 
