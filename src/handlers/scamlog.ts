@@ -21,7 +21,7 @@ module.exports = {
         }
 
         const scamLogs = msg.guild.channels.resolve(Channels.SCAM_LOGS) as TextChannel | null;
-        if (scamLogs && msg.content.toLowerCase().includes('@everyone') && msg.author.bot === false && !(msg.channel instanceof DMChannel)) {
+        if (scamLogs && msg.content.toLowerCase().includes('@everyone') && !msg.author.bot && !(msg.channel instanceof DMChannel)) {
             let hasRole = false;
             try {
                 excludedRoles.forEach((roleList) => {
