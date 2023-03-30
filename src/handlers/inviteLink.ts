@@ -105,7 +105,7 @@ module.exports = {
             }
 
             try {
-                await msg.author.send('You sent a Discord server invite in the FlyByWire Simulations Discord server. This function is in place to prevent discord scams/unwanted spamming of invites and has resulted in an automatic one day timeout and notification of our moderation team. If this was done in error, our moderation team will reverse the timeout, however please refrain from sending invites in the future. Specific invites can be sent through the FlyByWire Bot.');
+                await msg.author.send('You sent a Discord server invite in the FlyByWire Simulations Discord server. This function is in place to prevent discord scams/unwanted spamming of invites and has resulted in an automatic seven day timeout and notification of our moderation team. If this was done in error, our moderation team will reverse the timeout, however please refrain from sending invites in the future. Specific invites can be sent through the FlyByWire Bot.');
             } catch (e) {
                 Logger.error(e);
 
