@@ -435,7 +435,7 @@ export const temporarycommandedit: CommandDefinition = {
             }
 
             try {
-                temporaryCommands[0].delete();
+                temporaryCommands[0].deleteOne();
             } catch {
                 return msg.reply({ embeds: [failedEmbed('Delete', command)] });
             }
