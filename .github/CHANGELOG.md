@@ -1,5 +1,9 @@
 ## Changelog
 
+Update <small>_ April 2023</small>
+
+- chore: bump typescript to version 5.0.3 (02/04/2023)
+
 Update <small>_ March 2023</small>
 
 - fix: birthday handler proper handling of connections and improvements (25/03/2023)
