@@ -7,10 +7,30 @@ import Logger from '../../lib/logger';
 
 const FBW_DOCS_REPORTED_ISSUES_URL = 'https://docs.flybywiresim.com/fbw-a32nx/support/reported-issues/';
 const FBW_DOCS_AUTOPILOT_ISSUES_URL = 'https://docs.flybywiresim.com/fbw-a32nx/feature-guides/autopilot-fbw/#typical-issues-and-how-to-solve-them';
+const FBW_DOCS_SIMBRIDGE_ISSUES_URL = 'https://docs.flybywiresim.com/simbridge/troubleshooting/';
 
 const genericReportedIssuesEmbed = makeEmbed({
     title: 'FlyByWire A32NX | Reported Issues',
     description: `Please see [this link](${FBW_DOCS_REPORTED_ISSUES_URL}) for a current list of reported issues.`,
+});
+
+const helpEmbed = makeEmbed({
+    title: 'FlyByWire A32NX | Reported Issues',
+    description: 'The Command lists one or up to 4 links to sections in the reported issues page of the documentation according to the search term specific by the following words. If no search term is given or no fitting section is found, a general link is shown. \n Search terms can be terminated by one of the following symbols or a line break: . - >  \n With the list subcommand you can see a list of available subcommands.',
+});
+
+const listEmbed = makeEmbed({
+    title: 'FlyByWire A32NX | Reported Issues',
+    description: 'The following list shows the subcommands available. They must be the only word in the search term.',
+    fields: [{
+        inline: false,
+        name: 'autopilot',
+        value: 'Link to the autopilot common issues page',
+    }, {
+        inline: false,
+        name: 'simbridge',
+        value: 'Link to the simbridge troubleshooting page',
+    }],
 });
 
 const issueInSubsectionEmbed = (fields: EmbedField[]) => makeEmbed({
@@ -32,14 +52,19 @@ const autopilotEmbed = makeEmbed({
     description: `Please see [this link](${FBW_DOCS_AUTOPILOT_ISSUES_URL}) for typical issues with the custom autopilot and how to solve them.`,
 });
 
+const simbridgeEmbed = makeEmbed({
+    title: 'FlyByWire A32NX | Reported Issues',
+    description: `Please see [this link](${FBW_DOCS_SIMBRIDGE_ISSUES_URL}) for typical issues with simbridge and how to solve them.`,
+});
+
 const generalTroubleshootingEmbed = makeEmbed({
     title: 'FlyByWire A32NX | Reported Issues',
     description: 'Please try the general troubleshooting steps from our reported issues page and report back if they didn\'t help. Include all the steps you tried.',
-    fields: Array({
+    fields: [{
         inline: false,
         name: 'General Troubleshooting Steps',
         value: `[Link to reported issues section](${FBW_DOCS_REPORTED_ISSUES_URL}#general-troubleshooting-steps)`,
-    }),
+    }],
 });
 
 const tooManyResultsEmbed = makeEmbed({
@@ -64,14 +89,28 @@ export const reportedissues: CommandDefinition = {
                 replyWithEmbed(msg, genericReportedIssuesEmbed);
                 return;
             }
-            if (args.length === 1 && args.at(0) === 'autopilot') {
-                replyWithEmbed(msg, autopilotEmbed);
-                return;
-            }
 
-            if (args.length === 1 && args.at(0).includes('troubleshoot')) {
-                replyWithEmbed(msg, generalTroubleshootingEmbed);
-                return;
+            if (args.length === 1) {
+                if (args.at(0) === 'help') {
+                    msg.reply({ embeds: [helpEmbed] });
+                    return;
+                }
+                if (args.at(0) === 'list') {
+                    msg.reply({ embeds: [listEmbed] });
+                    return;
+                }
+                if (args.at(0) === 'autopilot') {
+                    replyWithEmbed(msg, autopilotEmbed);
+                    return;
+                }
+                if (args.at(0) === 'simbridge') {
+                    replyWithEmbed(msg, simbridgeEmbed);
+                    return;
+                }
+                if (args.at(0).includes('troubleshoot')) {
+                    replyWithEmbed(msg, generalTroubleshootingEmbed);
+                    return;
+                }
             }
 
             const reportedIssues = [];
