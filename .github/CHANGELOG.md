@@ -1,8 +1,11 @@
 ## Changelog
 
+Update <small>_ April 2023</small>
+
+- feat: add more specific text for the general troubleshooting steps and link to simbridge in the reportes issues and help commands (02/04/2023)
+
 Update <small>_ March 2023</small>
 
-- feat: add more specific text for the general troubleshooting steps in the reportes issues (26/03/2023)
 - fix: birthday handler proper handling of connections and improvements (25/03/2023)
 - fix: add link for support channel to sg (25/03/2023)
 - feat: Add support Guide command (25/03/2023)
