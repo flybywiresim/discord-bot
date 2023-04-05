@@ -1,5 +1,9 @@
 ## Changelog
 
+Update <small>_ April 2023</small>
+
+- feat: add command to check last simbrief flightplan (xx/04/2023)
+
 Update <small>_ March 2023</small>
 
 - fix: birthday handler proper handling of connections and improvements (25/03/2023)

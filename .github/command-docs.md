@@ -134,8 +134,9 @@
 | .ping        | Send back a message                                                                  | ---                                                            |
 | .pr          | Provide a link to any given FBW PRs                                                  | ---                                                            |
 | .roleinfo    | Lists the guild's current amount of members                                          | ---                                                            |
+| .simbiref    | Lists a number of attributes from the last generated simbrief flightplan of a user   | ---                                                            |
 | .station     | Provides station information                                                         | ---                                                            |
-| .vatsim      | Show statistics and details of online VATSIM Controllers, Observers, ATIS and Pilots | .vatsimdata <br/> .vatdata                                     |
+| .vatsim      | Show statistics and details of online VATSIM controllers, observers, ATIS and pilots | .vatsimdata <br/> .vatdata                                     |
 | .wa          | Queries the Wolfram Alpha API                                                        | .calc <br> .ask                                                |
 | .zulu        | Get the current time at a given UTC-offset timezone                                  | ---                                                            |
 
