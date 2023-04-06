@@ -164,7 +164,7 @@ import { econnreset } from './support/econnreset';
 import { pr } from './utils/pr';
 import { gsxIntegration } from './aircraft/gsxIntegration';
 import { supportGuide } from './support/supportGuide';
-import { simbrief } from './utils/simbrief';
+import { simbriefdata } from './utils/simbriefdata';
 
 const commands: BaseCommandDefinition[] = [
     typeCommand,
@@ -331,7 +331,7 @@ const commands: BaseCommandDefinition[] = [
     pr,
     gsxIntegration,
     supportGuide,
-    simbrief
+    simbriefdata,
 ];
 
 const commandsObject: { [k: string]: BaseCommandDefinition } = {};
