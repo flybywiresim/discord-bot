@@ -1,7 +1,7 @@
 import { CommandDefinition } from '../../lib/command';
-import { CommandCategory } from '../../constants';
+import { CommandCategory, imageBaseUrl } from '../../constants';
 
-const P3D_URL = `${process.env.IMAGE_BASE_URL}memes/p3d.png`;
+const P3D_URL = `${imageBaseUrl}/memes/p3d.png`;
 
 export const p3d: CommandDefinition = {
     name: 'p3d',

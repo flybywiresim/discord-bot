@@ -1,8 +1,8 @@
 import { MessageCommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
-import { CommandCategory } from '../../constants';
+import { CommandCategory, imageBaseUrl } from '../../constants';
 
-const FIX_INFO_URL = `${process.env.IMAGE_BASE_URL}/a32nx/fixinfo.png`;
+const FIX_INFO_URL = `${imageBaseUrl}/a32nx/fixinfo.png`;
 
 const fixInfoEmbed = makeEmbed({
     title: 'FlyByWire A32NX | Fix Info',

@@ -1,7 +1,7 @@
 import { URLSearchParams } from 'url';
 import fetch from 'node-fetch';
 import { Colors } from 'discord.js';
-import { CommandDefinition } from '../../lib/command';
+import { CommandDefinition, replyWithEmbed } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
 import { Channels, CommandCategory } from '../../constants';
 import Logger from '../../lib/logger';
@@ -26,7 +26,7 @@ export const wolframalpha: CommandDefinition = {
                 description: 'Please provide a query. For example: `.wa How much is 1 + 1?`',
                 color: Colors.Red,
             });
-            await msg.channel.send({ embeds: [noQueryEmbed] });
+            await msg.reply({ embeds: [noQueryEmbed] });
             return;
         }
         const query = splitUp.slice(1).join(' ');
@@ -50,7 +50,7 @@ export const wolframalpha: CommandDefinition = {
                     description: response.error,
                     color: Colors.Red,
                 });
-                await msg.channel.send({ embeds: [errorEmbed] });
+                await msg.reply({ embeds: [errorEmbed] });
                 return;
             }
 
@@ -79,7 +79,7 @@ export const wolframalpha: CommandDefinition = {
                         ]),
                     });
 
-                    await msg.reply({ embeds: [waEmbed] });
+                    await replyWithEmbed(msg, waEmbed);
                     return;
                 }
                 const noResultsEmbed = makeEmbed({
@@ -89,7 +89,7 @@ export const wolframalpha: CommandDefinition = {
                     ]),
                     color: Colors.Red,
                 });
-                await msg.channel.send({ embeds: [noResultsEmbed] });
+                await msg.reply({ embeds: [noResultsEmbed] });
                 return;
             }
             const obscureQueryEmbed = makeEmbed({
@@ -99,7 +99,7 @@ export const wolframalpha: CommandDefinition = {
                 ]),
                 color: Colors.Red,
             });
-            await msg.channel.send({ embeds: [obscureQueryEmbed] });
+            await msg.reply({ embeds: [obscureQueryEmbed] });
             return;
         } catch (e) {
             Logger.error('wolframalpha:', e);
@@ -108,7 +108,7 @@ export const wolframalpha: CommandDefinition = {
                 description: 'There was an error fetching your request. Please try again later.',
                 color: Colors.Red,
             });
-            await msg.channel.send({ embeds: [fetchErrorEmbed] });
+            await msg.reply({ embeds: [fetchErrorEmbed] });
         }
     },
 };

@@ -1,8 +1,8 @@
 import { MessageCommandDefinition } from '../../lib/command';
 import { makeEmbed } from '../../lib/embed';
-import { CommandCategory } from '../../constants';
+import { CommandCategory, imageBaseUrl } from '../../constants';
 
-const ROADMAP_URL = `${process.env.IMAGE_BASE_URL}general/roadmap.png`;
+const ROADMAP_URL = `${imageBaseUrl}/general/roadmap.png`;
 
 const roadmapEmbed = makeEmbed({ image: { url: ROADMAP_URL } });
 

@@ -19,6 +19,6 @@ export const avatar: CommandDefinition = {
         } else if (user === userID) {
             avatarEmbed.data.title = `${userID.user.tag}'s avatar`;
         }
-        return msg.channel.send({ embeds: [avatarEmbed] });
+        return msg.reply({ embeds: [avatarEmbed] });
     },
 };

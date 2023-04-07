@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { CommandDefinition } from '../../lib/command';
+import { CommandDefinition, replyWithMsg } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 
 const dateFormat = 'HH:mm (LT)';
@@ -14,6 +14,6 @@ export const zulu: CommandDefinition = {
         if (Number.isNaN(utcOffset)) return msg.reply('Please provide a valid timezone.');
         if (!(utcOffset >= -12 && utcOffset <= 14)) return msg.reply('Please provide a timezone within UTC-12 and UTC+14.');
 
-        return msg.channel.send(`It is ${moment().utc().add(utcOffset, 'hours').format(dateFormat)} in that timezone (UTC${utcOffset >= 0 ? '+' : ''}${utcOffset}).`);
+        return replyWithMsg(msg, `It is ${moment().utc().add(utcOffset, 'hours').format(dateFormat)} in that timezone (UTC${utcOffset >= 0 ? '+' : ''}${utcOffset}).`);
     },
 };

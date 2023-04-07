@@ -1,8 +1,17 @@
 ## Changelog
 
+Update <small>_ April 2023</small>
+- feat: Add tca command for tca airbus edition issues
+
 Update <small>_ March 2023</small>
 
 - feat: Add tca command for tca airbus edition issues
+- fix: birthday handler proper handling of connections and improvements (25/03/2023)
+- fix: add link for support channel to sg (25/03/2023)
+- feat: Add support Guide command (25/03/2023)
+- feat: add reply functionality for complex commands (25/03/2023)
+- refactor: image optimisations and safer imageBaseUrl (25/03/2023)
+- fix: adds date to warn doc for timeout (25/03/2023)
 - feat: Show specific section link for reported issues command (12/03/2023)
 - feat: reply to question or command message (11/03/2023)
 - refactor: use downscaled gifs for efb and pov (11/03/2023)

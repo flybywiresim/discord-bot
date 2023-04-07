@@ -1,8 +1,8 @@
 import { MessageCommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
-import { CommandCategory } from '../../constants';
+import { CommandCategory, imageBaseUrl } from '../../constants';
 
-const SCREENSHOT_HELP_URL = `${process.env.IMAGE_BASE_URL}support/screenshot.jpg`;
+const SCREENSHOT_HELP_URL = `${imageBaseUrl}/support/screenshot.jpg`;
 
 const screenshotEmbed = makeEmbed({
     title: 'FlyByWire Support | How to take a good screenshot',

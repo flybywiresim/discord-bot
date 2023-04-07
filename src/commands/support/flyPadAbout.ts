@@ -1,8 +1,8 @@
 import { MessageCommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
-import { CommandCategory } from '../../constants';
+import { CommandCategory, imageBaseUrl } from '../../constants';
 
-const FLYPAD_ABOUT_URL = `${process.env.IMAGE_BASE_URL}support/flypad-settings-about.png`;
+const FLYPAD_ABOUT_URL = `${imageBaseUrl}/support/flypad-settings-about.png`;
 
 const flyPadAboutEmbed = makeEmbed({
     title: 'FlyByWire Support | Checking your flyPadOS and aircraft version',

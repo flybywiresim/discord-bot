@@ -96,7 +96,7 @@ export const warn: CommandDefinition = {
         const conn = await getConn();
 
         if (!conn) {
-            await msg.channel.send({ embeds: [noConnEmbed] });
+            await msg.reply({ embeds: [noConnEmbed] });
             return;
         }
 
@@ -126,22 +126,22 @@ export const warn: CommandDefinition = {
         try {
             await warnDoc.save();
         } catch {
-            await msg.channel.send({ embeds: [warnFailed] });
+            await msg.reply({ embeds: [warnFailed] });
             return;
         }
 
         try {
             await targetUser.send({ embeds: [dmEmbed(formattedDate, moderator, targetUser.user, reason)] });
         } catch {
-            await msg.channel.send({ embeds: [noDM] });
+            await msg.reply({ embeds: [noDM] });
         }
 
         try {
             await modLogsChannel.send({ embeds: [modLogEmbed(formattedDate, moderator, targetUser.user, reason)] });
         } catch {
-            await msg.channel.send({ embeds: [noModLogs] });
+            await msg.reply({ embeds: [noModLogs] });
             return;
         }
-        await msg.channel.send({ embeds: [warnEmbed(targetUser.user)] });
+        await msg.reply({ embeds: [warnEmbed(targetUser.user)] });
     },
 };

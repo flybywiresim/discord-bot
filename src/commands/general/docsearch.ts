@@ -1,6 +1,6 @@
 import Filter from 'bad-words';
 import { Colors } from 'discord.js';
-import { CommandDefinition } from '../../lib/command';
+import { CommandDefinition, replyWithEmbed } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 
@@ -20,7 +20,7 @@ export const docsearch: CommandDefinition = {
                 title: 'FlyByWire Documentation',
                 description: `Find the full FlyByWire Documentation [here](${DOCS_BASE_URL}).`,
             });
-            return msg.channel.send({ embeds: [noQueryEmbed] });
+            return replyWithEmbed(msg, noQueryEmbed);
         }
 
         // Safety to prevent users from sending their own links in bot output.
@@ -32,7 +32,7 @@ export const docsearch: CommandDefinition = {
                     description: 'Providing URLs to the Documentation search command is not allowed.',
                     color: Colors.Red,
                 });
-                return msg.channel.send({ embeds: [URLEmbed] });
+                return msg.reply({ embeds: [URLEmbed] });
             } catch (_) { /**/ }
 
             const filter = new Filter();
@@ -50,6 +50,6 @@ export const docsearch: CommandDefinition = {
             title: 'FlyByWire Documentation Search',
             description: `Search the FlyByWire Documentation for "${searchQuery}" [here](${DOCS_BASE_URL}/?q=${encodedSearchQuery}).`,
         });
-        return msg.channel.send({ embeds: [queryEmbed] });
+        return replyWithEmbed(msg, queryEmbed);
     },
 };

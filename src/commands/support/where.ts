@@ -1,8 +1,8 @@
 import { MessageCommandDefinition } from '../../lib/command';
-import { CommandCategory } from '../../constants';
+import { CommandCategory, imageBaseUrl } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 
-const WHERE_IMAGE_URL = `${process.env.IMAGE_BASE_URL}support/where.png`;
+const WHERE_IMAGE_URL = `${imageBaseUrl}/support/where.png`;
 
 const whereEmbed = makeEmbed({
     title: 'FlyByWire A32NX | Where is my aircraft?',

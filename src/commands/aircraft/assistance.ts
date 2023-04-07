@@ -1,8 +1,8 @@
 import { MessageCommandDefinition } from '../../lib/command';
-import { CommandCategory } from '../../constants';
+import { CommandCategory, imageBaseUrl } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
 
-const ASSISTANCE_IMAGE_URL = `${process.env.IMAGE_BASE_URL}a32nx/assistance-options.png`;
+const ASSISTANCE_IMAGE_URL = `${imageBaseUrl}/a32nx/assistance-options.png`;
 
 const assistanceEmbed = makeEmbed({
     title: 'FlyByWire A32NX | Assistance Options',

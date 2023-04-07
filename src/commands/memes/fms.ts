@@ -1,8 +1,8 @@
 import { CommandDefinition } from '../../lib/command';
 import { makeEmbed } from '../../lib/embed';
-import { CommandCategory } from '../../constants';
+import { CommandCategory, imageBaseUrl } from '../../constants';
 
-const FMS_URL = `${process.env.IMAGE_BASE_URL}memes/fms.png`;
+const FMS_URL = `${imageBaseUrl}/memes/fms.png`;
 
 export const fms: CommandDefinition = {
     name: 'fms',

@@ -1,8 +1,8 @@
 import { MessageCommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
-import { CommandCategory } from '../../constants';
+import { CommandCategory, imageBaseUrl } from '../../constants';
 
-const DEADZONE_IMAGE_URL = `${process.env.IMAGE_BASE_URL}support/deadzones.png`;
+const DEADZONE_IMAGE_URL = `${imageBaseUrl}/support/deadzones.png`;
 
 const deadzonesEmbed = makeEmbed({
     title: 'FlyByWire A32NX | Deadzone Configuration',

@@ -155,7 +155,7 @@ export const timeout: CommandDefinition = {
         const conn = await getConn();
 
         if (!conn) {
-            await msg.channel.send({ embeds: [noConnEmbed] });
+            await msg.reply({ embeds: [noConnEmbed] });
         }
         const args = msg.content.replace(/\.timeout\s+/, '').split(' ');
         if (args.length < 3 && parseInt(args[1]) !== 0) {
@@ -170,7 +170,7 @@ export const timeout: CommandDefinition = {
         const timeoutArg = args[1];
         const reason = args.slice(2).join(' ');
         const currentDate = new Date();
-        const formattedDate: string = moment(currentDate).utcOffset(0).format('YYYY-MM-DDTHH:mm:ss');
+        const formattedDate: string = moment(currentDate).utcOffset(0).format('DD, MM, YYYY, HH:mm:ss');
 
         let timeoutDuration: number;
         switch (timeoutArg[timeoutArg.length - 1].toLowerCase()) {
@@ -199,7 +199,7 @@ export const timeout: CommandDefinition = {
 
         return targetUser.timeout(timeoutDuration, reason).then(async () => {
             if (timeoutDuration === 0) { // Timeout removed
-                const timeoutResponse = await msg.channel.send({ embeds: [unTimeoutEmbed(targetUser.user)] });
+                const timeoutResponse = await msg.reply({ embeds: [unTimeoutEmbed(targetUser.user)] });
                 if (modLogsChannel) {
                     await modLogsChannel.send({ embeds: [unTimeoutModLogEmbed(msg.author, targetUser.user)] });
                 }
@@ -230,7 +230,7 @@ export const timeout: CommandDefinition = {
             }
 
             if (targetUser.isCommunicationDisabled()) { // Timeout successful
-                const timeoutResponse = await msg.channel.send({ embeds: [timeoutEmbed(targetUser.user, reason, timeoutArg)] });
+                const timeoutResponse = await msg.reply({ embeds: [timeoutEmbed(targetUser.user, reason, timeoutArg)] });
                 try {
                     await targetUser.send({ embeds: [DMEmbed(msg.author, timeoutArg, reason, msg.guild, targetUser.communicationDisabledUntil)] });
                 } catch (e) {
@@ -258,6 +258,7 @@ export const timeout: CommandDefinition = {
                     userID,
                     moderator,
                     reason: `*This user was timed out because:* ${reason}`,
+                    date: currentDate,
                 });
 
                 try {
@@ -273,7 +274,7 @@ export const timeout: CommandDefinition = {
                 }, 4000);
             }
 
-            return msg.channel.send({ embeds: [failedTimeoutEmbed(targetUser)] }); // Timeout unsuccessful
+            return msg.reply({ embeds: [failedTimeoutEmbed(targetUser)] }); // Timeout unsuccessful
         });
     },
 };

@@ -83,7 +83,7 @@ export const untimeout: CommandDefinition = {
 
         targetUser.timeout(1).then(async () => {
             if (targetUser.isCommunicationDisabled() === false) {
-                const timeoutResponse = await msg.channel.send({ embeds: [unTimeoutEmbed(targetUser.user)] });
+                const timeoutResponse = await msg.reply({ embeds: [unTimeoutEmbed(targetUser.user)] });
                 try {
                     await targetUser.send({ embeds: [unTimeoutDMEmbed(msg.author, msg.guild)] });
                 } catch (e) {
@@ -112,7 +112,7 @@ export const untimeout: CommandDefinition = {
                     msg.delete();
                 }, 4000);
             }
-            return msg.channel.send({ embeds: [failedUnTimeoutEmbed(targetUser.user)] });
+            return msg.reply({ embeds: [failedUnTimeoutEmbed(targetUser.user)] });
         });
     },
 };

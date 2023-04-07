@@ -1,8 +1,8 @@
 import { CommandDefinition } from '../../lib/command';
 import { makeEmbed } from '../../lib/embed';
-import { CommandCategory } from '../../constants';
+import { CommandCategory, imageBaseUrl } from '../../constants';
 
-const BRUHEG_URL = `${process.env.IMAGE_BASE_URL}memes/bruheg.png`;
+const BRUHEG_URL = `${imageBaseUrl}/memes/bruheg.png`;
 
 export const bruheg: CommandDefinition = {
     name: 'bruheg',

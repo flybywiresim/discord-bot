@@ -23,7 +23,7 @@ export const birthday: CommandDefinition = {
                 description: 'Could not connect to database',
                 color: Colors.Red,
             });
-            await msg.channel.send({ embeds: [noConnEmbed] });
+            await msg.reply({ embeds: [noConnEmbed] });
             return;
         }
 
@@ -273,6 +273,6 @@ export const birthday: CommandDefinition = {
             });
         }
 
-        msg.channel.send({ embeds: [birthdayEmbed] });
+        msg.reply({ embeds: [birthdayEmbed] });
     },
 };

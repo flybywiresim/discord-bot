@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
 import { Colors } from 'discord.js';
-import { CommandDefinition } from '../../lib/command';
+import { CommandDefinition, replyWithEmbed } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
 import Logger from '../../lib/logger';
@@ -18,7 +18,7 @@ export const station: CommandDefinition = {
                 description: 'You must provide an airport ICAO code.',
                 color: Colors.Red,
             });
-            await msg.channel.send({ embeds: [noQueryEmbed] });
+            await msg.reply({ embeds: [noQueryEmbed] });
             return;
         }
         const icaoArg = splitUp[1];
@@ -35,7 +35,7 @@ export const station: CommandDefinition = {
                     description: stationReport.error,
                     color: Colors.Red,
                 });
-                await msg.channel.send({ embeds: [invalidEmbed] });
+                await msg.reply({ embeds: [invalidEmbed] });
                 return;
             }
 
@@ -64,7 +64,7 @@ export const station: CommandDefinition = {
                 footer: { text: 'Due to limitations of the API, not all links may be up to date at all times.' },
             });
 
-            await msg.channel.send({ embeds: [stationEmbed] });
+            await replyWithEmbed(msg, stationEmbed);
             return;
         } catch (e) {
             Logger.error('station:', e);
@@ -73,7 +73,7 @@ export const station: CommandDefinition = {
                 description: 'There was an error fetching the station report. Please try again later.',
                 color: Colors.Red,
             });
-            await msg.channel.send({ embeds: [fetchErrorEmbed] });
+            await msg.reply({ embeds: [fetchErrorEmbed] });
         }
     },
 };
