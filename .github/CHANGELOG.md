@@ -2,6 +2,7 @@
 
 Update <small>_ April 2023</small>
 
+- chore: bump mongoose to version 7.0.3 (13/04/2023)
 - chore: bump typescript to version 5.0.3 (13/04/2023)
 
 Update <small>_ March 2023</small>
