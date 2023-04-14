@@ -140,7 +140,7 @@ export const temporarycommand: CommandDefinition = {
                 return;
             }
 
-            let color = FBWColors.FBW_CYAN;
+            let color: number = FBWColors.FBW_CYAN;
             const [temporaryCommand] = temporaryCommands;
             const { title, content, severity, imageUrl } = temporaryCommand;
             switch (severity) {
