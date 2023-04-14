@@ -393,7 +393,7 @@ export const sticky: CommandDefinition = {
                         Logger.debug('Last posted sticky can not be found or deleted, ignoring and continuing.');
                     }
                 }
-                stickyMessage.delete();
+                stickyMessage.deleteOne();
             } catch {
                 return msg.reply({ embeds: [failedEmbed('Delete', channelId)] });
             }
