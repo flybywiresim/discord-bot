@@ -79,7 +79,7 @@ export const reportedissues: CommandDefinition = {
     category: CommandCategory.SUPPORT,
     executor: async (msg) => {
         try {
-            const args = msg.content.split(/\n|\r|\.|-|>/)
+            const args = msg.content.split(/\n|\r|\.|-|>|\/|\\/)
                 .at(1).toLowerCase().trim()
                 .split(/\s+/)
                 .slice(1)
