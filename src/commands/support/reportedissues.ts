@@ -92,11 +92,11 @@ export const reportedissues: CommandDefinition = {
 
             if (args.length === 1) {
                 if (args.at(0) === 'help') {
-                    msg.reply({ embeds: [helpEmbed] });
+                    replyWithEmbed(msg, helpEmbed);
                     return;
                 }
                 if (args.at(0) === 'list') {
-                    msg.reply({ embeds: [listEmbed] });
+                    replyWithEmbed(msg, listEmbed);
                     return;
                 }
                 if (args.at(0) === 'autopilot') {
