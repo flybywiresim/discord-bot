@@ -16,7 +16,7 @@ const genericReportedIssuesEmbed = makeEmbed({
 
 const helpEmbed = makeEmbed({
     title: 'FlyByWire A32NX | Reported Issues',
-    description: 'The Command lists one or up to 4 links to sections in the reported issues page of the documentation according to the search term specific by the following words. If no search term is given or no fitting section is found, a general link is shown. \n Search terms can be terminated by one of the following symbols or a line break: . - > / \ \n With the list subcommand you can see a list of available subcommands.',
+    description: 'The Command lists one or up to 4 links to sections in the reported issues page of the documentation according to the search term specific by the following words. If no search term is given or no fitting section is found, a general link is shown. \n Search terms can be terminated by one of the following symbols or a line break: . - > / \\ \n With the list subcommand you can see a list of available subcommands.',
 });
 
 const listEmbed = makeEmbed({
