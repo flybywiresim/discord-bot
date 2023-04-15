@@ -1,8 +1,8 @@
 import { MessageCommandDefinition } from '../../lib/command';
-import { CommandCategory } from '../../constants';
+import { CommandCategory, imageBaseUrl } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
 
-const TCA_URL = `${process.env.IMAGE_BASE_URL}support/tca-settings.png`;
+const TCA_URL = `${imageBaseUrl}/support/tca-settings.png`;
 
 const tcaEmbed = makeEmbed({
     title: 'FlyByWire Support | TCA Throttle',
