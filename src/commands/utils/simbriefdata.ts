@@ -5,7 +5,7 @@ import { CommandDefinition, replyWithEmbed } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
 
 const simbriefEmded = (flightplan) => makeEmbed({
-    title: 'Simbrief Data',
+    title: 'SimBrief Data',
     description: makeLines([
         `**Generated at**: ${moment(flightplan.params.time_generated * 1000).format('DD.MM.YYYY, HH:mm:ss')}`,
         `**AirFrame**: ${flightplan.aircraft.name} ${flightplan.aircraft.internal_id}`,
@@ -17,21 +17,21 @@ const simbriefEmded = (flightplan) => makeEmbed({
 });
 
 const simbriefIdMismatchEmbed = (enteredId, flightplanId) => makeEmbed({
-    title: 'Simbrief Data',
+    title: 'SimBrief Data',
     description: makeLines([
-        `Entered userId ${enteredId} and returned userId ${flightplanId} don't match. The UserId might be used as username by someone else.`,
+        `Entered userId ${enteredId} and returned userId ${flightplanId} don't match. The userId might be used as username by someone else.`,
     ]),
 });
 
 const errorEmbed = (errorMessage) => makeEmbed({
-    title: 'Simbrief Error',
-    description: makeLines(['Simbriefdata could not be read.', errorMessage]),
+    title: 'SimBrief Error',
+    description: makeLines(['SimBrief data could not be read.', errorMessage]),
     color: Colors.Red,
 });
 
 export const simbriefdata: CommandDefinition = {
     name: 'simbriefdata',
-    description: 'Provides infos to the most recent simbrief flightplan',
+    description: 'Provides infos to the most recent SimBrief flightplan',
     category: CommandCategory.UTILS,
     executor: async (msg) => {
         const splitUp = msg.content.split(' ').slice(1);
