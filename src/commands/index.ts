@@ -164,6 +164,7 @@ import { econnreset } from './support/econnreset';
 import { pr } from './utils/pr';
 import { gsxIntegration } from './aircraft/gsxIntegration';
 import { supportGuide } from './support/supportGuide';
+import { tca } from './support/tca';
 
 const commands: BaseCommandDefinition[] = [
     typeCommand,
@@ -329,6 +330,7 @@ const commands: BaseCommandDefinition[] = [
     econnreset,
     pr,
     gsxIntegration,
+    tca,
     supportGuide,
 ];
 
