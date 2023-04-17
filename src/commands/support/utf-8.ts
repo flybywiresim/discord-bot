@@ -19,7 +19,7 @@ const utf8Embed = makeEmbed({
         '',
         '• Click OK and restart your computer.',
         '',
-        'Please see our [documentation](https://docs.flybywiresim.com/fbw-a32nx/settings/#utf8-support) for more information.',
+        'Please see our [documentation](https://docs.flybywiresim.com/fbw-a32nx/settings/#utf-8-support) for more information.',
     ]),
     image: { url: UTF8_HELP_URL },
 });
