@@ -7,7 +7,7 @@ const UTF8_HELP_URL = `${imageBaseUrl}/support/utf-8.PNG`;
 const utf8Embed = makeEmbed({
     title: 'FlyByWire A32NX | UTF-8',
     description: makeLines([
-        'Some users experience problems with various system in the A32NX. These are caused by an issue within MSFS which requires the use of the UTF-8 Region setting in Windows.',
+        'Some users experience problems with various systems in the A32NX. These are caused by an issue within MSFS which requires the use of the UTF-8 Region setting in Windows.',
         '',
         'To enable UTF-8 support follow the steps below:',
         '',
