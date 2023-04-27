@@ -34,7 +34,7 @@ const POLICIES_EMBED = makeEmbed({
 const DISCUSSION_EMBED = makeEmbed({
     title: '<:speech_balloon:759405706804723742> Appropriate Discussion',
     description: makeLines([
-        'The prime purpose of this server is to discuss flight sim and aviation topics. Respectful and friendly discussions of general topics in the server are welcome, however we expect everyone to follow Discord policies and good housekeeping.',
+        'The prime purpose of this server is to discuss flight sim and aviation topics. Respectful and friendly discussions of general topics in the server are welcome; however, we expect everyone to follow Discord policies and good housekeeping.',
         '',
         '- If you have a message, please post it in the appropriate channel',
         '- Send your message once; do not repeat messages',
