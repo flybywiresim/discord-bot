@@ -2,6 +2,7 @@
 
 Update <small>_ April 2023</small>
 
+- fix: updating rules (26/04/2023)
 - fix: grammar and hyperlink in embed for utf-8.ts (17/04/2023)
 - feat: add more specific text for the general troubleshooting steps and link to simbridge in the reportes issues and help commands (17/04/2023)
 - feat: Add tca command for tca airbus edition issues (16/04/2023)
