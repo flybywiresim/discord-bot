@@ -9,7 +9,7 @@ const simbriefdatarequestEmbed = makeEmbed({
         '```.simbriefdata <userId>```',
         'Replace <userId> incl. the brackets with your simbrief userId or userName. The Bot will read your last generated flight plan and display some details about it incl. the route.',
         '',
-        'Disclaimer: If you share your userId or username it is possible to read your pilot name from the API the bot uses. This pilot name is by default your real name, but you can change it in the flight edit screen or your user profile in SimBrief.',
+        '**Privacy notice**: If you share your userId or username it is possible to read your pilot name from the API the bot uses. This pilot name is by default your real name, but you can change it in the flight edit screen or your user profile in SimBrief. No data is stored by FlyByWire when using the command.',
     ]),
 });
 
