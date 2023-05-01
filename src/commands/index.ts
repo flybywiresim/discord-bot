@@ -166,6 +166,7 @@ import { gsxIntegration } from './aircraft/gsxIntegration';
 import { supportGuide } from './support/supportGuide';
 import { simbriefdata } from './utils/simbriefdata';
 import { simbriefdatarequest } from './support/simbriefdatarequest';
+import { tca } from './support/tca';
 
 const commands: BaseCommandDefinition[] = [
     typeCommand,
@@ -331,6 +332,7 @@ const commands: BaseCommandDefinition[] = [
     econnreset,
     pr,
     gsxIntegration,
+    tca,
     supportGuide,
     simbriefdata,
     simbriefdatarequest,

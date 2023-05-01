@@ -11,7 +11,7 @@ export const docsearch: CommandDefinition = {
     description: 'Provides a link to the documentation or documentation search for a quick link if there is no dedicated command.',
     category: CommandCategory.GENERAL,
     executor: (msg) => {
-        const searchWords = msg.content.split(/\n|\r|\.|-|>/)
+        const searchWords = msg.content.split(/\n|\r|\.|-|>|\/|\\/)
             .at(1).split(/\s+/).slice(1)
             .filter((word) => word.length > 2);
 

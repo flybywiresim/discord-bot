@@ -34,16 +34,19 @@ const POLICIES_EMBED = makeEmbed({
 const DISCUSSION_EMBED = makeEmbed({
     title: '<:speech_balloon:759405706804723742> Appropriate Discussion',
     description: makeLines([
-        'We promote discussion in the server, however we expect everyone to follow Discord policies and good housekeeping.',
+        'The prime purpose of this server is to discuss flight sim and aviation topics. Respectful and friendly discussions of general topics in the server are welcome; however, we expect everyone to follow Discord policies and good housekeeping.',
         '',
         '- If you have a message, please post it in the appropriate channel',
         '- Send your message once; do not repeat messages',
         '- Do not send malicious or illegal content',
-        '- No troll messaging',
         '- No general spam',
         '- Do not send multiple unsolicited DM\'s',
+        '- No troll or insensitive messaging, including insensitive inside jokes',
         '- Inappropriate/offensive profile information/picture will not be tolerated',
+        '- Certain topics like politics, religion and other sensitive subjects will only be tolerated if a careful and respectful conversation is held',
         '- To help with moderation and set a standard the server language is English',
+        '',
+        'Moderators and admins will intervene when there is a risk for escalation or when the situation requires to keep the server friendly and tolerant.',
     ]),
 });
 
