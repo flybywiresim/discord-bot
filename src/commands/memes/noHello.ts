@@ -14,7 +14,9 @@ export const noHello: CommandDefinition = {
             .then((res) => res.reply(NO_HELLO_URL))
             .catch(async () => msg.channel.send(NO_HELLO_URL));
 
-        msg.delete();
+        if (msg.content.split(' ').length === 1) {
+            msg.delete();
+        }
         return sentMsg;
     },
 };
