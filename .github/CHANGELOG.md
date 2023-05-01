@@ -1,5 +1,9 @@
 ## Changelog
 
+Update <small>_ May 2023</small>
+
+- feat: don't delete nohello with additional content (01/05/2023)
+
 Update <small>_ April 2023</small>
 
 - fix: updating rules (30/04/2023)
