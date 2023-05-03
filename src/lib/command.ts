@@ -20,6 +20,7 @@ export interface BaseCommandDefinition {
     description?: string,
     category?: CommandCategory,
     requirements?: CommandPermissions,
+    isSlashCommand?: boolean,
 }
 export interface CommandDefinition extends BaseCommandDefinition {
     executor: (msg: Message, client?: Client) => Promise<any>,
