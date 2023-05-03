@@ -165,7 +165,6 @@ import { pr } from './utils/pr';
 import { gsxIntegration } from './aircraft/gsxIntegration';
 import { supportGuide } from './support/supportGuide';
 import { simbriefdata } from './utils/simbriefdata';
-import { simbriefdatarequest } from './support/simbriefdatarequest';
 import { tca } from './support/tca';
 
 const commands: BaseCommandDefinition[] = [
@@ -335,7 +334,6 @@ const commands: BaseCommandDefinition[] = [
     tca,
     supportGuide,
     simbriefdata,
-    simbriefdatarequest,
 ];
 
 const commandsObject: { [k: string]: BaseCommandDefinition } = {};

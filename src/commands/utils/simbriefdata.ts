@@ -1,3 +1,4 @@
+import fetch from 'node-fetch';
 import { Colors } from 'discord.js';
 import moment from 'moment';
 import { CommandCategory } from '../../constants';
@@ -29,6 +30,17 @@ const errorEmbed = (errorMessage) => makeEmbed({
     color: Colors.Red,
 });
 
+const simbriefdatarequestEmbed = makeEmbed({
+    title: 'FlyByWire Support | SimBrief Data Request',
+    description: makeLines([
+        'To evaluate your problem we kindly ask you to enter the following bot command into a new message.',
+        '```.simbriefdata <userId>```',
+        'Replace <userId> incl. the brackets with your simbrief userId or userName. The Bot will read your last generated flight plan and display some details about it incl. the route.',
+        '',
+        '**Privacy notice**: If you share your userId or username it is possible to read your pilot name from the API the bot uses. This pilot name is by default your real name, but you can change it in the flight edit screen or your user profile in SimBrief. No data is stored by FlyByWire when using the command.',
+    ]),
+});
+
 export const simbriefdata: CommandDefinition = {
     name: 'simbriefdata',
     description: 'Provides infos to the most recent SimBrief flightplan',
@@ -36,6 +48,9 @@ export const simbriefdata: CommandDefinition = {
     executor: async (msg) => {
         const splitUp = msg.content.split(' ').slice(1);
         const simbriefId = splitUp[0];
+        if (simbriefId === undefined || simbriefId === null) {
+            return replyWithEmbed(msg, simbriefdatarequestEmbed);
+        }
 
         const flightplan = await fetch(`https://www.simbrief.com/api/xml.fetcher.php?json=1&userid=${simbriefId}&username=${simbriefId}`).then((res) => res.json());
 
