@@ -7,6 +7,7 @@ export const ping: CommandDefinition = {
     description: 'Send back a message',
     category: CommandCategory.UTILS,
     requirements: { roles: RoleGroups.BOT },
+    isSlashCommand: true,
     executor: (msg) => {
         const msgFilter = new Filter();
 

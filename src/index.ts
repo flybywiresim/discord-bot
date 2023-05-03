@@ -65,6 +65,10 @@ try {
         // eslint-disable-next-line global-require,import/no-dynamic-require
         const handler = require(`./handlers/${file}`);
 
+        if (handler.registrator) {
+            handler.registrator();
+        }
+
         if (handler.once) {
             client.once(handler.event, (...args) => handler.executor(...args));
         }
