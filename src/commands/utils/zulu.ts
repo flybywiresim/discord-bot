@@ -1,4 +1,5 @@
 import moment from 'moment';
+import { Message } from 'discord.js';
 import { CommandDefinition, replyWithMsg } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 
@@ -8,7 +9,7 @@ export const zulu: CommandDefinition = {
     name: 'zulu',
     description: 'Get the current time at a given UTC-offset timezone.',
     category: CommandCategory.UTILS,
-    executor: (msg) => {
+    executor: (msg: Message) => {
         const args = msg.content.split(' ').slice(1);
         const utcOffset = args.length ? parseFloat(args.join('')) : 0;
         if (Number.isNaN(utcOffset)) return msg.reply('Please provide a valid timezone.');

@@ -1,4 +1,4 @@
-import { Colors, EmbedField } from 'discord.js';
+import { Colors, EmbedField, Message } from 'discord.js';
 import { JSDOM } from 'jsdom';
 import { CommandDefinition, replyWithEmbed } from '../../lib/command';
 import { CommandCategory } from '../../constants';
@@ -77,7 +77,7 @@ export const reportedissues: CommandDefinition = {
     name: ['reportedissues', 'issues'],
     description: 'Provides a link to the reported issues page within docs',
     category: CommandCategory.SUPPORT,
-    executor: async (msg) => {
+    executor: async (msg: Message) => {
         try {
             const args = msg.content.split(/\n|\r|\.|-|>|\/|\\/)
                 .at(1).toLowerCase().trim()

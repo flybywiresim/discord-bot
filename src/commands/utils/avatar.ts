@@ -1,3 +1,4 @@
+import { Message } from 'discord.js';
 import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
@@ -6,7 +7,7 @@ export const avatar: CommandDefinition = {
     name: ['avatar', 'av'],
     description: 'Shows the selected user\'s avatar',
     category: CommandCategory.UTILS,
-    executor: (msg) => {
+    executor: (msg: Message) => {
         const split = msg.content.replace(/(?:\.av|\.avatar)\s+/, '').split(' ');
         const userID = msg.guild.members.cache.get(split[0]);
         const user = msg.mentions.users.first() || userID || msg.author;

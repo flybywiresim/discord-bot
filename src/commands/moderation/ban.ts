@@ -1,4 +1,4 @@
-import { Colors, TextChannel, User } from 'discord.js';
+import { Colors, Message, TextChannel, User } from 'discord.js';
 import moment from 'moment';
 import { CommandDefinition } from '../../lib/command';
 import { Channels, CommandCategory, RoleGroups } from '../../constants';
@@ -131,7 +131,7 @@ export const ban: CommandDefinition = {
     name: 'ban',
     requirements: { roles: RoleGroups.STAFF },
     category: CommandCategory.MODERATION,
-    executor: async (msg) => {
+    executor: async (msg: Message) => {
         const splitUp = msg.content.replace(/\.ban\s+/, '').split(' ');
         if (splitUp.length < 3) {
             await msg.reply('You did not provide enough arguments for this command. (<id> <days> <reason>)');

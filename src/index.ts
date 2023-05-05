@@ -70,7 +70,7 @@ try {
         }
 
         if (handler.once) {
-            client.once(handler.event, (...args) => handler.executor(...args));
+            return client.once(handler.event, (...args) => handler.executor(...args));
         }
         return client.on(handler.event, (...args) => handler.executor(...args));
     });

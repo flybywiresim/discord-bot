@@ -1,5 +1,5 @@
 import { request } from '@octokit/request';
-import { Colors } from 'discord.js';
+import { Colors, Message } from 'discord.js';
 import { CommandDefinition } from '../../lib/command';
 import { CommandCategory, Roles } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
@@ -33,7 +33,7 @@ export const pr: CommandDefinition = {
     description: `Retrieves the link of the provided GitHub PR.${syntaxHelp}`,
     category: CommandCategory.UTILS,
     requirements: { roles: permittedRoles },
-    executor: async (msg) => {
+    executor: async (msg: Message) => {
         const command = msg.content.replace('.', '').split(/ +/);
 
         if (/\.pr +#?\d+/i.test(msg.content)) {

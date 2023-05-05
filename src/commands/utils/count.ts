@@ -1,4 +1,4 @@
-import { TextChannel } from 'discord.js';
+import { Message, TextChannel } from 'discord.js';
 import { CommandDefinition } from '../../lib/command';
 import { CommandCategory, Roles, Threads } from '../../constants';
 
@@ -10,7 +10,7 @@ export const count: CommandDefinition = {
         roles: [Roles.BOT_DEVELOPER],
         rolesError: 'Go count yourself',
     },
-    executor: async (msg) => {
+    executor: async (msg: Message) => {
         const countThread = msg.guild.channels.resolve(Threads.COUNT_THREAD) as TextChannel | null;
 
         if (!countThread) {

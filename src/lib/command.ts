@@ -1,4 +1,4 @@
-import { Client, EmbedBuilder, Message, PermissionsString, GuildMember, Colors } from 'discord.js';
+import { Client, EmbedBuilder, Message, PermissionsString, GuildMember, Colors, Interaction, ChatInputCommandInteraction, InteractionCollector, CommandInteraction, SlashCommandStringOption, ApplicationCommandOptionBase } from 'discord.js';
 import { CommandCategory, Roles, Channels, Threads, PermissionsEmbedDelay } from '../constants';
 import { makeEmbed } from './embed';
 
@@ -20,10 +20,14 @@ export interface BaseCommandDefinition {
     description?: string,
     category?: CommandCategory,
     requirements?: CommandPermissions,
+    options?: ApplicationCommandOptionBase[],
+    isDotCommand?: boolean,
     isSlashCommand?: boolean,
+    isUserCommand?: boolean,
+    isMessageCommand?: boolean,
 }
 export interface CommandDefinition extends BaseCommandDefinition {
-    executor: (msg: Message, client?: Client) => Promise<any>,
+    executor: (msg: Message | CommandInteraction, client?: Client) => Promise<any>,
 }
 export interface MessageCommandDefinition extends BaseCommandDefinition {
     genericEmbed: EmbedBuilder,
@@ -137,7 +141,10 @@ export async function sendPermissionsEmbed(msg: Message, error: string) {
     }
 }
 
-export async function replyWithEmbed(msg: Message, embed: EmbedBuilder) : Promise<Message<boolean>> {
+export async function replyWithEmbed(msg: Message | CommandInteraction, embed: EmbedBuilder) : Promise<Message<boolean>> {
+    if (msg instanceof CommandInteraction) {
+        return msg.reply({ embeds: [embed], fetchReply: true });
+    }
     return msg.fetchReference()
         .then((res) => {
             let existingFooterText = '';
@@ -152,7 +159,10 @@ export async function replyWithEmbed(msg: Message, embed: EmbedBuilder) : Promis
         .catch(() => msg.reply({ embeds: [embed] }));
 }
 
-export async function replyWithMsg(msg: Message, text: string) : Promise<Message<boolean>> {
+export async function replyWithMsg(msg: Message | CommandInteraction, text: string) : Promise<Message<boolean>> {
+    if (msg instanceof CommandInteraction) {
+        return msg.reply({ content: text, fetchReply: true });
+    }
     return msg.fetchReference()
         .then((res) => res.reply(`${text}\n\n\`Executed by ${msg.author.tag} - ${msg.author.id}\``))
         .catch(() => msg.reply(text));
