@@ -1,4 +1,4 @@
-import { Colors, TextChannel, User } from 'discord.js';
+import { Colors, Message, TextChannel, User } from 'discord.js';
 import moment from 'moment';
 import { CommandDefinition } from '../../../lib/command';
 import { Channels, CommandCategory, RoleGroups } from '../../../constants';
@@ -92,7 +92,7 @@ export const warn: CommandDefinition = {
     requirements: { roles: RoleGroups.STAFF },
     description: 'Warns a user',
     category: CommandCategory.MODERATION,
-    executor: async (msg) => {
+    executor: async (msg: Message) => {
         const conn = await getConn();
 
         if (!conn) {

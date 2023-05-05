@@ -1,3 +1,4 @@
+import { Message } from 'discord.js';
 import { CommandDefinition } from '../../lib/command';
 import { makeEmbed } from '../../lib/embed';
 import { CommandCategory } from '../../constants';
@@ -6,7 +7,7 @@ export const roleinfo: CommandDefinition = {
     name: 'roleinfo',
     description: 'Lists the guild\'s current amount of members',
     category: CommandCategory.UTILS,
-    executor: async (msg) => {
+    executor: async (msg: Message) => {
         // Takes out the .roleinfo from the query;
         const query = msg.content.replace(/\.roleinfo(\s|$)+/, '').toLowerCase();
 

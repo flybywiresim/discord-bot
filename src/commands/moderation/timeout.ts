@@ -1,4 +1,4 @@
-import { Colors, Guild, TextChannel, User } from 'discord.js';
+import { Colors, Guild, Message, TextChannel, User } from 'discord.js';
 import moment from 'moment';
 import { CommandDefinition } from '../../lib/command';
 import { CommandCategory, Channels, RoleGroups } from '../../constants';
@@ -151,7 +151,7 @@ export const timeout: CommandDefinition = {
     name: 'timeout',
     requirements: { roles: RoleGroups.STAFF },
     category: CommandCategory.MODERATION,
-    executor: async (msg) => {
+    executor: async (msg: Message) => {
         const conn = await getConn();
 
         if (!conn) {

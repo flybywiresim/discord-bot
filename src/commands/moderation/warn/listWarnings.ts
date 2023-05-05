@@ -1,4 +1,4 @@
-import { Colors, User } from 'discord.js';
+import { Colors, Message, User } from 'discord.js';
 import moment from 'moment';
 import { CommandDefinition } from '../../../lib/command';
 import { CommandCategory, RoleGroups } from '../../../constants';
@@ -17,7 +17,7 @@ export const listWarnings: CommandDefinition = {
     requirements: { roles: RoleGroups.STAFF },
     description: 'Returns warnings for a user',
     category: CommandCategory.MODERATION,
-    executor: async (msg) => {
+    executor: async (msg: Message) => {
         const conn = await getConn();
 
         if (!conn) {

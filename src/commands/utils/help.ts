@@ -1,4 +1,4 @@
-import { DMChannel, EmbedField, User } from 'discord.js';
+import { DMChannel, EmbedField, Message, User } from 'discord.js';
 import { CommandDefinition } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
 import commands from '../index';
@@ -9,7 +9,7 @@ export const help: CommandDefinition = {
     name: 'help',
     description: 'Sends a list of available commands to the user',
     category: CommandCategory.UTILS,
-    executor: async (msg) => {
+    executor: async (msg: Message) => {
         const { author } = msg;
 
         const embed = makeEmbed({

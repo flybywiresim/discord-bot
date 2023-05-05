@@ -1,4 +1,4 @@
-import { Colors, EmbedField, TextChannel } from 'discord.js';
+import { Colors, EmbedField, Message, TextChannel } from 'discord.js';
 import { CommandDefinition, replyWithEmbed } from '../../lib/command';
 import { CommandCategory, Colors as FBWColors, Channels } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
@@ -93,7 +93,7 @@ export const temporarycommand: CommandDefinition = {
     name: ['temporarycommand', 'tempcommand', 'tc'],
     description: 'Runs a temporary command.',
     category: CommandCategory.GENERAL,
-    executor: async (msg) => {
+    executor: async (msg: Message) => {
         const modLogsChannel = msg.guild.channels.resolve(Channels.MOD_LOGS) as TextChannel | null;
         const conn = await getConn();
         if (!conn) {

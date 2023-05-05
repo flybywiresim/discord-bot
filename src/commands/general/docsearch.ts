@@ -1,5 +1,5 @@
 import Filter from 'bad-words';
-import { Colors } from 'discord.js';
+import { Colors, Message } from 'discord.js';
 import { CommandDefinition, replyWithEmbed } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
@@ -10,7 +10,7 @@ export const docsearch: CommandDefinition = {
     name: ['docsearch', 'documentation', 'doc', 'docs'],
     description: 'Provides a link to the documentation or documentation search for a quick link if there is no dedicated command.',
     category: CommandCategory.GENERAL,
-    executor: (msg) => {
+    executor: (msg: Message) => {
         const searchWords = msg.content.split(/\n|\r|\.|-|>|\/|\\/)
             .at(1).split(/\s+/).slice(1)
             .filter((word) => word.length > 2);

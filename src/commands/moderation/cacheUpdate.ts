@@ -1,4 +1,4 @@
-import { Colors, EmbedField, TextChannel } from 'discord.js';
+import { Colors, EmbedField, Message, TextChannel } from 'discord.js';
 import { CommandDefinition } from '../../lib/command';
 import { Channels, CommandCategory, RoleGroups } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
@@ -71,7 +71,7 @@ export const cacheUpdate: CommandDefinition = {
     description: 'Updates the cache of the bot for a specific cache type.',
     category: CommandCategory.MODERATION,
     requirements: { roles: RoleGroups.STAFF },
-    executor: async (msg) => {
+    executor: async (msg: Message) => {
         const subCommands = ['bans', 'channels', 'members', 'roles'];
 
         const modLogsChannel = client.channels.resolve(Channels.MOD_LOGS) as TextChannel | null;

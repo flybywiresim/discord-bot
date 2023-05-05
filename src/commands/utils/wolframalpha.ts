@@ -1,6 +1,6 @@
 import { URLSearchParams } from 'url';
 import fetch from 'node-fetch';
-import { Colors } from 'discord.js';
+import { Colors, Message } from 'discord.js';
 import { CommandDefinition, replyWithEmbed } from '../../lib/command';
 import { makeEmbed, makeLines } from '../../lib/embed';
 import { Channels, CommandCategory } from '../../constants';
@@ -17,7 +17,7 @@ export const wolframalpha: CommandDefinition = {
         channels: [Channels.BOT_COMMANDS],
         verboseErrors: true,
     },
-    executor: async (msg) => {
+    executor: async (msg: Message) => {
         const splitUp = msg.content.replace(/\.wa\s+/, ' ').split(' ');
 
         if (splitUp.length <= 1) {
