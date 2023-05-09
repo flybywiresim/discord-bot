@@ -10,6 +10,7 @@ const simbriefEmded = (flightplan) => makeEmbed({
     description: makeLines([
         `**Generated at**: ${moment(flightplan.params.time_generated * 1000).format('DD.MM.YYYY, HH:mm:ss')}`,
         `**AirFrame**: ${flightplan.aircraft.name} ${flightplan.aircraft.internal_id}`,
+        `**AIRAC Cycle**: ${flightplan.params.airac}`,
         `**Origin**: ${flightplan.origin.icao_code}`,
         `**Destination**: ${flightplan.destination.icao_code}`,
         `**Route**: ${flightplan.general.route}`,
