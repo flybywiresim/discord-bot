@@ -1,4 +1,4 @@
-import { Client, EmbedBuilder, Message, PermissionsString, GuildMember, Colors, Interaction, ChatInputCommandInteraction, InteractionCollector, CommandInteraction, SlashCommandStringOption, ApplicationCommandOptionBase } from 'discord.js';
+import { Client, EmbedBuilder, Message, PermissionsString, GuildMember, Colors, Interaction, ChatInputCommandInteraction, InteractionCollector, CommandInteraction, SlashCommandStringOption, ApplicationCommandOptionBase, SlashCommandSubcommandBuilder } from 'discord.js';
 import { CommandCategory, Roles, Channels, Threads, PermissionsEmbedDelay } from '../constants';
 import { makeEmbed } from './embed';
 
@@ -20,7 +20,8 @@ export interface BaseCommandDefinition {
     description?: string,
     category?: CommandCategory,
     requirements?: CommandPermissions,
-    options?: ApplicationCommandOptionBase[],
+    subcommands?: SlashCommandSubcommandBuilder[],
+    options?: ApplicationCommandOptionBase[][],
     isDotCommand?: boolean,
     isSlashCommand?: boolean,
     isUserCommand?: boolean,
