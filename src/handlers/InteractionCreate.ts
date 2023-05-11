@@ -1,4 +1,4 @@
-import { ApplicationCommandOptionType, Colors, Events, Interaction, REST, Routes, SlashCommandBuilder, SlashCommandStringOption } from 'discord.js';
+import { ApplicationCommandOptionType, Colors, Events, Interaction, REST, Routes, SlashCommandBooleanOption, SlashCommandBuilder, SlashCommandIntegerOption, SlashCommandNumberOption, SlashCommandStringOption, SlashCommandSubcommandBuilder, SlashCommandSubcommandsOnlyBuilder } from 'discord.js';
 import Logger from '../lib/logger';
 import commands from '../commands';
 import { CommandDefinition, isExecutorCommand } from '../lib/command';
@@ -14,9 +14,17 @@ module.exports = {
                 const slashCommandBuilder = new SlashCommandBuilder()
                     .setName(Array.isArray(command.name) ? command.name[0] : command.name)
                     .setDescription(command.description);
-                for (const commandOption of command.options) {
-                    if (commandOption.type === ApplicationCommandOptionType.String) {
-                        slashCommandBuilder.addStringOption(commandOption as SlashCommandStringOption);
+                if (command.subcommands === undefined || command.subcommands.length === 0) {
+                    for (const commandOption of command.options[0]) {
+                        addSlashCommandOption(commandOption, slashCommandBuilder);
+                    }
+                } else {
+                    for (let i = 0; i < command.subcommands.length; i++) {
+                        const subCommandBuilder = command.subcommands[i];
+                        for (const commandOption of command.options[i]) {
+                            addSlashCommandOption(commandOption, subCommandBuilder);
+                        }
+                        slashCommandBuilder.addSubcommand(subCommandBuilder);
                     }
                 }
                 slashCommands.push(slashCommandBuilder.toJSON());
@@ -53,3 +61,21 @@ module.exports = {
         Logger.debug('Command executor done.');
     },
 };
+function addSlashCommandOption(commandOption, slashCommandBuilder: SlashCommandBuilder | SlashCommandSubcommandBuilder) {
+    switch (commandOption.type) {
+    case ApplicationCommandOptionType.String:
+        slashCommandBuilder.addStringOption(commandOption as SlashCommandStringOption);
+        break;
+    case ApplicationCommandOptionType.Boolean:
+        slashCommandBuilder.addBooleanOption(commandOption as SlashCommandBooleanOption);
+        break;
+    case ApplicationCommandOptionType.Integer:
+        slashCommandBuilder.addIntegerOption(commandOption as SlashCommandIntegerOption);
+        break;
+    case ApplicationCommandOptionType.Number:
+        slashCommandBuilder.addNumberOption(commandOption as SlashCommandNumberOption);
+        break;
+    default:
+        break;
+    }
+}

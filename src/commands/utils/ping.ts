@@ -1,5 +1,5 @@
 import Filter from 'bad-words';
-import { ChatInputCommandInteraction, SlashCommandStringOption, Message } from 'discord.js';
+import { ChatInputCommandInteraction, SlashCommandStringOption, Message, SlashCommandSubcommandBuilder } from 'discord.js';
 import { CommandDefinition, replyWithMsg } from '../../lib/command';
 import { CommandCategory, RoleGroups } from '../../constants';
 
@@ -7,9 +7,11 @@ export const ping: CommandDefinition = {
     name: 'ping',
     description: 'Send back a message',
     category: CommandCategory.UTILS,
-    //requirements: { roles: RoleGroups.BOT },
+    requirements: { roles: RoleGroups.BOT },
     options: [
-        new SlashCommandStringOption().setName('text').setDescription('Text to display'),
+        [
+            new SlashCommandStringOption().setName('text').setDescription('Text to display').setRequired(true),
+        ],
     ],
     isSlashCommand: true,
     executor: (msg) => {
