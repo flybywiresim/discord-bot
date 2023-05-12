@@ -2,7 +2,7 @@
 
 Update <small>_ May 2023</small>
 
-- feat: add airac cycle to simbriefdata (09/05/2023)
+- feat: add airac cycle to simbriefdata (12/05/2023)
 - feat: add command to check last simbrief flightplan (08/05/2023)
 - feat: don't delete nohello with additional content (01/05/2023)
 
