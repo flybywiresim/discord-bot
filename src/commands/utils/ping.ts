@@ -1,5 +1,5 @@
 import Filter from 'bad-words';
-import { ChatInputCommandInteraction, SlashCommandStringOption, Message, SlashCommandSubcommandBuilder } from 'discord.js';
+import { ChatInputCommandInteraction, SlashCommandStringOption, Message } from 'discord.js';
 import { CommandDefinition, replyWithMsg } from '../../lib/command';
 import { CommandCategory, RoleGroups } from '../../constants';
 
@@ -14,6 +14,8 @@ export const ping: CommandDefinition = {
         ],
     ],
     isSlashCommand: true,
+    isMessageCommand: true,
+    isUserCommand: true,
     executor: (msg) => {
         const msgFilter = new Filter();
         let text;
@@ -25,7 +27,7 @@ export const ping: CommandDefinition = {
         }
 
         if (!text || text.length === 0) {
-            return msg.reply('Please provide some text.');
+            return replyWithMsg(msg, 'Please provide some text.');
         }
 
         if (msgFilter.isProfane(text)) {

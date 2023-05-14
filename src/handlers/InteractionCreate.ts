@@ -1,4 +1,4 @@
-import { ApplicationCommandOptionType, Colors, Events, Interaction, REST, Routes, SlashCommandBooleanOption, SlashCommandBuilder, SlashCommandIntegerOption, SlashCommandNumberOption, SlashCommandStringOption, SlashCommandSubcommandBuilder, SlashCommandSubcommandsOnlyBuilder } from 'discord.js';
+import { ApplicationCommandOptionType, ApplicationCommandType, Colors, ContextMenuCommandBuilder, Events, Interaction, REST, Routes, SlashCommandBooleanOption, SlashCommandBuilder, SlashCommandIntegerOption, SlashCommandNumberOption, SlashCommandStringOption, SlashCommandSubcommandBuilder, SlashCommandSubcommandsOnlyBuilder } from 'discord.js';
 import Logger from '../lib/logger';
 import commands from '../commands';
 import { CommandDefinition, isExecutorCommand } from '../lib/command';
@@ -29,6 +29,22 @@ module.exports = {
                 }
                 slashCommands.push(slashCommandBuilder.toJSON());
             }
+            if (command.isMessageCommand) {
+                const applicationBuilder = new ContextMenuCommandBuilder();
+                applicationBuilder.setName(Array.isArray(command.name) ? command.name[0] : command.name);
+                if (command.isMessageCommand) {
+                    applicationBuilder.setType(ApplicationCommandType.Message);
+                }
+                slashCommands.push(applicationBuilder.toJSON());
+            }
+            if (command.isUserCommand) {
+                const applicationBuilder = new ContextMenuCommandBuilder();
+                applicationBuilder.setName(Array.isArray(command.name) ? command.name[0] : command.name);
+                if (command.isUserCommand) {
+                    applicationBuilder.setType(ApplicationCommandType.User);
+                }
+                slashCommands.push(applicationBuilder.toJSON());
+            }
         }
         const rest = new REST().setToken(process.env.BOT_SECRET);
         await rest.put(Routes.applicationCommands(process.env.CLIENT_ID), { body: slashCommands });
@@ -36,11 +52,16 @@ module.exports = {
     executor: async (interaction: Interaction) => {
         Logger.debug(`Processing interaction ${interaction.toString()} from user ${interaction.user.username} in channel ${interaction.channel.name} of server ${interaction.guildId}.`);
 
-        if (interaction.isCommand()) {
-            if (interaction.user.bot === true) {
-                Logger.debug('Bailing because message author is a bot.');
-            }
+        if (interaction.user.bot === true) {
+            Logger.debug('Bailing because message author is a bot.');
+            return;
+        }
 
+        if (interaction.isCommand()) {
+            await interaction.deferReply();
+
+            const { channel } = interaction;
+            const textbased = channel.isTextBased();
             const command = commands[interaction.commandName];
             let executor;
             if (isExecutorCommand(command)) {
