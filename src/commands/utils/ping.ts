@@ -1,6 +1,6 @@
 import Filter from 'bad-words';
 import { ChatInputCommandInteraction, SlashCommandStringOption, Message } from 'discord.js';
-import { CommandDefinition, replyWithMsg } from '../../lib/command';
+import { CommandDefinition, replyToAuthorWithMsg, replyWithMsg } from '../../lib/command';
 import { CommandCategory, RoleGroups } from '../../constants';
 
 export const ping: CommandDefinition = {
@@ -27,11 +27,11 @@ export const ping: CommandDefinition = {
         }
 
         if (!text || text.length === 0) {
-            return replyWithMsg(msg, 'Please provide some text.');
+            return replyToAuthorWithMsg(msg, 'Please provide some text.');
         }
 
         if (msgFilter.isProfane(text)) {
-            return msg.reply('Please do not use profane language with this command.');
+            return replyToAuthorWithMsg(msg, 'Please do not use profane language with this command.');
         }
 
         return replyWithMsg(msg, text);

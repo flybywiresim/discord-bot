@@ -60,8 +60,6 @@ module.exports = {
         if (interaction.isCommand()) {
             await interaction.deferReply();
 
-            const { channel } = interaction;
-            const textbased = channel.isTextBased();
             const command = commands[interaction.commandName];
             let executor;
             if (isExecutorCommand(command)) {
@@ -76,7 +74,7 @@ module.exports = {
                     title: 'Error while Executing Command',
                     description: DEBUG_MODE ? `\`\`\`D\n${stack}\`\`\`` : `\`\`\`\n${name}: ${message}\n\`\`\``,
                 });
-                interaction.reply({ embeds: [errorEmbed] });
+                interaction.followUp({ embeds: [errorEmbed] });
             }
         }
         Logger.debug('Command executor done.');
