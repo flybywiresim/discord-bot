@@ -168,3 +168,10 @@ export async function replyWithMsg(msg: Message | CommandInteraction, text: stri
         .then((res) => res.reply(`${text}\n\n\`Executed by ${msg.author.tag} - ${msg.author.id}\``))
         .catch(() => msg.reply(text));
 }
+
+export async function replyToAuthorWithMsg(msg: Message | CommandInteraction, text: string) : Promise<Message<boolean>> {
+    if (msg instanceof CommandInteraction) {
+        return msg.followUp({ content: text, fetchReply: true });
+    }
+    return msg.reply(text);
+}
