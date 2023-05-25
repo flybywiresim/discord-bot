@@ -2,6 +2,7 @@
 
 Update <small>_ May 2023</small>
 
+- fix: fixed a typo in .holds command (25/05/2023)
 - refactor: update link to SOP and checklist (25/05/2023)
 - fix: ping in delete warning mod log (25/05/2023)
 - ci: prevent changelog verification on fork (16/05/2023)
