@@ -6,7 +6,7 @@ const SOP_IMAGE_URL = `${imageBaseUrl}/a32nx/sop.png`;
 
 const sopEmbed = makeEmbed({
     title: 'FlyByWire A32NX | SOP',
-    url: 'https://github.com/flybywiresim/manuals/raw/master/pdf/A32NX%20Documentation/FBW%20A32NX%20SOP.pdf',
+    url: 'https://github.com/flybywiresim/docs/raw/primary/docs/pilots-corner/assets/sop/A32NX%20Documentation/FBW%20A32NX%20SOP.pdf',
     description: makeLines([
         'Click the title to download as a PDF',
     ]),
