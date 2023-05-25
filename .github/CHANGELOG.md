@@ -3,6 +3,7 @@
 Update <small>_ May 2023</small>
 
 - refactor: update link to SOP and checklist (25/05/2023)
+- fix: ping in delete warning mod log (25/05/2023)
 - ci: prevent changelog verification on fork (16/05/2023)
 - refactor: update versions links (15/05/2023)
 - feat: add airac cycle to simbriefdata (12/05/2023)
