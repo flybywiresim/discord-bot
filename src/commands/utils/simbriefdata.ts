@@ -1,5 +1,5 @@
 import fetch from 'node-fetch';
-import { Colors } from 'discord.js';
+import { Colors, Message } from 'discord.js';
 import moment from 'moment';
 import { CommandCategory } from '../../constants';
 import { CommandDefinition, replyWithEmbed } from '../../lib/command';
@@ -46,7 +46,7 @@ export const simbriefdata: CommandDefinition = {
     name: 'simbriefdata',
     description: 'Provides infos to the most recent SimBrief flightplan',
     category: CommandCategory.UTILS,
-    executor: async (msg) => {
+    executor: async (msg: Message) => {
         const splitUp = msg.content.split(' ').slice(1);
         const simbriefId = splitUp[0];
         if (simbriefId === undefined || simbriefId === null) {

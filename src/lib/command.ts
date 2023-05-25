@@ -144,7 +144,10 @@ export async function sendPermissionsEmbed(msg: Message, error: string) {
 
 export async function replyWithEmbed(msg: Message | CommandInteraction, embed: EmbedBuilder) : Promise<Message<boolean>> {
     if (msg instanceof CommandInteraction) {
-        return msg.followUp({ embeds: [embed], fetchReply: true });
+        if (msg.replied || msg.deferred) {
+            return msg.followUp({ embeds: [embed], fetchReply: true });
+        }
+        return msg.reply({ embeds: [embed], fetchReply: true });
     }
     return msg.fetchReference()
         .then((res) => {
@@ -162,7 +165,10 @@ export async function replyWithEmbed(msg: Message | CommandInteraction, embed: E
 
 export async function replyWithMsg(msg: Message | CommandInteraction, text: string) : Promise<Message<boolean>> {
     if (msg instanceof CommandInteraction) {
-        return msg.followUp({ content: text, fetchReply: true });
+        if (msg.replied || msg.deferred) {
+            return msg.followUp({ content: text, fetchReply: true });
+        }
+        return msg.reply({ content: text, fetchReply: true });
     }
     return msg.fetchReference()
         .then((res) => res.reply(`${text}\n\n\`Executed by ${msg.author.tag} - ${msg.author.id}\``))

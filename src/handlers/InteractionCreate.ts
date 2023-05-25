@@ -1,4 +1,4 @@
-import { ApplicationCommandOptionType, ApplicationCommandType, Colors, ContextMenuCommandBuilder, Events, Interaction, REST, Routes, SlashCommandBooleanOption, SlashCommandBuilder, SlashCommandIntegerOption, SlashCommandNumberOption, SlashCommandStringOption, SlashCommandSubcommandBuilder, SlashCommandSubcommandsOnlyBuilder } from 'discord.js';
+import { ActionRowBuilder, ApplicationCommandOptionType, ApplicationCommandType, Colors, ContextMenuCommandBuilder, Events, Interaction, ModalActionRowComponentBuilder, ModalBuilder, REST, Routes, SlashCommandBooleanOption, SlashCommandBuilder, SlashCommandIntegerOption, SlashCommandNumberOption, SlashCommandStringOption, SlashCommandSubcommandBuilder, SlashCommandSubcommandsOnlyBuilder, TextInputBuilder, TextInputStyle } from 'discord.js';
 import Logger from '../lib/logger';
 import commands from '../commands';
 import { CommandDefinition, isExecutorCommand } from '../lib/command';
@@ -58,12 +58,22 @@ module.exports = {
         }
 
         if (interaction.isCommand()) {
-            await interaction.deferReply();
-
             const command = commands[interaction.commandName];
+
+            if (interaction.isContextMenuCommand && command.options) {
+                const modal = new ModalBuilder();
+                modal.setCustomId(interaction.commandName).setTitle('CommandOptions');
+                const textinput = command.options.at(0).map((option) => new ActionRowBuilder<ModalActionRowComponentBuilder>().addComponents(new TextInputBuilder().setCustomId(option.name).setLabel(option.name).setStyle(TextInputStyle.Short)));
+                modal.addComponents(textinput);
+                await interaction.showModal(modal);
+                return;
+            }
+
             let executor;
             if (isExecutorCommand(command)) {
                 ({ executor } = (command as CommandDefinition));
+            } else {
+                return;
             }
             try {
                 await executor(interaction, client);
@@ -80,6 +90,7 @@ module.exports = {
         Logger.debug('Command executor done.');
     },
 };
+
 function addSlashCommandOption(commandOption, slashCommandBuilder: SlashCommandBuilder | SlashCommandSubcommandBuilder) {
     switch (commandOption.type) {
     case ApplicationCommandOptionType.String:
