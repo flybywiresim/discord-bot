@@ -2,7 +2,8 @@
 
 Update <small>_ May 2023</small>
 
-- fix: ping in delete warning mod log (16/05/2023)
+- fix: ping in delete warning mod log (25/05/2023)
+- ci: prevent changelog verification on fork (16/05/2023)
 - refactor: update versions links (15/05/2023)
 - feat: add airac cycle to simbriefdata (12/05/2023)
 - feat: add command to check last simbrief flightplan (08/05/2023)
