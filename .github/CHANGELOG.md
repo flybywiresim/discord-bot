@@ -2,7 +2,7 @@
 
 Update <small>_ May 2023</small>
 
-- fix: added community support role to the approved roles for .pr command (26/05/2023)
+- fix: added community support role to the approved roles for .pr command (31/05/2023)
 - fix: fixed a typo in .holds command (25/05/2023)
 - refactor: update link to SOP and checklist (25/05/2023)
 - fix: ping in delete warning mod log (25/05/2023)
