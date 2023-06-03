@@ -15,6 +15,6 @@ const remoteEfbEmbed = makeEmbed({
 export const econnreset: MessageCommandDefinition = {
     name: ['remoteefb', 'refb', 'remoteflypad', 'rflypad'],
     category: CommandCategory.SUPPORT,
-    genericEmbed: remotEfbEmbed,
+    genericEmbed: remoteEfbEmbed,
 };
 
