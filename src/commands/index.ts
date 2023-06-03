@@ -151,6 +151,7 @@ import { holds } from './aircraft/holds';
 import { mcdu } from './aircraft/mcdu';
 import { fsltl } from './general/fsltl';
 import { flyPadAbout } from './support/flyPadAbout';
+import { remoteEfb } from './support/remoteEfb';
 import { navdata } from './support/navdata';
 import { winss } from './support/winss';
 import { simbridgeLog } from './support/simbridgeLog';
@@ -319,6 +320,7 @@ const commands: BaseCommandDefinition[] = [
     mcdu,
     fsltl,
     flyPadAbout,
+    remoteEfb,
     navdata,
     winss,
     simbridgeLog,
