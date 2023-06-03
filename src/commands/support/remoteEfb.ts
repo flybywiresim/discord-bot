@@ -2,10 +2,10 @@ import { MessageCommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
 
-const remoteefbEmbed = makeEmbed({
-    title: 'FlyByWire Support | Remote efb',
+const remoteEfbEmbed = makeEmbed({
+    title: 'FlyByWire Support | Remote EFB',
     description: makeLines([
-        'Currently the efb can not be viewed remotely, but it is a planned feature.',
+        'Currently the EFB cannot be viewed remotely, but it is a planned feature.',
         '',
         'In the meantime, you can however use an application like [Spacedesk](https://www.spacedesk.net/)* to create a virtual screen using yout tablet/phone/pc, and then de-attach the EFB from MSFS by holding the ALTGR button and clicking on the EFB with yout mouse. You can then drag the EFB window to your virtual screen. Please note that this solution will degrade your performance slightly, as your computer needs to render and process the new virtual screen.',
     ]),
@@ -15,5 +15,6 @@ const remoteefbEmbed = makeEmbed({
 export const econnreset: MessageCommandDefinition = {
     name: ['remoteefb', 'refb', 'remoteflypad', 'rflypad'],
     category: CommandCategory.SUPPORT,
-    genericEmbed: remoteefbEmbed,
+    genericEmbed: remotEfbEmbed,
 };
+
