@@ -12,7 +12,7 @@ const remoteEfbEmbed = makeEmbed({
     footer: { text: '*Spacedesk is not associated with FlyByWire Simulations in any way. We only suggest this solution as it has been proven to work in the past.' },
 });
 
-export const econnreset: MessageCommandDefinition = {
+export const remoteEfb: MessageCommandDefinition = {
     name: ['remoteefb', 'refb', 'remoteflypad', 'rflypad'],
     category: CommandCategory.SUPPORT,
     genericEmbed: remoteEfbEmbed,
