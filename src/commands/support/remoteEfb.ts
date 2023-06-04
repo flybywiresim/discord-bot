@@ -17,4 +17,3 @@ export const remoteEfb: MessageCommandDefinition = {
     category: CommandCategory.SUPPORT,
     genericEmbed: remoteEfbEmbed,
 };
-
