@@ -1,4 +1,7 @@
 ## Changelog
+Update <small>_ June 2023</small>
+
+- feat: add command that explains the current situation of remote EFB acces (4/06/2023)
 
 Update <small>_ May 2023</small>
 
