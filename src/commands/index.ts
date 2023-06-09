@@ -166,6 +166,7 @@ import { gsxIntegration } from './aircraft/gsxIntegration';
 import { supportGuide } from './support/supportGuide';
 import { simbriefdata } from './utils/simbriefdata';
 import { tca } from './support/tca';
+import { brakeCheck } from './support/brakeCheck';
 
 const commands: BaseCommandDefinition[] = [
     typeCommand,
@@ -334,6 +335,7 @@ const commands: BaseCommandDefinition[] = [
     tca,
     supportGuide,
     simbriefdata,
+    brakeCheck,
 ];
 
 const commandsObject: { [k: string]: BaseCommandDefinition } = {};
