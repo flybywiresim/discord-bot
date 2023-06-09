@@ -167,6 +167,7 @@ import { supportGuide } from './support/supportGuide';
 import { simbriefdata } from './utils/simbriefdata';
 import { tca } from './support/tca';
 import { remoteEfb } from './support/remoteEfb';
+
 const commands: BaseCommandDefinition[] = [
     typeCommand,
     ping,
