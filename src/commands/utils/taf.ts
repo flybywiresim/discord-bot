@@ -48,11 +48,11 @@ export const taf: CommandDefinition = {
                     '',
                     '**Basic Report:**',
                     `**Time Forecasted:** ${tafReport.time.dt}`,
-                    `**Forecast start time:** ${tafReport.start_time.dt}`,
+                    `**Forecast Start Time:** ${tafReport.start_time.dt}`,
                     `**Forecast End Time:** ${tafReport.end_time.dt}`,
-                    `**Visibility:** ${tafReport.forecast.visibility.repr}`,
- 
-
+                    `**Visibility:** ${tafReport.forecast[0].visibility.repr} ${Number.isNaN(+tafReport.forecast[0].visibility.repr) ? '' : tafReport.units.visibility}`,
+                    `**Wind:** ${tafReport.forecast[0].wind_direction.repr}${tafReport.forecast[0].wind_direction.repr === 'VRB' ? '' : Units.DEGREES} at ${tafReport.forecast[0].wind_speed.repr} ${tafReport.units.wind_speed}`,
+                    `**Clouds:** `,
                 ]),
                 fields: [
                     {
@@ -61,7 +61,7 @@ export const taf: CommandDefinition = {
                         inline: false,
                     },
                 ],
-                footer: { text: 'This TAF report is only a forecast, and may not accurately reflect weather in real life nor the simulator.' },
+                footer: { text: 'This TAF report is only a forecast, and may not accurately reflect weather in the simulator.' },
             });
 
             await replyWithEmbed(msg, tafEmbed);
