@@ -39,11 +39,10 @@ export const taf: CommandDefinition = {
                 return Promise.resolve();
             }
             const getClouds = (clouds: any) => {
- 
                 let retClouds = [];
                 for (let cloud of clouds) {
                     retClouds.push(cloud.repr);
-                };
+                }
                 return retClouds.join(', ');
             };
             const tafEmbed = makeEmbed({
