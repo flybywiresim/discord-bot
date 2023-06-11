@@ -38,7 +38,14 @@ export const taf: CommandDefinition = {
                 await msg.reply({ embeds: [invalidEmbed] });
                 return Promise.resolve();
             }
-
+            const getClouds = (clouds: any) => 
+            {
+                var retClouds = []
+                for (let cloud of clouds) {
+                    retClouds.push(cloud.repr)
+                }
+                return retClouds.join(", ")
+            }
             const tafEmbed = makeEmbed({
                 title: `TAF Report | ${tafReport.station}`,
                 description: makeLines([
@@ -52,7 +59,8 @@ export const taf: CommandDefinition = {
                     `**Forecast End Time:** ${tafReport.end_time.dt}`,
                     `**Visibility:** ${tafReport.forecast[0].visibility.repr} ${Number.isNaN(+tafReport.forecast[0].visibility.repr) ? '' : tafReport.units.visibility}`,
                     `**Wind:** ${tafReport.forecast[0].wind_direction.repr}${tafReport.forecast[0].wind_direction.repr === 'VRB' ? '' : Units.DEGREES} at ${tafReport.forecast[0].wind_speed.repr} ${tafReport.units.wind_speed}`,
-                    `**Clouds:** `,
+                    `**Clouds:** ${getClouds(tafReport.forecast[0].clouds)}`,
+                    `**Flight Rules:** ${tafReport.forecast[0].flight_rules}`,
                 ]),
                 fields: [
                     {
