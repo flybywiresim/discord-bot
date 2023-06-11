@@ -1,5 +1,9 @@
 ## Changelog
 
+Update <small>_ June 2023</small>
+
+- feat: added .taf command to get the taf report for the specified airport (11/06/2023)
+
 Update <small>_ May 2023</small>
 
 - fix: added community support role to the approved roles for .pr command (31/05/2023)
