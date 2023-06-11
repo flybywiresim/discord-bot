@@ -27,7 +27,7 @@ export const taf: CommandDefinition = {
             const tafReport = await fetch(`https://avwx.rest/api/taf/${icaoArg}`, {
                 method: 'GET',
                 headers: { Authorization: process.env.TAF_TOKEN },
-            }).then((res) => res.json()) ;
+            }).then((res) => res.json());
 
             if (tafReport.error) {
                 const invalidEmbed = makeEmbed({
@@ -38,14 +38,14 @@ export const taf: CommandDefinition = {
                 await msg.reply({ embeds: [invalidEmbed] });
                 return Promise.resolve();
             }
-            const getClouds = (clouds: any) => 
-            {
-                var retClouds = []
+            const getClouds = (clouds: any) => {
+ 
+                let retClouds = [];
                 for (let cloud of clouds) {
-                    retClouds.push(cloud.repr)
-                }
-                return retClouds.join(", ")
-            }
+                    retClouds.push(cloud.repr);
+                };
+                return retClouds.join(', ');
+            };
             const tafEmbed = makeEmbed({
                 title: `TAF Report | ${tafReport.station}`,
                 description: makeLines([
