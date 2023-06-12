@@ -84,7 +84,7 @@ export const deleteWarn: CommandDefinition = {
 
         const modLogsEmbed = makeEmbed({
             title: 'Warn - Removed',
-            description: `A warning has been remove by <@${msg.author}>`,
+            description: `A warning has been remove by ${msg.author}`,
             fields,
             color: Colors.Green,
         });

@@ -14,6 +14,7 @@ const permittedRoles = [
     Roles.CONTRIBUTOR,
     Roles.QA_TRAINEE,
     Roles.QA_TESTER,
+    Roles.COMMUNITY_SUPPORT,
 ];
 
 const noQueryEmbed = makeEmbed({
