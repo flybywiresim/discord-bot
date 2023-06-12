@@ -7,7 +7,7 @@ const BRAKECHECK_HELP_URL = `${imageBaseUrl}/support/brakecheck.png`;
 const brakeCheckEmbed = makeEmbed({
     title: 'FlyByWire Support | Checking brake inputs',
     description: makeLines([
-        'To find out if your hardware is doing any brake inputs:',
+        'Please follow the steps below to determine if your hardware is producing unwanted inputs:',
         '',
         '1. Load a flight in the A32NX',
         '2. Go to General Settings in MSFS and activate Developer Mode.',
