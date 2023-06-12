@@ -118,11 +118,12 @@ A ban appeal form is sent to a user when they are banned. The URL for the form i
 
 Some commands may require additional tokens. If you would like to test them out on your bot, you must include the tokens inside your .env file. These commands include the metar, station and Wolfram Alpha commands. The steps below will explain how to set this up.
 
-### AVWX (Metar and Station)
+### AVWX (Metar, TAF and Station)
 
 1. Make a free account [here](https://avwx.rest/). Then, follow the steps [here](https://account.avwx.rest/getting-started) to get your token.
 2. Inside the .env file, on a new line type `METAR_TOKEN=TOKEN` replacing TOKEN with what you copied in `step 1`.
 3. Then, on another new line within the .env file, type `STATION_TOKEN=TOKEN` replacing TOKEN with what you copied in `step 1`.
+4. Then, on another new line within the .env file, type `TAF_TOKEN=TOKEN` replacing the TOKEN with what you copied in `step 1`.
 
 ### Wolfram Alpha
 
