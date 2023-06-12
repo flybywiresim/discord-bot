@@ -55,6 +55,7 @@ jobs:
       MONGODB_URL: ${{ secrets.MONGODB_URL }}
       BAN_APPEAL_URL: ${{ secrets.BAN_APPEAL_URL }}
       IMAGE_BASE_URL: ${{ secrets.IMAGE_BASE_URL_PROD }}
+      TAF_TOKEN: ${{ secrets.TAF_TOKEN }}
     steps:
       - uses: actions/checkout@v1
       - name: Install doctl
@@ -75,4 +76,5 @@ jobs:
             --set bot.mongodbUrl=${MONGODB_URL} \
             --set bot.banAppealUrl=${BAN_APPEAL_URL} \
             --set bot.imageBaseUrl=${IMAGE_BASE_URL} \
+            --set bot.tafToken=${TAF_TOKEN} \
             -f ./charts/discord-bot/values.yaml -f ${VALUES_FILE} ${RELEASE_NAME} ./charts/discord-bot
