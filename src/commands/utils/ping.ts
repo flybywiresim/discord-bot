@@ -1,5 +1,5 @@
 import Filter from 'bad-words';
-import { ChatInputCommandInteraction, SlashCommandStringOption, Message } from 'discord.js';
+import { ChatInputCommandInteraction, SlashCommandStringOption, Message, ModalSubmitInteraction } from 'discord.js';
 import { CommandDefinition, replyToAuthorWithMsg, replyWithMsg } from '../../lib/command';
 import { CommandCategory, RoleGroups } from '../../constants';
 
@@ -24,6 +24,8 @@ export const ping: CommandDefinition = {
             text = msg.options.getString('text');
         } else if (msg instanceof Message) {
             text = msg.content.replace(/\.ping\s*/, '');
+        } else if (msg instanceof ModalSubmitInteraction) {
+            text = msg.fields.getTextInputValue('text');
         }
 
         if (!text || text.length === 0) {
