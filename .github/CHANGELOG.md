@@ -2,6 +2,8 @@
 
 Update <small>_ June 2023</small>
 
+- style: Minor text formatting additions in the Remote efb command (13/06/2023)
+- fix: Add new necessary information to the Remote efb command(13/06/2023)
 - chore: update discord.js to version 14.11 (12/06/2023)
 - feat: add command that explains the current situation of remote EFB access (12/06/2023)
 - feat: added .taf command to get the taf report for the specified airport (12/06/2023)
