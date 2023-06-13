@@ -1,5 +1,9 @@
 ## Changelog
 
+Update <small>_ June 2023</small>
+
+- feat: add interactions (14/06/2023)
+
 Update <small>_ May 2023</small>
 
 - chore: update discord.js to version 14.11 (15/05/2023)
