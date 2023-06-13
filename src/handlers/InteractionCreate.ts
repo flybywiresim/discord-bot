@@ -86,6 +86,26 @@ module.exports = {
                 });
                 interaction.followUp({ embeds: [errorEmbed] });
             }
+        } else if (interaction.isModalSubmit()) {
+            const command = commands[interaction.customId.split(/\s+/).at(0)];
+
+            let executor;
+            if (isExecutorCommand(command)) {
+                ({ executor } = (command as CommandDefinition));
+            } else {
+                return;
+            }
+            try {
+                await executor(interaction, client);
+            } catch ({ name, message, stack }) {
+                Logger.error({ name, message, stack });
+                const errorEmbed = makeEmbed({
+                    color: Colors.Red,
+                    title: 'Error while Executing Command',
+                    description: DEBUG_MODE ? `\`\`\`D\n${stack}\`\`\`` : `\`\`\`\n${name}: ${message}\n\`\`\``,
+                });
+                interaction.followUp({ embeds: [errorEmbed] });
+            }
         }
         Logger.debug('Command executor done.');
     },

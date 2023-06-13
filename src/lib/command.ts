@@ -1,4 +1,4 @@
-import { Client, EmbedBuilder, Message, PermissionsString, GuildMember, Colors, Interaction, ChatInputCommandInteraction, InteractionCollector, CommandInteraction, SlashCommandStringOption, ApplicationCommandOptionBase, SlashCommandSubcommandBuilder } from 'discord.js';
+import { Client, EmbedBuilder, Message, PermissionsString, GuildMember, Colors, Interaction, ChatInputCommandInteraction, InteractionCollector, CommandInteraction, SlashCommandStringOption, ApplicationCommandOptionBase, SlashCommandSubcommandBuilder, ModalSubmitInteraction } from 'discord.js';
 import { CommandCategory, Roles, Channels, Threads, PermissionsEmbedDelay } from '../constants';
 import { makeEmbed } from './embed';
 
@@ -28,7 +28,7 @@ export interface BaseCommandDefinition {
     isMessageCommand?: boolean,
 }
 export interface CommandDefinition extends BaseCommandDefinition {
-    executor: (msg: Message | CommandInteraction, client?: Client) => Promise<any>,
+    executor: (msg: Message | CommandInteraction | ModalSubmitInteraction, client?: Client) => Promise<any>,
 }
 export interface MessageCommandDefinition extends BaseCommandDefinition {
     genericEmbed: EmbedBuilder,
@@ -163,8 +163,8 @@ export async function replyWithEmbed(msg: Message | CommandInteraction, embed: E
         .catch(() => msg.reply({ embeds: [embed] }));
 }
 
-export async function replyWithMsg(msg: Message | CommandInteraction, text: string) : Promise<Message<boolean>> {
-    if (msg instanceof CommandInteraction) {
+export async function replyWithMsg(msg: Message | CommandInteraction | ModalSubmitInteraction, text: string) : Promise<Message<boolean>> {
+    if (msg instanceof CommandInteraction || msg instanceof ModalSubmitInteraction) {
         if (msg.replied || msg.deferred) {
             return msg.followUp({ content: text, fetchReply: true });
         }
@@ -175,9 +175,12 @@ export async function replyWithMsg(msg: Message | CommandInteraction, text: stri
         .catch(() => msg.reply(text));
 }
 
-export async function replyToAuthorWithMsg(msg: Message | CommandInteraction, text: string) : Promise<Message<boolean>> {
-    if (msg instanceof CommandInteraction) {
-        return msg.followUp({ content: text, fetchReply: true });
+export async function replyToAuthorWithMsg(msg: Message | CommandInteraction | ModalSubmitInteraction, text: string) : Promise<Message<boolean>> {
+    if (msg instanceof CommandInteraction || msg instanceof ModalSubmitInteraction) {
+        if (msg.replied || msg.deferred) {
+            return msg.followUp({ content: text, fetchReply: true });
+        }
+        return msg.reply({ content: text, fetchReply: true });
     }
     return msg.reply(text);
 }

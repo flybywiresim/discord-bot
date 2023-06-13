@@ -1,5 +1,5 @@
 import fetch from 'node-fetch';
-import { Colors } from 'discord.js';
+import { Colors, Message } from 'discord.js';
 import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
@@ -12,7 +12,7 @@ export const flights: CommandDefinition = {
     name: ['liveflights', 'flights', 'flight'],
     description: 'Get the current live flights for FlyByWire Simulations.',
     category: CommandCategory.UTILS,
-    executor: async (msg) => {
+    executor: async (msg : Message) => {
         try {
             const flights = await fetch(`${FBW_API_BASE_URL}/txcxn/_count`).then((res) => res.json());
             const flightsEmbed = makeEmbed({

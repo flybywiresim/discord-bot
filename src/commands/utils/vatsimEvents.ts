@@ -1,5 +1,5 @@
 import fetch from 'node-fetch';
-import { Colors, EmbedField } from 'discord.js';
+import { Colors, EmbedField, Message } from 'discord.js';
 import { CommandDefinition, replyWithEmbed } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import Logger from '../../lib/logger';
@@ -22,7 +22,7 @@ export const vatsimEvents: CommandDefinition = {
     name: ['events', 'event', 'ev', 'vatsimevents', 'vatevents', 'vatev'],
     description: 'Get the upcoming events from the VATSIM network.',
     category: CommandCategory.UTILS,
-    executor: async (msg) => {
+    executor: async (msg : Message) => {
         try {
             const eventsList = await fetch(`${BASE_VATSIM_URL}/api/v1/events/all`)
                 .then((res) => res.json())
