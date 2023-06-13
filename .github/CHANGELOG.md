@@ -3,10 +3,14 @@
 Update <small>_ June 2023</small>
 
 - feat: add interactions (14/06/2023)
+- chore: update discord.js to version 14.11 (12/06/2023)
+- feat: add command that explains the current situation of remote EFB access (12/06/2023)
+- feat: added .taf command to get the taf report for the specified airport (12/06/2023)
 
 Update <small>_ May 2023</small>
 
-- chore: update discord.js to version 14.11 (15/05/2023)
+- fix: added community support role to the approved roles for .pr command (31/05/2023)
+
 - fix: fixed a typo in .holds command (25/05/2023)
 - refactor: update link to SOP and checklist (25/05/2023)
 - fix: ping in delete warning mod log (25/05/2023)
