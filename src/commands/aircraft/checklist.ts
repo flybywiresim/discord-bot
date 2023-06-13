@@ -6,7 +6,7 @@ const CHECKLIST_IMAGE_URL = `${imageBaseUrl}/a32nx/A32NX_checklist.png`;
 
 const checklistEmbed = makeEmbed({
     title: 'FlyByWire A32NX | Checklist',
-    url: 'https://github.com/flybywiresim/manuals/raw/master/pdf/A32NX%20Documentation/FBW%20A32NX%20Checklist.pdf',
+    url: 'https://github.com/flybywiresim/docs/raw/primary/docs/pilots-corner/assets/sop/A32NX%20Documentation/FBW%20A32NX%20Checklist.pdf',
     description: makeLines([
         'Click the title to download as a PDF',
     ]),
