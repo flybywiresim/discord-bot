@@ -1,8 +1,8 @@
+import { Message } from 'discord.js';
 import moment from 'moment';
 import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
-import { Message } from 'discord.js';
 
 enum beautifiedStatus {
     ONLINE = 'Online',
