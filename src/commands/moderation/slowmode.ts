@@ -1,4 +1,4 @@
-import { Colors, EmbedField, TextChannel, ChannelType } from 'discord.js';
+import { Colors, EmbedField, TextChannel, ChannelType, Message } from 'discord.js';
 import { CommandDefinition } from '../../lib/command';
 import { Channels, CommandCategory, RoleGroups } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
@@ -103,7 +103,7 @@ export const slowMode: CommandDefinition = {
     description: 'Manages slow mode for channels and potentially disable slow mode after a certain time.',
     category: CommandCategory.MODERATION,
     requirements: { roles: RoleGroups.STAFF },
-    executor: async (msg) => {
+    executor: async (msg: Message) => {
         const subCommands = ['set', 'disable'];
         const scheduler = getScheduler();
         if (!scheduler) {

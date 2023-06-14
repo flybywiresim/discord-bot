@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { Colors, TextChannel } from 'discord.js';
+import { Colors, Message, TextChannel } from 'discord.js';
 import { CommandDefinition } from '../../../lib/command';
 import { CommandCategory, Channels, RoleGroups } from '../../../constants';
 import { makeEmbed } from '../../../lib/embed';
@@ -41,7 +41,7 @@ export const deleteWarn: CommandDefinition = {
     requirements: { roles: RoleGroups.STAFF },
     description: 'Delete a warning',
     category: CommandCategory.MODERATION,
-    executor: async (msg) => {
+    executor: async (msg: Message) => {
         const conn = await getConn();
 
         if (!conn) {

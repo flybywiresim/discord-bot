@@ -1,6 +1,6 @@
 /* eslint-disable camelcase */
 import fetch from 'node-fetch';
-import { Colors, EmbedField } from 'discord.js';
+import { Colors, EmbedField, Message } from 'discord.js';
 import { CommandDefinition, replyWithEmbed } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
@@ -210,7 +210,7 @@ export const vatsimData: CommandDefinition = {
     name: ['vatsim', 'vatsimdata', 'vatdata'],
     description: 'Find if one or more VATSIM facilities are online at the moment.',
     category: CommandCategory.UTILS,
-    executor: async (msg) => {
+    executor: async (msg: Message) => {
         const evokedCommand = msg.content.split(/\s+/)[0];
         const args = msg.content.split(/\s+/).slice(1);
 

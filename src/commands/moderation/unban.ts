@@ -1,4 +1,4 @@
-import { Colors, EmbedBuilder, EmbedField, GuildMember, Snowflake, User } from 'discord.js';
+import { Colors, EmbedBuilder, EmbedField, GuildMember, Message, Snowflake, User } from 'discord.js';
 import { CommandDefinition } from '../../lib/command';
 import { CommandCategory, RoleGroups } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
@@ -9,7 +9,7 @@ export const unban: CommandDefinition = {
     name: 'unban',
     requirements: { roles: RoleGroups.STAFF },
     category: CommandCategory.MODERATION,
-    executor: async (msg) => {
+    executor: async (msg: Message) => {
         const splitUp = msg.content.replace(/\.unban\s+/, '').split(' ');
 
         if (splitUp.length < 1) {

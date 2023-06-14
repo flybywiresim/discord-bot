@@ -1,5 +1,5 @@
 import fetch from 'node-fetch';
-import { Colors } from 'discord.js';
+import { Colors, Message } from 'discord.js';
 import { CommandDefinition, replyWithEmbed } from '../../lib/command';
 import { CommandCategory, Units } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
@@ -9,7 +9,7 @@ export const taf: CommandDefinition = {
     name: 'taf',
     description: 'Provides the TAF report of the requested airport',
     category: CommandCategory.UTILS,
-    executor: async (msg) => {
+    executor: async (msg : Message) => {
         const splitUp = msg.content.replace(/\.taf\s+/, ' ').split(' ');
 
         if (splitUp.length <= 1) {

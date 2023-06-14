@@ -1,4 +1,4 @@
-import { Colors, EmbedField, TextChannel } from 'discord.js';
+import { Colors, EmbedField, Message, TextChannel } from 'discord.js';
 import moment from 'moment';
 import { CommandDefinition } from '../../lib/command';
 import { Channels, CommandCategory, RoleGroups } from '../../constants';
@@ -217,7 +217,7 @@ export const temporarycommandedit: CommandDefinition = {
     description: 'Creates a temporary command for temporary use.',
     category: CommandCategory.MODERATION,
     requirements: { roles: RoleGroups.STAFF },
-    executor: async (msg) => {
+    executor: async (msg: Message) => {
         const subCommands = ['add', 'image', 'delete', 'info'];
         const conn = await getConn();
         if (!conn) {

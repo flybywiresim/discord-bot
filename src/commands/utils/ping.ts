@@ -1,5 +1,6 @@
 import Filter from 'bad-words';
-import { CommandDefinition } from '../../lib/command';
+import { ChatInputCommandInteraction, SlashCommandStringOption, Message, ModalSubmitInteraction } from 'discord.js';
+import { CommandDefinition, replyToAuthorWithMsg, replyWithMsg } from '../../lib/command';
 import { CommandCategory, RoleGroups } from '../../constants';
 
 export const ping: CommandDefinition = {
@@ -7,20 +8,34 @@ export const ping: CommandDefinition = {
     description: 'Send back a message',
     category: CommandCategory.UTILS,
     requirements: { roles: RoleGroups.BOT },
+    options: [
+        [
+            new SlashCommandStringOption().setName('text').setDescription('Text to display').setRequired(true),
+        ],
+    ],
+    isSlashCommand: true,
+    isMessageCommand: true,
+    isUserCommand: true,
     executor: (msg) => {
         const msgFilter = new Filter();
+        let text;
 
-        const text = msg.content.replace(/\.ping\s*/, '');
+        if (msg instanceof ChatInputCommandInteraction) {
+            text = msg.options.getString('text');
+        } else if (msg instanceof Message) {
+            text = msg.content.replace(/\.ping\s*/, '');
+        } else if (msg instanceof ModalSubmitInteraction) {
+            text = msg.fields.getTextInputValue('text');
+        }
 
         if (!text || text.length === 0) {
-            return msg.reply('Please provide some text.');
+            return replyToAuthorWithMsg(msg, 'Please provide some text.');
         }
-        if (!msgFilter.isProfane(text)) {
-            return msg.channel.send(text);
-        }
+
         if (msgFilter.isProfane(text)) {
-            return msg.reply('Please do not use profane language with this command.');
+            return replyToAuthorWithMsg(msg, 'Please do not use profane language with this command.');
         }
-        return Promise.resolve();
+
+        return replyWithMsg(msg, text);
     },
 };

@@ -1,5 +1,6 @@
 import Filter from 'bad-words';
 import { say } from 'cowsay';
+import { Message } from 'discord.js';
 import { CommandDefinition } from '../../lib/command';
 import { Channels, CommandCategory } from '../../constants';
 
@@ -11,7 +12,7 @@ export const cowsay: CommandDefinition = {
         channels: [Channels.BOT_COMMANDS],
         verboseErrors: true,
     },
-    executor: (msg) => {
+    executor: (msg: Message) => {
         const filter = new Filter();
         const text = msg.content.replace(/\.(cowsay|cs)\s/, '').replace(/`/g, '');
 

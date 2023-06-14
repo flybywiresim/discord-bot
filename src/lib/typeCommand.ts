@@ -1,4 +1,4 @@
-import { EmbedData } from 'discord.js';
+import { EmbedData, Message } from 'discord.js';
 import { CommandDefinition, isMessageCommand, MessageCommandDefinition, hasRequiredPermissions, sendPermissionsEmbed, replyWithEmbed } from './command';
 import { AircraftTypeList, CommandCategory } from '../constants';
 import commands from '../commands/index';
@@ -14,7 +14,7 @@ export const typeCommand: CommandDefinition = {
     name: supportedAircraftTypes,
     description: 'Shows the command details for the specified supported aircraft type',
     category: CommandCategory.UTILS,
-    executor: async (msg) => {
+    executor: async (msg: Message) => {
         const { author } = msg;
         const [dotEvokedCommand] = msg.content.trim().split(/\s+/);
         const evokedCommand = dotEvokedCommand.substring(1);

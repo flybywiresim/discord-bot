@@ -185,6 +185,7 @@ export const command: MessageCommandDefinition = {
     name: ['command', 'alias'],
     description: 'A short description of the purpose of the command.',
     category: CommandCategory.AIRCRAFT,
+    isDotCommand: true,
     genericEmbed: genericCommandEmbed,
 };
 ```

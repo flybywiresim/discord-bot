@@ -1,3 +1,4 @@
+import { Message } from 'discord.js';
 import moment from 'moment';
 import { CommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
@@ -14,7 +15,7 @@ export const whois: CommandDefinition = {
     name: 'whois',
     description: 'Provides an embedded message with information about the mentioned user',
     category: CommandCategory.MODERATION,
-    executor: async (msg) => {
+    executor: async (msg: Message) => {
         const query = msg.content.replace(/\.whois(\s|$)+/, '').replace(/[@#!<>]+/g, '');
         const targetMember = query ? await msg.guild.members.fetch(query) : msg.member;
 

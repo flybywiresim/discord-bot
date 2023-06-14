@@ -1,5 +1,5 @@
 import fetch from 'node-fetch';
-import { Colors } from 'discord.js';
+import { Colors, Message } from 'discord.js';
 import { CommandDefinition, replyWithEmbed } from '../../lib/command';
 import { CommandCategory } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
@@ -9,7 +9,7 @@ export const station: CommandDefinition = {
     name: 'station',
     description: 'Provides station information',
     category: CommandCategory.UTILS,
-    executor: async (msg) => {
+    executor: async (msg: Message) => {
         const splitUp = msg.content.replace(/\.station\s+/, ' ').split(' ');
 
         if (splitUp.length <= 1) {

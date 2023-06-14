@@ -1,4 +1,4 @@
-import { Colors, EmbedField, BaseChannel, TextChannel, TextBasedChannel } from 'discord.js';
+import { Colors, EmbedField, BaseChannel, TextChannel, TextBasedChannel, Message } from 'discord.js';
 import moment from 'moment';
 import { CommandDefinition } from '../../lib/command';
 import { Channels, CommandCategory, RoleGroups } from '../../constants';
@@ -149,7 +149,7 @@ export const sticky: CommandDefinition = {
     description: 'Manages sticky messages.',
     category: CommandCategory.MODERATION,
     requirements: { roles: RoleGroups.STAFF },
-    executor: async (msg) => {
+    executor: async (msg: Message) => {
         const subCommands = ['set', 'image', 'count', 'time', 'unset', 'info'];
         const conn = getConn();
         if (!conn) {

@@ -1,4 +1,4 @@
-import { Colors } from 'discord.js';
+import { Colors, Message } from 'discord.js';
 import { CommandDefinition } from '../../lib/command';
 import { RoleGroups, CommandCategory, Threads } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
@@ -14,7 +14,7 @@ export const birthday: CommandDefinition = {
         roles: RoleGroups.TEAM,
         channels: [Threads.BIRTHDAY_THREAD],
     },
-    executor: async (msg) => {
+    executor: async (msg: Message) => {
         const conn = await getConn();
 
         if (!conn) {
