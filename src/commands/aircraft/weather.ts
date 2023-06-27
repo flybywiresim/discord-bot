@@ -7,7 +7,7 @@ const weatherEmbed = makeEmbed({
     description: makeLines([
         'The A32NX does not have an operating weather radar as it is not currently possible to implement a high-fidelity A320 weather radar or weather map in MSFS.',
         '',
-        'The terrain map (TERR on ND) is currently only available on the development + experimental versions via [SimBridge.](https://docs.flybywiresim.com/simbridge/)',
+        'The terrain map (TERR on ND) is currently only available on the development version via [SimBridge.](https://docs.flybywiresim.com/simbridge/)',
         '',
         'The team are currently waiting on a weather API to be implemented in order to make a radar that is as realistic as possible. You can read the MSFS forum [here.](https://forums.flightsimulator.com/t/implement-weather-and-terrain-api-s-for-aircraft-developers-to-implement-accurate-radar-predictive-windshear-egpws-and-metar-wind-uplink/442016)',
     ]),
@@ -15,7 +15,7 @@ const weatherEmbed = makeEmbed({
 
 export const weather: MessageCommandDefinition = {
     name: ['weather', 'wx'],
-    description: 'Explains the current state of the weather and terrain radars in experimental',
+    description: 'Explains the current state of the weather and terrain radars',
     category: CommandCategory.AIRCRAFT,
     genericEmbed: weatherEmbed,
 };
