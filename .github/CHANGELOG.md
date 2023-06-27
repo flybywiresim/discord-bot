@@ -8,6 +8,7 @@ Update <small>_ June 2023</small>
 - chore: update discord.js to version 14.11 (12/06/2023)
 - feat: add command that explains the current situation of remote EFB access (12/06/2023)
 - feat: added .taf command to get the taf report for the specified airport (12/06/2023)
+- fix: Corrected typo on .simbriefdata in command list (28/06/2023)
 
 Update <small>_ May 2023</small>
 
