@@ -14,7 +14,7 @@ const remoteEfbEmbed = makeEmbed({
         'Please note that this solution will degrade your performance slightly, as your computer needs to render and process the new virtual screen.',
 
     ]),
-    footer: { text: '*Neither spacedesk nor MSFS Popout panel manager are associated with FlyByWire Simulations in any way. We only suggest this solution as they have been proven to work in the past.' },
+    footer: { text: '*Neither spacedesk nor MSFS Popout Panel Manager are associated with FlyByWire Simulations in any way. We only suggest this solution as they have been proven to work in the past.' },
 });
 
 export const remoteEfb: MessageCommandDefinition = {
