@@ -168,6 +168,7 @@ import { simbriefdata } from './utils/simbriefdata';
 import { tca } from './support/tca';
 import { taf } from './utils/taf';
 import { remoteEfb } from './support/remoteEfb';
+import { brakeCheck } from './support/brakeCheck';
 
 const commands: BaseCommandDefinition[] = [
     typeCommand,
@@ -338,6 +339,7 @@ const commands: BaseCommandDefinition[] = [
     simbriefdata,
     taf,
     remoteEfb,
+    brakeCheck,
 ];
 
 const commandsObject: { [k: string]: BaseCommandDefinition } = {};
