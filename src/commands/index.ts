@@ -342,7 +342,6 @@ const commands: BaseCommandDefinition[] = [
     remoteEfb,
     brakeCheck,
     spad,
-
 ];
 
 const commandsObject: { [k: string]: BaseCommandDefinition } = {};
