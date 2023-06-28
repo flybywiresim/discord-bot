@@ -5,10 +5,9 @@ import { makeEmbed, makeLines } from '../../lib/embed';
 const experimentalEmbed = makeEmbed({
     title: 'FlyByWire A32NX | Experimental Version',
     description: makeLines([
-        'The experimental version is being discontiued and doesn\'t get updated anymore. To get the newest features and bugfixes we recomment do switch to the development version.',
+        'Our Experimental version is temporarily on hold and all of its features have been moved to the Development Version. ',
         '',
-        'The experimental version existed for long time tests of high impact features. As there are currently no such features being tested and it being easier to introduce new features in the development version and maintain it, it was decided to discontinue the experimental version.',
-        'In the installer the experimental version might still show up, but will eventually be removed.',
+        'The function of the Experimental version is to test high impact features which aren't ready for the wider public. As there are currently no such features being tested and it being easier to introduce new features into the Development version and maintain it, it was decided to put the Experimental version hold.',
     ]),
 });
 
