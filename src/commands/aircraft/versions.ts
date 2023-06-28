@@ -29,6 +29,13 @@ const versionsEmbed = makeEmbed({
             ]),
             inline: false,
         },
+        {
+            name: 'Experimental',
+            value: makeLines([
+                '> Experimental is currectly on hold and is not being updated. We recommend using the Stable or Development version.',
+            ]),
+            inline: false,
+        },
     ],
 });
 
