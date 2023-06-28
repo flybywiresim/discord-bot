@@ -51,7 +51,7 @@ const faqEmbeds = [
             },
             {
                 name: 'Why is my version not the same as what I see others using?',
-                value: `> We have three versions, Stable and Development (Master). The Stable version is a 'snapshot' of the development which we regard as stable with the current version of the simulator. The Development build is updated daily and is a constant work in progress and although we test each update thoroughly, minor issues may occur from time to time. If you find this to be the case, you can report these issues in <#${Channels.A32NX_SUPPORT}>.`,
+                value: `> We have two versions, Stable and Development (Master). The Stable version is a 'snapshot' of the development which we regard as stable with the current version of the simulator. The Development build is updated daily and is a constant work in progress and although we test each update thoroughly, minor issues may occur from time to time. If you find this to be the case, you can report these issues in <#${Channels.A32NX_SUPPORT}>.`,
             },
             {
                 name: 'I am a real life Aero Engineer, GA, A320 or A380 Pilot, or Cabin Crew. Where do I get my role?',
