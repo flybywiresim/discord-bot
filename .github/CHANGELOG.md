@@ -2,7 +2,11 @@
 
 Update <small>_ June 2023</small>
 
-- chore: remove the experimental version from the commands (27/06/2023)
+- refactor: remove the experimental version from the commands (28/06/2023)
+- fix: Corrected typo on .simbriefdata in command list (28/06/2023)
+- style: Minor text formatting additions in the Remote efb command (27/06/2023)
+- fix: Add new necessary information to the Remote efb command(27/06/2023)
+- feat: added .brakecheck command to check brake inputs (27/06/2023)
 - chore: update discord.js to version 14.11 (12/06/2023)
 - feat: add command that explains the current situation of remote EFB access (12/06/2023)
 - feat: added .taf command to get the taf report for the specified airport (12/06/2023)
