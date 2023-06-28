@@ -1,16 +1,13 @@
 import { MessageCommandDefinition } from '../../lib/command';
-import { Channels, CommandCategory } from '../../constants';
+import { CommandCategory } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
 
 const experimentalEmbed = makeEmbed({
     title: 'FlyByWire A32NX | Experimental Version',
     description: makeLines([
-        'Currently, experimental is geared toward testing the initial version of VNAV with additional features added at the development team\'s discretion. Please see our [Experimental Version Support Page](https://docs.flybywiresim.com/exp/) for more information. **Do not expect support for the experimental version - use at own risk!**',
+        'Our Experimental version is temporarily on hold and is not being updated. All of its features have been moved to the Development Version. ',
         '',
-        'Please use the appropriate discord channel or forum to discuss any issues:',
-        `<#${Channels.EXP_CFMS_ISSUES}>`,
-        '',
-        'The Experimental version is a test version to find problems, issues and to improve functionality based on your feedback. It is not meant to be used for daily use or serious flights with an Online ATC service.',
+        'The function of the Experimental version is to test high-impact features which aren\'t ready for the wider public yet. As there are currently no such features being tested and it being easier to introduce new features into the Development version and maintain it, it was decided to put the Experimental version on hold.',
     ]),
 });
 

@@ -2,6 +2,7 @@
 
 Update <small>_ June 2023</small>
 
+- refactor: remove the experimental version from the commands (28/06/2023)
 - fix: Corrected typo on .simbriefdata in command list (28/06/2023)
 - style: Minor text formatting additions in the Remote efb command (27/06/2023)
 - fix: Add new necessary information to the Remote efb command(27/06/2023)

@@ -7,7 +7,7 @@ const versionsEmbed = makeEmbed({
     footer: { text: 'If you are having further problems, let us know in our #support channel.' },
     fields: [
         {
-            name: 'Stable, Development or Experimental?',
+            name: 'Stable or Development?',
             value: '> You can find a brief explanation of the versions below, for a more in depth comparison, [please click here.](https://docs.flybywiresim.com/fbw-a32nx/fbw-versions) ',
             inline: false,
         },
@@ -32,9 +32,7 @@ const versionsEmbed = makeEmbed({
         {
             name: 'Experimental',
             value: makeLines([
-                '> The Experimental version is a test version to find problems, issues and to improve functionality based on your feedback. It is not meant to be used for daily use or serious flights with an Online ATC service.',
-                '',
-                '> Please see our [Experimental Version Support Page](https://docs.flybywiresim.com/exp) for more information. **Do not expect support for the experimental version - use at own risk!**',
+                '> Experimental is currectly on hold and is not being updated. We recommend using the Stable or Development version.',
             ]),
             inline: false,
         },
