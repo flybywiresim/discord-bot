@@ -170,7 +170,7 @@ import { taf } from './utils/taf';
 import { remoteEfb } from './support/remoteEfb';
 import { brakeCheck } from './support/brakeCheck';
 import { spad } from './general/spad';
-import { simbridgeDebug } from `./support/simbridgeDebug`;
+import { simbridgeDebug } from './support/simbridgeDebug';
 
 const commands: BaseCommandDefinition[] = [
     typeCommand,
