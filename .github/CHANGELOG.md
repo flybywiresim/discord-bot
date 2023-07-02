@@ -1,5 +1,9 @@
 ## Changelog
 
+Update <small>_ July 2023</small>
+
+- feat: added .devLanguages to confirm languages used in A32NX.
+
 Update <small>_ June 2023</small>
 
 - feat: added .spad command, which links to the SPAD.neXt doscord server (28/06/2023)

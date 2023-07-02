@@ -170,6 +170,7 @@ import { taf } from './utils/taf';
 import { remoteEfb } from './support/remoteEfb';
 import { brakeCheck } from './support/brakeCheck';
 import { spad } from './general/spad';
+import { devLanguages} from './general/devLanguages';
 
 const commands: BaseCommandDefinition[] = [
     typeCommand,
@@ -342,6 +343,7 @@ const commands: BaseCommandDefinition[] = [
     remoteEfb,
     brakeCheck,
     spad,
+    devLanguages,
 ];
 
 const commandsObject: { [k: string]: BaseCommandDefinition } = {};
