@@ -6,7 +6,7 @@ Update <small>_ July 2023</small>
 
 Update <small>_ June 2023</small>
 
-- feat: added .spad command, which links to the SPAD.neXt doscord server (28/06/2023)
+- feat: added .spad command, which links to the SPAD.neXt discord server (28/06/2023)
 - fix: correct a typo in .versions command (28/06/2023)
 - refactor: remove the experimental version from the commands (28/06/2023)
 - fix: Corrected typo on .simbriefdata in command list (28/06/2023)
