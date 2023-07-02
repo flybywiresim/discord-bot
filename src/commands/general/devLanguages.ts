@@ -7,14 +7,16 @@ const devLanguagesEmbed = makeEmbed({
     description: makeLines([
         'The A32NX is built using a number of development languages for different aspects of the aircraft. The below list confirms the current languages used, however is not exhaustive.',
         '',
-        '**Displays:** Typescript',
+        '**General:** React',
+        '**flyPad:** Tailwind CSS, Redux',
+        '**Displays/Avionics:** TypeScript, React (deprecated), MSFS Avionics Framework',
         '**Autopilot/Flight controls:** MATLAB/C++',
         '**Systems/Physics simulations:** Rust',
     ]),
 });
 
 export const devLanguages: MessageCommandDefinition = {
-    name: ['devlanguage', 'devlanguages', 'devlang'],
+    name: ['devlanguage', 'devlanguages', 'devlang', 'dl'],
     description: 'Provides a list of development languages used in the A32NX.',
     category: CommandCategory.GENERAL,
     genericEmbed: devLanguagesEmbed,
