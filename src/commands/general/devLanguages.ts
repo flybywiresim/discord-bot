@@ -8,8 +8,8 @@ const devLanguagesEmbed = makeEmbed({
         'The A32NX is built using a number of development languages for different aspects of the aircraft. The below list confirms the current languages used, however is not exhaustive.',
         '',
         '**Displays:** Typescript',
-        '**Autopilot/flight controls:** MATLAB/C++',
-        '**Systems/physics simulations:** Rust',
+        '**Autopilot/Flight controls:** MATLAB/C++',
+        '**Systems/Physics simulations:** Rust',
     ]),
 });
 
