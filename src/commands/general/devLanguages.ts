@@ -9,9 +9,9 @@ const devLanguagesEmbed = makeEmbed({
         '',
         '**General:** React',
         '**flyPad:** Tailwind CSS, Redux',
-        '**Displays/Avionics:** TypeScript, React (deprecated), MSFS Avionics Framework',
         '**Autopilot/Flight controls:** MATLAB/C++',
         '**Systems/Physics simulations:** Rust',
+        '**Displays/Avionics:** TypeScript, React (deprecated), MSFS Avionics Framework',
     ]),
 });
 
