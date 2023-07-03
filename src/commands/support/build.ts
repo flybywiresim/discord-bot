@@ -5,7 +5,7 @@ import { makeEmbed, makeLines } from '../../lib/embed';
 const buildEmbed = makeEmbed({
     title: 'FlyByWire Support | Build Info',
     description: makeLines([
-        'Please send us your build info!',
+        'Please send us your build info.',
         '',
         'Navigate to your Community folder and open the following A32NX file with Notepad:',
         '',
