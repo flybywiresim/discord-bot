@@ -91,7 +91,7 @@ export const AircraftTypeList = {
     a380x: '38:1044695718348210177',
 };
 
-export const PermissionsEmbedDelay = 10000;
+export const PermissionsEmbedDelay = 15000;
 
 // imageBaseUrl - Below takes the IMAGE_BASE_URL entry from the `env` and strips the trailing `/` if present
 
