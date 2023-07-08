@@ -2,6 +2,7 @@
 
 Update <small>_ July 2023</small>
 
+- fix: adding protection if parsing channels or roles fail and autodelete command (08/07/2023)
 - fix: adding channel based permissions for memes and some utils (08/07/2023)
 - feat: rules updated (05/07/2023)
 - fix: removed an exclamation mark from the build/build info command, as per contributing guidelines (04/07/2023)
