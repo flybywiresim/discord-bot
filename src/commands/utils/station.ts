@@ -1,7 +1,7 @@
 import fetch from 'node-fetch';
 import { Colors } from 'discord.js';
 import { CommandDefinition, replyWithEmbed } from '../../lib/command';
-import { CommandCategory } from '../../constants';
+import { Channels, CommandCategory } from '../../constants';
 import { makeEmbed, makeLines } from '../../lib/embed';
 import Logger from '../../lib/logger';
 
@@ -9,6 +9,10 @@ export const station: CommandDefinition = {
     name: 'station',
     description: 'Provides station information',
     category: CommandCategory.UTILS,
+    requirements: {
+        channels: [Channels.BOT_COMMANDS],
+        verboseErrors: true,
+    },
     executor: async (msg) => {
         const splitUp = msg.content.replace(/\.station\s+/, ' ').split(' ');
 

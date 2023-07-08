@@ -1,6 +1,6 @@
 import { CommandDefinition } from '../../lib/command';
 import { makeEmbed } from '../../lib/embed';
-import { CommandCategory, imageBaseUrl } from '../../constants';
+import { Channels, CommandCategory, imageBaseUrl } from '../../constants';
 
 const NUT_URLS = [
     `${imageBaseUrl}/memes/nut.png`,
@@ -27,6 +27,10 @@ export const nut: CommandDefinition = {
     name: 'nut',
     description: 'nut',
     category: CommandCategory.MEMES,
+    requirements: {
+        channels: [Channels.CHAT, Channels.BOT_COMMANDS],
+        verboseErrors: true,
+    },
     executor: (msg) => {
         const nutEmbed = makeEmbed({ image: { url: weightedRandom(NUT_URLS, NUT_URL_WEIGHTS) } });
         return msg.channel.send({ embeds: [nutEmbed] });
