@@ -8,7 +8,7 @@ export const mico: CommandDefinition = {
     description: 'mico!',
     category: CommandCategory.MEMES,
     requirements: {
-        channels: [Channels.CHAT, Channels.BOT_COMMANDS],
+        channels: [Channels.CHAT, Channels.BOT_COMMANDS, Channels.SOUND],
         verboseErrors: true,
     },
     executor: (msg) => msg.channel.send(MICO_URL),

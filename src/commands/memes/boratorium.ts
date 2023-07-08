@@ -9,7 +9,7 @@ export const boratorium: CommandDefinition = {
     description: 'B O R A T',
     category: CommandCategory.MEMES,
     requirements: {
-        channels: [Channels.CHAT, Channels.BOT_COMMANDS],
+        channels: [Channels.CHAT, Channels.BOT_COMMANDS, Channels.SOUND],
         verboseErrors: true,
     },
     executor: (msg) => {

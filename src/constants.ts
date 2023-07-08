@@ -33,6 +33,7 @@ export enum Channels {
     EXP_CFMS_ISSUES = '1046906298815488100',
     VIDEOS = '739224482945826946',
     CHAT = '740722295009706034',
+    SOUND = '748761999747579944',
 }
 
 export enum Threads {

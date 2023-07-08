@@ -9,7 +9,7 @@ export const boris: CommandDefinition = {
     description: 'boris soudn',
     category: CommandCategory.MEMES,
     requirements: {
-        channels: [Channels.CHAT, Channels.BOT_COMMANDS],
+        channels: [Channels.CHAT, Channels.BOT_COMMANDS, Channels.SOUND],
         verboseErrors: true,
     },
     executor: (msg) => {
