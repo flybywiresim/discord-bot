@@ -2,7 +2,7 @@
 
 Update <small>_ July 2023</small>
 
-- fix: adding channel based permissions for memes and some utils (07/07/2023)
+- fix: adding channel based permissions for memes and some utils (08/07/2023)
 - feat: rules updated (05/07/2023)
 - fix: removed an exclamation mark from the build/build info command, as per contributing guidelines (04/07/2023)
 - feat: added .devLanguages to confirm languages used in A32NX (02/07/2023)
