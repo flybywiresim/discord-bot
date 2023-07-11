@@ -47,7 +47,7 @@ const simbriefdatarequestEmbed = makeEmbed({
 const pilotIdNotReplacedEmbed = makeEmbed({
     title: 'FlyByWire Support | SimBrief Data Input Error',
     description: makeLines([
-        'Please replace the *<pilotId>* in the used command with your simbrief pilotId (as set in the EFB settings).',
+        'Please replace the *<pilotId>* in the provided command with your simbrief pilotId (as set in the EFB settings).',
     ]),
     color: Colors.Red,
 });
