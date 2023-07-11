@@ -14,7 +14,7 @@ const simbridgeDebugEmbed = makeEmbed({
         '3. Type \`fbw-simbridge.exe\` and press enter',
         '4. Screenshot the output of the console and send it to us.',
     ]),
-    
+    image: { url: SIMBRIDGE_HELP_URL },
     footer: { text: 'Tip: Click the image to view in full size' },
 });
 
