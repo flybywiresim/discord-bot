@@ -49,6 +49,7 @@ const pilotIdNotReplacedEmbed = makeEmbed({
     description: makeLines([
         'Please replace the *<pilotId>* in the used command with your simbrief pilotId (as set in the EFB settings).',
     ]),
+    color: Colors.Red,
 });
 
 export const simbriefdata: CommandDefinition = {
