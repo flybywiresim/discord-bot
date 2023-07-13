@@ -2,6 +2,7 @@
 
 Update <small>_ July 2023</small>
 
+- feat: optimize simbriefdata for input error and check for FBW airframe (11/07/2023)
 - fix: adding protection if parsing channels or roles fail and autodelete command (09/07/2023)
 - fix: adding channel based permissions for memes and some utils (08/07/2023)
 - feat: rules updated (05/07/2023)
