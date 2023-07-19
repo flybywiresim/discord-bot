@@ -65,7 +65,7 @@ module.exports = {
                 {
                     name: 'Date',
                     value: formattedDate,
-                    inline: false,
+                    inline: true,
                 },
                 {
                     name: 'Author',
@@ -80,7 +80,7 @@ module.exports = {
                 {
                     name: 'Reply to',
                     value: messageReference ? `${messageReference.url}` : 'None',
-                    inline: false,
+                    inline: true,
                 },
                 {
                     name: 'Deleted by',
