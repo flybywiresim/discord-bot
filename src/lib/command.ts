@@ -84,10 +84,14 @@ export function hasRequiredPermissions(requirements: CommandPermissions, member:
         } if (requirements.verboseErrors) {
             let errorText: string;
 
-            if (requirements.rolesBlacklist) {
-                errorText = `The ${requirements.roles.map((r) => member.guild.roles.cache.get(r).name).join(', ')} role${requirements.roles.length > 1 ? 's are' : ' is'} not allowed to use that!`;
-            } else {
-                errorText = `Only the ${requirements.roles.map((r) => member.guild.roles.cache.get(r).name).join(', ')} role${requirements.roles.length > 1 ? 's are' : ' is'} allowed to use that!`;
+            try {
+                if (requirements.rolesBlacklist) {
+                    errorText = `The ${requirements.roles.map((r) => member.guild.roles.cache.get(r).name).join(', ')} role${requirements.roles.length > 1 ? 's are' : ' is'} not allowed to use that!`;
+                } else {
+                    errorText = `Only the ${requirements.roles.map((r) => member.guild.roles.cache.get(r).name).join(', ')} role${requirements.roles.length > 1 ? 's are' : ' is'} allowed to use that!`;
+                }
+            } catch {
+                errorText = 'You don\'t have the required roles to use that!';
             }
 
             return [false, errorText];
@@ -104,10 +108,14 @@ export function hasRequiredPermissions(requirements: CommandPermissions, member:
         } if (requirements.verboseErrors) {
             let errorText: string;
 
-            if (requirements.channelsBlacklist) {
-                errorText = `That can't be used in ${requirements.channels.map((c) => member.guild.channels.cache.get(c).toString()).join(', ')}!`;
-            } else {
-                errorText = `That can only be used in ${requirements.channels.map((c) => member.guild.channels.cache.get(c).toString()).join(', ')}!`;
+            try {
+                if (requirements.channelsBlacklist) {
+                    errorText = `That can't be used in ${requirements.channels.map((c) => member.guild.channels.cache.get(c).toString()).join(', ')}!`;
+                } else {
+                    errorText = `That can only be used in ${requirements.channels.map((c) => member.guild.channels.cache.get(c).toString()).join(', ')}!`;
+                }
+            } catch {
+                errorText = 'That can\'t be used here!';
             }
 
             return [false, errorText];
@@ -130,9 +138,19 @@ export async function sendPermissionsEmbed(msg: Message, error: string) {
         title: 'Command Requirements',
         description: error,
     });
+    if (PermissionsEmbedDelay && PermissionsEmbedDelay > 0) {
+        permEmbed.setFooter({ text: `This message and the command itself will be removed after ${(PermissionsEmbedDelay / 1000)} seconds` });
+    }
     const permMsg = await msg.reply({ embeds: [permEmbed] });
     if (PermissionsEmbedDelay && PermissionsEmbedDelay > 0) {
-        setTimeout(() => permMsg.delete(), PermissionsEmbedDelay); // Delete after 10 seconds
+        setTimeout(() => {
+            try {
+                permMsg.delete();
+                msg.delete();
+            } catch {
+                // Capture failure to initiate delete for whatever reason, but just drop it
+            }
+        }, PermissionsEmbedDelay); // Delete after a delay
     }
 }
 

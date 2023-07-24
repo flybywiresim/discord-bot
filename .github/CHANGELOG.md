@@ -1,8 +1,17 @@
 ## Changelog
 
+Update <small>_ July 2023</small>
+
+- feat: optimize simbriefdata for input error and check for FBW airframe (11/07/2023)
+- fix: adding protection if parsing channels or roles fail and autodelete command (09/07/2023)
+- fix: adding channel based permissions for memes and some utils (08/07/2023)
+- feat: rules updated (05/07/2023)
+- fix: removed an exclamation mark from the build/build info command, as per contributing guidelines (04/07/2023)
+- feat: added .devLanguages to confirm languages used in A32NX (02/07/2023)
+
 Update <small>_ June 2023</small>
 
-- feat: added .spad command, which links to the SPAD.neXt doscord server (28/06/2023)
+- feat: added .spad command, which links to the SPAD.neXt discord server (28/06/2023)
 - fix: correct a typo in .versions command (28/06/2023)
 - refactor: remove the experimental version from the commands (28/06/2023)
 - fix: Corrected typo on .simbriefdata in command list (28/06/2023)
