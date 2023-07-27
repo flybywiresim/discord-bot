@@ -2,6 +2,7 @@
 
 Update <small>_ July 2023</small>
 
+- fix: change the checklist image in the checklist command to the correct one (27/07/2023)
 - fix: Removing auto-delete of timeout command and response, and fixing bug with untimeout (27/07/2023)
 - feat: optimize simbriefdata for input error and check for FBW airframe (11/07/2023)
 - fix: adding protection if parsing channels or roles fail and autodelete command (09/07/2023)
