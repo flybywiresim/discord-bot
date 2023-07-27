@@ -197,9 +197,13 @@ export const timeout: CommandDefinition = {
             return msg.reply('Cannot timeout a user for more than 3 weeks.');
         }
 
+        if (timeoutDuration === 0) {
+            timeoutDuration = 1; // Setting to 1ms in case an untimeout is requested
+        }
+
         return targetUser.timeout(timeoutDuration, reason).then(async () => {
-            if (timeoutDuration === 0) { // Timeout removed
-                const timeoutResponse = await msg.reply({ embeds: [unTimeoutEmbed(targetUser.user)] });
+            if (timeoutDuration === 1) { // Timeout removed
+                await msg.reply({ embeds: [unTimeoutEmbed(targetUser.user)] });
                 if (modLogsChannel) {
                     await modLogsChannel.send({ embeds: [unTimeoutModLogEmbed(msg.author, targetUser.user)] });
                 }
@@ -223,14 +227,11 @@ export const timeout: CommandDefinition = {
                         });
                     }
                 }
-                return setTimeout(() => {
-                    timeoutResponse.delete();
-                    msg.delete();
-                }, 4000);
+                return;
             }
 
             if (targetUser.isCommunicationDisabled()) { // Timeout successful
-                const timeoutResponse = await msg.reply({ embeds: [timeoutEmbed(targetUser.user, reason, timeoutArg)] });
+                await msg.reply({ embeds: [timeoutEmbed(targetUser.user, reason, timeoutArg)] });
                 try {
                     await targetUser.send({ embeds: [DMEmbed(msg.author, timeoutArg, reason, msg.guild, targetUser.communicationDisabledUntil)] });
                 } catch (e) {
@@ -268,13 +269,10 @@ export const timeout: CommandDefinition = {
                         await modLogsChannel.send({ embeds: [warnFailed] });
                     }
                 }
-                return setTimeout(() => { // Delete the command and response after 4 seconds
-                    timeoutResponse.delete();
-                    msg.delete();
-                }, 4000);
+                return;
             }
 
-            return msg.reply({ embeds: [failedTimeoutEmbed(targetUser)] }); // Timeout unsuccessful
+            await msg.reply({ embeds: [failedTimeoutEmbed(targetUser)] }); // Timeout unsuccessful
         });
     },
 };
