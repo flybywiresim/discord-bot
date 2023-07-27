@@ -38,14 +38,12 @@ module.exports = {
                 }
             });
         }
-        for (let i = 0; i < messageEmbeds.length; i++) {
-            const messageEmbed = messageEmbeds[i];
+        for (const messageEmbed of messageEmbeds) {
             const { image, fields } = messageEmbed;
             if (image) {
                 messageComponents.push(`<${image.url}>`);
             }
-            for (let j = 0; j < fields.length; j++) {
-                const field = fields[i];
+            for (const field of fields) {
                 const { name, value } = field;
                 if (name && value) {
                     messageComponents.push(`${name}: ${value}`);
