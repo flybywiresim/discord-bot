@@ -2,7 +2,8 @@
 
 Update <small>_ August 2023</small>
 
-- feat: added .simbridgedebug command which explains debugging steps, if SimBridge crashes right after starting (07/08/2023)
+- feat: enhancing user delete log with reference if a reply is deleted, and with embed and attachment data (27/08/2023)
+- feat: added .simbridgedebug command which explains debugging steps, if SimBridge crashes right after starting (27/08/2023)
 
 Update <small>_ July 2023</small>
 
