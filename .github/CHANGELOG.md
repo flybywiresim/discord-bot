@@ -2,11 +2,11 @@
 
 Update <small>_ August 2023</small>
 
-- feat: added .simbridgedebug command which explains debugging steps, if SimBridge crashes right after starting (07/08/2023)
+- feat: enhancing user delete log with reference if a reply is deleted, and with embed and attachment data (27/08/2023)
+- feat: added .simbridgedebug command which explains debugging steps, if SimBridge crashes right after starting (27/08/2023)
 
 Update <small>_ July 2023</small>
 
-- feat: enhancing user delete log with reference if a reply is deleted, and with embed and attachment data (27/07/2023)
 - fix: change the checklist image in the checklist command to the correct one (27/07/2023)
 - fix: Removing auto-delete of timeout command and response, and fixing bug with untimeout (27/07/2023)
 - feat: optimize simbriefdata for input error and check for FBW airframe (11/07/2023)
