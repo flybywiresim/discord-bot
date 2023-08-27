@@ -1,5 +1,9 @@
 ## Changelog
 
+Update <small>_ August 2023</small>
+
+- feat: added .simbridgedebug command which explains debugging steps, if SimBridge crashes right after starting (07/08/2023)
+
 Update <small>_ July 2023</small>
 
 - fix: change the checklist image in the checklist command to the correct one (27/07/2023)
