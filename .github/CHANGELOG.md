@@ -2,7 +2,7 @@
 
 Update <small>_ September 2023</small>
 
-- fix: Update takeoff calculator command to highlight new ongoing development (04/09/2023)
+- fix: update takeoff calculator command to highlight new ongoing development (04/09/2023)
 
 Update <small>_ August 2023</small>
 
