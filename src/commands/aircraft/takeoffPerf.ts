@@ -8,7 +8,7 @@ const takeoffPerfEmbed = makeEmbed({
         '',
         'While there are many online calculators available, these often use A320ceo data, and are not accurate.',
         '',
-        'A takeoff calculator for the A32NX is being developed based on public information and testing.']),
+        'A takeoff calculator for the A32NX is under development.']),
 });
 
 export const takeoffPerf: MessageCommandDefinition = {
