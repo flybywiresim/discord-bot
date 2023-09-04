@@ -1,14 +1,10 @@
 import { MessageCommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
-import { makeEmbed, makeLines } from '../../lib/embed';
+import { makeEmbed } from '../../lib/embed';
 
 const takeoffPerfEmbed = makeEmbed({
     title: 'FlyByWire A32NX | Where is the takeoff calculator?',
-    description: makeLines(['Currently, Airbus does not publicly release takeoff performance data for the A320neo, which means it is difficult to create an accurate takeoff calculator.',
-        '',
-        'While there are many online calculators available, these often use A320ceo data, and are not accurate.',
-        '',
-        'A takeoff calculator for the A32NX is under development.']),
+    description: 'A takeoff calculator for the A32NX is currently under development.',
 });
 
 export const takeoffPerf: MessageCommandDefinition = {
