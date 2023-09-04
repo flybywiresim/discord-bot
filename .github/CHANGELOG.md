@@ -1,5 +1,9 @@
 ## Changelog
 
+Update <small>_ July 2024</small>
+
+- fix: Update takeoff calculator command to highlight new ongoing development (04/09/2023)
+
 Update <small>_ June 2024</small>
 
 - fix: econnreset description (08/06/2024)
