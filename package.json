@@ -14,7 +14,7 @@
   "license": "AGPLv3",
   "dependencies": {
     "@elastic/ecs-winston-format": "^1.1.0",
-    "@octokit/request": "^6.2.3",
+    "@octokit/request": "^8.1.2",
     "agenda": "^5.0.0",
     "bad-words": "^3.0.4",
     "cowsay": "^1.5.0",
