@@ -1,5 +1,5 @@
 import { CommandDefinition } from '../../lib/command';
-import { Channels, CommandCategory, imageBaseUrl } from '../../constants';
+import { ChannelGroups, CommandCategory, imageBaseUrl } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 
 const DEFAULT_URL = `${imageBaseUrl}/memes/default.gif`;
@@ -9,7 +9,7 @@ export const defaultmeme: CommandDefinition = {
     description: 'O_o',
     category: CommandCategory.MEMES,
     requirements: {
-        channels: [Channels.CHAT, Channels.BOT_COMMANDS],
+        channels: ChannelGroups.LiberalChannels,
         verboseErrors: true,
     },
     executor: (msg) => {

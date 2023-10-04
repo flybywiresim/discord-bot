@@ -1,6 +1,6 @@
 import { CommandDefinition } from '../../lib/command';
 import { makeEmbed } from '../../lib/embed';
-import { Channels, CommandCategory, imageBaseUrl } from '../../constants';
+import { ChannelGroups, CommandCategory, imageBaseUrl } from '../../constants';
 
 const BRUHEG_URL = `${imageBaseUrl}/memes/bruheg.png`;
 
@@ -9,7 +9,7 @@ export const bruheg: CommandDefinition = {
     description: 'bruheg momen',
     category: CommandCategory.MEMES,
     requirements: {
-        channels: [Channels.CHAT, Channels.BOT_COMMANDS],
+        channels: ChannelGroups.LiberalChannels,
         verboseErrors: true,
     },
     executor: (msg) => {

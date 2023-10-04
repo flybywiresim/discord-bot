@@ -1,6 +1,6 @@
 import { CommandDefinition } from '../../lib/command';
 import { makeEmbed } from '../../lib/embed';
-import { Channels, CommandCategory, imageBaseUrl } from '../../constants';
+import { ChannelGroups, CommandCategory, imageBaseUrl } from '../../constants';
 
 const ADDON_URL = `${imageBaseUrl}/memes/addon.png`;
 
@@ -9,7 +9,7 @@ export const addon: CommandDefinition = {
     description: 'addon not mod meme',
     category: CommandCategory.MEMES,
     requirements: {
-        channels: [Channels.CHAT, Channels.BOT_COMMANDS],
+        channels: ChannelGroups.LiberalChannels,
         verboseErrors: true,
     },
     executor: (msg) => {

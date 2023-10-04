@@ -36,6 +36,10 @@ export enum Channels {
     SOUND = '748761999747579944',
 }
 
+export const ChannelGroups = {
+    LiberalChannels: [Channels.CHAT, Channels.BOT_COMMANDS, Channels.SUPPORT_OPS, ]
+}
+
 export enum Threads {
     BIRTHDAY_THREAD = '930923893206679573',
     COUNT_THREAD = '877049017102659654',
