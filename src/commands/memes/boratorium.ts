@@ -1,6 +1,6 @@
 import { CommandDefinition } from '../../lib/command';
 import { makeEmbed } from '../../lib/embed';
-import { Channels, CommandCategory, imageBaseUrl } from '../../constants';
+import { Channels, ChannelGroups, CommandCategory, imageBaseUrl } from '../../constants';
 
 const BORATORIUM_URL = `${imageBaseUrl}/memes/boratorium.png`;
 
@@ -9,7 +9,7 @@ export const boratorium: CommandDefinition = {
     description: 'B O R A T',
     category: CommandCategory.MEMES,
     requirements: {
-        channels: [Channels.CHAT, Channels.BOT_COMMANDS, Channels.SOUND],
+        channels: ChannelGroups.LiberalChannels.concat(Channels.SOUND),
         verboseErrors: true,
     },
     executor: (msg) => {

@@ -1,14 +1,14 @@
 import Filter from 'bad-words';
 import { say } from 'cowsay';
 import { CommandDefinition } from '../../lib/command';
-import { Channels, CommandCategory } from '../../constants';
+import { ChannelGroups, CommandCategory } from '../../constants';
 
 export const cowsay: CommandDefinition = {
     name: ['cowsay', 'cs'],
     description: 'Emulates the famous UNIX program `cowsay`.',
     category: CommandCategory.MEMES,
     requirements: {
-        channels: [Channels.BOT_COMMANDS],
+        channels: ChannelGroups.LiberalChannels,
         verboseErrors: true,
     },
     executor: (msg) => {

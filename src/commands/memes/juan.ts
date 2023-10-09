@@ -1,5 +1,5 @@
 import { CommandDefinition } from '../../lib/command';
-import { Channels, CommandCategory, imageBaseUrl } from '../../constants';
+import { ChannelGroups, CommandCategory, imageBaseUrl } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 
 const JAUN_URL = `${imageBaseUrl}/memes/juan.png`;
@@ -9,7 +9,7 @@ export const juan: CommandDefinition = {
     description: 'just... Jaun',
     category: CommandCategory.MEMES,
     requirements: {
-        channels: [Channels.CHAT, Channels.BOT_COMMANDS],
+        channels: ChannelGroups.LiberalChannels,
         verboseErrors: true,
     },
     executor: (msg) => {

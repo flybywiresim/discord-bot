@@ -1,5 +1,5 @@
 import { CommandDefinition } from '../../lib/command';
-import { Channels, CommandCategory, imageBaseUrl } from '../../constants';
+import { ChannelGroups, CommandCategory, imageBaseUrl } from '../../constants';
 
 const OIM_URL = `${imageBaseUrl}/memes/oim.gif`;
 
@@ -8,7 +8,7 @@ export const oim: CommandDefinition = {
     category: CommandCategory.MEMES,
     description: 'oim',
     requirements: {
-        channels: [Channels.CHAT, Channels.BOT_COMMANDS],
+        channels: ChannelGroups.LiberalChannels,
         verboseErrors: true,
     },
     executor: (msg) => msg.channel.send(OIM_URL),
