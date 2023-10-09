@@ -1,5 +1,9 @@
 ## Changelog
 
+Update <small>_ October 2023</small>
+
+- feat: ebable memes in support-ops (09/10/2023)
+
 Update <small>_ August 2023</small>
 
 - feat: enhancing user delete log with reference if a reply is deleted, and with embed and attachment data (27/08/2023)
