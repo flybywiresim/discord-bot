@@ -1,6 +1,6 @@
 ## Changelog
 
-Update <small>_ Octobre 2023</small>
+Update <small>_ October 2023</small>
 
 - fix: fixed wrong command string in .simbridgedebug command (28/10/2023)
 
