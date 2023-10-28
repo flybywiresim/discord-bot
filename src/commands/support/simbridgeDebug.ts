@@ -11,7 +11,7 @@ const simbridgeDebugEmbed = makeEmbed({
         '',
         '1. Open the folder where SimBridge is installed.',
         '2. Open a terminal window in that location (Hold `SHIFT` and right click on the empty space of the folder, then select "Open Windows Terminal", "Open Command Prompt", or "Open Powershell Window".',
-        '3. Type `fbw-simbridge.exe` and press enter.',
+        '3. Type `.\fbw-simbridge.exe` and press enter.',
         '4. Screenshot the output of the console and send it to us.',
     ]),
     image: { url: SIMBRIDGE_HELP_URL },
