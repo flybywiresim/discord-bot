@@ -31,7 +31,7 @@
     "@flybywiresim/eslint-config": "^0.1.0",
     "@types/jsdom": "^21.1.0",
     "@types/node": "^18.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.28.5",
+    "@typescript-eslint/eslint-plugin": "^6.13.1",
     "@typescript-eslint/parser": "^4.28.5",
     "dotenv": "^16.0.0",
     "eslint": "^7.29.0",
