@@ -1,5 +1,9 @@
 ## Changelog
 
+Update <small>_ January 2024</small>
+
+- fix: update A32NX download links (03/01/2024)
+
 Update <small>_ October 2023</small>
 
 - fix: fixed wrong command string in .simbridgedebug command (28/10/2023)

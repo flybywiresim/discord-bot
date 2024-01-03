@@ -16,7 +16,7 @@ const versionsEmbed = makeEmbed({
             value: makeLines([
                 '> Stable is our version which has features that are the most mature and most tested. This should be a reliable version for those preferring stability over newest features. Will be compatible with each major MSFS patch.',
                 '',
-                '> Use the [installer](https://api.flybywiresim.com/installer) or [download here](https://github.com/flybywiresim/a32nx/releases/download/assets/stable/A32NX-stable.zip)',
+                '> Use the [installer](https://api.flybywiresim.com/installer) or [download here](https://github.com/flybywiresim/aircraft/releases/download/assets/stable/A32NX-stable.zip)',
             ]),
             inline: false,
         },
@@ -25,7 +25,7 @@ const versionsEmbed = makeEmbed({
             value: makeLines([
                 '> Development will have the latest features that will eventually end up in the next stable release. In general this version has the latest fixes and newest features but also a slightly higher risk of containing bugs. Development updates whenever a change is made to the "master" branch on Github.',
                 '',
-                '> Use the [installer](https://api.flybywiresim.com/installer) or [download here](https://github.com/flybywiresim/a32nx/releases/download/assets/master/A32NX-master.zip)',
+                '> Use the [installer](https://api.flybywiresim.com/installer) or [download here](https://github.com/flybywiresim/aircraft/releases/download/assets/master/A32NX-master.7z)',
             ]),
             inline: false,
         },
