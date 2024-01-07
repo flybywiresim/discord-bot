@@ -2,6 +2,7 @@
 
 Update <small>_ January 2024</small>
 
+- refactor: change cdn url (07/01/2024)
 - fix: update A32NX download links (03/01/2024)
 
 Update <small>_ October 2023</small>
