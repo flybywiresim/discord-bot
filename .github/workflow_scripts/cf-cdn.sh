@@ -1,7 +1,7 @@
 #!/bin/bash
 
 CDN_URL=$CLOUDFLARE_CDN_URL
-CDN_DIR=${1:-"assets/images"}
+CDN_DIR=${1:-"old-bot/assets/images"}
 LOCAL_DIR=${2:-"assets/images"}
 
 MAX_RETRY=5
