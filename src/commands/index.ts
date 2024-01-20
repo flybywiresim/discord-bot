@@ -13,7 +13,6 @@ import { versions } from './aircraft/versions';
 import { installer } from './general/installer';
 import { adirs } from './aircraft/adirs';
 import { logs } from './support/logs';
-import { reportedissues } from './support/reportedissues';
 import { autopilot } from './aircraft/autopilot';
 import { checklist } from './aircraft/checklist';
 import { help } from './utils/help';
@@ -156,6 +155,7 @@ import { migratedCommand } from './general/migratedCommand';
 //import { metar } from './utils/metar';
 //import { ping } from './utils/ping';
 //import { pr } from './utils/pr';
+//import { reportedissues } from './support/reportedissues';
 //import { roleassignment } from './moderation/roleassignment';
 //import { roleinfo } from './utils/roleinfo';
 //import { rules } from './moderation/rules';
@@ -188,7 +188,6 @@ const commands: BaseCommandDefinition[] = [
     installer,
     adirs,
     logs,
-    reportedissues,
     autopilot,
     checklist,
     help,
@@ -331,6 +330,7 @@ const commands: BaseCommandDefinition[] = [
     //metar,
     //ping,
     //pr,
+    //reportedissues,
     //roleassignment,
     //roleinfo,
     //rules,
