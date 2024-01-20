@@ -69,7 +69,6 @@ import { tug } from './support/tug';
 import { crak } from './memes/crak';
 import { weightBalance } from './aircraft/weightBalance';
 import { fixinfo } from './aircraft/fixinfo';
-import { welcome } from './moderation/welcome';
 import { sop } from './aircraft/sop';
 import { goldenRules } from './general/goldenRules';
 import { fridge } from './memes/fridge';
@@ -108,7 +107,6 @@ import { takeoffIssues } from './aircraft/takeoffissues';
 import { simbridge } from './support/simbridge';
 import { fma } from './aircraft/fma';
 import { noHello } from './memes/noHello';
-import { docsearch } from './general/docsearch';
 import { dlss } from './support/dlss';
 import { temporarycommandedit } from './moderation/temporaryCommandEdit';
 import { temporarycommand } from './general/temporaryCommand';
@@ -150,6 +148,7 @@ import { migratedCommand } from './general/migratedCommand';
 //import { cacheUpdate } from './moderation/cacheUpdate';
 //import { count } from './utils/count';
 //import { deleteWarn } from './moderation/warn/deleteWarn';
+//import { docsearch } from './general/docsearch';
 //import { faq } from './moderation/faq';
 //import { flights } from './utils/flights';
 //import { listWarnings } from './moderation/warn/listWarnings';
@@ -170,6 +169,7 @@ import { migratedCommand } from './general/migratedCommand';
 //import { vatsimData } from './utils/vatsimData';
 //import { vatsimEvents } from './utils/vatsimEvents';
 //import { warn } from './moderation/warn/warn';
+//import { welcome } from './moderation/welcome';
 //import { whois } from './moderation/whois';
 //import { wolframalpha } from './utils/wolframalpha';
 //import { zulu } from './utils/zulu';
@@ -244,7 +244,6 @@ const commands: BaseCommandDefinition[] = [
     crak,
     weightBalance,
     fixinfo,
-    welcome,
     sop,
     goldenRules,
     fridge,
@@ -283,7 +282,6 @@ const commands: BaseCommandDefinition[] = [
     simbridge,
     fma,
     noHello,
-    docsearch,
     dlss,
     temporarycommandedit,
     temporarycommand,
@@ -325,6 +323,7 @@ const commands: BaseCommandDefinition[] = [
     //cacheUpdate,
     //count,
     //deleteWarn,
+    //docsearch,
     //faq,
     //flights,
     //listWarnings,
@@ -345,6 +344,7 @@ const commands: BaseCommandDefinition[] = [
     //vatsimData,
     //vatsimEvents,
     //warn,
+    //welcome,
     //whois,
     //wolframalpha,
     //zulu,
