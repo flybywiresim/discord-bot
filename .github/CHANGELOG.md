@@ -6,6 +6,7 @@ Update <small>_ May 2024</small>
 
 Update <small>_ January 2024</small>
 
+- fix: remove synaptic command (31/01/2024)
 - feat: Disabling migrated commands and adding a message to highlight the same (27/01/2024)
 - refactor: change cdn url (07/01/2024)
 - fix: update A32NX download links (03/01/2024)
