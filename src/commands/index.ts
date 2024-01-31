@@ -57,7 +57,6 @@ import { xp } from './memes/xp';
 import { addon } from './memes/addon';
 import { freetext } from './aircraft/freetext';
 import { cowsay } from './memes/cowsay';
-import { synaptic } from './general/synaptic';
 import { directx12 } from './support/directx12';
 import { cfms } from './aircraft/cfms';
 import { fdr } from './support/fdr';
@@ -232,7 +231,6 @@ const commands: BaseCommandDefinition[] = [
     addon,
     freetext,
     cowsay,
-    synaptic,
     directx12,
     cfms,
     fdr,
