@@ -1,5 +1,8 @@
 ## Changelog
 
+Update <small>_ May 2024</small>
+- refactor: Improve screenshot command for QoL
+
 Update <small>_ January 2024</small>
 
 - feat: Disabling migrated commands and adding a message to highlight the same (27/01/2024)
