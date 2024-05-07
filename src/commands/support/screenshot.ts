@@ -11,7 +11,7 @@ const screenshotEmbed = makeEmbed({
         '',
         'Please position yourself in the cockpit using the arrow keys to look straight at the front instrument panel. Then use the [Windows Snipping Tool](https://support.microsoft.com/en-us/windows/open-snipping-tool-and-take-a-screenshot-a35ac9ff-4a58-24c9-3253-f12bac9f9d44) to take a clear screenshot of **all screens and the entire FCU** as shown below.',
         '',
-        'Read the guide [here](https://docs.flybywiresim.com/fbw-a32nx/support/#screenshot-of-cockpit) for more information.',
+        'Read our guide [here](https://docs.flybywiresim.com/fbw-a32nx/support/#screenshot-of-cockpit) for more information.',
     ]),
     image: { url: SCREENSHOT_HELP_URL },
 });
