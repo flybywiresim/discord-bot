@@ -2,6 +2,7 @@
 
 Update <small>_ May 2024</small>
 
+- fix: remove synaptic command (07/05/2024)
 - refactor: Improve screenshot command for QoL (07/05/2024)
 
 Update <small>_ January 2024</small>
