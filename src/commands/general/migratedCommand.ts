@@ -26,6 +26,7 @@ export const migratedCommand: MessageCommandDefinition = {
         'documentation',
         'doc',
         'docs',
+        'efb',
         'ev',
         'event',
         'events',

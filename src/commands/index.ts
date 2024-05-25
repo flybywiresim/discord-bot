@@ -3,7 +3,6 @@ import Logger from '../lib/logger';
 import { typeCommand } from '../lib/typeCommand';
 import { bruheg } from './memes/bruheg';
 import { boratorium } from './memes/boratorium';
-import { efb } from './aircraft/efb';
 import { deadzones } from './support/deadzones';
 import { screens } from './aircraft/screens';
 import { when } from './general/when';
@@ -176,7 +175,6 @@ const commands: BaseCommandDefinition[] = [
     typeCommand,
     bruheg,
     boratorium,
-    efb,
     deadzones,
     screens,
     when,
