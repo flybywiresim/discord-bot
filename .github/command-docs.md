@@ -101,7 +101,6 @@
 | .botissue         | Provides details on where to create a FBW Discord Bot Issue or Feature Request                                                                                                             | .bot-issue <br> .botfeature <br> .bot-feature <br> .botfeat |
 | .devlanguages     | Provides a list of development languages used in the A32NX                                                                                                                                 | .devlanguage <br> .devlang <br> .dl                         |
 | .dfd              | Provides link to Digital Flight Dynamics discord server                                                                                                                                    | ---                                                         |
-| .docsearch        | Provides a link to the FlyByWire documentation, either a general link, or a link for a specific search <br> Search terms can be terminated by a line break or one of the symbols . - > \ / | .documentation <br> .docs <br> .doc                         |
 | .donate           | Provides a link to the open collective                                                                                                                                                     | ---                                                         |
 | .goldenrules      | Provides an image describing the golden rules an Airbus pilot should follow                                                                                                                | .golden <br> .gr                                            |
 | .fsltl            | Provides link to the FS Live Traffic Liveries Discord server                                                                                                                               | .fslivetrafficliveries                                      |
@@ -126,23 +125,8 @@
 
 | Command       | Description                                                                          | Alias                                                          |
 |:--------------|:-------------------------------------------------------------------------------------|:---------------------------------------------------------------|
-| .avatar       | Shows the selected user's avatar                                                     | .av                                                            |
-| .birthday     | Handles adding & removing user birthdays                                             | ---                                                            |
-| .count        | counts in the count thread                                                           | ---                                                            |
-| .events       | Show a list of upcoming VATSIM events.                                               | .event <br> .ev <br> .vatsimevents <br> .vatevents <br> .vatev |
 | .help         | Sends a list of available commands to the user                                       | ---                                                            |
-| .liveflights  | Get the current live flights for FlyByWire Simulations                               | .flights <br> .flight                                          |
-| .membercount  | Lists the guild's current amount of members                                          | ---                                                            |
-| .metar        | Provides the METAR report of the requested airport                                   | ---                                                            |
 | .ping         | Send back a message                                                                  | ---                                                            |
-| .pr           | Provide a link to any given FBW PRs                                                  | ---                                                            |
-| .roleinfo     | Lists the guild's current amount of members                                          | ---                                                            |
-| .simbriefdata | Lists a number of attributes from the last generated SimBrief flightplan of a user   | ---                                                            |
-| .station      | Provides station information                                                         | ---                                                            |
-| .taf          | Provides the TAF report of the requested airport                                     | ---                                                            |
-| .vatsim       | Show statistics and details of online VATSIM controllers, observers, ATIS and pilots | .vatsimdata <br/> .vatdata                                     |
-| .wa           | Queries the Wolfram Alpha API                                                        | .calc <br> .ask                                                |
-| .zulu         | Get the current time at a given UTC-offset timezone                                  | ---                                                            |
 
 ### Memes
 
@@ -179,19 +163,5 @@
 
 | Command               | Description                                                                                             | Alias                                      |
 |:----------------------|:--------------------------------------------------------------------------------------------------------|:-------------------------------------------|
-| .ban                  | ---                                                                                                     | ---                                        |
-| .cacheupdate          | Update the cache of the bot with the information from discord for different aspects                     | .cache-update                              |
-| .deletewarn           | Deletes a users warning                                                                                 | .delwarn <br/> .deletewarning              |
-| .faq                  | Sends the FAQ                                                                                           | ---                                        |
-| .roleassignment       | Sends the role assignment messages                                                                      | ---                                        |
-| .rules                | Sends the rules                                                                                         | ---                                        |
-| .slowmode             | Sets slow mode for a channel and is capable of automatically disabling it after a timeout.              | ---                                        |
 | .sticky               | Manage sticky messages which are posted in Forum Posts when a new post is created                       | ---                                        |
 | .temporarycommandedit | Manage temporary commands, which are simple output commands to highlight temporary situations to users. | .tempcommandedit <br> .tcedit <br> .tcmod  |
-| .timeout              | ---                                                                                                     | ---                                        |
-| .unban                | ---                                                                                                     | ---                                        |
-| .untimeout            | ---                                                                                                     | .removetimeout                             |
-| .warn                 | Warns a user                                                                                            | ---                                        |
-| .warnings             | Lists a users warnings                                                                                  | .listwarn <br/> .listwarnings <br/> .warns |
-| .welcome              | Sends the welcome                                                                                       | ---                                        |
-| .whois                | Provides an embedded message with information about the mentioned user                                  | ---                                        |
