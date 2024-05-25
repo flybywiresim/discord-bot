@@ -4,7 +4,6 @@
 
 | Command                  | Description                                                                                       | Alias                                                  |
 |:-------------------------|:--------------------------------------------------------------------------------------------------|:-------------------------------------------------------|
-| .adirs                   | Replaced by slash command.               | ---                                                    |
 | .afloor                  | Provides a link to the Alpha Floor Tool-Tip                                                       | ---                                                    |
 | .airframe                | Provides a link to the updated Simbrief airframe                                                  | ---                                                    |
 | .assistance              | Explains to the user why assistance options should be disabled                                    | .assi <br> .as                                         |
@@ -19,7 +18,6 @@
 | .cpdlc                   | Provide info and docs link for Hoppie ACARS                                                       | .pdc <br> .hoppie <br> .acars                          |
 | .ctrle                   | Displays help regarding CTRL+E engine start                                                       | .ctrl+e <br> .ctrl-e <br> .enginestart                 |
 | .direct                  | Provides a link to the Direct documentation (also referred to as DIR TO)                          | .dirto <br> .directto                                  |
-| .efb                     | Inquire about the state of the EFB                                                                | ---                                                    |
 | .experimental            | Explains the current state of the experimental build                                              | .exp                                                   |
 | .fixinfo                 | Provide information about the fix info feature                                                    | ---                                                    |
 | .flextemp                | Provides a link to the a32nx flex temp guide                                                      | .flex                                                  |
