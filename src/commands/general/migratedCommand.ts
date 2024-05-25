@@ -9,6 +9,7 @@ const migratedCommandEmbed = makeEmbed({
 
 export const migratedCommand: MessageCommandDefinition = {
     name: [
+        'adirs',
         'ask',
         'av',
         'avatar',

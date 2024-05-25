@@ -4,7 +4,7 @@
 
 | Command                  | Description                                                                                       | Alias                                                  |
 |:-------------------------|:--------------------------------------------------------------------------------------------------|:-------------------------------------------------------|
-| .adirs                   | Display help with ADIRS alignment                                                                 | ---                                                    |
+| .adirs                   | Replaced by slash command.               | ---                                                    |
 | .afloor                  | Provides a link to the Alpha Floor Tool-Tip                                                       | ---                                                    |
 | .airframe                | Provides a link to the updated Simbrief airframe                                                  | ---                                                    |
 | .assistance              | Explains to the user why assistance options should be disabled                                    | .assi <br> .as                                         |

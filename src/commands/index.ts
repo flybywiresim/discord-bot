@@ -11,7 +11,6 @@ import { trythis } from './support/trythis';
 import { experimental } from './aircraft/experimental';
 import { versions } from './aircraft/versions';
 import { installer } from './general/installer';
-import { adirs } from './aircraft/adirs';
 import { logs } from './support/logs';
 import { autopilot } from './aircraft/autopilot';
 import { checklist } from './aircraft/checklist';
@@ -185,7 +184,6 @@ const commands: BaseCommandDefinition[] = [
     experimental,
     versions,
     installer,
-    adirs,
     logs,
     autopilot,
     checklist,
