@@ -2,7 +2,8 @@
 
 Update <small>_ May 2024</small>
 
-- chore: remove efb and adirs commands (25/05/2024)
+- feat: devlanguage command more aliases (26/05/2024)
+- chore: remove efb and adirs commands (26/05/2024)
 - fix: remove synaptic command (07/05/2024)
 - refactor: Improve screenshot command for QoL (07/05/2024)
 
