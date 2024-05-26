@@ -3,7 +3,6 @@ import Logger from '../lib/logger';
 import { typeCommand } from '../lib/typeCommand';
 import { bruheg } from './memes/bruheg';
 import { boratorium } from './memes/boratorium';
-import { efb } from './aircraft/efb';
 import { deadzones } from './support/deadzones';
 import { screens } from './aircraft/screens';
 import { when } from './general/when';
@@ -11,7 +10,6 @@ import { trythis } from './support/trythis';
 import { experimental } from './aircraft/experimental';
 import { versions } from './aircraft/versions';
 import { installer } from './general/installer';
-import { adirs } from './aircraft/adirs';
 import { logs } from './support/logs';
 import { autopilot } from './aircraft/autopilot';
 import { checklist } from './aircraft/checklist';
@@ -177,7 +175,6 @@ const commands: BaseCommandDefinition[] = [
     typeCommand,
     bruheg,
     boratorium,
-    efb,
     deadzones,
     screens,
     when,
@@ -185,7 +182,6 @@ const commands: BaseCommandDefinition[] = [
     experimental,
     versions,
     installer,
-    adirs,
     logs,
     autopilot,
     checklist,
