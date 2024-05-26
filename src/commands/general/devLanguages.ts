@@ -16,7 +16,7 @@ const devLanguagesEmbed = makeEmbed({
 });
 
 export const devLanguages: MessageCommandDefinition = {
-    name: ['devlanguage', 'devlanguages', 'devlang', 'dl'],
+    name: ['devlanguage', 'devlanguages', 'devlang', 'dl', 'stack', 'techstack'],
     description: 'Provides a list of development languages used in the A32NX.',
     category: CommandCategory.GENERAL,
     genericEmbed: devLanguagesEmbed,
