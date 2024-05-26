@@ -2,6 +2,7 @@
 
 Update <small>_ May 2024</small>
 
+- feat: devlanguage command more aliases (26/05/2024)
 - fix: remove synaptic command (07/05/2024)
 - refactor: Improve screenshot command for QoL (07/05/2024)
 
