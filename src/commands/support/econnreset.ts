@@ -5,7 +5,7 @@ import { makeEmbed, makeLines } from '../../lib/embed';
 const econnresetEmbed = makeEmbed({
     title: 'FlyByWire Support | ECONNRESET',
     description: makeLines([
-        'To verify that this issue is not caused by your Internet Service Provider, please use a VPN service with the connection location set to the US and try again.',
+        'To verify that this issue is not caused by your Internet Service Provider, please use a VPN service and try again.',
         '',
         'We recommend [ProtonVPN](https://protonvpn.com/free-vpn/)* as they offer a free plan.',
     ]),
