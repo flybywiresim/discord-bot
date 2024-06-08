@@ -1,8 +1,11 @@
 ## Changelog
 
+Update <small>_ June 2024</small>
+
+- fix: econnreset description (08/06/2024)
+
 Update <small>_ May 2024</small>
 
-- fix: econnreset description (29/05/2024)
 - refactor: expand technical abbreviations (26/05/2024)
 - feat: devlanguage command more aliases (26/05/2024)
 - chore: remove efb and adirs commands (26/05/2024)
