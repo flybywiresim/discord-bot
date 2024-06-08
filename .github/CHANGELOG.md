@@ -1,5 +1,9 @@
 ## Changelog
 
+Update <small>_ June 2024</small>
+
+- fix: econnreset description (08/06/2024)
+
 Update <small>_ May 2024</small>
 
 - refactor: expand technical abbreviations (26/05/2024)
