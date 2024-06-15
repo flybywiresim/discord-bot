@@ -2,6 +2,7 @@
 
 Update <small>_ June 2024</small>
 
+- fix: add aliases back to weather command (15/06/2024)
 - fix: econnreset description (08/06/2024)
 
 Update <small>_ May 2024</small>
