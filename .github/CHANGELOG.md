@@ -2,7 +2,7 @@
 
 Update <small>_ July 2024</small>
 
-- fix: update takeoff calculator command to highlight new ongoing development (04/09/2023)
+- fix: update takeoff calculator and flex temp command to highlight new improvements (01/07/2024)
 
 Update <small>_ June 2024</small>
 
