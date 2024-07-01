@@ -1,5 +1,9 @@
 ## Changelog
 
+Update <small>_ July 2024</small>
+
+- fix: update takeoff calculator and flex temp command to highlight new improvements (01/07/2024)
+
 Update <small>_ June 2024</small>
 
 - fix: econnreset description (08/06/2024)
