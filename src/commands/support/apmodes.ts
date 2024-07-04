@@ -1,8 +1,8 @@
 import { MessageCommandDefinition } from '../../lib/command';
-import { CommandCategory } from '../../constants';
+import { CommandCategory, imageBaseUrl } from '../../constants';
 import { makeEmbed } from '../../lib/embed';
 
-const MANAGED_SELECTED_IMAGE = 'https://cdn.discordapp.com/attachments/1234165731319353436/1258331400709472256/New_Project_1.png?ex=6687a7f0&is=66865670&hm=462f8a417207e18117703c42295da293497dc2895f88f30d068c07f216ea5259&';
+const MANAGED_SELECTED_IMAGE = `${imageBaseUrl}/support/apmodes.png`;
 
 export const apModesEmbed = makeEmbed({
     title: 'Auto Pilot Modes',
