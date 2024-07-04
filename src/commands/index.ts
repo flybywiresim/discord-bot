@@ -138,6 +138,7 @@ import { spad } from './general/spad';
 import { devLanguages } from './general/devLanguages';
 import { simbridgeDebug } from './support/simbridgeDebug';
 import { migratedCommand } from './general/migratedCommand';
+import { apmodes } from './support/apmodes';
 //import { avatar } from './utils/avatar';
 //import { ban } from './moderation/ban';
 //import { birthday } from './utils/birthday';
@@ -310,6 +311,7 @@ const commands: BaseCommandDefinition[] = [
     devLanguages,
     simbridgeDebug,
     migratedCommand,
+    apmodes,
     //avatar,
     //ban,
     //birthday,
