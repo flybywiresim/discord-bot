@@ -1,5 +1,9 @@
 ## Changelog
 
+Update <small>_ August 2024</small>
+
+- feat: New .APModes command (08/08/2024)
+
 Update <small>_ July 2024</small>
 
 - fix: update takeoff calculator and flex temp command to highlight new improvements (01/07/2024)
