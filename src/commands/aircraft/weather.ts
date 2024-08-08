@@ -14,7 +14,7 @@ const weatherEmbed = makeEmbed({
 });
 
 export const weather: MessageCommandDefinition = {
-    name: ['weather', 'wx'],
+    name: ['weather', 'wx', 'wxr', 'terrain', 'terr', 'terronnd'],
     description: 'Explains the current state of the weather and terrain radars',
     category: CommandCategory.AIRCRAFT,
     genericEmbed: weatherEmbed,

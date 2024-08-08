@@ -2,6 +2,7 @@
 
 Update <small>_ August 2024</small>
 
+- fix: add aliases back to weather command (08/08/2024)
 - feat: New .APModes command (08/08/2024)
 
 Update <small>_ July 2024</small>
