@@ -1,10 +1,14 @@
 import { MessageCommandDefinition } from '../../lib/command';
 import { CommandCategory } from '../../constants';
-import { makeEmbed } from '../../lib/embed';
+import { makeEmbed, makeLines } from '../../lib/embed';
 
 const flexEmbed = makeEmbed({
     title: 'FlyByWire A32NX | Flex Temp',
-    description: 'A320neo takeoff performance data is not readily available. To set your Flex Temp in the simulator please see the [Flex Temp Section](https://docs.flybywiresim.com/pilots-corner/beginner-guide/preparing-mcdu/#flex-temp) in our MCDU guide.',
+    description: makeLines([
+        'The Flex Temp can be calculated in the **Development** version using the Takeoff Performance Calculator in the EFB. Check out the [Documentation](https://docs.flybywiresim.com/flypad-performance/) for more information.',
+        '',
+        'For the **Stable** version, see the [Flex Temp Section](https://docs.flybywiresim.com/pilots-corner/beginner-guide/preparing-mcdu/#flex-temp) in our MCDU guide.',
+    ]),
 });
 
 export const flexTemp: MessageCommandDefinition = {
