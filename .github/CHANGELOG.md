@@ -2,6 +2,7 @@
 
 Update <small>_ August 2024</small>
 
+- refactor: remove .nohello command (27/08/2024)
 - fix: add aliases back to weather command (08/08/2024)
 - feat: New .APModes command (08/08/2024)
 
