@@ -102,7 +102,6 @@ import { market } from './support/market';
 import { takeoffIssues } from './aircraft/takeoffissues';
 import { simbridge } from './support/simbridge';
 import { fma } from './aircraft/fma';
-import { noHello } from './memes/noHello';
 import { dlss } from './support/dlss';
 import { temporarycommandedit } from './moderation/temporaryCommandEdit';
 import { temporarycommand } from './general/temporaryCommand';
@@ -275,7 +274,6 @@ const commands: BaseCommandDefinition[] = [
     takeoffIssues,
     simbridge,
     fma,
-    noHello,
     dlss,
     temporarycommandedit,
     temporarycommand,
