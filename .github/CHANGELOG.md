@@ -1,5 +1,9 @@
 ## Changelog
 
+Update <small>_ October 2024</small>
+
+- feat: Disable prefix commands for migration
+
 Update <small>_ September 2024</small>
 
 - refactor: remove .nohello command (04/09/2024)
