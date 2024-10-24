@@ -171,7 +171,7 @@ import { migratedCommand } from './general/migratedCommand';
 //import { wolframalpha } from './utils/wolframalpha';
 //import { zulu } from './utils/zulu';
 
-export const commands: BaseCommandDefinition[] = [
+const commands: BaseCommandDefinition[] = [
     typeCommand,
     //bruheg,
     //boratorium,
