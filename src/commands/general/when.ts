@@ -4,7 +4,7 @@ import { makeEmbed } from '../../lib/embed';
 
 const whenEmbed = makeEmbed({
     title: 'When is it coming?',
-    description: 'Due to the community-driven nature of our projects, we do not enforce delivery timelines on our volunteer developers. We value high-quality, polished releases over frequent and quickly-released ones, which means some features might take time to land in a publicly-available build. Rest assured that our developers and contributors are working hard on making every FlyByWire project as bug-free and feature-complete as possible, but that we are not able to provide release dates or estimates for a certain feature/fix.',
+    description: 'The FBW A380X will be released on the 31st of October, 2024! If you are looking to fly the A32NX, download it via the FBW installer.',
 });
 
 export const when: MessageCommandDefinition = {
