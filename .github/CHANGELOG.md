@@ -2,7 +2,7 @@
 
 Update <small>_ October 2024</small>
 
-- feat: Disable prefix commands for migration
+- feat: Disable prefix commands for migration (28/10/2024)
 
 Update <small>_ September 2024</small>
 
