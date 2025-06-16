@@ -1,5 +1,9 @@
 ## Changelog
 
+Update <small>_ June 2025</small>
+
+- fix: update DFD discord link in dfd.ts (16/06/2025)
+
 Update <small>_ October 2024</small>
 
 - feat: Disable prefix commands for migration (28/10/2024)
