@@ -5,5 +5,5 @@ export const dfd: CommandDefinition = {
     name: ['dfd'],
     description: 'Provides link to the Digital Flight Dynamics Discord server',
     category: CommandCategory.GENERAL,
-    executor: (msg) => replyWithMsg(msg, 'https://discord.gg/dfd'),
+    executor: (msg) => replyWithMsg(msg, 'https://discord.gg/JtcFmhcAME'),
 };
