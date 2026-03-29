@@ -11,7 +11,7 @@ const faqEmbeds = [
             {
                 name: 'Where can I download the A32NX addon?',
                 value: makeLines([
-                    '> You can download the Stable and Development builds using our installer: https://api.flybywiresim.com/installer',
+                    '> You can download the Stable and Development builds using our installer: https://flybywirecdn.com/installer/release/FlyByWire-Installer-x64.exe',
                     '',
                     '> You can also download the addon directly from the GitHub to install manually: https://github.com/flybywiresim/a32nx',
                 ]),

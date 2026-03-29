@@ -9,7 +9,7 @@ const contentEmbed = makeEmbed({
     description: makeLines([
         'To remove the marketplace version of the A32NX, please open the MSFS Content Manager from the second page on the main menu and search for \'flybywire\'. Then uninstall the 0.6.1 version.',
         '',
-        'Never use the Content Manager to update A32NX, use the [installer](https://api.flybywiresim.com/installer) to keep it up to date.',
+        'Never use the Content Manager to update A32NX, use the [installer](https://flybywirecdn.com/installer/release/FlyByWire-Installer-x64.exe) to keep it up to date.',
     ]),
     image: { url: MARKETPLACE_HELP_URL },
 });
