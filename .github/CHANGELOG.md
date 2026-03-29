@@ -1,5 +1,9 @@
 ## Changelog
 
+Update <small>_ March 2026</small>
+
+- chore: update installer url (29/03/2026)
+
 Update <small>_ October 2024</small>
 
 - feat: Disable prefix commands for migration (28/10/2024)
